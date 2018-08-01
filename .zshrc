@@ -113,7 +113,7 @@ alias minstall='mvn install'
 alias mtree='mvn dependency:tree'
 
 # Network
-alias getPorts='lsof -PiTCP | grep LISTEN'
+alias getports='lsof -PiTCP | grep LISTEN'
 
 # Spoud
 # Logistics
