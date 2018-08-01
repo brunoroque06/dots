@@ -67,7 +67,7 @@ alias tree='find . | sed -e "s/[^-][^\/]*\//  |/g" -e "s/|\([^ ]\)/|-\1/"'
 alias drun='docker build -t ${PWD##*/} . ; docker run --net='host' ${PWD##*/}'
 alias dclean='docker system prune --volumes -f'
 alias dcomposebuild='docker-compose build --force-rm --pull --no-cache'
-alias dcomposeup='dockerClean ; dockerComposeBuild ; docker-compose up'
+alias dcomposeup='dclean ; dcomposebuild ; docker-compose up'
 function dcomposefileup() { docker-compose -f $1 up }
 function dcomposefiledown() { docker-compose -f $1 down }
 alias drmimages='docker rmi $(docker images -a -q)'
@@ -115,14 +115,19 @@ alias mtree='mvn dependency:tree'
 # Network
 alias getports='lsof -PiTCP | grep LISTEN'
 
+# Text
+function replace() { echo ${1//$2/$3} }
+function trim() { echo $@ | tr -d '\040\011\012\015' }
+function json() { echo $1 | python -m json.tool }
+
 # Spoud
 # Logistics
 MONO='/Users/brunoroque/Documents/dm'
 REPO='spoud/dm'
-alias logisticsup="(cd $MONO/sdm/development/local-logistics ; dockerComposeUp)"
+alias logisticsup="(cd $MONO/sdm/development/local-logistics ; dcomposeup)"
 alias logisticsdown="(cd $MONO/sdm/development/local-logistics ; docker-compose down)"
-alias mrcode="code $MONO"
-alias mrcd="cd $MONO"
+alias monocode="code $MONO"
+alias monocd="cd $MONO"
 
 function git-create-pr() {
   MESSAGE=$@
@@ -135,11 +140,7 @@ function git-create-pr() {
   git checkout master
   echo "Pull request successfully created: $BRANCH ($MESSAGE)."
 }
-function pullRequest() {
+
+function pullrequest() {
   echo $(curl -X POST -H "Content-Type: application/json" -u $BITBUCKET_USERNAME:$BITBUCKET_PASSWORD https://api.bitbucket.org/2.0/repositories/$REPO/pullrequests -d @pullrequest.json -v)
 }
-
-# Text
-function replace() { echo ${1//$2/$3} }
-function trim() { echo $@ | tr -d '\040\011\012\015' }
-function json() { echo $1 | python -m json.tool }
