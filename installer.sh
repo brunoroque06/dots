@@ -1,6 +1,9 @@
 #!/bin/bash 
 
-ln -s `pwd`/.zshrc ~/.zshrc; 
-ln -s `pwd`/.vimrc ~/.vimrc;
+FILES=".vimrc .zshrc"
+
+for file in $FILES; do
+  ln -s `pwd`/$file ~/$file
+done
 
 source ~/.zshrc
