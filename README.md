@@ -1,6 +1,6 @@
 # Dotfiles
 
-These are my `.dotfiles`. Run the following command, from this folder, to install them:
+Run the following command to install them:
 
 ```
 sh installer.sh
