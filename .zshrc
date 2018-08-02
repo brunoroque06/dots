@@ -122,15 +122,13 @@ trim() { echo $@ | tr -d '\040\011\012\015' }
 json() { echo $1 | python -m json.tool }
 
 # Spoud
-# Logistics
+# Repository
 readonly MONO='/Users/brunoroque/Documents/dm'
 readonly REPO='spoud/dm'
-alias logisticsup="(cd $MONO/sdm/development/local-logistics ; dcomposeup)"
-alias logisticsdown="(cd $MONO/sdm/development/local-logistics ; docker-compose down)"
 alias monocode="code $MONO"
 alias monocd="cd $MONO"
-alias logisticsbenchmark="bazel run //sdm/logistics/client/benchmark:app --"
 
+# Git
 git_create_pr() {
   local message=$@
   local branch="bruno/$(echo ${@:l} | sed 's/[^a-zA-Z0-9]/-/g')"
@@ -142,10 +140,14 @@ git_create_pr() {
   git checkout master
   echo "Pull request successfully created: $branch ($message)."
 }
-
 pull_request() {
   echo $(curl -X POST -H "Content-Type: application/json" -u $BITBUCKET_USERNAME:$BITBUCKET_PASSWORD https://api.bitbucket.org/2.0/repositories/$REPO/pullrequests -d @pullrequest.json -v)
 }
+
+# Logistics
+alias lup="(cd $MONO/sdm/development/local-logistics ; dcomposeup)"
+alias ldown="(cd $MONO/sdm/development/local-logistics ; docker-compose down)"
+alias lbench='bazel run //sdm/logistics/client/benchmark:app --'
 
 # Search
 bindkey '^[[A' history-beginning-search-backward
