@@ -111,10 +111,9 @@ alias mtree='mvn dependency:tree'
 # Network
 alias getports='lsof -PiTCP | grep LISTEN'
 
-# Pipes
+# Pipelines
 alias -g C='| pbcopy'
-readonly GREP_OPTIONS='--color=always'
-alias -g G='| grep'
+alias -g G='| grep --color=always'
 
 # Text
 replace() { echo ${1//$2/$3} }
