@@ -73,10 +73,6 @@ function dcomposefiledown() { docker-compose -f $1 down }
 alias drmimages='docker rmi $(docker images -a -q)'
 alias drmcontainers='docker stop $(docker ps -a -q) ; docker drm $(docker ps -a -q)'
 
-# Find
-export GREP_OPTIONS='--color=always'
-alias -g G='| grep'
-
 # Git
 alias ga='git add'
 alias gaa='git add --a'
@@ -116,11 +112,15 @@ alias mtree='mvn dependency:tree'
 # Network
 alias getports='lsof -PiTCP | grep LISTEN'
 
+# Pipe
+alias -g C='| pbcopy'
+export GREP_OPTIONS='--color=always'
+alias -g G='| grep'
+
 # Text
 function replace() { echo ${1//$2/$3} }
 function trim() { echo $@ | tr -d '\040\011\012\015' }
 function json() { echo $1 | python -m json.tool }
-alias -g C='| pbcopy'
 
 # Spoud
 # Logistics
