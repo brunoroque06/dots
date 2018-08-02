@@ -86,6 +86,7 @@ alias gbdelete='git branch -d'
 alias gbdeleteremote='git push origin --delete'
 alias gbmaster='git checkout master'
 alias gc='git commit'
+alias gca='git commit --amend --no-edit'
 alias gcam='git commit -am'
 alias gd='git diff --color | ~/diff-so-fancy.sh'
 function gdb() { gd $1..$2 }
