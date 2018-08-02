@@ -36,7 +36,7 @@ alias bt='bazel test'
 alias bta='bazel test //...'
 
 # Config
-alias reload='. ~/.zshrc'
+alias reload='exec zsh'
 alias configzsh="${EDITOR} ~/.zshrc"
 alias configvim="${EDITOR} ~/.vimrc"
 alias configgit="${EDITOR} ~/.gitconfig"
