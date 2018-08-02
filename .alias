@@ -83,7 +83,6 @@ alias -g C='| pbcopy'
 alias -g G='| grep --color=always'
 
 # Text
-alias cat='vimcat'
 replace() { echo ${1//$2/$3} }
 trim() { echo $@ | tr -d '\040\011\012\015' }
 json() { echo $1 | python -m json.tool }
