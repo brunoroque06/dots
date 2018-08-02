@@ -1,7 +1,7 @@
 # Dotfiles
 
-Run the following command to install them:
+Run the following to install:
 
-```
+```bash
 sh installer.sh
 ```
