@@ -13,9 +13,9 @@ zstyle ':completion:*' completer _oldlist _expand _complete _match _ignored _app
 zstyle ':completion:*' menu select
 
 # Theme
-PURE_PROMPT_SYMBOL='λ'
-PURE_GIT_DOWN_ARROW='▼'
-PURE_GIT_UP_ARROW='▲'
+readonly PURE_PROMPT_SYMBOL='λ'
+readonly PURE_GIT_DOWN_ARROW='▼'
+readonly PURE_GIT_UP_ARROW='▲'
 
 # Imports
 source ~/.credentials
