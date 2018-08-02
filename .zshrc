@@ -23,7 +23,7 @@ source ~/.credentials
 
 # Exports
 readonly EDITOR='vim'
-readonly SSH_KEY_PATH='~/.ssh/rsa_id'
+declare -rx SSH_KEY_PATH='~/.ssh/rsa_id'
 
 # Antibody
 alias antibody-remove-plugins='rm -rf $(antibody home)'
@@ -150,3 +150,9 @@ pull_request() {
 # Search
 bindkey '^[[A' history-beginning-search-backward
 bindkey '^[[B' history-beginning-search-forward
+
+# Zip
+unzip() {
+  mkdir ${1%.*}
+  tar -xvzf $1 -C ${1%.*}
+}
