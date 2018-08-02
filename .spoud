@@ -1,0 +1,12 @@
+#!/bin/zsh
+
+# Repository
+readonly MONO='/Users/brunoroque/Documents/dm'
+readonly REPO='spoud/dm'
+alias monocode="code $MONO"
+alias monocd="cd $MONO"
+
+# Logistics
+alias lup="(cd $MONO/sdm/development/local-logistics ; dcomposeup)"
+alias ldown="(cd $MONO/sdm/development/local-logistics ; docker-compose down)"
+alias lbench='bazel run //sdm/logistics/client/benchmark:app --'
