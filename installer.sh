@@ -1,6 +1,6 @@
-#!/bin/bash 
+#!/bin/bash
 
-FILES=".alias .gitconfig .spoud .vimrc .zshrc"
+FILES=".alias bin .gitconfig .spoud .vimrc .zshrc"
 
 for file in $FILES; do
   ln -s $(pwd)/$file ~/$file

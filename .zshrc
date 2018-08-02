@@ -29,6 +29,6 @@ source .alias
 source .spoud
 
 # Exports
-readonly EDITOR='vim'
+export PATH=$PATH:~/bin
 export SSH_KEY_PATH='~/.ssh/rsa_id'
-export PATH=$HOME/bin:$PATH
+readonly EDITOR='vim'
