@@ -128,6 +128,7 @@ alias logisticsup="(cd $MONO/sdm/development/local-logistics ; dcomposeup)"
 alias logisticsdown="(cd $MONO/sdm/development/local-logistics ; docker-compose down)"
 alias monocode="code $MONO"
 alias monocd="cd $MONO"
+alias logisticsbenchmark="bazel run //sdm/logistics/client/benchmark:app --"
 
 function git-create-pr() {
   MESSAGE=$@
