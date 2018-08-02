@@ -6,4 +6,4 @@ for file in $FILES; do
   ln -s $(pwd)/$file ~/$file
 done
 
-exec zsh
+source ~/.zshrc

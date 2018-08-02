@@ -31,3 +31,4 @@ source .spoud
 # Exports
 readonly EDITOR='vim'
 export SSH_KEY_PATH='~/.ssh/rsa_id'
+export PATH=$HOME/bin:$PATH
