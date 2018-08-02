@@ -29,7 +29,8 @@ export SSH_KEY_PATH='~/.ssh/rsa_id'
 alias antibody-remove-plugins='rm -rf `antibody home`'
 
 # Bazel
-alias bb='bazel build --verbose_failures //...'
+alias bb="bazel build"
+alias bba='bazel build --verbose_failures //...'
 function bdeps() { bazel query 'deps('$1')' }
 alias br='bazel run'
 alias bt='bazel test'
@@ -43,7 +44,6 @@ alias configgit="${EDITOR} ~/.gitconfig"
 
 # Directory
 alias ..='cd ..'
-alias cppwd="echo -ne \$(pwd) | pbcopy"
 alias chmodx='chmod +x'
 alias ls='ls -FHG'
 alias la='ls -FHGa'
@@ -119,6 +119,7 @@ alias getports='lsof -PiTCP | grep LISTEN'
 function replace() { echo ${1//$2/$3} }
 function trim() { echo $@ | tr -d '\040\011\012\015' }
 function json() { echo $1 | python -m json.tool }
+alias -g C='| pbcopy'
 
 # Spoud
 # Logistics
