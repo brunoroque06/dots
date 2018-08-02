@@ -1,5 +1,6 @@
 #!/bin/zsh
 autoload -Uz compinit
+compinit
 
 # Plugins
 source <(antibody init)
