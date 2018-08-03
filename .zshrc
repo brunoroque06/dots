@@ -24,9 +24,9 @@ bindkey '^[[A' history-beginning-search-backward
 bindkey '^[[B' history-beginning-search-forward
 
 # Imports
-source .credentials
-source .alias
-source .spoud
+source ~/.credentials
+source ~/.alias
+source ~/.spoud
 
 # Exports
 export PATH=$PATH:~/bin
