@@ -23,7 +23,7 @@ readonly PURE_GIT_UP_ARROW='▲'
 bindkey '^[[A' history-beginning-search-backward
 bindkey '^[[B' history-beginning-search-forward
 
-# Imports
+# Sources
 source ~/.credentials
 source ~/.alias
 source ~/.spoud
