@@ -15,4 +15,4 @@ readonly COMPOSITE_IMAGE="bazel/sdm/logistics/app/composite:docker_image"
 # Logistics
 alias lup="(cd $MONO; bazel run $COMPOSITE_APP; cd $LOCAL_LOGISTICS; dcomposeup)"
 alias ldown="(cd $LOCAL_LOGISTICS; docker-compose down)"
-alias lbench="(cd $MONO; bazel run $BENCHMARK --)"
+lbench() { (cd $MONO; bazel run $BENCHMARK -- $@) }
