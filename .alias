@@ -12,10 +12,10 @@ alias bt='bazel test'
 alias bta='bazel test //...'
 
 # Config
-alias reload='source ~/.zshrc'
-alias configzsh="$EDITOR ~/.zshrc"
-alias configvim="$EDITOR ~/.vimrc"
-alias configgit="$EDITOR ~/.gitconfig"
+alias reload="source $HOME/.zshrc"
+alias configzsh="$EDITOR $HOME/.zshrc"
+alias configvim="$EDITOR $HOME/.vimrc"
+alias configgit="$EDITOR $HOME/.gitconfig"
 
 # Directory
 alias ..='cd ..'
@@ -59,7 +59,7 @@ alias gbmaster='git checkout master'
 alias gc='git commit'
 alias gca='git commit --amend --no-edit'
 alias gcam='git commit -am'
-alias gd='git diff --color | ~/bin/diff-so-fancy.sh'
+alias gd="git diff --color | $HOME/bin/diff-so-fancy.sh"
 alias gpush='git push -u origin $(git rev-parse --abbrev-ref HEAD)'
 alias gpull='git pull'
 alias grebase='git rebase'

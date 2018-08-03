@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 # Mono Repository
-readonly MONO='~/Documents/dm'
+readonly MONO="$HOME/Documents/dm"
 readonly REPO='spoud/dm'
 readonly LOCAL_LOGISTICS="$MONO/development/local-logistics"
 alias monocd="cd $MONO"
@@ -10,6 +10,8 @@ alias monocode="code $MONO"
 # Bazel
 readonly BENCHMARK="//sdm/logistics/client/benchmark:app"
 readonly COMPOSITE_APP="//sdm/logistics/app/composite:docker_image"
+
+# Docker
 readonly COMPOSITE_IMAGE="bazel/sdm/logistics/app/composite:docker_image"
 
 # Logistics

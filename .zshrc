@@ -24,11 +24,11 @@ bindkey '^[[A' history-beginning-search-backward
 bindkey '^[[B' history-beginning-search-forward
 
 # Sources
-source ~/.credentials
-source ~/.alias
-source ~/.spoud
+source $HOME/.credentials
+source $HOME/.alias
+source $HOME/.spoud
 
 # Exports
-export PATH=$PATH:~/bin
-export SSH_KEY_PATH='~/.ssh/rsa_id'
+export PATH=$PATH:$HOME/bin
+export SSH_KEY_PATH="$HOME/.ssh/rsa_id"
 readonly EDITOR='vim'
