@@ -42,10 +42,10 @@ alias tree='find . | sed -e "s/[^-][^\/]*\//  |/g" -e "s/|\([^ ]\)/|-\1/"'
 alias drun='docker build -t ${PWD##*/} . ; docker run --net='host' ${PWD##*/}'
 alias dclean='docker system prune --volumes -f'
 alias dcomposebuild='docker-compose build --force-rm --pull --no-cache'
-alias dcomposeup='dclean ; dcomposebuild ; docker-compose up'
+alias dcomposeup='dclean; dcomposebuild; docker-compose up'
 dcomposefileup() { docker-compose -f $1 up }
 dcomposefiledown() { docker-compose -f $1 down }
-alias drmimages='docker rmi $(docker images -a -q)'
+alias drmimages='docker rmi -f $(docker images -a -q)'
 alias drmcontainers='docker stop $(docker ps -a -q) ; docker drm $(docker ps -a -q)'
 
 # Git
@@ -86,6 +86,7 @@ alias -g G='| grep --color=always'
 replace() { echo ${1//$2/$3} }
 trim() { echo $@ | tr -d '\040\011\012\015' }
 json() { echo $1 | python -m json.tool }
+pastefile() { echo $(pbpaste) > $1 }
 
 # Zip
 unzip() {
