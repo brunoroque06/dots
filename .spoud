@@ -1,11 +1,11 @@
 #!/bin/zsh
 
-# Repository
+# Mono Repository
 readonly MONO='~/Documents/dm'
 readonly REPO='spoud/dm'
 readonly LOCAL_LOGISTICS="$MONO/development/local-logistics"
-alias repocd="cd $MONO"
-alias repocode="code $MONO"
+alias monocd="cd $MONO"
+alias monocode="code $MONO"
 
 # Bazel
 readonly BENCHMARK="//sdm/logistics/client/benchmark:app"
@@ -14,5 +14,5 @@ readonly COMPOSITE_IMAGE="bazel/sdm/logistics/app/composite:docker_image"
 
 # Logistics
 alias lup="(cd $MONO; bazel run $COMPOSITE_APP; cd $LOCAL_LOGISTICS; dcomposeup)"
-alias ldown="(cd $LOCAL_LOGISTICS ; docker-compose down)"
+alias ldown="(cd $LOCAL_LOGISTICS; docker-compose down)"
 alias lbench="(cd $MONO; bazel run $BENCHMARK --)"

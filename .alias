@@ -46,7 +46,7 @@ alias dcomposeup='dclean; dcomposebuild; docker-compose up'
 dcomposefileup() { docker-compose -f $1 up }
 dcomposefiledown() { docker-compose -f $1 down }
 alias drmimages='docker rmi -f $(docker images -a -q)'
-alias drmcontainers='docker stop $(docker ps -a -q) ; docker drm $(docker ps -a -q)'
+alias drmcontainers='docker stop $(docker ps -a -q); docker rm $(docker ps -a -q)'
 
 # Git
 alias ga='git add'
@@ -76,11 +76,12 @@ alias minstall='mvn install'
 alias mtree='mvn dependency:tree'
 
 # Network
-alias getports='lsof -PiTCP | grep LISTEN'
+alias ports='lsof -PiTCP | grep LISTEN'
 
 # Pipelines
+export GREP_OPTIONS='--color=always'
 alias -g C='| pbcopy'
-alias -g G='| grep --color=always'
+alias -g G='| grep'
 
 # Text
 replace() { echo ${1//$2/$3} }
