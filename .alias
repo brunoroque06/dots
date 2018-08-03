@@ -13,9 +13,9 @@ alias bta='bazel test //...'
 
 # Config
 alias reload='source ~/.zshrc'
-alias configzsh="${EDITOR} ~/.zshrc"
-alias configvim="${EDITOR} ~/.vimrc"
-alias configgit="${EDITOR} ~/.gitconfig"
+alias configzsh="$EDITOR ~/.zshrc"
+alias configvim="$EDITOR ~/.vimrc"
+alias configgit="$EDITOR ~/.gitconfig"
 
 # Directory
 alias ..='cd ..'
