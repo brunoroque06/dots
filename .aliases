@@ -39,26 +39,24 @@ up() {
 alias tree='find . | sed -e "s/[^-][^\/]*\//  |/g" -e "s/|\([^ ]\)/|-\1/"'
 
 # Docker
-alias drun='docker build -t ${PWD##*/} . ; docker run --net='host' ${PWD##*/}'
+alias dr='docker build -t ${PWD##*/} . ; docker run --net='host' ${PWD##*/}'
 alias dclean='docker system prune --volumes -f'
-alias dcomposebuild='docker-compose build --force-rm --pull --no-cache'
-alias dcomposeup='dclean; dcomposebuild; docker-compose up'
-dcomposefileup() { docker-compose -f $1 up }
-dcomposefiledown() { docker-compose -f $1 down }
-alias drmimages='docker rmi -f $(docker images -a -q)'
-alias drmcontainers='docker stop $(docker ps -a -q); docker rm $(docker ps -a -q)'
+alias dcb='docker-compose build --force-rm --pull --no-cache'
+alias dcu='dclean; dcomposebuild; docker-compose up'
+dcfu() { docker-compose -f $1 up }
+dcfd() { docker-compose -f $1 down }
+alias drmi='docker rmi -f $(docker images -a -q)'
+alias drmc='docker stop $(docker ps -a -q); docker rm $(docker ps -a -q)'
 
 # Git
 alias ga='git add'
 alias gaa='git add --a'
-alias gb='git checkout'
-alias gbb='git checkout -b'
-alias gbrm='git branch -d'
-alias gbrmremote='git push origin --delete'
-alias gbmaster='git checkout master'
+alias gbd='git branch -d'
 alias gc='git commit'
 alias gca='git commit --amend --no-edit'
 alias gcam='git commit -am'
+alias gco='git checkout'
+alias gcob='git checkout -b'
 alias gd="git diff --color | diff-so-fancy"
 alias gpush='git push -u origin $(git rev-parse --abbrev-ref HEAD)'
 alias gpull='git pull'
@@ -67,8 +65,8 @@ alias greset='git reset --hard'
 alias gs='git status -u'
 
 # Java
-alias jrun='java -jar'
-alias jview='jar tvf'
+alias jr='java -jar'
+alias jv='jar tvf'
 
 # Maven
 alias manalyse='mvn dependency:analyze'
