@@ -8,3 +8,5 @@ brew install git
 brew install node
 
 brew cleanup
+
+brew doctor

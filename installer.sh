@@ -3,7 +3,12 @@
 FILES=".aliases bin .gitconfig .spoud .vimrc .zshrc"
 
 for file in $FILES; do
-  ln -s $(pwd)/$file $HOME/$file
+  s=$(pwd)/$file
+  t=$HOME/$file
+  echo "Symlink: $s -> $t"
+  ln -fns $s $t
 done
 
 source $HOME/.zshrc
+
+sh brew.sh
