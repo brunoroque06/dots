@@ -25,7 +25,7 @@ bindkey '^[[B' history-beginning-search-forward
 
 # Sources
 source $HOME/.credentials
-source $HOME/.alias
+source $HOME/.aliases
 source $HOME/.spoud
 
 # Exports
