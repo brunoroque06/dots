@@ -77,6 +77,12 @@ alias mtree='mvn dependency:tree'
 # Network
 alias ports='lsof -PiTCP | grep LISTEN'
 
+# Npm
+alias ni='npm install'
+alias nlg='npm list -g --depth=0'
+alias nr='npm run'
+alias ns="awk '/\"scripts\":/,/}/' package.json"
+
 # Pipelines
 export GREP_OPTIONS='--color=always'
 alias -g C='| pbcopy'

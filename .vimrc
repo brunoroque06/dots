@@ -33,6 +33,8 @@ Plug 'https://github.com/w0rp/ale.git'
 Plug 'itchyny/lightline.vim'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'Valloric/YouCompleteMe'
+" Plug 'pangloss/vim-javascript'
+" Plug 'mxw/vim-jsx'
 call plug#end()
 
 set background=dark
