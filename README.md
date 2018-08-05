@@ -1,4 +1,4 @@
-# Dotfiles
+# Bruno's dotfiles
 
 ## Requirements
 

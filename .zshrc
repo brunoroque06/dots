@@ -24,9 +24,9 @@ bindkey '^[[A' history-beginning-search-backward
 bindkey '^[[B' history-beginning-search-forward
 
 # Sources
-source $HOME/.credentials
 source $HOME/.aliases
 source $HOME/.spoud
+source $HOME/.secrets
 
 # Exports
 export PATH=$PATH:$HOME/bin

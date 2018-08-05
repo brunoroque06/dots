@@ -51,6 +51,7 @@ alias drmc='docker stop $(docker ps -a -q); docker rm $(docker ps -a -q)'
 # Git
 alias ga='git add'
 alias gaa='git add --a'
+alias gb='git branch'
 alias gbd='git branch -d'
 alias gc='git commit'
 alias gca='git commit --amend --no-edit'
