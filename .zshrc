@@ -14,6 +14,9 @@ antibody bundle zsh-users/zsh-syntax-highlighting
 zstyle ':completion:*' completer _oldlist _expand _complete _match _ignored _approximate
 zstyle ':completion:*' menu select
 
+# Binds
+bindkey "^[[3~" delete-char
+
 # Theme
 readonly PURE_PROMPT_SYMBOL='λ'
 readonly PURE_GIT_DOWN_ARROW='▼'

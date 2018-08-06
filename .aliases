@@ -53,6 +53,10 @@ alias drmc='docker stop $(docker ps -a -q); docker rm $(docker ps -a -q)'
 # Files
 alias c='cat'
 pastefile() { echo $(pbpaste) > $1 }
+unzip() {
+  mkdir ${1%.*}
+  tar -xvzf $1 -C ${1%.*}
+}
 
 # Git
 alias ga='git add'
@@ -98,9 +102,3 @@ alias -g G='| grep'
 replace() { echo ${1//$2/$3} }
 trim() { echo $@ | tr -d '\040\011\012\015' }
 json() { echo $1 | python -m json.tool }
-
-# Zip
-unzip() {
-  mkdir ${1%.*}
-  tar -xvzf $1 -C ${1%.*}
-}
