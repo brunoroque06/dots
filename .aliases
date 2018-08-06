@@ -42,9 +42,11 @@ alias tree='find . | sed -e "s/[^-][^\/]*\//  |/g" -e "s/|\([^ ]\)/|-\1/"'
 alias dr='docker build -t ${PWD##*/} . ; docker run --net='host' ${PWD##*/}'
 alias dclean='docker system prune --volumes -f'
 alias dcb='docker-compose build --force-rm --pull --no-cache'
-alias dcu='dclean; dcomposebuild; docker-compose up'
+alias dcu='dclean; dcb; docker-compose up'
 dcfu() { docker-compose -f $1 up }
 dcfd() { docker-compose -f $1 down }
+alias dcps='docker-compose ps'
+alias dps='docker ps -a'
 alias drmi='docker rmi -f $(docker images -a -q)'
 alias drmc='docker stop $(docker ps -a -q); docker rm $(docker ps -a -q)'
 

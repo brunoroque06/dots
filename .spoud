@@ -10,7 +10,7 @@ alias monocode="code $MONO"
 # Bazel Targets
 readonly BENCHMARK="//sdm/logistics/client/benchmark:app"
 readonly CLI="//sdm/logistics/client/cli:sdm-cli"
-readonly COMPOSITE_APP="//sdm/logistics/app/composite:docker_image"
+readonly COMPOSITE="//sdm/logistics/app/composite:docker_image"
 
 # CLI
 cli_local() { (cd $MONO; bazel run $CLI -- -server_url localhost:6063 $@) }
@@ -18,10 +18,11 @@ alias llp="cli_local -get_profiles"
 alias llg="cli_local -get_graphs"
 alias llrg="cli_local -get_running_graphs"
 
-# Docker
+# Docker Images
 readonly COMPOSITE_IMAGE="bazel/sdm/logistics/app/composite:docker_image"
 
 # Logistics
-alias lup="(cd $MONO; bazel run $COMPOSITE_APP; cd $LOCAL_LOGISTICS; dcu)"
+alias leup="(cd $LOCAL_LOGISTICS; dcu zookeeper kafka redis)"
+alias lup="(cd $MONO; bazel run $COMPOSITE; cd $LOCAL_LOGISTICS; dcu)"
 alias ldown="(cd $LOCAL_LOGISTICS; docker-compose down)"
 lbench() { (cd $MONO; bazel run $BENCHMARK -- $@) }
