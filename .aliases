@@ -11,13 +11,13 @@ alias br='bazel run'
 alias bt='bazel test'
 alias bta='bazel test //...'
 
-# Config
+# Configurations
 alias reload="source $HOME/.zshrc"
 alias configzsh="$EDITOR $HOME/.zshrc"
 alias configvim="$EDITOR $HOME/.vimrc"
 alias configgit="$EDITOR $HOME/.gitconfig"
 
-# Directory
+# Directories
 alias ..='cd ..'
 alias chmodx='chmod +x'
 alias ls='ls -FHG'
@@ -47,6 +47,10 @@ dcfu() { docker-compose -f $1 up }
 dcfd() { docker-compose -f $1 down }
 alias drmi='docker rmi -f $(docker images -a -q)'
 alias drmc='docker stop $(docker ps -a -q); docker rm $(docker ps -a -q)'
+
+# Files
+alias c='cat'
+pastefile() { echo $(pbpaste) > $1 }
 
 # Git
 alias ga='git add'
@@ -92,7 +96,6 @@ alias -g G='| grep'
 replace() { echo ${1//$2/$3} }
 trim() { echo $@ | tr -d '\040\011\012\015' }
 json() { echo $1 | python -m json.tool }
-pastefile() { echo $(pbpaste) > $1 }
 
 # Zip
 unzip() {
