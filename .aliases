@@ -58,6 +58,9 @@ unzip() {
   tar -xvzf $1 -C ${1%.*}
 }
 
+# Gerrit
+alias gerritpr='git push gerrit HEAD:refs/for/master -o topic=$(git rev-parse --abbrev-ref HEAD)'
+
 # Git
 alias ga='git add'
 alias gaa='git add --a'
@@ -88,6 +91,7 @@ alias mtree='mvn dependency:tree'
 alias ports='lsof -PiTCP | grep LISTEN'
 
 # Npm
+alias nci="npm ci"
 alias ni='npm install'
 alias nlg='npm list -g --depth=0'
 alias nr='npm run'
