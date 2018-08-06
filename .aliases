@@ -71,12 +71,15 @@ alias gca='git commit --amend --no-edit'
 alias gcam='git commit -am'
 alias gco='git checkout'
 alias gcob='git checkout -b'
-alias gd="git diff --color | diff-so-fancy"
+alias gd='git diff --color | diff-so-fancy'
 alias gpush='git push -u origin $(git rev-parse --abbrev-ref HEAD)'
 alias gpull='git pull'
 alias grebase='git rebase'
 alias greset='git reset --hard'
 alias gs='git status -u'
+
+# Information
+printalias() { alias | grep ^$1 }
 
 # Java
 alias jr='java -jar'
