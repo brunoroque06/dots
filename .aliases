@@ -84,7 +84,7 @@ alias greset='git reset --hard'
 alias gs='git status -u'
 
 # Information
-ap() { alias | grep ^$1 }
+ap() { alias G ^$1 }
 
 # Java
 alias jr='java -jar'
@@ -96,7 +96,7 @@ alias minstall='mvn install'
 alias mtree='mvn dependency:tree'
 
 # Network
-alias ports='lsof -PiTCP | grep LISTEN'
+alias ports='lsof -PiTCP G LISTEN'
 
 # Npm
 alias nci="npm ci"
@@ -106,11 +106,14 @@ alias nr='npm run'
 alias ns="awk '/\"scripts\":/,/}/' package.json"
 
 # Pipelines
-export GREP_OPTIONS='--color=always'
 alias -g C='| pbcopy'
-alias -g G='| grep'
+alias -g G='| grep --color=always'
 
 # Text
 replace() { echo ${1//$2/$3} }
 trim() { echo $@ | tr -d '\040\011\012\015' }
 json() { echo $1 | python -m json.tool }
+
+# Vim
+alias vimupdate='vim +PlugUpgrade +PlugInstall! +PlugUpdate! +PlugClean! +qa'
+
