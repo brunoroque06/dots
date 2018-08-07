@@ -60,15 +60,15 @@ unzip() {
 
 # Gerrit
 readonly GERRIT_MASTER='gerrit/master'
-alias gerritpr='git push gerrit HEAD:refs/for/master -o topic=$(git rev-parse --abbrev-ref HEAD)'
-alias gerritrb="git rebase $GERRIT_MASTER"
-gerritnewbranch() { git checkout -b $1 $GERRIT_MASTER }
+alias gepr='git push gerrit HEAD:refs/for/master -o topic=$(git rev-parse --abbrev-ref HEAD)'
+alias gerb="git rebase $GERRIT_MASTER"
+gecob() { git checkout -b $1 $GERRIT_MASTER }
 
 # Git
 alias ga='git add'
 alias gaa='git add --a'
 alias gba='git branch -a'
-alias gbd='git branch -d'
+alias gbd='git branch -D'
 alias gc='git commit'
 alias gcam='git commit -am'
 alias gcamend='git commit --amend --no-edit'
