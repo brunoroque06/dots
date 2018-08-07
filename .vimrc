@@ -29,12 +29,10 @@ endif
 
 call plug#begin('~/.vim/plugged')
 Plug 'morhetz/gruvbox'
-Plug 'https://github.com/w0rp/ale.git'
 Plug 'itchyny/lightline.vim'
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-Plug 'Valloric/YouCompleteMe'
-" Plug 'pangloss/vim-javascript'
-" Plug 'mxw/vim-jsx'
+" Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+" Plug 'Valloric/YouCompleteMe'
+" Plug 'https://github.com/w0rp/ale.git'
 call plug#end()
 
 set background=dark
@@ -42,5 +40,6 @@ colorscheme gruvbox
 
 let g:lightline = { 'colorscheme': 'wombat' }
 
-autocmd vimenter * NERDTree
-let NERDTreeShowHidden=1
+" autocmd vimenter * NERDTree
+" let NERDTreeShowHidden=1
+

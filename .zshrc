@@ -33,3 +33,4 @@ source $HOME/.secrets
 export PATH="$PATH:$HOME/bin"
 export SSH_KEY_PATH="$HOME/.ssh/rsa_id"
 readonly EDITOR='vim'
+
