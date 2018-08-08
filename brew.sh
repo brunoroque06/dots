@@ -2,6 +2,8 @@
 
 brew update
 
+brew install zsh
+brew install vim
 brew install antibody
 brew install diff-so-fancy
 brew install git

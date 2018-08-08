@@ -1,7 +1,7 @@
 syntax enable
 
 " Font
-set guifont=SF\ Mono:h12
+set guifont=SF\ Mono:h14
 set encoding=utf-8
 
 " Spaces
@@ -28,18 +28,18 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged')
-Plug 'morhetz/gruvbox'
-Plug 'itchyny/lightline.vim'
-" Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+  Plug 'itchyny/lightline.vim'
+  Plug 'chriskempson/tomorrow-theme'
+  Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 " Plug 'Valloric/YouCompleteMe'
 " Plug 'https://github.com/w0rp/ale.git'
 call plug#end()
 
-set background=dark
-colorscheme gruvbox
+" set background=dark
+" colorscheme 'tomorrow-theme' 
 
 let g:lightline = { 'colorscheme': 'wombat' }
 
-" autocmd vimenter * NERDTree
-" let NERDTreeShowHidden=1
+autocmd vimenter * NERDTree
+let NERDTreeShowHidden=1
 

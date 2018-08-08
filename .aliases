@@ -58,7 +58,7 @@ unzip() {
 # Gerrit
 readonly GERRIT_MASTER='gerrit/master'
 alias gepr='git push gerrit HEAD:refs/for/master -o topic=$(git rev-parse --abbrev-ref HEAD)'
-alias gerb="git rebase $GERRIT_MASTER"
+alias gerb="git stash; git rebase $GERRIT_MASTER; git stash pop"
 gecob() { git checkout -b $1 $GERRIT_MASTER }
 
 # Git
