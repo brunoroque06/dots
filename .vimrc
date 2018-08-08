@@ -28,15 +28,13 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged')
+  Plug 'morhetz/gruvbox'
   Plug 'itchyny/lightline.vim'
-  Plug 'chriskempson/tomorrow-theme'
   Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-" Plug 'Valloric/YouCompleteMe'
-" Plug 'https://github.com/w0rp/ale.git'
 call plug#end()
 
-" set background=dark
-" colorscheme 'tomorrow-theme' 
+set background=dark
+colorscheme gruvbox
 
 let g:lightline = { 'colorscheme': 'wombat' }
 
