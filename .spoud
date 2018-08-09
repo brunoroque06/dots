@@ -1,25 +1,22 @@
 #!/bin/zsh
 
-# Mono Repository
+# Paths
 readonly MONO="$HOME/Documents/dm"
 readonly REPO='spoud/dm'
 readonly LOCAL_LOGISTICS="$MONO/development/local-logistics"
-alias monocd="cd $MONO"
-alias monocode="code $MONO"
 
-# Bazel
-readonly BENCHMARK="//sdm/logistics/client/benchmark:app"
-readonly CLI="//sdm/logistics/client/cli:sdm-cli"
-readonly COMPOSITE="//sdm/logistics/app/composite:docker_image"
+# Bazel Targets
+readonly ALL='//... -//sdm/auth:acceptance_tests -//sdm/logistics/test:api_regression_tests'
+readonly BENCHMARK='//sdm/logistics/client/benchmark:app'
+readonly CLI='//sdm/logistics/client/cli:sdm-cli'
+readonly COMPOSITE='//sdm/logistics/app/composite:docker_image'
+readonly COMPOSITE_IMAGE='bazel/sdm/logistics/app/composite:docker_image'
 
 # CLI
 cli_local() { (cd $MONO; bazel run $CLI -- -server_url localhost:6063 $@) }
-alias llp="cli_local -get_profiles"
-alias llg="cli_local -get_graphs"
-alias llrg="cli_local -get_running_graphs"
-
-# Docker
-readonly COMPOSITE_IMAGE="bazel/sdm/logistics/app/composite:docker_image"
+alias llp='cli_local -get_profiles'
+alias llg='cli_local -get_graphs'
+alias llrg='cli_local -get_running_graphs'
 
 # Logistics
 alias leup="(cd $LOCAL_LOGISTICS; dcu zookeeper kafka redis)"
@@ -27,4 +24,10 @@ alias lup="(cd $MONO; bazel run $COMPOSITE; cd $LOCAL_LOGISTICS; dcu)"
 alias ldown="(cd $LOCAL_LOGISTICS; docker-compose down)"
 lbench() { (cd $MONO; bazel run $BENCHMARK -- $@) }
 alias lunit='(cd $MONO; bazel test //sdm/logistics/service:unit_tests)'
+
+# Mono Commands
+alias mob="(cd $MONO; bazel build -- $ALL)"
+alias mocd="cd $MONO"
+alias mocode="code $MONO"
+alias mot="(cd $MONO; bazel test -- $ALL)"
 

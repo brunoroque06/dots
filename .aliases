@@ -36,7 +36,7 @@ up() {
 alias tree='find . | sed -e "s/[^-][^\/]*\//  |/g" -e "s/|\([^ ]\)/|-\1/"'
 
 # Docker
-alias dr='docker build -t ${PWD##*/} . ; docker run --net='host' ${PWD##*/}'
+alias dr='docker build -t ${PWD##*/} . ; docker run --net="host" ${PWD##*/}'
 alias dclean='docker system prune --volumes -f'
 alias dcb='docker-compose build --force-rm --pull --no-cache'
 alias dcu='dclean; dcb; docker-compose up'
@@ -57,9 +57,10 @@ unzip() {
 
 # Gerrit
 readonly GERRIT_MASTER='gerrit/master'
+gecob() { git checkout -b $1 $GERRIT_MASTER }
+ged() { git diff --color gerrit/master..$1 | diff-so-fancy }
 alias gepr='git push gerrit HEAD:refs/for/master -o topic=$(git rev-parse --abbrev-ref HEAD)'
 alias gerb="git stash; git rebase $GERRIT_MASTER; git stash pop"
-gecob() { git checkout -b $1 $GERRIT_MASTER }
 
 # Git
 alias ga='git add'
@@ -87,14 +88,12 @@ alias jv='jar tvf'
 # List
 lc() { echo "$(alias) $(declare -f | grep ' ()' | awk '{print $1}')" | grep --color=always ^$1 }
 alias ll='ls -FHGal'
+alias lp='lsof -PiTCP G LISTEN'
 
 # Maven
 alias manalyse='mvn dependency:analyze'
 alias minstall='mvn install'
 alias mtree='mvn dependency:tree'
-
-# Network
-alias ports='lsof -PiTCP G LISTEN'
 
 # Npm
 alias nci="npm ci"
@@ -114,3 +113,4 @@ json() { echo $1 | python -m json.tool }
 
 # Vim
 alias vimupdate='vim +PlugUpgrade +PlugInstall! +PlugUpdate! +PlugClean! +qa'
+
