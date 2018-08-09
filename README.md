@@ -11,5 +11,5 @@ The following installed:
 Run the following:
 
 ```bash
-sh installer.sh
+sh install.sh
 ```
