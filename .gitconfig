@@ -1,17 +1,17 @@
 [color]
-	ui = true
+  ui = true
 
 [color "branch"]
-	current = yellow bold
-	local = green bold
-	remote = cyan bold
+  current = yellow bold
+  local = green bold
+  remote = cyan bold
 
 [color "diff"]
   meta = yellow
-	frag = magenta bold
+  frag = magenta bold
   commit = yellow bold
-	old = red bold
-	new = green bold
+  old = red bold
+  new = green bold
   whitespace = red reverse
 
 [color "diff-highlight"]
@@ -21,11 +21,12 @@
   newHighlight = green bold 22
 
 [user]
-	name = Bruno Roque
-	email = bruno.roque@spoud.io
+  name = Bruno Roque
+  email = bruno.roque@spoud.io
 [difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
+  cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+  path = 
 [mergetool "sourcetree"]
-	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
+  cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+  trustExitCode = true
+

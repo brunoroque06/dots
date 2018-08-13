@@ -3,7 +3,7 @@
 # Paths
 readonly MONO="$HOME/Documents/dm"
 readonly REPO='spoud/dm'
-readonly LOCAL_LOGISTICS="$MONO/development/local-logistics"
+readonly LOCAL_LOGISTICS="$MONO/development/local-logistics/logistics.yml"
 
 # Bazel Targets
 readonly ALL='//... -//sdm/auth:acceptance_tests -//sdm/logistics/test:api_regression_tests'
@@ -14,9 +14,9 @@ readonly COMPOSITE_IMAGE='bazel/sdm/logistics/app/composite:docker_image'
 
 # CLI
 cli_local() { (cd $MONO; bazel run $CLI -- -server_url localhost:6063 $@) }
-alias llp='cli_local -get_profiles'
-alias llg='cli_local -get_graphs'
-alias llrg='cli_local -get_running_graphs'
+alias lgp='cli_local -get_profiles'
+alias lgg='cli_local -get_graphs'
+alias lgrg='cli_local -get_running_graphs'
 
 # Gerrit
 readonly GERRIT_MASTER='gerrit/master'
@@ -24,17 +24,16 @@ gecob() { git checkout -b $1 $GERRIT_MASTER }
 ged() { git diff --color gerrit/master..$1 | diff-so-fancy }
 alias gepr='git push gerrit HEAD:refs/for/master -o topic=$(git rev-parse --abbrev-ref HEAD)'
 alias gerb="git stash; git rebase $GERRIT_MASTER; git stash pop"
+alias geud='git remote update gerrit --prune'
 
 # Logistics
-alias leup="(cd $LOCAL_LOGISTICS; dcu zookeeper kafka redis)"
-alias lup="(cd $MONO; bazel run $COMPOSITE; cd $LOCAL_LOGISTICS; dcu)"
-alias ldown="(cd $LOCAL_LOGISTICS; docker-compose down)"
+alias leup="dclean; dcfu $LOCAL_LOGISTICS zookeeper kafka redis"
+alias lup="(cd $MONO; bazel run $COMPOSITE; dcfu $LOCAL_LOGISTICS)"
+alias ldown="docker-compose -f $LOCAL_LOGISTICS down"
 lbench() { (cd $MONO; bazel run $BENCHMARK -- $@) }
 alias lunit='(cd $MONO; bazel test //sdm/logistics/service:unit_tests)'
 
 # Mono Commands
-alias mob="(cd $MONO; bazel build -- $ALL)"
 alias mocd="cd $MONO"
-alias mocode="code $MONO"
 alias mot="(cd $MONO; bazel test -- $ALL)"
 
