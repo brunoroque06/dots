@@ -20,6 +20,7 @@ alias configgit="$EDITOR $HOME/.gitconfig"
 # Directories
 alias ..='cd ..'
 alias chmodx='chmod +x'
+gf() { grep --color=always -r -i --include ${2:-'.*'} $1 . }
 mvfiles() { mv $1*(DN) $2 }
 alias rmrf='rm -rf'
 up() {
@@ -54,13 +55,6 @@ unzip() {
   mkdir ${1%.*}
   tar -xvzf $1 -C ${1%.*}
 }
-
-# Gerrit
-readonly GERRIT_MASTER='gerrit/master'
-gecob() { git checkout -b $1 $GERRIT_MASTER }
-ged() { git diff --color gerrit/master..$1 | diff-so-fancy }
-alias gepr='git push gerrit HEAD:refs/for/master -o topic=$(git rev-parse --abbrev-ref HEAD)'
-alias gerb="git stash; git rebase $GERRIT_MASTER; git stash pop"
 
 # Git
 alias ga='git add'

@@ -18,6 +18,13 @@ alias llp='cli_local -get_profiles'
 alias llg='cli_local -get_graphs'
 alias llrg='cli_local -get_running_graphs'
 
+# Gerrit
+readonly GERRIT_MASTER='gerrit/master'
+gecob() { git checkout -b $1 $GERRIT_MASTER }
+ged() { git diff --color gerrit/master..$1 | diff-so-fancy }
+alias gepr='git push gerrit HEAD:refs/for/master -o topic=$(git rev-parse --abbrev-ref HEAD)'
+alias gerb="git stash; git rebase $GERRIT_MASTER; git stash pop"
+
 # Logistics
 alias leup="(cd $LOCAL_LOGISTICS; dcu zookeeper kafka redis)"
 alias lup="(cd $MONO; bazel run $COMPOSITE; cd $LOCAL_LOGISTICS; dcu)"

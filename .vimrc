@@ -11,6 +11,9 @@ set expandtab
 set shiftwidth=2
 set softtabstop=2
 
+" Mapping
+set backspace=indent,eol,start
+
 " Search
 set ignorecase
 set incsearch
