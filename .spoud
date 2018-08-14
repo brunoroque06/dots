@@ -25,6 +25,7 @@ ged() { git diff --color gerrit/master.."$1" | diff-so-fancy; }
 alias gepr='git push gerrit HEAD:refs/for/master -o topic=$(git rev-parse --abbrev-ref HEAD)'
 alias gerb='git stash; git rebase $GERRIT_MASTER; git stash pop'
 alias geud='git remote update gerrit --prune'
+alias gewip='git push gerrit HEAD:refs/for/master%wip -o topic=$(git rev-parse --abbrev-ref HEAD)'
 
 # Logistics
 alias leup='dclean; dcfu $LOCAL_LOGISTICS zookeeper kafka redis'
