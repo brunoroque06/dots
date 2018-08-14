@@ -9,6 +9,7 @@ for file in $FILES; do
   ln -fns $s $t
 done
 
-source $HOME/.zshrc
+./brew
 
-sh brew.sh
+exec zsh
+
