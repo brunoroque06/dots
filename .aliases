@@ -6,7 +6,7 @@ alias abrmplugins='rm -rf $(antibody home)'
 # Bazel
 alias bb='bazel build'
 alias bba='bazel build --verbose_failures //...'
-bdeps() { bazel query 'deps('$1')' }
+bdeps() { bazel query 'deps('"$1"')'; }
 alias br='bazel run'
 alias bt='bazel test'
 alias bta='bazel test //...'
@@ -18,20 +18,9 @@ alias dotfilescheck='shellcheck .aliases .spoud .zshrc brew install'
 # Directories
 alias ..='cd ..'
 alias chmodx='chmod +x'
-gf() { grep --color=always -r -i --include ${2:-'.*'} $1 . }
-mvfiles() { mv $1*(DN) $2 }
+gf() { grep --color=always -r -i --include "${2:-'.*'}" "$1" .; }
+mvfiles() { mv "$1*(DN)" "$2"; }
 alias rmrf='rm -rf'
-up() {
-  if [[ "$#" < 1 ]] ; then
-    cd ..
-  else
-    local cdstr=""
-    for i in {1..$1} ; do
-      cdstr="../$cdstr"
-    done
-    cd $cdstr
-  fi
-}
 alias tree='find . | sed -e "s/[^-][^\/]*\//  |/g" -e "s/|\([^ ]\)/|-\1/"'
 
 # Docker
@@ -39,15 +28,15 @@ alias dr='docker build -t ${PWD##*/} . ; docker run --net="host" ${PWD##*/}'
 alias dclean='docker system prune --volumes -f'
 alias dcb='docker-compose build --force-rm --pull --no-cache'
 alias dcu='dclean; dcb; docker-compose up'
-dcfu() { docker-compose -f $1 up ${@:2} }
-dcfd() { docker-compose -f $1 down }
+dcfu() { docker-compose -f "$1" up "${@:2}"; }
+dcfd() { docker-compose -f "$1" down; }
 alias drmi='docker rmi -f $(docker images -a -q)'
 alias drmc='docker stop $(docker ps -a -q); docker rm $(docker ps -a -q)'
 
 # Files
 alias c='cat'
-pastefile() { echo $(pbpaste) > $1 }
-unzip() { mkdir ${1%.*}; tar -xvzf $1 -C ${1%.*} }
+pastefile() { cmd "$(pbpaste)" > "$1"; }
+unzip() { mkdir "${1%.*}"; tar -xvzf "$1" -C "${1%.*}"; }
 
 # Git
 alias ga='git add'
@@ -73,7 +62,7 @@ alias jr='java -jar'
 alias jv='jar tvf'
 
 # List
-lc() { echo "$(alias) $(declare -f | grep ' ()' | awk '{print $1}')" | grep --color=always ^$1 }
+lc() { echo "$(alias) $(declare -f | grep ' ()' | awk '{print $1}')" | grep --color=always "^$1"; }
 alias ll='ls -FHGal'
 alias lports='lsof -PiTCP G LISTEN'
 
@@ -94,9 +83,9 @@ alias -g C='| pbcopy'
 alias -g G='| grep --color=always'
 
 # Text
-replace() { echo ${1//$2/$3} }
-trim() { echo $@ | tr -d '\040\011\012\015' }
-json() { echo $1 | python -m json.tool }
+replace() { echo "${1//$2/$3}"; }
+trim() { echo "$@" | tr -d '\040\011\012\015'; }
+json() { echo "$1" | python -m json.tool; }
 
 # Vim
 alias vimupdate='vim +PlugUpgrade +PlugInstall! +PlugUpdate! +PlugClean! +qa'
