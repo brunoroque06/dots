@@ -13,9 +13,7 @@ alias bta='bazel test //...'
 
 # Configurations
 alias reload="exec zsh"
-alias configzsh="$EDITOR $HOME/.zshrc"
-alias configvim="$EDITOR $HOME/.vimrc"
-alias configgit="$EDITOR $HOME/.gitconfig"
+alias dotfilescheck='shellcheck .aliases .spoud .zshrc brew install'
 
 # Directories
 alias ..='cd ..'

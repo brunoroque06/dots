@@ -2,12 +2,13 @@
 
 brew update
 
-brew install zsh
-brew install vim
 brew install antibody
 brew install diff-so-fancy
 brew install git
 brew install node
+brew install shellcheck
+brew install vim
+brew install zsh
 
 brew cleanup
 
