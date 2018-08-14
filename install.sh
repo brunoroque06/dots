@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 FILES=".aliases bin .gitconfig .spoud .vimrc .zshrc"
 

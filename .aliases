@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env bash
 
 # Antibody
 alias abrmplugins='rm -rf $(antibody home)'
