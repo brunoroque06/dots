@@ -36,7 +36,8 @@ alias lunit='(cd $MONO; bazel test //sdm/logistics/service:unit_tests)'
 
 # Mono Commands
 alias mocd='cd $MONO'
-alias mot='(cd $MONO; bazel test -- $ALL)'
+alias mob="(cd $MONO; bazel build -- $ALL)"
+alias mot="(cd $MONO; bazel test -- $ALL)"
 
 # SDK
 alias sdkut='bazel test //sdm/logistics/client/connector-sdk/java/base:unit_tests'
