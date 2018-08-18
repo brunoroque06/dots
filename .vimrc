@@ -39,6 +39,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'morhetz/gruvbox'
   Plug 'itchyny/lightline.vim'
   Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+  Plug 'w0rp/ale'
 call plug#end()
 
 set background=dark
