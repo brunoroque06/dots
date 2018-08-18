@@ -11,5 +11,7 @@ done
 
 ./brew
 
+vimupdate
+
 exec zsh
 
