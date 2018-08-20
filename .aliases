@@ -88,5 +88,6 @@ trim() { echo "$@" | tr -d '\040\011\012\015'; }
 json() { echo "$1" | python -m json.tool; }
 
 # Vim
-alias vimupdate='vim +PlugUpgrade +PlugInstall! +PlugUpdate! +PlugClean! +qa'
+alias v='vim'
+alias vupdate='vim +PlugUpgrade +PlugInstall! +PlugUpdate! +PlugClean! +qa'
 

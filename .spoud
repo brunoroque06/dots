@@ -33,7 +33,7 @@ alias ldown='docker-compose -f $LOCAL_LOGISTICS down'
 lbench() { (cd "$MR" || exit; bazel run "$BENCHMARK" -- "$@") }
 alias lunit='(cd $MR; bazel test //sdm/logistics/service:unit_tests)'
 
-# Mono Commands
+# Mono Repository
 alias mrcd='cd $MR'
 alias mrb='(cd $MR; bazel build //...)'
 alias mrt="(cd $MR; bazel test -- $ALL)"
