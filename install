@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-FILES=".aliases bin .gitconfig .spoud .vimrc .zshrc"
+FILES=".aliases .gitconfig .spoud .vimrc .zshrc"
 
 for file in $FILES; do
   s=$(pwd)/$file

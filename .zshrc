@@ -30,7 +30,6 @@ source "$HOME"/.spoud
 source "$HOME"/.secrets
 
 # Exports
-export PATH="$PATH:$HOME/bin"
 export SSH_KEY_PATH="$HOME/.ssh/rsa_id"
 export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk-10.0.2.jdk/Contents/Home"
 readonly EDITOR='vim'
