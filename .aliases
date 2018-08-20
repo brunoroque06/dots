@@ -34,7 +34,7 @@ alias drmi='docker rmi -f $(docker images -a -q)'
 alias drmc='docker stop $(docker ps -a -q); docker rm $(docker ps -a -q)'
 
 # Files
-alias c='cat'
+alias c='bat --theme=TwoDark'
 pastefile() { cmd "$(pbpaste)" > "$1"; }
 unzip() { mkdir "${1%.*}"; tar -xvzf "$1" -C "${1%.*}"; }
 
