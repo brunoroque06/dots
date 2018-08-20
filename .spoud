@@ -1,9 +1,8 @@
 #!/usr/bin/env bash
 
 # Paths
-readonly MONO="$HOME/Documents/dm"
-readonly REPO='spoud/dm'
-readonly LOCAL_LOGISTICS="$MONO/development/local-logistics/logistics.yml"
+readonly MR="$HOME/Documents/dm"
+readonly LOCAL_LOGISTICS="$MR/development/local-logistics/logistics.yml"
 
 # Bazel Targets
 readonly ALL='//... -//sdm/auth:acceptance_tests -//sdm/logistics/test:api_regression_tests'
@@ -13,7 +12,7 @@ readonly COMPOSITE='//sdm/logistics/app/composite:docker_image'
 readonly COMPOSITE_IMAGE='bazel/sdm/logistics/app/composite:docker_image'
 
 # CLI
-cli_local() { (cd "$MONO" || exit; bazel run "$CLI" -- -server_url localhost:6063 "$@") }
+cli_local() { (cd "$MR" || exit; bazel run "$CLI" -- -server_url localhost:6063 "$@") }
 alias lgp='cli_local -get_profiles'
 alias lgg='cli_local -get_graphs'
 alias lgrg='cli_local -get_running_graphs'
@@ -29,15 +28,15 @@ alias gewip='git push gerrit HEAD:refs/for/master%wip -o topic=$(git rev-parse -
 
 # Logistics
 alias leup='dclean; dcfu $LOCAL_LOGISTICS zookeeper kafka redis'
-alias lup='(cd $MONO; bazel run $COMPOSITE; dcfu $LOCAL_LOGISTICS)'
+alias lup='(cd $MR; bazel run $COMPOSITE; dcfu $LOCAL_LOGISTICS)'
 alias ldown='docker-compose -f $LOCAL_LOGISTICS down'
-lbench() { (cd "$MONO" || exit; bazel run "$BENCHMARK" -- "$@") }
-alias lunit='(cd $MONO; bazel test //sdm/logistics/service:unit_tests)'
+lbench() { (cd "$MR" || exit; bazel run "$BENCHMARK" -- "$@") }
+alias lunit='(cd $MR; bazel test //sdm/logistics/service:unit_tests)'
 
 # Mono Commands
-alias mocd='cd $MONO'
-alias mob="(cd $MONO; bazel build -- $ALL)"
-alias mot="(cd $MONO; bazel test -- $ALL)"
+alias mrcd='cd $MR'
+alias mrb='(cd $MR; bazel build //...)'
+alias mrt="(cd $MR; bazel test -- $ALL)"
 
 # SDK
 alias sdkut='bazel test //sdm/logistics/client/connector-sdk/java/base:unit_tests'
