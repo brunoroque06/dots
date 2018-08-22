@@ -7,21 +7,13 @@ readonly LOCAL_LOGISTICS="$MR/development/local-logistics/logistics.yml"
 # Bazel Targets
 readonly ALL='//... -//sdm/auth:acceptance_tests -//sdm/logistics/test:api_regression_tests'
 readonly BENCHMARK='//sdm/logistics/client/benchmark:app'
-readonly CLI='//sdm/logistics/client/cli:sdm-cli'
 readonly COMPOSITE='//sdm/logistics/app/composite:docker_image'
-readonly COMPOSITE_IMAGE='bazel/sdm/logistics/app/composite:docker_image'
-
-# CLI
-cli_local() { (cd "$MR" || exit; bazel run "$CLI" -- -server_url localhost:6063 "$@") }
-alias lgp='cli_local -get_profiles'
-alias lgg='cli_local -get_graphs'
-alias lgrg='cli_local -get_running_graphs'
 
 # Gerrit
 readonly GERRIT_MASTER='gerrit/master'
 alias geco='git checkout $GERRIT_MASTER'
 gecob() { git checkout -b "$1" "$GERRIT_MASTER"; }
-ged() { git diff --color gerrit/master.."$1" | diff-so-fancy; }
+ged() { git diff --color gerrit/master.."$1" | diff-so-fancy | less --tabs=2 -RFX; }
 alias gepr='git push gerrit HEAD:refs/for/master -o topic=$(git rev-parse --abbrev-ref HEAD)'
 alias gerb='git stash; git rebase $GERRIT_MASTER; git stash pop'
 alias geud='git remote update gerrit --prune'
@@ -37,7 +29,4 @@ lbench() { (cd "$MR" || exit; bazel run "$BENCHMARK" -- "$@") }
 alias mrcd='cd $MR'
 alias mrb='(cd $MR; bazel build //...)'
 alias mrt="(cd $MR; bazel test -- $ALL)"
-
-# SDK
-alias sdkut='bazel test //sdm/logistics/client/connector-sdk/java/base:unit_tests'
 

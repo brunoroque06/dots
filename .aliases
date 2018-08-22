@@ -4,7 +4,7 @@
 alias abrmplugins='rm -rf $(antibody home)'
 
 # Bazel
-alias bb='bazel build'
+alias bb='bazel build --verbose_failures'
 alias bba='bazel build --verbose_failures //...'
 bdeps() { bazel query 'deps('"$1"')'; }
 alias br='bazel run'
@@ -88,8 +88,9 @@ trim() { echo "$@" | tr -d '\040\011\012\015'; }
 json() { echo "$1" | python -m json.tool; }
 
 # Tmux
-alias tn='tmux new'
 alias tks='tmux kill-server'
+alias tls='tmux ls'
+alias tn='tmux new'
 
 # Vim
 alias v='vim'
