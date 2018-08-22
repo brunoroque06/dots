@@ -19,6 +19,7 @@ alias lgrg='cli_local -get_running_graphs'
 
 # Gerrit
 readonly GERRIT_MASTER='gerrit/master'
+alias geco='git checkout $GERRIT_MASTER'
 gecob() { git checkout -b "$1" "$GERRIT_MASTER"; }
 ged() { git diff --color gerrit/master.."$1" | diff-so-fancy; }
 alias gepr='git push gerrit HEAD:refs/for/master -o topic=$(git rev-parse --abbrev-ref HEAD)'
@@ -28,10 +29,9 @@ alias gewip='git push gerrit HEAD:refs/for/master%wip -o topic=$(git rev-parse -
 
 # Logistics
 alias leup='dclean; dcfu $LOCAL_LOGISTICS zookeeper kafka redis'
-alias lup='(cd $MR; bazel run $COMPOSITE; dcfu $LOCAL_LOGISTICS)'
+alias lup='(cd $MR; bazel run $COMPOSITE; dclean; dcfu $LOCAL_LOGISTICS)'
 alias ldown='docker-compose -f $LOCAL_LOGISTICS down'
 lbench() { (cd "$MR" || exit; bazel run "$BENCHMARK" -- "$@") }
-alias lunit='(cd $MR; bazel test //sdm/logistics/service:unit_tests)'
 
 # Mono Repository
 alias mrcd='cd $MR'

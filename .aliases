@@ -48,7 +48,7 @@ alias gcam='git commit -am'
 alias gcamend='git commit --amend --no-edit'
 alias gco='git checkout'
 alias gcob='git checkout -b'
-alias gd='git diff --color | diff-so-fancy'
+alias gd='git diff --color | diff-so-fancy | less --tabs=2 -RFX'
 alias gl='git log --graph --abbrev-commit --decorate --format=format:"%C(blue)%h%C(reset) - %C(green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)" --all -20'
 alias glp='git log -p'
 alias gpush='git push -u origin $(git rev-parse --abbrev-ref HEAD)'
@@ -86,6 +86,10 @@ alias -g G='| grep --color=always'
 replace() { echo "${1//$2/$3}"; }
 trim() { echo "$@" | tr -d '\040\011\012\015'; }
 json() { echo "$1" | python -m json.tool; }
+
+# Tmux
+alias tn='tmux new'
+alias tks='tmux kill-server'
 
 # Vim
 alias v='vim'
