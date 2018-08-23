@@ -15,7 +15,7 @@ alias geud='git remote update gerrit --prune'
 alias gewip='git push gerrit HEAD:refs/for/master%wip -o topic=$(git rev-parse --abbrev-ref HEAD)'
 
 # Logistics
-alias lbc='(cd $MR; bazel run //sdm/logistics/test:persistence_regression_docker_push; bazel run //sdm/logistics/test:acceptance_tests_docker_push; make push)'
+alias lbc='(cd $MR; bazel run //sdm/logistics/test:persistence_regression_docker_push; bazel run //sdm/logistics/test:acceptance_tests_docker_push; bazel build //sdm/logistics/test:upload_redis_dump)'
 alias leup='dclean; dcfu $LOCAL_LOGISTICS zookeeper kafka redis'
 alias lup='(cd $MR; bazel run //sdm/logistics/app/composite:docker_image; dclean; dcfu $LOCAL_LOGISTICS)'
 alias ldown='docker-compose -f $LOCAL_LOGISTICS down'

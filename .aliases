@@ -88,12 +88,12 @@ trim() { echo "$@" | tr -d '\040\011\012\015'; }
 json() { echo "$1" | python -m json.tool; }
 
 # Tmux
-alias tat='tmux a -t'
+alias ta='tmux a -t'
 alias tks='tmux kill-server'
-alias tls='tmux ls'
+alias tl='tmux ls'
 alias tn='tmux new'
 
 # Vim
 alias v='vim'
-alias vupdate='vim +PlugUpgrade +PlugInstall! +PlugUpdate! +PlugClean! +qa'
+alias vud='vim +PlugUpgrade +PlugInstall! +PlugUpdate! +PlugClean! +qa'
 
