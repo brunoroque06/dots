@@ -4,11 +4,6 @@
 readonly MR="$HOME/Documents/dm"
 readonly LOCAL_LOGISTICS="$MR/development/local-logistics/logistics.yml"
 
-# Bazel Targets
-readonly ALL='//... -//sdm/auth:acceptance_tests -//sdm/logistics/test:api_regression_tests'
-readonly BENCHMARK='//sdm/logistics/client/benchmark:app'
-readonly COMPOSITE='//sdm/logistics/app/composite:docker_image'
-
 # Gerrit
 readonly GERRIT_MASTER='gerrit/master'
 alias geco='git checkout $GERRIT_MASTER'
@@ -20,13 +15,14 @@ alias geud='git remote update gerrit --prune'
 alias gewip='git push gerrit HEAD:refs/for/master%wip -o topic=$(git rev-parse --abbrev-ref HEAD)'
 
 # Logistics
+alias lbc='(cd $MR; bazel run //sdm/logistics/test:persistence_regression_docker_push; bazel run //sdm/logistics/test:acceptance_tests_docker_push; make push)'
 alias leup='dclean; dcfu $LOCAL_LOGISTICS zookeeper kafka redis'
-alias lup='(cd $MR; bazel run $COMPOSITE; dclean; dcfu $LOCAL_LOGISTICS)'
+alias lup='(cd $MR; bazel run //sdm/logistics/app/composite:docker_image; dclean; dcfu $LOCAL_LOGISTICS)'
 alias ldown='docker-compose -f $LOCAL_LOGISTICS down'
-lbench() { (cd "$MR" || exit; bazel run "$BENCHMARK" -- "$@") }
+lbench() { (cd "$MR" || exit; bazel run //sdm/logistics/client/benchmark:app -- "$@") }
 
 # Mono Repository
 alias mrcd='cd $MR'
 alias mrb='(cd $MR; bazel build //...)'
-alias mrt="(cd $MR; bazel test -- $ALL)"
+alias mrt='(cd $MR; bazel test -- //... -//sdm/auth:acceptance_tests -//sdm/logistics/test:api_regression_tests -//sdm/logistics/test:persistence_regression_tests -//sdm/logistics/test:smoke_tests)'
 

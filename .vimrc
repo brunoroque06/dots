@@ -2,6 +2,9 @@ set nocompatible
 
 syntax enable
 
+" Clipboard
+set clipboard+=unnamed
+
 " Font
 set encoding=utf-8
 set guifont=SF\ Mono:h14
@@ -50,4 +53,5 @@ let g:lightline = { 'colorscheme': 'wombat' }
 autocmd vimenter * NERDTree
 let NERDTreeShowHidden=1
 let NERDTreeMinimalUI=1
+
 
