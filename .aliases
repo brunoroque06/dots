@@ -17,7 +17,7 @@ alias dotfilescheck='shellcheck .aliases .spoud .zshrc brew install'
 
 # Directories
 alias ..='cd ..'
-findtext() { grep --color=always -r -i --include="${2:-.*}" --exclude-dir=.git "$1" .; }
+findtext() { grep --color=always -i -I -n -r --exclude-dir={.git,bazel-\*} --include="${2:-*}" "$1" .; }
 mvfiles() { mv "$1*(DN)" "$2"; }
 alias rmrf='rm -rf'
 alias tree='find . | sed -e "s/[^-][^\/]*\//  |/g" -e "s/|\([^ ]\)/|-\1/"'
@@ -49,7 +49,7 @@ alias gcamend='git commit --amend --no-edit'
 alias gco='git checkout'
 alias gcob='git checkout -b'
 alias gd='git diff --color | diff-so-fancy | less --tabs=2 -RFX'
-alias gl='git log --graph --abbrev-commit --decorate --format=format:"%C(blue)%h%C(reset) - %C(green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)" --all -20'
+gl() { git log --graph --abbrev-commit --decorate --format=format:"%C(blue)%h%C(reset) - %C(green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)" --all -"${1:-20}"; }
 alias glp='git log -p'
 alias gpush='git push -u origin $(git rev-parse --abbrev-ref HEAD)'
 alias gpull='git pull'
