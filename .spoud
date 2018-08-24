@@ -24,5 +24,5 @@ lbench() { (cd "$MR" || exit; bazel run //sdm/logistics/client/benchmark:app -- 
 # Mono Repository
 alias mrcd='cd $MR'
 alias mrb='(cd $MR; bazel build //...)'
-alias mrt='(cd $MR; bazel test -- //... -//sdm/auth:acceptance_tests -//sdm/logistics/test:api_regression_tests -//sdm/logistics/test:persistence_regression_tests -//sdm/logistics/test:smoke_tests)'
+alias mrt='(cd $MR; bazel test -- //... -//sdm/auth/... -//sdm/logistics/test:api_regression_tests -//sdm/logistics/test:persistence_regression_tests -//sdm/logistics/test:smoke_tests)'
 

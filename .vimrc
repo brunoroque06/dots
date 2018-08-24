@@ -16,6 +16,7 @@ set softtabstop=2
 
 " Mapping
 set backspace=indent,eol,start
+set timeoutlen=1000 ttimeoutlen=0
 
 " Search
 set ignorecase
