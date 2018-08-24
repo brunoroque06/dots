@@ -8,7 +8,7 @@ readonly LOCAL_LOGISTICS="$MR/development/local-logistics/logistics.yml"
 readonly GERRIT_MASTER='gerrit/master'
 alias geco='git checkout $GERRIT_MASTER'
 gecob() { git checkout -b "$1" "$GERRIT_MASTER"; }
-ged() { git diff --color gerrit/master.."$1" | diff-so-fancy | less --tabs=2 -RFX; }
+ged() { git diff --color gerrit/master.."$1" | diff-so-fancy | less -RFX; }
 alias gepr='git push gerrit HEAD:refs/for/master -o topic=$(git rev-parse --abbrev-ref HEAD)'
 alias gerb='git stash; git rebase $GERRIT_MASTER; git stash pop'
 alias geud='git remote update gerrit --prune'
