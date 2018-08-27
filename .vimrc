@@ -32,6 +32,12 @@ set showcmd
 set showmatch
 set wildmenu
 
+" netrw
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
+let g:netrw_browse_split = 4
+let g:netrw_winsize = 10
+
 " Plugins
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
@@ -42,7 +48,6 @@ endif
 call plug#begin('~/.vim/plugged')
   Plug 'morhetz/gruvbox'
   Plug 'itchyny/lightline.vim'
-  Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
   Plug 'w0rp/ale'
 call plug#end()
 
@@ -51,8 +56,6 @@ colorscheme gruvbox
 
 let g:lightline = { 'colorscheme': 'wombat' }
 
-autocmd vimenter * NERDTree
-let NERDTreeShowHidden=1
-let NERDTreeMinimalUI=1
-
+" Autocmd
+autocmd VimEnter * Vexplore
 
