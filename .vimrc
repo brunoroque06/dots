@@ -46,15 +46,17 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged')
-  Plug 'morhetz/gruvbox'
   Plug 'itchyny/lightline.vim'
+  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+  Plug 'junegunn/fzf.vim'
+  Plug 'morhetz/gruvbox'
   Plug 'w0rp/ale'
 call plug#end()
 
+let g:lightline = { 'colorscheme': 'wombat' }
+
 set background=dark
 colorscheme gruvbox
-
-let g:lightline = { 'colorscheme': 'wombat' }
 
 " Autocmd
 autocmd VimEnter * Vexplore

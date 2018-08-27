@@ -33,3 +33,9 @@ source "$HOME"/.secrets
 export SSH_KEY_PATH="$HOME/.ssh/rsa_id"
 export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk-10.0.2.jdk/Contents/Home"
 readonly EDITOR='vim'
+
+# FZF
+export FZF_DEFAULT_COMMAND="find . -type f -not -path '*/\.git/*' | cut -c3-"
+export FZF_CTRL_T_COMMAND="find . -type f -not -path '*/\.git/*' | cut -c3-"
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
