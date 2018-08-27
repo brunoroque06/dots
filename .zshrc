@@ -35,7 +35,6 @@ export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk-10.0.2.jdk/Contents/Home
 readonly EDITOR='vim'
 
 # FZF
-# readonly FZF_COMMAND="find . -type f -not -path '*/\.git/*' -path '*/node_modules/*' | cut -c3-"
 readonly FZF_COMMAND="find . -not \( -path ./.git -prune \) -not \( -path ./node_modules -prune \) -type f | cut -c3-"
 export FZF_DEFAULT_COMMAND=$FZF_COMMAND
 export FZF_CTRL_T_COMMAND=$FZF_COMMAND
