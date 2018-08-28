@@ -17,10 +17,8 @@ alias dotfilescheck='shellcheck .aliases .spoud .zshrc brew install'
 
 # Directories
 alias ..='cd ..'
-findtext() { grep --color=always -i -I -n -r --exclude-dir={.git,bazel-\*} --include="${2:-*}" "$1" .; }
 mvfiles() { mv "$1*(DN)" "$2"; }
 alias rmrf='rm -rf'
-alias tree='find . | sed -e "s/[^-][^\/]*\//  |/g" -e "s/|\([^ ]\)/|-\1/"'
 
 # Docker
 alias dr='docker build -t ${PWD##*/} . ; docker run --net="host" ${PWD##*/}'
@@ -86,6 +84,7 @@ alias -g G='| grep --color=always'
 replace() { echo "${1//$2/$3}"; }
 trim() { echo "$@" | tr -d '\040\011\012\015'; }
 json() { echo "$1" | python -m json.tool; }
+alias findtext='grep --line-number -r --exclude-dir={bazel-\*,.git,node_modules} "" * .* | fzf'
 
 # Tmux
 alias ta='tmux attach-session -t'
