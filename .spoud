@@ -21,6 +21,9 @@ alias lup='(cd $MR; bazel run //sdm/logistics/app/composite:docker_image; dclean
 alias ldown='docker-compose -f $LOCAL_LOGISTICS down'
 lbench() { (cd "$MR" || exit; bazel run //sdm/logistics/client/benchmark:app -- "$@") }
 
+# Logistics CLI
+lcli() { (cd "$MR" || exit; bazel run //sdm/logistics/client/cli:sdm-cli -- -server_url "$LOGISTICS_URL" -ssl_key "$LOGISTICS_SSL" "$@") }
+
 # Mono Repository
 alias mrcd='cd $MR'
 alias mrb='(cd $MR; bazel build //example/... //sdm/...)'

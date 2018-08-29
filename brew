@@ -16,3 +16,4 @@ brew install zsh
 brew cleanup
 
 brew doctor
+
