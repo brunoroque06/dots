@@ -5,6 +5,9 @@ syntax enable
 " Clipboard
 set clipboard+=unnamed
 
+" Files
+set autoread
+
 " Font
 set encoding=utf-8
 set guifont=SF\ Mono:h14
@@ -28,6 +31,7 @@ set smartcase
 set cursorline
 set lazyredraw
 set number
+set scrolloff=10
 set showcmd
 set showmatch
 set wildmenu
