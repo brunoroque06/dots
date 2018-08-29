@@ -4,6 +4,7 @@ brew update
 
 brew install antibody
 brew install bat
+brew install cmake
 brew install diff-so-fancy
 brew install git
 brew install node

@@ -54,8 +54,12 @@ call plug#begin('~/.vim/plugged')
   Plug 'itchyny/lightline.vim'
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
   Plug 'junegunn/fzf.vim'
+  Plug 'leafgarland/typescript-vim'
   Plug 'morhetz/gruvbox'
+  Plug 'pangloss/vim-javascript'
+  Plug 'tpope/vim-surround'
   Plug 'w0rp/ale'
+  Plug 'Valloric/YouCompleteMe', { 'do': './install.py --tern-completer' }
 call plug#end()
 
 let g:lightline = { 'colorscheme': 'wombat' }
@@ -63,3 +67,7 @@ let g:lightline = { 'colorscheme': 'wombat' }
 set background=dark
 colorscheme gruvbox
 
+let g:ale_sign_error = '✖'
+
+set completeopt-=preview
+let g:ycm_add_preview_to_completeopt = 0
