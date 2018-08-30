@@ -29,3 +29,6 @@ alias mrcd='cd $MR'
 alias mrb='(cd $MR; bazel build //example/... //sdm/...)'
 alias mrt='(cd $MR; bazel test -- //sdm/... -//sdm/auth/... -//sdm/logistics/test:api_regression_tests -//sdm/logistics/test:persistence_regression_tests -//sdm/logistics/test:smoke_tests)'
 
+# Spoud Data Market
+alias sdmui='(cd $MR/sdm/logistics/api; npm ci; npm run compile; cd $MR/sdm/market/client/wolverine-ui; npm ci; npm run serve)' 
+
