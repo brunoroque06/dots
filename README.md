@@ -1,11 +1,5 @@
 # Dotfiles (Bruno Roque)
 
-## Requirements
-
-The following installed:
-
-- [Homebrew](https://brew.sh/).
-
 ## Installation
 
 Run the following:
@@ -13,3 +7,5 @@ Run the following:
 ```bash
 ./install
 ```
+
+![Shell](./images/shell.png)
