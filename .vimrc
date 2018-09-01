@@ -44,7 +44,11 @@ set smartcase
 syntax enable
 set encoding=utf-8
 set guifont=SF\ Mono:h14
-set spell spelllang=en_us
+augroup markdownSpell
+  autocmd!
+  autocmd FileType markdown setlocal spell
+  autocmd BufRead,BufNewFile *.md setlocal spell
+augroup END
 
 " UI
 set cursorline
