@@ -2,7 +2,7 @@
 
 # Paths
 readonly MR="$HOME/Documents/dm"
-readonly LOCAL_LOGISTICS="$MR/development/local-logistics/logistics.yml"
+readonly LOCAL_LOGISTICS="$MR/sdm/local_environment/docker-compose.yml"
 
 # Gerrit
 readonly GERRIT_MASTER='gerrit/master'
