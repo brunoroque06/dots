@@ -2,7 +2,7 @@
 
 # Paths
 readonly MR="$HOME/Documents/dm"
-readonly LOCAL_LOGISTICS="$MR/sdm/local_environment/docker-compose.yml"
+readonly LOCAL_LOGISTICS="$MR/sdm/local_environment/"
 
 # Gerrit
 readonly GERRIT_MASTER='gerrit/master'
@@ -16,9 +16,9 @@ alias gewip='git push gerrit HEAD:refs/for/master%wip -o topic=$(git rev-parse -
 
 # Logistics
 alias lbc='(cd $MR; bazel run //sdm/logistics/test:persistence_regression_docker_push; bazel run //sdm/logistics/test:acceptance_tests_docker_push; bazel build //sdm/logistics/test:upload_redis_dump)'
-alias leup='dclean; dcfu $LOCAL_LOGISTICS zookeeper kafka redis'
-alias lup='(cd $MR; bazel run //sdm/logistics/app/composite:docker_image; dclean; dcfu $LOCAL_LOGISTICS)'
-alias ldown='docker-compose -f $LOCAL_LOGISTICS down'
+alias leup='(cd $LOCAL_LOGISTICS; dclean; docker-compose up zookeeper kafka redis)'
+alias lup='(cd $LOCAL_LOGISTICS; bazel run //sdm/logistics/app/composite:docker_image; dclean; docker-compose up)'
+alias ldown='(cd $LOCAL_LOGISTICS; docker-compose down)'
 lbench() { (cd "$MR" || exit; bazel run //sdm/logistics/client/benchmark:app -- "$@") }
 
 # Logistics CLI
