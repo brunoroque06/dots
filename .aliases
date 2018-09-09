@@ -11,12 +11,12 @@ alias br='bazel run'
 alias bt='bazel test'
 alias bta='bazel test //...'
 
-# Configurations
-alias reload="exec zsh"
-alias dotfilescheck='shellcheck .aliases .spoud .zshrc brew install'
+# Commands
+pc() { ([[ ! -z $(declare -f "${1}") ]] && declare -f "${1}") || alias "${1}"; }
 
 # Directories
 alias ..='cd ..'
+alias ll='ls -FHGal'
 mvfiles() { mv "$1*(DN)" "$2"; }
 alias rmrf='rm -rf'
 
@@ -29,6 +29,10 @@ dcfu() { docker-compose -f "$1" up "${@:2}"; }
 dcfd() { docker-compose -f "$1" down; }
 alias drmi='docker rmi -f $(docker images -a -q)'
 alias drmc='docker stop $(docker ps -a -q); docker rm $(docker ps -a -q)'
+
+# Dotfiles
+alias reload="exec zsh"
+alias dotfilescheck='shellcheck .aliases .spoud .zshrc brew install'
 
 # Files
 alias c='bat --theme=TwoDark'
@@ -60,11 +64,6 @@ alias gs='git status -u'
 alias jr='java -jar'
 alias jv='jar tvf'
 
-# List
-lc() { echo "$(alias) $(declare -f | grep ' ()' | awk '{print $1}')" | grep --color=always "^$1"; }
-alias ll='ls -FHGal'
-alias lports='lsof -PiTCP G LISTEN'
-
 # Maven
 alias manalyse='mvn dependency:analyze'
 alias minstall='mvn install'
@@ -84,6 +83,9 @@ alias ns="awk '/\"scripts\":/,/}/' package.json"
 # Pipelines
 alias -g C='| pbcopy'
 alias -g G='| grep --color=always'
+
+# Ports
+alias lports='lsof -PiTCP G LISTEN'
 
 # Text
 replace() { echo "${1//$2/$3}"; }

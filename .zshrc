@@ -28,7 +28,7 @@ readonly FZF_COMMAND="find . -not \\( -path ./.git -prune \\) -not \\( -path ./n
 export FZF_DEFAULT_COMMAND=$FZF_COMMAND
 export FZF_CTRL_T_COMMAND=$FZF_COMMAND
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse'
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f "$HOME"/.fzf.zsh ] && source "$HOME"/.fzf.zsh
 
 # History
 setopt HIST_IGNORE_ALL_DUPS
