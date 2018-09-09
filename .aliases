@@ -71,6 +71,7 @@ alias minstall='mvn install'
 alias mtree='mvn dependency:tree'
 
 # Mundane Life
+alias caly='cal -y'
 weather() { curl http://wttr.in/~"${1:-Bern}"; }
 
 # Npm
