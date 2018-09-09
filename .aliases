@@ -70,6 +70,9 @@ alias manalyse='mvn dependency:analyze'
 alias minstall='mvn install'
 alias mtree='mvn dependency:tree'
 
+# Mundane Life
+weather() { curl http://wttr.in/~"${1:-Bern}"; }
+
 # Npm
 alias nci="npm ci"
 alias ni='npm install'
