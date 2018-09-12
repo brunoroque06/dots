@@ -21,14 +21,13 @@ mvfiles() { mv "$1*(DN)" "$2"; }
 alias rmrf='rm -rf'
 
 # Docker
-alias dr='docker build -t ${PWD##*/} . ; docker run --net="host" ${PWD##*/}'
-alias dclean='docker system prune --volumes -f'
 alias dcb='docker-compose build --force-rm --pull --no-cache'
-alias dcu='dclean; dcb; docker-compose up'
-dcfu() { docker-compose -f "$1" up "${@:2}"; }
-dcfd() { docker-compose -f "$1" down; }
-alias drmi='docker rmi -f $(docker images -a -q)'
+alias dcd='docker-compose down'
+alias dclean='docker system prune --volumes -f'
+alias dcu='docker-compose up'
+alias dr='docker build -t ${PWD##*/} . ; docker run --net="host" ${PWD##*/}'
 alias drmc='docker stop $(docker ps -a -q); docker rm $(docker ps -a -q)'
+alias drmi='docker rmi -f $(docker images -a -q)'
 
 # Dotfiles
 alias reload="exec zsh"
