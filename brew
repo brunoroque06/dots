@@ -7,6 +7,8 @@ brew install bat
 brew install cmake
 brew install diff-so-fancy
 brew install git
+brew tap jesseduffield/lazygit
+brew install lazygit
 brew install node
 brew install reattach-to-user-namespace
 brew install shellcheck
