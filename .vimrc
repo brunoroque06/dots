@@ -7,14 +7,13 @@ set clipboard+=unnamed
 set autoread
 
 " Indentation
-" set expandtab
-" set shiftwidth=2
-" set softtabstop=2
+set expandtab
 set shiftwidth=2
+set softtabstop=2
 set tabstop=2
 augroup autoindent
-	au!
-	autocmd BufWritePre * :normal migg=G`i
+  au!
+  autocmd BufWritePre * :normal migg=G`i
 augroup End
 
 " Mapping
@@ -32,8 +31,8 @@ let g:netrw_browse_split = 4
 let g:netrw_altv = 1
 let g:netrw_winsize = 15
 augroup netrw
-	autocmd!
-	autocmd VimEnter * :Vexplore
+  autocmd!
+  autocmd VimEnter * :Vexplore
 augroup END
 
 " Search
@@ -47,9 +46,9 @@ syntax enable
 set encoding=utf-8
 set guifont=SF\ Mono:h14
 augroup markdownSpell
-	autocmd!
-	autocmd FileType markdown setlocal spell
-	autocmd BufRead,BufNewFile *.md setlocal spell
+  autocmd!
+  autocmd FileType markdown setlocal spell
+  autocmd BufRead,BufNewFile *.md setlocal spell
 augroup END
 
 " UI
@@ -62,9 +61,9 @@ set wildmenu
 
 " Plugins
 if empty(glob('~/.vim/autoload/plug.vim'))
-	silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-				\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
 call plug#begin('~/.vim/plugged')
