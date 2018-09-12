@@ -58,6 +58,7 @@ alias gpull='git pull'
 alias grb='git rebase'
 alias greset='git reset --hard'
 alias gs='git status -u'
+alias lg='lazygit'
 
 # Java
 alias jr='java -jar'
