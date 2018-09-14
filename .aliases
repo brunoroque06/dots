@@ -25,6 +25,7 @@ alias dcb='docker-compose build --force-rm --pull --no-cache'
 alias dcd='docker-compose down'
 alias dclean='docker system prune --volumes -f'
 alias dcu='docker-compose up'
+alias dps='docker ps'
 alias dr='docker build -t ${PWD##*/} . ; docker run --net="host" ${PWD##*/}'
 alias drmc='docker stop $(docker ps -a -q); docker rm $(docker ps -a -q)'
 alias drmi='docker rmi -f $(docker images -a -q)'
@@ -42,6 +43,7 @@ unzip() { mkdir "${1%.*}"; tar -xvzf "$1" -C "${1%.*}"; }
 # Git
 alias ga='git add'
 alias gaa='git add --a'
+alias gb='git branch'
 alias gba='git branch -a'
 alias gbd='git branch -D'
 alias gc='git commit'
@@ -85,8 +87,9 @@ alias ns="awk '/\"scripts\":/,/}/' package.json"
 alias -g C='| pbcopy'
 alias -g G='| grep --color=always'
 
-# Ports
+# Processes
 alias lports='lsof -PiTCP G LISTEN'
+alias k9='kill -9'
 
 # Text
 replace() { echo "${1//$2/$3}"; }

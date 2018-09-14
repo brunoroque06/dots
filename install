@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+cp /Applications/Utilities/Terminal.app/Contents/Resources/Fonts/*.otf "$HOME"/Library/Fonts/
+
 FILES=".aliases .gitconfig .spoud .tmux.conf .vimrc .zshrc"
 
 for file in $FILES; do

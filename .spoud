@@ -24,6 +24,7 @@ lbench() { (cd "$MR" || exit; bazel run //sdm/logistics/client/benchmark:app -- 
 # Logistics CLI
 lcli() { (cd "$MR" || exit; bazel run //sdm/logistics/client/cli:sdm-cli -- "$@") }
 llcli() { (cd "$MR" || exit; bazel run //sdm/logistics/client/cli:sdm-cli -- -server_url "$LOGISTICS_URL" -ssl_key "$LOGISTICS_SSL" "$@") }
+alias lclib='(cd "$MR" || exit; bazel build //sdm/logistics/client/cli:sdm-cli_deploy.jar; mkdir cli/; sudo cp bazel-bin/sdm/logistics/client/cli/sdm-cli_deploy.jar cli/)'
 
 # Mono Repository
 alias mrcd='cd $MR'

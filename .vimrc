@@ -10,7 +10,6 @@ set autoread
 set expandtab
 set shiftwidth=2
 set softtabstop=2
-set tabstop=2
 augroup autoindent
   au!
   autocmd BufWritePre * :normal migg=G`i
