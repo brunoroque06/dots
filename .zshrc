@@ -20,6 +20,7 @@ bindkey '^[[A' history-beginning-search-backward
 bindkey '^[[B' history-beginning-search-forward
 
 # Exports
+export PATH=$PATH:$(go env GOPATH)/bin
 export SSH_KEY_PATH="$HOME/.ssh/rsa_id"
 export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk-10.0.2.jdk/Contents/Home"
 

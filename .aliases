@@ -35,7 +35,7 @@ alias reload="exec zsh"
 alias dotfilescheck='shellcheck .aliases .spoud .zshrc brew install'
 
 # Files
-alias c='bat --theme=TwoDark'
+alias c='bat --theme=TwoDark --style=header,grid'
 alias chmodx='chmod +x'
 pastefile() { cmd "$(pbpaste)" > "$1"; }
 unzip() { mkdir "${1%.*}"; tar -xvzf "$1" -C "${1%.*}"; }
