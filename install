@@ -2,7 +2,7 @@
 
 cp /Applications/Utilities/Terminal.app/Contents/Resources/Fonts/*.otf "$HOME"/Library/Fonts/
 
-FILES=".aliases .gitconfig .spoud .tmux.conf .vimrc .zshrc"
+FILES=".aliases .gitconfig .ideavimrc .spoud .tmux.conf .vimrc .zshrc"
 
 for file in $FILES; do
   s=$(pwd)/$file
