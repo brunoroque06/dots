@@ -5,6 +5,7 @@ set clipboard+=unnamed
 
 " Files
 set autoread
+set path+=**
 
 " Indentation
 set expandtab
@@ -67,13 +68,11 @@ endif
 
 call plug#begin('~/.vim/plugged')
 Plug 'itchyny/lightline.vim'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
 Plug 'morhetz/gruvbox'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-surround'
 Plug 'w0rp/ale'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --tern-completer' }
+" Plug 'Valloric/YouCompleteMe', { 'do': './install.py --tern-completer' }
 call plug#end()
 
 let g:lightline = { 'colorscheme': 'wombat' }
@@ -88,5 +87,5 @@ let g:ale_fixers['javascript'] = ['prettier']
 let g:ale_fixers['typescript'] = ['prettier']
 let g:ale_sign_error = '✖'
 
-set completeopt-=preview
-let g:ycm_add_preview_to_completeopt = 0
+" set completeopt-=preview
+" let g:ycm_add_preview_to_completeopt = 0
