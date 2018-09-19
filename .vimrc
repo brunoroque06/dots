@@ -72,7 +72,7 @@ Plug 'morhetz/gruvbox'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-surround'
 Plug 'w0rp/ale'
-" Plug 'Valloric/YouCompleteMe', { 'do': './install.py --tern-completer' }
+Plug 'ervandew/supertab'
 call plug#end()
 
 let g:lightline = { 'colorscheme': 'wombat' }
@@ -87,5 +87,3 @@ let g:ale_fixers['javascript'] = ['prettier']
 let g:ale_fixers['typescript'] = ['prettier']
 let g:ale_sign_error = '✖'
 
-" set completeopt-=preview
-" let g:ycm_add_preview_to_completeopt = 0
