@@ -7,6 +7,7 @@ brew install bat
 brew install cmake
 brew install diff-so-fancy
 brew install fzf
+"$(brew --prefix)"/opt/fzf/install
 brew install git
 brew install go
 brew tap jesseduffield/lazygit
