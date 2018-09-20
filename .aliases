@@ -59,6 +59,7 @@ alias gpush='git push -u origin $(git rev-parse --abbrev-ref HEAD)'
 alias gpull='git pull'
 alias grb='git rebase'
 alias greset='git reset --hard'
+alias grl='git reflog --date=iso'
 alias gs='git status -u'
 alias lg='lazygit'
 
