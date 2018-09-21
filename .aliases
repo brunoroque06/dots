@@ -94,9 +94,9 @@ alias lports='lsof -PiTCP G LISTEN'
 alias k9='kill -9'
 
 # Text
-replace() { echo "${1//$2/$3}"; }
-trim() { echo "$@" | tr -d '\040\011\012\015'; }
-json() { echo "$1" | python -m json.tool; }
+replace() { printf "%s" "${1//$2/$3}"; }
+trim() { printf "%s" "$@" | tr -d '\040\011\012\015'; }
+json() { printf "%s" "$1" | python -m json.tool; }
 alias ftext='grep -nRHI --exclude-dir={bazel-\*,.git,node_modules} --exclude=.gitignore "" * .* | fzf'
 
 # Tmux

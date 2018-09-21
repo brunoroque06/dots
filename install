@@ -7,7 +7,7 @@ FILES=".aliases .gitconfig .ideavimrc .spoud .tmux.conf .vimrc .zshrc"
 for file in $FILES; do
   s=$(pwd)/$file
   t=$HOME/$file
-  echo "Symlinking: $s -> $t."
+  printf "Symlinking: %s -> %s\\n" "$s" "$t"
   ln -fns "$s" "$t"
 done
 
