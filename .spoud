@@ -19,7 +19,7 @@ alias gewip='git push gerrit HEAD:refs/for/master%wip -o topic=$(git rev-parse -
 
 # Logistics
 alias lbc='(cd $MR; bazel run //sdm/logistics/test:persistence_regression_docker_push; bazel run //sdm/logistics/test:acceptance_tests_docker_push; bazel build //sdm/logistics/test:upload_redis_dump)'
-alias leup='(cd $LOCAL_LOGISTICS; dclean; docker-compose up zookeeper kafka redis)'
+alias leup='(cd $LOCAL_LOGISTICS; dclean; docker-compose -f ./docker-compose.yml -f docker-compose.monitoring.yml up influx kafka redis)'
 alias lup='(cd $LOCAL_LOGISTICS; bazel run //sdm/logistics/app/composite:docker_image; dclean; docker-compose up)'
 alias ldown='(cd $LOCAL_LOGISTICS; docker-compose down)'
 lbench() { (cd "$MR" || exit; bazel run //sdm/logistics/client/benchmark:app -- "$@") }
