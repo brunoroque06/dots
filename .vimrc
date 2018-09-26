@@ -67,12 +67,16 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged')
+Plug 'ervandew/supertab'
 Plug 'itchyny/lightline.vim'
 Plug 'morhetz/gruvbox'
-Plug 'sheerun/vim-polyglot'
+
 Plug 'tpope/vim-surround'
+
+Plug 'fatih/vim-go'
+Plug 'tmux-plugins/vim-tmux'
+
 Plug 'w0rp/ale'
-Plug 'ervandew/supertab'
 call plug#end()
 
 let g:lightline = { 'colorscheme': 'wombat' }
