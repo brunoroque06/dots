@@ -6,6 +6,7 @@ set clipboard+=unnamed
 " Files
 set autoread
 set path+=**
+set noswapfile
 
 " Indentation
 set expandtab
@@ -75,6 +76,7 @@ Plug 'tpope/vim-surround'
 
 Plug 'fatih/vim-go'
 Plug 'tmux-plugins/vim-tmux'
+Plug 'plasticboy/vim-markdown'
 
 Plug 'w0rp/ale'
 call plug#end()
@@ -84,6 +86,8 @@ let g:lightline = { 'colorscheme': 'wombat' }
 set background=dark
 colorscheme gruvbox
 highlight SpellBad cterm=underline ctermfg=DarkRed gui=underline guifg=DarkRed
+
+let g:vim_markdown_folding_disabled = 1
 
 let g:ale_fix_on_save = 1
 let g:ale_fixers = {}
