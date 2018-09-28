@@ -4,8 +4,6 @@
 
 ## Installation
 
-Run the following:
-
 ```bash
 ./install
 ```
