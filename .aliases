@@ -20,6 +20,9 @@ alias ll='ls -FHGal'
 mvfiles() { mv "$1*(DN)" "$2"; }
 alias rmrf='rm -rf'
 
+# Display
+alias displays='system_profiler SPDisplaysDataType'
+
 # Docker
 alias dcb='docker-compose build --force-rm --pull --no-cache'
 alias dcd='docker-compose down'
