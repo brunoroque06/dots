@@ -21,7 +21,6 @@ alias gewip='git push gerrit HEAD:refs/for/master%wip -o topic=$(git rev-parse -
 alias lbc='(cd $MR; bazel run //sdm/logistics/test:persistence_regression_docker_push; bazel run //sdm/logistics/test:acceptance_tests_docker_push; bazel build //sdm/logistics/test:upload_redis_dump)'
 alias leup='(cd $LOCAL_LOGISTICS; dclean; docker-compose -f ./docker-compose.yml -f docker-compose.monitoring.yml up influx kafka redis)'
 alias lup='(cd $LOCAL_LOGISTICS; bazel run //sdm/logistics/app/composite:docker_image; dclean; docker-compose up)'
-alias ldown='(cd $LOCAL_LOGISTICS; docker-compose down)'
 lbench() { (cd "$MR" || exit; bazel run //sdm/logistics/client/benchmark:app -- "$@") }
 
 # Logistics CLI
@@ -31,8 +30,6 @@ alias lclib='(cd "$MR" || exit; bazel build //sdm/logistics/client/cli:sdm-cli_d
 
 # Mono Repository
 alias mrcd='cd $MR'
-alias mrb='(cd $MR; bazel build //example/... //sdm/...)'
-alias mrt='(cd $MR; bazel test -- //sdm/... -//sdm/auth/... -//sdm/logistics/test:api_regression_tests -//sdm/logistics/test:persistence_regression_tests -//sdm/logistics/test:smoke_tests)'
 
 # Spoud Data Market
 alias sdmui='(cd $MR/sdm/logistics/api; npm ci; npm run compile; cd $MR/sdm/market/client/wolverine-ui; npm ci; npm run start)' 
