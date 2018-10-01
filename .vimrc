@@ -19,7 +19,7 @@ augroup End
 
 " Mapping
 set backspace=indent,eol,start
-set timeoutlen=1000 ttimeoutlen=0
+set ttimeoutlen=0
 
 " Mouse
 set ttymouse=xterm2
@@ -54,7 +54,9 @@ augroup END
 
 " UI
 set cursorline
+set laststatus=2
 set lazyredraw
+set noshowmode
 set number
 set scrolloff=10
 set showcmd

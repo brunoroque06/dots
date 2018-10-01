@@ -38,7 +38,7 @@ alias reload="exec zsh"
 alias dotfilescheck='shellcheck .aliases .spoud .zshrc brew install'
 
 # Files
-alias c='bat --theme=zenburn --style=header,grid'
+alias c='bat --theme=1337 --style=header,grid'
 alias chmodx='chmod +x'
 fpaste() { cmd "$(pbpaste)" > "$1"; }
 alias ftrim="sed -i '' 's/[[:space:]]*$//'"
