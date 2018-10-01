@@ -67,6 +67,12 @@ alias grl='git reflog --date=iso'
 alias gs='git status -u'
 alias lg='lazygit'
 
+# Golang
+alias gob='go build ./...'
+alias gof='gofmt -s -w .'
+alias gor='go run'
+alias got='go test ./...'
+
 # Java
 alias jr='java -jar'
 alias jv='jar tvf'
