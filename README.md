@@ -1,6 +1,6 @@
 # Dotfiles (Bruno Roque)
 
-![Shell](./images/shell.png)
+![Shell](./screenshots/shell.png)
 
 ## Installation
 
