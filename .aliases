@@ -26,11 +26,10 @@ alias displays='system_profiler SPDisplaysDataType'
 # Docker
 alias dcb='docker-compose build --force-rm --pull --no-cache'
 alias dcd='docker-compose down'
-alias dclean='docker system prune --volumes -f'
 alias dcu='docker-compose up'
+alias dprune='docker stop $(docker ps -a -q); docker rm $(docker ps -a -q); docker system prune --volumes -f'
 alias dps='docker ps'
 alias dr='docker build -t ${PWD##*/} . ; docker run --net="host" ${PWD##*/}'
-alias drmc='docker stop $(docker ps -a -q); docker rm $(docker ps -a -q)'
 alias drmi='docker rmi -f $(docker images -a -q)'
 
 # Dotfiles
