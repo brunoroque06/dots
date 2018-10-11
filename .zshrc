@@ -31,8 +31,10 @@ export FZF_CTRL_T_COMMAND=$FZF_COMMAND
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse'
 
 # History
-setopt inc_append_history
-setopt share_history
+HISTSIZE=1000
+SAVEHIST=1000
+HISTFILE=$HOME/.history
+setopt INC_APPEND_HISTORY
 setopt HIST_IGNORE_ALL_DUPS
 
 # Theme
