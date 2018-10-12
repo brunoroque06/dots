@@ -1,7 +1,7 @@
 set nocompatible
 
 " Clipboard
-set clipboard+=unnamed
+set clipboard^=unnamed,unnamedplus
 
 " Files
 set autoread

@@ -116,4 +116,6 @@ tn() { tmux new-session -s "${1:-default}"; }
 
 # Vim
 alias v='vim'
+alias vnone='vim -u NONE'
 alias vud='vim +PlugUpgrade +PlugUpdate! +PlugClean! +qa'
+
