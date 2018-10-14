@@ -3,6 +3,11 @@
 # Antibody
 alias abrmplugins='rm -rf $(antibody home)'
 
+# Atom
+readonly ATOM_PLUGINS="$HOME/.atom/package-list.txt"
+alias atom_plugins_export='apm list --installed --bare > $ATOM_PLUGINS'
+alias atom_plugins_install='apm install --packages-file $ATOM_PLUGINS'
+
 # Bazel
 alias bb='bazel build --verbose_failures'
 alias bba='bazel build --verbose_failures //...'
