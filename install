@@ -13,14 +13,18 @@ done
 
 ln -fns "$(pwd)/terminal/com.apple.Terminal.plist" "$HOME/Library/Preferences/com.apple.Terminal.plist"
 
+printf 'Installing brew packages and casks...\n'
 ./brew
 
+printf 'Symlinking Atom configuration and installing packages...\n'
 readonly ATOM_CONFIG="$HOME"/.atom
 mkdir "$ATOM_CONFIG"
 ln -fns "$(pwd)"/.atom/config.cson "$ATOM_CONFIG"/config.cson
 ln -fns "$(pwd)"/.atom/keymap.cson "$ATOM_CONFIG"/keymap.cson
 ln -fns "$(pwd)"/.atom/package-list.txt "$ATOM_CONFIG"/package-list.txt
 apm install --packages-file "$ATOM_CONFIG"/package-list.txt
+
+printf 'Installationg successfuly completed. ⚡️\n'
 
 exec zsh
 

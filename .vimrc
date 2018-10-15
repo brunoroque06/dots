@@ -1,5 +1,9 @@
 set nocompatible
 
+" Buffers
+set hidden
+nnoremap gb :ls<CR>:b<Space>
+
 " Clipboard
 set clipboard^=unnamed,unnamedplus
 

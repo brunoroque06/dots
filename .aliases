@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Antibody
-alias abrmplugins='rm -rf $(antibody home)'
+alias antibody_plugins_remove='rm -rf $(antibody home)'
 
 # Atom
 readonly ATOM_PLUGINS="$HOME/.atom/package-list.txt"
@@ -16,13 +16,15 @@ alias br='bazel run'
 alias bt='bazel test'
 alias bta='bazel test //...'
 
+# Brew
+alias brew_update='brew update; brew upgrade; brew cleanup; brew doctor'
+
 # Commands
 pc() { ([[ ! -z $(declare -f "${1}") ]] && declare -f "${1}") || alias "${1}"; }
 
 # Directories
 alias ..='cd ..'
 alias ll='ls -FHGal'
-mvfiles() { mv "$1*(DN)" "$2"; }
 alias rmrf='rm -rf'
 
 # Display
@@ -39,14 +41,14 @@ alias drmi='docker rmi -f $(docker images -a -q)'
 
 # Dotfiles
 alias reload="exec zsh"
-alias dotfilescheck='shellcheck .aliases .spoud .zshrc brew install'
+alias dotfiles_lint='shellcheck .aliases .spoud .zshrc brew install'
 
 # Files
 alias c='bat --theme=1337 --style=header,grid'
 alias chmodx='chmod +x'
-fpaste() { cmd "$(pbpaste)" > "$1"; }
-alias ftrim="sed -i '' 's/[[:space:]]*$//'"
-funzip() { mkdir "${1%.*}"; tar -xvzf "$1" -C "${1%.*}"; }
+file_paste() { cmd "$(pbpaste)" > "$1"; }
+alias file_trim="sed -i '' 's/[[:space:]]*$//'"
+file_unzip() { mkdir "${1%.*}"; tar -xvzf "$1" -C "${1%.*}"; }
 
 # Git
 alias ga='git add'
@@ -104,14 +106,14 @@ alias -g C='| pbcopy'
 alias -g G='| grep --color=always'
 
 # Processes
-alias lports='lsof -PiTCP G LISTEN'
+alias ports_list='lsof -PiTCP G LISTEN'
 alias k9='kill -9'
 
 # Text
 replace() { printf "%s" "${1//$2/$3}"; }
 trim() { printf "%s" "$@" | tr -d '\040\011\012\015'; }
 json() { printf "%s" "$1" | python -m json.tool; }
-alias ftext='grep -nRHI --exclude-dir={bazel-\*,.git,node_modules} --exclude=.gitignore "" * .* | fzf'
+alias find_text='grep -nRHI --exclude-dir={bazel-\*,.git,node_modules} --exclude=.gitignore "" * .* | fzf'
 
 # Tmux
 alias ta='tmux attach-session -t'
@@ -121,6 +123,6 @@ tn() { tmux new-session -s "${1:-default}"; }
 
 # Vim
 alias v='vim'
-alias vnone='vim -u NONE'
-alias vud='vim +PlugUpgrade +PlugUpdate! +PlugClean! +qa'
+alias vim_none='vim -u NONE'
+alias vim_update='vim +PlugUpgrade +PlugUpdate! +PlugClean! +qa'
 
