@@ -11,6 +11,9 @@
     softWrap: true
   "exception-reporting":
     userId: "f9d15046-0876-487b-977b-e243dd66432c"
+  "go-plus":
+    panel:
+      fontSize: "1em"
   "one-dark-ui":
     fontSize: 13
   "vim-mode-plus": {}
