@@ -7,10 +7,10 @@
     ]
   editor:
     fontFamily: "SF Mono"
-    fontSize: 14
+    fontSize: 13
     softWrap: true
   "exception-reporting":
     userId: "f9d15046-0876-487b-977b-e243dd66432c"
   "one-dark-ui":
-    fontSize: 14
+    fontSize: 13
   "vim-mode-plus": {}
