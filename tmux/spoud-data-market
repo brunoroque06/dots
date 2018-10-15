@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+SESSION='Spoud'
+
+tmux new-session -s $SESSION -n 'dotfiles' -d
+tmux send-keys "cd $HOME/dotfiles" C-m
+
+tmux new-window -t $SESSION:1 -n 'Monorepository'
+tmux send-keys 'mrcd; gl' C-m
+
+tmux new-window -t $SESSION:2 -n 'Data Market'
+tmux split-window -v -t $SESSION:2.0 -p 67
+tmux split-window -v -t $SESSION:2.0 -p 50
+tmux split-window -h -t $SESSION:2.2
+
+tmux send-keys -t $SESSION:2.0 'mrcd; sleep 20; bazel run //sdm/logistics/test:acceptance_tests_manual' C-m
+tmux send-keys -t $SESSION:2.1 'mrcd; sleep 10; bazel run //sdm/logistics/app/composite:app' C-m
+tmux send-keys -t $SESSION:2.2 'leup' C-m
+tmux send-keys -t $SESSION:2.3 'mrcd; bazel run //sdm/market/service/portier:portier' C-m
+
+tmux attach-session -t $SESSION
+
