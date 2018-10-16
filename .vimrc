@@ -16,10 +16,6 @@ set noswapfile
 set expandtab
 set shiftwidth=2
 set softtabstop=2
-augroup autoindent
-  au!
-  autocmd BufWritePre * :normal migg=G`i
-augroup End
 
 " Mapping
 set backspace=indent,eol,start
@@ -69,9 +65,6 @@ let g:lightline = { 'colorscheme': 'wombat' }
 Plug 'morhetz/gruvbox'
 Plug 'tpope/vim-surround'
 Plug 'fatih/vim-go'
-Plug 'tmux-plugins/vim-tmux'
-Plug 'plasticboy/vim-markdown'
-let g:vim_markdown_folding_disabled = 1
 Plug 'w0rp/ale'
 let g:ale_fix_on_save = 1
 let g:ale_fixers = {}

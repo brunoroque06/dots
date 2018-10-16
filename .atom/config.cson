@@ -1,4 +1,14 @@
 "*":
+  "atom-beautify":
+    html:
+      beautify_on_save: true
+      default_beautifier: "Pretty Diff"
+      end_with_newline: true
+    markdown:
+      beautify_on_save: true
+    scss:
+      beautify_on_save: true
+      newline_between_rules: false
   core:
     telemetryConsent: "no"
     themes: [
@@ -16,4 +26,3 @@
       fontSize: "1em"
   "one-dark-ui":
     fontSize: 13
-  "vim-mode-plus": {}

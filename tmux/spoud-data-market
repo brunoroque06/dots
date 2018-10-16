@@ -9,8 +9,9 @@ tmux new-window -t $SESSION:1 -n 'Monorepository'
 tmux send-keys 'mrcd; gl' C-m
 
 tmux new-window -t $SESSION:2 -n 'Data Market'
-tmux split-window -v -t $SESSION:2.0 -p 67
-tmux split-window -v -t $SESSION:2.0 -p 50
+tmux split-window -v -t $SESSION:2.0
+tmux split-window -v -t $SESSION:2.0
+tmux select-layout even-vertical
 tmux split-window -h -t $SESSION:2.2
 
 tmux send-keys -t $SESSION:2.0 'mrcd; sleep 20; bazel run //sdm/logistics/test:acceptance_tests_manual' C-m
