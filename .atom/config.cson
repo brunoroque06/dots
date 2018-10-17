@@ -26,3 +26,5 @@
       fontSize: "1em"
   "one-dark-ui":
     fontSize: 13
+  welcome:
+    showOnStartup: false

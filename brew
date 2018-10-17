@@ -2,18 +2,15 @@
 
 brew update
 
-brew install antibody
-brew cask install atom
 brew install bat
 brew install cmake
 brew install diff-so-fancy
 brew install fzf
 printf 'y\ny\nn\n' | "$(brew --prefix)"/opt/fzf/install
+brew install getantibody/tap/antibody
 brew install git
 brew install go
-brew cask install google-chrome
-brew tap jesseduffield/lazygit
-brew install lazygit
+brew install jesseduffield/lazygit/lazygit
 brew install node
 brew install python
 brew install reattach-to-user-namespace
@@ -22,9 +19,10 @@ brew install tmux
 brew install vim
 brew install zsh
 
+brew cask install atom
+brew cask install google-chrome
+
 brew upgrade
-
 brew cleanup
-
 brew doctor
 
