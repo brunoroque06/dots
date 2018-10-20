@@ -6,6 +6,7 @@
       end_with_newline: true
     markdown:
       beautify_on_save: true
+      default_beautifier: "Prettier"
     scss:
       beautify_on_save: true
       newline_between_rules: false
@@ -17,7 +18,6 @@
     ]
   editor:
     fontFamily: "SF Mono"
-    fontSize: 13
     softWrap: true
   "exception-reporting":
     userId: "f9d15046-0876-487b-977b-e243dd66432c"
@@ -25,6 +25,10 @@
     panel:
       fontSize: "1em"
   "one-dark-ui":
-    fontSize: 13
+    fontSize: 14
+  "spell-check":
+    locales: [
+      "en-US"
+    ]
   welcome:
     showOnStartup: false
