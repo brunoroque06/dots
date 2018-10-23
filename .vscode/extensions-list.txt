@@ -1,0 +1,10 @@
+DevonDCarew.bazel-code
+DavidAnson.vscode-markdownlint
+eg2.vscode-npm-script
+esbenp.prettier-vscode
+ms-vscode.Go
+msjsdiag.debugger-for-chrome
+PeterJausovec.vscode-docker
+streetsidesoftware.code-spell-checker
+vscodevim.vim
+zxh404.vscode-proto3

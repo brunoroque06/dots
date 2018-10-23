@@ -16,15 +16,13 @@ ln -fns "$(pwd)/terminal/com.apple.Terminal.plist" "$HOME/Library/Preferences/co
 printf 'Installing brew packages and casks...\n'
 ./brew
 
-printf 'Symlinking Atom configuration and installing packages...\n'
-readonly ATOM_CONFIG="$HOME"/.atom
-mkdir "$ATOM_CONFIG"
-ln -fns "$(pwd)"/.atom/config.cson "$ATOM_CONFIG"/config.cson
-ln -fns "$(pwd)"/.atom/keymap.cson "$ATOM_CONFIG"/keymap.cson
-ln -fns "$(pwd)"/.atom/package-list.txt "$ATOM_CONFIG"/package-list.txt
-apm install --packages-file "$ATOM_CONFIG"/package-list.txt
+printf 'Symlinking VSCode configuration and installing packages...\n'
+ln -fns "$(pwd)"/.vscode/settings.json "$HOME/Library/Application Support/Code/User/settings.json"
+readonly CODE_DIR="$HOME"/.vscode
+mkdir "$CODE_DIR"
+ln -fns "$(pwd)"/.vscode/extensions-list.txt "$CODE_DIR"/extensions-list.txt
+< "$CODE_DIR"/extensions-list.txt xargs -L 1 code --install-extension
 
 printf 'Installationg successfuly completed. ⚡️\n'
 
 exec zsh
-
