@@ -14,7 +14,7 @@ tmux split-window -v -t $SESSION:2.0
 tmux select-layout even-vertical
 tmux split-window -h -t $SESSION:2.2
 
-tmux send-keys -t $SESSION:2.0 'mrcd; sleep 20; bazel run //sdm/logistics/test:acceptance_tests_manual' C-m
+tmux send-keys -t $SESSION:2.0 'mrcd; sleep 20; bazel run //sdm/logistics/test/acceptance:acceptance_tests_manual' C-m
 tmux send-keys -t $SESSION:2.1 'mrcd; sleep 10; bazel run //sdm/logistics/app/composite:app' C-m
 tmux send-keys -t $SESSION:2.2 'leup' C-m
 tmux send-keys -t $SESSION:2.3 'mrcd; bazel run //sdm/market/service/portier:portier' C-m
