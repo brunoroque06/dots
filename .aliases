@@ -20,7 +20,7 @@ alias code_extensions_export='code --list-extensions > $CODE_PLUGINS'
 alias code_extensions_install='< $CODE_PLUGINS xargs -L 1 code --install-extension'
 
 # Commands
-pc() { ([[ ! -z $(declare -f "${1}") ]] && declare -f "${1}") || alias "${1}"; }
+print_command() { ([[ ! -z $(declare -f "${1}") ]] && declare -f "${1}") || alias "${1}"; }
 
 # Directories
 alias ..='cd ..'
@@ -106,7 +106,7 @@ alias -g C='| pbcopy'
 alias -g G='| grep --color=always'
 
 # Processes
-alias ports_list='lsof -PiTCP G LISTEN'
+alias list_ports='lsof -PiTCP G LISTEN'
 alias k9='kill -9'
 
 # Text
