@@ -10,6 +10,7 @@ printf 'y\ny\nn\n' | "$(brew --prefix)"/opt/fzf/install
 brew install getantibody/tap/antibody
 brew install git
 brew install go
+brew install htop
 brew install jesseduffield/lazygit/lazygit
 brew install node
 brew install python
