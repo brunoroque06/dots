@@ -5,7 +5,7 @@ readonly MR="$HOME/Documents/dm"
 readonly LOCAL_LOGISTICS="$MR/sdm/local_environment/"
 
 # Bazel
-bdep() { (cd "$HOME"/Documents/migration-tooling/ || exit; bazel run //generate_workspace:generate_workspace -- --repositories http://central.maven.org/maven2/ --artifact "$1") }
+alias mono_compile_deps='(cd $HOME/Documents/bazel-deps; bazel run //:parse -- generate -r $MR -s 3rdparty/workspace.bzl -d dependencies.yaml)'
 
 # Gerrit
 readonly GERRIT_MASTER='gerrit/master'
