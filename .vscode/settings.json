@@ -3,6 +3,7 @@
   "editor.fontFamily": "SF Mono",
   "editor.fontSize": 13,
   "editor.formatOnSave": true,
+  "editor.minimap.enabled": false,
   "editor.tabSize": 2,
   "editor.wordWrap": "on",
   "explorer.confirmDelete": false,
@@ -14,5 +15,5 @@
   "typescript.referencesCodeLens.enabled": false,
   "typescript.updateImportsOnFileMove.enabled": "always",
   "vim.useSystemClipboard": true,
-  "window.zoomLevel": 0.5
+  "window.zoomLevel": 0.25
 }
