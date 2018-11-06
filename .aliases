@@ -9,6 +9,7 @@ alias bba='bazel build --verbose_failures //...'
 bdeps() { bazel query 'deps('"$1"')'; }
 alias br='bazel run'
 alias bt='bazel test'
+alias btnc='bazel test --cache_test_results=no'
 alias bta='bazel test //...'
 
 # Brew
