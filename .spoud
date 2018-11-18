@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
 # Paths
-readonly MR="$HOME/Documents/dm"
+readonly MR="$HOME/Projects/dm"
 readonly LOCAL_LOGISTICS="$MR/sdm/local_environment/"
 
 # Bazel
-alias mono_compile_deps='(cd $HOME/Documents/bazel-deps; bazel run //:parse -- generate -r $MR -s 3rdparty/workspace.bzl -d dependencies.yaml)'
+alias mono_compile_deps='(cd $HOME/Projects/bazel-deps; bazel run //:parse -- generate -r $MR -s 3rdparty/workspace.bzl -d dependencies.yaml)'
 
 # Gerrit
 readonly GERRIT_MASTER='gerrit/master'
