@@ -17,20 +17,6 @@ alias gerb='git stash; git rebase $GERRIT_MASTER; git stash pop'
 alias geud='git remote update gerrit --prune'
 alias gewip='git push gerrit HEAD:refs/for/master%wip -o topic=$(git rev-parse --abbrev-ref HEAD)'
 
-# Logistics
-alias lbc='(cd $MR; bazel run //sdm/logistics/test:persistence_regression_docker_push; bazel run //sdm/logistics/test:acceptance_tests_docker_push; bazel build //sdm/logistics/test:upload_redis_dump)'
-alias leup='(cd $LOCAL_LOGISTICS; docker-compose -f ./docker-compose.yml -f docker-compose.monitoring.yml up influx kafka redis)'
-alias lup='(cd $LOCAL_LOGISTICS; bazel run //sdm/logistics/app/composite:docker_image; docker-compose up)'
-lbench() { (cd "$MR" || exit; bazel run //sdm/logistics/client/benchmark:app -- "$@") }
-
-# Logistics CLI
-lcli() { (cd "$MR" || exit; bazel run //sdm/logistics/client/cli:sdm-cli -- "$@") }
-llcli() { (cd "$MR" || exit; bazel run //sdm/logistics/client/cli:sdm-cli -- -server_url "$LOGISTICS_URL" -ssl_key "$LOGISTICS_SSL" "$@") }
-alias lclib='(cd "$MR" || exit; bazel build //sdm/logistics/client/cli:sdm-cli_deploy.jar; mkdir cli/; sudo cp bazel-bin/sdm/logistics/client/cli/sdm-cli_deploy.jar cli/)'
-
 # Mono Repository
 alias mrcd='cd $MR'
-
-# Spoud Data Market
-alias sdmui='(cd $MR/sdm/logistics/api; npm ci; npm run compile; cd $MR/sdm/market/client/wolverine-ui; npm ci; npm run start)' 
 
