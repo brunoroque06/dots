@@ -13,7 +13,7 @@ done
 
 ln -fns "$(pwd)/terminal/com.apple.Terminal.plist" "$HOME/Library/Preferences/com.apple.Terminal.plist"
 
-printf 'Installing brew packages and casks...\n'
+printf 'Installing brew packages/casks...\n'
 ./brew
 
 printf 'Symlinking VSCode configuration and installing packages...\n'
@@ -23,6 +23,6 @@ mkdir "$CODE_DIR"
 ln -fns "$(pwd)"/.vscode/extensions-list.txt "$CODE_DIR"/extensions-list.txt
 < "$CODE_DIR"/extensions-list.txt xargs -L 1 code --install-extension
 
-printf 'Installationg successfuly completed. ⚡️\n'
+printf 'Installationg successfuly completed ⚡️\n'
 
 exec zsh
