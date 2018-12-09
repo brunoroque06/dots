@@ -15,7 +15,7 @@ tmux select-layout even-vertical
 tmux split-window -h -t $SESSION:2.2
 
 tmux send-keys -t $SESSION:2.0 'mrcd; sleep 10; bazel run catalog/service:app' C-m
-tmux send-keys -t $SESSION:2.1 'mrcd; sleep 10; bazel run catalog/worker/metrics/service:app' C-m
+tmux send-keys -t $SESSION:2.1 'mrcd; sleep 5; bazel run catalog/worker/metrics/service:app' C-m
 tmux send-keys -t $SESSION:2.2 "docker-compose -f $HOME/dotfiles/tmux/kafka.yml up" C-m
 tmux send-keys -t $SESSION:2.3 'docker run -p 27017:27017 mongo' C-m
 
