@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+sudo pacman -S bat cmake diff-so-fancy git go-pie htop nodejs npm shellcheck python tmux vim zsh
+
+if ! [ -x "$(command -v yay)" ]; then
+  git clone https://aur.archlinux.org/yay.git
+  cd yay/
+  makepkg -si
+  cd ..
+  rm -rf yay/
+fi
+
+yay -S antibody google-chrome lazygit otf-san-francisco visual-studio-code-bin

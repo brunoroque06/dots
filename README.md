@@ -7,3 +7,5 @@
 ```bash
 ./install
 ```
+
+Support: MacOS, Arch Linux
