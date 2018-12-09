@@ -8,4 +8,4 @@
 ./install
 ```
 
-Support: MacOS, Arch Linux
+Support: MacOS, Arch Linux.
