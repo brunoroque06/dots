@@ -4,10 +4,9 @@ sudo pacman -S bat cmake diff-so-fancy git go-pie htop nodejs npm shellcheck pyt
 
 if ! [ -x "$(command -v yay)" ]; then
   git clone https://aur.archlinux.org/yay.git
-  cd yay/
-  makepkg -si
-  cd ..
+  (cd yay/ || exit ; makepkg -si)
   rm -rf yay/
 fi
 
-yay -S antibody google-chrome lazygit otf-san-francisco visual-studio-code-bin
+yay -S antibody google-chrome lazygit otf-san-francisco pamac visual-studio-code-bin
+

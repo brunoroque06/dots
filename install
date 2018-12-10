@@ -9,19 +9,22 @@ for file in $FILES; do
   ln -fns "$s" "$t"
 done
 
-if [ "$(uname)" == "Darwin" ]; then
+isMacOS() { [ "$(uname)" == "Darwin" ]; }
+isArch() { [ "$(uname)" == "Linux" ]; }
+
+if isMacOS; then
   cp /Applications/Utilities/Terminal.app/Contents/Resources/Fonts/*.otf "$HOME"/Library/Fonts/
   ln -fns "$(pwd)/terminal/com.apple.Terminal.plist" "$HOME/Library/Preferences/com.apple.Terminal.plist"
   printf 'Installing brew packages/casks...\n'
   ./brew
-elif [ "$(uname)" == "Linux" ]; then 
+elif isArch; then 
   ./pacman
 fi
 
 printf 'Symlinking VSCode configuration and installing packages...\n'
-if [ "$(uname)" == "Darwin" ]; then
+if isMacOS; then
   ln -fns "$(pwd)"/.vscode/settings.json "$HOME/Library/Application Support/Code/User/settings.json"
-elif [ "$(uname)" == "Linux" ]; then 
+elif isArch; then 
   ln -fns "$(pwd)"/.vscode/settings.json "$HOME/.config/Code/User/settings.json"
 fi
 readonly CODE_DIR="$HOME"/.vscode

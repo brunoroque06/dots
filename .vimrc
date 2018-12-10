@@ -64,7 +64,6 @@ Plug 'itchyny/lightline.vim'
 let g:lightline = { 'colorscheme': 'wombat' }
 Plug 'morhetz/gruvbox'
 Plug 'tpope/vim-surround'
-Plug 'fatih/vim-go'
 Plug 'w0rp/ale'
 let g:ale_fix_on_save = 1
 let g:ale_fixers = {}
