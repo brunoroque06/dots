@@ -102,6 +102,10 @@ alias nlg='npm list -g --depth=0'
 alias nr='npm run'
 alias ns="awk '/\"scripts\":/,/}/' package.json"
 
+# Pacman
+alias pacman_update='sudo pacman -Syu'
+alias yay_update='yay -Syu'
+
 # Pipelines
 alias -g C='| pbcopy'
 alias -g G='| grep --color=always'

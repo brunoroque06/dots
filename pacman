@@ -8,5 +8,4 @@ if ! [ -x "$(command -v yay)" ]; then
   rm -rf yay/
 fi
 
-yay -S antibody google-chrome lazygit otf-san-francisco pamac visual-studio-code-bin
-
+yay -S antibody google-chrome lazygit otf-san-francisco otf-sfmono pamac visual-studio-code-bin
