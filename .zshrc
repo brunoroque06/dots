@@ -20,7 +20,8 @@ bindkey '^[[A' history-beginning-search-backward
 bindkey '^[[B' history-beginning-search-forward
 
 # Exports
-export PATH=$PATH:$(go env GOPATH)/bin:$HOME/Library/Python/3.7/bin
+PATH=$PATH:$(go env GOPATH)/bin:$HOME/Library/Python/3.7/bin
+export PATH
 export SSH_KEY_PATH="$HOME/.ssh/rsa_id"
 export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk-10.0.2.jdk/Contents/Home"
 
@@ -31,8 +32,8 @@ export FZF_CTRL_T_COMMAND=$FZF_COMMAND
 export FZF_DEFAULT_OPTS='--height 20% --layout=reverse'
 
 # History
-HISTSIZE=1000
-SAVEHIST=1000
+export HISTSIZE=1000
+export SAVEHIST=1000
 HISTFILE=$HOME/.history
 setopt INC_APPEND_HISTORY
 setopt HIST_IGNORE_ALL_DUPS
