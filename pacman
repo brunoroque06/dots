@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-sudo pacman -S bat cmake diff-so-fancy git go-pie htop nodejs npm shellcheck python tmux vim wget zsh
+sudo pacman -S bat diff-so-fancy git go htop nodejs npm shellcheck python tmux vim wget zsh
 
 if ! [ -x "$(command -v yay)" ]; then
   git clone https://aur.archlinux.org/yay.git
@@ -8,4 +8,4 @@ if ! [ -x "$(command -v yay)" ]; then
   rm -rf yay/
 fi
 
-yay -S antibody google-chrome lazygit otf-san-francisco otf-sfmono pamac visual-studio-code-bin
+yay -S antibody google-chrome lazygit otf-sfmono visual-studio-code-bin
