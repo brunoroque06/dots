@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 if ! [ -x "$(command -v brew)" ]; then
+  printf 'Installing brew...'
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
 
@@ -18,7 +19,6 @@ brew install htop
 brew install jesseduffield/lazygit/lazygit
 brew install node
 brew install python
-brew install reattach-to-user-namespace
 brew install shellcheck
 brew install tmux
 brew install vim
