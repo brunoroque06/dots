@@ -42,7 +42,8 @@ alias drmi='docker rmi -f $(docker images -a -q)'
 
 # Dotfiles
 alias reload="exec zsh"
-alias shellcheck_dotfiles='shellcheck .aliases .spoud .zshrc brew install pacman'
+alias dotfiles_format='shfmt -i 2 -s -w .'
+alias dotfiles_lint='shellcheck .aliases .spoud .zshrc brew install pacman'
 
 # Files
 alias c='bat --theme=1337 --style=header,grid'
