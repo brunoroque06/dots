@@ -5,7 +5,7 @@ FILES=".aliases .gitconfig .ideavimrc .spoud .tmux.conf .vimrc .zshrc"
 for file in $FILES; do
   s=$(pwd)/$file
   t=$HOME/$file
-  printf "Symlinking: %s -> %s\\n" "$s" "$t"
+  printf 'Symlinking: %s -> %s\n' "$s" "$t"
   ln -fns "$s" "$t"
 done
 
@@ -17,20 +17,20 @@ if isMacOS; then
   ln -fns "$(pwd)/terminal/com.apple.Terminal.plist" "$HOME/Library/Preferences/com.apple.Terminal.plist"
   printf 'Installing brew packages/casks...\n'
   ./brew
-elif isArch; then 
+elif isArch; then
   ./pacman
 fi
 
 printf 'Symlinking VSCode configuration and installing packages...\n'
 if isMacOS; then
   ln -fns "$(pwd)"/.vscode/settings.json "$HOME/Library/Application Support/Code/User/settings.json"
-elif isArch; then 
+elif isArch; then
   ln -fns "$(pwd)"/.vscode/settings.json "$HOME/.config/Code/User/settings.json"
 fi
 readonly CODE_DIR="$HOME"/.vscode
 mkdir -p "$CODE_DIR"
 ln -fns "$(pwd)"/.vscode/extensions-list.txt "$CODE_DIR"/extensions-list.txt
-< "$CODE_DIR"/extensions-list.txt xargs -L 1 code --install-extension
+xargs <"$CODE_DIR"/extensions-list.txt -L 1 code --install-extension
 
 printf 'Installation has finished'
 

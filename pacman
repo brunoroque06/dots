@@ -4,7 +4,10 @@ sudo pacman -S bat diff-so-fancy git go-pie htop nodejs npm shellcheck shfmt pyt
 
 if ! [ -x "$(command -v yay)" ]; then
   git clone https://aur.archlinux.org/yay.git
-  (cd yay/ || exit ; makepkg -si)
+  (
+    cd yay/ || exit
+    makepkg -si
+  )
   rm -rf yay/
 fi
 

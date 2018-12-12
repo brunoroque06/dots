@@ -11,4 +11,3 @@ tmux new-window -t $SESSION:1 -n 'Monorepository'
 tmux send-keys 'mrcd; gl' C-m
 
 tmux attach-session -t $SESSION
-

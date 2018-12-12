@@ -14,4 +14,3 @@ tmux new-window -t $SESSION:2 -n 'Monorepository'
 tmux send-keys "cd $HOME/Projects/brunoroque06" C-m
 
 tmux attach-session -t $SESSION
-
