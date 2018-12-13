@@ -2,6 +2,8 @@
 
 source utils
 
+printf 'Starting dotfiles installation...\n'
+
 ./git/setup
 ./intellij/setup
 ./tmux/setup
@@ -19,6 +21,6 @@ fi
 
 ./vscode/setup
 
-printf 'Installation has finished'
+printf 'Installation has finished.\n'
 
 exec zsh
