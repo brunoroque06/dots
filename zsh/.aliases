@@ -3,6 +3,9 @@
 # Antibody
 alias antibody_plugins_remove='rm -rf $(antibody home)'
 
+# Arch Linux
+alias s=startx
+
 # Bazel
 alias bb='bazel build --verbose_failures'
 alias bba='bazel build --verbose_failures //...'
