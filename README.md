@@ -1,7 +1,5 @@
 # Dotfiles (Bruno Roque)
 
-![Shell](./screenshots/shell.png)
-
 ## Installation
 
 ```bash
@@ -9,3 +7,5 @@
 ```
 
 Supported: MacOS, Arch Linux.
+
+![Shell](./screenshots/shell.png)
