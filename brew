@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
-if ! [ -x "$(command -v brew)" ]; then
+source utils
+
+if does_command_not_exist brew; then
   printf 'Installing brew...'
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi

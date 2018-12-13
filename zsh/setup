@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+printf 'Setting up Zsh...\n'
+
+source utils
+
+symlink_to_home $PWD/zsh/.aliases
+symlink_to_home $PWD/zsh/.spoud
+symlink_to_home $PWD/zsh/.zshrc

@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+printf 'Setting up MacOS Terminal...\n'
+
+cp /Applications/Utilities/Terminal.app/Contents/Resources/Fonts/*.otf "$HOME"/Library/Fonts/
+ln -fns $(pwd)/com.apple.Terminal.plist $HOME/Library/Preferences/com.apple.Terminal.plist

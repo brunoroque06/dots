@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 
+source utils
+
 sudo pacman -S bat diff-so-fancy git go-pie htop nodejs npm shellcheck shfmt python tmux vim wget xclip zsh
 
-if ! [ -x "$(command -v yay)" ]; then
+if does_command_not_exist yay; then
   git clone https://aur.archlinux.org/yay.git
   (
     cd yay/ || exit

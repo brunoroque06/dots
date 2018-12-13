@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+printf 'Setting up Tmux...\n'
+
+source utils
+
+symlink_to_home $PWD/tmux/.tmux.conf

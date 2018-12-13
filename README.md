@@ -9,4 +9,3 @@
 ```
 
 Supported: MacOS, Arch Linux.
-

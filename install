@@ -1,36 +1,23 @@
 #!/usr/bin/env bash
 
-FILES=".aliases .gitconfig .ideavimrc .spoud .tmux.conf .vimrc .zshrc"
+source utils
 
-for file in $FILES; do
-  s=$(pwd)/$file
-  t=$HOME/$file
-  printf 'Symlinking: %s -> %s\n' "$s" "$t"
-  ln -fns "$s" "$t"
-done
+./git/setup
+./intellij/setup
+./tmux/setup
+./vim/setup
+./zsh/setup
 
-isMacOS() { [ "$(uname)" == "Darwin" ]; }
-isArch() { [ "$(uname)" == "Linux" ]; }
-
-if isMacOS; then
-  cp /Applications/Utilities/Terminal.app/Contents/Resources/Fonts/*.otf "$HOME"/Library/Fonts/
-  ln -fns "$(pwd)/terminal/com.apple.Terminal.plist" "$HOME/Library/Preferences/com.apple.Terminal.plist"
+if is_mac_os; then
   printf 'Installing brew packages/casks...\n'
+  ./terminal/setup
   ./brew
-elif isArch; then
+elif is_arch; then
+  printf 'Installing pacman packages...\n'
   ./pacman
 fi
 
-printf 'Symlinking VSCode configuration and installing packages...\n'
-if isMacOS; then
-  ln -fns "$(pwd)"/.vscode/settings.json "$HOME/Library/Application Support/Code/User/settings.json"
-elif isArch; then
-  ln -fns "$(pwd)"/.vscode/settings.json "$HOME/.config/Code/User/settings.json"
-fi
-readonly CODE_DIR="$HOME"/.vscode
-mkdir -p "$CODE_DIR"
-ln -fns "$(pwd)"/.vscode/extensions-list.txt "$CODE_DIR"/extensions-list.txt
-xargs <"$CODE_DIR"/extensions-list.txt -L 1 code --install-extension
+./vscode/setup
 
 printf 'Installation has finished'
 
