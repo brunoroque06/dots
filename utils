@@ -10,3 +10,11 @@ symlink_to_home() {
   FILE=$(basename $1)
   ln -fns $1 $HOME/$FILE
 }
+
+prompt_for_command() {
+  read -p "Running command: $1. Are you sure? (Yy) " -n 1
+  printf '\n'
+  if [[ $REPLY =~ ^[Yy]$ ]]; then
+    $1
+  fi
+}

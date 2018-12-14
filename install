@@ -13,10 +13,10 @@ printf 'Starting dotfiles installation...\n'
 if is_mac_os; then
   ./terminal/setup
   printf 'Installing brew packages/casks...\n'
-  ./brew
+  prompt_for_command ./brew
 elif is_arch; then
   printf 'Installing pacman packages...\n'
-  ./pacman
+  prompt_for_command ./pacman
 fi
 
 ./vscode/setup
