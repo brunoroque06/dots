@@ -4,4 +4,4 @@ printf 'Setting up Vim...\n'
 
 source utils
 
-symlink_to_home $PWD/vim/.vimrc
+symlink_to_home "$PWD"/vim/.vimrc

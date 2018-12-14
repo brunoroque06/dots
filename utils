@@ -1,18 +1,19 @@
 #!/usr/bin/env bash
 
-does_command_not_exist() { ! [ -x "$(command -v $1)" ]; }
+does_command_not_exist() { ! [ -x "$(command -v "$1")" ]; }
+
 
 is_mac_os() { [ "$(uname)" == "Darwin" ]; }
 
 is_arch() { [ "$(uname)" == "Linux" ]; }
 
 symlink_to_home() {
-  FILE=$(basename $1)
-  ln -fns $1 $HOME/$FILE
+  FILE=$(basename "$1")
+  ln -fns "$1" "$HOME/$FILE"
 }
 
 prompt_for_command() {
-  read -p "Running command: $1. Are you sure? (Yy) " -n 1
+  read -p "Running command: $1. Are you sure? (Yy) " -n 1 -r
   printf '\n'
   if [[ $REPLY =~ Y|y ]]; then
     $1

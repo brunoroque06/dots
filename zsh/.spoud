@@ -2,7 +2,6 @@
 
 # Paths
 readonly MR="$HOME/Projects/dm"
-readonly LOCAL_LOGISTICS="$MR/sdm/local_environment/"
 
 # Bazel
 alias mono_compile_deps='(cd $HOME/Projects/bazel-deps; bazel run //:parse -- generate -r $MR -s 3rdparty/workspace.bzl -d dependencies.yaml)'

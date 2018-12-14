@@ -4,4 +4,4 @@ printf 'Setting up Git...\n'
 
 source utils
 
-symlink_to_home $PWD/git/.gitconfig
+symlink_to_home "$PWD"/git/.gitconfig
