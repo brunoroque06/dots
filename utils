@@ -14,7 +14,7 @@ symlink_to_home() {
 prompt_for_command() {
   read -p "Running command: $1. Are you sure? (Yy) " -n 1
   printf '\n'
-  if [[ $REPLY =~ ^[Yy]$ ]]; then
+  if [[ $REPLY =~ Y|y ]]; then
     $1
   fi
 }
