@@ -11,5 +11,5 @@ services:
     environment:
       KAFKA_ADVERTISED_HOST_NAME: localhost
       KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092
-      KAFKA_CREATE_TOPICS: 'Topic0:1:1,Topic1:1:1'
+      KAFKA_CREATE_TOPICS: 'chess-games:1:1,movies:1:1'
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
