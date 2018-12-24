@@ -15,5 +15,6 @@
   "typescript.referencesCodeLens.enabled": false,
   "typescript.updateImportsOnFileMove.enabled": "always",
   "vim.useSystemClipboard": true,
+  "vim.surround": true,
   "window.zoomLevel": 0.25
 }
