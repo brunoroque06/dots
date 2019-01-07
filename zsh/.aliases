@@ -94,6 +94,7 @@ alias nci="npm ci"
 alias ni='npm install'
 alias nlg='npm list -g --depth=0'
 alias nr='npm run'
+alias npm_registry_default='npm config set registry https://registry.npmjs.org/'
 alias ns="awk '/\"scripts\":/,/}/' package.json"
 
 # Pacman
