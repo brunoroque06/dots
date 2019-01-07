@@ -79,11 +79,6 @@ alias got='go test ./...'
 alias jr='java -jar'
 alias jv='jar tvf'
 
-# Maven
-alias manalyse='mvn dependency:analyze'
-alias minstall='mvn install'
-alias mtree='mvn dependency:tree'
-
 # Mundane Life
 alias cal3='cal -3'
 alias caly='cal -y'
