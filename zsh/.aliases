@@ -88,8 +88,21 @@ weather() { curl http://wttr.in/~"${1:-Bern}"; }
 alias nci="npm ci"
 alias ni='npm install'
 alias nlg='npm list -g --depth=0'
+alias npm_registry='_command_with_options "npm config set registry" https://registry.npmjs.org/ https://spoudlab.jfrog.io/spoudlab/api/npm/npm/'
+_command_with_options() {
+  printf 'Command: %s\n' "$1"
+  printf 'Options:\n'
+  select OPTION in "${@:2}"; do
+    if [[ -n $OPTION ]]; then
+      printf "%s %s\\n" "$1" "$OPTION"
+      eval "$1" "$OPTION"
+      break
+    else
+      printf 'Invalid option.\n'
+    fi
+  done
+}
 alias nr='npm run'
-alias npm_registry_default='npm config set registry https://registry.npmjs.org/'
 alias ns="awk '/\"scripts\":/,/}/' package.json"
 
 # Pacman

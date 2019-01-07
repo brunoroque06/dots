@@ -16,8 +16,5 @@ alias gerb='git stash; git rebase $GERRIT_MASTER; git stash pop'
 alias geud='git remote update gerrit --prune'
 alias gewip='git push gerrit HEAD:refs/for/master%wip -o topic=$(git rev-parse --abbrev-ref HEAD)'
 
-# Npm
-alias npm_registry_spoud='npm config set registry https://spoudlab.jfrog.io/spoudlab/api/npm/npm/'
-
 # Mono Repository
 alias mrcd='cd $MR'
