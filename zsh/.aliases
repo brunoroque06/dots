@@ -40,7 +40,6 @@ alias drmi='docker rmi -f $(docker images -a -q)'
 
 # Files
 alias c='bat --theme=1337 --style=header,grid'
-alias chmodx='chmod +x'
 file_paste() { cmd "$(pbpaste)" > "$1"; }
 alias file_trim="sed -i '' 's/[[:space:]]*$//'"
 file_unzip() { mkdir "${1%.*}"; tar -xvzf "$1" -C "${1%.*}"; }

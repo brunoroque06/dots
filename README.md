@@ -8,4 +8,4 @@
 
 Supported: MacOS, Arch Linux.
 
-![Shell](./screenshots/shell.png)
+![Shell](shell.png)
