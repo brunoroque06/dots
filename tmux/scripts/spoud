@@ -5,7 +5,7 @@ SESSION='Spoud'
 tmux start-server
 
 tmux new-session -s $SESSION -n 'dotfiles' -d
-tmux send-keys "cd $HOME/dotfiles" C-m
+tmux send-keys "cd $HOME/Projects/dotfiles" C-m
 
 tmux new-window -t $SESSION:1 -n 'Monorepository'
 tmux send-keys 'mrcd; gl' C-m
