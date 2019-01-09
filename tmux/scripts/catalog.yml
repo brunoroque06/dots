@@ -22,7 +22,7 @@ services:
       - "9999:9999"
 
   postgres:
-    image: postgres
+    image: postgres:9.4-alpine
     environment:
       POSTGRES_DB: spoud_data_catalog
       POSTGRES_PASSWORD: mysecretpassword
