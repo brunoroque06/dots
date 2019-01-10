@@ -32,6 +32,7 @@ alias displays='system_profiler SPDisplaysDataType'
 # Docker
 alias dcb='docker-compose build --force-rm --pull --no-cache'
 alias dcd='docker-compose down'
+alias dcp='docker-compose pull'
 alias dcu='docker-compose up'
 alias dprune='docker stop $(docker ps -a -q); docker rm $(docker ps -a -q); docker system prune --volumes -f'
 alias dps='docker ps'
