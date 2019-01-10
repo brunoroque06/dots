@@ -139,7 +139,7 @@ alias vim_none='vim -u NONE'
 alias vim_update='vim +PlugUpgrade +PlugUpdate! +PlugClean! +qa'
 
 # VSCode
-readonly CODE_PLUGINS="$HOME/.vscode/extensions-list.txt"
+readonly CODE_PLUGINS="$HOME/.vscode/extensions.txt"
 alias code_extensions_export='code --list-extensions > $CODE_PLUGINS'
 alias code_extensions_install='< $CODE_PLUGINS xargs -L 1 code --install-extension'
 

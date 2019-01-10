@@ -14,5 +14,5 @@ fi
 printf 'Installing VSCode extensions...\n'
 readonly CODE_DIR="$HOME"/.vscode
 mkdir -p "$CODE_DIR"
-ln -fns "$PWD"/vscode/extensions-list.txt "$CODE_DIR"/extensions-list.txt
-xargs <"$CODE_DIR"/extensions-list.txt -L 1 code --install-extension
+ln -fns "$PWD"/vscode/extensions.txt "$CODE_DIR"/extensions.txt
+xargs <"$CODE_DIR"/extensions.txt -L 1 code --force --install-extension
