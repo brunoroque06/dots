@@ -79,6 +79,17 @@ alias got='go test ./...'
 alias jr='java -jar'
 alias jv='jar tvf'
 
+# Kafka
+KAFKA='localhost:9092'
+KAFKA_CONSUMER_GROUP='default'
+ZOOKEEPER='localhost:2181'
+kc() { kafka-console-consumer --bootstrap-server $KAFKA --topic ${1} --group ${2:-$KAFKA_CONSUMER_GROUP} }
+alias kcg='kafka-consumer-groups --bootstrap-server $KAFKA --list'
+kcgd() { kafka-consumer-groups --bootstrap-server $KAFKA --describe --group ${1:-$KAFKA_CONSUMER_GROUP} }
+alias kp='kafka-console-producer --broker-list $KAFKA --topic'
+alias kt='kafka-topics --zookeeper $ZOOKEEPER --list'
+alias ktc='kafka-topics --create --zookeeper $ZOOKEEPER --replication-factor 1 --partitions 1 --topic'
+
 # Mundane Life
 alias cal3='cal -3'
 alias caly='cal -y'

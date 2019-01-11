@@ -21,6 +21,7 @@ brew install gradle
 brew install htop
 brew install java
 brew install jesseduffield/lazygit/lazygit
+brew install kafka
 brew install node
 brew install python
 brew install shellcheck
