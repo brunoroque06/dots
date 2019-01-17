@@ -90,6 +90,9 @@ alias kp='kafka-console-producer --broker-list $KAFKA --topic'
 alias kt='kafka-topics --zookeeper $ZOOKEEPER --list'
 alias ktc='kafka-topics --create --zookeeper $ZOOKEEPER --replication-factor 1 --partitions 1 --topic'
 
+# Makefile
+alias m='make'
+
 # Mundane Life
 alias cal3='cal -3'
 alias caly='cal -y'
