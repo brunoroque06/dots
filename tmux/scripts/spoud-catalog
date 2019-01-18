@@ -14,7 +14,6 @@ tmux split-window -v -t $SESSION:2.0
 tmux select-layout even-vertical
 tmux split-window -h -t $SESSION:2.2
 
-tmux send-keys -t $SESSION:2.0 'curl'
 tmux send-keys -t $SESSION:2.1 'mrcd; sleep 10; bazel run catalog/service:app' C-m
 tmux send-keys -t $SESSION:2.2 'mrcd; sleep 5; bazel run catalog/worker/metrics/service:app' C-m
 tmux send-keys -t $SESSION:2.3 "docker-compose -f $HOME/Projects/dotfiles/tmux/scripts/spoud-catalog.yml up --abort-on-container-exit" C-m
