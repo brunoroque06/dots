@@ -12,14 +12,13 @@ brew update
 brew install bat
 brew install cmake
 brew install diff-so-fancy
-brew install fzf
-printf 'y\ny\nn\n' | "$(brew --prefix)"/opt/fzf/install
+brew install fzf; printf 'y\ny\nn\n' | "$(brew --prefix)"/opt/fzf/install
 brew install getantibody/tap/antibody
+brew install ghc cabal-install
 brew install git
 brew install go
-brew install gradle
 brew install htop
-brew install java
+brew install java gradle
 brew install jesseduffield/lazygit/lazygit
 brew install kafka
 brew install node

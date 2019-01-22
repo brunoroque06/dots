@@ -9,6 +9,7 @@ antibody bundle zsh-users/zsh-completions
 antibody bundle mafredri/zsh-async
 antibody bundle sindresorhus/pure
 antibody bundle zsh-users/zsh-syntax-highlighting
+antibody bundle rupa/z
 
 # Auto-completion
 zstyle ':completion:*' completer _oldlist _expand _complete _match _ignored _approximate
