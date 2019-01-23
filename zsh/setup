@@ -6,4 +6,5 @@ source utilities/files
 
 symlink_to_home "$PWD"/zsh/.aliases
 symlink_to_home "$PWD"/zsh/.spoud
+symlink_to_home "$PWD"/zsh/.zsh_plugins
 symlink_to_home "$PWD"/zsh/.zshrc

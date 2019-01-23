@@ -1,16 +1,5 @@
 #!/usr/bin/env bash
 
-autoload -Uz compinit
-compinit
-
-# Plugins
-source <(antibody init)
-antibody bundle zsh-users/zsh-completions
-antibody bundle mafredri/zsh-async
-antibody bundle sindresorhus/pure
-antibody bundle zsh-users/zsh-syntax-highlighting
-antibody bundle rupa/z
-
 # Auto-completion
 zstyle ':completion:*' completer _oldlist _expand _complete _match _ignored _approximate
 zstyle ':completion:*' menu select
@@ -39,14 +28,12 @@ HISTFILE=$HOME/.history
 setopt INC_APPEND_HISTORY
 setopt HIST_IGNORE_ALL_DUPS
 
-# Theme
-readonly PURE_PROMPT_SYMBOL='λ'
-readonly PURE_GIT_DOWN_ARROW='▼'
-readonly PURE_GIT_UP_ARROW='▲'
-
 # Sources
 source "$HOME"/.aliases
 source "$HOME"/.spoud
 source "$HOME"/.secrets
 [ -f "$HOME"/.fzf.zsh ] && source "$HOME"/.fzf.zsh
 
+# Plugins
+source "$HOME"/.zsh_plugins
+plugins_load

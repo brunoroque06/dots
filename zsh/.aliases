@@ -131,7 +131,8 @@ alias -g G='| grep --color=always'
 alias list_ports='lsof -PiTCP G LISTEN'
 alias k9='kill -9'
 
-# Shell Scripts
+# Shell
+shell_benchmark() { for i in $(seq 1 10); do time ${1:-zsh} -i -c exit; done }
 alias shell_scripts_lint='find . -not -path "./.git/*" -type f ! -name "*.*" -exec shellcheck -x {} \;'
 alias shell_scripts_format='shfmt -i 2 -s -w .'
 

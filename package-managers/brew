@@ -12,8 +12,8 @@ brew update
 brew install bat
 brew install cmake
 brew install diff-so-fancy
-brew install fzf; printf 'y\ny\nn\n' | "$(brew --prefix)"/opt/fzf/install
-brew install getantibody/tap/antibody
+brew install fzf
+printf 'y\ny\nn\n' | "$(brew --prefix)"/opt/fzf/install
 brew install ghc cabal-install
 brew install git
 brew install go
