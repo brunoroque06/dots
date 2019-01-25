@@ -30,9 +30,9 @@ setopt HIST_IGNORE_ALL_DUPS
 
 # Sources
 source "$HOME"/.aliases
-source "$HOME"/.spoud
-source "$HOME"/.secrets
 source "$HOME"/.fzf.zsh
+source "$HOME"/.secrets
+source "$HOME"/.spoud
 
 # Plugins
 source "$HOME"/.zsh_plugins

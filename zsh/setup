@@ -8,3 +8,6 @@ symlink_to_home "$PWD"/zsh/.aliases
 symlink_to_home "$PWD"/zsh/.spoud
 symlink_to_home "$PWD"/zsh/.zsh_plugins
 symlink_to_home "$PWD"/zsh/.zshrc
+
+source zsh/.zsh_plugins
+plugins_install

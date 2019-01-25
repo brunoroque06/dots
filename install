@@ -5,12 +5,6 @@ source utilities/shell
 
 printf 'Starting dotfiles installation...\n'
 
-./git/setup
-./intellij/setup
-./tmux/setup
-./vim/setup
-./zsh/setup
-
 if is_mac_os; then
   ./terminal/setup
   printf 'Installing brew packages/casks...\n'
@@ -20,7 +14,12 @@ elif is_arch; then
   prompt_for_command ./package-managers/pacman
 fi
 
+./git/setup
+./intellij/setup
+./tmux/setup
+./vim/setup
 ./vscode/setup
+./zsh/setup
 
 printf 'Installation has finished #\n'
 
