@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
 
-# Antibody
-alias antibody_plugins_remove='rm -rf $(antibody home)'
-
 # Arch Linux
 alias s=startx
 
@@ -41,8 +38,6 @@ alias drmi='docker rmi -f $(docker images -a -q)'
 
 # Files
 alias c='bat --theme=1337 --style=header,grid'
-file_paste() { cmd "$(pbpaste)" > "$1"; }
-alias file_trim="sed -i '' 's/[[:space:]]*$//'"
 file_unzip() { mkdir "${1%.*}"; tar -xvzf "$1" -C "${1%.*}"; }
 
 # Git
@@ -78,6 +73,9 @@ alias got='go test ./...'
 # Java
 alias jr='java -jar'
 alias jv='jar tvf'
+
+# Json
+alias json_format='python3 -m json.tool'
 
 # Kafka
 KAFKA='localhost:9092'
@@ -124,8 +122,8 @@ alias pacman_update='sudo pacman -Syu'
 alias yay_update='yay -Syu'
 
 # Pipelines
-alias -g C='| pbcopy'
 alias -g G='| grep --color=always'
+alias -g Y='| pbcopy'
 
 # Processes
 alias list_ports='lsof -PiTCP G LISTEN'
@@ -139,7 +137,6 @@ alias shell_scripts_format='shfmt -i 2 -s -w .'
 # Text
 replace() { printf "%s" "${1//$2/$3}"; }
 trim() { printf "%s" "$@" | tr -d '\040\011\012\015'; }
-json() { printf "%s" "$1" | python -m json.tool; }
 alias find_text='grep -nRHI --exclude-dir={bazel-\*,.git,node_modules} --exclude=.gitignore "" * .* | fzf'
 
 # Tmux
