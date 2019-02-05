@@ -5,7 +5,7 @@ SESSION='Spoud'
 tmux new-session -s $SESSION -n 'dotfiles' -d
 tmux send-keys "cd $HOME/Projects/dotfiles" C-m
 
-tmux new-window -t $SESSION:1 -n 'Monorepository'
+tmux new-window -t $SESSION:1 -n 'MonoRepo'
 tmux send-keys 'mrcd; gl' C-m
 
 tmux new-window -t $SESSION:2 -n 'Catalog'
@@ -15,7 +15,7 @@ tmux select-layout even-vertical
 tmux split-window -h -t $SESSION:2.2
 
 tmux send-keys -t $SESSION:2.1 'mrcd; sleep 10; bazel run catalog/service:app' C-m
-tmux send-keys -t $SESSION:2.2 'mrcd; sleep 5; bazel run catalog/worker/metrics/service:app' C-m
+tmux send-keys -t $SESSION:2.2 'mrcd; cd catalog/client; npm run serve' C-m
 tmux send-keys -t $SESSION:2.3 "docker-compose -f $HOME/Projects/dotfiles/tmux/scripts/spoud-catalog.yml up postgres" C-m
 
 tmux attach-session -t $SESSION
