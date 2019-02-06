@@ -37,7 +37,7 @@ alias dr='docker build -t ${PWD##*/} . ; docker run --net="host" ${PWD##*/}'
 alias drmi='docker rmi -f $(docker images -a -q)'
 
 # Files
-alias c='bat --theme=1337 --style=header,grid'
+c() { bat --theme=1337 --style=header,grid "${1}"; }
 file_unzip() { mkdir "${1%.*}"; tar -xvzf "$1" -C "${1%.*}"; }
 
 # Git
