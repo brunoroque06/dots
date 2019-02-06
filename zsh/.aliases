@@ -38,7 +38,7 @@ alias drmi='docker rmi -f $(docker images -a -q)'
 
 # Files
 c() { bat --theme=1337 --style=header,grid "${1}"; }
-file_unzip() { mkdir "${1%.*}"; tar -xvzf "$1" -C "${1%.*}"; }
+file_unzip() { mkdir "${1%.*}"; tar -xf "$1" -C "${1%.*}"; }
 
 # Git
 alias ga='git add'
@@ -94,6 +94,7 @@ alias m='make'
 # Mundane Life
 alias cal3='cal -3'
 alias caly='cal -y'
+alias update_cv='cp "$HOME"/Downloads/curriculum_vitae.pdf "$HOME"/Projects/brunoroque06.github.io/documents/BrunoRoqueCv.pdf; tar -xf "$HOME"/Downloads/curriculum-vitae.zip -C "$HOME"/Projects/brunoroque06.github.io/documents/curriculum-vitae'
 weather() { curl http://wttr.in/~"${1:-Bern}"; }
 
 # Npm
