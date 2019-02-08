@@ -94,7 +94,7 @@ alias m='make'
 # Mundane Life
 alias cal3='cal -3'
 alias caly='cal -y'
-alias update_cv='cp "$HOME"/Downloads/curriculum_vitae.pdf "$HOME"/Projects/brunoroque06.github.io/documents/BrunoRoqueCv.pdf; tar -xf "$HOME"/Downloads/curriculum-vitae.zip -C "$HOME"/Projects/brunoroque06.github.io/documents/curriculum-vitae'
+alias cv_update='cp "$HOME"/Downloads/curriculum_vitae.pdf "$HOME"/Projects/brunoroque06.github.io/documents/BrunoRoqueCv.pdf; tar -xf "$HOME"/Downloads/curriculum-vitae.zip -C "$HOME"/Projects/brunoroque06.github.io/documents/curriculum-vitae'
 weather() { curl http://wttr.in/~"${1:-Bern}"; }
 
 # Npm
@@ -131,7 +131,6 @@ alias list_ports='lsof -PiTCP G LISTEN'
 alias k9='kill -9'
 
 # Shell
-shell_benchmark() { for i in $(seq 1 10); do time ${1:-zsh} -i -c exit; done }
 alias shell_scripts_lint='find . -not -path "./.git/*" -type f \( ! -name "*.*" -o -name ".*" \) -exec shellcheck -x -e SC1090 {} \;'
 alias shell_scripts_format='shfmt -i 2 -s -w .'
 

@@ -34,7 +34,6 @@ set smartcase
 " Text
 syntax enable
 set encoding=utf-8
-set guifont=SF\ Mono:h14
 augroup markdownSpell
   autocmd!
   autocmd FileType markdown setlocal spell
