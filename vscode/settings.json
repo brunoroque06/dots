@@ -16,5 +16,6 @@
   "typescript.updateImportsOnFileMove.enabled": "always",
   "vim.useSystemClipboard": true,
   "vim.surround": true,
-  "window.zoomLevel": 0.25
+  "window.zoomLevel": 0.25,
+  "cSpell.userWords": ["blockchain"]
 }
