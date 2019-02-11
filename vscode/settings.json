@@ -17,5 +17,9 @@
   "vim.useSystemClipboard": true,
   "vim.surround": true,
   "window.zoomLevel": 0.25,
-  "cSpell.userWords": ["blockchain"]
+  "cSpell.userWords": [
+    "blockchain",
+    "gimli",
+    "truthy"
+  ]
 }
