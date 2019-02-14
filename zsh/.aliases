@@ -98,9 +98,10 @@ alias cv_update='cp "$HOME"/Downloads/curriculum_vitae.pdf "$HOME"/Projects/brun
 weather() { curl http://wttr.in/~"${1:-Bern}"; }
 
 # Npm
-alias nci="npm ci"
+alias nci='npm ci'
 alias ni='npm install'
-alias nlg='npm list -g --depth=0'
+alias npm_global_list='npm list -g --depth=0'
+alias npm_global_update='npm update -g'
 alias npm_registry='_command_with_options "npm config set registry" https://registry.npmjs.org/ https://spoudlab.jfrog.io/spoudlab/api/npm/npm/'
 _command_with_options() {
   printf 'Command: %s\n' "$1"
