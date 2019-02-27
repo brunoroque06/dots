@@ -1,10 +1,10 @@
 DavidAnson.vscode-markdownlint
 DevonDCarew.bazel-code
-eg2.tslint
 eg2.vscode-npm-script
 esbenp.prettier-vscode
 justusadam.language-haskell
 ms-vscode.Go
+ms-vscode.vscode-typescript-tslint-plugin
 streetsidesoftware.code-spell-checker
 VisualStudioExptTeam.vscodeintellicode
 vscodevim.vim
