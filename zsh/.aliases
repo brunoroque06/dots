@@ -75,6 +75,7 @@ alias jr='java -jar'
 alias jv='jar tvf'
 
 # Json
+alias -g J='| json_format'
 alias json_format='python3 -m json.tool'
 
 # Kafka
