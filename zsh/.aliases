@@ -63,6 +63,16 @@ alias greset='git reset --hard'
 alias grl='git reflog --date=iso'
 alias gs='git status -u'
 alias lg='lazygit'
+gbbpr() {
+  MESSAGE="$1"
+  BRANCH=$(echo "$MESSAGE" | sed 's/[^a-zA-Z0-9]/-/g' | tr '[:upper:]' '[:lower:]')
+  git checkout -b "$BRANCH"
+  git add --a
+  git commit -am "$MESSAGE"
+  git push -u origin "$BRANCH"
+ curl -X POST -H "Content-Type: application/json" -u "$BITBUCKET_USERNAME":"$BITBUCKET_PASSWORD" https://api.bitbucket.org/2.0/repositories/"$REPO"/pullrequests -d "{\"title\":\"$MESSAGE\",\"source\":{\"branch\":{\"name\":\"$BRANCH\"}},\"reviewers\":[{\"uuid\":\"{1dbb5f95-3ad8-49e5-a353-002a5c52b277}\"}],\"close_source_branch\":\"true\"}"
+  printf "Pull request created: %s (%s)." "$BRANCH" "$MESSAGE"
+}
 
 # Golang
 alias gob='go build ./...'
