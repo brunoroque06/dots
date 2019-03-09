@@ -16,7 +16,13 @@ alias bta='bazel test //...'
 alias brew_update='brew update; brew upgrade; brew cleanup; brew doctor'
 
 # Commands
-print_command() { ([[ -n $(declare -f "${1}") ]] && declare -f "${1}") || alias "${1}"; }
+cmds() {
+  KEYWORD=$(printf "%s" "$1" | tr '[:upper:]' '[:lower:]')
+  LOWERCASE='tolower($0) ~'
+  PATTERN="/#.*$KEYWORD.*/,/^$/"
+  awk "$LOWERCASE $PATTERN;" "$HOME"/.aliases "$HOME"/.spoud
+}
+cmd() { ([[ -n $(declare -f "${1}") ]] && declare -f "${1}") || alias "${1}"; }
 
 # Directories
 alias ..='cd ..'
@@ -37,7 +43,7 @@ alias dr='docker build -t ${PWD##*/} . ; docker run --net="host" ${PWD##*/}'
 alias drmi='docker rmi -f $(docker images -a -q)'
 
 # Files
-c() { bat --theme=1337 --style=header,grid "${1}"; }
+alias c='bat --theme=1337 --style=header,grid'
 file_unzip() { mkdir "${1%.*}"; tar -xf "$1" -C "${1%.*}"; }
 
 # Git
