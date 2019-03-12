@@ -10,9 +10,10 @@ tmux send-keys 'mrcd; gl' C-m
 
 tmux new-window -t $SESSION:2 -n 'Baselines'
 tmux split-window -v -t $SESSION:2.0
+tmux split-window -h -t $SESSION:2.1
 
 tmux send-keys -t $SESSION:2.0 "cd $HOME/Projects/sliding-window-baseline" C-m
-tmux send-keys -t $SESSION:2.1 "docker-compose -f $HOME/Projects/dotfiles/tmux/scripts/kafka.yml up" C-m
-tmux send-keys -t $SESSION:2.2 "sleep 10; kafka-console-producer --broker-list localhost:9092 --topic event-5012 < $HOME/Projects/telemetrie/flink-pipeline/event-5012.json" C-m
+tmux send-keys -t $SESSION:2.1 "sleep 10; kafka-console-producer --broker-list localhost:9092 --topic event-5012 < $HOME/Projects/telemetrie/flink-pipeline/event-5012.json" C-m
+tmux send-keys -t $SESSION:2.2 "docker-compose -f $HOME/Projects/dotfiles/tmux/scripts/kafka.yml up" C-m
 
 tmux attach-session -t $SESSION
