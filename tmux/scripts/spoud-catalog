@@ -16,6 +16,6 @@ tmux split-window -h -t $SESSION:2.2
 
 tmux send-keys -t $SESSION:2.1 'mrcd; sleep 5; populator_active=true spring_jpa_properties_hibernate_generate_ddl=true spring_jpa_properties_hibernate_hbm2ddl_auto=create bazel run catalog/service:app' C-m
 tmux send-keys -t $SESSION:2.2 'mrcd; cd catalog/client; npm run serve' C-m
-tmux send-keys -t $SESSION:2.3 "docker-compose -f $HOME/Projects/dotfiles/tmux/scripts/spoud-catalog.yml up postgres" C-m
+tmux send-keys -t $SESSION:2.3 "docker-compose -f $HOME/Projects/dotfiles/tmux/scripts/kafka.yml -f $HOME/Projects/dotfiles/tmux/scripts/postgres.yml up" C-m
 
 tmux attach-session -t $SESSION
