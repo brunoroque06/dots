@@ -46,6 +46,9 @@ alias drmi='docker rmi -f $(docker images -a -q)'
 alias c='bat --theme=1337 --style=header,grid'
 file_unzip() { mkdir "${1%.*}"; tar -xf "$1" -C "${1%.*}"; }
 
+# Find
+alias -g G='| grep --color=always'
+
 # Git
 alias ga='git add'
 alias gaa='git add --a'
@@ -81,8 +84,7 @@ alias jr='java -jar'
 alias jv='jar tvf'
 
 # Json
-alias -g J='| json_format'
-alias json_format='python3 -m json.tool'
+alias -g J='| jq'
 
 # Kafka
 KAFKA='localhost:9092'
@@ -130,10 +132,6 @@ alias ns="awk '/\"scripts\":/,/}/' package.json"
 alias pacman_update='sudo pacman -Syu'
 alias yay_update='yay -Syu'
 
-# Pipelines
-alias -g G='| grep --color=always'
-alias -g Y='| pbcopy'
-
 # Processes
 alias list_ports='lsof -PiTCP G LISTEN'
 alias k9='kill -9'
@@ -162,6 +160,10 @@ alias vim_update='vim +PlugUpgrade +PlugUpdate! +PlugClean! +qa'
 readonly CODE_PLUGINS="$HOME/.vscode/extensions.txt"
 alias code_extensions_export='code --list-extensions > $CODE_PLUGINS'
 alias code_extensions_install='< $CODE_PLUGINS xargs -L 1 code --install-extension'
+
+# Yank/Paste
+alias p='pbpaste'
+alias -g Y='| pbcopy'
 
 # Zsh
 alias reload="exec zsh"

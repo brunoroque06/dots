@@ -20,6 +20,7 @@ brew install go
 brew install htop
 brew install java gradle
 brew install jesseduffield/lazygit/lazygit
+brew install jq
 brew install kafka
 brew install node
 brew install python
