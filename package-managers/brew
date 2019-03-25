@@ -12,6 +12,7 @@ brew update
 brew install bat
 brew install cmake
 brew install diff-so-fancy
+brew install exa
 brew install fzf
 printf 'y\ny\nn\n' | "$(brew --prefix)"/opt/fzf/install
 brew install ghc cabal-install
