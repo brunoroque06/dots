@@ -36,4 +36,4 @@ source "$HOME"/.spoud
 
 # Plugins
 source "$HOME"/.zsh_plugins
-plugins_load
+zsh_plugins_load
