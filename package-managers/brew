@@ -16,17 +16,15 @@ brew install exa
 brew install fzf
 printf 'y\ny\nn\n' | "$(brew --prefix)"/opt/fzf/install
 brew install ghc cabal-install
-brew install git
+brew install git jesseduffield/lazygit/lazygit
 brew install go
 brew install htop
 brew install java gradle
-brew install jesseduffield/lazygit/lazygit
 brew install jq
 brew install kafka
 brew install node
 brew install python
-brew install shellcheck
-brew install shfmt
+brew install shellcheck shfmt
 brew install tmux
 brew install vim
 brew install wget

@@ -31,6 +31,8 @@ zsh_plugins_install() {
   _clone https://github.com/zsh-users/zsh-syntax-highlighting.git
 
   _download_file https://raw.githubusercontent.com/zsh-users/zsh-autosuggestions/master/zsh-autosuggestions.zsh
+  
+  _download_file https://raw.githubusercontent.com/zsh-users/zsh-history-substring-search/master/zsh-history-substring-search.zsh
 }
 
 zsh_plugins_load() {
@@ -41,4 +43,5 @@ zsh_plugins_load() {
   source "$ZSH_PLUGINS"/z.sh
   source "$ZSH_PLUGINS"/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
   source "$ZSH_PLUGINS"/zsh-autosuggestions.zsh
+  source "$ZSH_PLUGINS"/zsh-history-substring-search.zsh
 }
