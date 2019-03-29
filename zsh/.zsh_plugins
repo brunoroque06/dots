@@ -27,11 +27,8 @@ zsh_plugins_install() {
   ln -fns "$ZSH_PLUGINS"/async.zsh "$FPATH_PLUGINS"/async
 
   _clone https://github.com/zsh-users/zsh-completions.git
-
   _clone https://github.com/zsh-users/zsh-syntax-highlighting.git
-
   _download_file https://raw.githubusercontent.com/zsh-users/zsh-autosuggestions/master/zsh-autosuggestions.zsh
-  
   _download_file https://raw.githubusercontent.com/zsh-users/zsh-history-substring-search/master/zsh-history-substring-search.zsh
 }
 
