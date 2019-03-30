@@ -5,7 +5,8 @@ end
 
 function prompt::git
   set -l branch (git rev-parse --abbrev-ref HEAD)
-  if test (git status -s) -z
+  set -l stat (git status -s)
+  if test -z "$stat"
     set_color -b green black
   else
     set_color -b yellow black
@@ -29,7 +30,7 @@ function fish_prompt
   set -l last_status $status
   printf '\n'
   prompt::dir
-  # prompt::git
+  prompt::git
   prompt::status $last_status
   printf '\n'
   prompt::lambda
