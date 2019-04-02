@@ -1,9 +1,11 @@
 {
+  "cSpell.userWords": ["blockchain", "gimli", "truthy"],
   "editor.cursorWidth": 2,
   "editor.fontFamily": "SF Mono",
   "editor.fontSize": 13,
   "editor.formatOnSave": true,
   "editor.minimap.enabled": false,
+  "editor.suggestSelection": "first",
   "editor.tabSize": 2,
   "editor.wordWrap": "on",
   "explorer.confirmDelete": false,
@@ -11,15 +13,16 @@
   "files.autoSave": "afterDelay",
   "javascript.updateImportsOnFileMove.enabled": "always",
   "javascript.validate.enable": true,
+  "python.formatting.provider": "black",
+  "python.jediEnabled": false,
+  "python.linting.enabled": true,
+  "python.linting.pylintEnabled": true,
+  "python.pythonPath": "/usr/local/bin/python3",
   "typescript.implementationsCodeLens.enabled": false,
   "typescript.referencesCodeLens.enabled": false,
   "typescript.updateImportsOnFileMove.enabled": "always",
-  "vim.useSystemClipboard": true,
   "vim.surround": true,
-  "window.zoomLevel": 0.25,
-  "cSpell.userWords": [
-    "blockchain",
-    "gimli",
-    "truthy"
-  ]
+  "vim.useSystemClipboard": true,
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "window.zoomLevel": 0.25
 }
