@@ -4,9 +4,11 @@ function prompt::dir
 end
 
 function prompt::git
+  if test ! -d .git/
+    return
+  end
   set -l branch (git rev-parse --abbrev-ref HEAD)
-  set -l stat (git status -s)
-  if test -z "$stat"
+  if test -z (git status -s | head -n 1)
     set_color -b green black
   else
     set_color -b yellow black
