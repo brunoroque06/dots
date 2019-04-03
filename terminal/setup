@@ -3,4 +3,4 @@
 printf 'Setting up MacOS Terminal...\n'
 
 cp /Applications/Utilities/Terminal.app/Contents/Resources/Fonts/*.otf "$HOME"/Library/Fonts/
-ln -fns "$PWD"/terminal/com.apple.Terminal.plist "$HOME"/Library/Preferences/com.apple.Terminal.plist
+ln -fsv "$PWD"/terminal/com.apple.Terminal.plist "$HOME"/Library/Preferences/com.apple.Terminal.plist

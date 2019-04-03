@@ -6,13 +6,13 @@ source utilities/os
 
 printf 'Symlinking VSCode configuration...\n'
 if is_mac_os; then
-  ln -fns "$PWD"/vscode/settings.json "$HOME/Library/Application Support/Code/User/settings.json"
+  ln -fsv "$PWD"/vscode/settings.json "$HOME/Library/Application Support/Code/User/settings.json"
 elif is_arch; then
-  ln -fns "$PWD"/vscode/settings.json "$HOME"/.config/Code/User/settings.json
+  ln -fsv "$PWD"/vscode/settings.json "$HOME"/.config/Code/User/settings.json
 fi
 
 printf 'Installing VSCode extensions...\n'
 readonly CODE_DIR="$HOME"/.vscode
 mkdir -p "$CODE_DIR"
-ln -fns "$PWD"/vscode/extensions.txt "$CODE_DIR"/extensions.txt
+ln -fsv "$PWD"/vscode/extensions.txt "$CODE_DIR"/extensions.txt
 xargs <"$CODE_DIR"/extensions.txt -L 1 code --force --install-extension

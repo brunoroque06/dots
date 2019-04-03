@@ -22,9 +22,9 @@ zsh_plugins_install() {
   _download_file https://raw.githubusercontent.com/rupa/z/master/z.sh
 
   _download_file https://raw.githubusercontent.com/sindresorhus/pure/master/pure.zsh
-  ln -fns "$ZSH_PLUGINS"/pure.zsh "$FPATH_PLUGINS"/prompt_pure_setup
+  ln -fsv "$ZSH_PLUGINS"/pure.zsh "$FPATH_PLUGINS"/prompt_pure_setup
   _download_file https://raw.githubusercontent.com/sindresorhus/pure/master/async.zsh
-  ln -fns "$ZSH_PLUGINS"/async.zsh "$FPATH_PLUGINS"/async
+  ln -fsv "$ZSH_PLUGINS"/async.zsh "$FPATH_PLUGINS"/async
 
   _clone https://github.com/zsh-users/zsh-completions.git
   _clone https://github.com/zsh-users/zsh-syntax-highlighting.git
