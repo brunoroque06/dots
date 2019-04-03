@@ -2,6 +2,4 @@
 
 printf 'Setting up Vim...\n'
 
-source utilities/files
-
-symlink_to_home "$PWD"/vim/.vimrc
+ln -fsv "$PWD"/vim/.vimrc "$HOME"/.vimrc

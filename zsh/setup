@@ -2,12 +2,10 @@
 
 printf 'Setting up Zsh...\n'
 
-source utilities/files
-
-symlink_to_home "$PWD"/zsh/.aliases
-symlink_to_home "$PWD"/zsh/.spoud
-symlink_to_home "$PWD"/zsh/.zsh_plugins
-symlink_to_home "$PWD"/zsh/.zshrc
+ln -fsv "$PWD"/zsh/.aliases "$HOME"/.aliases
+ln -fsv "$PWD"/zsh/.spoud "$HOME"/.spoud
+ln -fsv "$PWD"/zsh/.zsh_plugins "$HOME"/.zsh_plugins
+ln -fsv "$PWD"/zsh/.zshrc "$HOME"/.zshrc
 
 source zsh/.zsh_plugins
 zsh_plugins_install

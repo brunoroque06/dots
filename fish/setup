@@ -2,11 +2,11 @@
 
 printf 'Setting up fish...\n'
 
-mkdir -p "$HOME/.config/fish/functions"
+mkdir -p "$HOME"/.config/fish/functions
 
-ln -fsv "$PWD/fish/functions/fish_prompt.fish" "$HOME/.config/fish/functions/fish_prompt.fish"
-ln -fsv "$PWD/fish/config.fish" "$HOME/.config/fish/config.fish"
-ln -fsv "$PWD/fish/fishfile" "$HOME/.config/fish/fishfile"
+ln -fsv "$PWD"/fish/functions/fish_prompt.fish "$HOME"/.config/fish/functions/fish_prompt.fish
+ln -fsv "$PWD"/fish/config.fish "$HOME"/.config/fish/config.fish
+ln -fsv "$PWD"/fish/fishfile "$HOME"/.config/fish/fishfile
 
 curl https://git.io/fisher --create-dirs -sLo ~/.config/fish/functions/fisher.fish
 fish -c fisher

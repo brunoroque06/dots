@@ -2,6 +2,4 @@
 
 printf 'Setting up Git...\n'
 
-source utilities/files
-
-symlink_to_home "$PWD"/git/.gitconfig
+ln -fsv "$PWD"/git/.gitconfig "$HOME"/.gitconfig
