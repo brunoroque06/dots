@@ -58,7 +58,6 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged')
-Plug 'ervandew/supertab'
 Plug 'itchyny/lightline.vim'
 let g:lightline = { 'colorscheme': 'wombat' }
 Plug 'morhetz/gruvbox'
@@ -74,4 +73,3 @@ call plug#end()
 set background=dark
 colorscheme gruvbox
 highlight SpellBad cterm=underline ctermfg=DarkRed gui=underline guifg=DarkRed
-
