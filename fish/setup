@@ -10,3 +10,7 @@ ln -fsv "$PWD"/fish/fishfile "$HOME"/.config/fish/fishfile
 
 curl https://git.io/fisher --create-dirs -sLo ~/.config/fish/functions/fisher.fish
 fish -c fisher
+
+ln -fsv "$PWD"/fish/functions/abbrs_setup.fish "$HOME"/.config/fish/functions/abbrs_setup.fish
+ln -fsv "$PWD"/fish/abbrs.fish "$HOME"/.config/fish/abbrs.fish
+fish -c abbrs_setup

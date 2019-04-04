@@ -26,7 +26,8 @@ cmd() { ([[ -n $(declare -f "${1}") ]] && declare -f "${1}") || alias "${1}"; }
 
 # Directories
 alias ..='cd ..'
-alias ll='exa --all --classify --git --long'
+alias l='exa --all --classify --git --long'
+alias ll='ls -aGl'
 alias rmrf='rm -rf'
 alias tree='exa --all --tree --level=3 --ignore-glob=".git|node_modules"'
 
