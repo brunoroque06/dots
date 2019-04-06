@@ -6,22 +6,22 @@ function fish_prompt
   prompt::status $last_status
   printf '\n'
   prompt::lambda
-  set_color -b normal normal
+  set_color normal
 end
 
 function prompt::dir
-  set_color -b blue black
-  printf ' %s ' (pwd | sed "s,^$HOME,~,")
+  set_color blue
+  printf '%s ' (pwd | sed "s,^$HOME,~,")
 end
 
 function prompt::git
   prompt::git::is_repo; or return
   if test -z (git status -s | head -n 1)
-    set_color -b green black
+    set_color green
   else
-    set_color -b yellow black
+    set_color yellow
   end
-  printf ' ⎇ %s ' (git rev-parse --abbrev-ref HEAD)
+  printf '⎇ %s ' (git rev-parse --abbrev-ref HEAD)
 end
 
 function prompt::git::is_repo
@@ -29,13 +29,13 @@ function prompt::git::is_repo
 end
 
 function prompt::status
-  set_color -b normal red
+  set_color red
   if [ $argv[1] -ne 0 ]
-    printf ' ✖'
+    printf '✖'
   end
 end
 
 function prompt::lambda
-  set_color -b normal magenta
+  set_color magenta
   printf 'λ '
 end
