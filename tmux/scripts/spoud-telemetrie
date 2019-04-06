@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-SESSION='Spoud'
+SESSION='Spoud Telemetrie'
 
 tmux new-session -s $SESSION -n 'dotfiles' -d
 tmux send-keys "cd $HOME/Projects/dotfiles" C-m
@@ -8,12 +8,20 @@ tmux send-keys "cd $HOME/Projects/dotfiles" C-m
 tmux new-window -t $SESSION:1 -n 'MonoRepo'
 tmux send-keys 'mrcd; gl' C-m
 
-tmux new-window -t $SESSION:2 -n 'Telemetrie'
+tmux new-window -t $SESSION:2 -n 'Flink'
 tmux split-window -v -t $SESSION:2.0
 tmux split-window -h -t $SESSION:2.1
 
 tmux send-keys -t $SESSION:2.0 "cd $HOME/Projects/telemetrie/flink-pipeline" C-m
-tmux send-keys -t $SESSION:2.1 "sleep 10; kafka-console-producer --broker-list localhost:9092 --topic baseline-histograms < $HOME/Projects/telemetrie/baseline-histograms.json" C-m
-tmux send-keys -t $SESSION:2.2 "docker-compose -f $HOME/Projects/dotfiles/tmux/scripts/kafka.yml up" C-m
+# tmux send-keys -t $SESSION:2.1 "sleep 10; kafka-console-producer --broker-list localhost:9092 --topic baseline-histograms < $HOME/Projects/telemetrie/baseline-histograms.json" C-m
+# tmux send-keys -t $SESSION:2.2 "docker-compose -f $HOME/Projects/dotfiles/tmux/scripts/kafka.yml up" C-m
+
+tmux new-window -t $SESSION:3 -n 'Dashboard'
+tmux split-window -v -t $SESSION:3.0
+tmux split-window -h -t $SESSION:3.1
+
+tmux send-keys -t $SESSION:3.0 "cd $HOME/Projects/telemetrie/grafana-dashboard-5" C-m
+tmux send-keys -t $SESSION:3.1 "cd $HOME/Projects/telemetrie/grafana-dashboard-5; ./scripts/run.sh" C-m
+tmux send-keys -t $SESSION:3.2 "kub_reporting_api" C-m
 
 tmux attach-session -t $SESSION
