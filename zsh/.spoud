@@ -33,3 +33,5 @@ alias mrcd='cd $MR'
 
 # Kubernetes
 alias kub_kafka='kubectl port-forward service/broker -n kafka 9092:9092'
+alias kub_pw='kops get secrets kube --type secret -oplaintext --name kubernetes.mobi-telemetrie.spoud.io'
+alias kub_reporting_api='kubectl port-forward reporting-api-test-77bcb6b779-8gz7h -n dashboard-alpha 9200:8080'

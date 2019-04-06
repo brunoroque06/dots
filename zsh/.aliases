@@ -29,7 +29,7 @@ alias ..='cd ..'
 alias l='exa --all --classify --git --long'
 alias ll='ls -aGl'
 alias rmrf='rm -rf'
-alias tree='exa --all --tree --level=3 --ignore-glob=".git|node_modules"'
+alias tree='exa --all --tree --level=2 --ignore-glob=".git|node_modules"'
 
 # Display
 alias displays='system_profiler SPDisplaysDataType'
