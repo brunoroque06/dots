@@ -2,7 +2,7 @@
   "cSpell.userWords": ["blockchain", "gimli", "truthy"],
   "editor.cursorWidth": 2,
   "editor.fontFamily": "SF Mono",
-  "editor.fontSize": 13,
+  "editor.fontSize": 14,
   "editor.formatOnSave": true,
   "editor.minimap.enabled": false,
   "editor.suggestSelection": "first",
@@ -23,6 +23,5 @@
   "typescript.updateImportsOnFileMove.enabled": "always",
   "vim.surround": true,
   "vim.useSystemClipboard": true,
-  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-  "window.zoomLevel": 0.25
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue"
 }
