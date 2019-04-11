@@ -10,7 +10,6 @@ fi
 brew update
 
 brew install bat
-brew install cmake
 brew install diff-so-fancy
 brew install exa
 brew install fish
@@ -30,9 +29,8 @@ brew install wget
 brew install zsh
 brew install fzf; printf 'y\ny\nn\n' | "$(brew --prefix)"/opt/fzf/install
 
+brew cask install alacritty
 brew cask install google-chrome
 brew cask install visual-studio-code
 
-brew upgrade
-brew cleanup
 brew doctor

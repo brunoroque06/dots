@@ -85,8 +85,6 @@ live_config_reload: true
 alt_send_esc: true
 
 key_bindings:
-  - { key: Paste, action: Paste }
-  - { key: Copy, action: Copy }
   - { key: L, mods: Control, chars: "\x0c" }
   - { key: Left, mods: Alt, chars: "\x1bb" }
   - { key: Right, mods: Alt, chars: "\x1bf" }
