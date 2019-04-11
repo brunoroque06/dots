@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-source utilities/files
+source utilities/shell
 
-sudo pacman -S bat diff-so-fancy git go-pie gradle htop nodejs npm shellcheck shfmt python tmux vim wget xclip zsh
+sudo pacman -S --needed alacritty bat diff-so-fancy exa fish fzf git go-pie gradle htop jq nodejs npm shellcheck shfmt python tmux vim wget xclip zsh
 
 if does_command_not_exist yay; then
   git clone https://aur.archlinux.org/yay.git
@@ -13,4 +13,4 @@ if does_command_not_exist yay; then
   rm -rf yay/
 fi
 
-yay -S google-chrome lazygit otf-sfmono visual-studio-code-bin
+yay -S --needed google-chrome lazygit otf-sfmono visual-studio-code-bin
