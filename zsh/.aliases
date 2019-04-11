@@ -14,6 +14,7 @@ alias bta='bazel test //...'
 
 # Brew
 alias brew_update='brew update; brew upgrade; brew cleanup; brew doctor'
+alias brew_cask_update='brew update; brew cask upgrade; brew cask doctor'
 
 # Commands
 cmds() {

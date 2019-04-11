@@ -11,6 +11,7 @@ abbr bta 'bazel test //...'
 
 # Brew
 abbr brew_update 'brew update; brew upgrade; brew cleanup; brew doctor'
+abbr brew_cask_update 'brew update; brew cask upgrade; brew cask doctor'
 
 # Directories
 abbr l 'exa --all --classify --git --long'
