@@ -7,5 +7,3 @@
 ```
 
 Supported: MacOS, Arch Linux.
-
-![Shell](shell.png)
