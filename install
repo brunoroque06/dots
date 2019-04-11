@@ -6,14 +6,16 @@ source utilities/shell
 printf 'Starting dotfiles installation...\n'
 
 if is_mac_os; then
+  cp /Applications/Utilities/Terminal.app/Contents/Resources/Fonts/*.otf "$HOME"/Library/Fonts/
   printf 'Installing brew packages/casks...\n'
   prompt_for_command ./package-managers/brew
-  ./terminal/setup
 elif is_arch; then
   printf 'Installing pacman packages...\n'
   prompt_for_command ./package-managers/pacman
 fi
 
+./alacritty/setup
+./fish/setup
 ./git/setup
 ./intellij/setup
 ./tmux/setup
