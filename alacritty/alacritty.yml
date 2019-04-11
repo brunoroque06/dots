@@ -4,8 +4,8 @@ env:
 
 window:
   padding:
-    x: 10
-    y: 10
+    x: 20
+    y: 20
   dynamic_padding: false
   decorations: full
   start_maximized: false
