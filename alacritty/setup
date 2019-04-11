@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+printf 'Setting up alacritty...\n'
+
+mkdir -p "$HOME"/.config/alacritty
+ln -fsv "$PWD"/alacritty/alacritty.yml "$HOME"/.config/alacritty/alacritty.yml
