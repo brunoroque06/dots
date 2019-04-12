@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+source utilities/git
+
 readonly ZSH_PLUGINS="$HOME/.zsh_plugs"
 readonly FPATH_PLUGINS="/usr/local/share/zsh/site-functions"
 
@@ -11,13 +13,8 @@ _download_file() {
   (cd "$ZSH_PLUGINS"; curl -O "$1")
 }
 
-_clone() {
-  (cd "$ZSH_PLUGINS"; git clone "$1")
-}
-
 zsh_plugins_install() {
-  rm -rf "$ZSH_PLUGINS"
-  mkdir "$ZSH_PLUGINS"
+  mkdir -p "$ZSH_PLUGINS"
 
   _download_file https://raw.githubusercontent.com/rupa/z/master/z.sh
 
@@ -26,8 +23,8 @@ zsh_plugins_install() {
   _download_file https://raw.githubusercontent.com/sindresorhus/pure/master/async.zsh
   ln -fsv "$ZSH_PLUGINS"/async.zsh "$FPATH_PLUGINS"/async
 
-  _clone https://github.com/zsh-users/zsh-completions.git
-  _clone https://github.com/zsh-users/zsh-syntax-highlighting.git
+  clone_or_pull https://github.com/zsh-users/zsh-completions.git "$ZSH_PLUGINS"
+  clone_or_pull https://github.com/zsh-users/zsh-syntax-highlighting.git "$ZSH_PLUGINS"
   _download_file https://raw.githubusercontent.com/zsh-users/zsh-autosuggestions/master/zsh-autosuggestions.zsh
   _download_file https://raw.githubusercontent.com/zsh-users/zsh-history-substring-search/master/zsh-history-substring-search.zsh
 }

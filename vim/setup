@@ -1,12 +1,14 @@
 #!/usr/bin/env bash
 
+source utilities/git
+
 printf 'Setting up Vim...\n'
+
+readonly PLUGINS_FOLDER="$HOME"/.vim/pack/plugins/start
+mkdir -p "$PLUGINS_FOLDER"
 
 ln -fsv "$PWD"/vim/vimrc "$HOME"/.vim/vimrc
 
-readonly PLUGINS_FOLDER="$HOME"/.vim/pack/plugins/start
-rm -rf "$PLUGINS_FOLDER"
-mkdir -p "$PLUGINS_FOLDER"
-git clone https://github.com/w0rp/ale.git "$PLUGINS_FOLDER"/ale
-git clone https://github.com/morhetz/gruvbox.git "$PLUGINS_FOLDER"/gruvbox
-git clone https://tpope.io/vim/surround.git "$PLUGINS_FOLDER"/surround
+clone_or_pull https://github.com/w0rp/ale.git "$PLUGINS_FOLDER"
+clone_or_pull https://github.com/morhetz/gruvbox.git "$PLUGINS_FOLDER"
+clone_or_pull https://github.com/tpope/vim-surround.git "$PLUGINS_FOLDER"
