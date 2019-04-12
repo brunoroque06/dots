@@ -5,9 +5,9 @@ env:
 window:
   padding:
     x: 20
-    y: 20
+    y: 30
   dynamic_padding: false
-  decorations: full
+  decorations: transparent
   start_maximized: false
 
 scrolling:
@@ -85,6 +85,8 @@ live_config_reload: true
 alt_send_esc: true
 
 key_bindings:
+  - { key: PageUp, action: "ScrollPageUp" }
+  - { key: PageDown, action: "ScrollPageDown" }
   - { key: L, mods: Control, chars: "\x0c" }
   - { key: Left, mods: Alt, chars: "\x1bb" }
   - { key: Right, mods: Alt, chars: "\x1bf" }
