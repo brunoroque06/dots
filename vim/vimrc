@@ -44,32 +44,19 @@ augroup END
 set cursorline
 set laststatus=2
 set lazyredraw
-set noshowmode
 set number
 set scrolloff=10
 set showcmd
 set wildmenu
 
-" Plugins
-if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-endif
-
-call plug#begin('~/.vim/plugged')
-Plug 'itchyny/lightline.vim'
-let g:lightline = { 'colorscheme': 'wombat' }
-Plug 'morhetz/gruvbox'
-Plug 'tpope/vim-surround'
-Plug 'w0rp/ale'
+" Theme
+set background=dark
+colorscheme gruvbox
+highlight SpellBad cterm=underline ctermfg=DarkRed gui=underline guifg=DarkRed
+ 
 let g:ale_fix_on_save = 1
 let g:ale_fixers = {}
 let g:ale_fixers['javascript'] = ['prettier']
 let g:ale_fixers['typescript'] = ['prettier']
 let g:ale_sign_error = '✖'
-call plug#end()
 
-set background=dark
-colorscheme gruvbox
-highlight SpellBad cterm=underline ctermfg=DarkRed gui=underline guifg=DarkRed
