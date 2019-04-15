@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-source utilities/git
-
 readonly ZSH_PLUGINS="$HOME/.zsh_plugs"
 readonly FPATH_PLUGINS="/usr/local/share/zsh/site-functions"
 
@@ -11,6 +9,13 @@ readonly PURE_GIT_UP_ARROW='▲'
 
 _download_file() {
   (cd "$ZSH_PLUGINS"; curl -O "$1")
+}
+
+_clone_or_pull() {
+  REPO=$(basename "$1" .git)
+  DIR="$2"/"$REPO"
+  mkdir -p "$DIR"
+  git -C "$DIR" pull || git clone "$1" "$DIR"
 }
 
 zsh_plugins_install() {
@@ -23,8 +28,8 @@ zsh_plugins_install() {
   _download_file https://raw.githubusercontent.com/sindresorhus/pure/master/async.zsh
   ln -fsv "$ZSH_PLUGINS"/async.zsh "$FPATH_PLUGINS"/async
 
-  clone_or_pull https://github.com/zsh-users/zsh-completions.git "$ZSH_PLUGINS"
-  clone_or_pull https://github.com/zsh-users/zsh-syntax-highlighting.git "$ZSH_PLUGINS"
+  _clone_or_pull https://github.com/zsh-users/zsh-completions.git "$ZSH_PLUGINS"
+  _clone_or_pull https://github.com/zsh-users/zsh-syntax-highlighting.git "$ZSH_PLUGINS"
   _download_file https://raw.githubusercontent.com/zsh-users/zsh-autosuggestions/master/zsh-autosuggestions.zsh
   _download_file https://raw.githubusercontent.com/zsh-users/zsh-history-substring-search/master/zsh-history-substring-search.zsh
 }

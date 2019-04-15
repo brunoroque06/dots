@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 
-source utilities/git
+_clone_or_pull() {
+  REPO=$(basename "$1" .git)
+  DIR="$2"/"$REPO"
+  mkdir -p "$DIR"
+  git -C "$DIR" pull || git clone "$1" "$DIR"
+}
 
 printf 'Setting up Vim...\n'
 
@@ -9,6 +14,6 @@ mkdir -p "$PLUGINS_FOLDER"
 
 ln -fsv "$PWD"/vim/vimrc "$HOME"/.vim/vimrc
 
-clone_or_pull https://github.com/w0rp/ale.git "$PLUGINS_FOLDER"
-clone_or_pull https://github.com/morhetz/gruvbox.git "$PLUGINS_FOLDER"
-clone_or_pull https://github.com/tpope/vim-surround.git "$PLUGINS_FOLDER"
+_clone_or_pull https://github.com/w0rp/ale.git "$PLUGINS_FOLDER"
+_clone_or_pull https://github.com/morhetz/gruvbox.git "$PLUGINS_FOLDER"
+_clone_or_pull https://github.com/tpope/vim-surround.git "$PLUGINS_FOLDER"
