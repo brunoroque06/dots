@@ -2,7 +2,7 @@
   "cSpell.userWords": ["blockchain", "gimli", "truthy"],
   "editor.cursorWidth": 2,
   "editor.fontFamily": "SF Mono",
-  "editor.fontSize": 14,
+  "editor.fontSize": 13,
   "editor.formatOnSave": true,
   "editor.minimap.enabled": false,
   "editor.suggestSelection": "first",
