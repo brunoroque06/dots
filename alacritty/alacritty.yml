@@ -5,9 +5,9 @@ env:
 window:
   padding:
     x: 20
-    y: 30
+    y: 5
   dynamic_padding: false
-  decorations: transparent
+  decorations: full
   start_maximized: false
 
 scrolling:
