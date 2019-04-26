@@ -1,5 +1,4 @@
 DavidAnson.vscode-markdownlint
-DevonDCarew.bazel-code
 eg2.vscode-npm-script
 esbenp.prettier-vscode
 justusadam.language-haskell
@@ -10,4 +9,3 @@ skyapps.fish-vscode
 streetsidesoftware.code-spell-checker
 VisualStudioExptTeam.vscodeintellicode
 vscodevim.vim
-zxh404.vscode-proto3
