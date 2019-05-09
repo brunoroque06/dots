@@ -1,5 +1,6 @@
 {
   "cSpell.userWords": ["blockchain", "gimli", "truthy"],
+  "editor.cursorBlinking": "solid",
   "editor.cursorWidth": 2,
   "editor.fontFamily": "SF Mono",
   "editor.fontSize": 13,
