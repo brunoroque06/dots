@@ -8,7 +8,7 @@ zstyle ':completion:*' menu select
 PATH=$PATH:$(go env GOPATH)/bin:$HOME/Library/Python/3.7/bin:$(ruby -e 'print Gem.user_dir')/bin
 export PATH
 export SSH_KEY_PATH="$HOME/.ssh/rsa_id"
-export JAVA_HOME="/Library/Java/JavaVirtualMachines/adoptopenjdk-11.0.2.jdk/Contents/Home"
+export JAVA_HOME="/Library/Java/JavaVirtualMachines/openjdk-12.0.1.jdk/Contents/Home"
 
 # FZF
 readonly FZF_COMMAND="find . -not \\( -path ./.git -prune \\) -not \\( -path ./node_modules -prune \\) -type f | cut -c3-"
