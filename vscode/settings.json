@@ -1,5 +1,12 @@
 {
-  "cSpell.userWords": ["blockchain", "gimli", "truthy"],
+  "cSpell.userWords": [
+    "blockchain",
+    "gimli",
+    "numpy",
+    "pylint",
+    "truthy",
+    "vsintellicode"
+  ],
   "editor.cursorBlinking": "solid",
   "editor.cursorWidth": 2,
   "editor.fontFamily": "SF Mono",
