@@ -11,9 +11,6 @@ export SSH_KEY_PATH="$HOME/.ssh/rsa_id"
 export JAVA_HOME="/Library/Java/JavaVirtualMachines/openjdk-12.0.1.jdk/Contents/Home"
 
 # FZF
-readonly FZF_COMMAND="find . -not \\( -path ./.git -prune \\) -not \\( -path ./node_modules -prune \\) -type f | cut -c3-"
-export FZF_DEFAULT_COMMAND=$FZF_COMMAND
-export FZF_CTRL_T_COMMAND=$FZF_COMMAND
 export FZF_DEFAULT_OPTS='--height 20% --layout=reverse'
 
 # History
@@ -24,17 +21,21 @@ setopt HIST_IGNORE_ALL_DUPS
 setopt INC_APPEND_HISTORY
 setopt SHARE_HISTORY
 
-# Sources
-source "$HOME"/.aliases
-source "$HOME"/.fzf.zsh
-source "$HOME"/.secrets
-source "$HOME"/.spoud
+# Vim
+bindkey -v
+export KEYTIMEOUT=1
 
 # Plugins
 source "$HOME"/.zsh_plugins
 zsh_plugins_load
 
 # Binds
-bindkey "^[[3~" delete-char
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
+bindkey '^E' autosuggest-accept
+bindkey '^N' history-substring-search-down
+bindkey '^P' history-substring-search-up
+
+# Sources
+source "$HOME"/.aliases
+source "$HOME"/.fzf.zsh
+source "$HOME"/.secrets
+source "$HOME"/.spoud
