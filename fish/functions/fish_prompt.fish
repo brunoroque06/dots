@@ -51,6 +51,3 @@ function prompt::lambda
       printf '[V] '
   end
 end
-
-function fish_mode_prompt
-end
