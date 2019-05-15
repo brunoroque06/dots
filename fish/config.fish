@@ -1,9 +1,17 @@
-# Commands
+fish_vi_key_bindings
+
+# Theme
+set -U pure_symbol_prompt '$'
+set -U pure_symbol_git_unpulled_commits '▼'
+set -U pure_symbol_git_unpushed_commits '▲'
+
 set -U fish_color_command green
 set -U fish_color_param normal
 set -U fish_color_quote yellow
 
-# fish_vi_key_bindings
-fish_default_key_bindings
+# Binds
+bind -M insert \ce accept-autosuggestion
+bind -M insert \cn history-search-forward
+bind -M insert \cp history-search-backward
 
 # set PATH /usr/local/bin /usr/sbin $PATH
