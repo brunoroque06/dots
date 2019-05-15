@@ -36,6 +36,21 @@ function prompt::status
 end
 
 function prompt::lambda
-  set_color magenta
-  printf 'λ '
+  switch $fish_bind_mode
+    case default
+      set_color brred
+      printf '[N] '
+    case insert
+      set_color brgreen
+      printf '[I] '
+    case replace_one
+      set_color brgreen
+      printf '[R] '
+    case visual
+      set_color brmagenta
+      printf '[V] '
+  end
+end
+
+function fish_mode_prompt
 end

@@ -1,10 +1,6 @@
 fish_vi_key_bindings
 
 # Theme
-set -U pure_symbol_prompt '$'
-set -U pure_symbol_git_unpulled_commits '▼'
-set -U pure_symbol_git_unpushed_commits '▲'
-
 set -U fish_color_command green
 set -U fish_color_param normal
 set -U fish_color_quote yellow
