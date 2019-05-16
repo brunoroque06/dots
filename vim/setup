@@ -4,7 +4,7 @@ _clone_or_pull() {
   REPO=$(basename "$1" .git)
   DIR="$2"/"$REPO"
   mkdir -p "$DIR"
-  git -C "$DIR" pull || git clone "$1" "$DIR"
+  git -C "$DIR" pull --depth 1 || git clone --depth 1 "$1" "$DIR"
 }
 
 printf 'Setting up Vim...\n'
