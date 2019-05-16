@@ -88,5 +88,3 @@ key_bindings:
   - { key: PageUp, action: "ScrollPageUp" }
   - { key: PageDown, action: "ScrollPageDown" }
   - { key: L, mods: Control, chars: "\x0c" }
-  - { key: Left, mods: Alt, chars: "\x1bb" }
-  - { key: Right, mods: Alt, chars: "\x1bf" }

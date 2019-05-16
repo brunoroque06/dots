@@ -15,13 +15,15 @@ elif is_arch; then
 fi
 
 ./alacritty/setup
-./fish/setup
-./git/setup
 ./intellij/setup
-./tmux/setup
-./vim/setup
 ./vscode/setup
+
+./fish/setup
 ./zsh/setup
+./vim/setup
+./git/setup
+./tmux/setup
+./fzf/setup
 
 printf 'Installation has finished #\n'
 
