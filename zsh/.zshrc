@@ -30,8 +30,8 @@ zsh_plugins_load
 # Binds
 bindkey -v
 export KEYTIMEOUT=1
+bindkey -M vicmd '\e[3~' delete-char
 bindkey '\e[3~' delete-char
-bindkey "^?" backward-delete-char
 bindkey '^E' autosuggest-accept
 bindkey '^N' history-substring-search-down
 bindkey '^P' history-substring-search-up
