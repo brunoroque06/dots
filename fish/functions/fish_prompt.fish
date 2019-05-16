@@ -5,6 +5,7 @@ function fish_prompt
   prompt::git
   prompt::status $last_status
   printf '\n'
+  prompt::virtual_env
   prompt::lambda
   set_color normal
 end
@@ -35,19 +36,26 @@ function prompt::status
   end
 end
 
+function prompt::virtual_env
+  if test -n "$VIRTUAL_ENV"
+    set_color white
+    printf '%s ' (basename $VIRTUAL_ENV)
+  end
+end
+
 function prompt::lambda
   switch $fish_bind_mode
     case default
       set_color brred
-      printf '[N] '
+      printf 'N '
     case insert
-      set_color brgreen
-      printf '[I] '
+      set_color green
+      printf '$ '
     case replace_one
-      set_color brgreen
-      printf '[R] '
+      set_color green
+      printf 'R '
     case visual
       set_color brmagenta
-      printf '[V] '
+      printf 'V '
   end
 end
