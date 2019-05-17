@@ -4,7 +4,6 @@ source utilities/os
 source utilities/shell
 
 if is_mac_os; then
-  cp /Applications/Utilities/Terminal.app/Contents/Resources/Fonts/*.otf "$HOME"/Library/Fonts/
   printf 'Installing brew packages/casks...\n'
   prompt_for_command ./package-managers/brew
 elif is_arch; then

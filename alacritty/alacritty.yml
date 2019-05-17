@@ -20,7 +20,7 @@ tabspaces: 8
 
 font:
   normal:
-    family: SF Mono
+    family: Input
     style: Regular
   size: 14
   use_thin_strokes: true
@@ -88,3 +88,4 @@ key_bindings:
   - { key: PageUp, action: "ScrollPageUp" }
   - { key: PageDown, action: "ScrollPageDown" }
   - { key: L, mods: Control, chars: "\x0c" }
+

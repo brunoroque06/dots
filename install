@@ -4,6 +4,8 @@ printf 'Starting dotfiles installation...\n'
 
 ./package-managers/setup
 
+./font/setup
+
 ./fish/setup
 ./zsh/setup
 ./vim/setup
