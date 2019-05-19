@@ -2,21 +2,29 @@
 
 source utilities/os
 
+install_font() {
+  readonly FONT_ZIP='font.zip'
+  curl --compressed --output $FONT_ZIP 'http://input.fontbureau.com/build/?fontSelection=fourStyleFamily&regular=InputMonoNarrow-Light&italic=InputMonoNarrow-LightItalic&bold=InputMonoNarrow-Medium&boldItalic=InputMonoNarrow-MediumItalic&a=0&g=ss&i=serif&l=serif&zero=0&asterisk=height&braces=0&preset=default&line-height=1.2&accept=I+do&email='
+  readonly TEMP_DIR='temp'
+  unzip -j $FONT_ZIP '*.ttf' -d $TEMP_DIR
+  mkdir -p "$1"
+  cp "$TEMP_DIR"/*.ttf "$1"
+  rm -rf $FONT_ZIP $TEMP_DIR
+} 
+
+install_font_if_not_yet_installed() {
+  if ls "$1"/Input*.ttf 1> /dev/null 2>&1; then
+    printf 'Font is already installed'
+  else
+    install_font "$1"
+  fi
+}
+
 printf 'Installing font...\n'
 
-readonly FONT_ZIP='font.zip'
-curl --compressed --output $FONT_ZIP 'http://input.fontbureau.com/build/?fontSelection=fourStyleFamily&regular=InputMonoNarrow-Light&italic=InputMonoNarrow-LightItalic&bold=InputMonoNarrow-Medium&boldItalic=InputMonoNarrow-MediumItalic&a=0&g=ss&i=serif&l=serif&zero=0&asterisk=height&braces=0&preset=default&line-height=1.2&accept=I+do&email='
-
-readonly TEMP_DIR='temp'
-unzip -j $FONT_ZIP '*.ttf' -d $TEMP_DIR
-
 if is_mac_os; then
-  cp "$TEMP_DIR"/*.ttf "$HOME"/Library/Fonts
+  install_font_if_not_yet_installed "$HOME"/Library/Fonts
 elif is_arch; then
-  readonly FONTS_DIR="$HOME"/.local/share/fonts
-  mkdir -p "$FONTS_DIR"
-  cp "$TEMP_DIR"/*.ttf "$FONTS_DIR"
+  install_font_if_not_yet_installed "$HOME"/.local/share/fonts
 fi
-
-rm -rf $FONT_ZIP $TEMP_DIR
 

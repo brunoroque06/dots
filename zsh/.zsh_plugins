@@ -3,7 +3,7 @@
 readonly ZSH_PLUGINS="$HOME/.zsh_plugs"
 readonly FPATH_PLUGINS="/usr/local/share/zsh/site-functions"
 
-readonly PURE_PROMPT_SYMBOL='$'
+readonly PURE_PROMPT_SYMBOL='λ'
 readonly PURE_GIT_DOWN_ARROW='▼'
 readonly PURE_GIT_UP_ARROW='▲'
 
