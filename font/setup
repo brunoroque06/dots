@@ -5,7 +5,7 @@ source utilities/os
 printf 'Installing font...\n'
 
 readonly FONT_ZIP='font.zip'
-curl --compressed --output $FONT_ZIP 'http://input.fontbureau.com/build/?fontSelection=fourStyleFamily&regular=InputMonoNarrow-Regular&italic=InputMonoNarrow-Italic&bold=InputMonoNarrow-Bold&boldItalic=InputMonoNarrow-BoldItalic&a=0&g=ss&i=serif&l=serif&zero=slash&asterisk=height&braces=0&preset=default&line-height=1.2&accept=I+do&email='
+curl --compressed --output $FONT_ZIP 'http://input.fontbureau.com/build/?fontSelection=fourStyleFamily&regular=InputMonoNarrow-Light&italic=InputMonoNarrow-LightItalic&bold=InputMonoNarrow-Medium&boldItalic=InputMonoNarrow-MediumItalic&a=0&g=ss&i=serif&l=serif&zero=0&asterisk=height&braces=0&preset=default&line-height=1.2&accept=I+do&email='
 
 readonly TEMP_DIR='temp'
 unzip -j $FONT_ZIP '*.ttf' -d $TEMP_DIR
