@@ -28,6 +28,7 @@ source "$HOME"/.zsh_plugins
 zsh_plugins_load
 
 # Binds
+WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 bindkey -v
 export KEYTIMEOUT=1
 bindkey -M vicmd '\e[3~' delete-char
