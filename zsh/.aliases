@@ -21,7 +21,7 @@ cmds() {
   KEYWORD=$(printf "%s" "$1" | tr '[:upper:]' '[:lower:]')
   LOWERCASE='tolower($0) ~'
   PATTERN="/#.*$KEYWORD.*/,/^$/"
-  awk "$LOWERCASE $PATTERN;" "$HOME"/.aliases "$HOME"/.spoud
+  awk "$LOWERCASE $PATTERN;" "$HOME"/.aliases
 }
 cmd() { ([[ -n $(declare -f "${1}") ]] && declare -f "${1}") || alias "${1}"; }
 
@@ -114,7 +114,7 @@ alias nci='npm ci'
 alias ni='npm install'
 alias npm_global_list='npm list -g --depth=0'
 alias npm_global_update='npm update -g'
-alias npm_registry='_command_with_options "npm config set registry" https://registry.npmjs.org/ https://spoudlab.jfrog.io/spoudlab/api/npm/npm/'
+alias npm_registry='_command_with_options "npm config set registry" https://registry.npmjs.org/'
 _command_with_options() {
   printf 'Command: %s\n' "$1"
   printf 'Options:\n'

@@ -42,4 +42,3 @@ bindkey '^W' backward-delete-word
 source "$HOME"/.aliases
 source "$HOME"/.fzf.zsh
 source "$HOME"/.secrets
-source "$HOME"/.spoud
