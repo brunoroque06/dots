@@ -1,18 +1,18 @@
 #!/usr/bin/env bash
 
-_clone_or_pull() {
-  REPO=$(basename "$1" .git)
-  DIR="$2"/"$REPO"
-  mkdir -p "$DIR"
-  git -C "$DIR" pull --depth 1 || git clone --depth 1 "$1" "$DIR"
-}
-
 printf 'Setting up Vim...\n'
 
 readonly PLUGINS_FOLDER="$HOME"/.vim/pack/plugins/start
 mkdir -p "$PLUGINS_FOLDER"
-
 ln -fsv "$PWD"/vim/vimrc "$HOME"/.vim/vimrc
 
-_clone_or_pull https://github.com/morhetz/gruvbox.git "$PLUGINS_FOLDER"
-_clone_or_pull https://github.com/tpope/vim-surround.git "$PLUGINS_FOLDER"
+add_package() {
+  REPO=$(basename "$1" .git)
+  DIR="$PLUGINS_FOLDER"/"$REPO"
+  mkdir -p "$DIR"
+  git -C "$DIR" pull --depth 1 || git clone --depth 1 "$1" "$DIR"
+}
+
+add_package https://github.com/morhetz/gruvbox.git
+add_package https://github.com/tpope/vim-surround.git
+
