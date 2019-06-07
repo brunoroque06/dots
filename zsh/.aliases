@@ -29,7 +29,7 @@ cmd() { ([[ -n $(declare -f "${1}") ]] && declare -f "${1}") || alias "${1}"; }
 alias ..='cd ..'
 alias l='exa --all --classify --git --long'
 alias ll='ls -aGl'
-alias rm_ls='ls | fzf -m | xargs rm -rf'
+alias rm_dirs='rm -rf $(du -hd 2 | fzf -m)'
 alias tree='exa --all --tree --level=2 --ignore-glob=".git|node_modules"'
 
 # Display
@@ -143,6 +143,7 @@ alias k9='kill -9'
 # Python
 alias py='python'
 alias pydb='python -m pdb'
+alias pip_uninstall_all='pip freeze | xargs pip uninstall -y'
 
 # Shell
 alias shell_scripts_lint='find . -not -path "./.git/*" -type f \( ! -name "*.*" -o -name ".*" \) -exec shellcheck -x -e SC1090 {} \;'
