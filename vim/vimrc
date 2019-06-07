@@ -12,11 +12,6 @@ set autoread
 set path+=**
 set noswapfile
 
-" Indentation
-set expandtab
-set shiftwidth=2
-set softtabstop=2
-
 " Mapping
 set backspace=indent,eol,start
 set ttimeoutlen=0
