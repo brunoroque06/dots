@@ -156,7 +156,7 @@ alias find_text='grep -nRHI --exclude-dir={bazel-\*,.git,node_modules} --exclude
 
 # Tmux
 alias ta='tmux attach-session -t'
-alias tks='tmux kill-server'
+alias tks='tmux kill-session -t $(tmux display-message -p "#S")'
 alias tl='tmux list-sessions'
 tn() { tmux new-session -s "${1:-default}"; }
 
