@@ -140,6 +140,10 @@ alias yay_update='yay -Syu'
 alias list_ports='lsof -PiTCP G LISTEN'
 alias k9='kill -9'
 
+# Python
+alias py='python'
+alias pydb='python -m pdb'
+
 # Shell
 alias shell_scripts_lint='find . -not -path "./.git/*" -type f \( ! -name "*.*" -o -name ".*" \) -exec shellcheck -x -e SC1090 {} \;'
 alias shell_scripts_format='shfmt -i 2 -s -w .'
