@@ -6,7 +6,7 @@ tmux new-session -s $SESSION -n 'dotfiles' -d
 tmux send-keys "cd $HOME/Projects/dotfiles" C-m
 
 tmux new-window -t $SESSION:1 -n 'Project'
-tmux send-keys "cd $HOME/Projects/raccoons/FFE; source venv/bin/activate" C-m
+tmux send-keys "cd $HOME/Projects/raccoons/FFE; source venv/bin/activate; export PYTHONPATH=." C-m
 
 tmux new-window -t $SESSION:2 -n 'PythonPlayground'
 tmux split-window -h -t $SESSION:2.0
