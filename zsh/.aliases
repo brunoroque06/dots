@@ -132,7 +132,7 @@ alias nr='npm run'
 alias ns="awk '/\"scripts\":/,/}/' package.json"
 
 # Pacman
-alias pacman_update='sudo pacman -Syu'
+alias pacman_sync='sudo pacman -Syu'
 alias pacman_remove_unused='sudo pacman -Rns $(pacman -Qtdq)'
 alias yay_update='yay -Syu'
 
