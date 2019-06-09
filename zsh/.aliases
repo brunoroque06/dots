@@ -2,6 +2,9 @@
 
 # Arch Linux
 alias s=startx
+alias pacman_sync='sudo pacman -Syu'
+alias pacman_remove_unused='sudo pacman -Rns $(pacman -Qtdq)'
+alias yay_sync='yay -Syu'
 
 # Bazel
 alias bb='bazel build --verbose_failures'
@@ -130,11 +133,6 @@ _command_with_options() {
 }
 alias nr='npm run'
 alias ns="awk '/\"scripts\":/,/}/' package.json"
-
-# Pacman
-alias pacman_sync='sudo pacman -Syu'
-alias pacman_remove_unused='sudo pacman -Rns $(pacman -Qtdq)'
-alias yay_update='yay -Syu'
 
 # Processes
 alias list_ports='lsof -PiTCP G LISTEN'
