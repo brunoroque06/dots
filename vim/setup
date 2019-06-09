@@ -15,4 +15,3 @@ add_package() {
 
 add_package https://github.com/morhetz/gruvbox.git
 add_package https://github.com/tpope/vim-surround.git
-

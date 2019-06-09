@@ -10,4 +10,3 @@ git -C "$FZF_DIR" pull --depth 1 || git clone --depth 1 https://github.com/juneg
 printf 'y\ny\nn\n' | "$FZF_DIR"/install
 
 rm "$HOME"/.fzf.bash
-

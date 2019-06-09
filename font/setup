@@ -10,10 +10,10 @@ install_font() {
   mkdir -p "$1"
   cp "$TEMP_DIR"/*.ttf "$1"
   rm -rf $FONT_ZIP $TEMP_DIR
-} 
+}
 
 install_font_if_not_yet_installed() {
-  if ls "$1"/Input*.ttf 1> /dev/null 2>&1; then
+  if ls "$1"/Input*.ttf 1>/dev/null 2>&1; then
     printf 'Font is already installed'
   else
     install_font "$1"

@@ -10,4 +10,3 @@ elif is_arch; then
   printf 'Installing pacman packages...\n'
   prompt_for_command ./package-managers/pacman
 fi
-
