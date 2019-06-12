@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+# Toggl
+toggl_time_entry() {
+  curl -u ${TOGGL_API_TOKEN}:api_token \
+	-H "Content-Type: application/json" \
+	-d '{"billable":true,"created_with":"Snowball","description":"","duration":33600,"pid":152011439,"start":"2019-06-12T06:40:00.000Z","wid":2717512}' \
+	 https://www.toggl.com/api/v9/time_entries | jq
+}
