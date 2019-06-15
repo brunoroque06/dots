@@ -32,7 +32,7 @@ cmd() { ([[ -n $(declare -f "${1}") ]] && declare -f "${1}") || alias "${1}"; }
 alias ..='cd ..'
 alias l='exa --all --classify --git --long'
 alias ll='ls -aGl'
-alias rm_dirs='rm -rf $(du -hd 2 | fzf -m)'
+alias rm_rfs='rm -rf $(du -hd 1 | fzf -m)'
 alias tree='exa --all --tree --level=2 --ignore-glob=".git|node_modules"'
 
 # Display
