@@ -31,8 +31,7 @@
     "formatting.provider": "black",
     "jediEnabled": false,
     "linting.enabled": true,
-    "linting.pylintEnabled": true,
-    "pythonPath": "/usr/local/bin/python3"
+    "linting.pylintEnabled": true
   },
   "typescript": {
     "implementationsCodeLens.enabled": false,
