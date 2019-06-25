@@ -5,10 +5,10 @@ SESSION='Raccoons'
 tmux new-session -s $SESSION -n 'dotfiles' -d
 tmux send-keys "cd $HOME/Projects/dotfiles" C-m
 
-tmux new-window -t $SESSION:1 -n 'Project'
+tmux new-window -t $SESSION:1 -n 'project'
 tmux send-keys "cd $HOME/Projects/raccoons/FFE; source venv/bin/activate; export PYTHONPATH=." C-m
 
-tmux new-window -t $SESSION:2 -n 'PythonPlayground'
+tmux new-window -t $SESSION:2 -n 'python-playground'
 tmux split-window -h -t $SESSION:2.0
 tmux send-keys -t $SESSION:2.0 "cd $HOME/Projects/python-playground; source venv/bin/activate; pydb hello_world.py"
 tmux send-keys -t $SESSION:2.1 "cd $HOME/Projects/python-playground; vim hello_world.py"
