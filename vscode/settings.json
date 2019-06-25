@@ -7,41 +7,29 @@
     "truthy",
     "vsintellicode"
   ],
-  "editor": {
-    "cursorBlinking": "solid",
-    "cursorWidth": 2,
-    "fontFamily": "Input",
-    "fontSize": 13,
-    "formatOnSave": true,
-    "minimap.enabled": false,
-    "suggestSelection": "first",
-    "tabSize": 2,
-    "wordWrap": "on"
-  },
-  "explorer": {
-    "confirmDelete": false,
-    "confirmDragAndDrop": false
-  },
+  "editor.cursorBlinking": "solid",
+  "editor.cursorWidth": 2,
+  "editor.fontFamily": "Input",
+  "editor.fontSize": 13,
+  "editor.formatOnSave": true,
+  "editor.minimap.enabled": false,
+  "editor.suggestSelection": "first",
+  "editor.tabSize": 2,
+  "editor.wordWrap": "on",
+  "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": false,
   "files.autoSave": "afterDelay",
-  "javascript": {
-    "updateImportsOnFileMove.enabled": "always",
-    "validate.enable": true
-  },
-  "python": {
-    "formatting.provider": "black",
-    "jediEnabled": false,
-    "linting.enabled": true,
-    "linting.pylintEnabled": true
-  },
-  "typescript": {
-    "implementationsCodeLens.enabled": false,
-    "referencesCodeLens.enabled": false,
-    "updateImportsOnFileMove.enabled": "always"
-  },
-  "vim": {
-    "surround": true,
-    "useSystemClipboard": true
-  },
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "javascript.validate.enable": true,
+  "python.formatting.provider": "black",
+  "python.jediEnabled": false,
+  "python.linting.enabled": true,
+  "python.linting.pylintEnabled": true,
+  "typescript.implementationsCodeLens.enabled": false,
+  "typescript.referencesCodeLens.enabled": false,
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "vim.surround": true,
+  "vim.useSystemClipboard": true,
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
   "workbench.statusBar.feedback.visible": false
 }
