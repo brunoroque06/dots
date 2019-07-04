@@ -32,5 +32,5 @@
   "vim.useSystemClipboard": true,
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
   "workbench.statusBar.feedback.visible": false,
-  "workbench.tree.indent": 20
+  "workbench.tree.indent": 15
 }
