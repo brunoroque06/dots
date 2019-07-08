@@ -6,15 +6,6 @@ alias pacman_sync='sudo pacman -Syu'
 alias pacman_remove_unused='sudo pacman -Rns $(pacman -Qtdq)'
 alias yay_sync='yay -Syu'
 
-# Bazel
-alias bb='bazel build --verbose_failures'
-alias bba='bazel build --verbose_failures //...'
-bdeps() { bazel query 'deps('"$1"')'; }
-alias br='bazel run'
-alias bt='bazel test'
-alias btcn='bazel test --cache_test_results=no'
-alias bta='bazel test //...'
-
 # Brew
 alias brew_update='brew update; brew upgrade; brew cleanup; brew doctor'
 alias brew_cask_update='brew update; brew cask upgrade; brew cask doctor'
@@ -35,9 +26,6 @@ alias ll='ls -aGlh'
 alias rm_rfs='rm -rf $(du -hd 1 | fzf -m)'
 alias tree='exa --all --tree --level=2 --ignore-glob=".git|node_modules"'
 
-# Display
-alias displays='system_profiler SPDisplaysDataType'
-
 # Docker
 alias dcb='docker-compose build --force-rm --pull --no-cache'
 alias dcd='docker-compose down'
@@ -45,12 +33,10 @@ alias dcp='docker-compose pull'
 alias dcu='docker-compose up --abort-on-container-exit'
 alias dprune='docker stop $(docker ps -a -q); docker rm $(docker ps -a -q); docker system prune --volumes -f'
 alias dps='docker ps'
-alias dr='docker build -t ${PWD##*/} . ; docker run --net="host" ${PWD##*/}'
 alias drmi='docker rmi -f $(docker images -a -q)'
 
 # Files
 alias c='bat --theme=1337 --style=header,grid'
-file_unzip() { mkdir "${1%.*}"; tar -xf "$1" -C "${1%.*}"; }
 
 # Find
 alias -g G='| grep --color=always'
@@ -70,12 +56,10 @@ alias gcob='git checkout -b'
 alias gcp='git cherry-pick'
 alias gd='git diff --color | diff-so-fancy | less -RFX'
 gl() { git log --all --decorate --graph --format=format:"%C(blue)%h%C(reset) - %C(green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)" -"${1:-20}"; }
-alias glp='git log -p'
 alias gpush='git push -u origin $(git rev-parse --abbrev-ref HEAD)'
 alias gpull='git pull'
 alias grb='git rebase'
 alias greset='git reset --hard'
-alias grl='git reflog --date=iso'
 alias gs='git status -u'
 alias lg='lazygit'
 
@@ -117,20 +101,6 @@ alias nci='npm ci'
 alias ni='npm install'
 alias npm_global_list='npm list -g --depth=0'
 alias npm_global_update='npm update -g'
-alias npm_registry='_command_with_options "npm config set registry" https://registry.npmjs.org/'
-_command_with_options() {
-  printf 'Command: %s\n' "$1"
-  printf 'Options:\n'
-  select OPTION in "${@:2}"; do
-    if [[ -n $OPTION ]]; then
-      printf "%s %s\\n" "$1" "$OPTION"
-      eval "$1" "$OPTION"
-      break
-    else
-      printf 'Invalid option.\n'
-    fi
-  done
-}
 alias nr='npm run'
 alias ns="awk '/\"scripts\":/,/}/' package.json"
 
@@ -148,8 +118,6 @@ alias shell_scripts_lint='find . -not -path "./.git/*" -type f \( ! -name "*.*" 
 alias shell_scripts_format='shfmt -i 2 -s -w .'
 
 # Text
-replace() { printf "%s" "${1//$2/$3}"; }
-trim() { printf "%s" "$@" | tr -d '\040\011\012\015'; }
 alias find_text='grep -nRHI --exclude-dir={bazel-\*,.git,node_modules} --exclude=.gitignore "" * .* | fzf'
 
 # Tmux
@@ -160,8 +128,6 @@ tn() { tmux new-session -s "${1:-default}"; }
 
 # Vim
 alias v='vim'
-alias vim_none='vim -u NONE'
-alias vim_update='vim +PlugUpgrade +PlugUpdate! +PlugClean! +qa'
 
 # VSCode
 readonly CODE_PLUGINS="$HOME/.vscode/extensions.txt"
