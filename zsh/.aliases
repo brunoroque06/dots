@@ -94,7 +94,7 @@ alias m='make'
 alias cal3='cal -3'
 alias caly='cal -y'
 alias cv_update='cp "$HOME"/Downloads/curriculum_vitae.pdf "$HOME"/Projects/brunoroque06.github.io/documents/BrunoRoqueCv.pdf; tar -xf "$HOME"/Downloads/curriculum-vitae.zip -C "$HOME"/Projects/brunoroque06.github.io/documents/curriculum-vitae'
-weather() { curl http://wttr.in/~"${1:-Bern}"; }
+weather() { curl http://wttr.in/~"${1:-Zurich}"; }
 
 # Npm
 alias nci='npm ci'
