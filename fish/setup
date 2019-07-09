@@ -2,17 +2,19 @@
 
 printf 'Setting up fish...\n'
 
-mkdir -p "$HOME"/.config/fish/functions
-
-ln -fsv "$PWD"/fish/functions/fish_prompt.fish "$HOME"/.config/fish/functions/fish_prompt.fish
-touch "$HOME"/.config/fish/functions/fish_mode_prompt.fish
-ln -fsv "$PWD"/fish/functions/weather.fish "$HOME"/.config/fish/functions/weather.fish
 ln -fsv "$PWD"/fish/config.fish "$HOME"/.config/fish/config.fish
-ln -fsv "$PWD"/fish/fishfile "$HOME"/.config/fish/fishfile
+ln -fsv "$PWD"/fish/conf.d/abbrs.fish "$HOME"/.config/fish/conf.d/abbrs.fish
+
+FISH_FUNCTIONS="$HOME"/.config/fish/functions
+mkdir -p "$FISH_FUNCTIONS"
+touch "$FISH_FUNCTIONS"/fish_mode_prompt.fish
+FILES=$(find "$PWD"/fish/functions -name "*.fish")
+for FILE in $FILES
+do
+  FILE_NAME=$(basename "$FILE")
+  ln -fsv "$FILE" "$FISH_FUNCTIONS"/"$FILE_NAME"
+done
 
 curl https://git.io/fisher --create-dirs -sLo ~/.config/fish/functions/fisher.fish
+ln -fsv "$PWD"/fish/fishfile "$HOME"/.config/fish/fishfile
 fish -c fisher
-
-ln -fsv "$PWD"/fish/functions/abbrs_setup.fish "$HOME"/.config/fish/functions/abbrs_setup.fish
-ln -fsv "$PWD"/fish/abbrs.fish "$HOME"/.config/fish/abbrs.fish
-fish -c abbrs_setup
