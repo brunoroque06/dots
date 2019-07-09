@@ -44,18 +44,16 @@ function prompt::virtual_env
 end
 
 function prompt::lambda
+  set_color magenta
   switch $fish_bind_mode
     case default
-      set_color brred
       printf 'N '
     case insert
-      set_color green
+      # printf 'λ '
       printf '$ '
     case replace_one
-      set_color green
       printf 'R '
     case visual
-      set_color brmagenta
       printf 'V '
   end
 end
