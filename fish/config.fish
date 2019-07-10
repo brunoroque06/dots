@@ -1,12 +1,12 @@
 # Vim
 fish_vi_key_bindings
 
-# Binds
+# Bind
 bind -M insert \ce accept-autosuggestion
 bind -M insert \cn history-search-forward
 bind -M insert \cp history-search-backward
 
-# Commands
+# Command
 set -U fish_color_command green
 set -U fish_color_param normal
 set -U fish_color_quote yellow
