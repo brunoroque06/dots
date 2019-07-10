@@ -25,7 +25,7 @@ alias l='exa --all --classify --git --long'
 alias ll='ls -aGlh'
 alias rm_rfs='rm -rf $(du -hd 1 | fzf -m)'
 alias tree='exa --all --tree --level=2 --ignore-glob=".git|node_modules"'
-zl() { cd $(z -l | awk '{print $2}' | fzf || echo "$PWD") }
+zl() { cd $(z -l | awk '{print $2}' | fzf || printf .) }
 
 # Docker
 alias dcb='docker-compose build --force-rm --pull --no-cache'
