@@ -66,7 +66,7 @@ abbr list_ports 'lsof -PiTCP | grep LISTEN'
 abbr d 'deactivate'
 abbr py 'python'
 abbr pydb 'python -m pdb'
-abbr pys 'source (find . -name "venv*" | fzf)/bin/activate'
+abbr pys 'source (find . -name "venv*" | fzf)/bin/activate.fish'
 abbr pip_uninstall_all 'pip freeze | xargs pip uninstall -y'
 
 # Shell
