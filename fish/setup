@@ -2,13 +2,14 @@
 
 printf 'Setting up fish...\n'
 
-ln -fsv "$PWD"/fish/config.fish "$HOME"/.config/fish/config.fish
-ln -fsv "$PWD"/fish/conf.d/abbrs.fish "$HOME"/.config/fish/conf.d/abbrs.fish
-
 FISH_FUNCTIONS="$HOME"/.config/fish/functions
+FISH_CONF="$HOME"/.config/fish/conf.d
 mkdir -p "$FISH_FUNCTIONS"
-touch "$FISH_FUNCTIONS"/fish_mode_prompt.fish
-FILES=$(find "$PWD"/fish/functions -name "*.fish")
+mkdir -p "$FISH_CONF"
+
+ln -fsv "$PWD"/fish/config.fish "$HOME"/.config/fish/config.fish
+
+FILES=$(find "$PWD"/fish/functions "$PWD"/fish/conf.d -name "*.fish")
 for FILE in $FILES
 do
   FILE_NAME=$(basename "$FILE")
