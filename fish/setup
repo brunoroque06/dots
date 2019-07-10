@@ -3,15 +3,13 @@
 printf 'Setting up fish...\n'
 
 FISH_FUNCTIONS="$HOME"/.config/fish/functions
-FISH_CONF="$HOME"/.config/fish/conf.d
 mkdir -p "$FISH_FUNCTIONS"
-mkdir -p "$FISH_CONF"
 
 ln -fsv "$PWD"/fish/config.fish "$HOME"/.config/fish/config.fish
+ln -fsv "$PWD"/fish/abbreviations.fish "$HOME"/.config/fish/abbreviations.fish
 
-FILES=$(find "$PWD"/fish/functions "$PWD"/fish/conf.d -name "*.fish")
-for FILE in $FILES
-do
+FILES=$(find "$PWD"/fish/functions -name "*.fish")
+for FILE in $FILES; do
   FILE_NAME=$(basename "$FILE")
   ln -fsv "$FILE" "$FISH_FUNCTIONS"/"$FILE_NAME"
 done

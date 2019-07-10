@@ -4,6 +4,7 @@ justusadam.language-haskell
 ms-python.python
 ms-vscode.Go
 ms-vscode.vscode-typescript-tslint-plugin
+skyapps.fish-vscode
 streetsidesoftware.code-spell-checker
 VisualStudioExptTeam.vscodeintellicode
 vscodevim.vim

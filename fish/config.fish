@@ -17,4 +17,6 @@ set -U fish_color_quote yellow
 set -U pure_symbol_prompt \$
 set -U pure_symbol_git_unpulled_commits ▼
 set -U pure_symbol_git_unpushed_commits ▲
-set -U pure_reverse_prompt_symbol_in_vimode false
+
+# Abbreviations
+source "$HOME"/.config/fish/abbreviations.fish
