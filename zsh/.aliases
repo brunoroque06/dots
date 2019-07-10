@@ -25,6 +25,7 @@ alias l='exa --all --classify --git --long'
 alias ll='ls -aGlh'
 alias rm_rfs='rm -rf $(du -hd 1 | fzf -m)'
 alias tree='exa --all --tree --level=2 --ignore-glob=".git|node_modules"'
+zl() { cd $(z -l | awk '{print $2}' | fzf || echo "$PWD") }
 
 # Docker
 alias dcb='docker-compose build --force-rm --pull --no-cache'
@@ -109,8 +110,10 @@ alias list_ports='lsof -PiTCP G LISTEN'
 alias k9='kill -9'
 
 # Python
+alias d='deactivate'
 alias py='python'
 alias pydb='python -m pdb'
+alias pys='source $(find . -name "venv*" | fzf)/bin/activate'
 alias pip_uninstall_all='pip freeze | xargs pip uninstall -y'
 
 # Shell
