@@ -10,7 +10,7 @@ abbr brew_cask_update 'brew update; brew cask upgrade; brew cask doctor'
 
 # Directory
 abbr l 'exa --all --classify --git --long'
-abbr rm_rf 'rm -rf (du -hd 1 | fzf -m)'
+abbr rm_dir 'du -hd 1 | fzf -m | awk \'{print $2}\' | xargs rm -rf'
 abbr tree 'exa --all --tree --level=2 --ignore-glob=".git|node_modules"'
 abbr zl 'cd (z -l | awk \'{print $2}\' | fzf || printf .)'
 
@@ -20,7 +20,7 @@ abbr dps 'docker ps'
 abbr drmi 'docker rmi -f (docker images -a -q)'
 
 # File
-abbr c 'bat --theme=1337 --style=header,grid'
+abbr c 'bat'
 
 # Git
 abbr ga 'git add'
@@ -66,7 +66,7 @@ abbr list_ports 'lsof -PiTCP | grep LISTEN'
 abbr d 'deactivate'
 abbr py 'python'
 abbr pydb 'python -m pdb'
-abbr pys 'source (find . -name "venv*" | fzf)/bin/activate.fish'
+abbr pys 'source (ls -d */ | grep venv | fzf)bin/activate.fish'
 abbr pip_uninstall_all 'pip freeze | xargs pip uninstall -y'
 
 # Shell

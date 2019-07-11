@@ -19,4 +19,4 @@ printf 'Starting dotfiles installation...\n'
 
 printf 'Installation has finished #\n'
 
-exec zsh
+exec fish
