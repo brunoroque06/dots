@@ -6,6 +6,6 @@ tmux new-session -s $SESSION -n 'dotfiles' -d
 tmux send-keys "cd $HOME/Projects/dotfiles" C-m
 
 tmux new-window -t $SESSION:1 -n 'ffe'
-tmux send-keys "cd $HOME/Projects/raccoons/FFE; source venv/bin/activate.fish; export PYTHONPATH=." C-m
+tmux send-keys "cd $HOME/Projects/raccoons/FFE" C-m
 
 tmux attach-session -t $SESSION
