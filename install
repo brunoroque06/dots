@@ -15,7 +15,6 @@ printf 'Starting dotfiles installation...\n'
 
 ./alacritty/setup
 ./vscode/setup
-./intellij/setup
 
 printf 'Installation has finished #\n'
 

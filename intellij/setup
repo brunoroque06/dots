@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-
-printf 'Setting up IntelliJ...\n'
-
-ln -fsv "$PWD"/intellij/.ideavimrc "$HOME"/.ideavimrc
