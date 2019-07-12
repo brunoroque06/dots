@@ -10,6 +10,7 @@ abbr brew_cask_update 'brew update; brew cask upgrade; brew cask doctor'
 
 # Directory
 abbr l 'exa --all --classify --git --long'
+abbr ll 'ls -aGlh'
 abbr rm_dir 'du -hd 1 | fzf -m | awk \'{print $2}\' | xargs rm -rf'
 abbr tree 'exa --all --tree --level=2 --ignore-glob=".git|node_modules"'
 abbr zl 'cd (z -l | awk \'{print $2}\' | fzf || printf .)'
