@@ -21,6 +21,7 @@ brew install java gradle
 brew install jq
 brew install kafka
 brew install node
+brew install pyenv
 brew install python
 brew install shellcheck shfmt
 brew install tmux

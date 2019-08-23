@@ -63,6 +63,9 @@ abbr ns "awk '/\"scripts\":/,/}/' package.json"
 # Processes
 abbr list_ports 'lsof -PiTCP | grep LISTEN'
 
+# Pyenv
+abbr pyenv_init 'source (pyenv init -|psub)'
+
 # Python
 abbr d 'deactivate'
 abbr py 'python'
