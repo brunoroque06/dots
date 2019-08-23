@@ -23,6 +23,9 @@ abbr drmi 'docker rmi -f (docker images -a -q)'
 # File
 abbr c 'bat'
 
+# Fish
+abbr fp 'fish --private'
+
 # Git
 abbr ga 'git add'
 abbr gaa 'git add --a'
@@ -65,6 +68,7 @@ abbr list_ports 'lsof -PiTCP | grep LISTEN'
 
 # Pyenv
 abbr pyenv_init 'source (pyenv init -|psub)'
+abbr pyenv_shell "pyenv shell (pyenv versions | sed 1d | tr -d ' ' | fzf)"
 
 # Python
 abbr d 'deactivate'
