@@ -10,7 +10,7 @@ tmux split-window -h -t $SESSION:1.0
 tmux send-keys -t $SESSION:1.0 "cd $HOME/Projects/brunoroque06.github.io" C-m
 tmux send-keys -t $SESSION:1.1 "cd $HOME/Projects/brunoroque06.github.io; make serve" C-m
 
-tmux new-window -t $SESSION:2 -n 'mono-repo'
+tmux new-window -t $SESSION:2 -n 'lambda'
 tmux send-keys "cd $HOME/Projects/lambda" C-m
 
 tmux attach-session -t $SESSION
