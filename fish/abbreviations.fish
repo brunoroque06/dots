@@ -64,12 +64,16 @@ abbr npm_global_update 'npm update -g'
 abbr nr 'npm run'
 abbr ns "awk '/\"scripts\":/,/}/' package.json"
 
+# Pre-commit
+abbr pc_run 'pre-commit run'
+
 # Processes
 abbr list_ports 'lsof -PiTCP | grep LISTEN'
 
 # Pyenv
 abbr pyenv_init 'source (pyenv init -|psub)'
 abbr pyenv_shell "pyenv shell (pyenv versions | sed 1d | tr -d ' ' | fzf)"
+abbr pyenv3.6 'source (pyenv init -|psub); pyenv shell 3.6.9'
 
 # Python
 abbr d 'deactivate'
