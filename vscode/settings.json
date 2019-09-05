@@ -32,6 +32,7 @@
   "vim.surround": true,
   "vim.useSystemClipboard": true,
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "window.zoomLevel": 0.2,
   "workbench.tree.indent": 15,
   "workbench.tree.renderIndentGuides": "always"
 }
