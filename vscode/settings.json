@@ -27,7 +27,7 @@
   "python.jediEnabled": false,
   "python.linting.pylintEnabled": true,
   "python.linting.pylintPath": "/usr/local/bin/pylint",
-  "python.linting.pylintArgs": ["--disable=C0111", "--disable=E0401"],
+  "python.linting.pylintArgs": ["--disable=import-error,missing-docstring"],
   "typescript.implementationsCodeLens.enabled": false,
   "typescript.referencesCodeLens.enabled": false,
   "typescript.updateImportsOnFileMove.enabled": "always",
