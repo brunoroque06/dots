@@ -1,0 +1,11 @@
+fail_fast: true
+repos:
+  - repo: https://github.com/prettier/prettier
+    rev: 1.18.2
+    hooks:
+      - id: prettier
+  - repo: https://github.com/syntaqx/git-hooks
+    rev: v0.0.16
+    hooks:
+      - id: shellcheck
+      - id: shfmt
