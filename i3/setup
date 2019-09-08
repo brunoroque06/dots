@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+printf 'Setting up i3...\n'
+
+mkdir -p "$HOME"/.config/i3
+ln -fsv "$PWD"/i3/config "$HOME"/.config/i3/config
+
