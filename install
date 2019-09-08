@@ -7,7 +7,6 @@ printf 'Starting dotfiles installation...\n'
 ./font/setup
 
 ./fish/setup
-./zsh/setup
 ./vim/setup
 ./git/setup
 ./tmux/setup
