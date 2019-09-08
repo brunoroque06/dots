@@ -2,7 +2,7 @@
 
 source utilities/shell
 
-sudo pacman -S --needed alacritty bat diff-so-fancy exa fish git go-pie gradle htop jq nodejs npm shellcheck shfmt python python-pip tmux gvim wget xclip zsh
+sudo pacman -S --needed alacritty bat exa fish git htop jq nodejs npm shellcheck shfmt python python-pip tmux wget xclip
 
 if does_command_not_exist yay; then
   git clone --depth 1 https://aur.archlinux.org/yay.git
@@ -13,4 +13,4 @@ if does_command_not_exist yay; then
   rm -rf yay/
 fi
 
-yay -S --needed google-chrome lazygit visual-studio-code-bin
+yay -S --needed lazygit visual-studio-code-bin
