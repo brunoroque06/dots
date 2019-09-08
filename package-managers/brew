@@ -3,8 +3,8 @@
 source utilities/command.sh
 
 if does_command_not_exist brew; then
-  printf 'Installing brew...'
-  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+	printf 'Installing brew...'
+	/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
 
 brew update

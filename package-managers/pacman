@@ -5,12 +5,12 @@ source utilities/command.sh
 sudo pacman -S --needed alacritty bat exa fish git htop jq nodejs npm shellcheck shfmt python python-pip tmux wget xclip
 
 if does_command_not_exist yay; then
-  git clone --depth 1 https://aur.archlinux.org/yay.git
-  (
-    cd yay/ || exit
-    makepkg -si
-  )
-  rm -rf yay/
+	git clone --depth 1 https://aur.archlinux.org/yay.git
+	(
+		cd yay/ || exit
+		makepkg -si
+	)
+	rm -rf yay/
 fi
 
 yay -S --needed lazygit visual-studio-code-bin
