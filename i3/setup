@@ -3,5 +3,7 @@
 printf 'Setting up i3...\n'
 
 mkdir -p "$HOME"/.config/i3
-ln -fsv "$PWD"/i3/config "$HOME"/.config/i3/config
+ln -fsv "$PWD"/i3/i3.conf "$HOME"/.config/i3/config
 
+mkdir -p "$HOME"/.config/i3status
+ln -fsv "$PWD"/i3/i3status.conf "$HOME"/.config/i3status/config
