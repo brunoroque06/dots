@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
-printf 'Setting up i3...\n'
+source utilities/logging.sh
+
+logging_setup 'i3'
 
 mkdir -p "$HOME"/.config/i3
 ln -fsv "$PWD"/i3/i3.conf "$HOME"/.config/i3/config

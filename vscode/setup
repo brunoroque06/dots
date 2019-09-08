@@ -1,14 +1,16 @@
 #!/usr/bin/env bash
 
-printf 'Setting up VSCode...\n'
+source utilities/logging.sh
+
+logging_setup 'vscode'
 
 source utilities/os.sh
 
 printf 'Symlinking VSCode configuration...\n'
 if is_mac_os; then
-  ln -fsv "$PWD"/vscode/settings.json "$HOME/Library/Application Support/Code/User/settings.json"
+	ln -fsv "$PWD"/vscode/settings.json "$HOME/Library/Application Support/Code/User/settings.json"
 elif is_arch; then
-  ln -fsv "$PWD"/vscode/settings.json "$HOME"/.config/Code/User/settings.json
+	ln -fsv "$PWD"/vscode/settings.json "$HOME"/.config/Code/User/settings.json
 fi
 
 printf 'Installing VSCode extensions...\n'

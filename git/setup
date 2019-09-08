@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
-printf 'Setting up Git...\n'
+source utilities/logging.sh
+
+logging_setup 'git'
 
 ln -fsv "$PWD"/git/.gitconfig "$HOME"/.gitconfig

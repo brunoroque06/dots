@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
-printf 'Setting up fish...\n'
+source utilities/logging.sh
+
+logging_setup 'fish'
 
 FISH_FUNCTIONS="$HOME"/.config/fish/functions
 mkdir -p "$FISH_FUNCTIONS"
@@ -10,8 +12,8 @@ ln -fsv "$PWD"/fish/abbreviations.fish "$HOME"/.config/fish/abbreviations.fish
 
 FILES=$(find "$PWD"/fish/functions -name "*.fish")
 for FILE in $FILES; do
-  FILE_NAME=$(basename "$FILE")
-  ln -fsv "$FILE" "$FISH_FUNCTIONS"/"$FILE_NAME"
+	FILE_NAME=$(basename "$FILE")
+	ln -fsv "$FILE" "$FISH_FUNCTIONS"/"$FILE_NAME"
 done
 
 curl https://git.io/fisher --create-dirs -sLo ~/.config/fish/functions/fisher.fish

@@ -1,12 +1,13 @@
 #!/usr/bin/env bash
 
-source utilities/os.sh
 source utilities/command.sh
+source utilities/logging.sh
+source utilities/os.sh
 
 if is_mac_os; then
-  printf 'Installing brew packages/casks...\n'
-  prompt_for_command ./package-managers/brew
+	logging_setup 'brew'
+	prompt_for_command ./package-managers/brew
 elif is_arch; then
-  printf 'Installing pacman packages...\n'
-  prompt_for_command ./package-managers/pacman
+	logging_setup 'pacman'
+	prompt_for_command ./package-managers/pacman
 fi

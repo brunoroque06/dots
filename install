@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+source utilities/command.sh
+
 printf 'Starting dotfiles installation...\n'
 
 ./package-managers/setup
@@ -11,6 +13,10 @@ printf 'Starting dotfiles installation...\n'
 ./git/setup
 ./tmux/setup
 ./fzf/setup
+
+if is_arch; then
+	./i3/setup
+fi
 
 ./alacritty/setup
 ./vscode/setup

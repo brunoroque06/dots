@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
-printf 'Setting up fzf...\n'
+source utilities/logging.sh
+
+logging_setup 'fzf'
 
 readonly FZF_DIR="$HOME"/.fzf
 mkdir -p "$FZF_DIR"

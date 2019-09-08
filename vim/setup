@@ -1,16 +1,18 @@
 #!/usr/bin/env bash
 
-printf 'Setting up Vim...\n'
+source utilities/logging.sh
+
+logging_setup 'vim'
 
 readonly PLUGINS_FOLDER="$HOME"/.vim/pack/plugins/start
 mkdir -p "$PLUGINS_FOLDER"
 ln -fsv "$PWD"/vim/vimrc "$HOME"/.vim/vimrc
 
 add_package() {
-  REPO=$(basename "$1" .git)
-  DIR="$PLUGINS_FOLDER"/"$REPO"
-  mkdir -p "$DIR"
-  git -C "$DIR" pull --depth 1 || git clone --depth 1 "$1" "$DIR"
+	REPO=$(basename "$1" .git)
+	DIR="$PLUGINS_FOLDER"/"$REPO"
+	mkdir -p "$DIR"
+	git -C "$DIR" pull --depth 1 || git clone --depth 1 "$1" "$DIR"
 }
 
 add_package https://github.com/morhetz/gruvbox.git

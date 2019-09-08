@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
-printf 'Setting up Tmux...\n'
+source utilities/logging.sh
+
+logging_setup 'tmux'
 
 ln -fsv "$PWD"/tmux/.tmux.conf "$HOME"/.tmux.conf
