@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-source utilities/os
-source utilities/shell
+source utilities/os.sh
+source utilities/command.sh
 
 if is_mac_os; then
   printf 'Installing brew packages/casks...\n'

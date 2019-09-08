@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-source utilities/shell
+source utilities/command.sh
 
 if does_command_not_exist brew; then
   printf 'Installing brew...'

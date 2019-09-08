@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-source utilities/os
+source utilities/os.sh
 
 install_font() {
   readonly FONT_ZIP='font.zip'

@@ -2,7 +2,7 @@
 
 printf 'Setting up VSCode...\n'
 
-source utilities/os
+source utilities/os.sh
 
 printf 'Symlinking VSCode configuration...\n'
 if is_mac_os; then
