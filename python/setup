@@ -4,8 +4,9 @@ source utilities/logging.sh
 
 logging_setup 'python'
 
-pip3 install --upgrade pip
+pip install --upgrade pip
 
-pip3 install black
-pip3 install pylint
-pip3 install ranger-fm
+pip install black
+pip install pre-commit
+pip install pylint
+pip install ranger-fm

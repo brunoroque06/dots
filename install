@@ -8,6 +8,7 @@ printf 'Starting dotfiles installation...\n'
 
 ./font/setup
 
+./python/setup
 ./fish/setup
 ./vim/setup
 ./git/setup
