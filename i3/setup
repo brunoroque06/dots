@@ -1,11 +1,9 @@
 #!/usr/bin/env bash
 
+source utilities/file.sh
 source utilities/logging.sh
 
 logging_setup 'i3'
 
-mkdir -p "$HOME"/.config/i3
-ln -fsv "$PWD"/i3/i3.conf "$HOME"/.config/i3/config
-
-mkdir -p "$HOME"/.config/i3status
-ln -fsv "$PWD"/i3/i3status.conf "$HOME"/.config/i3status/config
+symlink_to_dir i3.conf "$HOME"/.config/i3/config
+symlink_to_dir i3status.conf "$HOME"/.config/i3status/config

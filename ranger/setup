@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
+source utilities/file.sh
 source utilities/logging.sh
 
 logging_setup 'ranger'
 
-mkdir -p "$HOME"/.config/ranger
-ln -fsv "$PWD"/ranger/rc.conf "$HOME"/.config/ranger/rc.conf
+symlink_to_dir rc.conf "$HOME"/.config/ranger

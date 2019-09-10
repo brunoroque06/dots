@@ -1,21 +1,14 @@
 #!/usr/bin/env bash
 
+source utilities/file.sh
 source utilities/logging.sh
 
 logging_setup 'fish'
 
-FISH_FUNCTIONS="$HOME"/.config/fish/functions
-mkdir -p "$FISH_FUNCTIONS"
-
-ln -fsv "$PWD"/fish/config.fish "$HOME"/.config/fish/config.fish
-ln -fsv "$PWD"/fish/abbreviations.fish "$HOME"/.config/fish/abbreviations.fish
-
-FILES=$(find "$PWD"/fish/functions -name "*.fish")
-for FILE in $FILES; do
-	FILE_NAME=$(basename "$FILE")
-	ln -fsv "$FILE" "$FISH_FUNCTIONS"/"$FILE_NAME"
-done
+symlink_to_dir config.fish "$HOME"/.config/fish
+symlink_to_dir abbreviations.fish "$HOME"/.config/fish
+symlink_to_dir functions/weather.fish "$HOME"/.config/fish/functions
 
 curl https://git.io/fisher --create-dirs -sLo ~/.config/fish/functions/fisher.fish
-ln -fsv "$PWD"/fish/fishfile "$HOME"/.config/fish/fishfile
+symlink_to_dir fishfile "$HOME"/.config/fish
 fish -c fisher

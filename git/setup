@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
+source utilities/file.sh
 source utilities/logging.sh
 
 logging_setup 'git'
 
-ln -fsv "$PWD"/git/.gitconfig "$HOME"/.gitconfig
+symlink_to_dir .gitconfig "$HOME"

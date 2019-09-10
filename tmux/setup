@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
+source utilities/file.sh
 source utilities/logging.sh
 
 logging_setup 'tmux'
 
-ln -fsv "$PWD"/tmux/.tmux.conf "$HOME"/.tmux.conf
+symlink_to_dir .tmux.conf "$HOME"

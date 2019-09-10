@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
+source utilities/file.sh
 source utilities/logging.sh
 
 logging_setup 'alacritty'
 
-mkdir -p "$HOME"/.config/alacritty
-ln -fsv "$PWD"/alacritty/alacritty.yml "$HOME"/.config/alacritty/alacritty.yml
+symlink_to_dir alacritty.yml "$HOME"/.config/alacritty

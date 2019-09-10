@@ -1,12 +1,11 @@
 #!/usr/bin/env bash
 
+source utilities/file.sh
 source utilities/logging.sh
 
 logging_setup 'vim'
 
-readonly PLUGINS_FOLDER="$HOME"/.vim/pack/plugins/start
-mkdir -p "$PLUGINS_FOLDER"
-ln -fsv "$PWD"/vim/vimrc "$HOME"/.vim/vimrc
+symlink_to_dir vimrc "$HOME"/.vim
 
 add_package() {
 	REPO=$(basename "$1" .git)
@@ -14,6 +13,9 @@ add_package() {
 	mkdir -p "$DIR"
 	git -C "$DIR" pull --depth 1 || git clone --depth 1 "$1" "$DIR"
 }
+
+readonly PLUGINS_FOLDER="$HOME"/.vim/pack/plugins/start
+mkdir -p "$PLUGINS_FOLDER"
 
 add_package https://github.com/morhetz/gruvbox.git
 add_package https://github.com/tpope/vim-surround.git

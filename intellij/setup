@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
+source utilities/file.sh
 source utilities/logging.sh
 
 logging_setup 'IntelliJ'
 
-ln -fsv "$PWD"/intellij/.ideavimrc "$HOME"/.ideavimrc
+symlink_to_dir .ideavimrc "$HOME"
