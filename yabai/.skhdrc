@@ -1,5 +1,5 @@
 # open terminal
-# cmd - return : /Applications/Alacritty.app/Contents/MacOS/alacritty --single-instance -d ~
+alt - return : open -n /Applications/Alacritty.app
 
 # focus window
 alt - n : yabai -m window --focus first
