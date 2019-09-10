@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+source utilities/file.sh
+source utilities/logging.sh
+
+logging_setup 'yabai'
+
+symlink_to_dir .skhdrc "$HOME"
+symlink_to_dir .yabairc "$HOME"
