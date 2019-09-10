@@ -11,7 +11,7 @@
   "editor.cursorSurroundingLines": 10,
   "editor.cursorWidth": 2,
   "editor.fontFamily": "Input",
-  "editor.fontSize": 14,
+  "editor.fontSize": 13,
   "editor.formatOnSave": true,
   "editor.minimap.enabled": false,
   "editor.suggestSelection": "first",
