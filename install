@@ -15,7 +15,9 @@ printf 'Starting dotfiles installation...\n'
 ./tmux/setup
 ./fzf/setup
 
-if is_arch; then
+if is_mac_os; then
+	./yabai/setup
+elif is_arch; then
 	./i3/setup
 fi
 
