@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+source utilities/file.sh
+source utilities/logging.sh
+
+logging_setup 'starship'
+
+symlink_to_dir starship.toml "$HOME"/.config

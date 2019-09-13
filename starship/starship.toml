@@ -1,0 +1,13 @@
+[character]
+style_success = "yellow"
+symbol = "$"
+vicmd_symbol = "N"
+
+[directory]
+style = "blue"
+truncation_length = 0
+
+[git_status]
+ahead = "▲"
+behind = "▼"
+

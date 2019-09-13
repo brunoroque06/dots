@@ -18,14 +18,9 @@ set -U fish_color_quote yellow
 # FZF
 set -Ux FZF_DEFAULT_OPTS '--border --reverse --height 20%'
 
-# PATH
-# set PATH /usr/local/bin /usr/sbin $PATH
-
-# Prompt
-set -U pure_symbol_prompt \$
-set -U pure_symbol_reverse_prompt N
-set -U pure_symbol_git_unpulled_commits ▼
-set -U pure_symbol_git_unpushed_commits ▲
-
 # Abbreviations
 source "$HOME"/.config/fish/abbreviations.fish
+
+# Prompt
+eval (starship init fish)
+
