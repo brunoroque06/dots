@@ -10,7 +10,6 @@ fi
 brew update
 
 brew install bat
-brew install diff-so-fancy
 brew install exa
 brew install fish
 brew install ghc cabal-install
@@ -19,15 +18,14 @@ brew install go
 brew install htop
 brew install java gradle
 brew install jq
-brew install kafka
 brew install node
 brew install pyenv
 brew install python
 brew install shellcheck shfmt
+brew install starship
 brew install tmux
 brew install vim
 brew install wget
-brew install zsh
 
 brew cask install alacritty
 brew cask install google-chrome

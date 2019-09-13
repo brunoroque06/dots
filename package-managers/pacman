@@ -13,4 +13,4 @@ if does_command_not_exist yay; then
 	rm -rf yay/
 fi
 
-yay -S --needed lazygit visual-studio-code-bin
+yay -S --needed lazygit starship visual-studio-code-bin
