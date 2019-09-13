@@ -1,4 +1,5 @@
 [character]
+style_failure = "red"
 style_success = "yellow"
 symbol = "$"
 vicmd_symbol = "N"
