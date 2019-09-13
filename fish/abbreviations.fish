@@ -1,5 +1,5 @@
 # Arch Linux
-abbr s startx
+abbr sx startx
 abbr pacman_sync 'sudo pacman -Syu'
 abbr pacman_remove_unused 'sudo pacman -Rns (pacman -Qtdq)'
 abbr yay_sync 'yay -Syu'
@@ -72,9 +72,7 @@ abbr pc_run 'pre-commit run'
 abbr list_ports 'lsof -PiTCP | grep LISTEN'
 
 # Pyenv
-abbr pyenv_init 'source (pyenv init -|psub)'
-abbr pyenv_shell "pyenv shell (pyenv versions | sed 1d | tr -d ' ' | fzf)"
-abbr pyenv3.6 'source (pyenv init -|psub); pyenv shell 3.6.9'
+abbr pye 'source (pyenv init -|psub); pyenv shell 3.6.9'
 
 # Python
 abbr d 'deactivate'
@@ -84,6 +82,7 @@ abbr pys 'source (ls -d */ | grep venv | fzf)bin/activate.fish'
 abbr pip_uninstall_all 'pip freeze | xargs pip uninstall -y'
 
 # Shell
+abbr s 'source'
 abbr shell_scripts_lint 'find . -not -path "./.git/*" -type f \( ! -name "*.*" -o -name ".*" \) -exec shellcheck -x -e SC1090 {} \;'
 abbr shell_scripts_format 'shfmt -i 2 -s -w .'
 
