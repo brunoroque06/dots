@@ -21,7 +21,7 @@ shift + alt - l : yabai -m window --swap east
 # shift + alt - l : yabai -m window --warp east
 
 # close window
-alt - w : yabai -m window --close
+shift + alt - w : yabai -m window --close
 
 # create desktop
 shift + alt - n : yabai -m space --create
