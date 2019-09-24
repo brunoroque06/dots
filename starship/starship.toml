@@ -1,7 +1,7 @@
 [character]
 style_failure = "red"
 style_success = "purple"
-symbol = "$"
+symbol = "λ"
 vicmd_symbol = "N"
 
 [directory]
@@ -11,4 +11,3 @@ truncation_length = 0
 [git_status]
 ahead = "▲"
 behind = "▼"
-
