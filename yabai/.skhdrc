@@ -21,13 +21,13 @@ shift + alt - l : yabai -m window --swap east
 # shift + alt - l : yabai -m window --warp east
 
 # close window
-shift + alt - w : yabai -m window --close
+alt - q : yabai -m window --close
 
 # create desktop
 shift + alt - n : yabai -m space --create
 
 # destroy desktop
-shift + alt - w : yabai -m space --destroy
+shift + alt - q : yabai -m space --destroy
 
 # fast focus desktop
 alt - 1 : yabai -m space --focus 1
