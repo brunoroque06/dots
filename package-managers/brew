@@ -15,7 +15,7 @@ brew install fish
 brew install ghc cabal-install
 brew install git jesseduffield/lazygit/lazygit
 brew install go
-brew install htop
+brew install cjbassi/gotop/gotop
 brew install java gradle
 brew install jq
 brew install node

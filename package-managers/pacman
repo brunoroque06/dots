@@ -2,7 +2,7 @@
 
 source utilities/command.sh
 
-sudo pacman -S --needed alacritty bat code exa fish git htop i3 jq nodejs npm shellcheck shfmt python python-pip tmux wget xclip
+sudo pacman -S --needed alacritty bat code exa fish git jq nodejs npm shellcheck shfmt python python-pip tmux wget xclip
 
 if does_command_not_exist yay; then
 	git clone --depth 1 https://aur.archlinux.org/yay.git
@@ -13,4 +13,4 @@ if does_command_not_exist yay; then
 	rm -rf yay/
 fi
 
-yay -S --needed lazygit starship
+yay -S --needed gotop lazygit starship

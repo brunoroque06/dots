@@ -94,6 +94,9 @@ abbr tks 'tmux kill-session -t (tmux display-message -p "#S")'
 abbr tl 'tmux list-sessions'
 abbr tn 'tmux new-session -s default'
 
+# Top
+abbr top 'gotop'
+
 # Vim
 abbr v 'vim'
 
