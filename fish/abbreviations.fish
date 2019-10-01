@@ -1,7 +1,8 @@
 # Arch Linux
 abbr sx startx
 abbr pacman_sync 'sudo pacman -Syu'
-abbr pacman_remove_unused 'sudo pacman -Rns (pacman -Qtdq)'
+abbr pacman_remove 'sudo pacman -Rs'
+abbr pacman_remove_unused 'sudo pacman -R (pacman -Qdqt)'
 abbr yay_sync 'yay -Syu'
 
 # Brew
@@ -71,13 +72,11 @@ abbr pc_run 'pre-commit run'
 # Processes
 abbr list_ports 'lsof -PiTCP | grep LISTEN'
 
-# Pyenv
-abbr pye 'source (pyenv init -|psub); pyenv shell 3.6.9'
-
 # Python
 abbr d 'deactivate'
 abbr py 'python'
 abbr pydb 'python -m pdb'
+abbr pye 'source (pyenv init -|psub); pyenv shell 3.6.9'
 abbr pys 'source (ls -d */ | grep venv | fzf)bin/activate.fish'
 abbr pip_uninstall_all 'pip freeze | xargs pip uninstall -y'
 
