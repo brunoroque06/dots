@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+source utility/logging.sh
+source utility/os.sh
+
+logging_setup 'window manager'
+
+if is_mac_os; then
+	./window-manager/yabai/setup
+elif is_arch_linux; then
+	./window-manager/i3/setup
+fi

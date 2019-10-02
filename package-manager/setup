@@ -7,7 +7,7 @@ source utility/os.sh
 if is_mac_os; then
 	logging_setup 'brew'
 	prompt_for_command ./package-manager/brew
-elif is_arch; then
+elif is_arch_linux; then
 	logging_setup 'pacman'
 	prompt_for_command ./package-manager/pacman
 fi

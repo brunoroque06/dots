@@ -2,7 +2,7 @@
 
 source utility/command.sh
 
-if does_command_not_exist brew; then
+if is_command_not_in_path brew; then
 	printf 'Installing brew...'
 	/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi

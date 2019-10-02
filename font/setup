@@ -25,6 +25,6 @@ logging_setup 'font'
 
 if is_mac_os; then
 	install_font_if_not_yet_installed "$HOME"/Library/Fonts
-elif is_arch; then
+elif is_arch_linux; then
 	install_font_if_not_yet_installed "$HOME"/.local/share/fonts
 fi

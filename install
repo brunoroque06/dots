@@ -1,29 +1,22 @@
 #!/usr/bin/env bash
 
-source utility/os.sh
-
 printf 'Starting dotfiles installation...\n'
 
 ./package-manager/setup
 
-./font/setup
-
-./python/setup
-./fish/setup
-./vim/setup
-./git/setup
-./tmux/setup
-./fzf/setup
-
-if is_mac_os; then
-	./yabai/setup
-elif is_arch; then
-	./i3/setup
-fi
-
 ./alacritty/setup
-./vscode/setup
+./fish/setup
+./font/setup
+./fzf/setup
+./git/setup
 ./intellij/setup
+./python/setup
+./ranger/setup
+./starship/setup
+./tmux/setup
+./vim/setup
+./vscode/setup
+./window-manager/setup
 
 printf 'Installation has finished #\n'
 
