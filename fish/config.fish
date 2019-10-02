@@ -16,7 +16,9 @@ set -U fish_color_param normal
 set -U fish_color_quote yellow
 
 # FZF
+set -Ux FZF_DEFAULT_COMMAND 'find . -path ./.git -prune -o -print'
 set -Ux FZF_DEFAULT_OPTS '--border --reverse --height 20%'
+set -Ux FZF_CTRL_T_COMMAND $FZF_DEFAULT_COMMAND
 
 # Abbreviations
 source "$HOME"/.config/fish/abbreviations.fish
