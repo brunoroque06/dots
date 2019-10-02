@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+sxhkd &
+
+bspc monitor -d 1 2 3 4 5 6 7 8 9
+
+bspc config border_width 3
+bspc config window_gap 10
+bspc config split_ratio 0.52
+bspc config borderless_monocle true
+bspc config gapless_monocle false
+
+polybar example &
+
+feh --bg-scale ~/Downloads/sunset.jpg
