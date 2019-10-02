@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+source utility/command.sh
+source utility/logging.sh
+source utility/os.sh
+
+if is_mac_os; then
+	logging_setup 'brew'
+	prompt_for_command ./package-manager/brew
+elif is_arch; then
+	logging_setup 'pacman'
+	prompt_for_command ./package-manager/pacman
+fi

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-source utilities/logging.sh
+source utility/logging.sh
 
 logging_setup 'python'
 

@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
-source utilities/os.sh
+source utility/os.sh
 
 printf 'Starting dotfiles installation...\n'
 
-./package-managers/setup
+./package-manager/setup
 
 ./font/setup
 

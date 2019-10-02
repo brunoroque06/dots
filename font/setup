@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-source utilities/logging.sh
-source utilities/os.sh
+source utility/logging.sh
+source utility/os.sh
 
 install_font() {
 	readonly FONT_ZIP='font.zip'

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-source utilities/command.sh
+source utility/command.sh
 
 sudo pacman -S --needed alacritty bat code exa fish git jq nodejs npm shellcheck shfmt python python-pip tmux wget xclip
 
