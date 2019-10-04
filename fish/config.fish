@@ -5,11 +5,6 @@ fish_vi_key_bindings
 set -Ux BAT_THEME 1337
 set -Ux BAT_STYLE header,grid
 
-# Bind
-bind -M insert \ce accept-autosuggestion
-bind -M insert \cn history-search-forward
-bind -M insert \cp history-search-backward
-
 # Command
 set -U fish_color_command green
 set -U fish_color_param normal
@@ -25,4 +20,3 @@ source "$HOME"/.config/fish/abbreviations.fish
 
 # Prompt
 eval (starship init fish)
-

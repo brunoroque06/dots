@@ -86,4 +86,3 @@ alt_send_esc: true
 key_bindings:
   - { key: PageUp, action: "ScrollPageUp" }
   - { key: PageDown, action: "ScrollPageDown" }
-  - { key: L, mods: Control, chars: "\x0c" }

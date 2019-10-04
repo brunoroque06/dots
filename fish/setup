@@ -8,6 +8,7 @@ logging_setup 'fish'
 symlink_to_dir config.fish "$HOME"/.config/fish
 symlink_to_dir abbreviations.fish "$HOME"/.config/fish
 symlink_to_dir functions/weather.fish "$HOME"/.config/fish/functions
+symlink_to_dir functions/fish_user_key_bindings.fish "$HOME"/.config/fish/functions
 
 curl https://git.io/fisher --create-dirs -sLo ~/.config/fish/functions/fisher.fish
 symlink_to_dir fishfile "$HOME"/.config/fish
