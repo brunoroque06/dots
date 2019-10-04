@@ -19,9 +19,9 @@ abbr tree 'exa --all --tree --level=2 --ignore-glob=".git|node_modules"'
 abbr zl 'cd (z -l | awk \'{print $2}\' | fzf || printf .)'
 
 # Docker
-abbr dprune 'docker stop (docker ps -a -q); docker rm (docker ps -a -q); docker system prune --volumes -f'
-abbr dps 'docker ps'
-abbr drmi 'docker rmi -f (docker images -a -q)'
+abbr d 'docker'
+abbr docker_containers_remove 'docker stop (docker ps -a -q); docker rm (docker ps -a -q); docker system prune --volumes -f'
+abbr docker_images_remove 'docker rmi -f (docker images -a -q)'
 
 # File
 abbr c 'bat'
@@ -73,7 +73,6 @@ abbr pc_run 'pre-commit run'
 abbr list_ports 'lsof -PiTCP | grep LISTEN'
 
 # Python
-abbr d 'deactivate'
 abbr py 'python'
 abbr pydb 'python -m pdb'
 abbr pye 'source (pyenv init -|psub); pyenv shell 3.6.9'
