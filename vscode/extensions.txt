@@ -1,9 +1,15 @@
+ckolkman.vscode-postgres
 DavidAnson.vscode-markdownlint
+eamodio.gitlens
 esbenp.prettier-vscode
+GrapeCity.gc-excelviewer
 justusadam.language-haskell
+ms-azuretools.vscode-azurefunctions
 ms-python.python
+ms-vscode.azure-account
+ms-vscode.csharp
 ms-vscode.Go
-ms-vscode.vscode-typescript-tslint-plugin
+octref.vetur
 skyapps.fish-vscode
 streetsidesoftware.code-spell-checker
 VisualStudioExptTeam.vscodeintellicode
