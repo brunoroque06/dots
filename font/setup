@@ -15,7 +15,7 @@ install_font() {
 
 install_font_if_not_yet_installed() {
 	if ls "$1"/Input*.ttf 1>/dev/null 2>&1; then
-		printf 'Font is already installed'
+		printf 'Font is already installed\n'
 	else
 		install_font "$1"
 	fi
