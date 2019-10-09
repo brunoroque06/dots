@@ -13,7 +13,7 @@ brew install bat
 brew install exa
 brew install fish
 brew install ghc cabal-install
-brew install git jesseduffield/lazygit/lazygit
+brew install git git-lfs jesseduffield/lazygit/lazygit
 brew install go
 brew install cjbassi/gotop/gotop
 brew install java gradle
