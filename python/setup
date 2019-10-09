@@ -6,7 +6,7 @@ logging_setup 'python'
 
 pip install --upgrade pip
 
-pip install black
-pip install pre-commit
-pip install pylint
-pip install ranger-fm
+pip install --upgrade black
+pip install --upgrade pre-commit
+pip install --upgrade pylint
+pip install --upgrade ranger-fm
