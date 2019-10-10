@@ -19,7 +19,7 @@ tabspaces: 8
 
 font:
   normal:
-    family: Input
+    family: Input Mono
     style: Regular
   size: 14
   use_thin_strokes: true

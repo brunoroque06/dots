@@ -5,7 +5,7 @@ source utility/os.sh
 
 install_font() {
 	readonly FONT_ZIP='font.zip'
-	curl --compressed --output $FONT_ZIP 'http://input.fontbureau.com/build/?fontSelection=fourStyleFamily&regular=InputMono-Regular&italic=InputMono-Italic&bold=InputMono-Bold&boldItalic=InputMono-BoldItalic&a=0&g=ss&i=serif&l=serif&zero=0&asterisk=height&braces=0&preset=default&line-height=1.2&accept=I+do&email='
+	curl --compressed --output $FONT_ZIP 'https://input.fontbureau.com/build/?fontSelection=whole&a=0&g=ss&i=0&l=0&zero=0&asterisk=height&braces=0&preset=default&line-height=1.2&accept=I+do&email='
 	readonly TEMP_DIR='temp'
 	unzip -j $FONT_ZIP '*.ttf' -d $TEMP_DIR
 	mkdir -p "$1"

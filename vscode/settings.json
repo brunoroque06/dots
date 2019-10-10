@@ -3,6 +3,7 @@
     "blockchain",
     "gimli",
     "numpy",
+    "pulumi",
     "pylint",
     "truthy",
     "vsintellicode"
@@ -10,7 +11,7 @@
   "editor.cursorBlinking": "solid",
   "editor.cursorSurroundingLines": 10,
   "editor.cursorWidth": 2,
-  "editor.fontFamily": "Input",
+  "editor.fontFamily": "Input Mono",
   "editor.fontSize": 13,
   "editor.formatOnSave": true,
   "editor.minimap.enabled": false,
