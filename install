@@ -6,7 +6,6 @@ printf 'Starting dotfiles installation...\n'
 
 ./alacritty/setup
 ./fish/setup
-./font/setup
 ./fzf/setup
 ./git/setup
 ./intellij/setup
