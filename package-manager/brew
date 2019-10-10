@@ -19,8 +19,7 @@ brew install cjbassi/gotop/gotop
 brew install java gradle
 brew install jq
 brew install node
-brew install pyenv
-brew install python
+brew install python pyenv
 brew install shellcheck shfmt
 brew install starship
 brew install tmux
@@ -28,7 +27,8 @@ brew install vim
 brew install wget
 
 brew cask install alacritty
-brew cask install font-ibm-plex
+brew tap homebrew/cask-fonts
+brew cask install font-input font-ibm-plex
 brew cask install google-chrome
 brew cask install visual-studio-code
 
