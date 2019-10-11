@@ -86,3 +86,6 @@ alt_send_esc: true
 key_bindings:
   - { key: PageUp, action: "ScrollPageUp" }
   - { key: PageDown, action: "ScrollPageDown" }
+  - { key: Key0, mods: Control, action: ResetFontSize }
+  - { key: Equals, mods: Control, action: IncreaseFontSize }
+  - { key: Minus, mods: Control, action: DecreaseFontSize }
