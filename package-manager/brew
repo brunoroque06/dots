@@ -9,27 +9,10 @@ fi
 
 brew update
 
-brew install bat
-brew install exa
-brew install fish
-brew install ghc cabal-install
-brew install git git-lfs jesseduffield/lazygit/lazygit
-brew install go
-brew install cjbassi/gotop/gotop
-brew install java gradle
-brew install jq
-brew install node
-brew install python pyenv
-brew install shellcheck shfmt
-brew install starship
-brew install tmux
-brew install vim
-brew install wget
+xargs brew install <package-manager/packages.txt
+brew install cjbassi/gotop/gotop jesseduffield/lazygit/lazygit starship
 
-brew cask install alacritty
 brew tap homebrew/cask-fonts
-brew cask install font-input font-ibm-plex
-brew cask install google-chrome
-brew cask install visual-studio-code
+brew cask install alacritty font-ibm-plex font-input visual-studio-code
 
 brew doctor

@@ -2,7 +2,8 @@
 
 source utility/command.sh
 
-sudo pacman -S --needed alacritty bat code exa fish git git-lfs jq nodejs npm shellcheck shfmt python python-pip ttf-ibm-plex tmux wget xclip
+xargs sudo pacman -S --needed <package-manager/packages.txt
+sudo pacman -S --needed alacritty code python-pip ttf-ibm-plex xclip
 
 if is_command_not_in_path yay; then
 	git clone --depth 1 https://aur.archlinux.org/yay.git

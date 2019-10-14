@@ -1,0 +1,14 @@
+bat
+exa
+fish
+git
+git-lfs
+jq
+pyenv
+python
+ripgrep
+shellcheck
+shfmt
+tmux
+vim
+
