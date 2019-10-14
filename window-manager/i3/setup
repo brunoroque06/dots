@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-
-source utility/file.sh
-source utility/logging.sh
-
-logging_setup 'i3'
-
-symlink_to_dir i3.conf "$HOME"/.config/i3/config
-symlink_to_dir i3status.conf "$HOME"/.config/i3status/config

@@ -8,5 +8,5 @@ logging_setup 'window manager'
 if is_mac_os; then
 	./window-manager/yabai/setup
 elif is_arch_linux; then
-	./window-manager/i3/setup
+	./window-manager/bspwm/setup
 fi
