@@ -84,9 +84,6 @@ abbr s 'source'
 abbr shell_scripts_lint 'find . -not -path "./.git/*" -type f \( ! -name "*.*" -o -name ".*" \) -exec shellcheck -x -e SC1090 {} \;'
 abbr shell_scripts_format 'shfmt -i 2 -s -w .'
 
-# Text
-abbr find_text 'grep -nRHI --exclude-dir={.git,node_modules} --exclude=.gitignore "" * .* | fzf'
-
 # Tmux
 abbr ta 'tmux attach-session -t'
 abbr tks 'tmux kill-session -t (tmux display-message -p "#S")'
