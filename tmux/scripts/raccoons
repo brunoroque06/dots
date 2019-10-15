@@ -5,7 +5,7 @@ SESSION='Raccoons'
 tmux new-session -s $SESSION -n 'dotfiles' -d
 tmux send-keys "cd $HOME/Projects/dotfiles" C-m
 
-tmux new-window -t $SESSION:1 -n 'ffe'
-tmux send-keys "cd $HOME/Projects/raccoons/FFE" C-m
+tmux new-window -t $SESSION:1 -n 'sulfur'
+tmux send-keys "cd $HOME/Projects/raccoons/Sulfur" C-m
 
 tmux attach-session -t $SESSION
