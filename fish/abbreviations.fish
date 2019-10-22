@@ -64,6 +64,7 @@ abbr ni 'npm install'
 abbr npm_global_list 'npm list -g --depth=0'
 abbr npm_global_update 'npm update -g'
 abbr nr 'npm run'
+abbr ns "awk '/\"scripts\":/,/}/' package.json"
 
 # Pre-commit
 abbr pc_run 'pre-commit run'
