@@ -1,5 +1,5 @@
 # Arch Linux
-abbr sx startx
+abbr sx 'startx'
 abbr pacman_sync 'sudo pacman -Syu'
 abbr pacman_remove 'sudo pacman -Rs'
 abbr pacman_remove_unused 'sudo pacman -R (pacman -Qdqt)'
@@ -10,6 +10,7 @@ abbr brew_update 'brew update; brew upgrade; brew cleanup; brew doctor'
 abbr brew_cask_update 'brew update; brew cask upgrade; brew cask doctor'
 
 # Directory
+abbr c 'bat'
 abbr l 'exa --all --classify --git --long'
 abbr ll 'ls -aGlh'
 abbr fm 'ranger'
@@ -22,12 +23,6 @@ abbr zl 'cd (z -l | awk \'{print $2}\' | fzf || printf .)'
 abbr d 'docker'
 abbr docker_containers_remove 'docker stop (docker ps -a -q); docker rm (docker ps -a -q); docker system prune --volumes -f'
 abbr docker_images_remove 'docker rmi -f (docker images -a -q)'
-
-# File
-abbr c 'bat'
-
-# Fish
-abbr fp 'fish --private'
 
 # Git
 abbr ga 'git add'
@@ -49,6 +44,7 @@ abbr grb 'git rebase'
 abbr greset 'git reset --hard'
 abbr gs 'git status -u'
 abbr lg 'lazygit'
+abbr pc_run 'pre-commit run'
 
 # Makefile
 abbr m 'make'
@@ -58,19 +54,20 @@ abbr cal3 'cal -3'
 abbr caly 'cal -y'
 abbr cv_update 'cp "$HOME"/Downloads/curriculum_vitae.pdf "$HOME"/Projects/brunoroque06.github.io/documents/BrunoRoqueCv.pdf; tar -xf "$HOME"/Downloads/curriculum-vitae.zip -C "$HOME"/Projects/brunoroque06.github.io/documents/curriculum-vitae'
 
-# Npm
+# Node.js
 abbr nci 'npm ci'
 abbr ni 'npm install'
 abbr npm_global_list 'npm list -g --depth=0'
 abbr npm_global_update 'npm update -g'
 abbr nr 'npm run'
 abbr ns "awk '/\"scripts\":/,/}/' package.json"
-
-# Pre-commit
-abbr pc_run 'pre-commit run'
+abbr y 'yarn'
+abbr yui 'yarn upgrade-interactive --latest'
+abbr ygui 'yarn global upgrade-interactive --latest'
 
 # Processes
 abbr list_ports 'lsof -PiTCP | grep LISTEN'
+abbr t 'gotop'
 
 # Python
 abbr py 'python'
@@ -80,6 +77,7 @@ abbr pys 'source (ls -d */ | grep venv | fzf)bin/activate.fish'
 abbr pip_uninstall_all 'pip freeze | xargs pip uninstall -y'
 
 # Shell
+abbr fp 'fish --private'
 abbr s 'source'
 abbr shell_scripts_lint 'find . -not -path "./.git/*" -type f \( ! -name "*.*" -o -name ".*" \) -exec shellcheck -x -e SC1090 {} \;'
 abbr shell_scripts_format 'shfmt -i 2 -s -w .'
@@ -89,9 +87,6 @@ abbr ta 'tmux attach-session -t'
 abbr tks 'tmux kill-session -t (tmux display-message -p "#S")'
 abbr tl 'tmux list-sessions'
 abbr tn 'tmux new-session -s default'
-
-# Top
-abbr top 'gotop'
 
 # Vim
 abbr v 'vim'
