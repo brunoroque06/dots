@@ -16,7 +16,9 @@ yabai -m config active_window_border_color 0xff775759
 yabai -m config normal_window_border_color 0xff505050
 yabai -m config insert_window_border_color 0xffd75f5f
 
-yabai -m rule --add app="Dictionary" manage=off
-yabai -m rule --add app="System Preferences" manage=off
+yabai -m rule --add app='^System Preferences$' manage=off
+yabai -m rule --add app='Dictionary' manage=off
+yabai -m rule --add app='Finder' manage=off
+yabai -m rule --add app='Visual Studio' border=off manage=off
 
 printf "yabai configuration loaded"
