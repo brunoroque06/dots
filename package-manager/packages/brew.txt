@@ -1,0 +1,4 @@
+cjbassi/gotop/gotop
+jesseduffield/lazygit/lazygit
+node
+starship

@@ -11,4 +11,4 @@ shellcheck
 shfmt
 tmux
 vim
-
+yarn

@@ -9,10 +9,8 @@ fi
 
 brew update
 
-xargs brew install <package-manager/packages.txt
-brew install cjbassi/gotop/gotop jesseduffield/lazygit/lazygit starship
-
-brew tap homebrew/cask-fonts
-brew cask install alacritty font-ibm-plex font-input visual-studio-code
+xargs brew install <package-manager/packages/common.txt
+xargs brew install <package-manager/packages/brew.txt
+xargs brew cask install <package-manager/packages/brew-cask.txt
 
 brew doctor

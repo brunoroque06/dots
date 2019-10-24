@@ -1,0 +1,4 @@
+gotop
+lazygit
+starship
+ttf-input
