@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+source utility/logging.sh
+
+logging_setup 'node.js'
+
+yarn global add eslint
+yarn global add prettier
