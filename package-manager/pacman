@@ -14,6 +14,4 @@ if is_command_not_in_path yay; then
 	rm -rf yay/
 fi
 
-yay -S --needed gotop lazygit starship ttf-input
-
 xargs yay -S --needed <package-manager/packages/aur.txt
