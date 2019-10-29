@@ -18,5 +18,8 @@ set -Ux FZF_CTRL_T_COMMAND $FZF_DEFAULT_COMMAND
 # Abbreviations
 source "$HOME"/.config/fish/abbreviations.fish
 
+# Completions
+complete -c unzip -x -a '(__fish_complete_suffix .whl)'
+
 # Prompt
 eval (starship init fish)
