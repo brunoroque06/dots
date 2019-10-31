@@ -2,7 +2,8 @@
 
 source utility/logging.sh
 
-logging_setup 'node.js'
+logging_setup 'node'
 
 yarn global add eslint
 yarn global add prettier
+yarn global add typescript
