@@ -76,6 +76,10 @@ abbr pye 'source (pyenv init -|psub); pyenv shell 3.6.9'
 abbr pys 'source (ls -d */ | grep venv | fzf)bin/activate.fish'
 abbr pip_uninstall_all 'pip freeze | xargs pip uninstall -y'
 
+# Pulumi
+abbr pd 'pulumi destroy'
+abbr pu 'pulumi up'
+
 # Shell
 abbr fp 'fish --private'
 abbr s 'source'
