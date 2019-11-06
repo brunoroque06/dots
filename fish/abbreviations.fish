@@ -77,8 +77,9 @@ abbr pys 'source (ls -d */ | grep venv | fzf)bin/activate.fish'
 abbr pip_uninstall_all 'pip freeze | xargs pip uninstall -y'
 
 # Pulumi
-abbr pd 'pulumi destroy'
-abbr pu 'pulumi up'
+abbr pu 'pulumi'
+abbr pud 'pulumi destroy'
+abbr puu 'pulumi up'
 
 # Shell
 abbr fp 'fish --private'
