@@ -62,8 +62,9 @@ abbr npm_global_update 'npm update -g'
 abbr nr 'npm run'
 abbr ns "awk '/\"scripts\":/,/}/' package.json"
 abbr y 'yarn'
-abbr yui 'yarn upgrade-interactive --latest'
 abbr ygui 'yarn global upgrade-interactive --latest'
+abbr yr 'yarn run'
+abbr yui 'yarn upgrade-interactive --latest'
 
 # Processes
 abbr list_ports 'lsof -PiTCP | grep LISTEN'
