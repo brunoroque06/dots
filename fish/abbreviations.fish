@@ -80,6 +80,7 @@ abbr pip_uninstall_all 'pip freeze | xargs pip uninstall -y'
 # Pulumi
 abbr pu 'pulumi'
 abbr pud 'pulumi destroy'
+abbr pur 'pulumi refresh'
 abbr puu 'pulumi up'
 
 # Shell
