@@ -3,7 +3,7 @@ fish_vi_key_bindings
 
 # Bat
 set -Ux BAT_THEME 1337
-set -Ux BAT_STYLE header,grid
+set -Ux BAT_STYLE grid
 
 # Command
 set -U fish_color_command green
