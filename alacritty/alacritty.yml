@@ -89,3 +89,4 @@ key_bindings:
   - { key: Key0, mods: Control, action: ResetFontSize }
   - { key: Equals, mods: Control, action: IncreaseFontSize }
   - { key: Minus, mods: Control, action: DecreaseFontSize }
+  - { key: LBracket, mods: Control, chars: "\x1E" } # http://donsnotes.com/tech/charsets/ascii.html
