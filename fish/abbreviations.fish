@@ -5,6 +5,9 @@ abbr pacman_remove 'sudo pacman -Rs'
 abbr pacman_remove_unused 'sudo pacman -R (pacman -Qdqt)'
 abbr yay_sync 'yay -Syu'
 
+# Azure
+abbr azi 'az interactive --style br'
+
 # Brew
 abbr brew_update 'brew update; brew upgrade; brew cleanup; brew doctor'
 abbr brew_cask_update 'brew update; brew cask upgrade; brew cask doctor'
