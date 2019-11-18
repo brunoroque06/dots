@@ -4,4 +4,4 @@ source utility/logging.sh
 
 logging_setup 'node'
 
-yarn global add eslint prettier typescript
+yarn global add eslint n prettier typescript
