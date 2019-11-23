@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
 
+source utility/file.sh
 source utility/logging.sh
 
 logging_setup 'node'
 
 yarn global add eslint n prettier typescript
+
+symlink_to_dir .eslintrc.yml "$HOME"
