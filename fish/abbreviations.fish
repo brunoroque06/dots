@@ -82,10 +82,9 @@ abbr pip_uninstall_all 'pip freeze | xargs pip uninstall -y'
 # Pulumi
 abbr pu 'pulumi'
 abbr pud 'pulumi destroy'
-abbr pudy 'pulumi destroy -y'
 abbr pur 'pulumi refresh'
 abbr puu 'pulumi up'
-abbr puuy 'pulumi up -y'
+abbr puusp 'pulumi up --skip-preview'
 
 # Shell
 abbr fp 'fish --private'
