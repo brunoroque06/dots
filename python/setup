@@ -5,5 +5,4 @@ source utility/logging.sh
 logging_setup 'python'
 
 pip install --upgrade pip
-
-pip install --upgrade black pre-commit pylint ranger-fm
+pip install --upgrade black pre-commit pylint

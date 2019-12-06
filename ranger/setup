@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-
-source utility/file.sh
-source utility/logging.sh
-
-logging_setup 'ranger'
-
-symlink_to_dir rc.conf "$HOME"/.config/ranger
