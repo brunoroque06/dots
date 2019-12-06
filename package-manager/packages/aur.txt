@@ -1,4 +1,5 @@
 gotop
 lazygit
+lf
 starship
 ttf-input

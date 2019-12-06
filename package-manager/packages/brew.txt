@@ -1,4 +1,5 @@
 cjbassi/gotop/gotop
 jesseduffield/lazygit/lazygit
+lf
 node
 starship
