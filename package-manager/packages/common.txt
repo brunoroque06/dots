@@ -1,5 +1,4 @@
 bat
-exa
 fish
 git
 git-lfs
