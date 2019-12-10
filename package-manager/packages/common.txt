@@ -9,5 +9,6 @@ ripgrep
 shellcheck
 shfmt
 tmux
+tree
 vim
 yarn
