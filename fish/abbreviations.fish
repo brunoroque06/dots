@@ -105,5 +105,7 @@ abbr v 'vim'
 abbr code_extensions_export 'code --list-extensions > "$HOME"/.vscode/extensions.txt'
 abbr code_extensions_install '< "$HOME"/.vscode/extensions.txt xargs -L 1 code --install-extension'
 
-# Yank/Paste
-abbr p 'pbpaste'
+# Paste/Yank
+abbr P 'pbpaste'
+abbr Y 'pbcopy'
+
