@@ -25,5 +25,8 @@ complete -c unzip -x -a '(__fish_complete_suffix .pex)'
 # Java
 set -Ux JAVA_HOME /Library/Java/JavaVirtualMachines/jdk1.8.0_202.jdk/Contents/Home
 
+# Pulumi
+set -Ux PULUMI_PREFER_YARN 'true'
+
 # Prompt
 eval (starship init fish)
