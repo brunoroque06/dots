@@ -71,11 +71,12 @@ abbr list_ports 'lsof -PiTCP | grep LISTEN'
 abbr t 'gotop'
 
 # Python
+abbr pip_uninstall_all 'pip freeze | xargs pip uninstall -y'
 abbr py 'python'
 abbr pydb 'python -m pdb'
 abbr pye 'source (pyenv init -|psub); pyenv shell 3.6.9'
-abbr pys 'source (ls -d */ | grep venv | fzf)bin/activate.fish'
-abbr pip_uninstall_all 'pip freeze | xargs pip uninstall -y'
+abbr pys 'source venv/bin/activate.fish'
+abbr py_venv 'python -m venv venv/; source venv/bin/activate.fish; pip install -r requirements.txt'
 
 # Pulumi
 abbr pu 'pulumi'
