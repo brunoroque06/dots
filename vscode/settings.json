@@ -15,7 +15,6 @@
   "editor.fontSize": 13,
   "editor.formatOnSave": true,
   "editor.minimap.enabled": false,
-  "editor.renderWhitespace": "all",
   "editor.suggestSelection": "first",
   "editor.tabSize": 2,
   "editor.wordWrap": "on",
