@@ -4,13 +4,16 @@ eamodio.gitlens
 esbenp.prettier-vscode
 justusadam.language-haskell
 ms-azuretools.vscode-azurefunctions
+ms-azuretools.vscode-azurestorage
 ms-python.python
 ms-vscode.azure-account
 ms-vscode.cpptools
 ms-vscode.csharp
 ms-vscode.Go
+mtxr.sqltools
 octref.vetur
 skyapps.fish-vscode
+sleistner.vscode-fileutils
 streetsidesoftware.code-spell-checker
 VisualStudioExptTeam.vscodeintellicode
 vscodevim.vim
