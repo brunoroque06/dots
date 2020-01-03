@@ -7,6 +7,9 @@ nnoremap gb :ls<CR>:b<Space>
 " Clipboard
 set clipboard^=unnamed,unnamedplus
 
+" Config
+nnoremap confr :source ~/.vim/vimrc<CR>
+
 " Files
 set autoread
 set path+=**
@@ -44,12 +47,49 @@ set scrolloff=10
 set showcmd
 set wildmenu
 
+" Plugin
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+call plug#begin()
+Plug 'dense-analysis/ale'
+Plug 'junegunn/goyo.vim'
+Plug 'itchyny/lightline.vim'
+Plug 'morhetz/gruvbox'
+Plug 'tpope/vim-surround'
+call plug#end()
+
+" Ale
+let g:ale_fix_on_save = 1
+let g:ale_fixers = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\   'javascript': ['prettier', 'eslint'],
+\   'markdown': ['prettier'],
+\   'python': ['black'],
+\   'typescript': ['prettier', 'eslint'],
+\}
+let g:ale_linters = {
+\   'javascript': ['eslint'],
+\   'python': ['pylint'],
+\   'typescript': ['eslint'],
+\}
+let g:ale_sign_column_always = 1
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%linter%] [%severity%] %s'
+
 " Theme
 set background=dark
 colorscheme gruvbox
 highlight SpellBad cterm=underline ctermfg=DarkRed gui=underline guifg=DarkRed
- 
-" FZF
+
+" Fzf
 set rtp+=~/.fzf
 map <C-F> :FZF<CR>
 
+" Status Bar
+let g:lightline = { 'colorscheme': 'seoul256' }
+set noshowmode

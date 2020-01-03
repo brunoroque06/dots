@@ -7,15 +7,4 @@ logging_setup 'vim'
 
 symlink_to_dir vimrc "$HOME"/.vim
 
-add_package() {
-	readonly REPO=$(basename "$1" .git)
-	readonly DIR="$PLUGINS_FOLDER"/"$REPO"
-	mkdir -p "$DIR"
-	git -C "$DIR" pull --depth 1 || git clone --depth 1 "$1" "$DIR"
-}
-
-readonly PLUGINS_FOLDER="$HOME"/.vim/pack/plugins/start
-mkdir -p "$PLUGINS_FOLDER"
-
-add_package https://github.com/morhetz/gruvbox.git
-add_package https://github.com/tpope/vim-surround.git
+vim +PlugInstall +qa
