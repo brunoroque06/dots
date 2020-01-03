@@ -2,6 +2,7 @@ set nocompatible
 
 " Buffers
 set hidden
+set paste
 nnoremap gb :ls<CR>:b<Space>
 
 " Clipboard
