@@ -47,6 +47,7 @@ set cursorline
 set laststatus=2
 set lazyredraw
 set number
+set relativenumber
 set scrolloff=10
 set showcmd
 set wildmenu
