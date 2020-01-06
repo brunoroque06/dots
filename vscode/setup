@@ -8,10 +8,13 @@ logging_setup 'vscode'
 
 printf 'Symlinking VSCode configuration...\n'
 if is_mac_os; then
-	symlink_to_dir settings.json "$HOME/Library/Application Support/Code/User"
+	CONFIG="$HOME/Library/Application Support/Code/User"
 elif is_arch_linux; then
-	symlink_to_dir settings.json "$HOME/.config/Code - OSS/User"
+	CONFIG="$HOME/.config/Code - OSS/User"
 fi
+
+symlink_to_dir settings.json "$CONFIG"
+symlink_to_dir keybindings.json "$CONFIG"
 
 printf 'Installing VSCode extensions...\n'
 symlink_to_dir extensions.txt "$HOME"/.vscode
