@@ -11,6 +11,7 @@
   "editor.cursorBlinking": "solid",
   "editor.cursorSurroundingLines": 10,
   "editor.cursorWidth": 2,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.fontFamily": "Input Mono",
   "editor.fontSize": 13,
   "editor.formatOnSave": true,
