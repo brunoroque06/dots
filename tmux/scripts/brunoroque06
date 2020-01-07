@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-SESSION='BrunoRoque06'
+SESSION='brunoroque06'
 
 tmux new-session -s $SESSION -n 'dotfiles' -d
 tmux send-keys "cd $HOME/Projects/dotfiles" C-m
