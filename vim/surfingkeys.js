@@ -1,27 +1,26 @@
 // Change
 map("cu", "sU");
 
-// New Tab
-unmap("n");
-map("nb", "b");
-map("nf", "af");
-mapkey("ng", "#8Open a URL in new tab", function() {
+// Go (same tab)
+map("gh", "gU");
+map("gg", "go");
+map("gt", "T");
+map("gu", "O");
+
+// Open (new tab)
+map("ob", "b");
+map("of", "af");
+mapkey("og", "#8Open a URL in new tab", function() {
   Front.openOmnibar({ type: "URLs", extra: "getAllSites", tabbed: true });
 });
-map("nh", "oh");
-map("nm", "cf");
-mapkey("ni", "#8Open incognito window", function() {
+map("oh", "oh");
+map("om", "cf");
+mapkey("oi", "#8Open incognito window", function() {
   RUNTIME("openIncognito", {
     url: "https://www.startpage.com"
   });
 });
-map("ny", "oy");
-
-// Open
-map("oh", "gU");
-map("og", "go");
-map("ot", "T");
-map("ou", "O");
+map("oy", "oy");
 
 // Paste
 unmap("p");
@@ -49,6 +48,8 @@ map("{", "S");
 map("}", "D");
 
 // Settings
+Hints.characters = "qwertyiopasfgzxcvbnm";
+Hints.scrollKeys = "0udjkhlG$";
 settings.enableAutoFocus = false;
 settings.hintAlign = "left";
 settings.startToShowEmoji = 9;
