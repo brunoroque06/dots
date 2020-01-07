@@ -15,6 +15,7 @@ mapkey("ni", "#8Open incognito window", function() {
     url: "https://www.startpage.com"
   });
 });
+map("ny", "oy");
 
 // Open
 map("oh", "gU");
