@@ -36,6 +36,7 @@ map("{", "S");
 map("}", "D");
 map("<", "<<");
 map(">", ">>");
+map("pi", "<Alt-p>");
 
 // Yank
 map("yt", "yT");
@@ -78,6 +79,7 @@ unmapAllExcept([
   "ox",
   "pg",
   "ph",
+  "pi",
   "ps",
   "py",
   "q",
