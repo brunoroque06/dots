@@ -22,6 +22,7 @@ mapkey("oi", "#8Open incognito window", function() {
 map("pg", "sg");
 map("ps", "ss");
 map("ph", "sh");
+map("pp", "cc");
 map("py", "sy");
 
 // Scroll
@@ -36,6 +37,7 @@ map("{", "S");
 map("}", "D");
 map("<", "<<");
 map(">", ">>");
+map("mu", "<Alt-m>");
 map("pi", "<Alt-p>");
 
 // Yank
@@ -57,6 +59,7 @@ unmapAllExcept([
   "X",
   "[",
   "]",
+  "ab",
   "b",
   "cU",
   "cu",
@@ -71,6 +74,7 @@ unmapAllExcept([
   "j",
   "k",
   "l",
+  "mu",
   "n",
   "of",
   "oh",
@@ -80,6 +84,7 @@ unmapAllExcept([
   "pg",
   "ph",
   "pi",
+  "pp",
   "ps",
   "py",
   "q",
