@@ -1,18 +1,15 @@
 // Change
 map("cu", "sU");
+map("cU", "su");
 
 // Go (same tab)
-map("gh", "gU");
-map("gg", "go");
+map("gu", "gU");
 map("gt", "T");
-map("gu", "O");
+map("gf", "O");
 
 // Open (new tab)
-map("ob", "b");
+map("t", "on");
 map("of", "af");
-mapkey("og", "#8Open a URL in new tab", function() {
-  Front.openOmnibar({ type: "URLs", extra: "getAllSites", tabbed: true });
-});
 map("oh", "oh");
 map("om", "cf");
 mapkey("oi", "#8Open incognito window", function() {
@@ -20,21 +17,12 @@ mapkey("oi", "#8Open incognito window", function() {
     url: "https://www.startpage.com"
   });
 });
-map("oy", "oy");
 
 // Paste
-unmap("p");
 map("pg", "sg");
 map("ps", "ss");
 map("ph", "sh");
 map("py", "sy");
-unmap("sb");
-unmap("sd");
-unmap("sg");
-unmap("ss");
-unmap("sh");
-unmap("sy");
-unmap("sw");
 
 // Scroll
 map("sf", ";fs");
@@ -46,6 +34,58 @@ map("[", "E");
 map("]", "R");
 map("{", "S");
 map("}", "D");
+
+// Yank
+map("yt", "yT");
+map("ym", "yma");
+
+unmapAllExcept([
+  "$",
+  "%",
+  "/",
+  "0",
+  "?",
+  "G",
+  "I",
+  "T",
+  "[",
+  "]",
+  "b",
+  "cU",
+  "cu",
+  "f",
+  "gf",
+  "gg",
+  "go",
+  "gt",
+  "gu",
+  "h",
+  "i",
+  "j",
+  "k",
+  "l",
+  "of",
+  "oh",
+  "oi",
+  "om",
+  "ox",
+  "pg",
+  "ph",
+  "ps",
+  "py",
+  "r",
+  "sf",
+  "ss",
+  "st",
+  "t",
+  "v",
+  "x",
+  "ym",
+  "yt",
+  "yy",
+  "{",
+  "}"
+]);
 
 // Settings
 Hints.characters = "qwertyiopasfgzxcvbnm";
