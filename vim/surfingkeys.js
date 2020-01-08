@@ -41,6 +41,7 @@ map("mu", "<Alt-m>");
 map("pi", "<Alt-p>");
 
 // Yank
+map("yf", "ya");
 map("yt", "yT");
 map("ym", "yma");
 
@@ -95,6 +96,7 @@ unmapAllExcept([
   "ws",
   "wt",
   "x",
+  "yf",
   "ym",
   "yt",
   "yy",
