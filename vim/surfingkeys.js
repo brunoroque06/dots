@@ -8,7 +8,6 @@ map("gt", "T");
 map("gf", "O");
 
 // Open (new tab)
-map("t", "on");
 map("of", "af");
 map("oh", "oh");
 map("om", "cf");
@@ -25,11 +24,6 @@ map("ph", "sh");
 map("pp", "cc");
 map("py", "sy");
 
-// Scroll
-map("wf", ";fs");
-map("ws", "w");
-map("wt", ";w");
-
 // Tabs
 map("[", "E");
 map("]", "R");
@@ -39,6 +33,12 @@ map("<", "<<");
 map(">", ">>");
 map("mu", "<Alt-m>");
 map("pi", "<Alt-p>");
+map("t", "on");
+
+// Window
+map("wf", ";fs");
+map("ws", "w");
+map("wt", ";w");
 
 // Yank
 map("yf", "ya");
