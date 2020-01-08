@@ -25,15 +25,17 @@ map("ph", "sh");
 map("py", "sy");
 
 // Scroll
-map("sf", ";fs");
-map("ss", "w");
-map("st", ";w");
+map("wf", ";fs");
+map("ws", "w");
+map("wt", ";w");
 
 // Tabs
 map("[", "E");
 map("]", "R");
 map("{", "S");
 map("}", "D");
+map("<", "<<");
+map(">", ">>");
 
 // Yank
 map("yt", "yT");
@@ -44,10 +46,14 @@ unmapAllExcept([
   "%",
   "/",
   "0",
+  "<",
+  ">",
   "?",
   "G",
   "I",
+  "N",
   "T",
+  "X",
   "[",
   "]",
   "b",
@@ -64,6 +70,7 @@ unmapAllExcept([
   "j",
   "k",
   "l",
+  "n",
   "of",
   "oh",
   "oi",
@@ -73,16 +80,20 @@ unmapAllExcept([
   "ph",
   "ps",
   "py",
+  "q",
   "r",
-  "sf",
-  "ss",
-  "st",
   "t",
   "v",
+  "wf",
+  "ws",
+  "wt",
   "x",
   "ym",
   "yt",
   "yy",
+  "zi",
+  "zo",
+  "zr",
   "{",
   "}"
 ]);
