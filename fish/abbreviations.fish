@@ -99,6 +99,7 @@ abbr tn 'tmux new-session -s default'
 
 # Vim
 abbr v 'vim'
+abbr vim_install 'vim +PlugInstall +PlugClean +qa'
 
 # VSCode
 abbr code_extensions_export 'code --list-extensions > "$HOME"/.vscode/extensions.txt'
