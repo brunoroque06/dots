@@ -13,6 +13,10 @@
     "command": "workbench.action.previousEditor"
   },
   {
+    "key": "ctrl+f",
+    "command": "workbench.action.quickOpen"
+  },
+  {
     "key": "ctrl+h",
     "command": "workbench.action.navigateLeft"
   },
@@ -27,6 +31,14 @@
   {
     "key": "ctrl+j",
     "command": "workbench.action.navigateDown"
+  },
+  {
+    "key": "ctrl+r",
+    "command": "workbench.action.showCommands"
+  },
+  {
+    "key": "ctrl+w",
+    "command": "workbench.action.closeActiveEditor"
   },
   {
     "key": "enter",
