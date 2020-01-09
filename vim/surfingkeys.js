@@ -51,6 +51,8 @@ unmapAllExcept([
   "/",
   "0",
   "<",
+  "<Ctrl-i>",
+  "<Esc>",
   ">",
   "?",
   "G",
@@ -118,7 +120,7 @@ settings.startToShowEmoji = 9;
 settings.tabsThreshold = 1;
 settings.theme = `
 .sk_theme {
-  font-family: IBM Plex Sans, sans;
+  font-family: sans-serif;
   font-size: 14pt;
   background: #24272e;
   color: #abb2bf;
