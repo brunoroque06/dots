@@ -62,9 +62,8 @@ abbr npm_global_update 'npm update -g'
 abbr nr 'npm run'
 abbr ns "awk '/\"scripts\":/,/}/' package.json"
 abbr y 'yarn'
-abbr ygui 'yarn global upgrade-interactive --latest'
-abbr yr 'yarn run'
-abbr yui 'yarn upgrade-interactive --latest'
+abbr yarn_global_upgrade 'yarn global upgrade-interactive --latest'
+abbr yarn_upgrade 'yarn upgrade-interactive --latest'
 
 # Processes
 abbr list_ports 'lsof -PiTCP | grep LISTEN'
@@ -99,7 +98,7 @@ abbr tn 'tmux new-session -s default'
 
 # Vim
 abbr v 'vim'
-abbr vim_install 'vim +PlugInstall +PlugClean +qa'
+abbr vim_plug 'vim +PlugUpgrade +PlugClean +PlugInstall +PlugUpdate +qa'
 
 # VSCode
 abbr code_extensions_export 'code --list-extensions > "$HOME"/.vscode/extensions.txt'
@@ -108,4 +107,3 @@ abbr code_extensions_install '< "$HOME"/.vscode/extensions.txt xargs -L 1 code -
 # Paste/Yank
 abbr P 'pbpaste'
 abbr Y 'pbcopy'
-
