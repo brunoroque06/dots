@@ -7,6 +7,7 @@ logging_setup 'fish'
 
 symlink_to_dir config.fish "$HOME"/.config/fish
 symlink_to_dir abbreviations.fish "$HOME"/.config/fish
+
 symlink_to_dir functions/open_url.fish "$HOME"/.config/fish/functions
 symlink_to_dir functions/up.fish "$HOME"/.config/fish/functions
 symlink_to_dir functions/weather.fish "$HOME"/.config/fish/functions
