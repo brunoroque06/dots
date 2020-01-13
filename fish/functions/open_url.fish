@@ -1,7 +1,11 @@
 function open_url
+  set -l panes (tmux list-panes -s -F '#{pane_id}')
+  set -l content
+  for pane in $panes
+    set -a content (tmux capture-pane -J -p -t $pane) 
+  end
   set -l IFS
-  set -l screen (tmux capture-pane -J -p)
-  set -l urls (printf "$screen" | grep -oE '[[:alnum:]-]+(?:[:\.][[:alnum:]-]+)+' | sed 's/[^ ]* */https:\/\/&/g' | tr ' ' '\n' | sort --unique)
+  set -l urls (printf "$content" | grep -oE '[[:alnum:]-]+(?:[:\.][[:alnum:]-]+)+' | sort --unique | sed 's/^/https:\/\//' | tr ' ' '\n')
   if test -z "$urls"
     printf "No identitied urls"
   else
