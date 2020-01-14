@@ -5,7 +5,7 @@ function open_url
     set -a content (tmux capture-pane -J -p -t $pane | tr '%' ' ') 
   end
   set -l IFS
-  set -l urls (printf "$content" | grep -oE '[[:alnum:]-]+(?:[:\.][[:alnum:]-]+)+' | sort --unique | sed 's/^/https:\/\//' | tr ' ' '\n')
+  set -l urls (printf "$content" | grep -oE '[[:alnum:]-]+(?:[:\.][[:alnum:]-]+)+' | sort --unique | sed 's/^/http:\/\//' | tr ' ' '\n')
   if test -z "$urls"
     printf "No identitied urls"
   else
