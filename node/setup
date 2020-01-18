@@ -5,6 +5,10 @@ source utility/logging.sh
 
 logging_setup 'node'
 
-yarn global add eslint n prettier typescript
+yarn global add \
+	eslint \
+	n \
+	prettier \
+	typescript
 
-symlink_to_dir .eslintrc.yml "$HOME"
+symlink_to_dir .eslintrc.json "$HOME"
