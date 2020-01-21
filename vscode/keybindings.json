@@ -5,6 +5,10 @@
     "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
   },
   {
+    "key": "cmd+,",
+    "command": "workbench.action.openSettingsJson"
+  },
+  {
     "key": "ctrl+]",
     "command": "workbench.action.nextEditor"
   },
