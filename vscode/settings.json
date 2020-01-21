@@ -1,17 +1,31 @@
 {
-  "cSpell.userWords": [
-    "blockchain",
-    "gimli",
-    "numpy",
-    "pulumi",
-    "pylint",
-    "truthy",
-    "vsintellicode"
-  ],
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[scss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[yaml]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
   "editor.cursorBlinking": "solid",
   "editor.cursorSurroundingLines": 10,
   "editor.cursorWidth": 2,
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.fontFamily": "Input Mono",
   "editor.fontSize": 13,
   "editor.formatOnSave": true,
@@ -36,12 +50,20 @@
   "typescript.implementationsCodeLens.enabled": false,
   "typescript.referencesCodeLens.enabled": false,
   "typescript.updateImportsOnFileMove.enabled": "always",
-  "vim.easymotionMarkerFontFamily": "Input Mono",
   "vim.surround": true,
   "vim.useSystemClipboard": true,
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
   "window.zoomLevel": 0.2,
   "workbench.editor.enablePreview": false,
   "workbench.tree.indent": 15,
-  "workbench.tree.renderIndentGuides": "always"
+  "workbench.tree.renderIndentGuides": "always",
+  "cSpell.userWords": [
+    "blockchain",
+    "gimli",
+    "numpy",
+    "pulumi",
+    "pylint",
+    "truthy",
+    "vsintellicode"
+  ]
 }
