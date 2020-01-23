@@ -5,5 +5,5 @@ source utility/logging.sh
 
 logging_setup 'yabai'
 
-symlink_to_dir .skhdrc "$HOME"
-symlink_to_dir .yabairc "$HOME"
+symlink_to_dir skhdrc "$HOME"/.config/skhd
+symlink_to_dir yabairc "$HOME"/.config/yabai
