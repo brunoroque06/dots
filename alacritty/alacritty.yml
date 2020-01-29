@@ -53,7 +53,7 @@ colors:
   indexed_colors: []
 
 visual_bell:
-  animation: EaseOut
+  animation: Ease
   duration: 100
   color: "0x282828"
 
