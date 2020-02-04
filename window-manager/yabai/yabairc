@@ -18,6 +18,7 @@ yabai -m config insert_window_border_color 0xffd75f5f
 
 yabai -m rule --add app='^System Preferences$' manage=off
 yabai -m rule --add app='^Dictionary$' manage=off
+yabai -m rule --add app='^Disk Utility$' manage=off
 yabai -m rule --add app='^Finder$' manage=off
 yabai -m rule --add app='^Font Book$' manage=off
 yabai -m rule --add title='^Preferences$' manage=off
