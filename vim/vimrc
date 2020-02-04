@@ -37,9 +37,9 @@ set smartcase
 syntax enable
 set encoding=utf-8
 augroup markdownSpell
-  autocmd!
-  autocmd FileType markdown setlocal spell
-  autocmd BufRead,BufNewFile *.md setlocal spell
+	autocmd!
+	autocmd FileType markdown setlocal spell
+	autocmd BufRead,BufNewFile *.md setlocal spell
 augroup END
 
 " UI
@@ -54,8 +54,8 @@ set wildmenu
 
 " Plugin
 if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync
+	silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	autocmd VimEnter * PlugInstall --sync
 endif
 
 call plug#begin()
@@ -98,6 +98,7 @@ highlight SpellBad cterm=underline ctermfg=DarkRed gui=underline guifg=DarkRed
 " Fzf
 set rtp+=~/.fzf
 map <C-F> :FZF<CR>
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
 
 " Status Bar
 let g:lightline = { 'colorscheme': 'seoul256' }

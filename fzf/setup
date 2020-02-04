@@ -5,9 +5,10 @@ source utility/logging.sh
 logging_setup 'fzf'
 
 readonly FZF_DIR="$HOME"/.fzf
+rm -rf "$FZF_DIR"
 mkdir -p "$FZF_DIR"
 
-git -C "$FZF_DIR" pull --depth 1 || git clone --depth 1 https://github.com/junegunn/fzf.git "$FZF_DIR"
+git clone --depth 1 https://github.com/junegunn/fzf.git "$FZF_DIR"
 
 printf 'y\ny\nn\n' | "$FZF_DIR"/install
 
