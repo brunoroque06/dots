@@ -43,7 +43,7 @@
   "markdown.preview.fontFamily": "IBM Plex Sans",
   "python.formatting.provider": "black",
   "python.formatting.blackPath": "/usr/local/bin/black",
-  "python.jediEnabled": false,
+  "python.jediEnabled": true,
   "python.linting.pylintEnabled": true,
   "python.linting.pylintPath": "/usr/local/bin/pylint",
   "python.linting.pylintArgs": ["--disable=import-error,missing-docstring"],
@@ -65,5 +65,6 @@
     "pylint",
     "truthy",
     "vsintellicode"
-  ]
+  ],
+  "terminal.integrated.fontSize": 13
 }
