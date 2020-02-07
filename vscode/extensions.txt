@@ -19,5 +19,6 @@ redhat.vscode-yaml
 skyapps.fish-vscode
 sleistner.vscode-fileutils
 streetsidesoftware.code-spell-checker
+usernamehw.errorlens
 VisualStudioExptTeam.vscodeintellicode
 vscodevim.vim
