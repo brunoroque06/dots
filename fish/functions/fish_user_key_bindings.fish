@@ -8,4 +8,7 @@ function fish_user_key_bindings
 
   bind -e -M default \ct
   bind -e -M insert \ct
+
+  bind -M default -k dc forward-char
+  bind -M insert -k dc delete-char
 end
