@@ -93,7 +93,10 @@
     "pylint",
     "pytest",
     "pythonic",
+    "repos",
     "rtype",
+    "shellcheck",
+    "shfmt",
     "truthy",
     "tslib",
     "vsintellicode"
