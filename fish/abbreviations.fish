@@ -76,7 +76,7 @@ abbr py 'python'
 abbr pydb 'python -m pdb'
 abbr pye 'source (pyenv init -|psub); pyenv shell 3.6.9'
 abbr pys 'source venv/bin/activate.fish'
-abbr py_venv 'python -m venv venv/; source venv/bin/activate.fish; pip install -r requirements.txt'
+abbr python_setup 'python3 -m venv venv/; source venv/bin/activate.fish; pip install --upgrade pip; pip install -r requirements.txt; pip install pylint'
 
 # Pulumi
 abbr pu 'pulumi'
