@@ -71,15 +71,20 @@
   "workbench.tree.indent": 15,
   "workbench.tree.renderIndentGuides": "always",
   "cSpell.userWords": [
+    "devtools",
     "blockchain",
+    "codelyzer",
     "connexion",
     "deserialize",
     "deserialized",
     "deserializes",
+    "devkit",
     "dikt",
     "gimli",
     "interop",
+    "jasminewd",
     "klass",
+    "ngrx",
     "noqa",
     "numpy",
     "pulumi",
@@ -88,6 +93,7 @@
     "pythonic",
     "rtype",
     "truthy",
+    "tslib",
     "vsintellicode"
   ],
   "terminal.integrated.fontSize": 13
