@@ -13,7 +13,6 @@ ms-vscode.cpptools
 ms-vscode.csharp
 ms-vscode.Go
 msjsdiag.debugger-for-chrome
-mtxr.sqltools
 octref.vetur
 redhat.vscode-yaml
 skyapps.fish-vscode
