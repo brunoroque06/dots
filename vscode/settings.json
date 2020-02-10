@@ -43,8 +43,8 @@
   "explorer.confirmDragAndDrop": false,
   "files.autoSave": "afterDelay",
   "gitlens.advanced.telemetry.enabled": false,
-  "gitlens.codeLens.authors.enabled": false,
-  "gitlens.codeLens.recentChange.enabled": false,
+  "gitlens.codeLens.enabled": false,
+  "gitlens.hovers.enabled": false,
   "javascript.updateImportsOnFileMove.enabled": "always",
   "javascript.validate.enable": true,
   "markdown.preview.fontFamily": "IBM Plex Sans",
@@ -56,6 +56,7 @@
   "python.linting.pylintPath": "venv/bin/pylint",
   "python.linting.pylintArgs": ["--disable=bad-continuation,missing-docstring"],
   "python.testing.pytestEnabled": true,
+  "terminal.integrated.fontSize": 13,
   "typescript.implementationsCodeLens.enabled": false,
   "typescript.referencesCodeLens.enabled": false,
   "typescript.updateImportsOnFileMove.enabled": "always",
@@ -126,6 +127,5 @@
     "vsintellicode",
     "xclip",
     "youtube"
-  ],
-  "terminal.integrated.fontSize": 13
+  ]
 }
