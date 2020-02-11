@@ -1,3 +1,4 @@
+christian-kohler.path-intellisense
 DavidAnson.vscode-markdownlint
 dbaeumer.vscode-eslint
 eamodio.gitlens
