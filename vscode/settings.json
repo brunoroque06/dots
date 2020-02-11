@@ -50,7 +50,7 @@
   "markdown.preview.fontFamily": "IBM Plex Sans",
   "python.formatting.provider": "black",
   "python.formatting.blackPath": "/usr/local/bin/black",
-  "python.jediEnabled": true,
+  "python.jediEnabled": false,
   "python.pythonPath": "venv/bin/python",
   "python.linting.pylintEnabled": true,
   "python.linting.pylintPath": "venv/bin/pylint",
