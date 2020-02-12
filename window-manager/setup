@@ -6,7 +6,7 @@ source utility/os.sh
 logging_setup 'window manager'
 
 if is_mac_os; then
-	./window-manager/yabai/setup
+	./window-manager/macos/setup
 elif is_arch_linux; then
-	./window-manager/bspwm/setup
+	./window-manager/arch/setup
 fi
