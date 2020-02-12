@@ -5,4 +5,4 @@ source utility/logging.sh
 
 logging_setup 'macos'
 
-symlink_to_dir com.amethyst.Amethyst.plist "$HOME"/Library/Preferences
+cp "$PWD"/window-manager/macos/com.amethyst.amethyst.plist "$HOME"/Library/Preferences
