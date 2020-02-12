@@ -47,6 +47,9 @@ abbr gs 'git status -u'
 abbr lg 'lazygit'
 abbr pc_run 'pre-commit run'
 
+# Mac OS
+abbr amethyst_backup 'cp "$HOME"/Library/Preferences/com.amethyst.amethyst.plist "$HOME"/Projects/dotfiles/window-manager/macos'
+
 # Makefile
 abbr m 'make'
 
