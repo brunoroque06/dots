@@ -27,6 +27,7 @@
   "[yaml]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  "debug.console.fontSize": 13,
   "editor.cursorBlinking": "solid",
   "editor.cursorSurroundingLines": 10,
   "editor.cursorWidth": 2,
@@ -80,6 +81,7 @@
     "brunoroque",
     "camelize",
     "cjbassi",
+    "cmake",
     "codelyzer",
     "connexion",
     "deref",
@@ -94,6 +96,7 @@
     "dotfiles",
     "esbenp",
     "feedplate",
+    "flexfeeder",
     "gimli",
     "gotop",
     "interop",
@@ -118,6 +121,7 @@
     "pylint",
     "pytest",
     "pythonic",
+    "qmake",
     "readonly",
     "repos",
     "ripgrep",
