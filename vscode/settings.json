@@ -116,7 +116,9 @@
     "omnibar",
     "openapi",
     "openapitools",
+    "pincode",
     "plex",
+    "prefetch",
     "pulumi",
     "pyenv",
     "pylint",
@@ -124,6 +126,7 @@
     "pythonic",
     "qmake",
     "readonly",
+    "relock",
     "repos",
     "ripgrep",
     "rtype",
@@ -139,6 +142,8 @@
     "vicmd",
     "visitcount",
     "vsintellicode",
+    "webp",
+    "woff",
     "xclip",
     "youtube"
   ]
