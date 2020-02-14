@@ -9,39 +9,39 @@
     "command": "workbench.action.openSettingsJson"
   },
   {
-    "key": "ctrl+]",
+    "key": "cmd+]",
     "command": "workbench.action.nextEditor"
   },
   {
-    "key": "ctrl+[",
+    "key": "cmd+[",
     "command": "workbench.action.previousEditor"
   },
   {
-    "key": "ctrl+c",
+    "key": "cmd+r",
     "command": "workbench.action.showCommands"
   },
   {
-    "key": "ctrl+f",
+    "key": "cmd+o",
     "command": "workbench.action.quickOpen"
   },
   {
-    "key": "ctrl+h",
+    "key": "cmd+h",
     "command": "workbench.action.navigateLeft"
   },
   {
-    "key": "ctrl+l",
+    "key": "cmd+l",
     "command": "workbench.action.navigateRight"
   },
   {
-    "key": "ctrl+k",
+    "key": "cmd+k",
     "command": "workbench.action.navigateUp"
   },
   {
-    "key": "ctrl+j",
+    "key": "cmd+j",
     "command": "workbench.action.navigateDown"
   },
   {
-    "key": "ctrl+w",
+    "key": "cmd+w",
     "command": "workbench.action.closeActiveEditor"
   },
   {

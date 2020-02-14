@@ -82,9 +82,105 @@ mouse:
   hide_when_typing: true
 
 key_bindings:
-  - { key: PageUp, action: "ScrollPageUp" }
-  - { key: PageDown, action: "ScrollPageDown" }
-  - { key: Key0, mods: Control, action: ResetFontSize }
-  - { key: Equals, mods: Control, action: IncreaseFontSize }
-  - { key: Minus, mods: Control, action: DecreaseFontSize }
-  - { key: LBracket, mods: Control, chars: "\x1E" } # http://donsnotes.com/tech/charsets/ascii.html
+  - {
+      key: Comma,
+      mods: Command,
+      command:
+        {
+          program: "/usr/local/bin/vim",
+          args: ["~/.config/alacritty/alacritty.yml"],
+        },
+    }
+  - { key: N, mods: Command, action: SpawnNewInstance }
+  - { key: PageUp, action: ScrollPageUp }
+  - { key: PageDown, action: ScrollPageDown }
+  - { key: Key0, mods: Command, action: ResetFontSize }
+  - { key: Equals, mods: Command, action: IncreaseFontSize }
+  - { key: Minus, mods: Command, action: DecreaseFontSize }
+  - { key: R, mods: Command, chars: "\x12" } # http://donsnotes.com/tech/charsets/ascii.html
+  - { key: O, mods: Command, chars: "\x0F" }
+  - {
+      key: LBracket,
+      mods: Command,
+      command: { program: "/usr/local/bin/tmux", args: ["previous-window"] },
+    }
+  - {
+      key: RBracket,
+      mods: Command,
+      command: { program: "/usr/local/bin/tmux", args: ["next-window"] },
+    }
+  - {
+      key: Apostrophe,
+      mods: Command,
+      command: { program: "/usr/local/bin/tmux", args: ["split-window", "-v"] },
+    }
+  - {
+      key: Backslash,
+      mods: Command,
+      command: { program: "/usr/local/bin/tmux", args: ["split-window", "-h"] },
+    }
+  - { key: Slash, mods: Command, chars: "\x06" }
+  - {
+      key: H,
+      mods: Command,
+      command: { program: "/usr/local/bin/tmux", args: ["select-pane", "-L"] },
+    }
+  - {
+      key: H,
+      mods: Command|Shift,
+      command:
+        { program: "/usr/local/bin/tmux", args: ["resize-pane", "-L", "10"] },
+    }
+  - {
+      key: J,
+      mods: Command,
+      command: { program: "/usr/local/bin/tmux", args: ["select-pane", "-D"] },
+    }
+  - {
+      key: J,
+      mods: Command|Shift,
+      command:
+        { program: "/usr/local/bin/tmux", args: ["resize-pane", "-D", "10"] },
+    }
+  - {
+      key: K,
+      mods: Command,
+      command: { program: "/usr/local/bin/tmux", args: ["select-pane", "-U"] },
+    }
+  - {
+      key: K,
+      mods: Command|Shift,
+      command:
+        { program: "/usr/local/bin/tmux", args: ["resize-pane", "-U", "10"] },
+    }
+  - {
+      key: L,
+      mods: Command,
+      command: { program: "/usr/local/bin/tmux", args: ["select-pane", "-R"] },
+    }
+  - {
+      key: L,
+      mods: Command|Shift,
+      command:
+        { program: "/usr/local/bin/tmux", args: ["resize-pane", "-R", "10"] },
+    }
+  - {
+      key: P,
+      mods: Command,
+      command: { program: "/usr/local/bin/tmux", args: ["choose-tree", "-Zw"] },
+    }
+  - {
+      key: W,
+      mods: Command,
+      command: { program: "/usr/local/bin/tmux", args: ["kill-pane"] },
+    }
+  - {
+      key: T,
+      mods: Command,
+      command: { program: "/usr/local/bin/tmux", args: ["new-window"] },
+    }
+  - {
+      key: Y,
+      mods: Command,
+      command: { program: "/usr/local/bin/tmux", args: ["copy-mode"] },
+    }

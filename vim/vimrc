@@ -97,7 +97,7 @@ highlight SpellBad cterm=underline ctermfg=DarkRed gui=underline guifg=DarkRed
 
 " Fzf
 set rtp+=~/.fzf
-map <C-F> :FZF<CR>
+map <C-O> :FZF<CR>
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
 
 " Status Bar
