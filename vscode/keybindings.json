@@ -48,5 +48,9 @@
     "key": "enter",
     "command": "-renameFile",
     "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+  },
+  {
+    "key": "shift+cmd+o",
+    "command": "workbench.action.openRecent"
   }
 ]
