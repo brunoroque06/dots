@@ -17,7 +17,7 @@
     "command": "workbench.action.previousEditor"
   },
   {
-    "key": "cmd+r",
+    "key": "cmd+p",
     "command": "workbench.action.showCommands"
   },
   {
