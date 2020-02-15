@@ -7,6 +7,7 @@ function fish_user_key_bindings
   bind -M insert \co fzf-file-widget
   bind -M insert \cp history-search-backward
   bind -M insert \cw backward-kill-word
+  bind -M insert \e\x7F backward-kill-word
   bind -e -M insert \ct
 
   bind -M default -k dc forward-char
