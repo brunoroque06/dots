@@ -1,15 +1,10 @@
 {
-  "settingsVersion": "1.64.6",
-  "exclusionRules": [
-    {
-      "pattern": "https?://mail.google.com/*",
-      "passKeys": ""
-    }
-  ],
+  "settingsVersion": "1.65.2",
+  "exclusionRules": [],
   "filterLinkHints": false,
   "waitForEnterForFilteredHints": true,
   "hideHud": false,
-  "keyMappings": "",
+  "keyMappings": "map <m-h> goBack\nmap <m-j> previousTab\nmap <m-k> nextTab\nmap <m-l> goForward\nmap <m-p> togglePinTab",
   "linkHintCharacters": "sadfjklewcmpgh",
   "linkHintNumbers": "0123456789",
   "newTabUrl": "about:newtab",
