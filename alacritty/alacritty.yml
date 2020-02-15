@@ -82,15 +82,6 @@ mouse:
   hide_when_typing: true
 
 key_bindings:
-  - {
-      key: Comma,
-      mods: Command,
-      command:
-        {
-          program: "/usr/local/bin/vim",
-          args: ["~/.config/alacritty/alacritty.yml"],
-        },
-    }
   - { key: N, mods: Command, action: SpawnNewInstance }
   - { key: PageUp, action: ScrollPageUp }
   - { key: PageDown, action: ScrollPageDown }
