@@ -4,7 +4,7 @@
   "filterLinkHints": false,
   "waitForEnterForFilteredHints": true,
   "hideHud": false,
-  "keyMappings": "map <m-h> goBack\nmap <m-j> previousTab\nmap <m-k> nextTab\nmap <m-l> goForward\nmap <m-p> togglePinTab",
+  "keyMappings": "map <m-j> previousTab\nmap <m-k> nextTab\nmap <m-p> togglePinTab",
   "linkHintCharacters": "sadfjklewcmpgh",
   "linkHintNumbers": "0123456789",
   "newTabUrl": "about:newtab",
