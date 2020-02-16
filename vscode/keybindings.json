@@ -52,5 +52,13 @@
   {
     "key": "shift+cmd+o",
     "command": "workbench.action.openRecent"
+  },
+  {
+    "key": "shift+cmd+l",
+    "command": "workbench.action.moveEditorToNextGroup"
+  },
+  {
+    "key": "shift+cmd+h",
+    "command": "workbench.action.moveEditorToPreviousGroup"
   }
 ]
