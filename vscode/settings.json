@@ -28,6 +28,9 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "debug.console.fontSize": 13,
+  "debug.inlineValues": true,
+  "debug.internalConsoleOptions": "neverOpen",
+  "debug.toolBarLocation": "docked",
   "editor.cursorBlinking": "solid",
   "editor.cursorSurroundingLines": 10,
   "editor.cursorWidth": 2,
