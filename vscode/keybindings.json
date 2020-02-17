@@ -64,5 +64,20 @@
   {
     "key": "shift+cmd+,",
     "command": "workbench.action.openGlobalKeybindingsFile"
+  },
+  {
+    "key": "cmd+d",
+    "command": "workbench.action.debug.continue",
+    "when": "inDebugMode"
+  },
+  {
+    "key": "cmd+d",
+    "command": "workbench.action.debug.start",
+    "when": "!inDebugMode"
+  },
+  {
+    "key": "shift+cmd+d",
+    "command": "workbench.action.debug.stop",
+    "when": "inDebugMode"
   }
 ]
