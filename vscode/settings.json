@@ -39,6 +39,9 @@
   "editor.formatOnSave": true,
   "editor.lineNumbers": "relative",
   "editor.minimap.enabled": false,
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": true
+  },
   "editor.suggestSelection": "first",
   "editor.tabSize": 2,
   "editor.wordWrap": "on",
