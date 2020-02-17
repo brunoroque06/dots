@@ -3,6 +3,6 @@
 source utility/file.sh
 source utility/logging.sh
 
-logging_setup 'IntelliJ'
+logging_setup 'IDEA'
 
 symlink_to_dir .ideavimrc "$HOME"
