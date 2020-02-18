@@ -13,4 +13,4 @@ jobs:
       - name: Shellcheck executables
         run: find . -not -path "./.git/*" -type f -perm -u=x | xargs -t -I {} shellcheck -x {}
       - name: Prettier
-        run: yarn add prettier; prettier -l './**/*.{json,yaml,yml}'
+        run: yarn global add prettier; prettier -l './**/*.{json,yaml,yml}'
