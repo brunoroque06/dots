@@ -91,8 +91,8 @@ abbr puusp 'pulumi up --skip-preview'
 # Shell
 abbr fp 'fish --private'
 abbr s 'source'
-abbr shell_scripts_lint 'find . -not -path "./.git/*" -type f \( ! -name "*.*" -o -name ".*" \) -exec shellcheck -x -e SC1090 {} \;'
 abbr shell_scripts_format 'shfmt -i 2 -s -w .'
+abbr shell_scripts_lint 'find . -not -path "./.git/*" -type f -perm -u=x | xargs shellcheck -x'
 
 # Tmux
 abbr ta 'tmux attach-session -t'
