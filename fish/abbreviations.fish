@@ -92,7 +92,7 @@ abbr puusp 'pulumi up --skip-preview'
 abbr fp 'fish --private'
 abbr s 'source'
 abbr shell_scripts_format 'shfmt -i 2 -s -w .'
-abbr shell_scripts_lint 'find . -not -path "./.git/*" -type f -perm -u=x | xargs shellcheck -x'
+abbr shell_scripts_lint 'find . -not -path "./.git/*" -type f -perm -u=x | xargs -t -I {} shellcheck -x {}'
 
 # Tmux
 abbr ta 'tmux attach-session -t'
