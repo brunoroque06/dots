@@ -20,5 +20,3 @@ printf 'Starting dotfiles installation...\n'
 printf 'Installation has finished #\n'
 
 exec fish
-
-printf $SUP
