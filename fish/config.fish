@@ -23,7 +23,7 @@ complete -c unzip -x -a '(__fish_complete_suffix .whl)'
 complete -c unzip -x -a '(__fish_complete_suffix .pex)'
 
 # Java
-set -Ux JAVA_HOME /Library/Java/JavaVirtualMachines/jdk1.8.0_202.jdk/Contents/Home
+set -Ux JAVA_HOME /Library/Java/JavaVirtualMachines/adoptopenjdk-13.0.2.jdk/Contents/Home
 
 # Pulumi
 set -Ux PULUMI_PREFER_YARN 'true'
