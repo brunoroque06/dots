@@ -35,6 +35,7 @@
     "cjbassi",
     "cmake",
     "codelyzer",
+    "configurator",
     "connexion",
     "deref",
     "deserialize",
