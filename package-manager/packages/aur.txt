@@ -1,4 +1,5 @@
 gotop
+git-delta
 lazygit
 lf
 starship

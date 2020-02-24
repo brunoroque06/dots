@@ -1,28 +1,5 @@
-[color]
-	ui = true
-
-[color "branch"]
-	current = yellow bold
-	local = green bold
-	remote = cyan bold
-
-[color "diff"]
-	meta = 11
-	frag = magenta bold
-	commit = yellow bold
-	old = red bold
-	new = green bold
-	whitespace = red reverse
-
-[color "diff-highlight"]
-	oldNormal = red bold
-	oldHighlight = red bold 52
-	newNormal = green bold
-	newHighlight = green bold 22
-
-[user]
-	name = Bruno Roque
-	email = brunoroque06@gmail.com
+[core]
+	pager = delta --dark
 
 [filter "lfs"]
 	clean = git-lfs clean -- %f
@@ -30,5 +7,6 @@
 	process = git-lfs filter-process
 	required = true
 
-[core]
-	pager = diff-so-fancy | less --tabs=4 -RFX
+[user]
+	name = Bruno Roque
+	email = brunoroque06@gmail.com

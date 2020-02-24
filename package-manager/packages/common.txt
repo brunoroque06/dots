@@ -1,5 +1,4 @@
 bat
-diff-so-fancy
 fish
 git
 git-lfs
