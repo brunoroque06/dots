@@ -133,6 +133,7 @@
   "gitlens.advanced.telemetry.enabled": false,
   "gitlens.codeLens.enabled": false,
   "gitlens.hovers.enabled": false,
+  "go.useLanguageServer": true,
   "javascript.updateImportsOnFileMove.enabled": "always",
   "javascript.validate.enable": true,
   "markdown.preview.fontFamily": "IBM Plex Sans",

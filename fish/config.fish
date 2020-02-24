@@ -28,7 +28,7 @@ set -Ux JAVA_HOME /Library/Java/JavaVirtualMachines/adoptopenjdk-13.0.2.jdk/Cont
 # Pulumi
 set -Ux PULUMI_PREFER_YARN 'true'
 
-# Path
+# Golang
 set -x PATH $PATH (go env GOPATH)/bin
 
 # Prompt
