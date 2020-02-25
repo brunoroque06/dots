@@ -1,10 +1,5 @@
 [
   {
-    "key": "cmd+enter",
-    "command": "renameFile",
-    "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
-  },
-  {
     "key": "cmd+,",
     "command": "workbench.action.openSettingsJson"
   },
@@ -45,9 +40,9 @@
     "command": "workbench.action.closeActiveEditor"
   },
   {
-    "key": "enter",
-    "command": "-renameFile",
-    "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+    "key": "e",
+    "command": "list.select",
+    "when": "listFocus && !inputFocus"
   },
   {
     "key": "shift+cmd+o",
