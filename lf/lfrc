@@ -1,0 +1,4 @@
+set hidden on
+set number on
+set relativenumber on
+set scrolloff 10

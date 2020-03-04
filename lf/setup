@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+source utility/file.sh
+source utility/logging.sh
+
+logging_setup 'lf'
+
+symlink_to_dir lfrc "$HOME/.config/lf"
