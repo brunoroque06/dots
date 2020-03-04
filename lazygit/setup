@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+source utility/file.sh
+source utility/logging.sh
+
+logging_setup 'lazygit'
+
+symlink_to_dir config.yml "$HOME/Library/Application Support/jesseduffield/lazygit"

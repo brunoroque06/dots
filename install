@@ -9,6 +9,7 @@ printf 'Starting dotfiles installation...\n'
 ./fzf/setup
 ./git/setup
 ./jetbrains/setup
+./lazygit/setup
 ./node/setup
 ./python/setup
 ./starship/setup
