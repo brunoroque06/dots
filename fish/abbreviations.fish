@@ -12,7 +12,12 @@ abbr azi 'az interactive --style br'
 abbr brew_upgrade 'brew update; brew upgrade; brew cleanup; brew doctor'
 abbr brew_cask_upgrade 'brew update; brew cask upgrade; brew cask doctor'
 
-# Directory
+# Docker
+abbr d 'docker'
+abbr docker_containers_remove 'docker stop (docker ps -a -q); docker rm (docker ps -a -q); docker system prune --volumes -f'
+abbr docker_images_remove 'docker rmi -f (docker images -a -q)'
+
+# Files
 abbr c 'bat'
 abbr l 'ls -AGlh'
 abbr fm 'lf'
@@ -20,35 +25,27 @@ abbr rm_dir 'du -hd 1 | fzf -m | awk \'{print $2}\' | xargs rm -rf'
 abbr rm_empty_dirs 'find . -type d -empty -delete'
 abbr zl 'cd (z -l | awk \'{print $2}\' | fzf || printf .)'
 
-# Docker
-abbr d 'docker'
-abbr docker_containers_remove 'docker stop (docker ps -a -q); docker rm (docker ps -a -q); docker system prune --volumes -f'
-abbr docker_images_remove 'docker rmi -f (docker images -a -q)'
-
 # Git
 abbr ga 'git add'
 abbr gaa 'git add --a'
 abbr gb 'git branch'
 abbr gbd 'git branch -D'
 abbr gc 'git commit'
-abbr gd 'git diff'
 abbr gcam 'git commit -am'
-abbr gcm 'git commit -m'
 abbr gcamend 'git commit --amend --no-edit'
+abbr gcm 'git commit -m'
 abbr gco 'git checkout'
 abbr gcob 'git checkout -b'
 abbr gcp 'git cherry-pick'
+abbr gd 'git diff'
 abbr gl 'git log --all --decorate --graph --format=format:"%C(blue)%h%C(reset) - %C(green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)" -20'
-abbr gpush 'git push -u origin (git rev-parse --abbrev-ref HEAD)'
 abbr gpull 'git pull'
+abbr gpush 'git push -u origin (git rev-parse --abbrev-ref HEAD)'
 abbr grb 'git rebase'
 abbr greset 'git reset --hard'
 abbr gs 'git status -u'
 abbr lg 'lazygit'
 abbr pc_run 'pre-commit run'
-
-# Mac OS
-abbr amethyst_backup 'cp "$HOME"/Library/Preferences/com.amethyst.amethyst.plist "$HOME"/Projects/dotfiles/window-manager/macos'
 
 # Makefile
 abbr m 'make'
@@ -71,7 +68,7 @@ abbr yarn_upgrade 'yarn upgrade-interactive --latest'
 
 # Processes
 abbr list_ports 'lsof -PiTCP | grep LISTEN'
-abbr t 'gotop'
+abbr to 'gotop'
 
 # Python
 abbr pip_uninstall_all 'pip freeze | xargs pip uninstall -y'
@@ -111,3 +108,6 @@ abbr code_extensions_install '< "$HOME"/.vscode/extensions.txt xargs -L 1 code -
 # Paste/Yank
 abbr P 'pbpaste'
 abbr Y 'pbcopy'
+
+# Window Manager
+abbr amethyst_backup 'cp "$HOME"/Library/Preferences/com.amethyst.amethyst.plist "$HOME"/Projects/dotfiles/window-manager/macos'
