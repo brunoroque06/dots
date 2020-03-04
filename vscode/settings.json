@@ -153,6 +153,10 @@
   "vim.highlightedyank.enable": true,
   "vim.normalModeKeyBindingsNonRecursive": [
     {
+      "before": [":"],
+      "commands": ["vim.showQuickpickCmdLine"]
+    },
+    {
       "before": ["g", "h"],
       "commands": ["editor.action.showDefinitionPreviewHover"]
     }
