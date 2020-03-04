@@ -159,6 +159,10 @@
     {
       "before": ["g", "h"],
       "commands": ["editor.action.showDefinitionPreviewHover"]
+    },
+    {
+      "before": ["M"],
+      "commands": [":marks"]
     }
   ],
   "vim.surround": true,
