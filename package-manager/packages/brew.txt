@@ -4,5 +4,4 @@ jesseduffield/lazygit/lazygit
 lf
 node
 starship
-tcpdump
-
+wireshark

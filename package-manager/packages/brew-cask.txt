@@ -3,3 +3,5 @@ amethyst
 homebrew/cask-fonts/font-ibm-plex
 homebrew/cask-fonts/font-input
 visual-studio-code
+wireshark
+
