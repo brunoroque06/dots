@@ -12,12 +12,8 @@
     "command": "workbench.action.previousEditor"
   },
   {
-    "key": "cmd+r",
-    "command": "workbench.action.showCommands"
-  },
-  {
     "key": "cmd+o",
-    "command": "workbench.action.quickOpen"
+    "command": "workbench.action.openRecent"
   },
   {
     "key": "cmd+h",
@@ -43,10 +39,6 @@
     "key": "e",
     "command": "list.select",
     "when": "listFocus && !inputFocus"
-  },
-  {
-    "key": "shift+cmd+o",
-    "command": "workbench.action.openRecent"
   },
   {
     "key": "shift+cmd+l",
