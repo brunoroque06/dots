@@ -1,5 +1,5 @@
 {
-  "settingsVersion": "1.65.2",
+  "settingsVersion": "1.66",
   "exclusionRules": [],
   "filterLinkHints": false,
   "waitForEnterForFilteredHints": true,
@@ -15,7 +15,7 @@
   "scrollStepSize": 60,
   "smoothScroll": true,
   "grabBackFocus": true,
-  "searchEngines": "gm: https://www.google.com/maps?q=%s Google Maps\ni: https://www.imdb.com/find?q=%s IMDB\nst: https://startpage.com/do/search?q=%s Startpage\nw: https://www.wikipedia.org/w/index.php?title=Special:Search&search=%s Wikipedia\ny: https://www.youtube.com/results?search_query=%s Youtube",
+  "searchEngines": "gm: https://www.google.com/maps?q=%s Google Maps\nimdb: https://www.imdb.com/find?q=%s IMDB\nst: https://startpage.com/do/search?q=%s Startpage\nw: https://www.wikipedia.org/w/index.php?title=Special:Search&search=%s Wikipedia\ny: https://www.youtube.com/results?search_query=%s Youtube",
   "searchUrl": "https://www.google.ch/search?q=",
   "userDefinedLinkHintCss": "div > .vimiumHintMarker {\nbackground: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FFF785),\n  color-stop(100%,#FFC542));\nborder: 1px solid #E3BE23;\n}\n\ndiv > .vimiumHintMarker span {\ncolor: black;\nfont-weight: bold;\nfont-size: 13px;\n}\n\ndiv > .vimiumHintMarker > .matchingCharacter {\n}"
 }
