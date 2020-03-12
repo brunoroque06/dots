@@ -2,16 +2,11 @@
 
 source utility/file.sh
 source utility/logging.sh
-source utility/os.sh
 
 logging_setup 'vscode'
 
 printf 'Symlinking VSCode configuration...\n'
-if is_mac_os; then
-	CONFIG="$HOME/Library/Application Support/Code/User"
-elif is_arch_linux; then
-	CONFIG="$HOME/.config/Code - OSS/User"
-fi
+CONFIG="$HOME/Library/Application Support/Code/User"
 
 symlink_to_dir settings.json "$CONFIG"
 symlink_to_dir keybindings.json "$CONFIG"

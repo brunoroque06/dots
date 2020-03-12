@@ -1,6 +1,0 @@
-alacritty
-code
-nodejs
-python-pip
-ttf-ibm-plex
-xclip

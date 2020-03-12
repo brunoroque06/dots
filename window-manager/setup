@@ -1,10 +1,8 @@
 #!/usr/bin/env bash
 
+source utility/file.sh
 source utility/logging.sh
-source utility/os.sh
 
 logging_setup 'window manager'
 
-if is_mac_os; then
-	./window-manager/macos/setup
-fi
+cp "$PWD"/window-manager/com.amethyst.amethyst.plist "$HOME"/Library/Preferences

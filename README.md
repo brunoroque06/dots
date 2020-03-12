@@ -6,4 +6,4 @@
 ./install
 ```
 
-Supported: MacOS, Arch Linux.
+Supported: MacOS.

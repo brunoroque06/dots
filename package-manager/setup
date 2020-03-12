@@ -2,12 +2,17 @@
 
 source utility/command.sh
 source utility/logging.sh
-source utility/os.sh
 
-if is_mac_os; then
-	logging_setup 'brew'
-	prompt_for_command ./package-manager/brew
-elif is_arch_linux; then
-	logging_setup 'pacman'
-	prompt_for_command ./package-manager/pacman
+logging_setup 'brew'
+
+if is_command_not_in_path brew; then
+	printf 'Installing brew...'
+	/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
+
+brew update
+
+xargs brew install <package-manager/formulas.txt
+xargs brew cask install <package-manager/casks.txt
+
+brew doctor

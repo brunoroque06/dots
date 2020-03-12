@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-
-source utility/file.sh
-source utility/logging.sh
-
-logging_setup 'macos'
-
-cp "$PWD"/window-manager/macos/com.amethyst.amethyst.plist "$HOME"/Library/Preferences
