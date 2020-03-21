@@ -13,6 +13,7 @@ printf 'Starting dotfiles installation...\n'
 ./lf/setup
 ./node/setup
 ./python/setup
+./postgresql/setup
 ./starship/setup
 ./tmux/setup
 ./vim/setup

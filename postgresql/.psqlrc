@@ -1,0 +1,13 @@
+\set PROMPT1 '%/ %n (%M) %x\n%# '
+\set PROMPT2 ''
+
+\pset border 4
+\pset format wrapped
+\pset linestyle unicode
+\set COMP_KEYWORD_CASE upper
+\set VERBOSITY verbose
+\timing on
+\x auto
+
+\set version 'SELECT version();'
+\set extensions 'SELECT * from pg_available_extensions;'
