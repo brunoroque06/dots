@@ -8,6 +8,7 @@ printf 'Starting dotfiles installation...\n'
 ./fish/setup
 ./fzf/setup
 ./git/setup
+./gnu-readline/setup
 ./jetbrains/setup
 ./lazygit/setup
 ./lf/setup
