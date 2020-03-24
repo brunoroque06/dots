@@ -5,6 +5,7 @@
 \pset format wrapped
 \pset linestyle unicode
 \set COMP_KEYWORD_CASE upper
+\set ON_ERROR_STOP on
 \set VERBOSITY verbose
 \timing on
 \x auto
