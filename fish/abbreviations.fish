@@ -110,4 +110,4 @@ abbr P 'pbpaste'
 abbr Y 'pbcopy'
 
 # Window Manager
-abbr amethyst_backup 'cp "$HOME"/Library/Preferences/com.amethyst.amethyst.plist "$HOME"/Projects/dotfiles/window-manager/macos'
+abbr amethyst_backup 'cp "$HOME"/Library/Preferences/com.amethyst.amethyst.plist "$HOME"/Projects/dotfiles/window-manager/com.amethyst.amethyst.plist'
