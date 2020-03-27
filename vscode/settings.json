@@ -143,7 +143,7 @@
   "markdown.preview.fontFamily": "IBM Plex Sans",
   "python.formatting.blackPath": "/usr/local/bin/black",
   "python.formatting.provider": "black",
-  "python.jediEnabled": true,
+  "python.jediEnabled": false,
   "python.linting.pylintArgs": ["--disable=bad-continuation,missing-docstring"],
   "python.linting.pylintEnabled": true,
   "python.linting.pylintPath": "venv/bin/pylint",
