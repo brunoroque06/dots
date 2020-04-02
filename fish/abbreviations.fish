@@ -19,7 +19,7 @@ abbr docker_images_remove 'docker rmi -f (docker images -a -q)'
 
 # Files
 abbr c 'bat'
-abbr l 'ls -AGlh'
+abbr l 'exa -al'
 abbr fm 'lf'
 abbr rm_dir 'du -hd 1 | fzf -m | awk \'{print $2}\' | xargs rm -rf'
 abbr rm_empty_dirs 'find . -type d -empty -delete'

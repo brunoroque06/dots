@@ -1,5 +1,7 @@
 bat
 cjbassi/gotop/gotop
+exa
+fd
 fish
 git
 git-delta
@@ -16,7 +18,6 @@ shellcheck
 shfmt
 starship
 tmux
-tree
 vim
 wireshark
 yarn
