@@ -13,8 +13,6 @@ scrolling:
   history: 10000
   multiplier: 3
 
-tabspaces: 8
-
 font:
   normal:
     family: Input Mono
