@@ -3,6 +3,7 @@ cjbassi/gotop/gotop
 exa
 fd
 fish
+fzf
 git
 git-delta
 git-lfs

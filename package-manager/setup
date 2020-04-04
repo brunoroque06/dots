@@ -16,3 +16,5 @@ xargs brew install <package-manager/formulas.txt
 xargs brew cask install <package-manager/casks.txt
 
 brew doctor
+
+printf 'y\ny\nn\n' | "$(brew --prefix)"/opt/fzf/install
