@@ -61,10 +61,10 @@ abbr ni 'npm install'
 abbr npm_global_list 'npm list -g --depth=0'
 abbr npm_global_update 'npm update -g'
 abbr nr 'npm run'
-abbr ns "awk '/\"scripts\":/,/}/' package.json"
 abbr y 'yarn'
 abbr yarn_global_upgrade 'yarn global upgrade-interactive --latest'
 abbr yarn_upgrade 'yarn upgrade-interactive --latest'
+abbr ys "awk '/\"scripts\":/,/}/' package.json"
 
 # Processes
 abbr list_ports 'lsof -PiTCP | grep LISTEN'
