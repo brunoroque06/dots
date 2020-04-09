@@ -28,8 +28,10 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "cSpell.userWords": [
+    "Cobertura",
     "alacritty",
     "appservice",
+    "bdist",
     "blockchain",
     "brunoroque",
     "camelize",
@@ -38,6 +40,7 @@
     "codelyzer",
     "configurator",
     "connexion",
+    "dbintegration",
     "deref",
     "deserialize",
     "deserialized",
@@ -58,6 +61,7 @@
     "gimli",
     "gotop",
     "hatebur",
+    "htmlcov",
     "interop",
     "jasminewd",
     "jesseduffield",
