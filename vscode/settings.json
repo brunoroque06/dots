@@ -28,7 +28,6 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "cSpell.userWords": [
-    "Cobertura",
     "alacritty",
     "appservice",
     "bdist",
@@ -37,6 +36,7 @@
     "camelize",
     "cjbassi",
     "cmake",
+    "cobertura",
     "codelyzer",
     "configurator",
     "connexion",
@@ -48,6 +48,7 @@
     "devkit",
     "devtools",
     "dexie",
+    "dijsktra",
     "dikt",
     "docstring",
     "dotfiles",
@@ -82,6 +83,7 @@
     "omnibar",
     "openapi",
     "openapitools",
+    "parens",
     "pincode",
     "plex",
     "prefetch",
