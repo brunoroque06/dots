@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-symlink_to_dir() {
+link() {
 	local FILE=$1
 	local TARGET_DIR=$2
 	local AB_PATH

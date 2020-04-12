@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-source utility/file.sh
+source utility/dotfile.sh
 source utility/logging.sh
 
 logging_setup 'tmux'
 
-symlink_to_dir .tmux.conf "$HOME"
+link .tmux.conf "$HOME"

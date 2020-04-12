@@ -1,19 +1,19 @@
 #!/usr/bin/env bash
 
-source utility/file.sh
+source utility/dotfile.sh
 source utility/logging.sh
 
 logging_setup 'fish'
 
-symlink_to_dir config.fish "$HOME"/.config/fish
-symlink_to_dir abbreviations.fish "$HOME"/.config/fish
+link config.fish "$HOME"/.config/fish
+link abbreviations.fish "$HOME"/.config/fish
 
 FUNCS=$(ls fish/functions)
 
 for F in $FUNCS; do
-	symlink_to_dir functions/"$F" "$HOME"/.config/fish/functions
+	link functions/"$F" "$HOME"/.config/fish/functions
 done
 
 curl https://git.io/fisher --create-dirs -sLo ~/.config/fish/functions/fisher.fish
-symlink_to_dir fishfile "$HOME"/.config/fish
+link fishfile "$HOME"/.config/fish
 fish -c fisher

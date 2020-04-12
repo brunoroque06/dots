@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-source utility/file.sh
+source utility/dotfile.sh
 source utility/logging.sh
 
 logging_setup 'window manager'

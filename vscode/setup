@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-source utility/file.sh
+source utility/dotfile.sh
 source utility/logging.sh
 
 logging_setup 'vscode'
@@ -8,9 +8,9 @@ logging_setup 'vscode'
 printf 'Symlinking VSCode configuration...\n'
 CONFIG="$HOME/Library/Application Support/Code/User"
 
-symlink_to_dir settings.json "$CONFIG"
-symlink_to_dir keybindings.json "$CONFIG"
+link settings.json "$CONFIG"
+link keybindings.json "$CONFIG"
 
 printf 'Installing VSCode extensions...\n'
-symlink_to_dir extensions.txt "$HOME"/.vscode
+link extensions.txt "$HOME"/.vscode
 xargs <"$HOME"/.vscode/extensions.txt -L 1 code --force --install-extension

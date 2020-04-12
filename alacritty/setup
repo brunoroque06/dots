@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-source utility/file.sh
+source utility/dotfile.sh
 source utility/logging.sh
 
 logging_setup 'alacritty'
 
-symlink_to_dir alacritty.yml "$HOME"/.config/alacritty
+link alacritty.yml "$HOME"/.config/alacritty
