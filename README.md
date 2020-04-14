@@ -2,7 +2,7 @@
 
 ## Installation
 
-```bash
+```shell
 ./install
 ```
 
