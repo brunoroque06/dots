@@ -52,7 +52,7 @@ colors:
 
 visual_bell:
   animation: Ease
-  duration: 100
+  duration: 0
   color: "0x282828"
 
 background_opacity: 1.0
