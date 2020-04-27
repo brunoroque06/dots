@@ -5,4 +5,4 @@ source utility/logging.sh
 
 logging_setup 'tmux'
 
-link .tmux.conf "$HOME"
+link tmux.conf "$HOME"/.config/tmux
