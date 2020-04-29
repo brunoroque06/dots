@@ -157,6 +157,8 @@
   "javascript.updateImportsOnFileMove.enabled": "always",
   "javascript.validate.enable": true,
   "markdown.preview.fontFamily": "IBM Plex Sans",
+  "pgFormatter.commaBreak": true,
+  "pgFormatter.keywordCase": "lowercase",
   "python.formatting.blackPath": "/usr/local/bin/black",
   "python.formatting.provider": "black",
   "python.jediEnabled": false,
