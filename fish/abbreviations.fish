@@ -14,6 +14,7 @@ abbr brew_cask_upgrade 'brew update; brew cask upgrade; brew cask doctor'
 
 # Docker
 abbr d 'docker'
+abbr dpsa 'docker ps -a'
 abbr docker_containers_remove 'docker stop (docker ps -a -q); docker rm (docker ps -a -q); docker system prune --volumes -f'
 abbr docker_images_remove 'docker rmi -f (docker images -a -q)'
 
