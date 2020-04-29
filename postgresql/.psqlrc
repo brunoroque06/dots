@@ -4,7 +4,7 @@
 \pset border 4
 \pset format wrapped
 \pset linestyle unicode
-\set COMP_KEYWORD_CASE upper
+\set COMP_KEYWORD_CASE lower
 \set ON_ERROR_STOP on
 \set VERBOSITY verbose
 \timing on
