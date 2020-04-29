@@ -1,6 +1,7 @@
 alacritty
 alfred
 amethyst
+docker
 homebrew/cask-fonts/font-ibm-plex
 homebrew/cask-fonts/font-input
 visual-studio-code
