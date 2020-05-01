@@ -163,6 +163,7 @@
   "python.formatting.provider": "black",
   "python.jediEnabled": false,
   "python.linting.mypyEnabled": true,
+  "python.linting.mypyPath": "venv/bin/mypy",
   "python.linting.pylintArgs": ["--disable=bad-continuation,missing-docstring"],
   "python.linting.pylintEnabled": true,
   "python.linting.pylintPath": "venv/bin/pylint",
