@@ -66,6 +66,7 @@ abbr y 'yarn'
 abbr yarn_global_upgrade 'yarn global upgrade-interactive --latest'
 abbr yarn_upgrade 'yarn upgrade-interactive --latest'
 abbr ys "awk '/\"scripts\":/,/}/' package.json"
+abbr yt 'yarn test'
 
 # Processes
 abbr list_ports 'lsof -PiTCP | grep LISTEN'

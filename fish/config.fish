@@ -1,3 +1,5 @@
+set -U fish_greeting 'Your brand is what other people say about you when you\'re not in the room. - Jeff Bezos'
+
 # Vim
 fish_vi_key_bindings
 

@@ -184,6 +184,10 @@
       "commands": ["editor.action.showDefinitionPreviewHover"]
     },
     {
+      "before": ["g", "r"],
+      "commands": ["editor.action.rename"]
+    },
+    {
       "before": ["M"],
       "commands": [":marks"]
     }
