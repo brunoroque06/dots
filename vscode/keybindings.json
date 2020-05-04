@@ -36,6 +36,11 @@
     "command": "workbench.action.closeActiveEditor"
   },
   {
+    "key": "cmd+enter",
+    "command": "editor.action.quickFix",
+    "when": "editorHasCodeActionsProvider && editorTextFocus && !editorReadonly"
+  },
+  {
     "key": "e",
     "command": "list.select",
     "when": "listFocus && !inputFocus"
