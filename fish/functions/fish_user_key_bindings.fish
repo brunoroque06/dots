@@ -12,4 +12,7 @@ function fish_user_key_bindings
 
   bind -M default -k dc forward-char
   bind -e -M default \ct
+
+  bind -e --preset -M insert \cd
+  bind -e --preset -M visual \cd
 end
