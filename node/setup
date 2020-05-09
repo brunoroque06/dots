@@ -8,7 +8,6 @@ logging_setup 'node'
 yarn global add \
 	eslint \
 	n \
-	prettier \
-	typescript
+	prettier
 
 link .eslintrc.json "$HOME"
