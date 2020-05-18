@@ -21,8 +21,8 @@ set -Ux FZF_CTRL_T_COMMAND $FZF_DEFAULT_COMMAND
 source "$HOME"/.config/fish/abbreviations.fish
 
 # Completions
-complete -c unzip -x -a '(__fish_complete_suffix .whl)'
-complete -c unzip -x -a '(__fish_complete_suffix .pex)'
+complete -c pip -a '(__fish_complete_suffix .whl)' -n '__fish_seen_subcommand_from install'
+complete -c unzip -a '(__fish_complete_suffix .pex; __fish_complete_suffix .whl)'
 
 # Java
 set -Ux JAVA_HOME /Library/Java/JavaVirtualMachines/adoptopenjdk-13.0.2.jdk/Contents/Home
