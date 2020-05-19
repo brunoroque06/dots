@@ -87,6 +87,7 @@
     "openapitools",
     "parens",
     "pincode",
+    "pkill",
     "plex",
     "postgres",
     "postgresql",
@@ -182,10 +183,6 @@
   "typescript.updateImportsOnFileMove.enabled": "always",
   "vim.highlightedyank.enable": true,
   "vim.normalModeKeyBindingsNonRecursive": [
-    {
-      "before": [":"],
-      "commands": ["vim.showQuickpickCmdLine"]
-    },
     {
       "before": ["g", "h"],
       "commands": ["editor.action.showDefinitionPreviewHover"]
