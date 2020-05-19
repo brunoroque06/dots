@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -e
+
 printf 'Starting dotfiles installation...\n'
 
 ./package-manager/setup
