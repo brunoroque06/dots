@@ -8,7 +8,6 @@ printf 'Starting dotfiles installation...\n'
 
 ./alacritty/setup
 ./fish/setup
-./fzf/setup
 ./git/setup
 ./gnu-readline/setup
 ./jetbrains/setup
