@@ -1,12 +1,9 @@
 #!/usr/bin/env bash
 
 source utility/command.sh
-source utility/logging.sh
-
-logging_setup 'brew'
 
 if is_command_not_in_path brew; then
-	printf 'Installing brew...'
+	printf 'Installing brew...\n'
 	/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
 

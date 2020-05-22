@@ -18,6 +18,7 @@ ruby
 shellcheck
 shfmt
 starship
+stow
 tmux
 vim
 wireshark

@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-
-source utility/dotfile.sh
-source utility/logging.sh
-
-logging_setup 'alacritty'
-
-link alacritty.yml "$HOME"/.config/alacritty

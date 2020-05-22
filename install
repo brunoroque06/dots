@@ -5,22 +5,26 @@ set -e
 printf 'Starting dotfiles installation...\n'
 
 ./package-manager/setup
+yarn global add eslint n prettier
+pip install --upgrade pip
+pip install --upgrade black pre-commit pylint
+curl https://git.io/fisher --create-dirs -sLo ~/.config/fish/functions/fisher.fish
+fish -c fisher
 
-./alacritty/setup
-./fish/setup
-./git/setup
-./gnu-readline/setup
-./jetbrains/setup
-./lazygit/setup
-./lf/setup
-./node/setup
-./python/setup
-./postgresql/setup
-./starship/setup
-./tmux/setup
-./vim/setup
-./vscode/setup
-./window-manager/setup
+stow -t ~/.config/alacritty alacritty
+stow -t ~/.config/fish fish
+stow -t ~ git
+stow -t ~ gnu-readline
+stow -t ~ jetbrains
+stow -t ~/Library/Application\ Support/jesseduffield/lazygit lazygit
+stow -t ~/.config/lf lf
+stow -t ~ node
+stow -t ~ postgresql
+stow -t ~/.config starship
+stow -t ~/.config/tmux tmux
+stow -t ~/.vim vim
+stow -t ~/Library/Application\ Support/Code/User vscode
+cp "$PWD"/window-manager/com.amethyst.amethyst.plist "$HOME"/Library/Preferences
 
 printf 'Installation has finished #\n'
 
