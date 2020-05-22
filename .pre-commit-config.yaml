@@ -1,7 +1,7 @@
 fail_fast: true
 repos:
   - repo: https://github.com/prettier/prettier
-    rev: 1.19.1
+    rev: 2.0.5
     hooks:
       - id: prettier
   - repo: https://github.com/syntaqx/git-hooks
