@@ -1,0 +1,48 @@
+#!/usr/bin/env bash
+
+set -e
+
+install() {
+	./package-manager/setup
+	yarn global add eslint n prettier
+	pip install --upgrade pip
+	pip install --upgrade black pre-commit pylint
+	curl https://git.io/fisher --create-dirs -sLo ~/.config/fish/functions/fisher.fish
+	fish -c fisher
+	cp "$PWD"/window-manager/com.amethyst.amethyst.plist ~/Library/Preferences
+}
+
+link() {
+	stow -"$1" -v 1 -t "$2" "$3"
+}
+
+link_manager() {
+	link "$1" "$HOME/.config/alacritty" alacritty
+	link "$1" "$HOME/.config/fish" fish
+	link "$1" "$HOME" git
+	link "$1" "$HOME" gnu-readline
+	link "$1" "$HOME" jetbrains
+	link "$1" "$HOME/Library/Application Support/jesseduffield/lazygit" lazygit
+	link "$1" "$HOME/.config/lf" lf
+	link "$1" "$HOME" node
+	link "$1" "$HOME" postgresql
+	link "$1" "$HOME/.config" starship
+	link "$1" "$HOME/.config/tmux" tmux
+	link "$1" "$HOME/.vim" vim
+	link "$1" "$HOME/Library/Application Support/Code/User" vscode
+}
+
+case "$1" in
+install)
+	install
+	;;
+link)
+	link_manager S
+	;;
+unlink)
+	link_manager D
+	;;
+*)
+	printf 'Available commands: install, link, unlink\n'
+	;;
+esac
