@@ -104,7 +104,7 @@ abbr v 'vim'
 abbr vim_plug 'vim +PlugUpgrade +PlugClean +PlugInstall +PlugUpdate +qa'
 
 # VSCode
-abbr code_ext_export 'code --list-extensions > "$HOME"/.vscode/extensions.txt'
+abbr code_ext_export 'code --list-extensions > "$HOME/Library/Application Support/Code/User/extensions.txt"'
 abbr code_ext_install 'xargs <"$HOME/Library/Application Support/Code/User/extensions.txt" -L 1 code --force --install-extension'
 
 # Paste/Yank
