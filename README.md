@@ -3,7 +3,7 @@
 ## Installation
 
 ```shell
-./install
+./dotfiles
 ```
 
 Supported: macOS.
