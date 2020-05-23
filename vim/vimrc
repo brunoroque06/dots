@@ -10,6 +10,10 @@ set clipboard^=unnamed,unnamedplus
 " Config
 nnoremap confr :source ~/.vim/vimrc<CR>
 
+" Explorer
+let g:netrw_liststyle = 3
+nnoremap <silent> <C-b> :Vex<CR>
+
 " Files
 set autoread
 set path+=**
