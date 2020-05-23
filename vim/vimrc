@@ -71,6 +71,7 @@ call plug#begin()
 Plug 'dense-analysis/ale'
 Plug 'itchyny/lightline.vim'
 Plug 'morhetz/gruvbox'
+Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-surround'
 call plug#end()
 
