@@ -4,7 +4,7 @@ amethyst
 docker
 homebrew/cask-fonts/font-ibm-plex
 homebrew/cask-fonts/font-input
+jetbrains-toolbox
 microsoft-edge
 visual-studio-code
 wireshark
-
