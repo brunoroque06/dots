@@ -1,0 +1,32 @@
+<keymap version="1" name="keymaps" parent="Mac OS X 10.5+">
+  <action id="ActivateTerminalToolWindow">
+    <keyboard-shortcut first-keystroke="alt f12" />
+    <keyboard-shortcut first-keystroke="meta back_quote" />
+  </action>
+  <action id="Console.Execute.Multiline" />
+  <action id="DirDiffMenu.SynchronizeDiff.All" />
+  <action id="EditorSplitLine" />
+  <action id="FindUsages">
+    <keyboard-shortcut first-keystroke="meta u" />
+  </action>
+  <action id="GotoLine" />
+  <action id="GotoSuperMethod" />
+  <action id="IntroduceVariable">
+    <keyboard-shortcut first-keystroke="meta alt v" />
+    <keyboard-shortcut first-keystroke="ctrl meta v" />
+  </action>
+  <action id="NextWindow" />
+  <action id="Refactorings.QuickListPopupAction">
+    <keyboard-shortcut first-keystroke="meta t" />
+  </action>
+  <action id="ReformatCode">
+    <keyboard-shortcut first-keystroke="meta l" />
+  </action>
+  <action id="ShowIntentionActions">
+    <keyboard-shortcut first-keystroke="alt enter" />
+    <keyboard-shortcut first-keystroke="meta enter" />
+  </action>
+  <action id="Vcs.Log.FocusTextFilter" />
+  <action id="Vcs.UpdateProject" />
+  <action id="ViewSource" />
+</keymap>
