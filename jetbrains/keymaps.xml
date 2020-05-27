@@ -11,9 +11,8 @@
   </action>
   <action id="GotoLine" />
   <action id="GotoSuperMethod" />
-  <action id="IntroduceVariable">
-    <keyboard-shortcut first-keystroke="meta alt v" />
-    <keyboard-shortcut first-keystroke="ctrl meta v" />
+  <action id="NewElementSamePlace">
+    <keyboard-shortcut first-keystroke="shift meta n" />
   </action>
   <action id="NextWindow" />
   <action id="Refactorings.QuickListPopupAction">
@@ -21,6 +20,9 @@
   </action>
   <action id="ReformatCode">
     <keyboard-shortcut first-keystroke="meta l" />
+  </action>
+  <action id="Resume">
+    <keyboard-shortcut first-keystroke="f9" />
   </action>
   <action id="ShowIntentionActions">
     <keyboard-shortcut first-keystroke="alt enter" />
