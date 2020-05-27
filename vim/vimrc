@@ -2,17 +2,17 @@ set nocompatible
 
 " Buffers
 set hidden
-nnoremap gb :ls<CR>:b<Space>
+nnoremap <leader>b :ls<cr>:b<space>
 
 " Clipboard
 set clipboard^=unnamed,unnamedplus
 
 " Config
-nnoremap confr :source ~/.vim/vimrc<CR>
+nnoremap <leader>c :source ~/.vim/vimrc<cr>
 
 " Explorer
 let g:netrw_liststyle = 3
-nnoremap <silent> <C-b> :Vex<CR>
+nnoremap <silent> <c-b> :Vex<cr>
 
 " Files
 set autoread
@@ -20,11 +20,15 @@ set path+=**
 set noswapfile
 
 " Git
-nnoremap git :!lazygit<CR><CR>
+nnoremap <leader>g :!lazygit<cr><cr>
 
 " Mapping
 set backspace=indent,eol,start
+set notimeout
 set ttimeoutlen=0
+
+" Marks
+nnoremap <leader>m :marks<cr>
 
 " Mouse
 set ttymouse=xterm2
@@ -37,10 +41,10 @@ set hlsearch
 set smartcase
 
 " Splits
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
+nnoremap <c-j> <c-w><c-j>
+nnoremap <c-k> <c-w><c-k>
+nnoremap <c-l> <c-w><c-l>
+nnoremap <c-h> <c-w><c-h>
 
 " Text
 syntax enable
@@ -107,7 +111,7 @@ highlight SpellBad cterm=underline ctermfg=DarkRed gui=underline guifg=DarkRed
 
 " Fzf
 set rtp+=/usr/local/opt/fzf
-map <C-P> :FZF<CR>
+map <leader>o :FZF<cr>
 
 " Status Bar
 let g:lightline = { 'colorscheme': 'seoul256' }

@@ -86,8 +86,8 @@ key_bindings:
   - { key: Key0, mods: Command, action: ResetFontSize }
   - { key: Equals, mods: Command, action: IncreaseFontSize }
   - { key: Minus, mods: Command, action: DecreaseFontSize }
-  - { key: P, mods: Command, chars: "\x0F" } # http://donsnotes.com/tech/charsets/ascii.html
-  - { key: P, mods: Command|Shift, chars: "\x12" }
+  - { key: O, mods: Command, chars: "\x0F" } # http://donsnotes.com/tech/charsets/ascii.html
+  - { key: A, mods: Command, chars: "\x12" }
   - {
       key: LBracket,
       mods: Command,
@@ -109,6 +109,11 @@ key_bindings:
       command: { program: "/usr/local/bin/tmux", args: ["split-window", "-h"] },
     }
   - { key: Slash, mods: Command, chars: "\x06" }
+  - {
+      key: E,
+      mods: Command,
+      command: { program: "/usr/local/bin/tmux", args: ["choose-tree", "-Zw"] },
+    }
   - {
       key: H,
       mods: Command,
@@ -152,11 +157,6 @@ key_bindings:
       mods: Command|Shift,
       command:
         { program: "/usr/local/bin/tmux", args: ["resize-pane", "-R", "10"] },
-    }
-  - {
-      key: O,
-      mods: Command,
-      command: { program: "/usr/local/bin/tmux", args: ["choose-tree", "-Zw"] },
     }
   - {
       key: W,

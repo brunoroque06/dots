@@ -66,6 +66,7 @@
     "gotop",
     "htmlcov",
     "interop",
+    "ints",
     "jasminewd",
     "jesseduffield",
     "jethrokuan",
@@ -184,16 +185,20 @@
   "vim.highlightedyank.enable": true,
   "vim.normalModeKeyBindingsNonRecursive": [
     {
-      "before": ["g", "h"],
+      "before": ["<leader>", "d"],
+      "commands": ["workbench.action.debug.run"]
+    },
+    {
+      "before": ["<leader>", "h"],
       "commands": ["editor.action.showDefinitionPreviewHover"]
     },
     {
-      "before": ["g", "r"],
-      "commands": ["editor.action.rename"]
+      "before": ["<leader>", "m"],
+      "commands": [":marks"]
     },
     {
-      "before": ["M"],
-      "commands": [":marks"]
+      "before": ["<leader>", "t"],
+      "commands": ["editor.action.rename"]
     }
   ],
   "vim.surround": true,

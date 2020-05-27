@@ -1,3 +1,16 @@
-set clipboard+=unnamed
-
 set surround
+
+source ~/.vim/vimrc
+
+nnoremap <leader>a :action GotoAction<cr>
+nnoremap <leader>e :action RecentChangedFiles<cr>
+nnoremap <leader>d :action Debug<cr>
+nnoremap <leader>h :action ShowErrorDescription<cr>
+nnoremap <leader>m :action ShowBookmarks<cr>
+nnoremap <leader>o :action GotoFile<cr>
+nnoremap <leader>r :action Run<cr>
+nnoremap <leader>t :action Refactorings.QuickListPopupAction<cr>
+nnoremap <leader>u :action FindUsages<cr>
+nnoremap <leader>x :action GotoNextError<cr>
+nnoremap <leader>X :action GotoPreviousError<cr>
+
