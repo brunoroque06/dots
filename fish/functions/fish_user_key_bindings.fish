@@ -2,7 +2,9 @@ function fish_user_key_bindings
   fzf_key_bindings
 
   bind -M insert -k dc delete-char
+  bind -M insert \ca fzf-history-widget
   bind -M insert \ce accept-autosuggestion
+  bind -M insert \cd fzf-cd-widget
   bind -M insert \cn history-search-forward
   bind -M insert \co fzf-file-widget
   bind -M insert \cp history-search-backward

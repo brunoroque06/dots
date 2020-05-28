@@ -86,8 +86,8 @@ key_bindings:
   - { key: Key0, mods: Command, action: ResetFontSize }
   - { key: Equals, mods: Command, action: IncreaseFontSize }
   - { key: Minus, mods: Command, action: DecreaseFontSize }
-  - { key: O, mods: Command, chars: "\x0F" } # http://donsnotes.com/tech/charsets/ascii.html
-  - { key: A, mods: Command, chars: "\x12" }
+  - { key: Slash, mods: Command, chars: "\x06" }
+  - { key: F, mods: Command, chars: "\x06" }
   - {
       key: LBracket,
       mods: Command,
@@ -108,7 +108,6 @@ key_bindings:
       mods: Command,
       command: { program: "/usr/local/bin/tmux", args: ["split-window", "-h"] },
     }
-  - { key: Slash, mods: Command, chars: "\x06" }
   - {
       key: E,
       mods: Command,
