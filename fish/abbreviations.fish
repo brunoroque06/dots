@@ -7,6 +7,7 @@ abbr yay_sync 'yay -Syu'
 
 # Azure
 abbr azi 'az interactive --style br'
+abbr az_sub 'az account list --query \'[].{subscriptionName:name, subscriptionId:id}\' -o tsv | fzf | awk \'{print $NF}\' | xargs -J % az account set -s %'
 
 # Brew
 abbr brew_upgrade 'brew update; brew upgrade; brew cleanup; brew doctor'
