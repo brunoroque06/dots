@@ -76,6 +76,7 @@ Plug 'dense-analysis/ale'
 Plug 'itchyny/lightline.vim'
 Plug 'morhetz/gruvbox'
 Plug 'sheerun/vim-polyglot'
+Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 call plug#end()
 
@@ -111,7 +112,8 @@ highlight SpellBad cterm=underline ctermfg=DarkRed gui=underline guifg=DarkRed
 
 " Fzf
 set rtp+=/usr/local/opt/fzf
-map <leader>o :FZF<cr>
+nnoremap <leader>o :FZF<cr>
+nnoremap <c-o> :FZF<cr>
 
 " Status Bar
 let g:lightline = { 'colorscheme': 'seoul256' }
