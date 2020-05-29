@@ -96,7 +96,7 @@ let g:ale_fixers.yaml = ['prettier']
 
 let g:ale_linters = {}
 let g:ale_linters.javascript = ['eslint']
-let g:ale_linters.python = ['pylint']
+let g:ale_linters.python = ['mypy', 'pylint']
 let g:ale_linters.sh = ['shellcheck']
 let g:ale_linters.typescript = ['eslint']
 
