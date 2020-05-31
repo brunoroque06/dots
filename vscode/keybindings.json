@@ -50,6 +50,10 @@
     "command": "workbench.action.debug.stop",
     "when": "inDebugMode"
   },
+  {
+    "key": "ctrl+d",
+    "command": "-workbench.action.debug.run"
+  },
   // Explorer
   {
     "key": "c",
@@ -77,48 +81,6 @@
     "command": "git.openChange",
     "when": "editorFocus && !isInDiffEditor"
   },
-  // Navigation
-  {
-    "key": "cmd+]",
-    "command": "workbench.action.nextEditor"
-  },
-  {
-    "key": "cmd+[",
-    "command": "workbench.action.previousEditor"
-  },
-  // {
-  //   "key": "cmd+o",
-  //   "command": "workbench.action.openRecent"
-  // },
-  // {
-  //   "key": "cmd+h",
-  //   "command": "workbench.action.navigateLeft"
-  // },
-  // {
-  //   "key": "cmd+l",
-  //   "command": "workbench.action.navigateRight"
-  // },
-  // {
-  //   "key": "cmd+k",
-  //   "command": "workbench.action.navigateUp"
-  // },
-  // {
-  //   "key": "cmd+j",
-  //   "command": "workbench.action.navigateDown"
-  // },
-  // {
-  //   "key": "cmd+w",
-  //   "command": "workbench.action.closeActiveEditor",
-  //   "when": "editorTextFocus"
-  // },
-  // {
-  //   "key": "cmd+shift+l",
-  //   "command": "workbench.action.moveEditorToNextGroup"
-  // },
-  // {
-  //   "key": "cmd+shift+h",
-  //   "command": "workbench.action.moveEditorToPreviousGroup"
-  // },
   // Settings
   {
     "key": "cmd+,",
@@ -131,11 +93,6 @@
   {
     "key": "cmd+shift+k",
     "command": "workbench.action.openGlobalKeybindings"
-  },
-  {
-    "key": "ctrl+d",
-    "command": "-workbench.action.debug.run",
-    "when": "!inDebugMode && !terminalFocus"
   },
   // Terminal
   {
@@ -162,9 +119,5 @@
     "key": "cmd+shift+j",
     "command": "workbench.action.terminal.resizePaneDown",
     "when": "terminalFocus"
-  },
-  {
-    "key": "ctrl+d",
-    "command": "-workbench.action.debug.run"
   }
 ]
