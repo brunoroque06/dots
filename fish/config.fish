@@ -12,7 +12,7 @@ complete -c unzip -a '(__fish_complete_suffix .pex; __fish_complete_suffix .whl)
 
 # Bat
 set -Ux BAT_THEME 1337
-set -Ux BAT_STYLE grid
+set -Ux BAT_STYLE grid,numbers
 
 # Fzf
 set -Ux FZF_DEFAULT_COMMAND 'fd . --type f --hidden -E .git'
