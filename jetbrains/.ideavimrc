@@ -17,3 +17,4 @@ nnoremap <leader>t :action Refactorings.QuickListPopupAction<cr>
 nnoremap <leader>u :action FindUsages<cr>
 nnoremap <leader>x :action GotoNextError<cr>
 nnoremap <leader>X :action GotoPreviousError<cr>
+nnoremap <leader>z :action ToggleDistractionFreeMode<cr>
