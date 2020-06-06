@@ -24,7 +24,6 @@ nnoremap <leader>g :!lazygit<cr><cr>
 
 " Mapping
 set backspace=indent,eol,start
-set notimeout
 set ttimeoutlen=0
 
 " Marks
