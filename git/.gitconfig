@@ -10,3 +10,6 @@
 [user]
 	name = Bruno Roque
 	email = brunoroque06@gmail.com
+
+[pull]
+	rebase = false
