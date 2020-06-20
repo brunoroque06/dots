@@ -3,7 +3,6 @@ alfred
 amethyst
 docker
 google-chrome
-homebrew/cask-fonts/font-ibm-plex
 homebrew/cask-fonts/font-input
 jetbrains-toolbox
 visual-studio-code
