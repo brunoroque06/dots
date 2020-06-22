@@ -165,7 +165,7 @@
   "go.useLanguageServer": true,
   "javascript.updateImportsOnFileMove.enabled": "always",
   "javascript.validate.enable": true,
-  "markdown.preview.fontFamily": "IBM Plex Sans",
+  "markdown.preview.fontFamily": "SF Pro Text",
   "pgFormatter.commaBreak": true,
   "pgFormatter.keywordCase": "lowercase",
   "python.formatting.blackPath": "venv/bin/black",
