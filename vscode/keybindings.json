@@ -20,6 +20,16 @@
     "when": "editorHasSignatureHelpProvider && editorTextFocus"
   },
   {
+    "key": "f2",
+    "command": "editor.action.marker.next",
+    "when": "editorFocus && !editorReadonly"
+  },
+  {
+    "key": "shift+f2",
+    "command": "editor.action.marker.prev",
+    "when": "editorFocus && !editorReadonly"
+  },
+  {
     "key": "cmd+l",
     "command": "editor.action.formatDocument",
     "when": "editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly"
@@ -118,6 +128,11 @@
   {
     "key": "cmd+shift+j",
     "command": "workbench.action.terminal.resizePaneDown",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "shift+escape",
+    "command": "workbench.action.terminal.toggleTerminal",
     "when": "terminalFocus"
   }
 ]
