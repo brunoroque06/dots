@@ -132,7 +132,7 @@
   },
   {
     "key": "shift+escape",
-    "command": "workbench.action.terminal.toggleTerminal",
-    "when": "terminalFocus"
+    "command": "workbench.action.togglePanel",
+    "when": "panelFocus"
   }
 ]
