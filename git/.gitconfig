@@ -1,5 +1,5 @@
 [core]
-	pager = delta --dark
+	pager = delta --dark --diff-so-fancy
 
 [filter "lfs"]
 	clean = git-lfs clean -- %f
