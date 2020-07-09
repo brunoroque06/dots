@@ -1,5 +1,9 @@
+azure-cli
+azure/functions/azure-functions-core-tools@3
 bat
+cabal-install
 cjbassi/gotop/gotop
+dbcli/tap/pgcli
 exa
 fd
 fish
@@ -7,12 +11,16 @@ fzf
 git
 git-delta
 git-lfs
+ghc
+go
 jesseduffield/lazygit/lazygit
 jq
 lf
 node
+postgresql@10
+pulumi
 pyenv
-python
+python@3.8
 ripgrep
 ruby
 shellcheck

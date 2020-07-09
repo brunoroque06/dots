@@ -1,7 +1,9 @@
 alacritty
 alfred
 amethyst
+appcleaner
 docker
+dotnet-sdk
 google-chrome
 homebrew/cask-fonts/font-input
 jetbrains-toolbox
