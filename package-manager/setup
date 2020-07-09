@@ -5,12 +5,13 @@ source utility/command.sh
 if is_command_not_in_path brew; then
 	printf 'Installing brew...\n'
 	/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+	brew -v analytics off
 fi
 
 brew update
 
-xargs brew install <package-manager/formulas.txt
-xargs brew cask install <package-manager/casks.txt
+xargs brew install <package-manager/formulae.txt
+xargs brew cask install <package-manager/cask.txt
 
 brew doctor
 
