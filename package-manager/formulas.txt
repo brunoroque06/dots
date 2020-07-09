@@ -3,7 +3,6 @@ azure/functions/azure-functions-core-tools@3
 bat
 cabal-install
 cjbassi/gotop/gotop
-dbcli/tap/pgcli
 exa
 fd
 fish
@@ -17,6 +16,7 @@ jesseduffield/lazygit/lazygit
 jq
 lf
 node
+pgcli
 postgresql@10
 pulumi
 pyenv
