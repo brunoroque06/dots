@@ -23,11 +23,11 @@ set -Ux FZF_CTRL_T_COMMAND $FZF_DEFAULT_COMMAND
 # Java
 set -Ux JAVA_HOME /Library/Java/JavaVirtualMachines/adoptopenjdk-13.0.2.jdk/Contents/Home
 
+# Path
+set -x PATH $PATH "$HOME"/.dotnet/tools (go env GOPATH)/bin
+
 # Pulumi
 set -Ux PULUMI_PREFER_YARN 'true'
-
-# Golang
-set -x PATH $PATH (go env GOPATH)/bin
 
 # Theme
 set -U fish_color_command green
