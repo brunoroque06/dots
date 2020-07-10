@@ -11,7 +11,8 @@ abbr az_sub 'az account list --query \'[].{subscriptionName:name, subscriptionId
 
 # Brew
 abbr brew_cask_upgrade 'brew update; brew cask upgrade; brew cask doctor'
-abbr brew_prune 'brew bundle --force cleanup'
+abbr brew_dump 'brew bundle dump --file ~/Projects/dotfiles/package-manager/Brewfile --force'
+abbr brew_prune 'brew bundle dump; brew bundle --force cleanup; rm Brewfile'
 abbr brew_upgrade 'brew update; brew upgrade; brew cleanup; brew doctor'
 
 # Docker
@@ -108,7 +109,7 @@ abbr v 'vim'
 abbr vim_plug 'vim +PlugUpgrade +PlugClean +PlugInstall +PlugUpdate +qa'
 
 # VSCode
-abbr code_ext_export 'code --list-extensions > "$HOME/Library/Application Support/Code/User/extensions.txt"'
+abbr code_ext_dump 'code --list-extensions > "$HOME/Library/Application Support/Code/User/extensions.txt"'
 abbr code_ext_install 'xargs <"$HOME/Library/Application Support/Code/User/extensions.txt" -L 1 code --force --install-extension'
 
 # Paste/Yank
@@ -116,4 +117,4 @@ abbr P 'pbpaste'
 abbr Y 'pbcopy'
 
 # Window Manager
-abbr amethyst_config_export 'cp "$HOME"/Library/Preferences/com.amethyst.amethyst.plist "$HOME"/Projects/dotfiles/window-manager/com.amethyst.amethyst.plist'
+abbr amethyst_config_dump 'cp "$HOME"/Library/Preferences/com.amethyst.amethyst.plist "$HOME"/Projects/dotfiles/window-manager/com.amethyst.amethyst.plist'
