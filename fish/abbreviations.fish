@@ -10,8 +10,9 @@ abbr azi 'az interactive --style br'
 abbr az_sub 'az account list --query \'[].{subscriptionName:name, subscriptionId:id}\' -o tsv | fzf | awk \'{print $NF}\' | xargs -J % az account set -s %'
 
 # Brew
-abbr brew_upgrade 'brew update; brew upgrade; brew cleanup; brew doctor'
 abbr brew_cask_upgrade 'brew update; brew cask upgrade; brew cask doctor'
+abbr brew_prune 'brew bundle --force cleanup'
+abbr brew_upgrade 'brew update; brew upgrade; brew cleanup; brew doctor'
 
 # Docker
 abbr d 'docker'

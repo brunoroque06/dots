@@ -10,8 +10,7 @@ fi
 
 brew update
 
-xargs brew install <package-manager/formulae.txt
-xargs brew cask install <package-manager/cask.txt
+brew bundle install --file package-manager/Brewfile
 
 brew doctor
 
