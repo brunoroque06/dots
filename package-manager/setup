@@ -2,6 +2,40 @@
 
 source utility/command.sh
 
+if is_command_not_in_path nix; then
+	sh <(curl -L https://nixos.org/nix/install) --darwin-use-unencrypted-nix-store-volume
+fi
+
+nix-env -iA nixpkgs.azure-cli
+nix-env -iA nixpkgs.bat
+nix-env -iA nixpkgs.dotnet-sdk_3
+nix-env -iA nixpkgs.exa
+nix-env -iA nixpkgs.fd
+nix-env -iA nixpkgs.fish
+nix-env -iA nixpkgs.git
+nix-env -iA nixpkgs.git-lfs
+nix-env -iA nixpkgs.gitAndTools.delta
+nix-env -iA nixpkgs.go_1_15
+nix-env -iA nixpkgs.jq
+nix-env -iA nixpkgs.lazygit
+nix-env -iA nixpkgs.lf
+nix-env -iA nixpkgs.nodejs-13_x
+nix-env -iA nixpkgs.pgcli
+nix-env -iA nixpkgs.postgresql_10
+nix-env -iA nixpkgs.python38
+nix-env -iA nixpkgs.python38Packages.pylint
+nix-env -iA nixpkgs.python38Packages.black
+nix-env -iA nixpkgs.python38Packages.pre-commit
+nix-env -iA nixpkgs.ripgrep
+nix-env -iA nixpkgs.ruby
+nix-env -iA nixpkgs.shellcheck
+nix-env -iA nixpkgs.shfmt
+nix-env -iA nixpkgs.starship
+nix-env -iA nixpkgs.stow
+nix-env -iA nixpkgs.tmux
+nix-env -iA nixpkgs.vim
+nix-env -iA nixpkgs.yarn
+
 if is_command_not_in_path brew; then
 	printf 'Installing brew...\n'
 	/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
