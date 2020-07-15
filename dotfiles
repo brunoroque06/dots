@@ -7,9 +7,6 @@ install() {
 
 	yarn global add eslint n prettier
 
-	pip install --upgrade pip
-	pip install --upgrade black pre-commit pylint
-
 	curl https://git.io/fisher --create-dirs -sLo ~/.config/fish/functions/fisher.fish
 	fish -c fisher
 
