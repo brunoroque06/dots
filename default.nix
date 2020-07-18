@@ -24,6 +24,7 @@ let
     tmux
     vim
 
+    pkgs.bash
     pkgs.bat
     pkgs.exa
     pkgs.fd
