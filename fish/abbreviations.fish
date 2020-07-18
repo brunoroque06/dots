@@ -11,7 +11,7 @@ abbr az_sub 'az account list --query \'[].{subscriptionName:name, subscriptionId
 
 # Brew
 abbr brew_cask_upgrade 'brew update; brew cask upgrade; brew cask doctor'
-abbr brew_dump 'brew bundle dump --file ~/Projects/dotfiles/package-manager/Brewfile --force'
+abbr brew_dump 'brew bundle dump --file ~/Projects/dotfiles/brew/Brewfile --force'
 abbr brew_prune 'brew bundle dump; brew bundle --force cleanup; rm Brewfile'
 abbr brew_upgrade 'brew update; brew upgrade; brew cleanup; brew doctor'
 

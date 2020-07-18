@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+source utility/command.sh
+
+if is_command_not_in_path brew; then
+	printf 'Installing brew...\n'
+	/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+	brew -v analytics off
+fi
+
+brew update
+
+brew bundle install --file brew/Brewfile
+
+brew doctor
+
+"$(brew --prefix)"/opt/fzf/install --no-bash --no-zsh --no-completion --no-update-rc --key-bindings

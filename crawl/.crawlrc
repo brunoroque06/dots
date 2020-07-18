@@ -1,0 +1,10 @@
+default_manual_training = true
+
+game_scale = 1
+tile_viewport_scale = 2
+
+tile_font_crt_file = InputMono-Regular.ttf
+tile_font_stat_file = InputMono-Regular.ttf
+tile_font_msg_file = InputMono-Regular.ttf
+tile_font_tip_file = InputMono-Regular.ttf
+tile_font_lbl_file = InputSans-Regular.ttf
