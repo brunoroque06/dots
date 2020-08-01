@@ -7,6 +7,7 @@ window:
     x: 20
     y: 5
   dynamic_padding: false
+  dynamic_title: true
   decorations: full
 
 scrolling:
@@ -50,7 +51,7 @@ colors:
     white: "0xebdbb2"
   indexed_colors: []
 
-visual_bell:
+bell:
   animation: Ease
   duration: 0
   color: "0x282828"
@@ -60,8 +61,6 @@ background_opacity: 1.0
 selection:
   semantic_escape_chars: ',│`|:"'' ()[]{}<>'
   save_to_clipboard: false
-
-dynamic_title: true
 
 cursor:
   style: Block
