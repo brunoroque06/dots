@@ -90,225 +90,138 @@ key_bindings:
   - {
       key: LBracket,
       mods: Command,
-      command:
-        {
-          program: "/Users/brunoroque/.nix-profile/bin/tmux",
-          args: ["previous-window"],
-        },
+      command: { program: "/usr/local/bin/tmux", args: ["previous-window"] },
     }
   - {
       key: RBracket,
       mods: Command,
-      command:
-        {
-          program: "/Users/brunoroque/.nix-profile/bin/tmux",
-          args: ["next-window"],
-        },
+      command: { program: "/usr/local/bin/tmux", args: ["next-window"] },
     }
   - {
       key: Apostrophe,
       mods: Command,
-      command:
-        {
-          program: "/Users/brunoroque/.nix-profile/bin/tmux",
-          args: ["split-window", "-v"],
-        },
+      command: { program: "/usr/local/bin/tmux", args: ["split-window", "-v"] },
     }
   - {
       key: Backslash,
       mods: Command,
-      command:
-        {
-          program: "/Users/brunoroque/.nix-profile/bin/tmux",
-          args: ["split-window", "-h"],
-        },
+      command: { program: "/usr/local/bin/tmux", args: ["split-window", "-h"] },
     }
   - {
       key: E,
       mods: Command,
-      command:
-        {
-          program: "/Users/brunoroque/.nix-profile/bin/tmux",
-          args: ["choose-tree", "-Zw"],
-        },
+      command: { program: "/usr/local/bin/tmux", args: ["choose-tree", "-Zw"] },
     }
   - {
       key: H,
       mods: Command,
-      command:
-        {
-          program: "/Users/brunoroque/.nix-profile/bin/tmux",
-          args: ["select-pane", "-L"],
-        },
+      command: { program: "/usr/local/bin/tmux", args: ["select-pane", "-L"] },
     }
   - {
       key: H,
       mods: Command|Shift,
       command:
-        {
-          program: "/Users/brunoroque/.nix-profile/bin/tmux",
-          args: ["resize-pane", "-L", "10"],
-        },
+        { program: "/usr/local/bin/tmux", args: ["resize-pane", "-L", "10"] },
     }
   - {
       key: J,
       mods: Command,
-      command:
-        {
-          program: "/Users/brunoroque/.nix-profile/bin/tmux",
-          args: ["select-pane", "-D"],
-        },
+      command: { program: "/usr/local/bin/tmux", args: ["select-pane", "-D"] },
     }
   - {
       key: J,
       mods: Command|Shift,
       command:
-        {
-          program: "/Users/brunoroque/.nix-profile/bin/tmux",
-          args: ["resize-pane", "-D", "10"],
-        },
+        { program: "/usr/local/bin/tmux", args: ["resize-pane", "-D", "10"] },
     }
   - {
       key: K,
       mods: Command,
-      command:
-        {
-          program: "/Users/brunoroque/.nix-profile/bin/tmux",
-          args: ["select-pane", "-U"],
-        },
+      command: { program: "/usr/local/bin/tmux", args: ["select-pane", "-U"] },
     }
   - {
       key: K,
       mods: Command|Shift,
       command:
-        {
-          program: "/Users/brunoroque/.nix-profile/bin/tmux",
-          args: ["resize-pane", "-U", "10"],
-        },
+        { program: "/usr/local/bin/tmux", args: ["resize-pane", "-U", "10"] },
     }
   - {
       key: L,
       mods: Command,
-      command:
-        {
-          program: "/Users/brunoroque/.nix-profile/bin/tmux",
-          args: ["select-pane", "-R"],
-        },
+      command: { program: "/usr/local/bin/tmux", args: ["select-pane", "-R"] },
     }
   - {
       key: L,
       mods: Command|Shift,
       command:
-        {
-          program: "/Users/brunoroque/.nix-profile/bin/tmux",
-          args: ["resize-pane", "-R", "10"],
-        },
+        { program: "/usr/local/bin/tmux", args: ["resize-pane", "-R", "10"] },
     }
   - {
       key: W,
       mods: Command,
-      command:
-        {
-          program: "/Users/brunoroque/.nix-profile/bin/tmux",
-          args: ["kill-pane"],
-        },
+      command: { program: "/usr/local/bin/tmux", args: ["kill-pane"] },
     }
   - {
       key: T,
       mods: Command,
-      command:
-        {
-          program: "/Users/brunoroque/.nix-profile/bin/tmux",
-          args: ["new-window"],
-        },
+      command: { program: "/usr/local/bin/tmux", args: ["new-window"] },
     }
   - {
       key: Y,
       mods: Command,
-      command:
-        {
-          program: "/Users/brunoroque/.nix-profile/bin/tmux",
-          args: ["copy-mode"],
-        },
+      command: { program: "/usr/local/bin/tmux", args: ["copy-mode"] },
     }
   - {
       key: Key1,
       mods: Command,
       command:
-        {
-          program: "/Users/brunoroque/.nix-profile/bin/tmux",
-          args: ["select-window", "-t", "1"],
-        },
+        { program: "/usr/local/bin/tmux", args: ["select-window", "-t", "1"] },
     }
   - {
       key: Key2,
       mods: Command,
       command:
-        {
-          program: "/Users/brunoroque/.nix-profile/bin/tmux",
-          args: ["select-window", "-t", "2"],
-        },
+        { program: "/usr/local/bin/tmux", args: ["select-window", "-t", "2"] },
     }
   - {
       key: Key3,
       mods: Command,
       command:
-        {
-          program: "/Users/brunoroque/.nix-profile/bin/tmux",
-          args: ["select-window", "-t", "3"],
-        },
+        { program: "/usr/local/bin/tmux", args: ["select-window", "-t", "3"] },
     }
   - {
       key: Key4,
       mods: Command,
       command:
-        {
-          program: "/Users/brunoroque/.nix-profile/bin/tmux",
-          args: ["select-window", "-t", "4"],
-        },
+        { program: "/usr/local/bin/tmux", args: ["select-window", "-t", "4"] },
     }
   - {
       key: Key5,
       mods: Command,
       command:
-        {
-          program: "/Users/brunoroque/.nix-profile/bin/tmux",
-          args: ["select-window", "-t", "5"],
-        },
+        { program: "/usr/local/bin/tmux", args: ["select-window", "-t", "5"] },
     }
   - {
       key: Key6,
       mods: Command,
       command:
-        {
-          program: "/Users/brunoroque/.nix-profile/bin/tmux",
-          args: ["select-window", "-t", "6"],
-        },
+        { program: "/usr/local/bin/tmux", args: ["select-window", "-t", "6"] },
     }
   - {
       key: Key7,
       mods: Command,
       command:
-        {
-          program: "/Users/brunoroque/.nix-profile/bin/tmux",
-          args: ["select-window", "-t", "7"],
-        },
+        { program: "/usr/local/bin/tmux", args: ["select-window", "-t", "7"] },
     }
   - {
       key: Key8,
       mods: Command,
       command:
-        {
-          program: "/Users/brunoroque/.nix-profile/bin/tmux",
-          args: ["select-window", "-t", "8"],
-        },
+        { program: "/usr/local/bin/tmux", args: ["select-window", "-t", "8"] },
     }
   - {
       key: Key9,
       mods: Command,
       command:
-        {
-          program: "/Users/brunoroque/.nix-profile/bin/tmux",
-          args: ["select-window", "-t", "9"],
-        },
+        { program: "/usr/local/bin/tmux", args: ["select-window", "-t", "9"] },
     }

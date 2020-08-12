@@ -5,7 +5,7 @@ set hidden
 nnoremap <leader>b :ls<cr>:b<space>
 
 " Clipboard
-set clipboard^=unnamed,unnamedplus
+set clipboard=unnamed
 
 " Config
 nnoremap <leader>c :source ~/.vim/vimrc<cr>
@@ -63,6 +63,21 @@ set relativenumber
 set scrolloff=10
 set showcmd
 set wildmenu
+
+" Plugin
+if empty(glob('~/.vim/autoload/plug.vim'))
+	silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	autocmd VimEnter * PlugInstall --sync
+endif
+
+call plug#begin()
+Plug 'dense-analysis/ale'
+Plug 'gruvbox-community/gruvbox'
+Plug 'itchyny/lightline.vim'
+Plug 'sheerun/vim-polyglot'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-surround'
+call plug#end()
 
 " Ale
 let g:ale_fix_on_save = 1
