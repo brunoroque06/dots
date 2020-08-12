@@ -1,4 +1,8 @@
 [
+  {
+    "key": "cmd+r",
+    "command": "workbench.action.openRecent"
+  },
   // Buffer
   {
     "key": "cmd+e",
