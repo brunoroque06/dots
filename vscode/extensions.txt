@@ -3,7 +3,7 @@ christian-kohler.path-intellisense
 DavidAnson.vscode-markdownlint
 dbaeumer.vscode-eslint
 esbenp.prettier-vscode
-golang.Go
+golang.go
 jebbs.plantuml
 justusadam.language-haskell
 ms-azuretools.vscode-azurefunctions
@@ -13,7 +13,6 @@ ms-dotnettools.csharp
 ms-python.python
 ms-vscode.azure-account
 msjsdiag.debugger-for-chrome
-redhat.vscode-yaml
 streetsidesoftware.code-spell-checker
 usernamehw.errorlens
 VisualStudioExptTeam.vscodeintellicode
