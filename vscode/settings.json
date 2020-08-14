@@ -184,6 +184,7 @@
   "python.linting.pylintPath": "venv/bin/pylint",
   "python.pythonPath": "venv/bin/python",
   "python.testing.pytestEnabled": true,
+  "scm.alwaysShowRepositories": true,
   "terminal.integrated.fontSize": 13,
   "typescript.implementationsCodeLens.enabled": false,
   "typescript.referencesCodeLens.enabled": false,
