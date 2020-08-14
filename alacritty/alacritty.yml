@@ -166,7 +166,7 @@ key_bindings:
       command: { program: "/usr/local/bin/tmux", args: ["new-window"] },
     }
   - {
-      key: Y,
+      key: Escape,
       mods: Command,
       command: { program: "/usr/local/bin/tmux", args: ["copy-mode"] },
     }
