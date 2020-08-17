@@ -94,6 +94,7 @@ abbr puusp 'pulumi up --skip-preview'
 
 # Shell
 abbr fp 'fish --private'
+abbr history_delete 'history | fzf | history delete --case-sensitive --exact'
 abbr s 'source'
 abbr sh_fmt 'shfmt -i 2 -s -w .'
 abbr sh_lint 'find . -not -path "./.git/*" -type f -perm -u=x | xargs -t -J % shellcheck -x %'
