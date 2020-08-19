@@ -11,6 +11,5 @@
 \x auto
 
 \set ext 'select * from pg_available_extensions;'
-\set l 'select pid, usename as username, datname as database_name, query, application_name, backend_start, state, state_change from pg_stat_activity where query not like \'<insufficient privilege>\';'
+\set l 'select pid, datname, usename, application_name, backend_start, state, state_change, query from pg_stat_activity where query not like \'<insufficient privilege>\';'
 \set v 'select version();'
-
