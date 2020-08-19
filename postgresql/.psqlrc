@@ -10,7 +10,7 @@
 \timing on
 \x auto
 
-\set extensions 'select * from pg_available_extensions;'
-\set last 'select pid, usename as username, datname as database_name, query, application_name, backend_start, state, state_change from pg_stat_activity;'
-\set version 'select version();'
+\set ext 'select * from pg_available_extensions;'
+\set l 'select pid, usename as username, datname as database_name, query, application_name, backend_start, state, state_change from pg_stat_activity where query not like \'<insufficient privilege>\';'
+\set v 'select version();'
 
