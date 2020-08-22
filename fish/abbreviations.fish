@@ -28,7 +28,6 @@ abbr fm 'lf'
 abbr rm_dir 'du -hd 1 | fzf -m | awk \'{print $2}\' | xargs rm -rf'
 abbr rm_empty_dirs 'find . -type d -empty -delete'
 abbr tree 'exa --tree'
-abbr zl 'cd (z -l | awk \'{print $2}\' | fzf || printf .)'
 
 # Git
 abbr ga 'git add'

@@ -34,6 +34,9 @@ set -U fish_color_command green
 set -U fish_color_param normal
 set -U fish_color_quote yellow
 
+# Zoxide
+zoxide init fish | source
+
 set -e fish_user_paths
 
 eval (starship init fish)

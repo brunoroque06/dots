@@ -5,9 +5,6 @@ set -e
 install() {
 	./brew/setup
 
-	curl https://git.io/fisher --create-dirs -sLo "$HOME"/.config/fish/functions/fisher.fish
-	fish -c fisher
-
 	cp "$PWD"/window-manager/com.amethyst.amethyst.plist "$HOME"/Library/Preferences
 
 	defaults write com.apple.desktopservices DSDontWriteNetworkStores true
