@@ -1,7 +1,7 @@
 set commentary
 set surround
 
-source ~/.vim/vimrc
+source "$HOME"/.vim/vimrc
 
 nnoremap <leader>a :action GotoAction<cr>
 nnoremap <leader>b :action ToggleLineBreakpoint<cr>

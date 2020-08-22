@@ -7,4 +7,4 @@ brew cask install dungeon-crawl-stone-soup-tiles
 cp "$HOME"/Library/Fonts/InputMono-Regular.ttf '/Applications/Dungeon Crawl Stone Soup - Tiles.app/Contents/Resources/dat/tiles'
 cp "$HOME"/Library/Fonts/InputSans-Regular.ttf '/Applications/Dungeon Crawl Stone Soup - Tiles.app/Contents/Resources/dat/tiles'
 
-stow -S -v 1 -t ~ crawl --ignore=setup
+stow -S -v 1 -t "$HOME" crawl --ignore=setup
