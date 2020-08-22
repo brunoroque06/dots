@@ -74,7 +74,6 @@ abbr yt 'yarn test'
 
 # Processes
 abbr list_ports 'lsof -PiTCP | grep LISTEN'
-abbr to 'gotop'
 
 # Python
 abbr pip_uninstall_all 'pip freeze | xargs pip uninstall -y'
