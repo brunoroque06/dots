@@ -13,6 +13,7 @@ ms-dotnettools.csharp
 ms-python.python
 ms-vscode.azure-account
 msjsdiag.debugger-for-chrome
+rust-lang.rust
 streetsidesoftware.code-spell-checker
 usernamehw.errorlens
 VisualStudioExptTeam.vscodeintellicode
