@@ -88,7 +88,7 @@ abbr pu 'pulumi'
 abbr pud 'pulumi destroy'
 abbr pur 'pulumi refresh'
 abbr puu 'pulumi up'
-abbr puusp 'pulumi up --skip-preview'
+abbr puus 'pulumi up --skip-preview'
 
 # Shell
 abbr fp 'fish --private'
