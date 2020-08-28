@@ -213,6 +213,7 @@
   "window.zoomLevel": 0.2,
   "workbench.editor.enablePreview": false,
   "workbench.editor.limit.enabled": true,
+  "workbench.editor.showTabs": false,
   "workbench.tree.indent": 15,
   "workbench.tree.renderIndentGuides": "always"
 }
