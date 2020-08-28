@@ -1,4 +1,5 @@
 set commentary
+set highlightedyank
 set surround
 
 source ~/.vim/vimrc
