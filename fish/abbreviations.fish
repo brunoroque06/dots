@@ -52,6 +52,9 @@ abbr greset 'git reset --hard'
 abbr gs 'git status -u'
 abbr pc_run 'pre-commit run'
 
+# Google Chrome
+abbr chrome_dev 'rm -rf /tmp/chrome_dev_test; open -n -a /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --args --user-data-dir="/tmp/chrome_dev_test" --disable-web-security'
+
 # Makefile
 abbr m 'make'
 
