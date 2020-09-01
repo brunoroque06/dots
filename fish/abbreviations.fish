@@ -95,6 +95,7 @@ abbr puus 'pulumi up --skip-preview'
 
 # Shell
 abbr fp 'fish --private'
+abbr hdc 'history delete --contains'
 abbr history_delete 'history | fzf | history delete --case-sensitive --exact'
 abbr s 'source'
 abbr sh_fmt 'shfmt -i 2 -s -w .'
