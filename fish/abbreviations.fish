@@ -10,6 +10,7 @@ abbr azi 'az interactive --style br'
 abbr az_sub 'az account list --query \'[].{subscriptionName:name, subscriptionId:id}\' -o tsv | fzf | awk \'{print $NF}\' | xargs -J % az account set -s %'
 
 # Brew
+abbr bcl 'brew cask list -1'
 abbr brew_cask_upgrade 'brew update; brew cask upgrade; brew cask doctor'
 abbr brew_dump 'brew bundle dump --file "$HOME"/Projects/dotfiles/brew/Brewfile --force'
 abbr bl 'brew leaves'
