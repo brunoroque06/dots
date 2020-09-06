@@ -191,6 +191,14 @@
   "vim.highlightedyank.enable": true,
   "vim.normalModeKeyBindingsNonRecursive": [
     {
+      "before": ["<leader>", "a"],
+      "commands": ["workbench.action.showCommands"]
+    },
+    {
+      "before": ["<leader>", "b"],
+      "commands": ["editor.debug.action.toggleBreakpoint"]
+    },
+    {
       "before": ["<leader>", "d"],
       "commands": ["workbench.action.debug.run"]
     },
@@ -205,6 +213,10 @@
     {
       "before": ["<leader>", "t"],
       "commands": ["editor.action.rename"]
+    },
+    {
+      "before": ["<leader>", "z"],
+      "commands": ["workbench.action.toggleZenMode"]
     }
   ],
   "vim.surround": true,
