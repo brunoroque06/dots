@@ -191,6 +191,10 @@
   "vim.highlightedyank.enable": true,
   "vim.normalModeKeyBindingsNonRecursive": [
     {
+      "before": ["<leader>", "`"],
+      "commands": ["workbench.action.terminal.toggleTerminal"]
+    },
+    {
       "before": ["<leader>", "a"],
       "commands": ["workbench.action.showCommands"]
     },
