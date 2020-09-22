@@ -1,4 +1,5 @@
 [core]
+	editor = vim
 	pager = delta --dark --diff-so-fancy
 
 [filter "lfs"]
