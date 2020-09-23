@@ -1,6 +1,6 @@
 [core]
 	editor = vim
-	pager = delta --dark --diff-so-fancy
+	pager = delta --dark
 
 [filter "lfs"]
 	clean = git-lfs clean -- %f
