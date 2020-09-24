@@ -1,3 +1,28 @@
+[alias]
+	a = add
+	aa = add --a
+	b = branch
+	bd = branch -D
+	cf = config --list --show-origin
+	ci = commit
+	ciam = commit -am
+	ciamend = commit --amend
+	cim = commit -m
+	co = checkout
+	cob = checkout -b
+	cp = cherry-pick
+	d = diff
+	f = fetch
+	l = log
+	la = log --oneline --decorate --graph --all
+	last = log -1 -p
+	ph = push
+	pl = pull
+	rb = rebase
+	reseth = git reset --hard
+	s = status --untracked-files
+	unstage = reset HEAD --
+
 [core]
 	editor = vim
 	pager = delta --dark
