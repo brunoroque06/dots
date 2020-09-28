@@ -2,7 +2,7 @@
 	a = add
 	aa = add --a
 	b = branch
-	bd = branch -D
+	bd = branch -d
 	cf = config --list --show-origin
 	ci = commit
 	ciam = commit -am
@@ -14,10 +14,11 @@
 	d = diff
 	f = fetch
 	l = log
-	la = log --oneline --decorate --graph --all
+	la = log --all --decorate --graph --oneline -20
 	last = log -1 -p
 	ph = push
 	pl = pull
+	plrb = pull --rebase
 	rb = rebase
 	reseth = git reset --hard
 	s = status --untracked-files
