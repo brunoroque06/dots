@@ -4,7 +4,7 @@
   "filterLinkHints": false,
   "waitForEnterForFilteredHints": true,
   "hideHud": false,
-  "keyMappings": "map <m-m> toggleMuteTab\nmap <m-p> togglePinTab\n\nmap <space> scrollPageDown\nmap - scrollPageUp\n\nunmap o\nunmap O",
+  "keyMappings": "map <m-m> toggleMuteTab\nmap <m-p> togglePinTab\n\nmap - scrollPageUp\n\nunmap o\nunmap O",
   "linkHintCharacters": "arstdhneio",
   "linkHintNumbers": "0123456789",
   "newTabUrl": "about:newtab",
