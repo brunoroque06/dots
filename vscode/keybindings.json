@@ -9,14 +9,24 @@
     "command": "workbench.action.quickOpen"
   },
   {
-    "key": "escape",
-    "command": "workbench.action.focusActiveEditorGroup",
-    "when": "!editorFocus"
-  },
-  {
     "key": "cmd+enter",
     "command": "editor.action.quickFix",
     "when": "editorHasCodeActionsProvider && editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "cmd+t",
+    "command": "editor.action.refactor",
+    "when": "editorHasCodeActionsProvider && editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "cmd+u",
+    "command": "references-view.find",
+    "when": "editorHasReferenceProvider"
+  },
+  {
+    "key": "escape",
+    "command": "workbench.action.focusActiveEditorGroup",
+    "when": "!editorFocus"
   },
   {
     "key": "f1",
@@ -34,19 +44,14 @@
     "when": "editorFocus && !editorReadonly"
   },
   {
-    "key": "cmd+l",
-    "command": "editor.action.formatDocument",
-    "when": "editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly"
+    "key": "space",
+    "command": "cursorPageDown",
+    "when": "editorFocus"
   },
   {
-    "key": "cmd+t",
-    "command": "editor.action.refactor",
-    "when": "editorHasCodeActionsProvider && editorTextFocus && !editorReadonly"
-  },
-  {
-    "key": "cmd+u",
-    "command": "references-view.find",
-    "when": "editorHasReferenceProvider"
+    "key": "-",
+    "command": "cursorPageUp",
+    "when": "editorFocus"
   },
   // Debug
   {
@@ -82,10 +87,6 @@
   {
     "key": "cmd+k",
     "command": "workbench.action.openGlobalKeybindingsFile"
-  },
-  {
-    "key": "cmd+shift+k",
-    "command": "workbench.action.openGlobalKeybindings"
   },
   // Terminal
   {
