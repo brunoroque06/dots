@@ -1,0 +1,30 @@
+# Artifacts
+bin/
+build/
+obj/
+out/
+target/
+
+# Haskell
+dist-newstyle/
+
+# Idea
+.idea
+
+# Jekyll
+.jekyll-cache/
+_site/
+
+# macOS
+.DS_Store
+
+# Node.js
+node_modules/
+
+# Python
+.ipynb_checkpoints/
+__pycache__/
+venv/
+
+# VSCode
+.vscode/
