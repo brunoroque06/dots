@@ -24,7 +24,7 @@ set -Ux FZF_CTRL_T_COMMAND $FZF_DEFAULT_COMMAND
 set -Ux JAVA_HOME /Library/Java/JavaVirtualMachines/adoptopenjdk-13.0.2.jdk/Contents/Home
 
 # Path
-set -x PATH /usr/local/opt/ruby/bin $PATH "$HOME"/.dotnet/tools "$HOME"/.cargo/bin (go env GOPATH)/bin
+set -x PATH /usr/local/opt/ruby/bin $PATH "$HOME"/.dotnet/tools "$HOME"/.cargo/bin (go env GOPATH)/bin /usr/local/opt/qt/bin
 
 # Pulumi
 set -Ux PULUMI_PREFER_YARN 'true'
@@ -39,4 +39,4 @@ zoxide init fish | source
 
 set -e fish_user_paths
 
-eval (starship init fish)
+starship init fish | source
