@@ -3,7 +3,7 @@
 	aa = add --a
 	b = branch
 	bd = branch -d
-	cf = config --list --show-origin
+	cfl = config --list --show-origin
 	ci = commit
 	ciam = commit -am
 	ciamend = commit --amend
@@ -12,6 +12,7 @@
 	cob = checkout -b
 	cp = cherry-pick
 	d = diff
+	dt = difftool
 	f = fetch
 	l = log
 	la = log --all --decorate --graph --oneline -20
@@ -20,13 +21,19 @@
 	pl = pull
 	plrb = pull --rebase
 	rb = rebase
-	reseth = git reset --hard
+	rsh = reset --hard HEAD
 	s = status --untracked-files
 	unstage = reset HEAD --
 
 [core]
 	editor = vim
-	pager = delta --dark
+	pager = delta --diff-so-fancy
+
+[diff]
+	tool = vimdiff
+
+[difftool]
+	prompt = false
 
 [filter "lfs"]
 	clean = git-lfs clean -- %f
