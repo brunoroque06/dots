@@ -1,8 +1,7 @@
 [character]
-style_failure = "red"
-style_success = "purple"
-symbol = "λ"
-vicmd_symbol = "N"
+success_symbol = "[λ](purple)"
+error_symbol = "[λ](red)"
+vicmd_symbol = "[N](purple)"
 
 [directory]
 style = "blue"
