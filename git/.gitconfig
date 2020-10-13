@@ -17,6 +17,7 @@
 	l = log
 	la = log --all --decorate --graph --oneline -20
 	last = log -1 -p
+	pack = gc
 	ph = push
 	pl = pull
 	plrb = pull --rebase
