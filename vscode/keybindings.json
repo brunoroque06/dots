@@ -43,16 +43,6 @@
     "command": "editor.action.marker.prev",
     "when": "editorFocus && !editorReadonly"
   },
-  {
-    "key": "space",
-    "command": "cursorPageDown",
-    "when": "editorFocus"
-  },
-  {
-    "key": "-",
-    "command": "cursorPageUp",
-    "when": "editorFocus"
-  },
   // Debug
   {
     "key": "cmd+d",

@@ -1,8 +1,5 @@
 set nocompatible
 
-nnoremap <Space> <c-d>
-nnoremap - <c-u>
-
 " Buffers
 set hidden
 nnoremap <leader>b :ls<cr>:b<space>
