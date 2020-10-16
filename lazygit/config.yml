@@ -1,6 +1,6 @@
 git:
   paging:
     colorarg: always
-    pager: delta --diff-highlight --paging=never --24-bit-color=never
+    pager: delta --paging=never --24-bit-color=never
 reporting: "off"
 startuppopupversion: 1
