@@ -80,16 +80,6 @@
   },
   // Terminal
   {
-    "key": "cmd+`",
-    "command": "workbench.action.terminal.focus",
-    "when": "!terminalFocus"
-  },
-  {
-    "key": "cmd+`",
-    "command": "workbench.action.terminal.toggleTerminal",
-    "when": "terminalFocus"
-  },
-  {
     "key": "cmd+w",
     "command": "workbench.action.terminal.kill",
     "when": "terminalFocus"
