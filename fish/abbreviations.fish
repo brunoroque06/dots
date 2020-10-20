@@ -17,9 +17,16 @@ abbr blc 'brew list --cask -1'
 abbr brew_prune 'brew bundle dump; brew bundle --force cleanup; rm Brewfile'
 abbr brew_upgrade 'brew update; brew upgrade; brew cleanup; brew doctor'
 
+# Directories
+abbr d 'dirh'
+abbr n 'nextd'
+abbr p 'prevd'
+abbr rmdiri 'du -hd 1 | fzf -m | awk \'{print $2}\' | xargs rm -rf'
+abbr rm_empty_dirs 'find . -type d -empty -delete'
+
 # Docker
-abbr d 'docker'
-abbr dpsa 'docker ps -a'
+abbr do 'docker'
+abbr dopsa 'docker ps -a'
 abbr docker_containers_remove 'docker stop (docker ps -a -q); docker rm (docker ps -a -q); docker system prune --volumes -f'
 abbr docker_images_remove 'docker rmi -f (docker images -a -q)'
 
@@ -27,8 +34,6 @@ abbr docker_images_remove 'docker rmi -f (docker images -a -q)'
 abbr c 'bat'
 abbr l 'exa -al'
 abbr fm 'lf'
-abbr rmdiri 'du -hd 1 | fzf -m | awk \'{print $2}\' | xargs rm -rf'
-abbr rm_empty_dirs 'find . -type d -empty -delete'
 abbr tree 'exa --tree'
 
 # Git
