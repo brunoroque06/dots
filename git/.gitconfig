@@ -16,7 +16,7 @@
 	f = fetch
 	fa = fetch --all
 	l = log
-	la = log --all --decorate --graph --oneline -20
+	la = log --all --decorate --graph --format=format:'%Cblue%h %Creset- %Cgreen%ar %Creset%s %C(dim white)- %an %C(auto)%d' -20
 	last = log -1 -p
 	pack = gc
 	ph = push
