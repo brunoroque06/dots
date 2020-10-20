@@ -14,6 +14,7 @@
 	d = diff
 	dt = difftool
 	f = fetch
+	fa = fetch --all
 	l = log
 	la = log --all --decorate --graph --oneline -20
 	last = log -1 -p

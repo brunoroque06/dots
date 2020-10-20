@@ -5,6 +5,14 @@ obj/
 out/
 target/
 
+# Dotnet
+.tmp/
+*.sln.DotSettings
+*.sln.DotSettings.user
+*.user
+bin
+obj
+
 # Haskell
 dist-newstyle/
 
