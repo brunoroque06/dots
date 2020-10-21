@@ -109,4 +109,5 @@ abbr P 'pbpaste'
 abbr Y 'pbcopy'
 
 # Window Manager
-abbr amethyst_config_dump 'cp "$HOME"/Library/Preferences/com.amethyst.amethyst.plist "$HOME"/Projects/dotfiles/window-manager/com.amethyst.amethyst.plist'
+abbr amethyst_config_dump 'cp "$HOME"/Library/Preferences/com.amethyst.amethyst.plist "$HOME"/Projects/dotfiles/window-manager'
+abbr rectangle_config_dump 'cp "$HOME"/Library/Preferences/com.knollsoft.Rectangle.plist "$HOME"/Projects/dotfiles/window-manager'

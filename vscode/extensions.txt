@@ -12,6 +12,7 @@ ms-azuretools.vscode-docker
 ms-dotnettools.csharp
 ms-python.python
 ms-vscode.azure-account
+ms-vscode.cpptools
 msjsdiag.debugger-for-chrome
 rust-lang.rust
 streetsidesoftware.code-spell-checker
