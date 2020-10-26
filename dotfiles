@@ -5,7 +5,6 @@ set -e
 install() {
 	./brew/setup
 
-	cp "$PWD"/window-manager/com.amethyst.amethyst.plist "$HOME"/Library/Preferences
 	cp "$PWD"/window-manager/com.knollsoft.Rectangle.plist "$HOME"/Library/Preferences
 
 	printf 'Install fonts: https://developer.apple.com/fonts/ \n'
