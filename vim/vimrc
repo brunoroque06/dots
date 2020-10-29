@@ -107,7 +107,6 @@ let g:ale_echo_msg_format = '[%linter%] [%severity%] %s'
 " Theme
 set background=dark
 colorscheme gruvbox
-highlight SpellBad cterm=underline ctermfg=DarkRed gui=underline guifg=DarkRed
 
 " Fzf
 set rtp+=/usr/local/opt/fzf
