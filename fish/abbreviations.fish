@@ -25,10 +25,13 @@ abbr rmdiri 'du -hd 1 | fzf -m | awk \'{print $2}\' | xargs rm -rf'
 abbr rm_empty_dirs 'find . -type d -empty -delete'
 
 # Docker
-abbr do 'docker'
-abbr dopsa 'docker ps -a'
+abbr dr 'docker'
+abbr drpsa 'docker ps -a'
 abbr docker_containers_remove 'docker stop (docker ps -a -q); docker rm (docker ps -a -q); docker system prune --volumes -f'
 abbr docker_images_remove 'docker rmi -f (docker images -a -q)'
+
+# Dotnet
+abbr do 'dotnet'
 
 # Files
 abbr c 'bat'
