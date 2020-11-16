@@ -47,6 +47,10 @@ abbr pc_run 'pre-commit run'
 # Google Chrome
 abbr chrome_dev 'rm -rf /tmp/chrome_dev_test; open -n -a /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --args --user-data-dir="/tmp/chrome_dev_test" --disable-web-security'
 
+# Keyboard
+abbr karabiner_config_dump 'cp "$HOME"/.config/karabiner/karabiner.json "$HOME"/Projects/dotfiles/karabiner'
+abbr karabiner_config_load 'cp "$HOME"/Projects/dotfiles/karabiner/karabiner.json "$HOME"/.config/karabiner/karabiner.json'
+
 # Makefile
 abbr m 'make'
 
