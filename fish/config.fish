@@ -10,10 +10,6 @@ source "$HOME"/.config/fish/abbreviations.fish
 complete -c pip -a '(__fish_complete_suffix .whl)' -n '__fish_seen_subcommand_from install'
 complete -c unzip -a '(__fish_complete_suffix .pex; __fish_complete_suffix .whl)'
 
-# Bat
-set -Ux BAT_THEME 1337
-set -Ux BAT_STYLE grid,numbers
-
 # Fzf
 set -Ux FZF_DEFAULT_COMMAND 'fd . --type f --hidden -E .git'
 set -Ux FZF_DEFAULT_OPTS '--border --reverse --height 20%'
