@@ -84,8 +84,8 @@ key_bindings:
   - { key: Key0, mods: Command, action: ResetFontSize }
   - { key: Equals, mods: Command, action: IncreaseFontSize }
   - { key: Minus, mods: Command, action: DecreaseFontSize }
-  - { key: Slash, mods: Command, chars: "\x06" }
-  - { key: F, mods: Command, chars: "\x06" }
+  - { key: Slash, mods: Command, chars: "\x02\x2F" } # https://donsnotes.com/tech/charsets/ascii.html
+  - { key: F, mods: Command, chars: "\x02\x2F" }
   - {
       key: LBracket,
       mods: Command,
