@@ -52,7 +52,7 @@ colors:
 
 bell:
   animation: Ease
-  duration: 0
+  duration: 100
   color: "0x282828"
 
 background_opacity: 1.0
