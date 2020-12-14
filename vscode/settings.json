@@ -164,6 +164,7 @@
   "eslint.packageManager": "yarn",
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
+  "explorer.openEditors.sortOrder": "alphabetical",
   "files.autoSave": "afterDelay",
   "go.useLanguageServer": true,
   "javascript.updateImportsOnFileMove.enabled": "always",
