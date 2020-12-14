@@ -4,8 +4,7 @@ source utility/command.sh
 
 if is_command_not_in_path brew; then
 	printf 'Installing brew...\n'
-	/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-	brew -v analytics off
+	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
 brew update
