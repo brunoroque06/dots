@@ -162,7 +162,6 @@
   "editor.tabSize": 2,
   "editor.wordWrap": "on",
   "eslint.packageManager": "yarn",
-  "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
   "explorer.openEditors.sortOrder": "alphabetical",
   "files.autoSave": "afterDelay",
