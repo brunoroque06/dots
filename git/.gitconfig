@@ -18,6 +18,7 @@
 	l = log
 	la = log --all --decorate --graph --format=format:'%Cblue%h %Creset- %Cgreen%ar %Creset%s %C(dim white)- %an %C(auto)%d' -20
 	last = log -1 -p
+	lp = log -p
 	pack = gc
 	ph = push
 	pl = pull
