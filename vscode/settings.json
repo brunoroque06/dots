@@ -175,7 +175,7 @@
   "plantuml.server": "https://www.plantuml.com/plantuml",
   "python.formatting.blackPath": "venv/bin/black",
   "python.formatting.provider": "black",
-  "python.languageServer": "Microsoft",
+  "python.languageServer": "Pylance",
   "python.linting.mypyEnabled": true,
   "python.linting.mypyPath": "venv/bin/mypy",
   "python.linting.pylintArgs": ["--disable=bad-continuation,missing-docstring"],
