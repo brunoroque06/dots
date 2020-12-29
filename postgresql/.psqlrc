@@ -1,9 +1,10 @@
-\set PROMPT1 '%/ %n (%M) %x\n%# '
-\set PROMPT2 ''
+\set PROMPT1 '%[%033[34m%]%n %[%033[0m%]@ %[%033[35m%]%/ %[%033[36m%]%M %[%033[0m%]%x\n%# '
+\set PROMPT2 '+ '
 
 \pset border 4
 \pset format wrapped
 \pset linestyle unicode
+\pset null '(null)'
 \set COMP_KEYWORD_CASE lower
 \set ON_ERROR_STOP on
 \set VERBOSITY verbose
