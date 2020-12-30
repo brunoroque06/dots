@@ -26,7 +26,9 @@ set -x PATH /usr/local/opt/ruby/bin $PATH "$HOME"/.dotnet/tools "$HOME"/.cargo/b
 set -Ux PULUMI_PREFER_YARN 'true'
 
 # Theme
+set -U fish_color_autosuggestion grey
 set -U fish_color_command green
+set -U fish_color_error red
 set -U fish_color_param normal
 set -U fish_color_quote yellow
 
