@@ -41,6 +41,6 @@ unlink)
 	link_manager D
 	;;
 *)
-	printf 'Available commands: install, link, unlink.\n'
+	printf 'Available Commands:\n\ninstall\nlink\nunlink\n'
 	;;
 esac
