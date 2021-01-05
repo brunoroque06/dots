@@ -7,7 +7,7 @@ abbr yay_sync 'yay -Syu'
 
 # Azure
 abbr azi 'az interactive --style br'
-abbr az_sub 'az account list --query \'[].{subscriptionName:name, subscriptionId:id}\' -o tsv | fzf | awk \'{print $NF}\' | xargs -J % az account set -s %'
+abbr az_sub 'az account list --query \'[].{subscriptionName:name, subscriptionId:id}\' -o table | sed -e \'1,2d\' | fzf | awk \'{print $NF}\' | xargs -J % az account set -s %'
 
 # Brew
 abbr brew_cask_upgrade 'brew update; brew upgrade --cask; brew doctor'
@@ -85,6 +85,7 @@ abbr python_setup 'python3 -m venv venv/; source venv/bin/activate.fish; pip ins
 # Pulumi
 abbr pu 'pulumi'
 abbr pud 'pulumi destroy'
+abbr puds 'pulumi destroy --skip-preview'
 abbr pur 'pulumi refresh'
 abbr puu 'pulumi up'
 abbr puus 'pulumi up --skip-preview'
