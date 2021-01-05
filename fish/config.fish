@@ -28,9 +28,14 @@ set -Ux PULUMI_PREFER_YARN 'true'
 # Theme
 set -U fish_color_autosuggestion grey
 set -U fish_color_command green
+set -U fish_color_comment yellow
+set -U fish_color_end purple
 set -U fish_color_error red
+set -U fish_color_escape purple
 set -U fish_color_param normal
+set -U fish_color_operator blue
 set -U fish_color_quote yellow
+set -U fish_color_redirection brblue
 
 # Zoxide
 zoxide init fish | source
