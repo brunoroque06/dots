@@ -21,8 +21,9 @@ abbr brew_upgrade 'brew update; brew upgrade; brew cleanup; brew doctor'
 abbr d 'dirh'
 abbr n 'nextd'
 abbr p 'prevd'
-abbr rmdiri 'du -hd 1 | fzf -m | awk \'{print $2}\' | xargs rm -rf'
-abbr rm_empty_dirs 'find . -type d -empty -delete'
+abbr dir_rm_i 'du -hd 1 | fzf -m | awk \'{print $2}\' | xargs rm -rf'
+abbr dir_rm_empty 'find . -type d -empty -delete'
+abbr dir_size 'du -h -d 1 | sort -hr'
 
 # Docker
 abbr dr 'docker'
