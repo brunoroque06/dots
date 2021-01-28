@@ -10,6 +10,7 @@
 	cim = commit -m
 	co = checkout
 	cob = checkout -b
+	com = checkout origin/master --
 	cp = cherry-pick
 	d = diff
 	dt = difftool
@@ -19,6 +20,8 @@
 	la = log --all --decorate --graph --format=format:'%Cblue%h %Creset- %Cgreen%ar %Creset%s %C(dim white)- %an %C(auto)%d' -20
 	last = log -1 -p
 	lp = log -p
+	m = merge
+	mt = mergetool
 	pack = gc
 	ph = push
 	pl = pull
@@ -44,6 +47,12 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+
+[merge]
+	tool = vimdiff
+
+[mergetool]
+	keepBackup = false
 
 [user]
 	name = Bruno Roque

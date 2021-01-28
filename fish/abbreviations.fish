@@ -98,6 +98,7 @@ abbr tn 'tmux new-session -s default'
 
 # Vim
 abbr v 'vim'
+abbr vd 'vim -d'
 abbr vim_plug 'vim +PlugUpgrade +PlugClean +PlugInstall +PlugUpdate +qa'
 
 # VSCode
