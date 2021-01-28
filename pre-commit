@@ -1,4 +1,13 @@
 #!/usr/bin/env bash
 
-echo "The hook is running"
-echo "$@"
+printf 'Pre-commit hook started\n\n'
+
+fd --hidden --type x . | xargs -t -I {} shellcheck -x {}
+fd --hidden --type x . | xargs -t -I {} shfmt -w {}
+
+fd --hidden --type f '.*\.sh$' . | xargs -t -I {} shellcheck -x {}
+fd --hidden --type f '.*\.sh$' . | xargs -t -I {} shfmt -w {}
+
+prettier --write '**/*.{json,md,yaml,yml}'
+
+printf '\nPre-commit hook finished\n'
