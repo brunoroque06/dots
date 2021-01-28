@@ -13,7 +13,7 @@ jobs:
         run: shellcheck ./utility/*.sh
 
       - name: Shellcheck executables
-        run: find . -not -path "./.git/*" -type f -perm -u=x | xargs -t -I {} shellcheck -x {}
+        run: find . -not -path './.git/*' -type f -perm -u=x | xargs -t -I {} shellcheck -x {}
 
       - name: Prettier
         run: npx prettier -l '**/*.{json,yaml,yml}'
