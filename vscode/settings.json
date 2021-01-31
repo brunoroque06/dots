@@ -219,6 +219,10 @@
       "commands": [":marks"]
     },
     {
+      "before": ["<leader>", "o"],
+      "commands": ["workbench.action.quickOpen"]
+    },
+    {
       "before": ["<leader>", "p"],
       "commands": ["editor.action.triggerParameterHints"]
     },
