@@ -1,32 +1,13 @@
 [
   {
-    "key": "cmd+r",
-    "command": "workbench.action.openRecent"
-  },
-  // Buffer
-  {
-    "key": "cmd+e",
-    "command": "workbench.action.quickOpen"
-  },
-  {
-    "key": "cmd+enter",
-    "command": "editor.action.quickFix",
-    "when": "editorHasCodeActionsProvider && editorTextFocus && !editorReadonly"
-  },
-  {
-    "key": "cmd+t",
-    "command": "editor.action.refactor",
-    "when": "editorHasCodeActionsProvider && editorTextFocus && !editorReadonly"
-  },
-  {
-    "key": "cmd+u",
-    "command": "references-view.find",
-    "when": "editorHasReferenceProvider"
-  },
-  {
     "key": "escape",
     "command": "workbench.action.focusActiveEditorGroup",
     "when": "!editorFocus"
+  },
+  {
+    "key": "shift+escape",
+    "command": "workbench.action.togglePanel",
+    "when": "panelFocus"
   },
   {
     "key": "f1",
@@ -43,33 +24,6 @@
     "command": "editor.action.marker.prev",
     "when": "editorFocus && !editorReadonly"
   },
-  // Debug
-  {
-    "key": "cmd+d",
-    "command": "workbench.action.debug.continue",
-    "when": "inDebugMode"
-  },
-  {
-    "key": "cmd+d",
-    "command": "workbench.action.debug.start",
-    "when": "!inDebugMode"
-  },
-  {
-    "key": "cmd+shift+d",
-    "command": "workbench.action.debug.stop",
-    "when": "inDebugMode"
-  },
-  {
-    "key": "ctrl+d",
-    "command": "-workbench.action.debug.run"
-  },
-  // Git
-  {
-    "key": "cmd+g",
-    "command": "git.openChange",
-    "when": "editorFocus && !isInDiffEditor"
-  },
-  // Settings
   {
     "key": "cmd+,",
     "command": "workbench.action.openSettingsJson"
@@ -77,26 +31,5 @@
   {
     "key": "cmd+k",
     "command": "workbench.action.openGlobalKeybindingsFile"
-  },
-  // Terminal
-  {
-    "key": "cmd+w",
-    "command": "workbench.action.terminal.kill",
-    "when": "terminalFocus"
-  },
-  {
-    "key": "cmd+shift+k",
-    "command": "workbench.action.terminal.resizePaneUp",
-    "when": "terminalFocus"
-  },
-  {
-    "key": "cmd+shift+j",
-    "command": "workbench.action.terminal.resizePaneDown",
-    "when": "terminalFocus"
-  },
-  {
-    "key": "shift+escape",
-    "command": "workbench.action.togglePanel",
-    "when": "panelFocus"
   }
 ]

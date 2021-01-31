@@ -211,12 +211,24 @@
       "commands": ["editor.action.showDefinitionPreviewHover"]
     },
     {
+      "before": ["<leader>", "g"],
+      "commands": ["git.openChange"]
+    },
+    {
       "before": ["<leader>", "m"],
       "commands": [":marks"]
     },
     {
+      "before": ["<leader>", "p"],
+      "commands": ["editor.action.triggerParameterHints"]
+    },
+    {
       "before": ["<leader>", "t"],
       "commands": ["editor.action.rename"]
+    },
+    {
+      "before": ["<leader>", "u"],
+      "commands": ["references-view.find"]
     },
     {
       "before": ["<leader>", "z"],
