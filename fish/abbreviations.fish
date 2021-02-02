@@ -4,6 +4,7 @@ abbr az_sub 'az account list --query \'[].{subscriptionName:name, subscriptionId
 
 # Brew
 abbr brew_dump 'brew bundle dump --file "$HOME"/Projects/dotfiles/brew/Brewfile --force'
+abbr b 'brew'
 abbr bl 'brew leaves'
 abbr blc 'brew list --cask -1'
 abbr brew_prune 'brew bundle dump; brew bundle --force cleanup; rm Brewfile'
