@@ -76,6 +76,7 @@ abbr python_setup 'python3 -m venv venv/; source venv/bin/activate.fish; pip ins
 
 # Pulumi
 abbr pu 'pulumi'
+abbr pu_state_delete "pulumi stack export | jq '.deployment.resources[].urn' | fzf | xargs -t pulumi state delete"
 abbr pud 'pulumi destroy'
 abbr puds 'pulumi destroy --skip-preview'
 abbr pup 'pulumi preview'
