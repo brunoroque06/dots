@@ -1,45 +1,49 @@
 # Azure
 abbr azi 'az interactive --style br'
-abbr az_sub 'az account list --query \'[].{subscriptionName:name, subscriptionId:id}\' -o table | sed -e \'1,2d\' | fzf | awk \'{print $NF}\' | xargs -J % az account set -s %'
+abbr azsubi 'az account list --query \'[].{subscriptionName:name, subscriptionId:id}\' -o table | sed -e \'1,2d\' | fzf | awk \'{print $NF}\' | xargs -J % az account set -s %'
 
 # Brew
-abbr brew_dump 'brew bundle dump --file "$HOME"/Projects/dotfiles/brew/Brewfile --force'
 abbr b 'brew'
+abbr bdump 'brew bundle dump --file "$HOME"/Projects/dotfiles/brew/Brewfile --force'
 abbr bl 'brew leaves'
 abbr blc 'brew list --cask -1'
-abbr brew_prune 'brew bundle dump; brew bundle --force cleanup; rm Brewfile'
-abbr brew_upgrade 'brew update; brew upgrade; brew cleanup; brew doctor'
+abbr bprune 'brew bundle dump; brew bundle --force cleanup; rm Brewfile'
+abbr bupa 'brew update; brew upgrade; brew cleanup; brew doctor'
+abbr bui 'brew leaves | fzf -m | tr \'\n\' \' \' | xargs -t brew uninstall'
+abbr buci 'brew list --cask -1 | fzf -m | tr \'\n\' \' \' | xargs -t brew uninstall --cask'
+
+# Clipboard
+abbr P 'pbpaste'
+abbr Y 'pbcopy'
 
 # Directories
-abbr d 'dirh'
+abbr dih 'dirh'
+abbr diclean 'find . -type d -empty -delete'
+abbr dirmi 'du -hd 1 | fzf -m | awk \'{print $2}\' | xargs rm -rf'
+abbr disize 'du -h -d 1 | sort -hr'
 abbr n 'nextd'
 abbr p 'prevd'
-abbr dir_rm_i 'du -hd 1 | fzf -m | awk \'{print $2}\' | xargs rm -rf'
-abbr dir_rm_empty 'find . -type d -empty -delete'
-abbr dir_size 'du -h -d 1 | sort -hr'
 
 # Docker
-abbr dr 'docker'
-abbr drpsa 'docker ps -a'
-abbr docker_containers_remove 'docker stop (docker ps -a -q); docker rm (docker ps -a -q); docker system prune --volumes -f'
-abbr docker_images_remove 'docker rmi -f (docker images -a -q)'
+abbr doc 'docker'
+abbr docps 'docker ps -a'
+abbr doc_containers_remove 'docker stop (docker ps -a -q); docker rm (docker ps -a -q); docker system prune --volumes -f'
+abbr doc_images_remove 'docker rmi -f (docker images -a -q)'
 
 # Dotnet
-abbr do 'dotnet'
+abbr dot 'dotnet'
 
 # Files
 abbr c 'bat'
+abbr gr 'rg'
 abbr l 'exa -al'
+abbr lt 'exa --tree --level 2'
 abbr fm 'lf'
-abbr tree 'exa --tree'
 
 # Git
 abbr g 'git'
 abbr gi 'lazygit'
 abbr pc_run 'pre-commit run'
-
-# Google Chrome
-abbr chrome_dev 'rm -rf /tmp/chrome_dev_test; open -n -a /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --args --user-data-dir="/tmp/chrome_dev_test" --disable-web-security'
 
 # Keyboard
 abbr karabiner_config_dump 'cp "$HOME"/.config/karabiner/karabiner.json "$HOME"/Projects/dotfiles/karabiner'
@@ -55,28 +59,32 @@ abbr caly 'cal -y'
 # Node.js
 abbr nci 'npm ci'
 abbr ni 'npm install'
-abbr npm_global_list 'npm list -g --depth=0'
-abbr npm_global_update 'npm update -g'
+abbr nlg 'npm list -g --depth=0'
+abbr nupg 'npm update -g'
 abbr nr 'npm run'
 abbr y 'yarn'
-abbr yarn_global_upgrade 'yarn global upgrade-interactive --latest'
-abbr yarn_upgrade 'yarn upgrade-interactive --latest'
-abbr ys "awk '/\"scripts\":/,/}/' package.json"
-abbr yt 'yarn run test'
+abbr yupgi 'yarn global upgrade-interactive --latest'
+abbr yupi 'yarn upgrade-interactive --latest'
+abbr yr 'yarn run'
+abbr yri 'cat package.json | jq -r \'.scripts | keys[]\' | fzf | xargs -t yarn run'
+abbr yrt 'yarn run test'
+abbr ys 'cat package.json | jq \'.scripts\''
 
 # Processes
-abbr list_ports 'lsof -PiTCP | grep LISTEN'
+abbr portsl 'lsof -PiTCP | rg LISTEN'
 
 # Python
 abbr pip_uninstall_all 'pip freeze | xargs pip uninstall -y'
 abbr py 'python'
 abbr pydb 'python -m pdb'
 abbr pys 'source venv/bin/activate.fish'
-abbr python_setup 'python3 -m venv venv/; source venv/bin/activate.fish; pip install --upgrade pip; pip install -r requirements.txt; pip install black mypy pylint pytest'
+abbr pysetup 'python3 -m venv venv; source venv/bin/activate.fish; pip install --upgrade pip; pip install -r requirements.txt; pip install black mypy pylint pytest'
 
 # Pulumi
 abbr pu 'pulumi'
-abbr pu_state_delete "pulumi stack export | jq '.deployment.resources[].urn' | fzf | xargs -t pulumi state delete"
+abbr pu_state_delete 'pulumi stack export | jq -r \'.deployment.resources[].urn\' | fzf | xargs -t pulumi state delete'
+abbr puss 'pulumi stack ls --json | jq -r \'.[].name\' | fzf | xargs -t pulumi stack select'
+abbr puso 'pulumi stack output --show-secrets'
 abbr pud 'pulumi destroy'
 abbr puds 'pulumi destroy --skip-preview'
 abbr pup 'pulumi preview'
@@ -86,8 +94,9 @@ abbr puus 'pulumi up --skip-preview'
 
 # Shell
 abbr fp 'fish --private'
+abbr hi 'fzf-history-widget'
+abbr hd 'history | fzf | history delete --case-sensitive --exact'
 abbr hdc 'history delete --contains'
-abbr history_delete 'history | fzf | history delete --case-sensitive --exact'
 abbr s 'source'
 abbr sh_fmt 'shfmt -i 2 -s -w .'
 abbr sh_lint 'find . -not -path "./.git/*" -type f -perm -u=x | xargs -t -J % shellcheck -x %'
@@ -107,9 +116,8 @@ abbr vim_plug 'vim +PlugUpgrade +PlugClean +PlugInstall +PlugUpdate +qa'
 abbr code_ext_dump 'code --list-extensions > "$HOME/Library/Application Support/Code/User/extensions.txt"'
 abbr code_ext_install 'xargs <"$HOME/Library/Application Support/Code/User/extensions.txt" -L 1 code --force --install-extension'
 
-# Paste/Yank
-abbr P 'pbpaste'
-abbr Y 'pbcopy'
+# Web Browser
+abbr webbrowser_dev 'rm -rf /tmp/chrome_dev_test; open -n -a /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --args --user-data-dir="/tmp/chrome_dev_test" --disable-web-security'
 
 # Window Manager
 abbr rectangle_config_dump 'cp "$HOME"/Library/Preferences/com.knollsoft.Rectangle.plist "$HOME"/Projects/dotfiles/window-manager'
