@@ -143,6 +143,7 @@
     "yagni",
     "youtube"
   ],
+  "debug.allowBreakpointsEverywhere": true,
   "debug.console.fontSize": 14,
   "debug.inlineValues": true,
   "debug.internalConsoleOptions": "neverOpen",
