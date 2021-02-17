@@ -70,6 +70,10 @@ abbr yri 'cat package.json | jq -r \'.scripts | keys[]\' | fzf | xargs -t yarn r
 abbr yrt 'yarn run test'
 abbr ys 'cat package.json | jq \'.scripts\''
 
+# PostgreSQL
+abbr pgstart 'postgres -D /usr/local/var/postgres'
+abbr pgup 'brew postgresql-upgrade-database'
+
 # Processes
 abbr portsl 'lsof -PiTCP | rg LISTEN'
 
