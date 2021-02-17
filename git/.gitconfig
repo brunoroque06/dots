@@ -1,36 +1,3 @@
-[alias]
-	a = add
-	aa = add --a
-	b = branch
-	bd = branch -d
-	cfl = config --list --show-origin
-	ci = commit
-	ciam = commit -am
-	ciamend = commit --amend
-	cim = commit -m
-	co = checkout
-	cob = checkout -b
-	com = checkout origin/master --
-	cp = cherry-pick
-	d = diff
-	dt = difftool
-	f = fetch
-	fa = fetch --all
-	l = log
-	la = log --all --decorate --graph --format=format:'%Cblue%h %Creset- %Cgreen%ar %Creset%s %C(dim white)- %an %C(auto)%d' -20
-	last = log -1 -p
-	lp = log -p
-	m = merge
-	mt = mergetool
-	pack = gc
-	ph = push
-	pl = pull
-	plrb = pull --rebase
-	rb = rebase
-	rsh = reset --hard HEAD
-	s = status --untracked-files
-	unstage = reset HEAD --
-
 [core]
 	editor = vim
 	pager = delta
