@@ -1,6 +1,6 @@
 # Azure
 abbr azi 'az interactive --style br'
-abbr azsubi 'az account list --query \'[].{subscriptionName:name, subscriptionId:id}\' -o table | sed -e \'1,2d\' | fzf | awk \'{print $NF}\' | xargs -J % az account set -s %'
+abbr azsubi 'az account list | jq -r \'.[] | [.id, .name] | join("\\t")\' | fzf | awk \'{print $1F}\' | xargs -t az account set --subscription'
 
 # Brew
 abbr b 'brew'
@@ -19,7 +19,7 @@ abbr Y 'pbcopy'
 # Directories
 abbr dih 'dirh'
 abbr diclean 'find . -type d -empty -delete'
-abbr dirmi 'du -hd 1 | fzf -m | awk \'{print $2}\' | xargs rm -rf'
+abbr dirmi 'du -hd 1 | fzf -m | awk \'{print $2}\' | xargs -t rm -rf'
 abbr disize 'du -h -d 1 | sort -hr'
 abbr n 'nextd'
 abbr p 'prevd'
