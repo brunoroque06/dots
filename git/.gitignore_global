@@ -6,6 +6,7 @@ out/
 target/
 
 # Dotnet
+.ionide/
 .tmp/
 *.sln.DotSettings
 *.sln.DotSettings.user
