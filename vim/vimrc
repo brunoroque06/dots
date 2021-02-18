@@ -8,6 +8,7 @@ call plug#begin()
 Plug 'dense-analysis/ale'
 Plug 'gruvbox-community/gruvbox'
 Plug 'itchyny/lightline.vim'
+Plug 'preservim/nerdtree'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
@@ -27,6 +28,7 @@ set clipboard=unnamed
 nnoremap <leader>c :source ~/.vim/vimrc<cr>
 
 " Files
+nnoremap <leader>x :NERDTree<cr>
 let g:netrw_liststyle = 3
 set autoread
 set path+=**

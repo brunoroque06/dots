@@ -1,5 +1,6 @@
 set commentary
 set highlightedyank
+set NERDTree
 set surround
 
 source ~/.vim/vimrc
@@ -19,6 +20,6 @@ nnoremap <leader>r :action Run<cr>
 nnoremap <leader>s :action Stop<cr>
 nnoremap <leader>t :action Refactorings.QuickListPopupAction<cr>
 nnoremap <leader>u :action FindUsages<cr>
-nnoremap <leader>x :action GotoNextError<cr>
+nnoremap <leader>x :action NERDTree<cr>
 nnoremap <leader>X :action GotoPreviousError<cr>
 nnoremap <leader>z :action ToggleDistractionFreeMode<cr>

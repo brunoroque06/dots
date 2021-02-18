@@ -241,6 +241,10 @@
       "commands": ["references-view.find"]
     },
     {
+      "before": ["<leader>", "x"],
+      "commands": ["workbench.view.explorer"]
+    },
+    {
       "before": ["<leader>", "z"],
       "commands": ["workbench.action.toggleZenMode"]
     }
