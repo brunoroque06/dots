@@ -17,10 +17,10 @@ abbr P 'pbpaste'
 abbr Y 'pbcopy'
 
 # Directories
-abbr dih 'dirh'
-abbr diclean 'find . -type d -empty -delete'
+abbr dirh 'dirh'
+abbr dirclean 'find . -type d -empty -delete'
 abbr dirmi 'du -hd 1 | fzf -m | awk \'{print $2}\' | xargs -t rm -rf'
-abbr disize 'du -h -d 1 | sort -hr'
+abbr dirsize 'du -h -d 1 | sort -hr'
 abbr n 'nextd'
 abbr p 'prevd'
 
@@ -31,7 +31,12 @@ abbr doc_containers_remove 'docker stop (docker ps -a -q); docker rm (docker ps 
 abbr doc_images_remove 'docker rmi -f (docker images -a -q)'
 
 # Dotnet
-abbr dot 'dotnet'
+abbr d 'dotnet'
+abbr da 'dotnet add'
+abbr dou 'dotnet outdated --upgrade'
+abbr dp 'dotnet publish'
+abbr dr 'dotnet run'
+abbr dt 'dotnet test'
 
 # Files
 abbr c 'bat'
@@ -145,7 +150,7 @@ abbr tn 'tmux new-session -s default'
 # Vim
 abbr v 'vim'
 abbr vd 'vim -d'
-abbr vim_plug 'vim +PlugUpgrade +PlugClean +PlugInstall +PlugUpdate +qa'
+abbr vplug 'vim +PlugUpgrade +PlugClean +PlugInstall +PlugUpdate +qa'
 
 # VSCode
 abbr code_ext_dump 'code --list-extensions > "$HOME/Library/Application Support/Code/User/extensions.txt"'
