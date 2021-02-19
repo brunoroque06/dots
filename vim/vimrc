@@ -8,7 +8,6 @@ call plug#begin()
 Plug 'dense-analysis/ale'
 Plug 'gruvbox-community/gruvbox'
 Plug 'itchyny/lightline.vim'
-Plug 'preservim/nerdtree'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
@@ -28,8 +27,8 @@ set clipboard=unnamed
 nnoremap <leader>c :source ~/.vim/vimrc<cr>
 
 " Files
-nnoremap <leader>x :NERDTree<cr>
-let g:netrw_liststyle = 3
+nnoremap <leader>x :edit .<cr>
+let g:netrw_liststyle=1
 set autoread
 set path+=**
 set noswapfile
@@ -53,12 +52,6 @@ set incsearch
 set hlsearch
 set smartcase
 
-" Splits
-nnoremap <c-j> <c-w><c-j>
-nnoremap <c-k> <c-w><c-k>
-nnoremap <c-l> <c-w><c-l>
-nnoremap <c-h> <c-w><c-h>
-
 " Text
 syntax enable
 set encoding=utf-8
@@ -78,35 +71,41 @@ set scrolloff=10
 set showcmd
 set wildmenu
 
-" Window
+" Window/Split
+nnoremap <c-j> <c-w><c-j>
+nnoremap <c-k> <c-w><c-k>
+nnoremap <c-l> <c-w><c-l>
+nnoremap <c-h> <c-w><c-h>
 nnoremap <leader>q :quit<cr>
+nnoremap <leader>s :split<cr>
+nnoremap <leader>v :vsplit<cr>
 
 " Ale
-let g:ale_fix_on_save = 1
+let g:ale_fix_on_save=1
 
-let g:ale_fixers = {}
-let g:ale_fixers['*'] = ['remove_trailing_lines', 'trim_whitespace']
-let g:ale_fixers.html = ['prettier']
-let g:ale_fixers.javascript = ['prettier', 'eslint']
-let g:ale_fixers.json = ['prettier']
-let g:ale_fixers.markdown = ['prettier']
-let g:ale_fixers.python = ['black']
-let g:ale_fixers.sh = ['shfmt']
-let g:ale_fixers.sql = ['pgformatter']
-let g:ale_fixers.typescript = ['prettier', 'eslint']
-let g:ale_fixers.yaml = ['prettier']
+let g:ale_fixers={}
+let g:ale_fixers['*']=['remove_trailing_lines', 'trim_whitespace']
+let g:ale_fixers.html=['prettier']
+let g:ale_fixers.javascript=['prettier', 'eslint']
+let g:ale_fixers.json=['prettier']
+let g:ale_fixers.markdown=['prettier']
+let g:ale_fixers.python=['black']
+let g:ale_fixers.sh=['shfmt']
+let g:ale_fixers.sql=['pgformatter']
+let g:ale_fixers.typescript=['prettier', 'eslint']
+let g:ale_fixers.yaml=['prettier']
 
-let g:ale_linters = {}
-let g:ale_linters.javascript = ['eslint']
-let g:ale_linters.python = ['mypy', 'pylint']
-let g:ale_linters.sh = ['shellcheck']
-let g:ale_linters.typescript = ['eslint']
+let g:ale_linters={}
+let g:ale_linters.javascript=['eslint']
+let g:ale_linters.python=['mypy', 'pylint']
+let g:ale_linters.sh=['shellcheck']
+let g:ale_linters.typescript=['eslint']
 
-let g:ale_sign_column_always = 1
-let g:ale_echo_msg_info_str = 'I'
-let g:ale_echo_msg_error_str = 'E'
-let g:ale_echo_msg_warning_str = 'W'
-let g:ale_echo_msg_format = '[%linter%] [%severity%] [%code%] %s'
+let g:ale_sign_column_always=1
+let g:ale_echo_msg_info_str='I'
+let g:ale_echo_msg_error_str='E'
+let g:ale_echo_msg_warning_str='W'
+let g:ale_echo_msg_format='[%linter%] [%severity%] [%code%] %s'
 
 " Theme
 set background=dark
@@ -118,7 +117,7 @@ nnoremap <leader>o :FZF<cr>
 nnoremap <c-o> :FZF<cr>
 
 " Statusline
-let g:lightline = {
+let g:lightline={
 	      \ 'colorscheme': 'seoul256',
 	      \ 'active': {
 	      \   'left': [ [ 'mode', 'paste' ],

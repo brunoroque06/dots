@@ -17,12 +17,12 @@
   {
     "key": "f2",
     "command": "editor.action.marker.next",
-    "when": "editorFocus && !editorReadonly"
+    "when": "editorFocus"
   },
   {
     "key": "shift+f2",
     "command": "editor.action.marker.prev",
-    "when": "editorFocus && !editorReadonly"
+    "when": "editorFocus"
   },
   {
     "key": "cmd+,",

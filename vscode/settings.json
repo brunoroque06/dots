@@ -166,6 +166,7 @@
   "eslint.packageManager": "yarn",
   "explorer.confirmDragAndDrop": false,
   "explorer.openEditors.sortOrder": "alphabetical",
+  "explorer.openEditors.visible": 0,
   "files.autoSave": "afterDelay",
   "go.useLanguageServer": true,
   "javascript.updateImportsOnFileMove.enabled": "always",
@@ -202,7 +203,7 @@
     },
     {
       "before": ["<leader>", "b"],
-      "commands": ["editor.debug.action.toggleBreakpoint"]
+      "commands": ["workbench.action.quickOpen"]
     },
     {
       "before": ["<leader>", "d"],
@@ -226,7 +227,7 @@
     },
     {
       "before": ["<leader>", "p"],
-      "commands": ["editor.action.triggerParameterHints"]
+      "commands": ["editor.debug.action.toggleBreakpoint"]
     },
     {
       "before": ["<leader>", "q"],
