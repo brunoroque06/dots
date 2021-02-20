@@ -234,12 +234,20 @@
       "commands": [":quit"]
     },
     {
+      "before": ["<leader>", "s"],
+      "commands": ["workbench.action.splitEditorDown"]
+    },
+    {
       "before": ["<leader>", "t"],
       "commands": ["editor.action.rename"]
     },
     {
       "before": ["<leader>", "u"],
       "commands": ["references-view.find"]
+    },
+    {
+      "before": ["<leader>", "v"],
+      "commands": ["workbench.action.splitEditor"]
     },
     {
       "before": ["<leader>", "x"],
