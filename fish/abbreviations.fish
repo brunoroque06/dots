@@ -158,7 +158,7 @@ abbr code_ext_dump 'code --list-extensions > "$HOME/Library/Application Support/
 abbr code_ext_install 'xargs <"$HOME/Library/Application Support/Code/User/extensions.txt" -L 1 code --force --install-extension'
 
 # Web Browser
-abbr webbrowser_dev 'rm -rf /tmp/chrome_dev_test; open -n -a /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --args --user-data-dir="/tmp/chrome_dev_test" --disable-web-security'
+abbr webbrowser 'rm -rf /tmp/chrome_dev_test; open -n -a /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --args --user-data-dir="/tmp/chrome_dev_test" --disable-web-security'
 
 # Window Manager
 abbr rectangle_config_dump 'cp "$HOME"/Library/Preferences/com.knollsoft.Rectangle.plist "$HOME"/Projects/dotfiles/window-manager'

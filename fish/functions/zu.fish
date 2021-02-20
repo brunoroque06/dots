@@ -9,6 +9,6 @@ function zu
   if test -z "$urls"
     printf "No identitied urls"
   else
-    printf "$urls" | fzf | xargs open
+    printf "$urls" | fzf-tmux | xargs open
   end
 end
