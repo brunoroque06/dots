@@ -5,10 +5,10 @@ function zu
     set -a content (tmux capture-pane -J -p -t $pane | tr '%' ' ')
   end
   set -l IFS
-  set -l urls (printf "$content" | grep -oE '[[:alnum:]-]+(?:[:\.][[:alnum:]-]+)+(?:/[[:alnum:]-]+)*' | sort --unique | sed 's/^/http:\/\//' | tr ' ' '\n')
+  set -l urls (printf "$content" | rg -o -e 'https?://[\w\-\.:]+' | tr ' ' '\n' | sort --unique)
   if test -z "$urls"
     printf "No identitied urls"
   else
-    printf "$urls" | fzf-tmux | xargs open
+    printf "$urls" | fzf-tmux | xargs -t open
   end
 end
