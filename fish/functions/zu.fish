@@ -7,7 +7,7 @@ function zu
   set -l IFS
   set -l urls (printf "$content" | rg -o -e 'https?://[\w\-\.:]+' | tr ' ' '\n' | sort --unique)
   if test -z "$urls"
-    printf "No identitied urls"
+    printf "No urls identitied\n"
   else
     printf "$urls" | fzf-tmux | xargs -t open
   end

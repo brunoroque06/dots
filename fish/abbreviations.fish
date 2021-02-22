@@ -32,7 +32,7 @@ abbr doc_images_remove 'docker rmi -f (docker images -a -q)'
 
 # Dotnet
 abbr d 'dotnet'
-abbr da 'dotnet add'
+abbr dap 'dotnet add package'
 abbr dou 'dotnet outdated --upgrade'
 abbr dp 'dotnet publish'
 abbr dr 'dotnet run'
