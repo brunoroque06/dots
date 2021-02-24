@@ -10,7 +10,6 @@ Plug 'gruvbox-community/gruvbox'
 Plug 'itchyny/lightline.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 call plug#end()
@@ -120,12 +119,5 @@ nnoremap <c-o> :FZF<cr>
 " Statusline
 let g:lightline={
 	      \ 'colorscheme': 'seoul256',
-	      \ 'active': {
-	      \   'left': [ [ 'mode', 'paste' ],
-	      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
-	      \ },
-	      \ 'component_function': {
-	      \   'gitbranch': 'FugitiveHead'
-	      \ },
 	      \ }
 set noshowmode
