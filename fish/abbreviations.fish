@@ -5,6 +5,7 @@ abbr azsubi 'az account list | jq -r \'.[] | [.id, .name] | join("\\t")\' | fzf 
 # Brew
 abbr b 'brew'
 abbr bdump 'brew bundle dump --file "$HOME"/Projects/dotfiles/brew/Brewfile --force'
+abbr bi 'brew install'
 abbr bl 'brew leaves'
 abbr blc 'brew list --cask -1'
 abbr bprune 'brew bundle dump; brew bundle --force cleanup; rm Brewfile'
@@ -125,8 +126,8 @@ abbr pysetup 'python3 -m venv venv; source venv/bin/activate.fish; pip install -
 
 # Pulumi
 abbr pu 'pulumi'
-abbr pu_state_delete 'pulumi stack export | jq -r \'.deployment.resources[].urn\' | fzf | xargs -t pulumi state delete'
-abbr puss 'pulumi stack ls --json | jq -r \'.[].name\' | fzf | xargs -t pulumi stack select'
+abbr pusdi 'pulumi stack export | jq -r \'.deployment.resources[].urn\' | fzf | xargs -t pulumi state delete'
+abbr pussi 'pulumi stack ls --json | jq -r \'.[].name\' | fzf | xargs -t pulumi stack select'
 abbr puso 'pulumi stack output --show-secrets'
 abbr pud 'pulumi destroy'
 abbr puds 'pulumi destroy --skip-preview'
