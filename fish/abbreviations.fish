@@ -154,7 +154,7 @@ abbr tn 'tmux new-session -s default'
 # Vim
 abbr v 'vim'
 abbr vd 'vim -d'
-abbr vplug 'vim +PlugUpgrade +PlugClean +PlugInstall +PlugUpdate +qa'
+abbr vplug 'vim +\'call minpac#update()\' +\'call minpac#clean()\' +qa'
 
 # VSCode
 abbr c. 'code .'
