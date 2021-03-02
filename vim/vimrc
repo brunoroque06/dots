@@ -1,5 +1,5 @@
 " Plugin
-if empty(glob('~/.vim/pack/minpac'))
+if isdirectory('~/.vim/pack/minpac')
 	!mkdir -p ~/.vim/pack/minpac/opt/minpac
 	!git clone https://github.com/k-takata/minpac.git ~/.vim/pack/minpac/opt/minpac
 endif
