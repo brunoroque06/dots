@@ -206,8 +206,8 @@
       "commands": ["workbench.action.quickOpen"]
     },
     {
-      "before": ["<leader>", "d"],
-      "commands": ["workbench.action.debug.run"]
+      "before": ["<leader>", "f"],
+      "commands": ["workbench.action.quickOpen"]
     },
     {
       "before": ["<leader>", "h"],
@@ -222,16 +222,16 @@
       "commands": [":marks"]
     },
     {
-      "before": ["<leader>", "o"],
-      "commands": ["workbench.action.quickOpen"]
+      "before": ["<leader>", "q"],
+      "commands": [":quit"]
     },
     {
-      "before": ["<leader>", "p"],
+      "before": ["<leader>", "r", "b"],
       "commands": ["editor.debug.action.toggleBreakpoint"]
     },
     {
-      "before": ["<leader>", "q"],
-      "commands": [":quit"]
+      "before": ["<leader>", "r", "d"],
+      "commands": ["workbench.action.debug.run"]
     },
     {
       "before": ["<leader>", "s"],

@@ -115,7 +115,7 @@ colorscheme gruvbox
 
 " Fzf
 set rtp+=/usr/local/opt/fzf
-nnoremap <leader>o :FZF<cr>
+nnoremap <leader>f :FZF<cr>
 nnoremap <c-o> :FZF<cr>
 
 " Statusline
