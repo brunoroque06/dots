@@ -35,10 +35,11 @@ abbr doc_images_remove 'docker rmi -f (docker images -a -q)'
 # Dotnet
 abbr d 'dotnet'
 abbr dap 'dotnet add package'
-abbr dou 'dotnet outdated --upgrade'
+abbr dfmt 'dotnet format'
 abbr dp 'dotnet publish'
 abbr dr 'dotnet run'
 abbr dt 'dotnet test'
+abbr dup 'dotnet outdated --upgrade'
 
 # Files
 abbr c 'bat'
@@ -154,7 +155,7 @@ abbr tn 'tmux new-session -s default'
 # Vim
 abbr v 'vim'
 abbr vd 'vim -d'
-abbr vplug 'vim +\'call minpac#update()\' +\'call minpac#clean()\' +qa'
+abbr vpack 'vim +\'call Pack()\''
 
 # VSCode
 abbr c. 'code .'
