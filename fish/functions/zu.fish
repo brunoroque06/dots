@@ -5,7 +5,7 @@ function zu
     set -a content (tmux capture-pane -J -p -t $pane | tr '%' ' ')
   end
   set -l IFS
-  set -l urls (printf "$content" | rg -o -e 'https?://[\w\-\.:]+' | tr ' ' '\n' | sort --unique)
+  set -l urls (printf "$content" | rg -o -e 'https?://[\w\-\.:/]+' | tr ' ' '\n' | sort --unique)
   if test -z "$urls"
     printf "No urls identitied\n"
   else
