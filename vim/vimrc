@@ -1,60 +1,51 @@
-" Plugin
-if isdirectory('~/.vim/pack/minpac')
-	!mkdir -p ~/.vim/pack/minpac/opt/minpac
-	!git clone https://github.com/k-takata/minpac.git ~/.vim/pack/minpac/opt/minpac
-endif
+function Pack() abort
+	if isdirectory('~/.vim/pack/minpac')
+		!mkdir -p ~/.vim/pack/minpac/opt/minpac
+		!git clone https://github.com/k-takata/minpac.git ~/.vim/pack/minpac/opt/minpac
+	endif
 
-packadd minpac
+	packadd minpac
 
-call minpac#init()
-call minpac#add('k-takata/minpac', {'type': 'opt'})
-call minpac#add('dense-analysis/ale')
-call minpac#add('gruvbox-community/gruvbox')
-call minpac#add('itchyny/lightline.vim')
-call minpac#add('sheerun/vim-polyglot')
-call minpac#add('tpope/vim-commentary')
-call minpac#add('tpope/vim-repeat')
-call minpac#add('tpope/vim-surround')
+	call minpac#init()
+	call minpac#add('k-takata/minpac', {'type': 'opt'})
+	call minpac#add('dense-analysis/ale')
+	call minpac#add('gruvbox-community/gruvbox')
+	call minpac#add('itchyny/lightline.vim')
+	call minpac#add('mhinz/vim-grepper')
+	call minpac#add('sheerun/vim-polyglot')
+	call minpac#add('preservim/tagbar')
+	call minpac#add('tpope/vim-commentary')
+	call minpac#add('tpope/vim-repeat')
+	call minpac#add('tpope/vim-surround')
+	call minpac#add('vim-test/vim-test')
 
-set nocompatible
+	call minpac#update()
+	call minpac#clean()
+endfunction
 
-" Buffers
-set hidden
-nnoremap <leader>b :ls<cr>:b<space>
-
-" Clipboard
-set clipboard=unnamed
-
-" Config
-nnoremap <leader>c :source ~/.vim/vimrc<cr>
-
-" Files
-nnoremap <leader>x :edit .<cr>
 let g:netrw_liststyle=1
 set autoread
-set path+=**
-set noswapfile
-
-" Git
-nnoremap <leader>g :!lazygit<cr><cr>
-
-" Mapping
 set backspace=indent,eol,start
-
-" Marks
-nnoremap <leader>m :marks<cr>
-
-" Mouse
-set ttymouse=xterm2
-set mouse=a
-
-" Search
+set clipboard=unnamed
+set cursorline
+set hidden
+set hlsearch
 set ignorecase
 set incsearch
-set hlsearch
+set laststatus=2
+set lazyredraw
+set mouse=a
+set nocompatible
+set noswapfile
+set number
+set path+=**
+set relativenumber
+set scrolloff=10
+set showcmd
 set smartcase
+set ttymouse=xterm2
+set wildmenu
 
-" Text
 syntax enable
 set encoding=utf-8
 augroup markdownSpell
@@ -62,25 +53,6 @@ augroup markdownSpell
 	autocmd FileType markdown setlocal spell
 	autocmd BufRead,BufNewFile *.md setlocal spell
 augroup END
-
-" UI
-set cursorline
-set laststatus=2
-set lazyredraw
-set number
-set relativenumber
-set scrolloff=10
-set showcmd
-set wildmenu
-
-" Window/Split
-nnoremap <c-j> <c-w><c-j>
-nnoremap <c-k> <c-w><c-k>
-nnoremap <c-l> <c-w><c-l>
-nnoremap <c-h> <c-w><c-h>
-nnoremap <leader>q :quit<cr>
-nnoremap <leader>s :split<cr>
-nnoremap <leader>v :vsplit<cr>
 
 " Ale
 let g:ale_fix_on_save=1
@@ -115,11 +87,28 @@ colorscheme gruvbox
 
 " Fzf
 set rtp+=/usr/local/opt/fzf
-nnoremap <leader>f :FZF<cr>
-nnoremap <c-o> :FZF<cr>
 
 " Statusline
 let g:lightline={
-	      \ 'colorscheme': 'seoul256',
-	      \ }
+			\ 'colorscheme': 'seoul256',
+			\ }
 set noshowmode
+
+nnoremap <c-j> <c-w><c-j>
+nnoremap <c-k> <c-w><c-k>
+nnoremap <c-l> <c-w><c-l>
+nnoremap <c-h> <c-w><c-h>
+
+nnoremap <f2> :ALENext<cr>
+
+nnoremap <leader>b :ls<cr>:b<space>
+nnoremap <leader>c :source ~/.vim/vimrc<cr>
+nnoremap <leader>f :FZF<cr>
+nnoremap <leader>g :Grepper -tool rg<cr>
+" nnoremap <leader>g :!lazygit<cr><cr>
+nnoremap <leader>m :marks<cr>
+nnoremap <leader>s :split<cr>
+nnoremap <leader>q :quit<cr>
+nnoremap <leader>t :Tagbar<cr>
+nnoremap <leader>v :vsplit<cr>
+nnoremap <leader>x :edit .<cr>

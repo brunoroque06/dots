@@ -206,6 +206,14 @@
       "commands": ["workbench.action.quickOpen"]
     },
     {
+      "before": ["<leader>", "d", "b"],
+      "commands": ["editor.debug.action.toggleBreakpoint"]
+    },
+    {
+      "before": ["<leader>", "d", "d"],
+      "commands": ["workbench.action.debug.run"]
+    },
+    {
       "before": ["<leader>", "f"],
       "commands": ["workbench.action.quickOpen"]
     },
@@ -215,7 +223,7 @@
     },
     {
       "before": ["<leader>", "g"],
-      "commands": ["git.openChange"]
+      "commands": ["workbench.action.findInFiles"]
     },
     {
       "before": ["<leader>", "m"],
@@ -226,20 +234,16 @@
       "commands": [":quit"]
     },
     {
-      "before": ["<leader>", "r", "b"],
-      "commands": ["editor.debug.action.toggleBreakpoint"]
-    },
-    {
-      "before": ["<leader>", "r", "d"],
-      "commands": ["workbench.action.debug.run"]
-    },
-    {
       "before": ["<leader>", "s"],
       "commands": ["workbench.action.splitEditorDown"]
     },
     {
-      "before": ["<leader>", "t"],
+      "before": ["<leader>", "r"],
       "commands": ["editor.action.rename"]
+    },
+    {
+      "before": ["<leader>", "t"],
+      "commands": ["outline.focus"]
     },
     {
       "before": ["<leader>", "u"],
@@ -263,6 +267,8 @@
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
   "workbench.editor.enablePreview": false,
   "workbench.editor.limit.enabled": true,
+  "workbench.editor.limit.perEditorGroup": true,
+  "workbench.editor.limit.value": 1,
   "workbench.editor.showTabs": false,
   "workbench.tree.indent": 15,
   "workbench.tree.renderIndentGuides": "always"

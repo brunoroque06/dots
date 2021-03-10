@@ -9,15 +9,17 @@ nnoremap <leader><cr> :action ShowIntentionActions<cr>
 nnoremap <leader>` :action ActivateTerminalToolWindow<cr>
 nnoremap <leader>a :action SearchEverywhere<cr>
 nnoremap <leader>b :action RecentChangedFiles<cr>
+nnoremap <leader>db :action ToggleLineBreakpoint<cr>
+nnoremap <leader>dd :action Debug<cr>
+nnoremap <leader>dr :action Run<cr>
+nnoremap <leader>ds :action Stop<cr>
 nnoremap <leader>f :action SearchEverywhere<cr>
+nnoremap <leader>g :action FindInPath<cr>
 nnoremap <leader>h :action ShowErrorDescription<cr>
 nnoremap <leader>m :action ShowBookmarks<cr>
 nnoremap <leader>n :action NewElementSamePlace<cr>
-nnoremap <leader>rb :action ToggleLineBreakpoint<cr>
-nnoremap <leader>rd :action Debug<cr>
-nnoremap <leader>rr :action Run<cr>
-nnoremap <leader>rs :action Stop<cr>
-nnoremap <leader>t :action Refactorings.QuickListPopupAction<cr>
+nnoremap <leader>r :action Refactorings.QuickListPopupAction<cr>
+nnoremap <leader>t :action ActivateStructureToolWindow<cr>
 nnoremap <leader>u :action FindUsages<cr>
 nnoremap <leader>x :NERDTree<cr>
 nnoremap <leader>z :action ToggleDistractionFreeMode<cr>
