@@ -12,7 +12,7 @@ complete -c unzip -a '(__fish_complete_suffix .pex; __fish_complete_suffix .whl)
 
 # Fzf
 set -Ux FZF_DEFAULT_COMMAND 'fd . --type f --hidden -E .git'
-set -Ux FZF_DEFAULT_OPTS '--border --reverse --height 20%'
+set -Ux FZF_DEFAULT_OPTS '--border --reverse --height 20% --preview \'bat --color=always {}\''
 set -Ux FZF_ALT_C_COMMAND 'fd . --type d --hidden -E .git'
 set -Ux FZF_CTRL_T_COMMAND $FZF_DEFAULT_COMMAND
 
