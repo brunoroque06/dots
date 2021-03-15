@@ -11,4 +11,5 @@ Supported: macOS.
 ## Manual Steps
 
 - Setup `Colemak` keyboard layout;
-- Install fonts: [Apple Fonts](https://developer.apple.com/fonts/).
+- Install fonts: [Apple Fonts](https://developer.apple.com/fonts/);
+- Import rectangle config.

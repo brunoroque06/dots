@@ -4,8 +4,6 @@ set -e
 
 install() {
 	./brew/setup
-
-	cp "$PWD"/window-manager/com.knollsoft.Rectangle.plist "$HOME"/Library/Preferences
 }
 
 link() {
