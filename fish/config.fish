@@ -11,10 +11,9 @@ complete -c pip -a '(__fish_complete_suffix .whl)' -n '__fish_seen_subcommand_fr
 complete -c unzip -a '(__fish_complete_suffix .pex; __fish_complete_suffix .whl)'
 
 # Fzf
-set -Ux FZF_DEFAULT_COMMAND 'fd . --type f --hidden -E .git'
-set -Ux FZF_DEFAULT_OPTS '--border --reverse --height 20% --preview \'bat --color=always {}\''
-set -Ux FZF_ALT_C_COMMAND 'fd . --type d --hidden -E .git'
-set -Ux FZF_CTRL_T_COMMAND $FZF_DEFAULT_COMMAND
+set -Ux FZF_DEFAULT_OPTS '--border=sharp --height 20% --reverse'
+set -Ux FZF_CTRL_T_COMMAND 'fd . --type f --hidden -E .git'
+set -Ux FZF_CTRL_T_OPTS '--height 40% --preview \'bat {}\''
 
 # Java
 set -Ux JAVA_HOME /Library/Java/JavaVirtualMachines/adoptopenjdk-13.0.2.jdk/Contents/Home
