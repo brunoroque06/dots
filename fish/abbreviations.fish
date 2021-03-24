@@ -47,7 +47,7 @@ abbr gr 'rg'
 abbr l 'exa -al'
 abbr lt 'exa --tree --level 2'
 abbr fm 'lf'
-abbr rmi 'fd . --hidden --max-depth 1 --no-ignore | fzf -m | xargs -t -I {} rm -rf "{}"'
+abbr rmi 'fd . --hidden --max-depth 1 --no-ignore | fzf -m | xargs -t -I % rm -rf "%"'
 
 # Git
 abbr g 'git'
