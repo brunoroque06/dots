@@ -29,8 +29,9 @@ abbr p 'prevd'
 # Docker
 abbr doc 'docker'
 abbr docps 'docker ps -a'
-abbr doc_containers_remove 'docker stop (docker ps -a -q); docker rm (docker ps -a -q); docker system prune --volumes -f'
-abbr doc_images_remove 'docker rmi -f (docker images -a -q)'
+abbr docstop 'docker stop (docker ps -a -q)'
+abbr docrm 'docker stop (docker ps -a -q); docker rm (docker ps -a -q); docker system prune --volumes -f'
+abbr docrmimage 'docker rmi -f (docker images -a -q)'
 
 # Dotnet
 abbr d 'dotnet'
