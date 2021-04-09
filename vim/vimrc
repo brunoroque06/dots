@@ -11,30 +11,27 @@ function Pack() abort
 	call minpac#add('dense-analysis/ale')
 	call minpac#add('gruvbox-community/gruvbox')
 	call minpac#add('itchyny/lightline.vim')
-	call minpac#add('mhinz/vim-grepper')
-	call minpac#add('sheerun/vim-polyglot')
 	call minpac#add('preservim/tagbar')
+	call minpac#add('sheerun/vim-polyglot')
 	call minpac#add('tpope/vim-commentary')
 	call minpac#add('tpope/vim-repeat')
 	call minpac#add('tpope/vim-surround')
+	call minpac#add('tpope/vim-unimpaired')
 	call minpac#add('vim-test/vim-test')
 
 	call minpac#update()
 	call minpac#clean()
 endfunction
 
-let g:netrw_liststyle=1
-let g:netrw_preview=1
 set autoread
 set backspace=indent,eol,start
 set clipboard=unnamed
 set cursorline
+set grepprg=rg\ --vimgrep\ --smart-case
 set hidden
 set hlsearch
 set ignorecase
 set incsearch
-set laststatus=2
-set lazyredraw
 set mouse=a
 set nocompatible
 set noswapfile
@@ -46,6 +43,9 @@ set showcmd
 set smartcase
 set ttymouse=xterm2
 set wildmenu
+
+let g:netrw_liststyle=1
+let g:netrw_preview=1
 
 syntax enable
 set encoding=utf-8
@@ -94,6 +94,7 @@ let g:lightline={
 			\ 'colorscheme': 'seoul256',
 			\ }
 set noshowmode
+set laststatus=2
 
 nnoremap <c-j> <c-w><c-j>
 nnoremap <c-k> <c-w><c-k>
@@ -105,7 +106,7 @@ nnoremap <f2> :ALENext<cr>
 nnoremap <leader>b :ls<cr>:b<space>
 nnoremap <leader>c :source ~/.vim/vimrc<cr>
 nnoremap <leader>f :FZF<cr>
-nnoremap <leader>g :Grepper -tool rg<cr>
+nnoremap <leader>g :silent grep<space>
 " nnoremap <leader>g :!lazygit<cr><cr>
 nnoremap <leader>m :marks<cr>
 nnoremap <leader>s :split<cr>
