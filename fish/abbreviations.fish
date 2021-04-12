@@ -40,6 +40,7 @@ abbr dfmt 'dotnet format'
 abbr dp 'dotnet publish'
 abbr dr 'dotnet run'
 abbr dt 'dotnet test'
+abbr dtoupa 'dotnet tool list -g | awk \'NR > 2 {print $1}\' | xargs -t -I % dotnet tool update -g %'
 abbr dup 'dotnet outdated --upgrade'
 
 # Files
