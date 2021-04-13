@@ -16,7 +16,6 @@ function Pack() abort
 	call minpac#add('tpope/vim-commentary')
 	call minpac#add('tpope/vim-repeat')
 	call minpac#add('tpope/vim-surround')
-	call minpac#add('tpope/vim-unimpaired')
 	call minpac#add('vim-test/vim-test')
 
 	call minpac#update()
@@ -41,7 +40,6 @@ set relativenumber
 set scrolloff=10
 set showcmd
 set smartcase
-set ttymouse=xterm2
 set wildmenu
 
 let g:netrw_liststyle=1
@@ -114,3 +112,6 @@ nnoremap <leader>q :quit<cr>
 nnoremap <leader>t :Tagbar<cr>
 nnoremap <leader>v :vsplit<cr>
 nnoremap <leader>x :edit .<cr>
+
+nnoremap [q :cprevious<cr>
+nnoremap ]q :cnext<cr>
