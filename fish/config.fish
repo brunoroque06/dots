@@ -27,6 +27,9 @@ set -x LESS_TERMCAP_so (set_color -b blue bryellow)
 set -x LESS_TERMCAP_ue (set_color normal)
 set -x LESS_TERMCAP_us (set_color brgreen)
 
+# Ripgrep
+set -Ux RIPGREP_CONFIG_PATH "$HOME"/.config/ripgreprc
+
 # Path
 fish_add_path -p /usr/local/opt/ruby/bin
 fish_add_path -aP "$HOME"/.dotnet/tools "$HOME"/.cargo/bin (go env GOPATH)/bin /usr/local/opt/qt/bin

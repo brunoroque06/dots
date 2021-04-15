@@ -152,7 +152,7 @@
     "source.organizeImports": true
   },
   "editor.cursorBlinking": "solid",
-  "editor.cursorSurroundingLines": 10,
+  "editor.cursorSurroundingLines": 8,
   "editor.cursorWidth": 2,
   "editor.fontFamily": "Jetbrains Mono",
   "editor.fontLigatures": true,

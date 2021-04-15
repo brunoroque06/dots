@@ -1,3 +1,6 @@
+set runtimepath^=~/.vim runtimepath+=~/.vim/after
+let &packpath=&runtimepath
+
 set autoread
 set backspace=indent,eol,start
 set clipboard=unnamed
@@ -8,6 +11,7 @@ set grepprg=rg\ --vimgrep\ --hidden\ --smart-case
 set hidden
 set hlsearch
 set ignorecase
+set inccommand=nosplit
 set incsearch
 set mouse=a
 set nocompatible
@@ -18,9 +22,6 @@ set relativenumber
 set scrolloff=8
 set showcmd
 set smartcase
-
-" Neovim
-set inccommand=nosplit
 
 let g:netrw_banner=0
 let g:netrw_liststyle=1
@@ -50,8 +51,6 @@ function Pack() abort
 	call minpac#add('tpope/vim-unimpaired')
 
 	call minpac#add('gruvbox-community/gruvbox')
-	" call minpac#add('itchyny/lightline.vim')
-	" call minpac#add('nvim-lua/lsp-status.nvim')
 	call minpac#add('hoob3rt/lualine.nvim')
 
 	call minpac#add('dense-analysis/ale')
@@ -89,36 +88,111 @@ let g:ale_fixers.yaml=['prettier']
 set background=dark
 colorscheme gruvbox
 
-" Fzf
-" set rtp+=/usr/local/opt/fzf
+augroup LuaHighlight
+  autocmd!
+  autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank()
+augroup END
 
-" Statusline
-" let g:lightline={
-" 			\ 'colorscheme': 'seoul256',
-" 			\ }
-" set noshowmode
-" set laststatus=2
+set noshowmode
+let g:lualine = {
+    \'options' : {
+    \  'theme' : 'seoul256',
+    \  'section_separators' : [' '],
+    \  'component_separators' : [' '],
+    \  'icons_enabled' : v:false,
+    \},
+    \}
+lua require("lualine").setup()
+
+" LSP
+lua << EOF
+require'lspconfig'.denols.setup{
+  init_options = {
+    lint = true,
+  },
+}
+require'lspconfig'.pyright.setup{}
+EOF
+
+set completeopt=menuone,noselect
+lua << EOF
+require'compe'.setup {
+  enabled = true;
+  autocomplete = true;
+  source = {
+    path = true;
+    buffer = true;
+    nvim_lsp = true;
+    nvim_lua = true;
+    treesitter = true;
+  };
+}
+EOF
+inoremap <expr> <c-space> compe#complete()
+inoremap <expr> <cr> compe#confirm('<cr>')
+
+highlight link CompeDocumentation NormalFloat
+
+" lua <<EOF
+" require('telescope').setup{
+"   defaults = {
+"     vimgrep_arguments = {
+"       'rg',
+"       '--color=never',
+"       '--no-heading',
+"       '--with-filename',
+"       '--line-number',
+"       '--column',
+"       '--smart-case',
+"       '--hidden'
+"     },
+"   }
+" }
+" EOF
+
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = {'css', 'html', 'javascript', 'python', 'svelte'},
+  highlight = {
+    enable = true,
+  },
+}
+EOF
+
+let test#strategy = "neovim"
+let test#neovim#term_position = "vertical"
 
 nnoremap <c-j> <c-w><c-j>
 nnoremap <c-k> <c-w><c-k>
 nnoremap <c-l> <c-w><c-l>
 nnoremap <c-h> <c-w><c-h>
 
-" nnoremap <f2> :ALENext<cr>
+nnoremap <leader>b <cmd>Telescope buffers<cr>
+nnoremap <leader>c <cmd>source ~/.vim/vimrc<cr>
+nnoremap <leader>f <cmd>Telescope find_files<cr>
+nnoremap <leader>g <cmd>Telescope grep_string<cr>
+" nnoremap <leader>g <cmd>!lazygit<cr><cr>
+nnoremap <leader>m <cmd>marks<cr>
+nnoremap <leader>s <cmd>split<cr>
+nnoremap <leader>q <cmd>quit<cr>
+nnoremap <leader>ta <cmd>Telescope treesitter<cr>
+nnoremap <leader>tf <cmd>TestFile<cr>
+nnoremap <leader>tl <cmd>TestLast<CR>
+nnoremap <leader>ts <cmd>TestSuite<CR>
+nnoremap <leader>tt <cmd>TestNearest<cr>
+nnoremap <leader>v <cmd>vsplit<cr>
+nnoremap <leader>x <cmd>edit .<cr>
 
-nnoremap <leader>b :ls<cr>:b<space>
-nnoremap <leader>c :source ~/.vim/vimrc<cr>
-nnoremap <leader>f :Telescope find_files<cr>
-nnoremap <leader>g :silent grep<space>
-" nnoremap <leader>g :!lazygit<cr><cr>
-nnoremap <leader>m :marks<cr>
-nnoremap <leader>s :split<cr>
-nnoremap <leader>q :quit<cr>
-nnoremap <leader>ta :Telescope treesitter<cr>
-nnoremap <leader>tt :TestNearest<cr>
-nnoremap <leader>tf :TestFile<cr>
-nnoremap <leader>v :vsplit<cr>
-nnoremap <leader>x :edit .<cr>
+nnoremap gd <cmd>lua vim.lsp.buf.definition()<cr>
+nnoremap gi <cmd>lua vim.lsp.buf.implementation()<cr>
+nnoremap gh <cmd>lua vim.lsp.buf.hover()<cr>
+nnoremap gr <cmd>Telescope lsp_code_actions<cr>
+nnoremap gR <cmd>lua vim.lsp.buf.rename()<cr>
+nnoremap gu <cmd>lua vim.lsp.buf.references()<cr>
+nnoremap ]d <cmd>lua vim.lsp.diagnostic.goto_next()<cr>
+nnoremap [d <cmd>lua vim.lsp.diagnostic.goto_prev()<cr>
+
+inoremap <f1> <cmd>lua vim.lsp.buf.signature_help()<cr>
 
 function KeepInMind()
 	echo "vo \t => switch visual end"
@@ -135,6 +209,4 @@ function KeepInMind()
 	echo "q<letter><commands>q => register macro"
 	echo "<number>@<letter> => use macro"
 	echo ":read !pwd => write output"
-	All plugins are up to date.
-	(Type "q" to close this window. Type "s" to open the status window.)
 endfunction
