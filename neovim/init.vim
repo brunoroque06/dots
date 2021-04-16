@@ -50,7 +50,7 @@ require('packer').startup(function()
 
   use 'dense-analysis/ale'
 
-  use 'neovim/nvim-lspconfig'
+  use { 'neovim/nvim-lspconfig', run = 'yarn global add bash-language-server pyright' }
   use 'hrsh7th/nvim-compe'
 
   use {
@@ -100,6 +100,7 @@ lua require("lualine").setup()
 
 " LSP
 lua << EOF
+require'lspconfig'.bashls.setup{}
 require'lspconfig'.denols.setup{
   init_options = {
     lint = true,
