@@ -31,41 +31,38 @@ augroup markdownSpell
 	autocmd BufRead,BufNewFile *.md setlocal spell
 augroup END
 
-function Pack() abort
-	if !isdirectory('~/.config/nvim/pack/minpac')
-		!mkdir -p ~/.config/nvim/pack/minpac/opt/minpac
-		!git clone https://github.com/k-takata/minpac.git ~/.config/nvim/pack/minpac/opt/minpac
-	endif
+if !isdirectory($HOME . '/.local/share/nvim/site/pack/packer')
+	!mkdir -p ~/.local/share/nvim/site/pack/packer
+	!git clone https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+endif
 
-	packadd minpac
+lua << EOF
+require('packer').startup(function()
+  use 'wbthomason/packer.nvim'
 
-	call minpac#init()
-	call minpac#add('k-takata/minpac', {'type': 'opt'})
+  use 'tpope/vim-commentary'
+  use 'tpope/vim-surround'
+  use 'tpope/vim-repeat'
+  use 'tpope/vim-unimpaired'
 
-	call minpac#add('tpope/vim-commentary')
-	call minpac#add('tpope/vim-surround')
-	call minpac#add('tpope/vim-repeat')
-	call minpac#add('tpope/vim-unimpaired')
+  use 'gruvbox-community/gruvbox'
+  use 'hoob3rt/lualine.nvim'
 
-	call minpac#add('gruvbox-community/gruvbox')
-	call minpac#add('hoob3rt/lualine.nvim')
+  use 'dense-analysis/ale'
 
-	call minpac#add('dense-analysis/ale')
+  use 'neovim/nvim-lspconfig'
+  use 'hrsh7th/nvim-compe'
 
-	call minpac#add('neovim/nvim-lspconfig')
-	call minpac#add('hrsh7th/nvim-compe')
+  use {
+    'nvim-telescope/telescope.nvim',
+    requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
+  }
 
-	call minpac#add('nvim-lua/popup.nvim')
-	call minpac#add('nvim-lua/plenary.nvim')
-	call minpac#add('nvim-telescope/telescope.nvim')
+  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
 
-	call minpac#add('nvim-treesitter/nvim-treesitter')
-
-	call minpac#add('vim-test/vim-test')
-
-	call minpac#update()
-	call minpac#clean()
-endfunction
+  use 'vim-test/vim-test'
+end)
+EOF
 
 " Ale
 let g:ale_fix_on_save=1

@@ -104,7 +104,7 @@ abbr caly 'cal -y'
 # Neovim
 abbr n 'nvim'
 abbr nd 'nvim -d'
-abbr npack 'nvim +\'call Pack()\''
+abbr npack 'nvim +PackerSync'
 abbr nv 'nvim -u NONE'
 
 # Node.js
