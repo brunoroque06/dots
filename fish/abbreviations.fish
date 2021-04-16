@@ -9,6 +9,7 @@ abbr bi 'brew install'
 abbr bl 'brew leaves'
 abbr blc 'brew list --cask -1'
 abbr bprune 'brew bundle dump; brew bundle --force cleanup; rm Brewfile'
+abbr bsl 'brew services list'
 abbr bupa 'brew upgrade'
 abbr bupa 'brew update; brew upgrade; brew cleanup; brew doctor'
 abbr bui 'brew leaves | fzf -m | tr \'\n\' \' \' | xargs -t brew uninstall'
@@ -56,7 +57,7 @@ abbr g 'git'
 abbr gi 'lazygit'
 abbr ga 'git add'
 abbr gaa 'git add --a'
-abbr gb 'git branch'
+abbr gb 'git branch -a'
 abbr gbcoi 'git branch --all | fzf | tr -d \'*\' | awk \'{print $1F}\' | xargs -t git checkout'
 abbr gbd 'git branch -d'
 abbr gcfl 'git config --list --show-origin'
@@ -99,6 +100,12 @@ abbr m 'make'
 # Mundane Life
 abbr cal3 'cal -3'
 abbr caly 'cal -y'
+
+# Neovim
+abbr n 'nvim'
+abbr nd 'nvim -d'
+abbr npack 'nvim +\'call Pack()\''
+abbr nv 'nvim -u NONE'
 
 # Node.js
 abbr nci 'npm ci'
@@ -154,11 +161,6 @@ abbr ta 'tmux attach-session -t'
 abbr tks 'tmux kill-session -t (tmux display-message -p "#S")'
 abbr tl 'tmux list-sessions'
 abbr tn 'tmux new-session -s default'
-
-# Vim
-abbr v 'vim'
-abbr vd 'vim -d'
-abbr vpack 'vim +\'call Pack()\''
 
 # VSCode
 abbr c. 'code .'

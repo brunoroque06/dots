@@ -1,6 +1,3 @@
-set runtimepath^=~/.vim runtimepath+=~/.vim/after
-let &packpath=&runtimepath
-
 set autoread
 set backspace=indent,eol,start
 set clipboard=unnamed
@@ -35,9 +32,9 @@ augroup markdownSpell
 augroup END
 
 function Pack() abort
-	if isdirectory('~/.vim/pack/minpac')
-		!mkdir -p ~/.vim/pack/minpac/opt/minpac
-		!git clone https://github.com/k-takata/minpac.git ~/.vim/pack/minpac/opt/minpac
+	if !isdirectory('~/.config/nvim/pack/minpac')
+		!mkdir -p ~/.config/nvim/pack/minpac/opt/minpac
+		!git clone https://github.com/k-takata/minpac.git ~/.config/nvim/pack/minpac/opt/minpac
 	endif
 
 	packadd minpac
@@ -130,25 +127,7 @@ require'compe'.setup {
 EOF
 inoremap <expr> <c-space> compe#complete()
 inoremap <expr> <cr> compe#confirm('<cr>')
-
 highlight link CompeDocumentation NormalFloat
-
-" lua <<EOF
-" require('telescope').setup{
-"   defaults = {
-"     vimgrep_arguments = {
-"       'rg',
-"       '--color=never',
-"       '--no-heading',
-"       '--with-filename',
-"       '--line-number',
-"       '--column',
-"       '--smart-case',
-"       '--hidden'
-"     },
-"   }
-" }
-" EOF
 
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
@@ -167,32 +146,32 @@ nnoremap <c-k> <c-w><c-k>
 nnoremap <c-l> <c-w><c-l>
 nnoremap <c-h> <c-w><c-h>
 
-nnoremap <leader>b <cmd>Telescope buffers<cr>
-nnoremap <leader>c <cmd>source ~/.vim/vimrc<cr>
-nnoremap <leader>f <cmd>Telescope find_files<cr>
-nnoremap <leader>g <cmd>Telescope grep_string<cr>
-" nnoremap <leader>g <cmd>!lazygit<cr><cr>
-nnoremap <leader>m <cmd>marks<cr>
-nnoremap <leader>s <cmd>split<cr>
-nnoremap <leader>q <cmd>quit<cr>
-nnoremap <leader>ta <cmd>Telescope treesitter<cr>
-nnoremap <leader>tf <cmd>TestFile<cr>
-nnoremap <leader>tl <cmd>TestLast<CR>
-nnoremap <leader>ts <cmd>TestSuite<CR>
-nnoremap <leader>tt <cmd>TestNearest<cr>
-nnoremap <leader>v <cmd>vsplit<cr>
-nnoremap <leader>x <cmd>edit .<cr>
+nnoremap <leader>b :Telescope buffers<cr>
+nnoremap <leader>c :source ~/.config/nvim/init.vim<cr>
+nnoremap <leader>f :Telescope find_files<cr>
+nnoremap <leader>g :Telescope live_grep<cr>
+" nnoremap <leader>g :!lazygit<cr><cr>
+nnoremap <leader>m :marks<cr>
+nnoremap <leader>s :split<cr>
+nnoremap <leader>q :quit<cr>
+nnoremap <leader>ta :Telescope treesitter<cr>
+nnoremap <leader>tf :TestFile<cr>
+nnoremap <leader>tl :TestLast<CR>
+nnoremap <leader>ts :TestSuite<CR>
+nnoremap <leader>tt :TestNearest<cr>
+nnoremap <leader>v :vsplit<cr>
+nnoremap <leader>x :edit .<cr>
 
-nnoremap gd <cmd>lua vim.lsp.buf.definition()<cr>
-nnoremap gi <cmd>lua vim.lsp.buf.implementation()<cr>
-nnoremap gh <cmd>lua vim.lsp.buf.hover()<cr>
-nnoremap gr <cmd>Telescope lsp_code_actions<cr>
-nnoremap gR <cmd>lua vim.lsp.buf.rename()<cr>
-nnoremap gu <cmd>lua vim.lsp.buf.references()<cr>
-nnoremap ]d <cmd>lua vim.lsp.diagnostic.goto_next()<cr>
-nnoremap [d <cmd>lua vim.lsp.diagnostic.goto_prev()<cr>
+nnoremap gd :lua vim.lsp.buf.definition()<cr>
+nnoremap gi :lua vim.lsp.buf.implementation()<cr>
+nnoremap gh :lua vim.lsp.buf.hover()<cr>
+nnoremap gr :Telescope lsp_code_actions<cr>
+nnoremap gR :lua vim.lsp.buf.rename()<cr>
+nnoremap gu :lua vim.lsp.buf.references()<cr>
+nnoremap ]d :lua vim.lsp.diagnostic.goto_next()<cr>
+nnoremap [d :lua vim.lsp.diagnostic.goto_prev()<cr>
 
-inoremap <f1> <cmd>lua vim.lsp.buf.signature_help()<cr>
+inoremap <f1> :lua vim.lsp.buf.signature_help()<cr>
 
 function KeepInMind()
 	echo "vo \t => switch visual end"

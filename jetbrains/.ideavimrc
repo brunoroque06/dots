@@ -3,7 +3,7 @@ set highlightedyank
 set NERDTree
 set surround
 
-source ~/.vim/vimrc
+source ~/.config/nvim/init.vim
 
 nnoremap <leader><cr> :action ShowIntentionActions<cr>
 nnoremap <leader>` :action ActivateTerminalToolWindow<cr>

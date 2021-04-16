@@ -1,7 +1,9 @@
 set -U fish_greeting 'Oo'
 
-# Vim
+# Editor
 fish_vi_key_bindings
+set -Ux EDITOR nvim
+set -Ux VISUAL nvim
 
 # Abbreviations
 source "$HOME"/.config/fish/abbreviations.fish
@@ -27,15 +29,9 @@ set -x LESS_TERMCAP_so (set_color -b blue bryellow)
 set -x LESS_TERMCAP_ue (set_color normal)
 set -x LESS_TERMCAP_us (set_color brgreen)
 
-# Ripgrep
-set -Ux RIPGREP_CONFIG_PATH "$HOME"/.config/ripgreprc
-
 # Path
 fish_add_path -p /usr/local/opt/ruby/bin
 fish_add_path -aP "$HOME"/.dotnet/tools "$HOME"/.cargo/bin (go env GOPATH)/bin /usr/local/opt/qt/bin
-
-# Pulumi
-set -Ux PULUMI_PREFER_YARN 'true'
 
 # Theme
 set -U fish_color_autosuggestion grey
@@ -48,6 +44,12 @@ set -U fish_color_param normal
 set -U fish_color_operator blue
 set -U fish_color_quote yellow
 set -U fish_color_redirection brblue
+
+# Pulumi
+set -Ux PULUMI_PREFER_YARN true
+
+# Ripgrep
+set -Ux RIPGREP_CONFIG_PATH "$HOME"/.config/ripgreprc
 
 # Zoxide
 zoxide init fish | source
