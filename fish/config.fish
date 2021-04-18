@@ -30,8 +30,8 @@ set -x LESS_TERMCAP_ue (set_color normal)
 set -x LESS_TERMCAP_us (set_color brgreen)
 
 # Path
-fish_add_path -p /usr/local/opt/ruby/bin
-fish_add_path -aP "$HOME"/.dotnet/tools "$HOME"/.cargo/bin (go env GOPATH)/bin /usr/local/opt/qt/bin
+fish_add_path -mp /usr/local/opt/ruby/bin
+fish_add_path -amP "$HOME"/.dotnet/tools "$HOME"/.cargo/bin (go env GOPATH)/bin /usr/local/opt/qt/bin
 
 # Theme
 set -U fish_color_autosuggestion grey
@@ -51,9 +51,5 @@ set -Ux PULUMI_PREFER_YARN true
 # Ripgrep
 set -Ux RIPGREP_CONFIG_PATH "$HOME"/.config/ripgreprc
 
-# Zoxide
 zoxide init fish | source
-
-set -e fish_user_paths
-
 starship init fish | source

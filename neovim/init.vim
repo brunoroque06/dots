@@ -82,7 +82,7 @@ let g:ale_fixers.yaml=['prettier']
 set background=dark
 colorscheme gruvbox
 
-augroup LuaHighlight
+augroup yankHighlight
   autocmd!
   autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank()
 augroup END
