@@ -25,7 +25,7 @@ let g:netrw_liststyle=1
 let g:netrw_preview=1
 
 syntax enable
-augroup markdownSpell
+augroup markdown_spell
 	autocmd!
 	autocmd FileType markdown setlocal spell
 	autocmd BufRead,BufNewFile *.md setlocal spell
@@ -37,7 +37,15 @@ if !isdirectory($HOME . '/.local/share/nvim/site/pack/packer')
 endif
 
 lua << EOF
-require('packer').startup(function()
+local packer = require'packer'
+
+packer.init({
+  display = {
+    open_cmd = 'vnew [packer]',
+  }
+})
+
+packer.startup(function()
   use 'wbthomason/packer.nvim'
 
   use 'tpope/vim-commentary'
@@ -82,7 +90,7 @@ let g:ale_fixers.yaml=['prettier']
 set background=dark
 colorscheme gruvbox
 
-augroup yankHighlight
+augroup yank_highlight
   autocmd!
   autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank()
 augroup END
