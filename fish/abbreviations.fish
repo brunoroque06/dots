@@ -17,6 +17,7 @@ abbr buci 'brew list --cask -1 | fzf -m | tr \'\n\' \' \' | xargs -t brew uninst
 
 # Clipboard
 abbr P 'pbpaste'
+abbr yi 'rg --files | fzf | xargs -t cat | pbcopy'
 abbr Y 'pbcopy'
 
 # Directories
@@ -104,7 +105,7 @@ abbr caly 'cal -y'
 # Neovim
 abbr n 'nvim'
 abbr nd 'nvim -d'
-abbr npack 'nvim +PackerSync'
+abbr nup 'nvim +PackerSync'
 abbr nv 'nvim -u NONE'
 
 # Node.js
