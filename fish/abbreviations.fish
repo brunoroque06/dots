@@ -158,10 +158,10 @@ abbr sh_fmt 'shfmt -i 2 -s -w .'
 abbr sh_lint 'find . -not -path "./.git/*" -type f -perm -u=x | xargs -t -J % shellcheck -x %'
 
 # Tmux
-abbr ta 'tmux attach-session -t'
+abbr ta 'tmux a -t'
 abbr tks 'tmux kill-session -t (tmux display-message -p "#S")'
-abbr tl 'tmux list-sessions'
-abbr tn 'tmux new-session -s default'
+abbr tl 'tmux ls'
+abbr tn 'tmux new -t'
 
 # VSCode
 abbr c. 'code .'
