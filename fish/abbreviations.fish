@@ -15,6 +15,9 @@ abbr bupa 'brew update; brew upgrade; brew cleanup; brew doctor'
 abbr bui 'brew leaves | fzf -m | tr \'\n\' \' \' | xargs -t brew uninstall'
 abbr buci 'brew list --cask -1 | fzf -m | tr \'\n\' \' \' | xargs -t brew uninstall --cask'
 
+# Browser
+abbr browser 'rm -rf /tmp/chrome_dev_test; open -a "Google Chrome" --args --user-data-dir="/tmp/chrome_dev_test" --disable-web-security --incognito --no-first-run --new-window "http://localhost:5000"'
+
 # Clipboard
 abbr P 'pbpaste'
 abbr yi 'rg --files | fzf | xargs -t cat | pbcopy'
@@ -159,7 +162,9 @@ abbr sh_lint 'find . -not -path "./.git/*" -type f -perm -u=x | xargs -t -J % sh
 
 # Tmux
 abbr ta 'tmux a -t'
-abbr tks 'tmux kill-session -t (tmux display-message -p "#S")'
+abbr td 'tmux detach'
+abbr tk 'tmux kill-session -t'
+abbr tka 'tmux kill-session -t (tmux display-message -p "#S")'
 abbr tl 'tmux ls'
 abbr tn 'tmux new -t'
 
@@ -167,6 +172,3 @@ abbr tn 'tmux new -t'
 abbr c. 'code .'
 abbr code_ext_dump 'code --list-extensions > "$HOME/Library/Application Support/Code/User/extensions.txt"'
 abbr code_ext_install 'xargs <"$HOME/Library/Application Support/Code/User/extensions.txt" -L 1 code --force --install-extension'
-
-# Web Browser
-abbr webbrowser 'rm -rf /tmp/chrome_dev_test; open -n -a /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --args --user-data-dir="/tmp/chrome_dev_test" --disable-web-security'
