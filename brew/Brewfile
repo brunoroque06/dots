@@ -25,6 +25,7 @@ brew "go"
 brew "jq"
 brew "lazygit"
 brew "lf"
+brew "mas"
 brew "neovim", args: ["HEAD"]
 brew "node"
 brew "pgformatter"
@@ -66,3 +67,5 @@ cask "ngrok"
 cask "rectangle"
 cask "visual-studio-code"
 cask "wireshark"
+
+mas "Bear", id: 1091189122
