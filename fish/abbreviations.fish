@@ -126,8 +126,9 @@ abbr yrt 'yarn run test'
 abbr ys 'cat package.json | jq \'.scripts\''
 
 # PostgreSQL
-abbr pgstart 'postgres -D /usr/local/var/postgres'
-abbr pgup 'brew postgresql-upgrade-database'
+abbr pg_up 'postgres -D /usr/local/var/postgres'
+abbr pg_reset 'brew uninstall postgresql; rm -rf /usr/local/var/postgres; brew install postgresql; /usr/local/bin/timescaledb_move.sh'
+abbr pg_upgrade 'brew postgresql-upgrade-database'
 
 # Processes
 abbr portsl 'lsof -PiTCP | rg LISTEN'
