@@ -153,14 +153,14 @@ nnoremap <c-l> <c-w><c-l>
 nnoremap <c-h> <c-w><c-h>
 
 nnoremap <leader>b :Telescope buffers<cr>
-nnoremap <leader>c :source ~/.config/nvim/init.vim<cr>
+nnoremap <leader>c :Telescope commands<cr>
 nnoremap <leader>f :Telescope find_files<cr>
 nnoremap <leader>g :Telescope live_grep<cr>
-" nnoremap <leader>g :!lazygit<cr><cr>
+nnoremap <leader>h :Telescope help_tags<cr>
 nnoremap <leader>m :marks<cr>
 nnoremap <leader>s :split<cr>
+nnoremap <Leader>pp :Telescope planets<cr>
 nnoremap <leader>q :quit<cr>
-nnoremap <leader>ta :Telescope treesitter<cr>
 nnoremap <leader>tf :TestFile<cr>
 nnoremap <leader>tl :TestLast<CR>
 nnoremap <leader>ts :TestSuite<CR>
@@ -168,16 +168,18 @@ nnoremap <leader>tt :TestNearest<cr>
 nnoremap <leader>v :vsplit<cr>
 nnoremap <leader>x :edit .<cr>
 
-nnoremap gd :lua vim.lsp.buf.definition()<cr>
-nnoremap gi :lua vim.lsp.buf.implementation()<cr>
-nnoremap gh :lua vim.lsp.buf.hover()<cr>
-nnoremap gr :Telescope lsp_code_actions<cr>
-nnoremap gR :lua vim.lsp.buf.rename()<cr>
-nnoremap gu :lua vim.lsp.buf.references()<cr>
 nnoremap ]d :lua vim.lsp.diagnostic.goto_next()<cr>
 nnoremap [d :lua vim.lsp.diagnostic.goto_prev()<cr>
 
-inoremap <f1> :lua vim.lsp.buf.signature_help()<cr>
+nnoremap ga :Telescope lsp_code_actions<cr>
+nnoremap gd :lua vim.lsp.buf.definition()<cr>
+nnoremap gh :lua vim.lsp.buf.hover()<cr>
+nnoremap gi :lua vim.lsp.buf.implementation()<cr>
+nnoremap gr :lua vim.lsp.buf.rename()<cr>
+nnoremap gt :Telescope treesitter<cr>
+nnoremap gu :lua vim.lsp.buf.references()<cr>
+
+inoremap <f1> <cmd>lua vim.lsp.buf.signature_help()<cr>
 
 function KeepInMind()
 	echo "# Edit"
@@ -207,4 +209,7 @@ function KeepInMind()
 	echo "\n# Visual"
 	echo "gv \t => last visual"
 	echo "o \t => switch visual end"
+	echo "vab \t => block ()"
+	echo "vaB \t => block {}"
+	echo "> \t => shift text"
 endfunction

@@ -153,6 +153,7 @@ abbr puu 'pulumi up'
 abbr puus 'pulumi up --skip-preview'
 
 # Shell
+abbr ci 'fzf-history-widget'
 abbr fp 'fish --private'
 abbr hi 'fzf-history-widget'
 abbr hd 'history | fzf | history delete --case-sensitive --exact'

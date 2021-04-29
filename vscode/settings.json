@@ -197,70 +197,45 @@
       "before": ["<leader>", "`"],
       "commands": ["workbench.action.terminal.toggleTerminal"]
     },
-    {
-      "before": ["<leader>", "a"],
-      "commands": ["workbench.action.showCommands"]
-    },
-    {
-      "before": ["<leader>", "b"],
-      "commands": ["workbench.action.quickOpen"]
-    },
+    { "before": ["<leader>", "b"], "commands": ["workbench.action.quickOpen"] },
     {
       "before": ["<leader>", "d", "b"],
       "commands": ["editor.debug.action.toggleBreakpoint"]
     },
     {
-      "before": ["<leader>", "d", "d"],
+      "before": ["<leader>", "d", "r"],
       "commands": ["workbench.action.debug.run"]
     },
-    {
-      "before": ["<leader>", "f"],
-      "commands": ["workbench.action.quickOpen"]
-    },
-    {
-      "before": ["<leader>", "h"],
-      "commands": ["editor.action.showDefinitionPreviewHover"]
-    },
+    { "before": ["<leader>", "f"], "commands": ["workbench.action.quickOpen"] },
     {
       "before": ["<leader>", "g"],
       "commands": ["workbench.action.findInFiles"]
     },
-    {
-      "before": ["<leader>", "m"],
-      "commands": [":marks"]
-    },
-    {
-      "before": ["<leader>", "q"],
-      "commands": [":quit"]
-    },
+    { "before": ["<leader>", "m"], "commands": [":marks"] },
+    { "before": ["<leader>", "q"], "commands": [":quit"] },
     {
       "before": ["<leader>", "s"],
       "commands": ["workbench.action.splitEditorDown"]
     },
     {
-      "before": ["<leader>", "r"],
-      "commands": ["editor.action.rename"]
-    },
-    {
-      "before": ["<leader>", "t"],
-      "commands": ["outline.focus"]
-    },
-    {
-      "before": ["<leader>", "u"],
-      "commands": ["references-view.find"]
-    },
-    {
       "before": ["<leader>", "v"],
       "commands": ["workbench.action.splitEditor"]
     },
-    {
-      "before": ["<leader>", "x"],
-      "commands": ["workbench.view.explorer"]
-    },
+    { "before": ["<leader>", "x"], "commands": ["workbench.view.explorer"] },
     {
       "before": ["<leader>", "z"],
       "commands": ["workbench.action.toggleZenMode"]
-    }
+    },
+    { "before": ["g", "a"], "commands": ["workbench.action.showCommands"] },
+    { "before": ["g", "d"], "commands": ["editor.action.peekDeclaration"] },
+    {
+      "before": ["g", "h"],
+      "commands": ["editor.action.showDefinitionPreviewHover"]
+    },
+    { "before": ["g", "i"], "commands": ["editor.action.goToImplementation"] },
+    { "before": ["g", "r"], "commands": ["editor.action.rename"] },
+    { "before": ["g", "t"], "commands": ["workbench.action.gotoSymbol"] },
+    { "before": ["g", "u"], "commands": ["references-view.find"] }
   ],
   "vim.surround": true,
   "vim.useSystemClipboard": true,

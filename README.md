@@ -12,4 +12,4 @@ Supported: macOS.
 
 - Setup `Colemak` keyboard layout;
 - Install fonts: [Apple Fonts](https://developer.apple.com/fonts/);
-- Import rectangle/vimium config.
+- Import rectangle/vimium configuration.
