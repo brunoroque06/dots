@@ -15,16 +15,6 @@
     "when": "editorHasSignatureHelpProvider && editorTextFocus"
   },
   {
-    "key": "f2",
-    "command": "editor.action.marker.next",
-    "when": "editorFocus"
-  },
-  {
-    "key": "shift+f2",
-    "command": "editor.action.marker.prev",
-    "when": "editorFocus"
-  },
-  {
     "key": "cmd+,",
     "command": "workbench.action.openSettingsJson"
   },

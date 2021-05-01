@@ -206,6 +206,10 @@
       "before": ["<leader>", "d", "r"],
       "commands": ["workbench.action.debug.run"]
     },
+    {
+      "before": ["<leader>", "d", "s"],
+      "commands": ["workbench.action.debug.stop"]
+    },
     { "before": ["<leader>", "f"], "commands": ["workbench.action.quickOpen"] },
     {
       "before": ["<leader>", "g"],
@@ -226,8 +230,38 @@
       "before": ["<leader>", "z"],
       "commands": ["workbench.action.toggleZenMode"]
     },
+    { "before": ["[", "b"], "commands": ["workbench.action.previousEditor"] },
+    { "before": ["]", "b"], "commands": ["workbench.action.nextEditor"] },
+    { "before": ["[", "d"], "commands": ["editor.action.marker.previous"] },
+    { "before": ["]", "d"], "commands": ["editor.action.marker.next"] },
+    {
+      "before": ["[", "f"],
+      "commands": [
+        "workbench.view.explorer",
+        "list.focusUp",
+        "explorer.openAndPassFocus"
+      ]
+    },
+    {
+      "before": ["]", "f"],
+      "commands": [
+        "workbench.view.explorer",
+        "list.focusDown",
+        "explorer.openAndPassFocus"
+      ]
+    },
+    {
+      "before": ["[", "q"],
+      "commands": ["search.action.focusPreviousSearchResult"],
+      "when": "hasSearchResult"
+    },
+    {
+      "before": ["]", "q"],
+      "commands": ["search.action.focusNextSearchResult"],
+      "when": "hasSearchResult"
+    },
     { "before": ["g", "a"], "commands": ["workbench.action.showCommands"] },
-    { "before": ["g", "d"], "commands": ["editor.action.peekDeclaration"] },
+    { "before": ["g", "d"], "commands": ["editor.action.peekDefinition"] },
     {
       "before": ["g", "h"],
       "commands": ["editor.action.showDefinitionPreviewHover"]
@@ -243,7 +277,7 @@
   "workbench.editor.enablePreview": false,
   "workbench.editor.limit.enabled": true,
   "workbench.editor.limit.perEditorGroup": true,
-  "workbench.editor.limit.value": 1,
+  "workbench.editor.limit.value": 10,
   "workbench.editor.showTabs": false,
   "workbench.tree.indent": 15,
   "workbench.tree.renderIndentGuides": "always"

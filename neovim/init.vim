@@ -49,8 +49,8 @@ packer.startup(function()
   use 'wbthomason/packer.nvim'
 
   use 'tpope/vim-commentary'
-  use 'tpope/vim-surround'
   use 'tpope/vim-repeat'
+  use 'tpope/vim-surround'
   use 'tpope/vim-unimpaired'
 
   use 'gruvbox-community/gruvbox'
@@ -99,8 +99,8 @@ set noshowmode
 let g:lualine = {
     \'options' : {
     \  'theme' : 'seoul256',
-    \  'section_separators' : [' '],
-    \  'component_separators' : [' '],
+    \  'section_separators' : [''],
+    \  'component_separators' : [''],
     \  'icons_enabled' : v:false,
     \},
     \}
@@ -164,17 +164,18 @@ nnoremap <leader>q :quit<cr>
 nnoremap <leader>tf :TestFile<cr>
 nnoremap <leader>tl :TestLast<CR>
 nnoremap <leader>ts :TestSuite<CR>
-nnoremap <leader>tt :TestNearest<cr>
+nnoremap <leader>tn :TestNearest<cr>
 nnoremap <leader>v :vsplit<cr>
 nnoremap <leader>x :edit .<cr>
 
-nnoremap ]d :lua vim.lsp.diagnostic.goto_next()<cr>
 nnoremap [d :lua vim.lsp.diagnostic.goto_prev()<cr>
+nnoremap ]d :lua vim.lsp.diagnostic.goto_next()<cr>
 
 nnoremap ga :Telescope lsp_code_actions<cr>
 nnoremap gd :lua vim.lsp.buf.definition()<cr>
 nnoremap gh :lua vim.lsp.buf.hover()<cr>
 nnoremap gi :lua vim.lsp.buf.implementation()<cr>
+nnoremap gl :lua vim.lsp.diagnostic.set_loclist()<cr>
 nnoremap gr :lua vim.lsp.buf.rename()<cr>
 nnoremap gt :Telescope treesitter<cr>
 nnoremap gu :lua vim.lsp.buf.references()<cr>

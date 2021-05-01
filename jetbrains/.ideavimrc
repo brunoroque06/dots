@@ -16,11 +16,18 @@ nnoremap <leader>g :action FindInPath<cr>
 nnoremap <leader>m :action ShowBookmarks<cr>
 nnoremap <leader>n :action NewElementSamePlace<cr>
 nnoremap <leader>r :action Run<cr>
+nnoremap <leader>t :action RerunTests<cr>
 nnoremap <leader>x :NERDTree<cr>
 nnoremap <leader>z :action ToggleDistractionFreeMode<cr>
 
-nnoremap ]d :action GotoNextError<cr>
+nnoremap [<space> O<esc>j
+nnoremap ]<space> o<esc>k
+nnoremap [b :action PreviousTab<cr>
+nnoremap ]b :action NextTab<cr>
 nnoremap [d :action GotoPreviousError<cr>
+nnoremap ]d :action GotoNextError<cr>
+nnoremap [e dd<esc>P
+nnoremap ]e dd<esc>p
 
 nnoremap ga :action ShowIntentionActions<cr>
 nnoremap gd :action GotoDeclaration<cr>
@@ -32,4 +39,4 @@ nnoremap gu :action FindUsages<cr>
 
 nnoremap == :action ReformatCode<cr>
 
-inoremap <f1> <cmd>action ParameterInfo<cr>
+inoremap <f1> :action ParameterInfo<cr>
