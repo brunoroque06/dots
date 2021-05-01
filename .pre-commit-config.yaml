@@ -1,11 +1,11 @@
 fail_fast: true
 repos:
-  - repo: https://github.com/prettier/prettier
-    rev: 2.2.1
+  - repo: https://github.com/pre-commit/mirrors-prettier
+    rev: v2.2.1
     hooks:
       - id: prettier
   - repo: https://github.com/syntaqx/git-hooks
-    rev: v0.0.16
+    rev: v0.0.17
     hooks:
       - id: shellcheck
       - id: shfmt
