@@ -30,6 +30,9 @@
   "[yaml]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  "[Log]": {
+    "editor.wordWrap": "on"
+  },
   "cSpell.userWords": [
     "alacritty",
     "appservice",
