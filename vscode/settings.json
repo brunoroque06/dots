@@ -271,7 +271,7 @@
     },
     { "before": ["g", "i"], "commands": ["editor.action.goToImplementation"] },
     { "before": ["g", "r"], "commands": ["editor.action.rename"] },
-    { "before": ["g", "t"], "commands": ["workbench.action.gotoSymbol"] },
+    { "before": ["g", "s"], "commands": ["workbench.action.gotoSymbol"] },
     { "before": ["g", "u"], "commands": ["references-view.find"] }
   ],
   "vim.surround": true,

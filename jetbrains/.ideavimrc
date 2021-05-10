@@ -34,7 +34,7 @@ nnoremap gd :action GotoDeclaration<cr>
 nnoremap gh :action ShowErrorDescription<cr>
 nnoremap gi :action GotoImplementation<cr>
 nnoremap gr :action Refactorings.QuickListPopupAction<cr>
-nnoremap gt :action FileStructurePopup<cr>
+nnoremap gs :action FileStructurePopup<cr>
 nnoremap gu :action FindUsages<cr>
 
 nnoremap == :action ReformatCode<cr>
