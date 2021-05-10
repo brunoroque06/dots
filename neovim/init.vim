@@ -183,6 +183,9 @@ nnoremap gu :lua vim.lsp.buf.references()<cr>
 inoremap <f1> <cmd>lua vim.lsp.buf.signature_help()<cr>
 
 function KeepInMind()
+	echo "# Command"
+	echo "q:"
+
 	echo "# Edit"
 	echo ":reg"
 	echo "J \t => join lines"
