@@ -177,12 +177,13 @@ nnoremap gh :lua vim.lsp.buf.hover()<cr>
 nnoremap gi :lua vim.lsp.buf.implementation()<cr>
 nnoremap gl :lua vim.lsp.diagnostic.set_loclist()<cr>
 nnoremap gr :lua vim.lsp.buf.rename()<cr>
+" maybe <leader>gt ?
 nnoremap gs :Telescope treesitter<cr>
 nnoremap gu :lua vim.lsp.buf.references()<cr>
 
 inoremap <f1> <cmd>lua vim.lsp.buf.signature_help()<cr>
 
-function KeepInMind()
+function! KeepInMind()
 	echo "# Command"
 	echo "q:"
 
