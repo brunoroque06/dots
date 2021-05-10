@@ -30,7 +30,7 @@ set -x LESS_TERMCAP_ue (set_color normal)
 set -x LESS_TERMCAP_us (set_color brgreen)
 
 # Path
-fish_add_path -mp /usr/local/opt/ruby/bin
+fish_add_path -mp "$HOME"/.local/share/gem/ruby/3.0.0/bin /usr/local/opt/ruby/bin
 fish_add_path -amP "$HOME"/.dotnet/tools "$HOME"/.cargo/bin (go env GOPATH)/bin /usr/local/opt/qt/bin
 
 # Theme
