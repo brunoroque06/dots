@@ -17,9 +17,9 @@ nnoremap <leader>m :action ShowBookmarks<cr>
 nnoremap <leader>n :action NewElementSamePlace<cr>
 nnoremap <leader>r :action Run<cr>
 nnoremap <leader>t :action RerunTests<cr>
-nnoremap <leader>x :NERDTree<cr>
 nnoremap <leader>z :action ToggleDistractionFreeMode<cr>
 
+nnoremap - :NERDTree<cr>
 nnoremap [<space> O<esc>j
 nnoremap ]<space> o<esc>k
 nnoremap [b :action PreviousTab<cr>

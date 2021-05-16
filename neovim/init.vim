@@ -52,6 +52,7 @@ packer.startup(function()
   use 'tpope/vim-repeat'
   use 'tpope/vim-surround'
   use 'tpope/vim-unimpaired'
+  use 'tpope/vim-vinegar'
 
   use 'gruvbox-community/gruvbox'
   use 'hoob3rt/lualine.nvim'
@@ -72,6 +73,27 @@ packer.startup(function()
 end)
 EOF
 
+" Theme
+set background=dark
+colorscheme gruvbox
+
+augroup yank_highlight
+  autocmd!
+  autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank()
+augroup END
+
+set noshowmode
+lua << EOF
+require'lualine'.setup{
+  options = {
+    theme = 'seoul256',
+    section_separators = {''},
+    component_separators = {''},
+    icons_enabled = false
+  }
+}
+EOF
+
 " Ale
 let g:ale_fix_on_save=1
 let g:ale_fixers={}
@@ -85,26 +107,6 @@ let g:ale_fixers.sh=['shfmt']
 let g:ale_fixers.sql=['pgformatter']
 let g:ale_fixers.typescript=['prettier', 'eslint']
 let g:ale_fixers.yaml=['prettier']
-
-" Theme
-set background=dark
-colorscheme gruvbox
-
-augroup yank_highlight
-  autocmd!
-  autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank()
-augroup END
-
-set noshowmode
-let g:lualine = {
-    \'options' : {
-    \  'theme' : 'seoul256',
-    \  'section_separators' : [''],
-    \  'component_separators' : [''],
-    \  'icons_enabled' : v:false,
-    \},
-    \}
-lua require("lualine").setup()
 
 " LSP
 lua << EOF
@@ -200,6 +202,7 @@ function! KeepInMind()
 	echo ":changes"
 	echo "g; => p change"
 	echo "g, => n change"
+	echo "ge => be"
 	echo ":jumps"
 	echo "C-o \t => p jump"
 	echo "C-i \t => n jump"

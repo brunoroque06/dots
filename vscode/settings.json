@@ -228,11 +228,11 @@
       "before": ["<leader>", "v"],
       "commands": ["workbench.action.splitEditor"]
     },
-    { "before": ["<leader>", "x"], "commands": ["workbench.view.explorer"] },
     {
       "before": ["<leader>", "z"],
       "commands": ["workbench.action.toggleZenMode"]
     },
+    { "before": ["-"], "commands": ["workbench.view.explorer"] },
     { "before": ["[", "b"], "commands": ["workbench.action.previousEditor"] },
     { "before": ["]", "b"], "commands": ["workbench.action.nextEditor"] },
     { "before": ["[", "d"], "commands": ["editor.action.marker.previous"] },
