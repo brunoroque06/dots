@@ -189,7 +189,7 @@ function! KeepInMind()
 	echo "# Command"
 	echo "q:"
 
-	echo "# Edit"
+	echo "\n# Edit"
 	echo ":reg"
 	echo "J \t => join lines"
 	echo "<c-a/x> \t => increment/decrement"
@@ -199,10 +199,10 @@ function! KeepInMind()
 	echo ":read !pwd \t => write output"
 
 	echo "\n# Motion"
+	echo "ge => be"
 	echo ":changes"
 	echo "g; => p change"
 	echo "g, => n change"
-	echo "ge => be"
 	echo ":jumps"
 	echo "C-o \t => p jump"
 	echo "C-i \t => n jump"
@@ -220,4 +220,5 @@ function! KeepInMind()
 	echo "vab \t => block ()"
 	echo "vaB \t => block {}"
 	echo "> \t => shift text"
+	echo "\n"
 endfunction

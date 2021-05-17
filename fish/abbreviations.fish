@@ -25,8 +25,7 @@ abbr Y 'pbcopy'
 
 # Directories
 abbr dirh 'dirh'
-abbr dirclean 'find . -type d -empty -delete'
-abbr dirmi 'du -hd 1 | fzf -m | awk \'{print $2}\' | xargs -t rm -rf'
+abbr dirrmi 'du -hd 1 | fzf -m | awk \'{print $2}\' | xargs -t rm -rf'
 abbr dirsize 'du -h -d 1 | sort -hr'
 abbr n 'nextd'
 abbr p 'prevd'
