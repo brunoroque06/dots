@@ -36,6 +36,7 @@ abbr docps 'docker ps -a'
 abbr docstop 'docker stop (docker ps -a -q)'
 abbr docrm 'docker stop (docker ps -a -q); docker rm (docker ps -a -q); docker system prune --volumes -f'
 abbr docrmimage 'docker rmi -f (docker images -a -q)'
+abbr doccu 'docker-compose up'
 
 # Dotnet
 abbr d 'dotnet'
