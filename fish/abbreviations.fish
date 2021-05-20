@@ -168,7 +168,8 @@ abbr td 'tmux detach'
 abbr tk 'tmux kill-session -t'
 abbr tka 'tmux kill-session -t (tmux display-message -p "#S")'
 abbr tl 'tmux ls'
-abbr tn 'tmux new -t'
+abbr tn 'tmux new -s'
+abbr tnd 'tmux new -d -s'
 
 # VSCode
 abbr c. 'code .'
