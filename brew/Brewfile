@@ -64,10 +64,11 @@ cask "jetbrains-toolbox"
 cask "karabiner-elements"
 cask "mailmate"
 cask "microsoft-edge"
-cask "netnewswire"
 cask "ngrok"
 cask "rectangle"
 cask "visual-studio-code"
 cask "wireshark"
+cask "zoom"
 
 mas "Bear", id: 1091189122
+mas "Reeder", id: 1529448980
