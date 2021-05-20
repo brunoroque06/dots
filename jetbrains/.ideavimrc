@@ -5,6 +5,30 @@ set surround
 
 source ~/.config/nvim/init.vim
 
+sethandler <c-a> a:vim
+sethandler <c-b> a:vim
+sethandler <c-d> a:vim
+sethandler <c-e> a:vim
+sethandler <c-f> a:vim
+sethandler <c-g> a:vim
+sethandler <c-h> a:vim
+sethandler <c-i> a:vim
+sethandler <c-j> a:vim
+sethandler <c-k> a:vim
+sethandler <c-l> a:vim
+sethandler <c-m> a:vim
+sethandler <c-n> a:vim
+sethandler <c-o> a:vim
+sethandler <c-p> a:vim
+sethandler <c-r> a:vim
+sethandler <c-s> a:vim
+sethandler <c-t> a:vim
+sethandler <c-v> a:vim
+sethandler <f1> a:ide
+
+nnoremap <c-o> :action Back<cr>
+nnoremap <c-i> :action Forward<cr>
+
 nnoremap <leader>` :action ActivateTerminalToolWindow<cr>
 nnoremap <leader>b :action RecentChangedFiles<cr>
 nnoremap <leader>c :action SearchEverywhere<cr>
@@ -39,4 +63,4 @@ nnoremap gu :action FindUsages<cr>
 
 nnoremap == :action ReformatCode<cr>
 
-inoremap <f1> :action ParameterInfo<cr>
+" inoremap <f1> <Action>(ParameterInfo) " does not work

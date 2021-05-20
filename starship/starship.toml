@@ -1,7 +1,7 @@
 [character]
 success_symbol = "[λ](blue)"
 error_symbol = "[x](red)"
-vicmd_symbol = "[N](blue)"
+vicmd_symbol = "[N](green)"
 
 [directory]
 style = "blue"
