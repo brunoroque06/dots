@@ -139,7 +139,7 @@ highlight link CompeDocumentation NormalFloat
 
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = {'css', 'html', 'javascript', 'python', 'svelte'},
+  ensure_installed = {'css', 'html', 'javascript', 'json', 'python', 'svelte'},
   highlight = {
     enable = true,
   },
