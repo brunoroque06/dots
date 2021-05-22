@@ -19,6 +19,7 @@ set relativenumber
 set scrolloff=8
 set showcmd
 set smartcase
+set termguicolors
 
 let g:netrw_banner=0
 let g:netrw_liststyle=1
@@ -87,9 +88,8 @@ lua << EOF
 require'lualine'.setup{
   options = {
     theme = 'seoul256',
-    section_separators = {''},
     component_separators = {''},
-    icons_enabled = false
+    section_separators = {''},
   }
 }
 EOF
