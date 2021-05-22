@@ -184,6 +184,9 @@ nnoremap <leader>v :vsplit<cr>
 nnoremap [d :lua vim.lsp.diagnostic.goto_prev()<cr>
 nnoremap ]d :lua vim.lsp.diagnostic.goto_next()<cr>
 
+" https://github.com/vim/vim/issues/4738
+nnoremap gx :call netrw#BrowseX(expand((exists("g:netrw_gx")? g:netrw_gx : '<cfile>')),netrw#CheckIfRemote())<cr>
+
 inoremap <f1> <cmd>lua vim.lsp.buf.signature_help()<cr>
 
 function! KeepInMind()
