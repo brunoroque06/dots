@@ -139,7 +139,15 @@ highlight link CompeDocumentation NormalFloat
 
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = {'css', 'html', 'javascript', 'json', 'python', 'svelte'},
+  ensure_installed = {
+    'bash',
+    'css',
+    'html',
+    'javascript',
+    'json',
+    'python',
+    'svelte'
+  },
   highlight = {
     enable = true,
   },
@@ -154,34 +162,27 @@ nnoremap <c-k> <c-w><c-k>
 nnoremap <c-l> <c-w><c-l>
 nnoremap <c-h> <c-w><c-h>
 
+nnoremap <leader>a :Telescope lsp_code_actions<cr>
 nnoremap <leader>b :Telescope buffers<cr>
 nnoremap <leader>c :Telescope commands<cr>
+nnoremap <leader>d :lua vim.lsp.buf.definition()<cr>
+nnoremap <leader>D :lua vim.lsp.buf.declaration()<cr>
 nnoremap <leader>f :Telescope find_files<cr>
 nnoremap <leader>g :Telescope live_grep<cr>
-nnoremap <leader>h :Telescope help_tags<cr>
-nnoremap <leader>m :marks<cr>
-nnoremap <leader>s :split<cr>
-nnoremap <Leader>pp :Telescope planets<cr>
+nnoremap <leader>h :lua vim.lsp.buf.hover()<cr>
+nnoremap <leader>H :Telescope help_tags<cr>
+nnoremap <leader>i :lua vim.lsp.buf.implementation()<cr>
+nnoremap <leader>m :Telescope marks<cr>
+nnoremap <leader>p :Telescope planets<cr>
 nnoremap <leader>q :quit<cr>
-nnoremap <leader>tf :TestFile<cr>
-nnoremap <leader>tl :TestLast<CR>
-nnoremap <leader>ts :TestSuite<CR>
-nnoremap <leader>tn :TestNearest<cr>
+nnoremap <leader>r :lua vim.lsp.buf.rename()<cr>
+nnoremap <leader>s :split<cr>
+nnoremap <leader>t :Telescope treesitter<cr>
+nnoremap <leader>u :lua vim.lsp.buf.references()<cr>
 nnoremap <leader>v :vsplit<cr>
-nnoremap <leader>x :edit .<cr>
 
 nnoremap [d :lua vim.lsp.diagnostic.goto_prev()<cr>
 nnoremap ]d :lua vim.lsp.diagnostic.goto_next()<cr>
-
-nnoremap ga :Telescope lsp_code_actions<cr>
-nnoremap gd :lua vim.lsp.buf.definition()<cr>
-nnoremap gh :lua vim.lsp.buf.hover()<cr>
-nnoremap gi :lua vim.lsp.buf.implementation()<cr>
-nnoremap gl :lua vim.lsp.diagnostic.set_loclist()<cr>
-nnoremap gr :lua vim.lsp.buf.rename()<cr>
-" maybe <leader>gt ?
-nnoremap gs :Telescope treesitter<cr>
-nnoremap gu :lua vim.lsp.buf.references()<cr>
 
 inoremap <f1> <cmd>lua vim.lsp.buf.signature_help()<cr>
 

@@ -202,28 +202,38 @@
     },
     { "before": ["<leader>", "b"], "commands": ["workbench.action.quickOpen"] },
     {
-      "before": ["<leader>", "d", "b"],
-      "commands": ["editor.debug.action.toggleBreakpoint"]
+      "before": ["<leader>", "c"],
+      "commands": ["workbench.action.showCommands"]
     },
     {
-      "before": ["<leader>", "d", "r"],
-      "commands": ["workbench.action.debug.run"]
-    },
-    {
-      "before": ["<leader>", "d", "s"],
-      "commands": ["workbench.action.debug.stop"]
+      "before": ["<leader>", "d"],
+      "commands": ["editor.action.peekDefinition"]
     },
     { "before": ["<leader>", "f"], "commands": ["workbench.action.quickOpen"] },
+    {
+      "before": ["<leader>", "h"],
+      "commands": ["editor.action.showDefinitionPreviewHover"]
+    },
     {
       "before": ["<leader>", "g"],
       "commands": ["workbench.action.findInFiles"]
     },
+    {
+      "before": ["<leader>", "i"],
+      "commands": ["editor.action.goToImplementation"]
+    },
     { "before": ["<leader>", "m"], "commands": [":marks"] },
     { "before": ["<leader>", "q"], "commands": [":quit"] },
+    { "before": ["<leader>", "r"], "commands": ["editor.action.rename"] },
     {
       "before": ["<leader>", "s"],
       "commands": ["workbench.action.splitEditorDown"]
     },
+    {
+      "before": ["<leader>", "t"],
+      "commands": ["workbench.action.gotoSymbol"]
+    },
+    { "before": ["<leader>", "u"], "commands": ["references-view.find"] },
     {
       "before": ["<leader>", "v"],
       "commands": ["workbench.action.splitEditor"]
@@ -262,17 +272,7 @@
       "before": ["]", "q"],
       "commands": ["search.action.focusNextSearchResult"],
       "when": "hasSearchResult"
-    },
-    { "before": ["g", "a"], "commands": ["workbench.action.showCommands"] },
-    { "before": ["g", "d"], "commands": ["editor.action.peekDefinition"] },
-    {
-      "before": ["g", "h"],
-      "commands": ["editor.action.showDefinitionPreviewHover"]
-    },
-    { "before": ["g", "i"], "commands": ["editor.action.goToImplementation"] },
-    { "before": ["g", "r"], "commands": ["editor.action.rename"] },
-    { "before": ["g", "s"], "commands": ["workbench.action.gotoSymbol"] },
-    { "before": ["g", "u"], "commands": ["references-view.find"] }
+    }
   ],
   "vim.surround": true,
   "vim.useSystemClipboard": true,
