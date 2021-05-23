@@ -18,7 +18,7 @@ set -Ux FZF_CTRL_T_COMMAND 'fd . --type f --hidden -E .git'
 set -Ux FZF_CTRL_T_OPTS '--height 40% --preview \'bat {}\' --preview-window border-left'
 
 # Java
-set -Ux JAVA_HOME /Library/Java/JavaVirtualMachines/adoptopenjdk-13.0.2.jdk/Contents/Home
+set -Ux JAVA_HOME /usr/local/opt/openjdk/libexec/openjdk.jdk/Contents/Home
 
 # Man Pages
 set -x LESS_TERMCAP_mb (set_color brblue)
