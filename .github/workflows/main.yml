@@ -16,4 +16,4 @@ jobs:
         run: find . -not -path './.git/*' -type f -perm -u=x | xargs -t -I {} shellcheck -x {}
 
       - name: Prettier
-        run: npx prettier -l '**/*.{json,yaml,yml}'
+        run: npx prettier -l '**/*.{json,md,yaml,yml}'
