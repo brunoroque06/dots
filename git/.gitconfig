@@ -3,12 +3,6 @@
 	pager = delta
 	excludesfile = ~/.gitignore_global
 
-[diff]
-	tool = vimdiff
-
-[difftool]
-	prompt = false
-
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
@@ -16,10 +10,13 @@
 	required = true
 
 [merge]
-	tool = vimdiff
+	tool = vimdiff2
 
 [mergetool]
 	keepBackup = false
+
+[mergetool "vimdiff2"]
+	path = nvim
 
 [user]
 	name = Bruno Roque
