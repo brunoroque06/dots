@@ -127,7 +127,7 @@ abbr ys 'cat package.json | jq \'.scripts\''
 
 # PostgreSQL
 abbr pg_up 'postgres -D /usr/local/var/postgres'
-abbr pg_reset 'brew uninstall postgresql; rm -rf /usr/local/var/postgres; brew install postgresql; /usr/local/bin/timescaledb_move.sh'
+abbr pg_reset 'brew uninstall --ignore-dependencies postgresql; rm -rf /usr/local/var/postgres; brew install postgresql; /usr/local/bin/timescaledb_move.sh'
 abbr pg_upgrade 'brew postgresql-upgrade-database'
 
 # Processes
