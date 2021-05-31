@@ -45,7 +45,8 @@ nnoremap <leader>t :action FileStructurePopup<cr>
 nnoremap <leader>u :action FindUsages<cr>
 nnoremap <leader>z :action ToggleDistractionFreeMode<cr>
 
-nnoremap - :NERDTree<cr>
+" nnoremap - :NERDTree<cr>
+nnoremap - :action ShowNavBar<cr>
 nnoremap == :action ReformatCode<cr>
 nnoremap [<space> O<esc>j
 nnoremap ]<space> o<esc>k
