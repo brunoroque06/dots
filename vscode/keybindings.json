@@ -41,5 +41,15 @@
     "key": "ctrl+j",
     "command": "workbench.action.focusBelowGroup",
     "when": "editorTextFocus"
+  },
+  {
+    "key": "left",
+    "command": "breadcrumbs.focusPrevious",
+    "when": "breadcrumbsActive"
+  },
+  {
+    "key": "-",
+    "command": "breadcrumbs.focusPrevious",
+    "when": "breadcrumbsActive"
   }
 ]
