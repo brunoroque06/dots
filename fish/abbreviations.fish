@@ -8,15 +8,15 @@ abbr bdump 'brew bundle dump --file "$HOME"/Projects/dotfiles/brew/Brewfile --fo
 abbr bi 'brew install'
 abbr bl 'brew leaves'
 abbr blc 'brew list --cask -1'
-abbr bprune 'brew bundle dump; brew bundle --force cleanup; rm Brewfile'
+abbr bprune 'brew bundle dump && brew bundle --force cleanup && rm Brewfile'
 abbr bsl 'brew services list'
 abbr bupa 'brew upgrade'
-abbr bupa 'brew update; brew upgrade; brew cleanup; brew doctor'
+abbr bupa 'brew update && brew upgrade && brew cleanup && brew doctor'
 abbr bui 'brew leaves | fzf -m | tr \'\n\' \' \' | xargs -t brew uninstall'
 abbr buci 'brew list --cask -1 | fzf -m | tr \'\n\' \' \' | xargs -t brew uninstall --cask'
 
 # Browser
-abbr browser 'rm -rf /tmp/chrome_dev_test; open -a "Google Chrome" --args --user-data-dir="/tmp/chrome_dev_test" --disable-web-security --incognito --no-first-run --new-window "http://localhost:5000"'
+abbr browser 'rm -rf /tmp/chrome_dev_test && open -a "Google Chrome" --args --user-data-dir="/tmp/chrome_dev_test" --disable-web-security --incognito --no-first-run --new-window "http://localhost:5000"'
 
 # Clipboard
 abbr P 'pbpaste'
@@ -34,7 +34,7 @@ abbr p 'prevd'
 abbr doc 'docker'
 abbr docps 'docker ps -a'
 abbr docstop 'docker stop (docker ps -a -q)'
-abbr docrm 'docker stop (docker ps -a -q); docker rm (docker ps -a -q); docker system prune --volumes -f'
+abbr docrm 'docker stop (docker ps -a -q) && docker rm (docker ps -a -q) && docker system prune --volumes -f'
 abbr docrmimage 'docker rmi -f (docker images -a -q)'
 abbr doccu 'docker-compose up'
 
@@ -127,7 +127,7 @@ abbr ys 'cat package.json | jq \'.scripts\''
 
 # PostgreSQL
 abbr pg_up 'postgres -D /usr/local/var/postgres'
-abbr pg_reset 'brew uninstall --ignore-dependencies postgresql; rm -rf /usr/local/var/postgres; brew install postgresql; /usr/local/bin/timescaledb_move.sh'
+abbr pg_reset 'brew uninstall --ignore-dependencies postgresql && rm -rf /usr/local/var/postgres && brew install postgresql && /usr/local/bin/timescaledb_move.sh'
 abbr pg_upgrade 'brew postgresql-upgrade-database'
 
 # Processes
@@ -138,7 +138,7 @@ abbr pip_uninstall_all 'pip freeze | xargs pip uninstall -y'
 abbr py 'python'
 abbr pydb 'python -m pdb'
 abbr pys 'source venv/bin/activate.fish'
-abbr pysetup 'python3 -m venv venv; source venv/bin/activate.fish; pip install --upgrade pip; pip install -r requirements.txt; pip install black mypy pylint pytest'
+abbr pysetup 'python3 -m venv venv && source venv/bin/activate.fish && pip install --upgrade pip && pip install -r requirements.txt && pip install black mypy pylint pytest'
 
 # Pulumi
 abbr pu 'pulumi'
