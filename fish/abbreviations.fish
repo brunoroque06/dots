@@ -108,8 +108,8 @@ abbr caly 'cal -y'
 # Neovim
 abbr n 'nvim'
 abbr nd 'nvim -d'
+abbr nnone 'nvim -u NONE'
 abbr nup 'nvim +PackerSync'
-abbr nv 'nvim -u NONE'
 
 # Node.js
 abbr nci 'npm ci'

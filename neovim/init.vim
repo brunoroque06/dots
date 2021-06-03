@@ -157,10 +157,10 @@ EOF
 let test#strategy = "neovim"
 let test#neovim#term_position = "vertical"
 
-nnoremap <c-j> <c-w><c-j>
-nnoremap <c-k> <c-w><c-k>
-nnoremap <c-l> <c-w><c-l>
-nnoremap <c-h> <c-w><c-h>
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-l> <c-w>l
+nnoremap <c-h> <c-w>h
 
 nnoremap <leader>a :Telescope lsp_code_actions<cr>
 nnoremap <leader>b :Telescope buffers<cr>
