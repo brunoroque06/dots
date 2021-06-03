@@ -9,11 +9,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Shellcheck libraries
-        run: shellcheck ./utility/*.sh
+      - name: Lint
+        run: shellcheck ./utility/*.sh && find . -not -path './.git/*' -type f -perm -u=x | xargs -t -I {} shellcheck -x {}
 
-      - name: Shellcheck executables
-        run: find . -not -path './.git/*' -type f -perm -u=x | xargs -t -I {} shellcheck -x {}
-
-      - name: Prettier
+      - name: Format
         run: npx prettier -l '**/*.{json,md,yaml,yml}'
