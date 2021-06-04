@@ -18,7 +18,7 @@ font:
   normal:
     family: Jetbrains Mono
     style: Regular
-  size: 14
+  size: 13
   use_thin_strokes: true
 
 debug:

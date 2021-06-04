@@ -46,10 +46,5 @@
     "key": "left",
     "command": "breadcrumbs.focusPrevious",
     "when": "breadcrumbsActive"
-  },
-  {
-    "key": "-",
-    "command": "breadcrumbs.focusPrevious",
-    "when": "breadcrumbsActive"
   }
 ]
