@@ -167,7 +167,7 @@ nnoremap <leader>b :Telescope buffers<cr>
 nnoremap <leader>c :Telescope commands<cr>
 nnoremap <leader>d :lua vim.lsp.buf.definition()<cr>
 nnoremap <leader>D :lua vim.lsp.buf.declaration()<cr>
-nnoremap <leader>f :Telescope find_files<cr>
+nnoremap <leader>f :lua require('telescope.builtin').find_files({hidden = true})<cr>
 nnoremap <leader>g :Telescope live_grep<cr>
 nnoremap <leader>h :lua vim.lsp.buf.hover()<cr>
 nnoremap <leader>H :Telescope help_tags<cr>
