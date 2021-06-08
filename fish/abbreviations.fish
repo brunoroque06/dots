@@ -109,7 +109,7 @@ abbr caly 'cal -y'
 abbr n 'nvim'
 abbr nd 'nvim -d'
 abbr nnone 'nvim -u NONE'
-abbr nup 'nvim +PackerSync'
+abbr nup 'brew upgrade neovim --fetch-head'
 
 # Node.js
 abbr nci 'npm ci'

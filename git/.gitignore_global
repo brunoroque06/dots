@@ -1,39 +1,42 @@
 # Artifacts
-bin/
-dist/
-obj/
-out/
-target/
+bin
+dist
+obj
+out
+target
 
 # Dotnet
-.ionide/
-.tmp/
 *.sln.DotSettings
 *.sln.DotSettings.user
 *.user
+.ionide
+.tmp
 bin
 obj
 
-# Haskell
-dist-newstyle/
+# Git
+.git
 
-# Idea
+# Haskell
+dist-newstyle
+
+# Jetbrains
 .idea
 
 # Jekyll
-.jekyll-cache/
-_site/
+.jekyll-cache
+_site
 
 # macOS
 .DS_Store
 
 # Node.js
-node_modules/
+node_modules
 
 # Python
-.ipynb_checkpoints/
-__pycache__/
-venv/
+.ipynb_checkpoints
+__pycache__
+venv
 
 # VSCode
-.vscode/
+.vscode

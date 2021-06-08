@@ -27,9 +27,6 @@ sethandler <c-t> a:vim
 sethandler <c-v> a:vim
 sethandler <f1> a:ide
 
-nnoremap <c-o> :action Back<cr>
-nnoremap <c-i> :action Forward<cr>
-
 nnoremap <leader>` :action ActivateTerminalToolWindow<cr>
 nnoremap <leader>a :action ShowIntentionActions<cr>
 nnoremap <leader>b :action RecentChangedFiles<cr>
@@ -45,6 +42,9 @@ nnoremap <leader>r :action Refactorings.QuickListPopupAction<cr>
 nnoremap <leader>t :action FileStructurePopup<cr>
 nnoremap <leader>u :action FindUsages<cr>
 nnoremap <leader>z :action ToggleDistractionFreeMode<cr>
+
+nnoremap <c-o> :action Back<cr>
+nnoremap <c-i> :action Forward<cr>
 
 nnoremap - :action ShowNavBar<cr>
 nnoremap == :action ReformatCode<cr>
