@@ -24,7 +24,7 @@ abbr yi 'rg --files | fzf | xargs -t cat | pbcopy'
 abbr Y 'pbcopy'
 
 # Directories
-abbr dirh 'dirh'
+abbr dh 'dirh'
 abbr dirrmi 'du -hd 1 | fzf -m | awk \'{print $2}\' | xargs -t rm -rf'
 abbr dirsize 'du -h -d 1 | sort -hr'
 abbr n 'nextd'
@@ -47,6 +47,12 @@ abbr dr 'dotnet run'
 abbr dt 'dotnet test'
 abbr dtoupa 'dotnet tool list -g | awk \'NR > 2 {print $1}\' | xargs -t -I % dotnet tool update -g %'
 abbr dup 'dotnet outdated --upgrade'
+
+# Edit (Neovim)
+abbr e 'nvim'
+abbr ed 'nvim -d'
+abbr enone 'nvim -u NONE'
+abbr eup 'brew upgrade neovim --fetch-head'
 
 # Files
 abbr c 'bat'
@@ -106,12 +112,6 @@ abbr m 'make'
 abbr cal3 'cal -3'
 abbr caly 'cal -y'
 
-# Neovim
-abbr n 'nvim'
-abbr nd 'nvim -d'
-abbr nnone 'nvim -u NONE'
-abbr nup 'brew upgrade neovim --fetch-head'
-
 # Node.js
 abbr nci 'npm ci'
 abbr ni 'npm install'
@@ -156,7 +156,6 @@ abbr puus 'pulumi up --skip-preview'
 # Shell
 abbr ci 'fzf-history-widget'
 abbr fp 'fish --private'
-abbr hi 'fzf-history-widget'
 abbr hd 'history | fzf | history delete --case-sensitive --exact'
 abbr hdc 'history delete --contains'
 abbr s 'source'
