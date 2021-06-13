@@ -6,6 +6,7 @@ set surround
 
 source ~/.config/nvim/init.vim
 
+sethandler <c-s-6> a:vim
 sethandler <c-a> a:vim
 sethandler <c-b> a:vim
 sethandler <c-d> a:vim
@@ -41,10 +42,12 @@ nnoremap <leader>n :action NewElementSamePlace<cr>
 nnoremap <leader>r :action Refactorings.QuickListPopupAction<cr>
 nnoremap <leader>t :action FileStructurePopup<cr>
 nnoremap <leader>u :action FindUsages<cr>
-nnoremap <leader>z :action ToggleDistractionFreeMode<cr>
+nnoremap <leader>z :action HideAllWindows<cr>
 
 nnoremap <c-o> :action Back<cr>
 nnoremap <c-i> :action Forward<cr>
+
+nnoremap <bs> <c-s-6>
 
 nnoremap - :action ShowNavBar<cr>
 nnoremap == :action ReformatCode<cr>

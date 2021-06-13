@@ -112,6 +112,9 @@ abbr m 'make'
 abbr cal3 'cal -3'
 abbr caly 'cal -y'
 
+# Network
+abbr scan 'nmap -sP 192.168.1.0/24'
+
 # Node.js
 abbr nci 'npm ci'
 abbr ni 'npm install'

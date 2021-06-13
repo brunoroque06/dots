@@ -157,11 +157,6 @@ EOF
 let test#strategy = "neovim"
 let test#neovim#term_position = "vertical"
 
-nnoremap <c-j> <c-w>j
-nnoremap <c-k> <c-w>k
-nnoremap <c-l> <c-w>l
-nnoremap <c-h> <c-w>h
-
 nnoremap <leader>a :Telescope lsp_code_actions<cr>
 nnoremap <leader>b :Telescope buffers<cr>
 nnoremap <leader>c :Telescope commands<cr>
@@ -180,6 +175,13 @@ nnoremap <leader>s :split<cr>
 nnoremap <leader>t :Telescope treesitter<cr>
 nnoremap <leader>u :lua vim.lsp.buf.references()<cr>
 nnoremap <leader>v :vsplit<cr>
+
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-l> <c-w>l
+nnoremap <c-h> <c-w>h
+
+nnoremap <bs> <c-^>
 
 nnoremap [d :lua vim.lsp.diagnostic.goto_prev()<cr>
 nnoremap ]d :lua vim.lsp.diagnostic.goto_next()<cr>
@@ -208,8 +210,9 @@ function! KeepInMind()
 	echo "g; => p change"
 	echo "g, => n change"
 	echo ":jumps"
-	echo "C-o \t => p jump"
-	echo "C-i \t => n jump"
+	echo "c-o \t => p jump"
+	echo "c-i \t => n jump"
+	echo "c-s-6 \t => switch files"
 	echo "`` '' \t => switch jump"
 	echo ":marks"
 	echo "zz \t => center"
