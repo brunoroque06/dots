@@ -4,7 +4,7 @@
   "filterLinkHints": false,
   "waitForEnterForFilteredHints": true,
   "hideHud": false,
-  "keyMappings": "map ] nextTab\nmap [ previousTab\nmap <m-m> toggleMuteTab\nmap <m-p> togglePinTab\n\nmap '' visitPreviousTab\n\nmap - scrollPageUp\n\nunmap o\nunmap O",
+  "keyMappings": "map ] nextTab\nmap [ previousTab\nmap <backspace> visitPreviousTab\n\nmap \\m toggleMuteTab\nmap \\p togglePinTab\n\nunmap o\nunmap O\nunmap T",
   "linkHintCharacters": "arstdhneio",
   "linkHintNumbers": "0123456789",
   "newTabUrl": "about:newtab",

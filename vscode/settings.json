@@ -240,7 +240,14 @@
     },
     {
       "before": ["<leader>", "z"],
-      "commands": ["workbench.action.toggleZenMode"]
+      "commands": ["workbench.action.toggleSidebarVisibility"]
+    },
+    {
+      "before": ["backspace"],
+      "commands": [
+        "workbench.action.openPreviousEditorFromHistory",
+        "workbench.action.acceptSelectedQuickOpenItem"
+      ]
     },
     { "before": ["-"], "commands": ["breadcrumbs.focusAndSelect"] },
     { "before": ["[", "b"], "commands": ["workbench.action.previousEditor"] },
