@@ -41,7 +41,7 @@ nnoremap <leader>m :action ShowBookmarks<cr>
 nnoremap <leader>n :action NewElementSamePlace<cr>
 nnoremap <leader>r :action Refactorings.QuickListPopupAction<cr>
 nnoremap <leader>t :action FileStructurePopup<cr>
-nnoremap <leader>u :action FindUsages<cr>
+nnoremap <leader>u :action ShowUsages<cr>
 nnoremap <leader>z :action HideAllWindows<cr>
 
 nnoremap <c-o> :action Back<cr>
