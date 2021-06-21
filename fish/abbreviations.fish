@@ -16,7 +16,7 @@ abbr bui 'brew leaves | fzf -m | tr \'\n\' \' \' | xargs -t brew uninstall'
 abbr buci 'brew list --cask -1 | fzf -m | tr \'\n\' \' \' | xargs -t brew uninstall --cask'
 
 # Browser
-abbr browser 'rm -rf /tmp/chrome_dev_test && open -a "Google Chrome" --args --user-data-dir="/tmp/chrome_dev_test" --disable-web-security --incognito --no-first-run --new-window "http://localhost:5000"'
+abbr browser 'rm -rf /tmp/chrome_dev_test && /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --user-data-dir="/tmp/chrome_dev_test" --disable-web-security --incognito --no-first-run --new-window "http://localhost:4200"'
 
 # Clipboard
 abbr P 'pbpaste'
