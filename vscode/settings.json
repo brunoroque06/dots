@@ -171,7 +171,6 @@
   "explorer.openEditors.sortOrder": "alphabetical",
   "explorer.openEditors.visible": 0,
   "files.autoSave": "afterDelay",
-  "go.useLanguageServer": true,
   "javascript.updateImportsOnFileMove.enabled": "always",
   "javascript.validate.enable": true,
   "markdown.preview.fontFamily": "SF Pro Text",

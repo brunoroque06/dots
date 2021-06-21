@@ -31,7 +31,7 @@ set -x LESS_TERMCAP_us (set_color brgreen)
 
 # Path
 fish_add_path -mp "$HOME"/.local/share/gem/ruby/3.0.0/bin /usr/local/opt/ruby/bin
-fish_add_path -amP "$HOME"/.dotnet/tools "$HOME"/.cargo/bin (go env GOPATH)/bin /usr/local/opt/qt/bin
+fish_add_path -amP "$HOME"/.dotnet/tools /usr/local/opt/qt/bin
 
 # Theme
 set -U fish_color_autosuggestion grey
