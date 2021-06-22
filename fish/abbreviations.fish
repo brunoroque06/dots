@@ -142,7 +142,7 @@ abbr pip_uninstall_all 'pip freeze | xargs pip uninstall -y'
 abbr py 'python'
 abbr pydb 'python -m pdb'
 abbr pys 'source venv/bin/activate.fish'
-abbr pysetup 'python3 -m venv venv && source venv/bin/activate.fish && pip install --upgrade pip && pip install -r requirements.txt && pip install black mypy pylint pytest'
+abbr pysetup 'python3 -m venv venv && source venv/bin/activate.fish && pip install --upgrade pip && pip install -r requirements.txt && pip install black mypy pylint'
 
 # Pulumi
 abbr pu 'pulumi'
