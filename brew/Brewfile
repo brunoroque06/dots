@@ -30,6 +30,7 @@ brew "mas"
 brew "neovim", args: ["HEAD"]
 brew "node"
 brew "pgformatter"
+brew "pnpm"
 brew "postgresql"
 brew "potrace"
 brew "pre-commit"
