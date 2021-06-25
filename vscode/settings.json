@@ -33,6 +33,7 @@
   "[Log]": {
     "editor.wordWrap": "on"
   },
+  "breadcrumbs.symbolPath": "off",
   "cSpell.userWords": [
     "alacritty",
     "appservice",
@@ -171,6 +172,7 @@
   "explorer.openEditors.sortOrder": "alphabetical",
   "explorer.openEditors.visible": 0,
   "files.autoSave": "afterDelay",
+  "files.trimTrailingWhitespace": true,
   "javascript.updateImportsOnFileMove.enabled": "always",
   "javascript.validate.enable": true,
   "markdown.preview.fontFamily": "SF Pro Text",
