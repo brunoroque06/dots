@@ -199,6 +199,7 @@
       "before": ["<leader>", "`"],
       "commands": ["workbench.action.terminal.toggleTerminal"]
     },
+    { "before": ["<leader>", "a"], "commands": ["editor.action.quickFix"] },
     { "before": ["<leader>", "b"], "commands": ["workbench.action.quickOpen"] },
     {
       "before": ["<leader>", "c"],
@@ -210,12 +211,12 @@
     },
     { "before": ["<leader>", "f"], "commands": ["workbench.action.quickOpen"] },
     {
-      "before": ["<leader>", "h"],
-      "commands": ["editor.action.showDefinitionPreviewHover"]
-    },
-    {
       "before": ["<leader>", "g"],
       "commands": ["workbench.action.findInFiles"]
+    },
+    {
+      "before": ["<leader>", "h"],
+      "commands": ["editor.action.showDefinitionPreviewHover"]
     },
     {
       "before": ["<leader>", "i"],
@@ -249,26 +250,20 @@
       ]
     },
     { "before": ["-"], "commands": ["breadcrumbs.focusAndSelect"] },
+    {
+      "before": ["[", "<space>"],
+      "commands": ["editor.action.insertLineBefore"]
+    },
+    {
+      "before": ["]", "<space>"],
+      "commands": ["editor.action.insertLineAfter"]
+    },
     { "before": ["[", "b"], "commands": ["workbench.action.previousEditor"] },
     { "before": ["]", "b"], "commands": ["workbench.action.nextEditor"] },
     { "before": ["[", "d"], "commands": ["editor.action.marker.previous"] },
     { "before": ["]", "d"], "commands": ["editor.action.marker.next"] },
-    {
-      "before": ["[", "f"],
-      "commands": [
-        "workbench.view.explorer",
-        "list.focusUp",
-        "explorer.openAndPassFocus"
-      ]
-    },
-    {
-      "before": ["]", "f"],
-      "commands": [
-        "workbench.view.explorer",
-        "list.focusDown",
-        "explorer.openAndPassFocus"
-      ]
-    },
+    { "before": ["[", "e"], "after": ["d", "d", "k", "P"] },
+    { "before": ["]", "e"], "after": ["d", "d", "p"] },
     {
       "before": ["[", "q"],
       "commands": ["search.action.focusPreviousSearchResult"],
