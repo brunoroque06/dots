@@ -167,7 +167,6 @@
   "editor.suggestSelection": "first",
   "editor.tabSize": 2,
   "editor.wordWrap": "on",
-  "eslint.packageManager": "yarn",
   "explorer.confirmDragAndDrop": false,
   "explorer.openEditors.sortOrder": "alphabetical",
   "explorer.openEditors.visible": 0,

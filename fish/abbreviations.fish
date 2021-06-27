@@ -15,9 +15,6 @@ abbr bupa 'brew update && brew upgrade && brew cleanup && brew doctor'
 abbr bui 'brew leaves | fzf -m | tr \'\n\' \' \' | xargs -t brew uninstall'
 abbr buci 'brew list --cask -1 | fzf -m | tr \'\n\' \' \' | xargs -t brew uninstall --cask'
 
-# Browser
-abbr browser 'rm -rf /tmp/chrome_dev_test && /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --user-data-dir="/tmp/chrome_dev_test" --disable-web-security --incognito --no-first-run --new-window "http://localhost:4200"'
-
 # Clipboard
 abbr P 'pbpaste'
 abbr yi 'rg --files | fzf | xargs -t cat | pbcopy'
@@ -92,6 +89,7 @@ abbr gm 'git merge'
 abbr gmt 'git mergetool'
 abbr gpack 'git gc'
 abbr gph 'git push'
+abbr gphf 'git push --force'
 abbr gpl 'git pull'
 abbr gplrb 'git pull --rebase'
 abbr grb 'git rebase'
@@ -121,13 +119,11 @@ abbr ni 'npm install'
 abbr nlg 'npm list -g --depth=0'
 abbr nupg 'npm update -g'
 abbr nr 'npm run'
+abbr nri 'cat package.json | jq -r \'.scripts | keys[]\' | fzf | xargs -t npm run'
+abbr ns 'cat package.json | jq \'.scripts\''
 abbr y 'yarn'
 abbr yupgi 'yarn global upgrade-interactive'
 abbr yupi 'yarn upgrade-interactive'
-abbr yr 'yarn run'
-abbr yri 'cat package.json | jq -r \'.scripts | keys[]\' | fzf | xargs -t yarn run'
-abbr yrt 'yarn run test'
-abbr ys 'cat package.json | jq \'.scripts\''
 
 # PostgreSQL
 abbr pg_up 'postgres -D /usr/local/var/postgres'
@@ -178,3 +174,6 @@ abbr tnd 'tmux new -d -s'
 abbr c. 'code .'
 abbr code_ext_dump 'code --list-extensions > "$HOME/Library/Application Support/Code/User/extensions.txt"'
 abbr code_ext_install 'xargs <"$HOME/Library/Application Support/Code/User/extensions.txt" -L 1 code --force --install-extension'
+
+# Web Browser
+abbr webbrowser 'rm -rf /tmp/chrome_dev_test && /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --user-data-dir="/tmp/chrome_dev_test" --disable-web-security --incognito --no-first-run --new-window "http://localhost:4200"'

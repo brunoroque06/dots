@@ -45,9 +45,6 @@ set -U fish_color_operator blue
 set -U fish_color_quote yellow
 set -U fish_color_redirection brblue
 
-# Pulumi
-set -Ux PULUMI_PREFER_YARN true
-
 # Ripgrep
 set -Ux RIPGREP_CONFIG_PATH "$HOME"/.config/ripgreprc
 

@@ -71,5 +71,4 @@ cask "wireshark"
 cask "zoom"
 
 mas "Affinity Designer", id: 824171161
-mas "Bear", id: 1091189122
 mas "Reeder", id: 1529448980
