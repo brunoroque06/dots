@@ -47,6 +47,8 @@ nnoremap <leader>z :action HideAllWindows<cr>
 nnoremap <c-o> :action Back<cr>
 nnoremap <c-i> :action Forward<cr>
 
+nnoremap <c-w>r :action MoveEditorToOppositeTabGroup<cr>
+
 nnoremap <bs> <c-s-6>
 
 nnoremap - :action ShowNavBar<cr>

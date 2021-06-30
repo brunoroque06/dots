@@ -8,7 +8,7 @@ abbr bdump 'brew bundle dump --file "$HOME"/Projects/dotfiles/brew/Brewfile --fo
 abbr bi 'brew install'
 abbr bl 'brew leaves'
 abbr blc 'brew list --cask -1'
-abbr bprune 'brew bundle dump && brew bundle --force cleanup && rm Brewfile'
+abbr bprune 'brew autoremove'
 abbr bsl 'brew services list'
 abbr bupa 'brew upgrade'
 abbr bupa 'brew update && brew upgrade && brew cleanup && brew doctor'
