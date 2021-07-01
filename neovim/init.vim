@@ -221,6 +221,9 @@ function! KeepInMind()
 	echo "{ \t => paragraph"
 	echo "( \t => sentence"
 
+	echo "\n# Split"
+	echo "<c-w>JLHK => move splits"
+
 	echo "\n# Visual"
 	echo "gv \t => last visual"
 	echo "o \t => switch visual end"
