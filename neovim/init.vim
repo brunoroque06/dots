@@ -60,7 +60,7 @@ packer.startup(function()
 
   use 'dense-analysis/ale'
 
-  use { 'neovim/nvim-lspconfig', run = 'pnpm global add bash-language-server pyright' }
+  use { 'neovim/nvim-lspconfig', run = 'npm install -g bash-language-server pyright' }
   use 'hrsh7th/nvim-compe'
 
   use {

@@ -10,3 +10,6 @@ truncation_length = 0
 [git_status]
 ahead = "▲"
 behind = "▼"
+
+[nodejs]
+symbol = "⬢ "
