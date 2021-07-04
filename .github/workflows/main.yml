@@ -9,8 +9,11 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Lint
-        run: shellcheck ./utility/*.sh && find . -not -path './.git/*' -type f -perm -u=x | xargs -t -I {} shellcheck -x {}
+      - name: Format Shell
+        run: shfmt -f . | xargs -t -I % shfmt -d %
 
-      - name: Format
+      - name: Format Prettier
         run: npx prettier -l '**/*.{json,md,yaml,yml}'
+
+      - name: Lint
+        run: shfmt -f . | xargs -t -I % shellcheck -x %

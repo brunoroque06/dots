@@ -41,36 +41,36 @@ lua << EOF
 local packer = require'packer'
 
 packer.init({
-  display = {
-    open_cmd = 'vnew [packer]',
-  }
+display = {
+	open_cmd = 'vnew [packer]',
+	}
 })
 
 packer.startup(function()
-  use 'wbthomason/packer.nvim'
+use 'wbthomason/packer.nvim'
 
-  use 'tpope/vim-commentary'
-  use 'tpope/vim-repeat'
-  use 'tpope/vim-surround'
-  use 'tpope/vim-unimpaired'
-  use 'tpope/vim-vinegar'
+use 'tpope/vim-commentary'
+use 'tpope/vim-repeat'
+use 'tpope/vim-surround'
+use 'tpope/vim-unimpaired'
+use 'tpope/vim-vinegar'
 
-  use 'gruvbox-community/gruvbox'
-  use 'hoob3rt/lualine.nvim'
+use 'gruvbox-community/gruvbox'
+use 'hoob3rt/lualine.nvim'
 
-  use 'dense-analysis/ale'
+use 'sbdchd/neoformat'
 
-  use { 'neovim/nvim-lspconfig', run = 'npm install -g bash-language-server pyright' }
-  use 'hrsh7th/nvim-compe'
+use { 'neovim/nvim-lspconfig', run = 'npm install -g bash-language-server pyright' }
+use 'hrsh7th/nvim-compe'
 
-  use {
-    'nvim-telescope/telescope.nvim',
-    requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
-  }
+use {
+	'nvim-telescope/telescope.nvim',
+	requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
+	}
 
-  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
 
-  use 'vim-test/vim-test'
+use 'vim-test/vim-test'
 end)
 EOF
 
@@ -79,42 +79,50 @@ set background=dark
 colorscheme gruvbox
 
 augroup yank_highlight
-  autocmd!
-  autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank()
+	autocmd!
+	autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank()
 augroup END
 
 set noshowmode
 lua << EOF
 require'lualine'.setup{
-  options = {
-    theme = 'seoul256',
-    component_separators = {''},
-    section_separators = {''},
-  }
+options = {
+	theme = 'seoul256',
+	component_separators = {''},
+	section_separators = {''},
+	}
 }
 EOF
 
-" Ale
-let g:ale_fix_on_save=1
-let g:ale_fixers={}
-let g:ale_fixers['*']=['remove_trailing_lines', 'trim_whitespace']
-let g:ale_fixers.html=['prettier']
-let g:ale_fixers.javascript=['prettier', 'eslint']
-let g:ale_fixers.json=['prettier']
-let g:ale_fixers.markdown=['prettier']
-let g:ale_fixers.python=['black']
-let g:ale_fixers.sh=['shfmt']
-let g:ale_fixers.sql=['pgformatter']
-let g:ale_fixers.typescript=['prettier', 'eslint']
-let g:ale_fixers.yaml=['prettier']
+" Format
+autocmd FileType css set formatprg=prettier
+autocmd FileType html set formatprg=prettier
+autocmd FileType javascript set formatprg=prettier
+autocmd FileType json set formatprg=prettier
+autocmd FileType markdown set formatprg=prettier
+autocmd FileType python set formatprg=black
+autocmd FileType scss set formatprg=prettier
+autocmd FileType sql set formatprg=pg_format
+autocmd FileType typescript set formatprg=prettier
+autocmd FileType yaml set formatprg=prettier
+
+let g:neoformat_basic_format_trim = 1
+
+" autocmd! FileType sh set shiftwidth=0
+let g:shfmt_opt="-i 0"
+
+augroup format
+	autocmd!
+	autocmd BufWritePre * undojoin | Neoformat
+augroup END
 
 " LSP
 lua << EOF
 require'lspconfig'.bashls.setup{}
 require'lspconfig'.denols.setup{
-  init_options = {
-    lint = true,
-  },
+init_options = {
+	lint = true,
+	},
 }
 require'lspconfig'.pyright.setup{}
 EOF
@@ -122,15 +130,15 @@ EOF
 set completeopt=menuone,noselect
 lua << EOF
 require'compe'.setup {
-  enabled = true;
-  autocomplete = true;
-  source = {
-    path = true;
-    buffer = true;
-    nvim_lsp = true;
-    nvim_lua = true;
-    treesitter = true;
-  };
+enabled = true;
+autocomplete = true;
+source = {
+	path = true;
+	buffer = true;
+	nvim_lsp = true;
+	nvim_lua = true;
+	treesitter = true;
+	};
 }
 EOF
 inoremap <expr> <c-space> compe#complete()
@@ -139,18 +147,18 @@ highlight link CompeDocumentation NormalFloat
 
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = {
-    'bash',
-    'css',
-    'html',
-    'javascript',
-    'json',
-    'python',
-    'svelte'
-  },
-  highlight = {
-    enable = true,
-  },
+ensure_installed = {
+	'bash',
+	'css',
+	'html',
+	'javascript',
+	'json',
+	'python',
+	'svelte'
+	},
+highlight = {
+enable = true,
+},
 }
 EOF
 
