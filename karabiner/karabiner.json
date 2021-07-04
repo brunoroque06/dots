@@ -16,19 +16,54 @@
         },
         "rules": [
           {
+            "description": "Special Keys",
+            "manipulators": [
+              {
+                "from": {
+                  "key_code": "left_shift"
+                },
+                "to": [
+                  {
+                    "key_code": "left_shift"
+                  }
+                ],
+                "to_if_alone": [
+                  {
+                    "key_code": "9",
+                    "modifiers": "left_shift"
+                  }
+                ],
+                "type": "basic"
+              },
+              {
+                "from": {
+                  "key_code": "right_shift"
+                },
+                "to": [
+                  {
+                    "key_code": "right_shift"
+                  }
+                ],
+                "to_if_alone": [
+                  {
+                    "key_code": "0",
+                    "modifiers": "left_shift"
+                  }
+                ],
+                "type": "basic"
+              }
+            ]
+          },
+          {
             "description": "CapsLock to Escape/Extend",
             "manipulators": [
               {
                 "from": {
-                  "key_code": "caps_lock",
-                  "modifiers": {
-                    "optional": ["any"]
-                  }
+                  "key_code": "caps_lock"
                 },
                 "to": [
                   {
                     "key_code": "left_command",
-                    "lazy": true,
                     "modifiers": ["left_control", "left_shift", "left_option"]
                   }
                 ],
@@ -541,7 +576,7 @@
           }
         }
       ],
-      "name": "Lambda",
+      "name": "BrunoRoque06",
       "parameters": {
         "delay_milliseconds_before_open_device": 1000
       },
