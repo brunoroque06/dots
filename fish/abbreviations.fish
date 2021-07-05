@@ -159,8 +159,7 @@ abbr fp 'fish --private'
 abbr hd 'history | fzf | history delete --case-sensitive --exact'
 abbr hdc 'history delete --contains'
 abbr s 'source'
-abbr sh_fmt 'shfmt -i 2 -s -w .'
-abbr sh_lint 'find . -not -path "./.git/*" -type f -perm -u=x | xargs -t -J % shellcheck -x %'
+abbr sh_lint 'shfmt -f . | xargs -t -J % shellcheck -x %'
 
 # Tmux
 abbr ta 'tmux a -t'

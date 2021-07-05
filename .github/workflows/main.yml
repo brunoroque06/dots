@@ -9,6 +9,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: Install shfmt
+        run: sudo snap install shfmt
+
       - name: Format Shell
         run: shfmt -f . | xargs -t -I % shfmt -d %
 
