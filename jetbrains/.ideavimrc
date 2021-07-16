@@ -1,10 +1,21 @@
 " https://youtrack.jetbrains.com/issue/IDEA-67559
+
+" https://github.com/JetBrains/ideavim/wiki/%22set%22-commands
+set clipboard=unnamed
+set hlsearch
+set ignorecase
+set incsearch
+set number
+set relativenumber
+set scrolloff=8
+set showcmd
+set showmode
+set smartcase
+
 set commentary
 set highlightedyank
 set NERDTree
 set surround
-
-source ~/.config/nvim/init.vim
 
 sethandler <c-s-6> a:vim
 sethandler <c-a> a:vim
@@ -50,6 +61,11 @@ nnoremap <c-i> :action Forward<cr>
 nnoremap <c-w>J :action MoveTabDown<cr>
 nnoremap <c-w>L :action MoveTabRight<cr>
 nnoremap <c-w>r :action MoveEditorToOppositeTabGroup<cr>
+
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-l> <c-w>l
+nnoremap <c-h> <c-w>h
 
 nnoremap <bs> <c-s-6>
 

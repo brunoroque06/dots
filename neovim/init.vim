@@ -60,7 +60,7 @@ use 'hoob3rt/lualine.nvim'
 
 use 'sbdchd/neoformat'
 
-use { 'neovim/nvim-lspconfig', run = 'npm install -g bash-language-server pyright' }
+use { 'neovim/nvim-lspconfig', run = 'npm install -g bash-language-server vscode-langservers-extracted pyright' }
 use 'hrsh7th/nvim-compe'
 
 use {
@@ -124,6 +124,7 @@ init_options = {
 	lint = true,
 	},
 }
+require'lspconfig'.jsonls.setup{}
 require'lspconfig'.pyright.setup{}
 EOF
 
@@ -153,6 +154,7 @@ ensure_installed = {
 	'html',
 	'javascript',
 	'json',
+	'lua',
 	'python',
 	'svelte'
 	},
@@ -231,6 +233,7 @@ function! KeepInMind()
 
 	echo "\n# Split"
 	echo "<c-w>JLHK => move splits"
+	echo "<c-w>= => even splits"
 
 	echo "\n# Visual"
 	echo "gv \t => last visual"
