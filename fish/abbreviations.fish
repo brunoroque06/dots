@@ -10,8 +10,7 @@ abbr bl 'brew leaves'
 abbr blc 'brew list --cask -1'
 abbr bprune 'brew autoremove'
 abbr bsl 'brew services list'
-abbr bupa 'brew upgrade'
-abbr bupa 'brew update && brew upgrade && brew cleanup && brew doctor'
+abbr bupa 'brew update && brew upgrade --ignore-pinned && brew cleanup && brew doctor'
 abbr bui 'brew leaves | fzf -m | tr \'\n\' \' \' | xargs -t brew uninstall'
 abbr buci 'brew list --cask -1 | fzf -m | tr \'\n\' \' \' | xargs -t brew uninstall --cask'
 
@@ -56,7 +55,6 @@ abbr c 'bat'
 abbr gr 'rg'
 abbr l 'exa -al'
 abbr lt 'exa --tree --level 2'
-abbr fm 'lf'
 abbr rmi 'fd . --hidden --max-depth 1 --no-ignore | fzf -m | xargs -t -I % rm -rf "%"'
 
 # Git
@@ -159,15 +157,6 @@ abbr hd 'history | fzf | history delete --case-sensitive --exact'
 abbr hdc 'history delete --contains'
 abbr s 'source'
 abbr sh_lint 'shfmt -f . | xargs -t -J % shellcheck -x %'
-
-# Tmux
-abbr ta 'tmux a -t'
-abbr td 'tmux detach'
-abbr tk 'tmux kill-session -t'
-abbr tks 'tmux kill-server'
-abbr tl 'tmux ls'
-abbr tn 'tmux new -s'
-abbr tnd 'tmux new -d -s'
 
 # VSCode
 abbr c. 'code .'
