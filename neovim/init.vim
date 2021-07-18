@@ -88,8 +88,6 @@ lua << EOF
 require'lualine'.setup{
 options = {
 	theme = 'seoul256',
-	component_separators = {''},
-	section_separators = {''},
 	}
 }
 EOF
