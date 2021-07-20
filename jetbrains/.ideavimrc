@@ -50,10 +50,13 @@ nnoremap <leader>h :action ShowErrorDescription<cr>
 nnoremap <leader>i :action GotoImplementation<cr>
 nnoremap <leader>m :action ShowBookmarks<cr>
 nnoremap <leader>n :action NewElementSamePlace<cr>
+nnoremap <leader>q :quit<cr>
 nnoremap <leader>r :action Refactorings.QuickListPopupAction<cr>
+nnoremap <leader>s :split<cr>
 nnoremap <leader>t :action FileStructurePopup<cr>
 nnoremap <leader>u :action ShowUsages<cr>
 nnoremap <leader>z :action HideAllWindows<cr>
+nnoremap <leader>v :vsplit<cr>
 
 nnoremap <c-o> :action Back<cr>
 nnoremap <c-i> :action Forward<cr>

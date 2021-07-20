@@ -16,7 +16,6 @@ abbr buci 'brew list --cask -1 | fzf -m | tr \'\n\' \' \' | xargs -t brew uninst
 
 # Clipboard
 abbr P 'pbpaste'
-abbr yi 'rg --files | fzf | xargs -t cat | pbcopy'
 abbr Y 'pbcopy'
 
 # Directories
@@ -56,6 +55,7 @@ abbr gr 'rg'
 abbr l 'exa -al'
 abbr lt 'exa --tree --level 2'
 abbr rmi 'fd . --hidden --max-depth 1 --no-ignore | fzf -m | xargs -t -I % rm -rf "%"'
+abbr fyi 'rg --files | fzf | xargs -t cat | pbcopy'
 
 # Git
 abbr g 'git'
