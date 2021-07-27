@@ -60,7 +60,7 @@ use 'hoob3rt/lualine.nvim'
 
 use 'sbdchd/neoformat'
 
-use { 'neovim/nvim-lspconfig', run = 'npm install -g bash-language-server vscode-langservers-extracted pyright' }
+use { 'neovim/nvim-lspconfig', run = 'npm install -g bash-language-server dockerfile-language-server-nodejs vscode-langservers-extracted pyright' }
 use 'hrsh7th/nvim-compe'
 
 use {
@@ -87,7 +87,7 @@ set noshowmode
 lua << EOF
 require'lualine'.setup{
 options = {
-	theme = 'seoul256',
+	theme = 'gruvbox',
 	}
 }
 EOF
@@ -122,6 +122,7 @@ init_options = {
 	lint = true,
 	},
 }
+require'lspconfig'.dockerls.setup{}
 require'lspconfig'.jsonls.setup{}
 require'lspconfig'.pyright.setup{}
 EOF
@@ -149,6 +150,7 @@ require'nvim-treesitter.configs'.setup {
 ensure_installed = {
 	'bash',
 	'css',
+	'dockerfile',
 	'html',
 	'javascript',
 	'json',
