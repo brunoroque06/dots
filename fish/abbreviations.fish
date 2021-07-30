@@ -1,14 +1,14 @@
 # Azure
 abbr azi 'az interactive --style br'
-abbr azsubi 'az account list | jq -r \'.[] | [.id, .name] | join("\\t")\' | fzf | awk \'{print $1F}\' | xargs -t az account set --subscription'
+abbr az_subi 'az account list | jq -r \'.[] | [.id, .name] | join("\\t")\' | fzf | awk \'{print $1F}\' | xargs -t az account set --subscription'
 
 # Brew
 abbr b 'brew'
-abbr bdump 'brew bundle dump --file "$HOME"/Projects/dotfiles/brew/Brewfile --force'
+abbr b_dump 'brew bundle dump --file "$HOME"/Projects/dotfiles/brew/Brewfile --force'
+abbr b_prune 'brew autoremove'
 abbr bi 'brew install'
 abbr bl 'brew leaves'
 abbr blc 'brew list --cask -1'
-abbr bprune 'brew autoremove'
 abbr bsl 'brew services list'
 abbr bupa 'brew update && brew upgrade --ignore-pinned && brew cleanup && brew doctor'
 abbr bui 'brew leaves | fzf -m | tr \'\n\' \' \' | xargs -t brew uninstall'
@@ -20,34 +20,33 @@ abbr Y 'pbcopy'
 
 # Directories
 abbr dh 'dirh'
-abbr dirrmi 'du -hd 1 | fzf -m | awk \'{print $2}\' | xargs -t rm -rf'
-abbr dirsize 'du -h -d 1 | sort -hr'
+abbr dir_rmi 'du -hd 1 | fzf -m | awk \'{print $2}\' | xargs -t rm -rf'
+abbr dir_size 'du -h -d 1 | sort -hr'
 abbr n 'nextd'
 abbr p 'prevd'
 
 # Docker
 abbr doc 'docker'
+abbr doc_stop 'docker stop (docker ps -a -q)'
+abbr doc_rm 'docker stop (docker ps -a -q) && docker rm (docker ps -a -q) && docker system prune --volumes -f'
+abbr doc_rmimage 'docker rmi -f (docker images -a -q)'
+abbr docc 'docker-compose'
 abbr docps 'docker ps -a'
-abbr docstop 'docker stop (docker ps -a -q)'
-abbr docrm 'docker stop (docker ps -a -q) && docker rm (docker ps -a -q) && docker system prune --volumes -f'
-abbr docrmimage 'docker rmi -f (docker images -a -q)'
-abbr doccu 'docker-compose up'
 
 # Dotnet
 abbr d 'dotnet'
+abbr d_toupa 'dotnet tool list -g | awk \'NR > 2 {print $1}\' | xargs -t -I % dotnet tool update -g %'
 abbr dap 'dotnet add package'
 abbr dfmt 'dotnet format'
 abbr dp 'dotnet publish'
 abbr dr 'dotnet run'
 abbr dt 'dotnet test'
-abbr dtoupa 'dotnet tool list -g | awk \'NR > 2 {print $1}\' | xargs -t -I % dotnet tool update -g %'
 abbr dup 'dotnet outdated --upgrade'
 
 # Edit (Neovim)
 abbr e 'nvim'
 abbr ed 'nvim -d'
 abbr enone 'nvim -u NONE'
-abbr eup 'brew upgrade neovim --fetch-head'
 
 # Files
 abbr c 'bat'
@@ -59,7 +58,7 @@ abbr fyi 'rg --files | fzf | xargs -t cat | pbcopy'
 
 # Git
 abbr g 'git'
-abbr gi 'lazygit'
+abbr gi 'tig'
 abbr ga 'git add'
 abbr gaa 'git add --a'
 abbr gb 'git branch -a'
@@ -130,7 +129,7 @@ abbr pg_reset 'brew uninstall --ignore-dependencies postgresql && rm -rf /usr/lo
 abbr pg_upgrade 'brew postgresql-upgrade-database'
 
 # Processes
-abbr portsl 'lsof -PiTCP | rg LISTEN'
+abbr ports_list 'lsof -PiTCP | rg LISTEN'
 
 # Python
 abbr pip_uninstall_all 'pip freeze | xargs pip uninstall -y'
