@@ -163,6 +163,7 @@ require("nvim-treesitter.configs").setup({
 		"bash",
 		"css",
 		"dockerfile",
+		"fish",
 		"html",
 		"javascript",
 		"json",

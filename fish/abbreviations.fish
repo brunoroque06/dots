@@ -3,7 +3,7 @@ abbr azi 'az interactive --style br'
 abbr az_subi 'az account list | jq -r \'.[] | [.id, .name] | join("\\t")\' | fzf | awk \'{print $1F}\' | xargs -t az account set --subscription'
 
 # Brew
-abbr b 'brew'
+abbr b brew
 abbr b_dump 'brew bundle dump --file "$HOME"/Projects/dotfiles/brew/Brewfile --force'
 abbr b_prune 'brew autoremove'
 abbr bi 'brew install'
@@ -15,26 +15,23 @@ abbr bui 'brew leaves | fzf -m | tr \'\n\' \' \' | xargs -t brew uninstall'
 abbr buci 'brew list --cask -1 | fzf -m | tr \'\n\' \' \' | xargs -t brew uninstall --cask'
 
 # Clipboard
-abbr P 'pbpaste'
-abbr Y 'pbcopy'
+abbr P pbpaste
+abbr Y pbcopy
 
 # Directories
-abbr dh 'dirh'
 abbr dir_rmi 'du -hd 1 | fzf -m | awk \'{print $2}\' | xargs -t rm -rf'
 abbr dir_size 'du -h -d 1 | sort -hr'
-abbr n 'nextd'
-abbr p 'prevd'
 
 # Docker
-abbr doc 'docker'
+abbr doc docker
 abbr doc_stop 'docker stop (docker ps -a -q)'
 abbr doc_rm 'docker stop (docker ps -a -q) && docker rm (docker ps -a -q) && docker system prune --volumes -f'
 abbr doc_rmimage 'docker rmi -f (docker images -a -q)'
-abbr docc 'docker-compose'
+abbr docc docker-compose
 abbr docps 'docker ps -a'
 
 # Dotnet
-abbr d 'dotnet'
+abbr d dotnet
 abbr d_toupa 'dotnet tool list -g | awk \'NR > 2 {print $1}\' | xargs -t -I % dotnet tool update -g %'
 abbr dap 'dotnet add package'
 abbr dfmt 'dotnet format'
@@ -43,48 +40,33 @@ abbr dr 'dotnet run'
 abbr dt 'dotnet test'
 abbr dup 'dotnet outdated --upgrade'
 
-# Edit (Neovim)
-abbr e 'nvim'
+# Edit
+abbr e nvim
 abbr ed 'nvim -d'
 abbr enone 'nvim -u NONE'
 
 # Files
-abbr c 'bat'
-abbr gr 'rg'
+abbr c bat
 abbr l 'exa -al'
 abbr lt 'exa --tree --level 2'
 abbr rmi 'fd . --hidden --max-depth 1 --no-ignore | fzf -m | xargs -t -I % rm -rf "%"'
 abbr fyi 'rg --files | fzf | xargs -t cat | pbcopy'
 
 # Git
-abbr g 'git'
-abbr gi 'tig'
+abbr g git
+abbr g_config 'git config --list --show-origin'
 abbr ga 'git add'
-abbr gaa 'git add --a'
-abbr gb 'git branch -a'
-abbr gbcoi 'git branch --all | fzf | tr -d \'*\' | awk \'{print $1F}\' | xargs -t git checkout'
-abbr gbd 'git branch -d'
-abbr gcfl 'git config --list --show-origin'
+abbr gb 'git branch'
 abbr gci 'git commit'
-abbr gciam 'git commit -am'
-abbr gciamend 'git commit --amend'
-abbr gcim 'git commit -m'
+abbr gci_amend 'git commit --amend'
 abbr gco 'git checkout'
-abbr gcob 'git checkout -b'
-abbr gcof 'git checkout --'
-abbr gcofm 'git checkout origin/master --'
-abbr gcp 'git cherry-pick'
-abbr gd 'git diff'
-abbr gdt 'git difftool'
+abbr gi tig
 abbr gf 'git fetch'
 abbr gfa 'git fetch --all'
 abbr gl 'git log'
 abbr gla 'git log --all --decorate --graph --format=format:\'%Cblue%h %Creset- %Cgreen%ar %Creset%s %C(dim white)- %an %C(auto)%d\' -20'
-abbr glast 'git log -1 -p'
 abbr glp 'git log -p'
 abbr gm 'git merge'
-abbr gmt 'git mergetool'
-abbr gpack 'git gc'
 abbr gph 'git push'
 abbr gphf 'git push --force'
 abbr gpl 'git pull'
@@ -93,6 +75,8 @@ abbr grb 'git rebase'
 abbr grepack 'git repack -a -d --depth=250 --window=250'
 abbr grsh 'git reset --hard HEAD'
 abbr gs 'git status -s -u'
+abbr gsw 'git switch'
+abbr gswi 'git branch --all | fzf | tr -d \'*\' | awk \'{print $1F}\' | xargs -t git switch'
 abbr gunstage 'git reset HEAD --'
 abbr pc_run 'pre-commit run'
 
@@ -101,7 +85,7 @@ abbr karabiner_config_dump 'cp "$HOME"/.config/karabiner/karabiner.json "$HOME"/
 abbr karabiner_config_load 'cp "$HOME"/Projects/dotfiles/karabiner/karabiner.json "$HOME"/.config/karabiner/karabiner.json'
 
 # Makefile
-abbr m 'make'
+abbr m make
 
 # Mundane Life
 abbr cal3 'cal -3'
@@ -111,6 +95,7 @@ abbr caly 'cal -y'
 abbr scan 'nmap -sP 192.168.1.0/24'
 
 # Node.js
+abbr n npm
 abbr nci 'npm ci'
 abbr ni 'npm install'
 abbr nlg 'npm list -g --depth=0'
@@ -119,7 +104,7 @@ abbr nri 'cat package.json | jq -r \'.scripts | keys[]\' | fzf | xargs -t npm ru
 abbr ns 'cat package.json | jq \'.scripts\''
 abbr nupg 'npm update -g'
 abbr nupi 'npx npm-check-updates -i'
-abbr y 'yarn'
+abbr y yarn
 abbr yupgi 'yarn global upgrade-interactive'
 abbr yupi 'yarn upgrade-interactive'
 
@@ -133,13 +118,12 @@ abbr ports_list 'lsof -PiTCP | rg LISTEN'
 
 # Python
 abbr pip_uninstall_all 'pip freeze | xargs pip uninstall -y'
-abbr py 'python'
-abbr pydb 'python -m pdb'
-abbr pys 'source venv/bin/activate.fish'
-abbr pysetup 'python3 -m venv venv && source venv/bin/activate.fish && pip install --upgrade pip && pip install -r requirements.txt && pip install black mypy pylint'
+abbr po poetry
+abbr po_setup 'poetry init && poetry install black mypy pylint'
+abbr py python
 
 # Pulumi
-abbr pu 'pulumi'
+abbr pu pulumi
 abbr pusdi 'pulumi stack export | jq -r \'.deployment.resources[].urn\' | fzf | xargs -t pulumi state delete'
 abbr pussi 'pulumi stack ls --json | jq -r \'.[].name\' | fzf | xargs -t pulumi stack select'
 abbr puso 'pulumi stack output --show-secrets'
@@ -154,7 +138,7 @@ abbr puus 'pulumi up --skip-preview'
 abbr fp 'fish --private'
 abbr hd 'history | fzf | history delete --case-sensitive --exact'
 abbr hdc 'history delete --contains'
-abbr s 'source'
+abbr s source
 abbr sh_lint 'shfmt -f . | xargs -t -J % shellcheck -x %'
 
 # VSCode
