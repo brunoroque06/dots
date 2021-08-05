@@ -103,7 +103,7 @@ abbr nr 'npm run'
 abbr nri 'cat package.json | jq -r \'.scripts | keys[]\' | fzf | xargs -t npm run'
 abbr ns 'cat package.json | jq \'.scripts\''
 abbr nupg 'npm update -g'
-abbr nupi 'npx npm-check-updates -i'
+abbr nupi 'npx npm-check-updates --deep -i'
 abbr y yarn
 abbr yupgi 'yarn global upgrade-interactive'
 abbr yupi 'yarn upgrade-interactive'
@@ -119,7 +119,7 @@ abbr ports_list 'lsof -PiTCP | rg LISTEN'
 # Python
 abbr pip_uninstall_all 'pip freeze | xargs pip uninstall -y'
 abbr po poetry
-abbr po_setup 'poetry init && poetry install black mypy pylint'
+abbr po_setup 'poetry init && poetry add --dev black mypy pylint'
 abbr py python
 
 # Pulumi

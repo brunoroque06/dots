@@ -68,7 +68,7 @@ packer.startup(function()
 
 	use({
 		"neovim/nvim-lspconfig",
-		run = "npm install -g bash-language-server dockerfile-language-server-nodejs vscode-langservers-extracted pyright",
+		run = "npm install -g bash-language-server dockerfile-language-server-nodejs pyright vscode-langservers-extracted",
 	})
 	use("hrsh7th/nvim-compe")
 
