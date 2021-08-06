@@ -35,6 +35,7 @@ abbr d dotnet
 abbr d_toupa 'dotnet tool list -g | awk \'NR > 2 {print $1}\' | xargs -t -I % dotnet tool update -g %'
 abbr dap 'dotnet add package'
 abbr dfmt 'dotnet format'
+abbr dfsi 'dotnet fsi'
 abbr dp 'dotnet publish'
 abbr dr 'dotnet run'
 abbr dt 'dotnet test'

@@ -352,6 +352,12 @@
 	</dict>
 	<key>Default Bookmark Guid</key>
 	<string>36378DA7-363D-4356-942B-0DACBC406237</string>
+	<key>DimBackgroundWindows</key>
+	<false/>
+	<key>DimInactiveSplitPanes</key>
+	<true/>
+	<key>DimOnlyText</key>
+	<false/>
 	<key>DisableFullscreenTransparency</key>
 	<false/>
 	<key>EnableDivisionView</key>
@@ -1362,6 +1368,8 @@ Open Selection</string>
 	<false/>
 	<key>SoundForEsc</key>
 	<false/>
+	<key>SplitPaneDimmingAmount</key>
+	<real>0.1698309679657336</real>
 	<key>StatusBarPosition</key>
 	<integer>1</integer>
 	<key>SwitchPaneModifier</key>
