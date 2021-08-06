@@ -61,14 +61,15 @@ packer.startup(function()
 	use("tpope/vim-unimpaired")
 	use("tpope/vim-vinegar")
 
-	use("gruvbox-community/gruvbox")
+	use({ "npxbr/gruvbox.nvim", requires = { "rktjmp/lush.nvim" } })
+	use("navarasu/onedark.nvim")
 	use("hoob3rt/lualine.nvim")
 
 	use("sbdchd/neoformat")
 
 	use({
 		"neovim/nvim-lspconfig",
-		run = "npm install -g bash-language-server dockerfile-language-server-nodejs pyright vscode-langservers-extracted",
+		run = "npm install -g bash-language-server dockerfile-language-server-nodejs pyright typescript typescript-language-server vscode-langservers-extracted",
 	})
 	use("hrsh7th/nvim-compe")
 
@@ -84,7 +85,8 @@ end)
 
 -- Theme
 vim.o.background = "dark"
-vim.cmd("colorscheme gruvbox")
+-- vim.cmd("colorscheme gruvbox")
+vim.cmd("colorscheme onedark")
 
 vim.api.nvim_exec(
 	[[
@@ -100,7 +102,7 @@ vim.o.showmode = false
 
 require("lualine").setup({
 	options = {
-		theme = "gruvbox",
+		theme = "onedark",
 	},
 })
 
@@ -131,14 +133,10 @@ augroup END
 
 -- LSP
 require("lspconfig").bashls.setup({})
-require("lspconfig").denols.setup({
-	init_options = {
-		lint = true,
-	},
-})
 require("lspconfig").dockerls.setup({})
 require("lspconfig").jsonls.setup({})
 require("lspconfig").pyright.setup({})
+require("lspconfig").tsserver.setup({})
 
 vim.o.completeopt = "menuone,noselect"
 
@@ -169,6 +167,7 @@ require("nvim-treesitter.configs").setup({
 		"json",
 		"lua",
 		"python",
+		"typescript",
 	},
 	highlight = {
 		enable = true,
@@ -223,6 +222,8 @@ vim.api.nvim_set_keymap(
 )
 
 vim.api.nvim_set_keymap("i", "<f1>", "<cmd>lua vim.lsp.buf.signature_help()<cr>", { noremap = true })
+
+vim.api.nvim_exec("command! Reload source $MYVIMRC", false)
 
 vim.api.nvim_exec(
 	[[
