@@ -83,10 +83,10 @@ packer.startup(function()
 	use("vim-test/vim-test")
 end)
 
--- Theme
-vim.o.background = "dark"
+-- Appearance
 -- vim.cmd("colorscheme gruvbox")
 vim.cmd("colorscheme onedark")
+vim.api.nvim_del_keymap("n", "<leader>cs") -- comes with "onedark"
 
 vim.api.nvim_exec(
 	[[
@@ -152,6 +152,19 @@ require("compe").setup({
 	},
 })
 
+-- Telescope
+local actions = require("telescope.actions")
+require("telescope").setup({
+	defaults = {
+		mappings = {
+			i = {
+				["<esc>"] = actions.close,
+			},
+		},
+	},
+})
+
+-- Keymaps
 vim.api.nvim_set_keymap("i", "<c-space>", "compe#complete()", { expr = true, noremap = true })
 vim.api.nvim_set_keymap("i", "<cr>", "compe#confirm('<cr>')", { expr = true, noremap = true })
 vim.cmd("highlight link CompeDocumentation NormalFloat")
