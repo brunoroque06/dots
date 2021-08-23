@@ -224,7 +224,7 @@ vim.api.nvim_set_keymap("n", "<c-h>", "<c-w>h", { noremap = true })
 vim.api.nvim_set_keymap("n", "<bs>", "<c-^>", { noremap = true })
 
 vim.api.nvim_set_keymap("n", "[d", ":lua vim.lsp.diagnostic.goto_prev()<cr>", { noremap = true })
-vim.api.nvim_set_keymap("n", "[d", ":lua vim.lsp.diagnostic.goto_next()<cr>", { noremap = true })
+vim.api.nvim_set_keymap("n", "]d", ":lua vim.lsp.diagnostic.goto_next()<cr>", { noremap = true })
 
 -- https://github.com/vim/vim/issues/4738
 vim.api.nvim_set_keymap(

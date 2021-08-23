@@ -364,6 +364,8 @@
 	<true/>
 	<key>EnableProxyIcon</key>
 	<false/>
+	<key>FlashTabBarInFullscreen</key>
+	<false/>
 	<key>GlobalKeyMap</key>
 	<dict>
 		<key>0x2e-0x100000-0x2f</key>
@@ -444,12 +446,20 @@ Find.Find URLs</string>
 		<key>0x68-0x100000-0x4</key>
 		<dict>
 			<key>Action</key>
-			<integer>25</integer>
+			<integer>31</integer>
 			<key>Label</key>
 			<string></string>
 			<key>Text</key>
-			<string>iTerm2 Help
-iTerm2 Help</string>
+			<string></string>
+		</dict>
+		<key>0x6c-0x100000-0x20</key>
+		<dict>
+			<key>Action</key>
+			<integer>30</integer>
+			<key>Label</key>
+			<string></string>
+			<key>Text</key>
+			<string></string>
 		</dict>
 		<key>0x6d-0x100000-0x2e</key>
 		<dict>
@@ -509,24 +519,6 @@ Open Selection</string>
 			<key>Text</key>
 			<string></string>
 		</dict>
-		<key>0x7b-0x120000-0x21</key>
-		<dict>
-			<key>Action</key>
-			<integer>31</integer>
-			<key>Label</key>
-			<string></string>
-			<key>Text</key>
-			<string></string>
-		</dict>
-		<key>0x7d-0x120000-0x1e</key>
-		<dict>
-			<key>Action</key>
-			<integer>30</integer>
-			<key>Label</key>
-			<string></string>
-			<key>Text</key>
-			<string></string>
-		</dict>
 		<key>0xd-0x100000-0x24</key>
 		<dict>
 			<key>Action</key>
@@ -564,9 +556,13 @@ Open Selection</string>
 	<false/>
 	<key>HapticFeedbackForEsc</key>
 	<false/>
+	<key>HideActivityIndicator</key>
+	<false/>
 	<key>HideScrollbar</key>
 	<false/>
 	<key>HideTab</key>
+	<false/>
+	<key>HideTabNumber</key>
 	<false/>
 	<key>HotkeyMigratedFromSingleToMulti</key>
 	<true/>
@@ -1366,6 +1362,8 @@ Open Selection</string>
 	<false/>
 	<key>ShowFullScreenTabBar</key>
 	<false/>
+	<key>ShowNewOutputIndicator</key>
+	<true/>
 	<key>SoundForEsc</key>
 	<false/>
 	<key>SplitPaneDimmingAmount</key>
@@ -1380,6 +1378,8 @@ Open Selection</string>
 	<integer>4</integer>
 	<key>TabViewType</key>
 	<integer>0</integer>
+	<key>TabsHaveCloseButton</key>
+	<true/>
 	<key>ToolbeltTools</key>
 	<array>
 		<string>Profiles</string>

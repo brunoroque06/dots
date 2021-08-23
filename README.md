@@ -13,7 +13,7 @@ Supported: macOS.
 - Setup `Colemak` keyboard layout;
 - Load `iTerm` settings;
 - Install fonts: [Apple Fonts](https://developer.apple.com/fonts/);
-- Import rectangle/vimium configuration.
+- Import vimium configuration.
 
 ## Keep In Mind
 

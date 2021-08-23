@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-
-query=$1
-
-language=$(printf "%s" "$query" | awk '{print $1;}')
-question=$(printf "%s" "$query" | cut -d ' ' -f 2- | tr ' ' '+')
-
-open "https://cheat.sh/$language/$question"
