@@ -1,4 +1,4 @@
-set -U fish_greeting 'Oo'
+set -U fish_greeting Oo
 
 # Editor
 fish_vi_key_bindings

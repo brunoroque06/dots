@@ -71,7 +71,15 @@ packer.startup(function()
 		"neovim/nvim-lspconfig",
 		run = "npm install -g bash-language-server dockerfile-language-server-nodejs pyright typescript typescript-language-server vscode-langservers-extracted",
 	})
-	use("hrsh7th/nvim-compe")
+	use({
+		"hrsh7th/nvim-cmp",
+		requires = {
+			{ "hrsh7th/cmp-buffer" },
+			{ "hrsh7th/cmp-nvim-lsp" },
+			{ "hrsh7th/cmp-nvim-lua" },
+			{ "hrsh7th/cmp-path" },
+		},
+	})
 
 	use({
 		"nvim-telescope/telescope.nvim",
@@ -138,19 +146,55 @@ require("lspconfig").jsonls.setup({})
 require("lspconfig").pyright.setup({})
 require("lspconfig").tsserver.setup({})
 
-vim.o.completeopt = "menuone,noselect"
-
-require("compe").setup({
-	enabled = true,
-	autocomplete = true,
-	source = {
-		path = true,
-		buffer = true,
-		nvim_lsp = true,
-		nvim_lua = true,
-		treesitter = true,
+local cmp = require("cmp")
+cmp.setup({
+	completion = {
+		completeopt = "menuone,noselect",
+	},
+	formatting = {
+		format = function(entry, vim_item)
+			vim_item.menu = ({
+				buffer = "[B]",
+				nvim_lsp = "[L]",
+				nvim_lua = "[N]",
+				path = "[P]",
+			})[entry.source.name]
+			return vim_item
+		end,
+	},
+	mapping = {
+		["<c-p>"] = cmp.mapping.select_prev_item(),
+		["<c-n>"] = cmp.mapping.select_next_item(),
+		["<c-space>"] = cmp.mapping.complete(),
+		["<c-e>"] = cmp.mapping.close(),
+		["<cr>"] = cmp.mapping.confirm({
+			behavior = cmp.ConfirmBehavior.Insert,
+			select = true,
+		}),
+	},
+	sources = {
+		{ name = "buffer" },
+		{ name = "nvim_lsp" },
+		{ name = "nvim_lua" },
+		{ name = "path" },
 	},
 })
+
+-- require("compe").setup({
+-- 	enabled = true,
+-- 	autocomplete = true,
+-- 	source = {
+-- 		path = true,
+-- 		buffer = true,
+-- 		nvim_lsp = true,
+-- 		nvim_lua = true,
+-- 		treesitter = true,
+-- 	},
+-- })
+
+-- vim.api.nvim_set_keymap("i", "<c-space>", "compe#complete()", { expr = true, noremap = true })
+-- vim.api.nvim_set_keymap("i", "<cr>", "compe#confirm('<cr>')", { expr = true, noremap = true })
+-- vim.cmd("highlight link CompeDocumentation NormalFloat")
 
 -- Telescope
 local actions = require("telescope.actions")
@@ -164,11 +208,7 @@ require("telescope").setup({
 	},
 })
 
--- Keymaps
-vim.api.nvim_set_keymap("i", "<c-space>", "compe#complete()", { expr = true, noremap = true })
-vim.api.nvim_set_keymap("i", "<cr>", "compe#confirm('<cr>')", { expr = true, noremap = true })
-vim.cmd("highlight link CompeDocumentation NormalFloat")
-
+-- Treesitter
 require("nvim-treesitter.configs").setup({
 	ensure_installed = {
 		"bash",
@@ -187,9 +227,11 @@ require("nvim-treesitter.configs").setup({
 	},
 })
 
+-- Test
 vim.g["test#strategy"] = "neovim"
 vim.g["test#neovim#term_position"] = "vertical"
 
+-- Keymaps
 vim.api.nvim_set_keymap("n", "<leader>a", ":Telescope lsp_code_actions<cr>", { noremap = true })
 
 vim.api.nvim_set_keymap("n", "<leader>a", ":Telescope lsp_code_actions<cr>", { noremap = true })
