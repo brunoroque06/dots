@@ -13,6 +13,7 @@ link() {
 
 link_manager() {
 	link "$1" "$HOME/.config/bat" bat
+	link "$1" "$HOME/.elvish" elvish
 	link "$1" "$HOME/.config/fish" fish
 	link "$1" "$HOME" git
 	link "$1" "$HOME" gnu-readline

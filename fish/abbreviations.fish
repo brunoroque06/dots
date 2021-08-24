@@ -1,5 +1,4 @@
 # Azure
-abbr azi 'az interactive --style br'
 abbr az_subi 'az account list | jq -r \'.[] | [.id, .name] | join("\\t")\' | fzf | awk \'{print $1F}\' | xargs -t az account set --subscription'
 
 # Brew
@@ -19,6 +18,7 @@ abbr P pbpaste
 abbr Y pbcopy
 
 # Directories
+abbr - 'cd ..'
 abbr dir_rmi 'du -hd 1 | fzf -m | awk \'{print $2}\' | xargs -t rm -rf'
 abbr dir_size 'du -h -d 1 | sort -hr'
 
@@ -33,7 +33,6 @@ abbr docps 'docker ps -a'
 # Dotnet
 abbr d dotnet
 abbr d_toupa 'dotnet tool list -g | awk \'NR > 2 {print $1}\' | xargs -t -I % dotnet tool update -g %'
-abbr dap 'dotnet add package'
 abbr dfmt 'dotnet format'
 abbr dfsi 'dotnet fsi'
 abbr dp 'dotnet publish'
@@ -45,6 +44,7 @@ abbr dup 'dotnet outdated --upgrade'
 abbr e nvim
 abbr ed 'nvim -d'
 abbr enone 'nvim -u NONE'
+abbr er 'nvim -MR'
 
 # Files
 abbr c bat
