@@ -28,9 +28,9 @@ set paths = [
 fn z { edit:location:start }
 
 edit:insert:binding["Ctrl-["] = { edit:command:start }
-edit:insert:binding["Ctrl-a"] = { edit:histlist:start }
-edit:insert:binding["Ctrl-d"] = { edit:navigation:start }
-edit:insert:binding["Ctrl-f"] = { edit:location:start }
+fn a { edit:histlist:start }
+fn d { edit:navigation:start }
+fn di { edit:location:start }
 
 edit:command:binding[a] = { edit:move-dot-right; edit:close-mode }
 edit:command:binding[A] = { edit:move-dot-eol; edit:close-mode }
@@ -90,6 +90,7 @@ fn gfa { git fetch --all }
 fn gl { git log --all --decorate --graph --format=format:'%Cblue%h %Creset- %Cgreen%ar %Creset%s %C(dim white)- %an %C(auto)%d' -20 }
 fn gph { git push }
 fn gphf { git push --force }
+fn gs { git status }
 fn git-cfg { git config --list --show-origin }
 
 # Keyboard
