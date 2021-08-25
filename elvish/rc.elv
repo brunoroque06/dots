@@ -1,14 +1,10 @@
 use readline-binding
 use str
 
-E:EDITOR = 'another'
-E:VISUAL = 'nvim'
-
-E:FZF_DEFAULT_OPTS = '--border=sharp --height 20% --reverse'
-E:FZF_CTRL_T_COMMAND = 'fd . --type f --hidden -E .git'
-E:FZF_CTRL_T_OPTS = "--height 40% --preview 'bat {}' --preview-window border-left"
-
+E:EDITOR = 'nvim'
 E:MANPAGER = "sh -c 'col -bx | bat -l man -p'"
+E:PAGER = 'moar'
+E:VISUAL = 'nvim'
 
 E:RIPGREP_CONFIG_PATH = ~/.config/ripgreprc
 
@@ -25,47 +21,45 @@ set paths = [
   /usr/local/opt/qt/bin
 ]
 
-fn z { edit:location:start }
-
-edit:insert:binding["Ctrl-["] = { edit:command:start }
+edit:insert:binding['Ctrl-['] = { edit:command:start }
 fn a { edit:histlist:start }
-fn d { edit:navigation:start }
-fn di { edit:location:start }
+fn d { edit:location:start }
+fn f { edit:navigation:start }
 
-edit:command:binding[a] = { edit:move-dot-right; edit:close-mode }
-edit:command:binding[A] = { edit:move-dot-eol; edit:close-mode }
-edit:command:binding[C] = { edit:kill-line-right; edit:close-mode }
-edit:command:binding[I] = { edit:move-dot-sol; edit:close-mode }
-edit:command:binding[s] = { edit:move-dot-right; edit:kill-rune-left; edit:close-mode }
-edit:command:binding[x] = { edit:move-dot-right; edit:kill-rune-left }
+edit:command:binding['a'] = { edit:move-dot-right; edit:close-mode }
+edit:command:binding['A'] = { edit:move-dot-eol; edit:close-mode }
+edit:command:binding['C'] = { edit:kill-line-right; edit:close-mode }
+edit:command:binding['I'] = { edit:move-dot-sol; edit:close-mode }
+edit:command:binding['s'] = { edit:move-dot-right; edit:kill-rune-left; edit:close-mode }
+edit:command:binding['x'] = { edit:move-dot-right; edit:kill-rune-left }
 
 # Azure
-fn az-subi { az account list | jq -r '.[] | [.id, .name] | join("\t")' | fzf | awk '{print $1F}' | xargs -t az account set --subscription }
+fn az-subi { az account list | from-json | drop 0 (one) | each [s]{ put [&to-filter=$s[name] &to-accept=$s[id] &to-show=(if (eq $s[isDefault] $true) { put (styled $s[name] green) } else { put $s[name] })] } | edit:listing:start-custom [(all)] &caption='Azure Subscription' &accept=[s]{ az account set --subscription $s } }
 
 # Brew
-edit:small-word-abbr['b'] = 'brew'
 edit:small-word-abbr['bi'] = 'brew install'
+edit:small-word-abbr['bl'] = 'brew leaves'
+edit:small-word-abbr['blc'] = 'brew leaves --cask -1'
+edit:small-word-abbr['bup'] = 'brew update; brew upgrade --ignore-pinned; brew cleanup; brew doctor'
+fn b [@a]{ brew $@a }
 fn brew-dump { brew bundle dump --file ~/Projects/dotfiles/brew/Brewfile --force }
-fn brew-l { brew leaves }
-fn brew-lc { brew list --cask -1 }
-fn brew-up { brew update; brew upgrade --ignore-pinned; brew cleanup; brew doctor }
 
 # Docker
 edit:small-word-abbr['doc'] = 'docker'
 edit:small-word-abbr['docc'] = 'docker-compose'
-fn doc-ps { docker ps -a }
-fn doc-rm { docker stop (docker ps -a -q); docker rm (docker ps -a -q); docker system prune --volumes -f }
-fn doc-rmi { docker rmi -f (docker images -a -q) }
-fn doc-stop { docker stop (docker ps -a -q) }
+edit:small-word-abbr['docps'] = 'docker ps -a'
+edit:small-word-abbr['docrm'] = 'docker stop (docker ps -a -q); docker rm (docker ps -a -q); docker system prune --volumes -f'
+edit:small-word-abbr['docrmi'] = 'docker rmi -f (docker images -a -q)'
+edit:small-word-abbr['docstop'] = 'docker stop (docker ps -a -q)'
 
 # Dotnet
-edit:small-word-abbr['d'] = 'dotnet'
-edit:small-word-abbr['dr'] = 'dotnet run'
-edit:small-word-abbr['dt'] = 'dotnet test'
-fn dot-fmt { dotnet format }
-fn dot-fsi { dotnet fsi }
-fn dot-tup { dotnet tool list -g | awk 'NR > 2 {print $1}' | xargs -t -I % dotnet tool update -g % }
-fn dot-up { dotnet outdated --upgrade }
+edit:small-word-abbr['dotfmt'] = 'dotnet format'
+edit:small-word-abbr['dotfsi'] = 'dotnet fsi'
+edit:small-word-abbr['dotr'] = 'dotnet run'
+edit:small-word-abbr['dott'] = 'dotnet test'
+edit:small-word-abbr['dotup'] = 'dotnet outdated --upgrade'
+fn dot [@a]{ dotnet $@a }
+fn dot-tup { dotnet tool list -g | from-lines | drop 2 | each [l]{ str:split ' ' $l | take 1 } | each [l]{ dotnet tool update -g $l }}
 
 # Edit
 fn e [@a]{ nvim $@a }
@@ -75,45 +69,44 @@ fn er [@a]{ nvim -MR $@a }
 
 # File System
 fn c [@a]{ bat $@a }
-fn l [@a]{ exa -al }
-fn dir-rmi { du -hd 1 | fzf -m | each [d]{ str:split './' $d | drop 1 | rm -rf (one) } }
 fn dir-size { du -h -d 1 | sort -hr }
-fn file-rmi { fd . --hidden --max-depth 1 --no-ignore | fzf -m | xargs -t -I % rm -rf "%" }
-fn file-yi { rg --files | fzf | xargs -t cat | pbcopy }
+fn file-rmi { fd . --hidden --max-depth 1 --no-ignore | from-lines | each [f]{ put [&to-filter=$f &to-accept=$f &to-show=$f] } | edit:listing:start-custom [(all)] &caption='Remove File' &accept=[f]{ rm -rf $f } }
+fn file-yi { rg --files | from-lines | each [f]{ put [&to-filter=$f &to-accept=$f &to-show=$f] } | edit:listing:start-custom [(all)] &caption='Yank File' &accept=[f]{ cat $f | pbcopy } }
+fn l [@a]{ exa -al $@a }
 
 # Git
-edit:small-word-abbr['g'] = 'git'
+edit:small-word-abbr['gcfg'] = 'git config --list --show-origin'
 edit:small-word-abbr['gco'] = 'git checkout'
+edit:small-word-abbr['gfa'] = 'git fetch --all'
+edit:small-word-abbr['gi'] = 'tig'
+edit:small-word-abbr['gl'] = "git log --all --decorate --graph --format=format:'%Cblue%h %Creset- %Cgreen%ar %Creset%s %C(dim white)- %an %C(auto)%d' -20"
+edit:small-word-abbr['gph'] = 'git push'
+edit:small-word-abbr['gphf'] = 'git push --force'
+edit:small-word-abbr['gs'] = 'git status -s'
 edit:small-word-abbr['gunstage'] = 'git reset HEAD --'
-fn gi { tig }
-fn gfa { git fetch --all }
-fn gl { git log --all --decorate --graph --format=format:'%Cblue%h %Creset- %Cgreen%ar %Creset%s %C(dim white)- %an %C(auto)%d' -20 }
-fn gph { git push }
-fn gphf { git push --force }
-fn gs { git status }
-fn git-cfg { git config --list --show-origin }
+fn g [@a]{ git $@a }
 
 # Keyboard
 fn karabiner-dump { cp ~/.config/karabiner/karabiner.json ~/Projects/dotfiles/karabiner }
 fn karabiner-load { cp ~/Projects/dotfiles/karabiner/karabiner.json ~/.config/karabiner/karabiner.json }
 
 # Makefile
-edit:small-word-abbr['m'] = 'make'
+fn m [@a]{ make $@a }
 
 # Network
 fn scan { nmap -sP 192.168.1.0/24 }
 
 # Node.js
-edit:small-word-abbr['n'] = 'npm'
-fn nci { npm ci }
-fn ni { npm install }
-fn nlg { npm list -g --depth=0 }
-fn nr { npm run }
-fn ns { cat package.json | jq '.scripts' }
-fn nupg { npm update -g }
-fn nupi { npx npm-check-updates --deep -i }
-edit:small-word-abbr['y'] = 'yarn'
-fn yupi { yarn upgrade-interactive }
+edit:small-word-abbr['nci'] = 'npm ci'
+edit:small-word-abbr['ni'] = 'npm install'
+edit:small-word-abbr['nlg'] = 'npm list -g --depth=0'
+edit:small-word-abbr['nr'] = 'npm run'
+edit:small-word-abbr['ns'] = "cat package.json | jq '.scripts'"
+edit:small-word-abbr['nupg'] = 'npm update -g'
+edit:small-word-abbr['nupi'] = 'npx npm-check-updates --deep -i'
+edit:small-word-abbr['yupi'] = 'yarn upgrade-interactive'
+fn n [@a]{ npm $@a }
+fn y [@a]{ yarn $@a }
 
 # PostgreSQL
 fn pg-up { postgres -D /usr/local/var/postgres }
@@ -122,22 +115,22 @@ fn pg-upgrade { brew postgresql-upgrade-database }
 
 # Python
 edit:small-word-abbr['po'] = 'poetry'
-fn po-setup { poetry init; poetry add --dev black mypy pylint }
+edit:small-word-abbr['posetup'] = 'poetry init; poetry add --dev black mypy pylint'
 edit:small-word-abbr['py'] = 'python'
 
 # Pulumi
 edit:small-word-abbr['pu'] = 'pulumi'
-fn pud { pulumi destroy }
-fn puds { pulumi destroy --skip-preview }
-fn pup { pulumi preview }
-fn pusdi { pulumi stack export | jq -r '.deployment.resources[].urn' | fzf | xargs -t pulumi state delete }
-fn pussi { pulumi stack ls --json | jq -r '.[].name' | fzf | xargs -t pulumi stack select }
-fn puso { pulumi stack output --show-secrets }
-fn puu { pulumi up }
-fn puus { pulumi up --skip-preview }
+edit:small-word-abbr['pud'] = 'pulumi destroy'
+edit:small-word-abbr['puds'] = 'pulumi destroy --skip-preview'
+edit:small-word-abbr['pup'] = 'pulumi preview'
+edit:small-word-abbr['puso'] = 'pulumi stack output --show-secrets'
+edit:small-word-abbr['puu'] = 'pulumi up'
+edit:small-word-abbr['puus'] = 'pulumi up --skip-preview'
+fn pusdi { pulumi stack export | from-json | put (one)[deployment][resources] | drop 0 (one) | each [r]{ put [&to-filter=$r[urn] &to-accept=$r[urn] &to-show=$r[urn]] } | edit:listing:start-custom [(all)] &caption='Pulumi Delete Resource' &accept=[r]{ pulumi state delete $r } }
+fn pussi { pulumi stack ls --json | from-json | drop 0 (all) | each [s]{ put [&to-filter=$s[name] &to-accept=$s[name] &to-show=(if (eq $s[current] $true) { put (styled $s[name] green) } else { put $s[name] })] } | edit:listing:start-custom [(all)] &caption='Pulumi Stack' &accept=[s]{ pulumi stack select $s } }
 
 # VSCode
-fn c. { code . }
+edit:small-word-abbr['c.'] = 'code .'
 fn code-ex-dump { code --list-extensions > "$HOME/Library/Application Support/Code/User/extensions.txt" }
 fn code-ex-install { xargs <"$HOME/Library/Application Support/Code/User/extensions.txt" -L 1 code --force --install-extension }
 

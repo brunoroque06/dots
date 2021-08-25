@@ -149,7 +149,7 @@ require("lspconfig").tsserver.setup({})
 local cmp = require("cmp")
 cmp.setup({
 	completion = {
-		completeopt = "menuone,noselect",
+		completeopt = "menu,menuone,noselect",
 	},
 	formatting = {
 		format = function(entry, vim_item)
@@ -179,22 +179,6 @@ cmp.setup({
 		{ name = "path" },
 	},
 })
-
--- require("compe").setup({
--- 	enabled = true,
--- 	autocomplete = true,
--- 	source = {
--- 		path = true,
--- 		buffer = true,
--- 		nvim_lsp = true,
--- 		nvim_lua = true,
--- 		treesitter = true,
--- 	},
--- })
-
--- vim.api.nvim_set_keymap("i", "<c-space>", "compe#complete()", { expr = true, noremap = true })
--- vim.api.nvim_set_keymap("i", "<cr>", "compe#confirm('<cr>')", { expr = true, noremap = true })
--- vim.cmd("highlight link CompeDocumentation NormalFloat")
 
 -- Telescope
 local actions = require("telescope.actions")
