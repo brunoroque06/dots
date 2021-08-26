@@ -79,7 +79,7 @@ edit:small-word-abbr['gcfg'] = 'git config --list --show-origin'
 edit:small-word-abbr['gco'] = 'git checkout'
 edit:small-word-abbr['gfa'] = 'git fetch --all'
 edit:small-word-abbr['gi'] = 'tig'
-edit:small-word-abbr['gl'] = "git log --all --decorate --graph --format=format:'%Cblue%h %Creset- %Cgreen%ar %Creset%s %C(dim white)- %an %C(auto)%d' -20"
+edit:small-word-abbr['gl'] = "git log --all --decorate --graph --format=format:'%Cblue%h %Creset- %Cgreen%ar %Creset%s %C(dim white)- %an %C(auto)%d' -100"
 edit:small-word-abbr['gph'] = 'git push'
 edit:small-word-abbr['gphf'] = 'git push --force'
 edit:small-word-abbr['gs'] = 'git status -s'
@@ -106,6 +106,7 @@ edit:small-word-abbr['nupg'] = 'npm update -g'
 edit:small-word-abbr['nupi'] = 'npx npm-check-updates --deep -i'
 edit:small-word-abbr['yupi'] = 'yarn upgrade-interactive'
 fn n [@a]{ npm $@a }
+fn node-clean { fd -HI --prune node_modules | from-lines | peach [d]{ rm -rf $d } }
 fn y [@a]{ yarn $@a }
 
 # PostgreSQL
