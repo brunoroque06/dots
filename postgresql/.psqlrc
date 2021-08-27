@@ -11,10 +11,11 @@
 \timing on
 \x auto
 
-\set activity 'select pid, datname, usename, client_addr, state, query_start, state_change, query from pg_stat_activity where query not like \'<insufficient privilege>\' order by state_change desc;'
+\set activity 'select pid, datname, usename, client_addr, state, query_start, state_change, query from pg_stat_activity where state = 'active';'
 \set extension 'select * from pg_available_extensions order by name;'
 \set schema 'select * from information_schema.schemata;'
-\set tsca 'select * from timescaledb_information.continuous_aggregates;'
-\set tsj 'select * from timescaledb_information.jobs;'
-\set tsjs 'select * from timescaledb_information.job_stats;'
+\set timescaledb_aggregates 'select * from timescaledb_information.continuous_aggregates;'
+\set timescaledb_jobs 'select * from timescaledb_information.jobs;'
+\set timescaledb_job_stats 'select * from timescaledb_information.job_stats;'
 \set version 'select version();'
+
