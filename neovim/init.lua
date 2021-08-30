@@ -61,9 +61,10 @@ packer.startup(function()
 	use("tpope/vim-unimpaired")
 	use("tpope/vim-vinegar")
 
-	use({ "npxbr/gruvbox.nvim", requires = { "rktjmp/lush.nvim" } })
-	use("navarasu/onedark.nvim")
+	use("ful1e5/onedark.nvim")
 	use("hoob3rt/lualine.nvim")
+	use({ "lewis6991/gitsigns.nvim", requires = { "nvim-lua/plenary.nvim" } })
+	use({ "projekt0n/circles.nvim", requires = { { "kyazdani42/nvim-web-devicons" } } })
 
 	use("sbdchd/neoformat")
 
@@ -81,10 +82,7 @@ packer.startup(function()
 		},
 	})
 
-	use({
-		"nvim-telescope/telescope.nvim",
-		requires = { { "nvim-lua/popup.nvim" }, { "nvim-lua/plenary.nvim" } },
-	})
+	use({ "nvim-telescope/telescope.nvim", requires = { { "nvim-lua/popup.nvim" }, { "nvim-lua/plenary.nvim" } } })
 
 	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
 
@@ -92,9 +90,7 @@ packer.startup(function()
 end)
 
 -- Appearance
--- vim.cmd("colorscheme gruvbox")
-vim.cmd("colorscheme onedark")
-vim.api.nvim_del_keymap("n", "<leader>cs") -- comes with "onedark"
+require("onedark").setup()
 
 vim.api.nvim_exec(
 	[[
@@ -106,12 +102,18 @@ augroup END
 	false
 )
 
-vim.o.showmode = false
-
 require("lualine").setup({
 	options = {
+		component_separators = { "", "" },
+		section_separators = { "", "" },
 		theme = "onedark",
 	},
+})
+vim.o.showmode = false
+
+require("gitsigns").setup()
+require("circles").setup({
+	lsp = false,
 })
 
 -- Format
