@@ -33,7 +33,7 @@
   "[Log]": {
     "editor.wordWrap": "on"
   },
-  "breadcrumbs.symbolPath": "off",
+  "breadcrumbs.symbolPath": "last",
   "debug.allowBreakpointsEverywhere": true,
   "debug.console.fontSize": 13,
   "debug.inlineValues": true,

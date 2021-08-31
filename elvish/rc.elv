@@ -21,6 +21,9 @@ set paths = [
   /usr/local/opt/qt/bin
 ]
 
+edit:prompt = { styled (tilde-abbr $pwd) blue; put (styled ' Λ ' magenta) }
+edit:rprompt = (constantly (whoami)@(hostname))
+
 edit:insert:binding['Ctrl-['] = { edit:command:start }
 fn a { edit:histlist:start }
 fn d { edit:location:start }
