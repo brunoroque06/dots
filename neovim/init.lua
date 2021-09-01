@@ -62,6 +62,7 @@ packer.startup(function()
 	use("tpope/vim-vinegar")
 
 	use("ful1e5/onedark.nvim")
+	use("EdenEast/nightfox.nvim")
 	use("hoob3rt/lualine.nvim")
 	use({ "lewis6991/gitsigns.nvim", requires = { "nvim-lua/plenary.nvim" } })
 	use({ "projekt0n/circles.nvim", requires = { { "kyazdani42/nvim-web-devicons" } } })
@@ -70,7 +71,7 @@ packer.startup(function()
 
 	use({
 		"neovim/nvim-lspconfig",
-		run = "npm install -g bash-language-server dockerfile-language-server-nodejs pyright typescript typescript-language-server vscode-langservers-extracted",
+		run = "npm install -g bash-language-server dockerfile-language-server-nodejs pyright typescript typescript-language-server vscode-langservers-extracted yaml-language-server",
 	})
 	use({
 		"hrsh7th/nvim-cmp",
@@ -90,7 +91,8 @@ packer.startup(function()
 end)
 
 -- Appearance
-require("onedark").setup()
+-- require("onedark").setup()
+require("nightfox").load()
 
 vim.api.nvim_exec(
 	[[
@@ -106,7 +108,7 @@ require("lualine").setup({
 	options = {
 		component_separators = { "", "" },
 		section_separators = { "", "" },
-		theme = "onedark",
+		theme = "nightfox",
 	},
 })
 vim.o.showmode = false
@@ -147,6 +149,7 @@ require("lspconfig").dockerls.setup({})
 require("lspconfig").jsonls.setup({})
 require("lspconfig").pyright.setup({})
 require("lspconfig").tsserver.setup({})
+require("lspconfig").yamlls.setup({})
 
 local cmp = require("cmp")
 cmp.setup({
@@ -207,6 +210,7 @@ require("nvim-treesitter.configs").setup({
 		"lua",
 		"python",
 		"typescript",
+		"yaml",
 	},
 	highlight = {
 		enable = true,
