@@ -10,6 +10,11 @@
     "when": "panelFocus"
   },
   {
+    "key": "shift+escape",
+    "command": "workbench.action.closeSidebar",
+    "when": "sideBarFocus"
+  },
+  {
     "key": "f1",
     "command": "editor.action.triggerParameterHints",
     "when": "editorHasSignatureHelpProvider && editorTextFocus"
