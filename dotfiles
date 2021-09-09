@@ -4,6 +4,9 @@ set -e
 
 install() {
 	./brew/setup
+
+	grep -qxF '/usr/local/bin/bash' /etc/shells || printf '/usr/local/bin/bash\n' | sudo tee -a /etc/shells
+	chsh -s /usr/local/bin/bash
 }
 
 link() {
