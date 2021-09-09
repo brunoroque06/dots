@@ -25,7 +25,6 @@ brew "gnu-tar"
 brew "imagemagick"
 brew "jq"
 brew "mas"
-brew "moar"
 brew "neovim", args: ["HEAD"]
 brew "node"
 brew "pgformatter"

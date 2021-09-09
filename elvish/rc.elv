@@ -3,7 +3,7 @@ use str
 
 E:EDITOR = 'nvim'
 E:MANPAGER = "sh -c 'col -bx | bat -l man -p'"
-E:PAGER = 'moar'
+E:PAGER = 'less'
 E:VISUAL = 'nvim'
 
 E:RIPGREP_CONFIG_PATH = ~/.config/ripgreprc
@@ -12,6 +12,7 @@ set paths = [
   ~/.local/share/gem/ruby/3.0.0/bin
   /usr/local/opt/ruby/bin
   /usr/local/bin
+  /usr/local/sbin
   /usr/bin
   /bin
   /usr/sbin
