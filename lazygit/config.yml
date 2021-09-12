@@ -1,0 +1,6 @@
+git:
+  paging:
+    colorarg: always
+    pager: delta --paging=never
+reporting: "off"
+startuppopupversion: 1

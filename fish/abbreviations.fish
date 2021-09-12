@@ -61,7 +61,7 @@ abbr gb 'git branch'
 abbr gci 'git commit'
 abbr gci_amend 'git commit --amend'
 abbr gco 'git checkout'
-abbr gi tig
+abbr gi lazygit
 abbr gf 'git fetch'
 abbr gfa 'git fetch --all'
 abbr gl 'git log'

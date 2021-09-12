@@ -82,7 +82,7 @@ fn l [@a]{ exa -al $@a }
 edit:small-word-abbr['gcfg'] = 'git config --list --show-origin'
 edit:small-word-abbr['gco'] = 'git checkout'
 edit:small-word-abbr['gfa'] = 'git fetch --all'
-edit:small-word-abbr['gi'] = 'tig'
+edit:small-word-abbr['gi'] = 'lazygit'
 edit:small-word-abbr['gl'] = "git log --all --decorate --graph --format=format:'%Cblue%h %Creset- %Cgreen%ar %Creset%s %C(dim white)- %an %C(auto)%d' -100"
 edit:small-word-abbr['gph'] = 'git push'
 edit:small-word-abbr['gphf'] = 'git push --force'
