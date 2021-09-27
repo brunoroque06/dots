@@ -60,8 +60,8 @@ packer.startup(function()
 	use("tpope/vim-unimpaired")
 	use("tpope/vim-vinegar")
 
-	use("ful1e5/onedark.nvim")
 	use("EdenEast/nightfox.nvim")
+	use("ful1e5/onedark.nvim")
 	use("hoob3rt/lualine.nvim")
 	use({ "lewis6991/gitsigns.nvim", requires = { "nvim-lua/plenary.nvim" } })
 	use({ "projekt0n/circles.nvim", requires = { { "kyazdani42/nvim-web-devicons" } } })
@@ -90,8 +90,8 @@ packer.startup(function()
 end)
 
 -- Appearance
--- require("onedark").setup()
 require("nightfox").load()
+-- require("onedark").setup()
 
 vim.api.nvim_exec(
 	[[

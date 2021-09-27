@@ -13,7 +13,7 @@ Supported: macOS.
 - Setup `Colemak` keyboard layout;
 - Load `iTerm` settings;
 - Import Raycast scripts;
-- Import vimium configuration;
+- Import Vimium configuration;
 - Install fonts: [Apple Fonts](https://developer.apple.com/fonts/).
 
 ## Keep In Mind
