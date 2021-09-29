@@ -1358,8 +1358,10 @@ Open Selection</string>
 	</dict>
 	<key>Print In Black And White</key>
 	<true/>
-	<key>QuitWhenAllWindowsClosed</key>
+	<key>PromptOnQuit</key>
 	<false/>
+	<key>QuitWhenAllWindowsClosed</key>
+	<true/>
 	<key>Selection Respects Soft Boundaries</key>
 	<false/>
 	<key>SeparateStatusBarsPerPane</key>

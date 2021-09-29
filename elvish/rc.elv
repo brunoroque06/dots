@@ -25,10 +25,10 @@ set paths = [
 edit:prompt = { styled (tilde-abbr $pwd) blue; put (styled ' Λ ' magenta) }
 edit:rprompt = (constantly (whoami)@(hostname))
 
-edit:insert:binding['Ctrl-['] = { edit:command:start }
-fn a { edit:histlist:start }
-fn d { edit:location:start }
-fn f { edit:navigation:start }
+edit:insert:binding['Ctrl-f'] = { edit:navigation:start }
+edit:insert:binding['Ctrl-l'] = { edit:location:start }
+edit:insert:binding['Ctrl-o'] = { edit:lastcmd:start }
+edit:insert:binding['Ctrl-r'] = { edit:histlist:start }
 
 edit:command:binding['a'] = { edit:move-dot-right; edit:close-mode }
 edit:command:binding['A'] = { edit:move-dot-eol; edit:close-mode }
@@ -133,6 +133,9 @@ edit:small-word-abbr['puu'] = 'pulumi up'
 edit:small-word-abbr['puus'] = 'pulumi up --skip-preview'
 fn pusdi { pulumi stack export | from-json | put (one)[deployment][resources] | drop 0 (one) | each [r]{ put [&to-filter=$r[urn] &to-accept=$r[urn] &to-show=$r[urn]] } | edit:listing:start-custom [(all)] &caption='Pulumi Delete Resource' &accept=[r]{ pulumi state delete $r } }
 fn pussi { pulumi stack ls --json | from-json | drop 0 (all) | each [s]{ put [&to-filter=$s[name] &to-accept=$s[name] &to-show=(if (eq $s[current] $true) { put (styled $s[name] green) } else { put $s[name] })] } | edit:listing:start-custom [(all)] &caption='Pulumi Stack' &accept=[s]{ pulumi stack select $s } }
+
+# SSH
+fn ssh-trust [@a]{ ssh-copy-id -i ~/.ssh/id_rsa.pub $@a }
 
 # VSCode
 edit:small-word-abbr['c.'] = 'code .'
