@@ -110,6 +110,10 @@ edit:small-word-abbr['nupg'] = 'npm update -g'
 edit:small-word-abbr['nupi'] = 'npx npm-check-updates --deep -i'
 edit:small-word-abbr['yupi'] = 'yarn upgrade-interactive'
 fn n [@a]{ npm $@a }
+fn nsi {
+  scripts = (cat package.json | from-json | put (one)[scripts])
+  keys $scripts | each [k]{ put [&to-filter=$k &to-accept=$k &to-show=(echo $k': '$scripts[$k])] } | edit:listing:start-custom [(all)] &caption='npm run' &accept=[s]{ npm run $s }
+}
 fn node-clean { fd -HI --prune node_modules | from-lines | peach [d]{ rm -rf $d } }
 fn y [@a]{ yarn $@a }
 
