@@ -39,6 +39,7 @@
   "debug.inlineValues": true,
   "debug.internalConsoleOptions": "neverOpen",
   "debug.toolBarLocation": "docked",
+  "editor.bracketPairColorization.enabled": true,
   "editor.codeActionsOnSave": {
     "source.organizeImports": true
   },
