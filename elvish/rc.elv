@@ -25,6 +25,7 @@ set paths = [
 edit:prompt = { styled (tilde-abbr $pwd) blue; put (styled ' Λ ' magenta) }
 edit:rprompt = (constantly (whoami)@(hostname))
 
+edit:insert:binding["Ctrl-["] = { edit:command:start }
 edit:insert:binding['Ctrl-f'] = { edit:navigation:start }
 edit:insert:binding['Ctrl-l'] = { edit:location:start }
 edit:insert:binding['Ctrl-o'] = { edit:lastcmd:start }
