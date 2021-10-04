@@ -3,7 +3,7 @@ name: CI
 on: [push]
 
 jobs:
-  lint:
+  ci:
     runs-on: ubuntu-latest
 
     steps:

@@ -50,7 +50,6 @@ brew "wget"
 brew "yarn"
 brew "zoxide"
 
-cask "1password"
 cask "appcleaner"
 cask "docker"
 cask "dotnet-sdk"
