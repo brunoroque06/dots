@@ -39,7 +39,7 @@ edit:command:binding['s'] = { edit:move-dot-right; edit:kill-rune-left; edit:clo
 edit:command:binding['x'] = { edit:move-dot-right; edit:kill-rune-left }
 
 # Azure
-fn az-subi { az account list | from-json | drop 0 (one) | each [s]{ put [&to-filter=$s[name] &to-accept=$s[id] &to-show=(if (eq $s[isDefault] $true) { put (styled $s[name] green) } else { put $s[name] })] } | edit:listing:start-custom [(all)] &caption='Azure Subscription' &accept=[s]{ az account set --subscription $s } }
+fn az-subi { az account list | from-json | drop 0 (one) | each [s]{ put [&to-filter=$s[name] &to-accept=$s[id] &to-show=(if (eq $s[isDefault] $true) { put (styled $s[name] green) } else { put $s[name] })] } | edit:listing:start-custom [(all)] &caption='Azure Subscription' &accept=[s]{ az account set --subscription $s > /dev/tty } }
 
 # Brew
 edit:small-word-abbr['bi'] = 'brew install'
@@ -111,9 +111,9 @@ edit:small-word-abbr['nupg'] = 'npm update -g'
 edit:small-word-abbr['nupi'] = 'npx npm-check-updates --deep -i'
 edit:small-word-abbr['yupi'] = 'yarn upgrade-interactive'
 fn n [@a]{ npm $@a }
-fn nsi {
+fn nri {
   scripts = (cat package.json | from-json | put (one)[scripts])
-  keys $scripts | each [k]{ put [&to-filter=$k &to-accept=$k &to-show=(echo $k': '$scripts[$k])] } | edit:listing:start-custom [(all)] &caption='npm run' &accept=[s]{ npm run $s }
+  keys $scripts | each [k]{ put [&to-filter=$k &to-accept=$k &to-show=(echo $k': '$scripts[$k])] } | edit:listing:start-custom [(all)] &caption='npm run' &accept=[s]{ npm run $s > /dev/tty }
 }
 fn node-clean { fd -HI --prune node_modules | from-lines | peach [d]{ rm -rf $d } }
 fn y [@a]{ yarn $@a }
@@ -136,8 +136,8 @@ edit:small-word-abbr['pup'] = 'pulumi preview'
 edit:small-word-abbr['puso'] = 'pulumi stack output --show-secrets'
 edit:small-word-abbr['puu'] = 'pulumi up'
 edit:small-word-abbr['puus'] = 'pulumi up --skip-preview'
-fn pusdi { pulumi stack export | from-json | put (one)[deployment][resources] | drop 0 (one) | each [r]{ put [&to-filter=$r[urn] &to-accept=$r[urn] &to-show=$r[urn]] } | edit:listing:start-custom [(all)] &caption='Pulumi Delete Resource' &accept=[r]{ pulumi state delete $r } }
-fn pussi { pulumi stack ls --json | from-json | drop 0 (all) | each [s]{ put [&to-filter=$s[name] &to-accept=$s[name] &to-show=(if (eq $s[current] $true) { put (styled $s[name] green) } else { put $s[name] })] } | edit:listing:start-custom [(all)] &caption='Pulumi Stack' &accept=[s]{ pulumi stack select $s } }
+fn pusdi { pulumi stack export | from-json | put (one)[deployment][resources] | drop 0 (one) | each [r]{ put [&to-filter=$r[urn] &to-accept=$r[urn] &to-show=$r[urn]] } | edit:listing:start-custom [(all)] &caption='Pulumi Delete Resource' &accept=[r]{ pulumi state delete $r > /dev/tty } }
+fn pussi { pulumi stack ls --json | from-json | drop 0 (all) | each [s]{ put [&to-filter=$s[name] &to-accept=$s[name] &to-show=(if (eq $s[current] $true) { put (styled $s[name] green) } else { put $s[name] })] } | edit:listing:start-custom [(all)] &caption='Pulumi Stack' &accept=[s]{ pulumi stack select $s > /dev/tty } }
 
 # SSH
 fn ssh-trust [@a]{ ssh-copy-id -i ~/.ssh/id_rsa.pub $@a }
