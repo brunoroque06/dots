@@ -78,6 +78,12 @@
   "editor.renderWhitespace": "trailing",
   "scm.alwaysShowRepositories": true,
   "terminal.integrated.fontSize": 13,
+  "terminal.integrated.lineHeight": 1.2,
+  "terminal.integrated.profiles.windows": {
+    "shell": { "path": "/usr/local/bin/fish" }
+  },
+  "terminal.integrated.defaultProfile.windows": "shell",
+  "terminal.external.osxExec": "iTerm.app",
   "typescript.implementationsCodeLens.enabled": false,
   "typescript.referencesCodeLens.enabled": false,
   "typescript.updateImportsOnFileMove.enabled": "always",
@@ -190,5 +196,6 @@
   "workbench.editor.limit.value": 10,
   "workbench.editor.showTabs": false,
   "workbench.tree.indent": 15,
-  "workbench.tree.renderIndentGuides": "always"
+  "workbench.tree.renderIndentGuides": "always",
+  "editor.inlineSuggest.enabled": true
 }
