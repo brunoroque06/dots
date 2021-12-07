@@ -14,6 +14,8 @@ vim.o.hlsearch = true
 vim.o.ignorecase = true
 vim.o.inccommand = "nosplit"
 vim.o.incsearch = true
+vim.o.list = true
+vim.o.listchars = "eol:↵,nbsp:␣,tab:> ,trail:~"
 vim.o.mouse = "a"
 vim.o.swapfile = false
 vim.o.number = true
@@ -62,6 +64,7 @@ packer.startup(function()
 
 	use("EdenEast/nightfox.nvim")
 	use("ful1e5/onedark.nvim")
+	use("p00f/nvim-ts-rainbow")
 	use("hoob3rt/lualine.nvim")
 	use({ "lewis6991/gitsigns.nvim", requires = { "nvim-lua/plenary.nvim" } })
 	use({ "projekt0n/circles.nvim", requires = { { "kyazdani42/nvim-web-devicons" } } })
@@ -81,6 +84,7 @@ packer.startup(function()
 			{ "hrsh7th/cmp-path" },
 		},
 	})
+	use("github/copilot.vim")
 
 	use({ "nvim-telescope/telescope.nvim", requires = { { "nvim-lua/popup.nvim" }, { "nvim-lua/plenary.nvim" } } })
 
@@ -214,6 +218,9 @@ require("nvim-treesitter.configs").setup({
 	highlight = {
 		enable = true,
 	},
+	rainbow = {
+		enable = true,
+	},
 })
 
 -- Test
@@ -221,8 +228,6 @@ vim.g["test#strategy"] = "neovim"
 vim.g["test#neovim#term_position"] = "vertical"
 
 -- Keymaps
-vim.api.nvim_set_keymap("n", "<leader>a", ":Telescope lsp_code_actions<cr>", { noremap = true })
-
 vim.api.nvim_set_keymap("n", "<leader>a", ":Telescope lsp_code_actions<cr>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<leader>b", ":Telescope buffers<cr>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<leader>c", ":Telescope commands<cr>", { noremap = true })
@@ -256,14 +261,6 @@ vim.api.nvim_set_keymap("n", "<bs>", "<c-^>", { noremap = true })
 
 vim.api.nvim_set_keymap("n", "[d", ":lua vim.lsp.diagnostic.goto_prev()<cr>", { noremap = true })
 vim.api.nvim_set_keymap("n", "]d", ":lua vim.lsp.diagnostic.goto_next()<cr>", { noremap = true })
-
--- https://github.com/vim/vim/issues/4738
-vim.api.nvim_set_keymap(
-	"n",
-	"gx",
-	":call netrw#BrowseX(expand((exists('g:netrw_gx')? g:netrw_gx : '<cfile>')),netrw#CheckIfRemote())<cr>",
-	{ noremap = true }
-)
 
 vim.api.nvim_set_keymap("i", "<f1>", "<cmd>lua vim.lsp.buf.signature_help()<cr>", { noremap = true })
 
