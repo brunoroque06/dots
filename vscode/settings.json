@@ -75,6 +75,7 @@
   "python.linting.pylintArgs": ["--disable=bad-continuation,missing-docstring"],
   "python.linting.pylintEnabled": true,
   "python.testing.pytestEnabled": true,
+  "editor.renderWhitespace": "trailing",
   "scm.alwaysShowRepositories": true,
   "terminal.integrated.fontSize": 13,
   "typescript.implementationsCodeLens.enabled": false,

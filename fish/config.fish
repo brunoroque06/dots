@@ -17,8 +17,8 @@ fish_add_path -mp "$HOME"/.local/share/gem/ruby/3.0.0/bin /usr/local/opt/ruby/bi
 fish_add_path -amP "$HOME"/.dotnet/tools /usr/local/opt/qt/bin
 
 # Theme
-set -g hydro_color_pwd yellow
 set -g hydro_color_prompt blue
+set -g hydro_color_pwd yellow
 set -g hydro_symbol_prompt Λ
 
 set -g fish_color_autosuggestion grey
