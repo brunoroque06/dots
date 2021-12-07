@@ -1,7 +1,6 @@
 set -g fish_greeting Oo
 
 # Editor
-fish_vi_key_bindings
 set -gx EDITOR nvim
 set -gx VISUAL nvim
 
@@ -14,10 +13,13 @@ set -gx JAVA_HOME /usr/local/opt/openjdk/libexec/openjdk.jdk/Contents/Home
 
 # Path
 fish_add_path -mp "$HOME"/.local/share/gem/ruby/3.0.0/bin /usr/local/opt/ruby/bin
-fish_add_path -amP "$HOME"/.dotnet/tools /usr/local/opt/qt/bin
+fish_add_path -amP /usr/local/sbin/ "$HOME"/.dotnet/tools /usr/local/opt/qt/bin
 
 # Theme
-set -g hydro_color_prompt blue
+set -g hydro_color_duration normal
+set -g hydro_color_error red
+set -g hydro_color_git blue
+set -g hydro_color_prompt purple
 set -g hydro_color_pwd yellow
 set -g hydro_symbol_prompt Λ
 
@@ -35,6 +37,9 @@ set -g fish_color_redirection brblue
 # Ripgrep
 set -gx RIPGREP_CONFIG_PATH "$HOME"/.config/ripgreprc
 
+# Binds
+set -g fish_key_bindings fish_vi_key_bindings
+
 bind -M insert -k dc delete-char
 bind -M insert \ce accept-autosuggestion
 bind -M insert \cf _fzf_search_directory
@@ -43,7 +48,7 @@ bind -M insert \cl __zoxide_zi
 bind -M insert \cn history-prefix-search-forward
 bind -M insert \cp history-prefix-search-backward
 bind -M insert \cr _fzf_search_history
-bind -M insert \e\x7F backward-kill-word
+bind -M insert \e\x7F backward-kill-word # \cw
 bind -M default -k dc forward-char
 
 # Zoxide
@@ -52,19 +57,17 @@ set -gx _ZO_FZF_OPTS '--border=sharp --height 80% --reverse'
 
 # Abbreviations
 # Azure
-abbr az_subi 'az account list | jq -r \'.[] | [.id, .name] | join("\\t")\' | fzf | awk \'{print $1F}\' | xargs -t az account set --subscription'
+abbr azsub 'az account list | jq -r \'.[] | [.id, .name] | join("\\t")\' | fzf | awk \'{print $1F}\' | xargs -t az account set --subscription'
 
 # Brew
 abbr b brew
-abbr bdump 'brew bundle dump --file "$HOME"/Projects/dotfiles/brew/Brewfile --force'
 abbr bi 'brew install'
 abbr bl 'brew leaves'
 abbr blc 'brew list --cask -1'
-abbr bprune 'brew autoremove'
 abbr bsl 'brew services list'
-abbr buci 'brew list --cask -1 | fzf -m | tr \'\n\' \' \' | xargs -t brew uninstall --cask'
-abbr bui 'brew leaves | fzf -m | tr \'\n\' \' \' | xargs -t brew uninstall'
 abbr bup 'brew update && brew upgrade --ignore-pinned && brew cleanup && brew doctor'
+abbr brew_dump 'brew bundle dump --file "$HOME"/Projects/dotfiles/brew/Brewfile --force'
+abbr brew_prune 'brew autoremove'
 
 # Clipboard
 abbr P pbpaste
@@ -72,20 +75,20 @@ abbr Y pbcopy
 
 # Directories
 abbr - 'cd ..'
-abbr dirrmi 'du -hd 1 | fzf -m | awk \'{print $2}\' | xargs -t rm -rf'
-abbr dirsize 'du -h -d 1 | sort -hr'
+abbr dir_rmi 'du -hd 1 | fzf -m | awk \'{print $2}\' | xargs -t rm -rf'
+abbr dir_size 'du -h -d 1 | sort -hr'
 
 # Docker
 abbr doc docker
-abbr docstop 'docker stop (docker ps -a -q)'
-abbr docrm 'docker stop (docker ps -a -q) && docker rm (docker ps -a -q) && docker system prune --volumes -f'
-abbr docrmimage 'docker rmi -f (docker images -a -q)'
+abbr doc_rm 'docker stop (docker ps -a -q) && docker rm (docker ps -a -q) && docker system prune --volumes -f'
+abbr doc_rmi 'docker rmi -f (docker images -a -q)'
+abbr doc_stop 'docker stop (docker ps -a -q)'
 abbr docc docker-compose
 abbr docps 'docker ps -a'
 
 # Dotnet
 abbr d dotnet
-abbr dfmt 'dotnet format'
+abbr df 'dotnet format'
 abbr dfsi 'dotnet fsi'
 abbr dp 'dotnet publish'
 abbr dr 'dotnet run'
@@ -100,11 +103,23 @@ abbr enone 'nvim -u NONE'
 abbr er 'nvim -MR'
 
 # Files
-abbr c bat
+abbr fy 'rg --files | fzf | xargs -t cat | pbcopy'
 abbr l 'exa -al'
 abbr lt 'exa --tree --level 2'
 abbr rmi 'fd . --hidden --max-depth 1 --no-ignore | fzf -m | xargs -t -I % rm -rf "%"'
-abbr fyi 'rg --files | fzf | xargs -t cat | pbcopy'
+function preview -d "Preview directory/file"
+    if test -z "$argv" -o -d "$argv"
+        exa --tree --level 3 $argv
+    else
+        set -l ext (string match -r -- '[^.]+$' $argv)
+        if test -n "$ext" -a "$ext" = md
+            glow $argv
+        else
+            bat $argv
+        end
+    end
+end
+abbr p preview
 
 # Git
 abbr g git
@@ -135,8 +150,8 @@ abbr gunstage 'git reset HEAD --'
 abbr pc_run 'pre-commit run'
 
 # Keyboard
-abbr karabiner_config_dump 'cp "$HOME"/.config/karabiner/karabiner.json "$HOME"/Projects/dotfiles/karabiner'
-abbr karabiner_config_load 'cp "$HOME"/Projects/dotfiles/karabiner/karabiner.json "$HOME"/.config/karabiner/karabiner.json'
+abbr karabiner_dump 'cp "$HOME"/.config/karabiner/karabiner.json "$HOME"/Projects/dotfiles/karabiner'
+abbr karabiner_load 'cp "$HOME"/Projects/dotfiles/karabiner/karabiner.json "$HOME"/.config/karabiner/karabiner.json'
 
 # Makefile
 abbr m make
@@ -159,9 +174,9 @@ abbr yupgi 'yarn global upgrade-interactive'
 abbr yupi 'yarn upgrade-interactive'
 
 # PostgreSQL
-abbr pgup 'postgres -D /usr/local/var/postgres'
-abbr pgreset 'brew uninstall --ignore-dependencies postgresql && rm -rf /usr/local/var/postgres && brew install postgresql && /usr/local/bin/timescaledb_move.sh'
-abbr pgup 'brew postgresql-upgrade-database'
+abbr pg 'postgres -D /usr/local/var/postgres'
+abbr pg_reset 'brew uninstall --ignore-dependencies postgresql && rm -rf /usr/local/var/postgres && brew install postgresql && /usr/local/bin/timescaledb_move.sh'
+abbr pg_up 'brew postgresql-upgrade-database'
 
 # Processes
 abbr portl 'lsof -PiTCP | rg LISTEN'
@@ -171,12 +186,13 @@ abbr pip_uninstall_all 'pip freeze | xargs pip uninstall -y'
 abbr po poetry
 abbr posetup 'poetry init && poetry add --dev black mypy pylint'
 abbr py python
+abbr pys 'source venv/bin/activate.fish'
 abbr pysetup 'python3 -m venv venv && source venv/bin/activate.fish && pip install --upgrade pip && pip install -r requirements.txt && pip install black mypy pylint'
 
 # Pulumi
 abbr pu pulumi
-abbr pusdi 'pulumi stack export | jq -r \'.deployment.resources[].urn\' | fzf | xargs -t pulumi state delete'
-abbr pussi 'pulumi stack ls --json | jq -r \'.[].name\' | fzf | xargs -t pulumi stack select'
+abbr pusd 'pulumi stack export | jq -r \'.deployment.resources[].urn\' | fzf | xargs -t pulumi state delete'
+abbr puss 'pulumi stack ls --json | jq -r \'.[].name\' | fzf | xargs -t pulumi stack select'
 abbr puso 'pulumi stack output --show-secrets'
 abbr pud 'pulumi destroy'
 abbr puds 'pulumi destroy --skip-preview'
@@ -187,6 +203,7 @@ abbr puus 'pulumi up --skip-preview'
 
 # Shell
 abbr fp 'fish --private'
+abbr fish_reset 'rm -rf "$HOME"/.config/fish && cd "$HOME"/Projects/dotfiles && ./dotfiles link && fisher update'
 abbr hd 'history | fzf | history delete --case-sensitive --exact'
 abbr hdc 'history delete --contains'
 abbr s source
@@ -194,8 +211,8 @@ abbr sh_lint 'shfmt -f . | xargs -t -J % shellcheck -x %'
 
 # VSCode
 abbr c. 'code .'
-abbr code_ext_dump 'code --list-extensions > "$HOME/Library/Application Support/Code/User/extensions.txt"'
-abbr code_ext_install 'xargs <"$HOME/Library/Application Support/Code/User/extensions.txt" -L 1 code --force --install-extension'
+abbr code_dump 'code --list-extensions > "$HOME/Library/Application Support/Code/User/extensions.txt"'
+abbr code_install 'xargs <"$HOME/Library/Application Support/Code/User/extensions.txt" -L 1 code --force --install-extension'
 
 # Web Browser
 abbr webbrowser 'rm -rf /tmp/chrome_dev_test && /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --user-data-dir="/tmp/chrome_dev_test" --disable-web-security --incognito --no-first-run --new-window "http://localhost:4200"'
