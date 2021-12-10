@@ -12,5 +12,3 @@ brew update
 brew bundle install --file brew/Brewfile
 
 brew doctor
-
-"$(brew --prefix)"/opt/fzf/install --no-bash --no-zsh --no-completion --no-update-rc --key-bindings
