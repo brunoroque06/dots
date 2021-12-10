@@ -86,7 +86,15 @@ packer.startup(function()
 	})
 	use("github/copilot.vim")
 
-	use({ "nvim-telescope/telescope.nvim", requires = { { "nvim-lua/popup.nvim" }, { "nvim-lua/plenary.nvim" } } })
+	use({
+		"nvim-telescope/telescope.nvim",
+		requires = {
+			{ "nvim-lua/popup.nvim" },
+			{ "nvim-lua/plenary.nvim" },
+			{ "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
+			{ "jvgrootveld/telescope-zoxide" },
+		},
+	})
 
 	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
 
@@ -125,6 +133,7 @@ require("circles").setup({
 vim.g.neoformat_basic_format_trim = 1
 vim.g.shfmt_opt = "-i 0"
 
+-- https://github.com/sbdchd/neoformat/issues/134#issuecomment-347180213
 vim.api.nvim_exec(
 	[[
 augroup format
@@ -140,7 +149,7 @@ augroup format
   autocmd FileType sql set formatprg=pg_format
   autocmd FileType typescript set formatprg=prettier
   autocmd FileType yaml set formatprg=prettier
-  autocmd BufWritePre * undojoin | Neoformat
+  autocmd BufWritePre * try | undojoin | Neoformat | catch /^Vim\%((\a\+)\)\=:E790/ | finally | silent Neoformat | endtry
 augroup END
 ]],
 	false
@@ -199,6 +208,8 @@ require("telescope").setup({
 		},
 	},
 })
+require("telescope").load_extension("fzf")
+require("telescope").load_extension("zoxide")
 
 -- Treesitter
 require("nvim-treesitter.configs").setup({
@@ -243,6 +254,7 @@ vim.api.nvim_set_keymap("n", "<leader>g", ":Telescope live_grep<cr>", { noremap 
 vim.api.nvim_set_keymap("n", "<leader>h", ":lua vim.lsp.buf.hover()<cr>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<leader>H", ":Telescope help_tags<cr>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<leader>i", ":lua vim.lsp.buf.implementation()<cr>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<leader>l", ":Telescope zoxide list<cr>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<leader>m", ":Telescope marks<cr>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<leader>p", ":Telescope planets<cr>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<leader>q", ":quit<cr>", { noremap = true })
