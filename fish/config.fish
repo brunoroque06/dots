@@ -34,26 +34,41 @@ set -g fish_color_operator purple
 set -g fish_color_quote yellow
 set -g fish_color_redirection brblue
 
-# Ripgrep
-set -gx RIPGREP_CONFIG_PATH "$HOME"/.config/ripgreprc
-
 # Binds
 set -g fish_key_bindings fish_vi_key_bindings
 
 bind -M insert -k dc delete-char
+bind -M insert \ca _fzf_search_history
 bind -M insert \ce accept-autosuggestion
 bind -M insert \cf _fzf_search_directory
 bind -M insert \ci complete # \ci = <tab>
 bind -M insert \cl __zoxide_zi
-bind -M insert \cn history-prefix-search-forward
-bind -M insert \cp history-prefix-search-backward
-bind -M insert \cr _fzf_search_history
+bind -M insert \cn history-search-forward
+bind -M insert \cp history-search-backward
 bind -M insert \e\x7F backward-kill-word # \cw
 bind -M default -k dc forward-char
 
-# Zoxide
+# Editor
+set -gx EDITOR nvim
+set -gx VISUAL nvim
+
+# Completions
+complete -c pip -a '(__fish_complete_suffix .whl)' -n '__fish_seen_subcommand_from install'
+complete -c unzip -a '(__fish_complete_suffix .pex; __fish_complete_suffix .whl)'
+
+# Path
+fish_add_path -mp "$HOME"/.local/share/gem/ruby/3.0.0/bin /usr/local/opt/ruby/bin
+fish_add_path -amP /usr/local/sbin/ "$HOME"/.dotnet/tools /usr/local/opt/qt/bin
+
+# Ripgrep
+set -gx RIPGREP_CONFIG_PATH "$HOME"/.config/ripgreprc
+
+# Java
+set -gx JAVA_HOME /usr/local/opt/openjdk/libexec/openjdk.jdk/Contents/Home
+
+# FZF
+set -gx FZF_DEFAULT_OPTS '--border --height 50% --reverse --margin 1% --padding 1%'
 zoxide init fish | source
-set -gx _ZO_FZF_OPTS '--border=sharp --height 80% --reverse'
 
 # Abbreviations
 # Azure
@@ -80,11 +95,10 @@ abbr dir_size 'du -h -d 1 | sort -hr'
 
 # Docker
 abbr doc docker
-abbr doc_rm 'docker stop (docker ps -a -q) && docker rm (docker ps -a -q) && docker system prune --volumes -f'
-abbr doc_rmi 'docker rmi -f (docker images -a -q)'
-abbr doc_stop 'docker stop (docker ps -a -q)'
 abbr docc docker-compose
-abbr docps 'docker ps -a'
+abbr docker_rm 'docker stop (docker ps -a -q) && docker rm (docker ps -a -q) && docker system prune --volumes -f'
+abbr docker_rmi 'docker rmi -f (docker images -a -q)'
+abbr docker_stop 'docker stop (docker ps -a -q)'
 
 # Dotnet
 abbr d dotnet
@@ -106,6 +120,7 @@ abbr er 'nvim -MR'
 abbr fy 'rg --files | fzf | xargs -t cat | pbcopy'
 abbr l 'exa -al'
 abbr lt 'exa --tree --level 2'
+abbr rmd 'rm -rf'
 abbr rmi 'fd . --hidden --max-depth 1 --no-ignore | fzf -m | xargs -t -I % rm -rf "%"'
 function preview -d "Preview directory/file"
     if test -z "$argv" -o -d "$argv"
@@ -119,7 +134,7 @@ function preview -d "Preview directory/file"
         end
     end
 end
-abbr p preview
+alias p preview
 
 # Git
 abbr g git
@@ -132,8 +147,7 @@ abbr gconf 'git config --list --show-origin'
 abbr gf 'git fetch'
 abbr gfa 'git fetch --all'
 abbr gi lazygit
-abbr gl 'git log'
-abbr gla 'git log --all --decorate --graph --format=format:\'%Cblue%h %Creset- %Cgreen%ar %Creset%s %C(dim white)- %an %C(auto)%d\' -20'
+abbr gl 'git log --all --decorate --graph --format=format:\'%Cblue%h %Creset- %Cgreen%ar %Creset%s %C(dim white)- %an %C(auto)%d\' -20'
 abbr glp 'git log -p'
 abbr gm 'git merge'
 abbr gph 'git push'
@@ -147,31 +161,23 @@ abbr gs 'git status -s -u'
 abbr gsw 'git switch'
 abbr gswi 'git branch --all | fzf | tr -d \'*\' | awk \'{print $1F}\' | xargs -t git switch'
 abbr gunstage 'git reset HEAD --'
-abbr pc_run 'pre-commit run'
 
 # Keyboard
 abbr karabiner_dump 'cp "$HOME"/.config/karabiner/karabiner.json "$HOME"/Projects/dotfiles/karabiner'
 abbr karabiner_load 'cp "$HOME"/Projects/dotfiles/karabiner/karabiner.json "$HOME"/.config/karabiner/karabiner.json'
-
-# Makefile
-abbr m make
 
 # Network
 abbr scan 'nmap -sP 192.168.1.0/24'
 
 # Node.js
 abbr n npm
-abbr nci 'npm ci'
-abbr ni 'npm install'
-abbr nlg 'npm list -g --depth=0'
-abbr nr 'npm run'
-abbr nri 'cat package.json | jq -r \'.scripts | keys[]\' | fzf | xargs -t npm run'
+abbr nr 'cat package.json | jq -r \'.scripts | keys[]\' | fzf | xargs -t npm run'
 abbr ns 'cat package.json | jq \'.scripts\''
 abbr nupg 'npm update -g'
-abbr nupi 'npx npm-check-updates --deep -i'
+abbr nup 'npx npm-check-updates --deep -i'
 abbr y yarn
-abbr yupgi 'yarn global upgrade-interactive'
-abbr yupi 'yarn upgrade-interactive'
+abbr ygup 'yarn global upgrade-interactive'
+abbr yup 'yarn upgrade-interactive'
 
 # PostgreSQL
 abbr pg 'postgres -D /usr/local/var/postgres'
@@ -182,35 +188,30 @@ abbr pg_up 'brew postgresql-upgrade-database'
 abbr portl 'lsof -PiTCP | rg LISTEN'
 
 # Python
-abbr pip_uninstall_all 'pip freeze | xargs pip uninstall -y'
+abbr pip_uninstall 'pip freeze | xargs pip uninstall -y'
 abbr po poetry
-abbr posetup 'poetry init && poetry add --dev black mypy pylint'
+abbr poetry_setup 'poetry init && poetry add --dev black mypy pylint'
 abbr py python
 abbr pys 'source venv/bin/activate.fish'
-abbr pysetup 'python3 -m venv venv && source venv/bin/activate.fish && pip install --upgrade pip && pip install -r requirements.txt && pip install black mypy pylint'
+abbr python_setup 'python3 -m venv venv && source venv/bin/activate.fish && pip install --upgrade pip && pip install -r requirements.txt && pip install black mypy pylint'
 
 # Pulumi
 abbr pu pulumi
-abbr pusd 'pulumi stack export | jq -r \'.deployment.resources[].urn\' | fzf | xargs -t pulumi state delete'
-abbr puss 'pulumi stack ls --json | jq -r \'.[].name\' | fzf | xargs -t pulumi stack select'
-abbr puso 'pulumi stack output --show-secrets'
-abbr pud 'pulumi destroy'
-abbr puds 'pulumi destroy --skip-preview'
-abbr pup 'pulumi preview'
-abbr pur 'pulumi refresh'
-abbr puu 'pulumi up'
-abbr puus 'pulumi up --skip-preview'
+abbr puo 'pulumi stack output --show-secrets'
+abbr pus 'pulumi stack ls --json | jq -r \'.[].name\' | fzf | xargs -t pulumi stack select'
+abbr pulumi_delete 'pulumi stack export | jq -r \'.deployment.resources[].urn\' | fzf | xargs -t pulumi state delete'
 
 # Shell
 abbr fp 'fish --private'
 abbr fish_reset 'rm -rf "$HOME"/.config/fish && cd "$HOME"/Projects/dotfiles && ./dotfiles link && fisher update'
-abbr hd 'history | fzf | history delete --case-sensitive --exact'
-abbr hdc 'history delete --contains'
+abbr history_clean 'history delete -p cd -p code -p exa -p rm'
 abbr s source
-abbr sh_lint 'shfmt -f . | xargs -t -J % shellcheck -x %'
+
+# SSH
+abbr ssh_copy_id 'ssh-copy-id -i ~/.ssh/id_rsa.pub'
 
 # VSCode
-abbr c. 'code .'
+abbr c 'code .'
 abbr code_dump 'code --list-extensions > "$HOME/Library/Application Support/Code/User/extensions.txt"'
 abbr code_install 'xargs <"$HOME/Library/Application Support/Code/User/extensions.txt" -L 1 code --force --install-extension'
 
