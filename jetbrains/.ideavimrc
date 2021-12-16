@@ -63,6 +63,9 @@ nnoremap ]e ddp
 nnoremap [f :action MethodUp<cr>
 nnoremap ]f :action MethodDown<cr>
 
+sethandler <m-enter> a:vim
+nnoremap <m-enter> :action ShowIntentionActions<cr>
+
 nnoremap <leader>` :action ActivateTerminalToolWindow<cr>
 nnoremap <leader>a :action ShowIntentionActions<cr>
 nnoremap <leader>b :action RecentChangedFiles<cr>
