@@ -23,6 +23,7 @@ vim.o.relativenumber = true
 vim.o.signcolumn = "yes"
 vim.o.scrolloff = 8
 vim.o.showcmd = true
+vim.o.showmode = false
 vim.o.smartcase = true
 vim.o.termguicolors = true
 
@@ -63,7 +64,6 @@ packer.startup(function()
 	use("tpope/vim-vinegar")
 
 	use("EdenEast/nightfox.nvim")
-	use("ful1e5/onedark.nvim")
 	use("p00f/nvim-ts-rainbow")
 	use("hoob3rt/lualine.nvim")
 	use({ "lewis6991/gitsigns.nvim", requires = { "nvim-lua/plenary.nvim" } })
@@ -103,7 +103,6 @@ end)
 
 -- Appearance
 require("nightfox").load()
--- require("onedark").setup()
 
 vim.api.nvim_exec(
 	[[
@@ -122,12 +121,9 @@ require("lualine").setup({
 		theme = "nightfox",
 	},
 })
-vim.o.showmode = false
 
 require("gitsigns").setup()
-require("circles").setup({
-	lsp = false,
-})
+require("circles").setup()
 
 -- Format
 vim.g.neoformat_basic_format_trim = 1
@@ -239,6 +235,15 @@ vim.g["test#strategy"] = "neovim"
 vim.g["test#neovim#term_position"] = "vertical"
 
 -- Keymaps
+vim.api.nvim_exec("command! Reload source $MYVIMRC", false)
+
+vim.api.nvim_set_keymap("n", "==", ":Neoformat<cr>", { noremap = true })
+vim.api.nvim_set_keymap("n", "[d", ":lua vim.lsp.diagnostic.goto_prev()<cr>", { noremap = true })
+vim.api.nvim_set_keymap("n", "]d", ":lua vim.lsp.diagnostic.goto_next()<cr>", { noremap = true })
+
+vim.api.nvim_set_keymap("i", "<f1>", "<cmd>lua vim.lsp.buf.signature_help()<cr>", { noremap = true })
+
+vim.api.nvim_set_keymap("n", "<leader>`", ":terminal<cr>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<leader>a", ":Telescope lsp_code_actions<cr>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<leader>b", ":Telescope buffers<cr>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<leader>c", ":Telescope commands<cr>", { noremap = true })
@@ -268,15 +273,6 @@ vim.api.nvim_set_keymap("n", "<c-j>", "<c-w>j", { noremap = true })
 vim.api.nvim_set_keymap("n", "<c-k>", "<c-w>k", { noremap = true })
 vim.api.nvim_set_keymap("n", "<c-l>", "<c-w>l", { noremap = true })
 vim.api.nvim_set_keymap("n", "<c-h>", "<c-w>h", { noremap = true })
-
-vim.api.nvim_set_keymap("n", "<bs>", "<c-^>", { noremap = true })
-
-vim.api.nvim_set_keymap("n", "[d", ":lua vim.lsp.diagnostic.goto_prev()<cr>", { noremap = true })
-vim.api.nvim_set_keymap("n", "]d", ":lua vim.lsp.diagnostic.goto_next()<cr>", { noremap = true })
-
-vim.api.nvim_set_keymap("i", "<f1>", "<cmd>lua vim.lsp.buf.signature_help()<cr>", { noremap = true })
-
-vim.api.nvim_exec("command! Reload source $MYVIMRC", false)
 
 vim.api.nvim_exec(
 	[[

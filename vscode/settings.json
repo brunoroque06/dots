@@ -130,13 +130,6 @@
       "before": ["<c-w>", "L"],
       "commands": ["workbench.action.moveEditorToRightGroup"]
     },
-    {
-      "before": ["backspace"],
-      "commands": [
-        "workbench.action.openPreviousEditorFromHistory",
-        "workbench.action.acceptSelectedQuickOpenItem"
-      ]
-    },
     { "before": ["-"], "commands": ["breadcrumbs.focusAndSelect"] },
     {
       "before": ["[", "<space>"],

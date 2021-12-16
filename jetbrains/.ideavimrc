@@ -12,11 +12,14 @@ set showcmd
 set showmode
 set smartcase
 
+set ideajoin
+set ideamarks
+set idearefactormode=keep
+
 set commentary
 set highlightedyank
 set NERDTree
 set surround
-
 
 sethandler <c-2> a:vim
 sethandler <c-[> a:vim
@@ -45,7 +48,20 @@ sethandler <c-s> a:vim
 sethandler <c-t> a:vim
 sethandler <c-u> a:vim
 sethandler <c-v> a:vim
+sethandler <c-w> a:vim
 sethandler <f1> a:ide
+
+nnoremap - :action ShowNavBar<cr>
+nnoremap == :action ReformatCode<cr>
+nnoremap =i :action OptimizeImports<cr>
+nnoremap [<space> O<esc>j
+nnoremap ]<space> o<esc>k
+nnoremap [d :action GotoPreviousError<cr>
+nnoremap ]d :action GotoNextError<cr>
+nnoremap [e ddP
+nnoremap ]e ddp
+nnoremap [f :action MethodUp<cr>
+nnoremap ]f :action MethodDown<cr>
 
 nnoremap <leader>` :action ActivateTerminalToolWindow<cr>
 nnoremap <leader>a :action ShowIntentionActions<cr>
@@ -57,36 +73,21 @@ nnoremap <leader>g :action FindInPath<cr>
 nnoremap <leader>h :action ShowErrorDescription<cr>
 nnoremap <leader>i :action GotoImplementation<cr>
 nnoremap <leader>m :action ShowBookmarks<cr>
-nnoremap <leader>n :action NewElementSamePlace<cr>
 nnoremap <leader>q :quit<cr>
 nnoremap <leader>r :action Refactorings.QuickListPopupAction<cr>
-nnoremap <leader>s :split<cr>
+nnoremap <leader>s :action SplitHorizontally<cr>
 nnoremap <leader>t :action FileStructurePopup<cr>
 nnoremap <leader>u :action ShowUsages<cr>
+nnoremap <leader>v :action SplitVertically<cr>
 nnoremap <leader>z :action HideAllWindows<cr>
-nnoremap <leader>v :vsplit<cr>
 
 nnoremap <c-o> :action Back<cr>
 nnoremap <c-i> :action Forward<cr>
-
-nnoremap <c-w>J :action MoveTabDown<cr>
-nnoremap <c-w>L :action MoveTabRight<cr>
-nnoremap <c-w>r :action MoveEditorToOppositeTabGroup<cr>
 
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-l> <c-w>l
 nnoremap <c-h> <c-w>h
 
-nnoremap <bs> <c-s-6>
-
-nnoremap - :action ShowNavBar<cr>
-nnoremap == :action ReformatCode<cr>
-nnoremap [<space> O<esc>j
-nnoremap ]<space> o<esc>k
-nnoremap [b :action PreviousTab<cr>
-nnoremap ]b :action NextTab<cr>
-nnoremap [d :action GotoPreviousError<cr>
-nnoremap ]d :action GotoNextError<cr>
-nnoremap [e ddP
-nnoremap ]e ddp
+nnoremap <c-=> :action Unsplit<cr>
+nnoremap <c-m> :action MoveEditorToOppositeTabGroup<cr>
