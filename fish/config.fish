@@ -72,7 +72,8 @@ zoxide init fish | source
 
 # Abbreviations
 # Azure
-abbr azsub 'az account list | jq -r \'.[] | [.id, .name] | join("\\t")\' | fzf | awk \'{print $1F}\' | xargs -t az account set --subscription'
+abbr azao 'az account show --output table'
+abbr azas 'az account list | jq -r \'.[] | [.id, .name] | join("\\t")\' | fzf | awk \'{print $1F}\' | xargs -t az account set --subscription'
 
 # Brew
 abbr b brew
@@ -197,8 +198,10 @@ abbr python_setup 'python3 -m venv venv && source venv/bin/activate.fish && pip 
 
 # Pulumi
 abbr pu pulumi
+abbr pud 'pulumi destroy'
 abbr puo 'pulumi stack output --show-secrets'
 abbr pus 'pulumi stack ls --json | jq -r \'.[].name\' | fzf | xargs -t pulumi stack select'
+abbr puu 'pulumi up'
 abbr pulumi_delete 'pulumi stack export | jq -r \'.deployment.resources[].urn\' | fzf | xargs -t pulumi state delete'
 
 # Shell
@@ -216,4 +219,4 @@ abbr code_dump 'code --list-extensions > "$HOME/Library/Application Support/Code
 abbr code_install 'xargs <"$HOME/Library/Application Support/Code/User/extensions.txt" -L 1 code --force --install-extension'
 
 # Web Browser
-abbr webbrowser 'rm -rf /tmp/chrome_dev_test && /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --user-data-dir="/tmp/chrome_dev_test" --disable-web-security --incognito --no-first-run --new-window "http://localhost:4200"'
+abbr web_browser 'rm -rf /tmp/chrome_dev_test && /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --user-data-dir="/tmp/chrome_dev_test" --disable-web-security --incognito --no-first-run --new-window "http://localhost:4200"'

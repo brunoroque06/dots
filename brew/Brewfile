@@ -37,7 +37,7 @@ brew "potrace"
 brew "pre-commit"
 brew "prettier"
 brew "pulumi"
-brew "python@3.9"
+brew "python@3.10"
 brew "qt@5", link: true
 brew "ripgrep"
 brew "ruby"
