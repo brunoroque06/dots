@@ -163,10 +163,6 @@ abbr gsw 'git switch'
 abbr gswi 'git branch --all | fzf | tr -d \'*\' | awk \'{print $1F}\' | xargs -t git switch'
 abbr gunstage 'git reset HEAD --'
 
-# Keyboard
-abbr karabiner_dump 'cp "$HOME"/.config/karabiner/karabiner.json "$HOME"/Projects/dotfiles/karabiner'
-abbr karabiner_load 'cp "$HOME"/Projects/dotfiles/karabiner/karabiner.json "$HOME"/.config/karabiner/karabiner.json'
-
 # Network
 abbr scan 'nmap -sP 192.168.1.0/24'
 

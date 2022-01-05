@@ -91,10 +91,6 @@ edit:small-word-abbr['gs'] = 'git status -s'
 edit:small-word-abbr['gunstage'] = 'git reset HEAD --'
 fn g [@a]{ git $@a }
 
-# Keyboard
-fn karabiner-dump { cp ~/.config/karabiner/karabiner.json ~/Projects/dotfiles/karabiner }
-fn karabiner-load { cp ~/Projects/dotfiles/karabiner/karabiner.json ~/.config/karabiner/karabiner.json }
-
 # Makefile
 fn m [@a]{ make $@a }
 
