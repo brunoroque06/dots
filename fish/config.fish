@@ -186,7 +186,7 @@ abbr pg_reset 'brew uninstall --ignore-dependencies postgresql && rm -rf /usr/lo
 abbr pg_up 'brew postgresql-upgrade-database'
 
 # Processes
-abbr portl 'lsof -PiTCP | rg LISTEN'
+abbr ports 'lsof -PiTCP -sTCP:LISTEN'
 
 # Python
 abbr pip_uninstall 'pip freeze | xargs pip uninstall -y'

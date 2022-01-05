@@ -147,8 +147,6 @@
       "before": ["]", "b"],
       "commands": ["workbench.action.openNextRecentlyUsedEditorInGroup"]
     },
-    { "before": ["[", "d"], "commands": ["editor.action.marker.previous"] },
-    { "before": ["]", "d"], "commands": ["editor.action.marker.next"] },
     { "before": ["[", "e"], "after": ["d", "d", "k", "P"] },
     { "before": ["]", "e"], "after": ["d", "d", "p"] },
     {
