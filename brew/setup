@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-source utility/command.sh
+is_command_not_in_path() { ! [ -x "$(command -v "$1")" ]; }
 
 if is_command_not_in_path brew; then
 	printf 'Installing brew...\n'
