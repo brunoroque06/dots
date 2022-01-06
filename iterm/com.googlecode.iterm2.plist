@@ -836,6 +836,8 @@ Open Selection</string>
 				<key>Red Component</key>
 				<real>1</real>
 			</dict>
+			<key>Brighten Bold Text</key>
+			<true/>
 			<key>Character Encoding</key>
 			<integer>4</integer>
 			<key>Close Sessions On End</key>
@@ -1310,6 +1312,10 @@ Open Selection</string>
 			<key>Use Italic Font</key>
 			<true/>
 			<key>Use Non-ASCII Font</key>
+			<true/>
+			<key>Use Tab Color</key>
+			<false/>
+			<key>Use Underline Color</key>
 			<false/>
 			<key>Vertical Spacing</key>
 			<real>1</real>
@@ -1375,7 +1381,7 @@ Open Selection</string>
 	<key>SoundForEsc</key>
 	<false/>
 	<key>SplitPaneDimmingAmount</key>
-	<real>0.14697341157636012</real>
+	<real>0.1037135846199167</real>
 	<key>StatusBarPosition</key>
 	<integer>1</integer>
 	<key>SwitchPaneModifier</key>
@@ -1383,7 +1389,7 @@ Open Selection</string>
 	<key>SwitchWindowModifier</key>
 	<integer>9</integer>
 	<key>TabStyleWithAutomaticOption</key>
-	<integer>4</integer>
+	<integer>6</integer>
 	<key>TabViewType</key>
 	<integer>0</integer>
 	<key>TabsHaveCloseButton</key>
@@ -1402,5 +1408,7 @@ Open Selection</string>
 	<true/>
 	<key>findMode_iTerm</key>
 	<integer>0</integer>
+	<key>metalMaximizeThroughput</key>
+	<true/>
 </dict>
 </plist>

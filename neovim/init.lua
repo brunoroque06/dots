@@ -73,12 +73,6 @@ require("packer").startup(function()
 	use("tpope/vim-vinegar")
 
 	use({
-		"EdenEast/nightfox.nvim",
-		config = function()
-			-- require("nightfox").load()
-		end,
-	})
-	use({
 		"rebelot/kanagawa.nvim",
 		config = function()
 			require("kanagawa").load()
