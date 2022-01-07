@@ -57,14 +57,7 @@ if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
 end
 
 require("packer").startup(function()
-	use({
-		"wbthomason/packer.nvim",
-		config = {
-			display = {
-				open_cmd = "50vnew \\[packer\\]",
-			},
-		},
-	})
+	use("wbthomason/packer.nvim")
 
 	use("blackCauldron7/surround.nvim")
 	use("tpope/vim-commentary")
@@ -87,6 +80,15 @@ require("packer").startup(function()
 					component_separators = { "", "" },
 					section_separators = { "", "" },
 					theme = "kanagawa",
+				},
+				sections = {
+					lualine_c = {
+						{
+							"filename",
+							file_status = true,
+							path = 1,
+						},
+					},
 				},
 			})
 		end,
@@ -145,7 +147,7 @@ require("packer").startup(function()
 
 	use({
 		"neovim/nvim-lspconfig",
-		run = "npm install -g bash-language-server dockerfile-language-server-nodejs pyright typescript typescript-language-server vscode-langservers-extracted yaml-language-server",
+		run = "npm install -g bash-language-server dockerfile-language-server-nodejs pyright typescript typescript-language-server vscode-langservers-extracted yaml-language-server && npm update -g",
 		config = function()
 			require("lspconfig").bashls.setup({})
 			require("lspconfig").dockerls.setup({})

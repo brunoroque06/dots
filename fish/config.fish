@@ -72,8 +72,8 @@ zoxide init fish | source
 
 # Abbreviations
 # Azure
-abbr azao 'az account show --output table'
-abbr azas 'az account list | jq -r \'.[] | [.id, .name] | join("\\t")\' | fzf | awk \'{print $1F}\' | xargs -t az account set --subscription'
+abbr azas 'az account show --output table'
+abbr aza_set 'az account list | jq -r \'.[] | [.id, .name] | join("\\t")\' | fzf | awk \'{print $1F}\' | xargs -t az account set --subscription'
 
 # Brew
 abbr b brew
@@ -198,7 +198,7 @@ abbr pud 'pulumi destroy'
 abbr puo 'pulumi stack output --show-secrets'
 abbr pus 'pulumi stack ls --json | jq -r \'.[].name\' | fzf | xargs -t pulumi stack select'
 abbr puu 'pulumi up'
-abbr pulumi_delete 'pulumi stack export | jq -r \'.deployment.resources[].urn\' | fzf | xargs -t pulumi state delete'
+abbr pulumi_state_delete 'pulumi stack export | jq -r \'.deployment.resources[].urn\' | fzf | xargs -t pulumi state delete'
 
 # Shell
 abbr fp 'fish --private'

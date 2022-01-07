@@ -39,7 +39,7 @@ set edit:command:binding['s'] = { edit:move-dot-right; edit:kill-rune-left; edit
 set edit:command:binding['x'] = { edit:move-dot-right; edit:kill-rune-left }
 
 # Azure
-fn az-subi { az account list | from-json | drop 0 (one) | each {|s| put [&to-filter=$s[name] &to-accept=$s[id] &to-show=(if (eq $s[isDefault] $true) { put (styled $s[name] green) } else { put $s[name] })] } | edit:listing:start-custom [(all)] &caption='Azure Subscription' &accept={|s| az account set --subscription $s > /dev/tty } }
+fn az-account-set { az account list | from-json | drop 0 (one) | each {|s| put [&to-filter=$s[name] &to-accept=$s[id] &to-show=(if (eq $s[isDefault] $true) { put (styled $s[name] green) } else { put $s[name] })] } | edit:listing:start-custom [(all)] &caption='Azure Subscription' &accept={|s| az account set --subscription $s > /dev/tty } }
 
 # Brew
 set edit:small-word-abbr['bi'] = 'brew install'
