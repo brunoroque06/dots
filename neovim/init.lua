@@ -59,7 +59,12 @@ end
 require("packer").startup(function()
 	use("wbthomason/packer.nvim")
 
-	use("blackCauldron7/surround.nvim")
+	use({
+		"blackCauldron7/surround.nvim",
+		config = function()
+			require("surround").setup({ mappings_style = "surround" })
+		end,
+	})
 	use("tpope/vim-commentary")
 	use("tpope/vim-repeat")
 	use("tpope/vim-unimpaired")

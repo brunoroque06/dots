@@ -118,6 +118,9 @@ abbr enone 'nvim -u NONE'
 abbr er 'nvim -MR'
 
 # Files
+function backup -d "Backup file"
+    cp $argv "$HOME/Library/Mobile Documents/com~apple~CloudDocs/"
+end
 abbr fy 'rg --files | fzf | xargs -t cat | pbcopy'
 abbr l 'exa -al'
 abbr lt 'exa --tree --level 2'
