@@ -6,8 +6,10 @@ install() {
 	./brew/setup
 
 	SH=/opt/homebrew/bin/bash
-	grep -qxF $SH /etc/shells || printf '%s\n' "$SH" | sudo tee -a /etc/shells
+	grep -qxF $SH /etc/shells || echo $SH | sudo tee -a /etc/shells
 	chsh -s $SH
+
+	echo "export PATH=/opt/homebrew/bin:$PATH" >~/.bash_profile
 }
 
 link() {
