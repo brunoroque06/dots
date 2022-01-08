@@ -6,7 +6,7 @@ install() {
 	./brew/setup
 
 	SH=/opt/homebrew/bin/bash
-	grep -qxF $SH /etc/shells || printf "$SH\n" | sudo tee -a /etc/shells
+	grep -qxF $SH /etc/shells || printf '%s\n' "$SH" | sudo tee -a /etc/shells
 	chsh -s $SH
 }
 
