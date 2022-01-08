@@ -8,7 +8,7 @@ set -gx VISUAL nvim
 complete -c pip -a '(__fish_complete_suffix .whl)' -n '__fish_seen_subcommand_from install'
 complete -c unzip -a '(__fish_complete_suffix .pex; __fish_complete_suffix .whl)'
 
-set -g fish_user_paths /opt/homebrew/bin/ "$HOME"/.pyenv/shims "$HOME"/.local/share/gem/ruby/3.0.0/bin $fish_user_paths "$HOME"/.dotnet/tools
+set -g fish_user_paths /opt/homebrew/bin/ "$HOME"/.pyenv/shims $fish_user_paths "$HOME"/.dotnet/tools
 
 # Theme
 set -g hydro_color_duration normal

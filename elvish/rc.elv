@@ -10,8 +10,6 @@ set E:RIPGREP_CONFIG_PATH = ~/.config/ripgreprc
 
 set paths = [
   /opt/homebrew/bin/
-  ~/.local/share/gem/ruby/3.0.0/bin
-  /usr/local/opt/ruby/bin
   /usr/local/bin
   /usr/local/sbin
   /usr/bin
