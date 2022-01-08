@@ -8,10 +8,7 @@ set -gx VISUAL nvim
 complete -c pip -a '(__fish_complete_suffix .whl)' -n '__fish_seen_subcommand_from install'
 complete -c unzip -a '(__fish_complete_suffix .pex; __fish_complete_suffix .whl)'
 
-# Java
-set -gx JAVA_HOME /usr/local/opt/openjdk/libexec/openjdk.jdk/Contents/Home
-
-set -g fish_user_paths "$HOME"/.pyenv/shims "$HOME"/.local/share/gem/ruby/3.0.0/bin /usr/local/opt/ruby/bin $fish_user_paths /usr/local/sbin/ "$HOME"/.dotnet/tools /usr/local/opt/qt/bin
+set -g fish_user_paths /opt/homebrew/bin/ "$HOME"/.pyenv/shims "$HOME"/.local/share/gem/ruby/3.0.0/bin $fish_user_paths "$HOME"/.dotnet/tools
 
 # Theme
 set -g hydro_color_duration normal

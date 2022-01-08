@@ -9,6 +9,7 @@ set E:VISUAL = 'nvim'
 set E:RIPGREP_CONFIG_PATH = ~/.config/ripgreprc
 
 set paths = [
+  /opt/homebrew/bin/
   ~/.local/share/gem/ruby/3.0.0/bin
   /usr/local/opt/ruby/bin
   /usr/local/bin
@@ -19,7 +20,6 @@ set paths = [
   /sbin
   /usr/local/share/dotnet
   ~/.dotnet/tools
-  /usr/local/opt/qt/bin
 ]
 
 set edit:prompt = { styled (tilde-abbr $pwd) blue; put (styled ' Λ ' magenta) }
