@@ -1,3 +1,8 @@
+set -g fish_user_paths "$HOME"/.pyenv/shims /opt/homebrew/bin/ $fish_user_paths "$HOME"/.dotnet/tools
+
+pyenv init - | source
+zoxide init fish | source
+
 set -g fish_greeting Oo
 
 # Editor
@@ -7,8 +12,6 @@ set -gx VISUAL nvim
 # Completions
 complete -c pip -a '(__fish_complete_suffix .whl)' -n '__fish_seen_subcommand_from install'
 complete -c unzip -a '(__fish_complete_suffix .pex; __fish_complete_suffix .whl)'
-
-set -g fish_user_paths /opt/homebrew/bin/ "$HOME"/.pyenv/shims $fish_user_paths "$HOME"/.dotnet/tools
 
 # Theme
 set -g hydro_color_duration normal
@@ -51,8 +54,6 @@ set -gx VISUAL nvim
 complete -c pip -a '(__fish_complete_suffix .whl)' -n '__fish_seen_subcommand_from install'
 complete -c unzip -a '(__fish_complete_suffix .pex; __fish_complete_suffix .whl)'
 
-pyenv init - | source
-
 # Bat
 set -gx BAT_STYLE auto
 set -gx BAT_THEME 1337
@@ -60,12 +61,8 @@ set -gx BAT_THEME 1337
 # Ripgrep
 set -gx RIPGREP_CONFIG_PATH "$HOME"/.config/ripgreprc
 
-# Java
-set -gx JAVA_HOME /usr/local/opt/openjdk/libexec/openjdk.jdk/Contents/Home
-
 # FZF
 set -gx FZF_DEFAULT_OPTS '--border --height 50% --reverse --margin 1% --padding 1%'
-zoxide init fish | source
 
 # Abbreviations
 # Azure
@@ -186,11 +183,9 @@ abbr ports 'lsof -PiTCP -sTCP:LISTEN'
 
 # Python
 abbr pip_uninstall 'pip freeze | xargs pip uninstall -y'
-abbr po poetry
-abbr poetry_setup 'poetry init && poetry add --dev black mypy pylint'
 abbr py python
 abbr pys 'source venv/bin/activate.fish'
-abbr python_setup 'python3 -m venv venv && source venv/bin/activate.fish && pip install --upgrade pip && pip install -r requirements.txt && pip install black mypy pylint'
+abbr python_setup 'pyenv shell 3.10.1 && python -m venv venv && source venv/bin/activate.fish && pip install -r requirements.txt'
 
 # Pulumi
 abbr pu pulumi

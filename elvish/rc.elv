@@ -9,6 +9,7 @@ set E:VISUAL = 'nvim'
 set E:RIPGREP_CONFIG_PATH = ~/.config/ripgreprc
 
 set paths = [
+  "$HOME"/.pyenv/shims
   /opt/homebrew/bin/
   /usr/local/bin
   /usr/local/sbin
@@ -118,8 +119,6 @@ fn pg-reset { brew uninstall --ignore-dependencies postgresql; rm -rf /usr/local
 fn pg-upgrade { brew postgresql-upgrade-database }
 
 # Python
-set edit:small-word-abbr['po'] = 'poetry'
-set edit:small-word-abbr['posetup'] = 'poetry init; poetry add --dev black mypy pylint'
 set edit:small-word-abbr['py'] = 'python'
 
 # Pulumi
