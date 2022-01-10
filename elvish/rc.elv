@@ -28,7 +28,7 @@ set edit:insert:binding["Ctrl-["] = { edit:command:start }
 set edit:insert:binding['Ctrl-f'] = { edit:navigation:start }
 set edit:insert:binding['Ctrl-l'] = { edit:location:start }
 set edit:insert:binding['Ctrl-o'] = { edit:lastcmd:start }
-set edit:insert:binding['Ctrl-r'] = { edit:histlist:start }
+set edit:insert:binding['Ctrl-a'] = { edit:histlist:start }
 
 set edit:command:binding['a'] = { edit:move-dot-right; edit:close-mode }
 set edit:command:binding['A'] = { edit:move-dot-eol; edit:close-mode }

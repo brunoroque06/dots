@@ -39,11 +39,11 @@ bind -M insert -k dc delete-char
 bind -M insert \ca _fzf_search_history
 bind -M insert \ce accept-autosuggestion
 bind -M insert \cf _fzf_search_directory
-bind -M insert \ci complete # \ci = <tab>
 bind -M insert \cl __zoxide_zi
 bind -M insert \cn history-search-forward
 bind -M insert \cp history-search-backward
 bind -M insert \e\x7F backward-kill-word # \cw
+bind -M insert \t complete-and-search
 bind -M default -k dc forward-char
 
 # Editor
