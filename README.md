@@ -17,4 +17,5 @@ Supported: macOS.
 
 ## Keep In Mind
 
+- [GNU Readlines Keyboard Shortcuts](https://en.wikipedia.org/wiki/GNU_Readline)
 - [Mac Keyboard Shortcuts](https://support.apple.com/en-us/HT201236)

@@ -5,8 +5,11 @@ zoxide init fish | source
 
 set -g fish_greeting Oo
 
-# Editor
+set -gx BAT_STYLE auto
+set -gx BAT_THEME 1337
 set -gx EDITOR nvim
+set -gx FZF_DEFAULT_OPTS '--border --height 50% --reverse --margin 1% --padding 1%'
+set -gx RIPGREP_CONFIG_PATH "$HOME"/.config/ripgreprc
 set -gx VISUAL nvim
 
 # Completions
@@ -36,33 +39,15 @@ set -g fish_color_redirection brblue
 set -g fish_key_bindings fish_vi_key_bindings
 
 bind -M insert -k dc delete-char
-bind -M insert \ca _fzf_search_history
 bind -M insert \ce accept-autosuggestion
 bind -M insert \cf _fzf_search_directory
 bind -M insert \cl __zoxide_zi
 bind -M insert \cn history-search-forward
 bind -M insert \cp history-search-backward
+bind -M insert \cr _fzf_search_history
 bind -M insert \e\x7F backward-kill-word # \cw
 bind -M insert \t complete-and-search
 bind -M default -k dc forward-char
-
-# Editor
-set -gx EDITOR nvim
-set -gx VISUAL nvim
-
-# Completions
-complete -c pip -a '(__fish_complete_suffix .whl)' -n '__fish_seen_subcommand_from install'
-complete -c unzip -a '(__fish_complete_suffix .pex; __fish_complete_suffix .whl)'
-
-# Bat
-set -gx BAT_STYLE auto
-set -gx BAT_THEME 1337
-
-# Ripgrep
-set -gx RIPGREP_CONFIG_PATH "$HOME"/.config/ripgreprc
-
-# FZF
-set -gx FZF_DEFAULT_OPTS '--border --height 50% --reverse --margin 1% --padding 1%'
 
 # Abbreviations
 # Azure
@@ -190,8 +175,8 @@ abbr python_setup 'pyenv shell 3.10.1 && python -m venv venv && source venv/bin/
 # Pulumi
 abbr pu pulumi
 abbr pud 'pulumi destroy'
-abbr puo 'pulumi stack output --show-secrets'
-abbr pus 'pulumi stack ls --json | jq -r \'.[].name\' | fzf | xargs -t pulumi stack select'
+abbr puso 'pulumi stack output --show-secrets'
+abbr puss 'pulumi stack ls --json | jq -r \'.[].name\' | fzf | xargs -t pulumi stack select'
 abbr puu 'pulumi up'
 abbr pulumi_state_delete 'pulumi stack export | jq -r \'.deployment.resources[].urn\' | fzf | xargs -t pulumi state delete'
 
