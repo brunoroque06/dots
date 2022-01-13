@@ -1,7 +1,7 @@
-set -g fish_user_paths "$HOME"/.pyenv/shims /opt/homebrew/bin/ $fish_user_paths "$HOME"/.dotnet/tools
+set -g fish_user_paths /opt/homebrew/bin/ $fish_user_paths "$HOME"/.dotnet/tools
 
-pyenv init - | source
 zoxide init fish | source
+source /opt/homebrew/opt/asdf/libexec/asdf.fish
 
 set -g fish_greeting Oo
 
@@ -46,7 +46,7 @@ bind -M insert \cn history-search-forward
 bind -M insert \cp history-search-backward
 bind -M insert \cr _fzf_search_history
 bind -M insert \e\x7F backward-kill-word # \cw
-bind -M insert \t complete-and-search
+bind -M insert \t complete
 bind -M default -k dc forward-char
 
 # Abbreviations
@@ -69,7 +69,6 @@ abbr P pbpaste
 abbr Y pbcopy
 
 # Directories
-abbr - 'cd ..'
 abbr dir_rmi 'du -hd 1 | fzf -m | awk \'{print $2}\' | xargs -t rm -rf'
 abbr dir_size 'du -h -d 1 | sort -hr'
 
@@ -170,7 +169,7 @@ abbr ports 'lsof -PiTCP -sTCP:LISTEN'
 abbr pip_uninstall 'pip freeze | xargs pip uninstall -y'
 abbr py python
 abbr pys 'source venv/bin/activate.fish'
-abbr python_setup 'pyenv shell 3.10.1 && python -m venv venv && source venv/bin/activate.fish && pip install -r requirements.txt'
+abbr python_setup 'asdf shell python 3.9.9 && python -m venv venv && source venv/bin/activate.fish && pip install -r requirements.txt'
 
 # Pulumi
 abbr pu pulumi
