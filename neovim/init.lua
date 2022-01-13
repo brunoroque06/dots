@@ -1,4 +1,4 @@
-vim.g.netrw_banner = 0
+vim.g.netrw_banner = true
 vim.g.netrw_liststyle = 1
 vim.g.netrw_preview = 1
 
@@ -131,6 +131,7 @@ require("packer").startup(function()
 				[[
 				augroup format
 				  autocmd!
+				  autocmd FileType bzl set formatprg=buildifier
 				  autocmd FileType css set formatprg=prettier
 				  autocmd FileType html set formatprg=prettier
 				  autocmd FileType javascript set formatprg=prettier
@@ -267,6 +268,14 @@ require("packer").startup(function()
 			vim.g["test#neovim#term_position"] = "vertical"
 		end,
 	})
+
+	use({
+		"TimUntersberger/neogit",
+		requires = "nvim-lua/plenary.nvim",
+		config = function()
+			require("neogit").setup({ kind = "tab" })
+		end,
+	})
 end)
 
 vim.api.nvim_exec("command! Reload source $MYVIMRC", false)
@@ -307,51 +316,3 @@ vim.api.nvim_set_keymap("n", "<c-j>", "<c-w>j", { noremap = true })
 vim.api.nvim_set_keymap("n", "<c-k>", "<c-w>k", { noremap = true })
 vim.api.nvim_set_keymap("n", "<c-l>", "<c-w>l", { noremap = true })
 vim.api.nvim_set_keymap("n", "<c-h>", "<c-w>h", { noremap = true })
-
-vim.api.nvim_exec(
-	[[
-function! KeepInMind()
-	echo "# Command"
-	echo "q:"
-
-	echo "\n# Edit"
-	echo ":reg"
-	echo "J \t => join lines"
-	echo "<c-a/x> \t => increment/decrement"
-	echo "q<letter><commands>q \t => register macro"
-	echo "<number>@<letter> \t => use macro"
-	echo ":g/pattern/command"
-	echo ":read !pwd \t => write output"
-
-	echo "\n# Motion"
-	echo "ge => be"
-	echo ":changes"
-	echo "g; => p change"
-	echo "g, => n change"
-	echo ":jumps"
-	echo "c-o \t => p jump"
-	echo "c-i \t => n jump"
-	echo "c-s-6 \t => switch files"
-	echo "`` '' \t => switch jump"
-	echo ":marks"
-	echo "zz \t => center"
-	echo "* \t => search word cursor"
-	echo "% \t => match parenthesis"
-	echo "{ \t => paragraph"
-	echo "( \t => sentence"
-
-	echo "\n# Split"
-	echo "<c-w>JLHK => move splits"
-	echo "<c-w>= => even splits"
-
-	echo "\n# Visual"
-	echo "gv \t => last visual"
-	echo "o \t => switch visual end"
-	echo "vab \t => block ()"
-	echo "vaB \t => block {}"
-	echo "> \t => shift text"
-	echo "\n"
-endfunction
-]],
-	false
-)
