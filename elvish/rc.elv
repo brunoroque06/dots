@@ -38,7 +38,7 @@ set edit:command:binding['I'] = { edit:move-dot-sol; edit:close-mode }
 set edit:command:binding['s'] = { edit:move-dot-right; edit:kill-rune-left; edit:close-mode }
 set edit:command:binding['x'] = { edit:move-dot-right; edit:kill-rune-left }
 
-eval (carapace _carapace | slurp)
+# eval (carapace _carapace | slurp)
 
 # if (path:is-regular &follow-symlink=$true ~/.elvish/lib/asdf.elv | not (one)) {
 #   mkdir -p ~/.elvish/lib
@@ -66,12 +66,12 @@ fn docker-rm-image { docker rmi -f (docker images -a -q) }
 fn docker-stop-container { docker stop (docker ps -a -q) }
 
 # Dotnet
-set edit:small-word-abbr['dot'] = 'dotnet'
-set edit:small-word-abbr['dotfmt'] = 'dotnet format'
-set edit:small-word-abbr['dotfsi'] = 'dotnet fsi'
-set edit:small-word-abbr['dotr'] = 'dotnet run'
-set edit:small-word-abbr['dott'] = 'dotnet test'
-set edit:small-word-abbr['dotup'] = 'dotnet outdated --upgrade'
+set edit:small-word-abbr['d'] = 'dotnet'
+set edit:small-word-abbr['df'] = 'dotnet format'
+set edit:small-word-abbr['dfsi'] = 'dotnet fsi'
+set edit:small-word-abbr['dr'] = 'dotnet run'
+set edit:small-word-abbr['dt'] = 'dotnet test'
+set edit:small-word-abbr['dtup'] = 'dotnet outdated --upgrade'
 fn dotnet-tool-up { dotnet tool list -g | from-lines | drop 2 | each {|l| str:split ' ' $l | take 1 } | each {|l| dotnet tool update -g $l }}
 
 # Edit
@@ -85,7 +85,7 @@ set edit:small-word-abbr['l'] = 'exa -al'
 fn dir-size { du -h -d 1 | sort -hr }
 fn file-backup {|f| cp $f "$HOME/Library/Mobile Documents/com~apple~CloudDocs/" }
 fn file-rmrf { fd . --hidden --max-depth 1 --no-ignore | from-lines | each {|f| put [&to-filter=$f &to-accept=$f &to-show=$f] } | edit:listing:start-custom [(all)] &caption='Remove File' &accept={|f| rm -rf $f } }
-fn file-yi { rg --files | from-lines | each {|f| put [&to-filter=$f &to-accept=$f &to-show=$f] } | edit:listing:start-custom [(all)] &caption='Yank File' &accept={|f| cat $f | pbcopy } }
+fn file-yank { rg --files | from-lines | each {|f| put [&to-filter=$f &to-accept=$f &to-show=$f] } | edit:listing:start-custom [(all)] &caption='Yank File' &accept={|f| cat $f | pbcopy } }
 fn p {|p|
   if (path:is-dir $p) {
     exa --tree --level 3 $p

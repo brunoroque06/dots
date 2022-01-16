@@ -92,7 +92,7 @@ abbr dup 'dotnet outdated --upgrade'
 # Edit
 abbr e nvim
 abbr ed 'nvim -d'
-abbr enone 'nvim -u NONE'
+abbr en 'nvim -u NONE'
 abbr er 'nvim -MR'
 
 # Files
@@ -153,9 +153,6 @@ abbr nr 'cat package.json | jq -r \'.scripts | keys[]\' | fzf | xargs -t npm run
 abbr ns 'cat package.json | jq \'.scripts\''
 abbr nupg 'npm update -g'
 abbr nup 'npx npm-check-updates --deep -i'
-abbr y yarn
-abbr ygup 'yarn global upgrade-interactive'
-abbr yup 'yarn upgrade-interactive'
 
 # PostgreSQL
 abbr pg 'postgres -D /usr/local/var/postgres'

@@ -76,6 +76,7 @@ require("packer").startup(function()
 			require("kanagawa").load()
 		end,
 	})
+
 	use("p00f/nvim-ts-rainbow")
 	use({
 		"hoob3rt/lualine.nvim",
@@ -153,16 +154,29 @@ require("packer").startup(function()
 
 	use({
 		"neovim/nvim-lspconfig",
-		run = "npm install -g bash-language-server dockerfile-language-server-nodejs pyright typescript typescript-language-server vscode-langservers-extracted yaml-language-server && npm update -g",
+		requires = { "williamboman/nvim-lsp-installer" },
+		run = function()
+			local servers = {
+				"bashls",
+				"dockerls",
+				"jsonls",
+				"pyright",
+				"tsserver",
+				"yamlls",
+			}
+
+			for _, server in pairs(servers) do
+				local _, s = require("nvim-lsp-installer").get_server(server)
+				s:install()
+			end
+		end,
 		config = function()
-			require("lspconfig").bashls.setup({})
-			require("lspconfig").dockerls.setup({})
-			require("lspconfig").jsonls.setup({})
-			require("lspconfig").pyright.setup({})
-			require("lspconfig").tsserver.setup({})
-			require("lspconfig").yamlls.setup({})
+			require("nvim-lsp-installer").on_server_ready(function(server)
+				server:setup({})
+			end)
 		end,
 	})
+
 	use({
 		"hrsh7th/nvim-cmp",
 		requires = {
@@ -170,6 +184,8 @@ require("packer").startup(function()
 			{ "hrsh7th/cmp-nvim-lsp" },
 			{ "hrsh7th/cmp-nvim-lua" },
 			{ "hrsh7th/cmp-path" },
+			{ "hrsh7th/cmp-vsnip" },
+			{ "hrsh7th/vim-vsnip" },
 		},
 		config = function()
 			local cmp = require("cmp")
@@ -197,12 +213,18 @@ require("packer").startup(function()
 						behavior = cmp.ConfirmBehavior.Insert,
 						select = true,
 					}),
+					["<tab>"] = cmp.mapping.select_next_item(),
 				},
 				sources = {
 					{ name = "buffer" },
 					{ name = "nvim_lsp" },
 					{ name = "nvim_lua" },
 					{ name = "path" },
+				},
+				snippet = {
+					expand = function(args)
+						vim.fn["vsnip#anonymous"](args.body)
+					end,
 				},
 			})
 		end,
