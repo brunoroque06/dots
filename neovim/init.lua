@@ -213,7 +213,6 @@ require("packer").startup(function()
 						behavior = cmp.ConfirmBehavior.Insert,
 						select = true,
 					}),
-					["<tab>"] = cmp.mapping.select_next_item(),
 				},
 				sources = {
 					{ name = "buffer" },
