@@ -56,10 +56,17 @@ nnoremap == :action ReformatCode<cr>
 nnoremap =i :action OptimizeImports<cr>
 nnoremap [<space> O<esc>j
 nnoremap ]<space> o<esc>k
+nnoremap [d GotoNextError
+nnoremap ]d GotoPreviousError
 nnoremap [e ddP
 nnoremap ]e ddp
 nnoremap [f :action MethodUp<cr>
 nnoremap ]f :action MethodDown<cr>
+nnoremap gd :action GotoDeclaration<cr>
+nnoremap gh :action ShowErrorDescription<cr>
+nnoremap gi :action GotoImplementation<cr>
+nnoremap gr :action ShowUsages<cr>
+nnoremap gt :action GotoTypeDeclaration<cr>
 
 sethandler <m-enter> a:vim
 nnoremap <m-enter> :action ShowIntentionActions<cr>
@@ -68,17 +75,13 @@ nnoremap <leader>` :action ActivateTerminalToolWindow<cr>
 nnoremap <leader>a :action ShowIntentionActions<cr>
 nnoremap <leader>b :action RecentChangedFiles<cr>
 nnoremap <leader>c :action GotoAction<cr>
-nnoremap <leader>d :action GotoDeclaration<cr>
 nnoremap <leader>f :action SearchEverywhere<cr>
 nnoremap <leader>g :action FindInPath<cr>
-nnoremap <leader>h :action ShowErrorDescription<cr>
-nnoremap <leader>i :action GotoImplementation<cr>
 nnoremap <leader>m :action ShowBookmarks<cr>
 nnoremap <leader>q :quit<cr>
 nnoremap <leader>r :action Refactorings.QuickListPopupAction<cr>
 nnoremap <leader>s :action SplitHorizontally<cr>
 nnoremap <leader>t :action FileStructurePopup<cr>
-nnoremap <leader>u :action ShowUsages<cr>
 nnoremap <leader>v :action SplitVertically<cr>
 nnoremap <leader>z :action HideAllWindows<cr>
 

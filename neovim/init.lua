@@ -161,6 +161,7 @@ require("packer").startup(function()
 				"dockerls",
 				"jsonls",
 				"pyright",
+				"sumneko_lua",
 				"tsserver",
 				"yamlls",
 			}
@@ -301,39 +302,36 @@ end)
 
 vim.api.nvim_exec("command! Reload source $MYVIMRC", false)
 
-vim.api.nvim_set_keymap("n", "==", ":Neoformat<cr>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<s-f2>", ":lua vim.lsp.diagnostic.goto_prev()<cr>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<f2>", ":lua vim.lsp.diagnostic.goto_next()<cr>", { noremap = true })
+vim.keymap.set("i", "<f1>", vim.lsp.buf.signature_help)
 
-vim.api.nvim_set_keymap("i", "<f1>", "<cmd>lua vim.lsp.buf.signature_help()<cr>", { noremap = true })
+vim.keymap.set("n", "==", ":Neoformat<cr>")
 
-vim.api.nvim_set_keymap("n", "<leader>`", ":terminal<cr>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>a", ":Telescope lsp_code_actions<cr>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>b", ":Telescope buffers<cr>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>c", ":Telescope commands<cr>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>d", ":lua vim.lsp.buf.definition()<cr>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>D", ":lua vim.lsp.buf.declaration()<cr>", { noremap = true })
-vim.api.nvim_set_keymap(
-	"n",
-	"<leader>f",
-	":lua require('telescope.builtin').find_files({hidden = true})<cr>",
-	{ noremap = true }
-)
-vim.api.nvim_set_keymap("n", "<leader>g", ":Telescope live_grep<cr>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>h", ":lua vim.lsp.buf.hover()<cr>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>H", ":Telescope help_tags<cr>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>i", ":lua vim.lsp.buf.implementation()<cr>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>l", ":Telescope zoxide list<cr>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>m", ":Telescope marks<cr>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>p", ":Telescope planets<cr>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>q", ":quit<cr>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>r", ":lua vim.lsp.buf.rename()<cr>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>s", ":split<cr>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>t", ":Telescope treesitter<cr>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>u", ":lua vim.lsp.buf.references()<cr>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>v", ":vsplit<cr>", { noremap = true })
+vim.keymap.set("n", "[d", vim.lsp.diagnostic.goto_prev)
+vim.keymap.set("n", "]d", vim.lsp.diagnostic.goto_next)
+vim.keymap.set("n", "gd", vim.lsp.buf.definition)
+vim.keymap.set("n", "gh", vim.lsp.buf.hover)
+vim.keymap.set("n", "gi", vim.lsp.buf.implementation)
+vim.keymap.set("n", "gr", ":Telescope lsp_references<cr>")
+vim.keymap.set("n", "gt", vim.lsp.buf.type_definition)
 
-vim.api.nvim_set_keymap("n", "<c-j>", "<c-w>j", { noremap = true })
-vim.api.nvim_set_keymap("n", "<c-k>", "<c-w>k", { noremap = true })
-vim.api.nvim_set_keymap("n", "<c-l>", "<c-w>l", { noremap = true })
-vim.api.nvim_set_keymap("n", "<c-h>", "<c-w>h", { noremap = true })
+vim.keymap.set("n", "<leader>`", ":terminal<cr>")
+vim.keymap.set("n", "<leader>a", ":Telescope lsp_code_actions<cr>")
+vim.keymap.set("n", "<leader>b", ":Telescope buffers<cr>")
+vim.keymap.set("n", "<leader>c", ":Telescope commands<cr>")
+vim.keymap.set("n", "<leader>d", ":Telescope diagnostics<cr>")
+vim.keymap.set("n", "<leader>f", ":lua require('telescope.builtin').find_files({hidden = true})<cr>")
+vim.keymap.set("n", "<leader>g", ":Telescope live_grep<cr>")
+vim.keymap.set("n", "<leader>h", ":Telescope help_tags<cr>")
+vim.keymap.set("n", "<leader>l", ":Telescope zoxide list<cr>")
+vim.keymap.set("n", "<leader>m", ":Telescope marks<cr>")
+vim.keymap.set("n", "<leader>p", ":Telescope planets<cr>")
+vim.keymap.set("n", "<leader>q", ":quit<cr>")
+vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename)
+vim.keymap.set("n", "<leader>s", ":split<cr>")
+vim.keymap.set("n", "<leader>t", ":Telescope treesitter<cr>")
+vim.keymap.set("n", "<leader>v", ":vsplit<cr>")
+
+vim.keymap.set("n", "<c-j>", "<c-w>j")
+vim.keymap.set("n", "<c-k>", "<c-w>k")
+vim.keymap.set("n", "<c-l>", "<c-w>l")
+vim.keymap.set("n", "<c-h>", "<c-w>h")
