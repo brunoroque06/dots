@@ -1,4 +1,4 @@
-# Dotfiles (Bruno Roque)
+# Dotfiles
 
 ## Installation
 

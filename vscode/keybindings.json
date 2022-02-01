@@ -20,22 +20,8 @@
     "when": "editorHasSignatureHelpProvider && editorTextFocus"
   },
   {
-    "key": "f2",
-    "command": "editor.action.marker.next",
-    "when": "editorTextFocus"
-  },
-  {
-    "key": "shift+f2",
-    "command": "editor.action.marker.prev",
-    "when": "editorTextFocus"
-  },
-  {
     "key": "cmd+,",
     "command": "workbench.action.openSettingsJson"
-  },
-  {
-    "key": "cmd+k",
-    "command": "workbench.action.openGlobalKeybindingsFile"
   },
   {
     "key": "ctrl+h",
@@ -60,6 +46,11 @@
   {
     "key": "left",
     "command": "breadcrumbs.focusPrevious",
+    "when": "breadcrumbsActive"
+  },
+  {
+    "key": "right",
+    "command": "breadcrumbs.focusNext",
     "when": "breadcrumbsActive"
   }
 ]

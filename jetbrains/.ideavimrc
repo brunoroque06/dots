@@ -56,8 +56,8 @@ nnoremap == :action ReformatCode<cr>
 nnoremap =i :action OptimizeImports<cr>
 nnoremap [<space> O<esc>j
 nnoremap ]<space> o<esc>k
-nnoremap [d GotoNextError
-nnoremap ]d GotoPreviousError
+nnoremap [d :action GotoNextError<cr>
+nnoremap ]d :action GotoPreviousError<cr>
 nnoremap [e ddP
 nnoremap ]e ddp
 nnoremap [f :action MethodUp<cr>
