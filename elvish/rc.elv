@@ -38,7 +38,7 @@ set edit:command:binding['I'] = { edit:move-dot-sol; edit:close-mode }
 set edit:command:binding['s'] = { edit:move-dot-right; edit:kill-rune-left; edit:close-mode }
 set edit:command:binding['x'] = { edit:move-dot-right; edit:kill-rune-left }
 
-# eval (carapace _carapace | slurp)
+eval (carapace _carapace | slurp) # https://github.com/rsteube/carapace-bin
 
 # if (path:is-regular &follow-symlink=$true ~/.elvish/lib/asdf.elv | not (one)) {
 #   mkdir -p ~/.elvish/lib
