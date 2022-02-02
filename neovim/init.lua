@@ -312,7 +312,6 @@ vim.keymap.set("n", "gd", vim.lsp.buf.definition)
 vim.keymap.set("n", "gh", vim.lsp.buf.hover)
 vim.keymap.set("n", "gi", vim.lsp.buf.implementation)
 vim.keymap.set("n", "gr", ":Telescope lsp_references<cr>")
-vim.keymap.set("n", "gt", vim.lsp.buf.type_definition)
 
 vim.keymap.set("n", "<leader>`", ":terminal<cr>")
 vim.keymap.set("n", "<leader>a", ":Telescope lsp_code_actions<cr>")
