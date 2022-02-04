@@ -7,7 +7,7 @@
 	<key>AutoCommandHistory</key>
 	<false/>
 	<key>Command</key>
-	<string>/opt/homebrew/bin/fish</string>
+	<string></string>
 	<key>Custom Color Presets</key>
 	<dict>
 		<key>Gruvbox Dark</key>
@@ -447,24 +447,6 @@ Find.Find URLs</string>
 			<key>Text</key>
 			<string></string>
 		</dict>
-		<key>0x68-0x100000-0x4</key>
-		<dict>
-			<key>Action</key>
-			<integer>31</integer>
-			<key>Label</key>
-			<string></string>
-			<key>Text</key>
-			<string></string>
-		</dict>
-		<key>0x6c-0x100000-0x20</key>
-		<dict>
-			<key>Action</key>
-			<integer>30</integer>
-			<key>Label</key>
-			<string></string>
-			<key>Text</key>
-			<string></string>
-		</dict>
 		<key>0x6d-0x100000-0x2e</key>
 		<dict>
 			<key>Action</key>
@@ -523,6 +505,28 @@ Open Selection</string>
 			<key>Text</key>
 			<string></string>
 		</dict>
+		<key>0x7b-0x120000-0x21</key>
+		<dict>
+			<key>Action</key>
+			<integer>31</integer>
+			<key>Label</key>
+			<string></string>
+			<key>Text</key>
+			<string></string>
+			<key>Version</key>
+			<integer>0</integer>
+		</dict>
+		<key>0x7d-0x120000-0x1e</key>
+		<dict>
+			<key>Action</key>
+			<integer>30</integer>
+			<key>Label</key>
+			<string></string>
+			<key>Text</key>
+			<string></string>
+			<key>Version</key>
+			<integer>0</integer>
+		</dict>
 		<key>0xd-0x100000-0x24</key>
 		<dict>
 			<key>Action</key>
@@ -540,20 +544,6 @@ Open Selection</string>
 			<string></string>
 			<key>Text</key>
 			<string>36378DA7-363D-4356-942B-0DACBC406237</string>
-		</dict>
-		<key>0xf729-0x100000</key>
-		<dict>
-			<key>Action</key>
-			<integer>5</integer>
-			<key>Text</key>
-			<string></string>
-		</dict>
-		<key>0xf72b-0x100000</key>
-		<dict>
-			<key>Action</key>
-			<integer>4</integer>
-			<key>Text</key>
-			<string></string>
 		</dict>
 	</dict>
 	<key>HTMLTabTitles</key>
