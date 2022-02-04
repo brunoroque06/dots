@@ -52,7 +52,7 @@ augroup END
 local install_path = vim.fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
-	vim.fn.system({ "git", "clone", "https://github.com/wbthomason/packer.nvim", install_path })
+	vim.fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path })
 	vim.api.nvim_command("packadd packer.nvim")
 end
 
@@ -65,7 +65,12 @@ require("packer").startup(function()
 			require("surround").setup({ mappings_style = "surround" })
 		end,
 	})
-	use("tpope/vim-commentary")
+	use({
+		"numToStr/Comment.nvim",
+		config = function()
+			require("Comment").setup()
+		end,
+	})
 	use("tpope/vim-repeat")
 	use("tpope/vim-unimpaired")
 	use("tpope/vim-vinegar")
