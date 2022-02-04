@@ -40,11 +40,12 @@ set edit:command:binding['x'] = { edit:move-dot-right; edit:kill-rune-left }
 
 eval (carapace _carapace | slurp) # https://github.com/rsteube/carapace-bin
 
-# if (path:is-regular &follow-symlink=$true ~/.elvish/lib/asdf.elv | not (one)) {
-#   mkdir -p ~/.elvish/lib
-#   ln -s /opt/homebrew/opt/asdf/libexec/asdf.elv ~/.elvish/lib/asdf.elv
-# }
-# use asdf _asdf; fn asdf {|@args| _asdf:asdf $@args}
+if (path:is-regular &follow-symlink=$true ~/.config/elvish/lib/asdf.elv | not (one)) {
+  mkdir -p ~/.config/elvish/lib
+  ln -s /opt/homebrew/opt/asdf/libexec/asdf.elv ~/.config/elvish/lib/asdf.elv
+}
+use asdf _asdf; var asdf~ = $_asdf:asdf~
+set edit:completion:arg-completer[asdf] = $_asdf:arg-completer~
 
 # Azure
 fn az-account-set { az account list | from-json | drop 0 (one) | each {|s| put [&to-filter=$s[name] &to-accept=$s[id] &to-show=(if (eq $s[isDefault] $true) { put (styled $s[name] green) } else { put $s[name] })] } | edit:listing:start-custom [(all)] &caption='Azure Subscription' &accept={|s| az account set --subscription $s > /dev/tty } }
