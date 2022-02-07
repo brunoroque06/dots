@@ -1,0 +1,31 @@
+<keymap version="1" name="bruno-roque" parent="macOS System Shortcuts">
+  <action id="ActivateTerminalToolWindow">
+    <keyboard-shortcut first-keystroke="meta t" />
+  </action>
+  <action id="GotoClass" />
+  <action id="GotoFile">
+    <keyboard-shortcut first-keystroke="meta o" />
+  </action>
+  <action id="HideAllWindows">
+    <keyboard-shortcut first-keystroke="shift meta h" />
+  </action>
+  <action id="RecentFiles">
+    <keyboard-shortcut first-keystroke="meta b" />
+  </action>
+  <action id="ShowBookmarks">
+    <keyboard-shortcut first-keystroke="shift meta b" />
+  </action>
+  <action id="ShowIntentionActions">
+    <keyboard-shortcut first-keystroke="meta enter" />
+  </action>
+  <action id="ShowNavBar">
+    <keyboard-shortcut first-keystroke="meta l" />
+  </action>
+  <action id="SplitHorizontally">
+    <keyboard-shortcut first-keystroke="shift meta back_slash" />
+  </action>
+  <action id="SplitVertically">
+    <keyboard-shortcut first-keystroke="meta back_slash" />
+  </action>
+  <action id="Vcs.UpdateProject" />
+</keymap>

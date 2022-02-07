@@ -17,6 +17,8 @@ vim.o.incsearch = true
 vim.o.list = true
 vim.o.listchars = "eol:↵,nbsp:␣,tab:> ,trail:~"
 vim.o.mouse = "a"
+vim.o.splitbelow = true
+vim.o.splitright = true
 vim.o.swapfile = false
 vim.o.number = true
 vim.o.relativenumber = true
@@ -313,29 +315,24 @@ vim.keymap.set("n", "==", ":Neoformat<cr>")
 
 vim.keymap.set("n", "[d", vim.lsp.diagnostic.goto_prev)
 vim.keymap.set("n", "]d", vim.lsp.diagnostic.goto_next)
+vim.keymap.set("n", "ga", ":Telescope lsp_code_actions<cr>")
 vim.keymap.set("n", "gd", vim.lsp.buf.definition)
 vim.keymap.set("n", "gh", vim.lsp.buf.hover)
 vim.keymap.set("n", "gi", vim.lsp.buf.implementation)
-vim.keymap.set("n", "gr", ":Telescope lsp_references<cr>")
+vim.keymap.set("n", "gr", vim.lsp.buf.rename)
+vim.keymap.set("n", "gs", ":Telescope treesitter<cr>")
+vim.keymap.set("n", "gu", ":Telescope lsp_references<cr>")
 
-vim.keymap.set("n", "<leader>`", ":terminal<cr>")
-vim.keymap.set("n", "<leader>a", ":Telescope lsp_code_actions<cr>")
+vim.keymap.set("n", "<leader>\\", ":vsplit<cr>")
+vim.keymap.set("n", "<leader>|", ":split<cr>")
+vim.keymap.set("n", "<leader>a", ":Telescope commands<cr>")
 vim.keymap.set("n", "<leader>b", ":Telescope buffers<cr>")
-vim.keymap.set("n", "<leader>c", ":Telescope commands<cr>")
 vim.keymap.set("n", "<leader>d", ":Telescope diagnostics<cr>")
-vim.keymap.set("n", "<leader>f", ":lua require('telescope.builtin').find_files({hidden = true})<cr>")
 vim.keymap.set("n", "<leader>g", ":Telescope live_grep<cr>")
 vim.keymap.set("n", "<leader>h", ":Telescope help_tags<cr>")
 vim.keymap.set("n", "<leader>l", ":Telescope zoxide list<cr>")
 vim.keymap.set("n", "<leader>m", ":Telescope marks<cr>")
+vim.keymap.set("n", "<leader>o", ":lua require('telescope.builtin').find_files({hidden = true})<cr>")
 vim.keymap.set("n", "<leader>p", ":Telescope planets<cr>")
-vim.keymap.set("n", "<leader>q", ":quit<cr>")
-vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename)
-vim.keymap.set("n", "<leader>s", ":split<cr>")
-vim.keymap.set("n", "<leader>t", ":Telescope treesitter<cr>")
-vim.keymap.set("n", "<leader>v", ":vsplit<cr>")
-
-vim.keymap.set("n", "<c-j>", "<c-w>j")
-vim.keymap.set("n", "<c-k>", "<c-w>k")
-vim.keymap.set("n", "<c-l>", "<c-w>l")
-vim.keymap.set("n", "<c-h>", "<c-w>h")
+vim.keymap.set("n", "<leader>w", ":quit<cr>")
+vim.keymap.set("n", "<leader>t", ":terminal<cr>")
