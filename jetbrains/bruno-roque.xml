@@ -2,6 +2,9 @@
   <action id="ActivateTerminalToolWindow">
     <keyboard-shortcut first-keystroke="meta t" />
   </action>
+  <action id="GotoAction">
+    <keyboard-shortcut first-keystroke="shift meta a" />
+  </action>
   <action id="GotoClass" />
   <action id="GotoFile">
     <keyboard-shortcut first-keystroke="meta o" />
@@ -28,4 +31,5 @@
     <keyboard-shortcut first-keystroke="meta back_slash" />
   </action>
   <action id="Vcs.UpdateProject" />
+  <action id="org.intellij.plugins.markdown.ui.actions.styling.ToggleBoldAction" />
 </keymap>

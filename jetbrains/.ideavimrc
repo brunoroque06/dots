@@ -1,8 +1,7 @@
 " https://youtrack.jetbrains.com/issue/IDEA-67559
 
 " https://github.com/JetBrains/ideavim/wiki/%22set%22-commands
-" set clipboard=unnamed
-set clipboard+=ideaput
+set clipboard=unnamed
 set hlsearch
 set ignorecase
 set incsearch
