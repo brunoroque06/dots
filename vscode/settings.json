@@ -67,71 +67,12 @@
   "vim.hlsearch": true,
   "vim.normalModeKeyBindingsNonRecursive": [
     {
-      "before": ["<leader>", "`"],
-      "commands": ["workbench.action.terminal.toggleTerminal"]
-    },
-    { "before": ["<leader>", "a"], "commands": ["editor.action.quickFix"] },
-    { "before": ["<leader>", "b"], "commands": ["workbench.action.quickOpen"] },
-    {
-      "before": ["<leader>", "c"],
-      "commands": ["workbench.action.showCommands"]
-    },
-    { "before": ["<leader>", "f"], "commands": ["workbench.action.quickOpen"] },
-    {
-      "before": ["<leader>", "g"],
-      "commands": ["workbench.action.findInFiles"]
-    },
-    { "before": ["<leader>", "m"], "commands": [":marks"] },
-    { "before": ["<leader>", "q"], "commands": [":quit"] },
-    { "before": ["<leader>", "r"], "commands": ["editor.action.rename"] },
-    {
-      "before": ["<leader>", "s"],
-      "commands": ["workbench.action.splitEditorDown"]
-    },
-    {
-      "before": ["<leader>", "t"],
-      "commands": ["workbench.action.gotoSymbol"]
-    },
-    {
-      "before": ["<leader>", "v"],
-      "commands": ["workbench.action.splitEditor"]
-    },
-    {
-      "before": ["<leader>", "z"],
-      "commands": ["workbench.action.toggleSidebarVisibility"]
-    },
-    {
-      "before": ["<c-w>", "J"],
-      "commands": ["workbench.action.moveEditorToBelowGroup"]
-    },
-    {
-      "before": ["<c-w>", "K"],
-      "commands": ["workbench.action.moveEditorToAboveGroup"]
-    },
-    {
-      "before": ["<c-w>", "H"],
-      "commands": ["workbench.action.moveEditorToLeftGroup"]
-    },
-    {
-      "before": ["<c-w>", "L"],
-      "commands": ["workbench.action.moveEditorToRightGroup"]
-    },
-    { "before": ["-"], "commands": ["breadcrumbs.focusAndSelect"] },
-    {
       "before": ["[", "<space>"],
       "commands": ["editor.action.insertLineBefore"]
     },
     {
       "before": ["]", "<space>"],
       "commands": ["editor.action.insertLineAfter"]
-    },
-    {
-      "before": ["[", "b"],
-      "commands": ["workbench.action.openPreviousRecentlyUsedEditorInGroup"]
-    },
-    {
-      "before": ["]", "b"],
-      "commands": ["workbench.action.openNextRecentlyUsedEditorInGroup"]
     },
     {
       "before": ["[", "d"],
@@ -153,6 +94,7 @@
       "commands": ["search.action.focusNextSearchResult"],
       "when": "hasSearchResult"
     },
+    { "before": ["g", "a"], "commands": ["editor.action.quickFix"] },
     {
       "before": ["g", "d"],
       "commands": ["editor.action.peekDefinition"]
@@ -165,7 +107,10 @@
       "before": ["g", "i"],
       "commands": ["editor.action.goToImplementation"]
     },
-    { "before": ["g", "r"], "commands": ["references-view.find"] }
+    { "before": ["g", "r"], "commands": ["editor.action.rename"] },
+    { "before": ["g", "s"], "commands": ["workbench.action.gotoSymbol"] },
+    { "before": ["g", "u"], "commands": ["references-view.find"] },
+    { "before": ["m"], "commands": ["bookmarks.toggle"] }
   ],
   "vim.surround": true,
   "vim.useSystemClipboard": true,

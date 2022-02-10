@@ -15,33 +15,45 @@
     "when": "sideBarFocus"
   },
   {
-    "key": "f1",
-    "command": "editor.action.triggerParameterHints",
-    "when": "editorHasSignatureHelpProvider && editorTextFocus"
-  },
-  {
     "key": "cmd+,",
     "command": "workbench.action.openSettingsJson"
   },
   {
-    "key": "ctrl+h",
-    "command": "workbench.action.focusLeftGroup",
+    "key": "cmd+[",
+    "command": "workbench.action.navigateBack"
+  },
+  {
+    "key": "cmd+]",
+    "command": "workbench.action.navigateForward"
+  },
+  {
+    "key": "cmd+shift+a",
+    "command": "workbench.action.showCommands"
+  },
+  {
+    "key": "cmd+b",
+    "command": "workbench.action.quickOpen"
+  },
+  {
+    "key": "cmd+shift+b",
+    "command": "bookmarks.listFromAllFiles"
+  },
+  {
+    "key": "cmd+shift+h",
+    "command": "workbench.action.toggleSidebarVisibility"
+  },
+  {
+    "key": "cmd+l",
+    "command": "breadcrumbs.focusAndSelect"
+  },
+  {
+    "key": "cmd+p",
+    "command": "editor.action.triggerParameterHints",
     "when": "editorTextFocus"
   },
   {
-    "key": "ctrl+l",
-    "command": "workbench.action.focusRightGroup",
-    "when": "editorTextFocus"
-  },
-  {
-    "key": "ctrl+k",
-    "command": "workbench.action.focusAboveGroup",
-    "when": "editorTextFocus"
-  },
-  {
-    "key": "ctrl+j",
-    "command": "workbench.action.focusBelowGroup",
-    "when": "editorTextFocus"
+    "key": "cmd+t",
+    "command": "workbench.action.terminal.toggleTerminal"
   },
   {
     "key": "left",
