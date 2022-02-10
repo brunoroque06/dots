@@ -111,10 +111,10 @@ fn git-config { git config --list --show-origin }
 # Jetbrains
 fn jetbrains-keymaps {
   var paths = [
-    '/Users/brunoroque/Library/Application Support/JetBrains/DataGrip2021.3/keymaps'
-    '/Users/brunoroque/Library/Application Support/JetBrains/PyCharm2021.3/jba_config/mac.keymaps'
-    '/Users/brunoroque/Library/Application Support/JetBrains/Rider2021.3/keymaps'
-    '/Users/brunoroque/Library/Application Support/JetBrains/WebStorm2021.3/jba_config/mac.keymaps'
+    $E:HOME'/Library/Application Support/JetBrains/DataGrip2021.3/keymaps'
+    $E:HOME'/Library/Application Support/JetBrains/PyCharm2021.3/jba_config/mac.keymaps'
+    $E:HOME'/Library/Application Support/JetBrains/Rider2021.3/keymaps'
+    $E:HOME'/Library/Application Support/JetBrains/WebStorm2021.3/jba_config/mac.keymaps'
   ]
   for p $paths {
     echo 'Copying to:' $p
@@ -148,6 +148,10 @@ fn postgresql-upgrade { brew postgresql-upgrade-database }
 # Python
 set edit:small-word-abbr['py'] = 'python'
 set edit:small-word-abbr['python-setup'] = 'asdf shell python 3.9.9 && python -m venv venv && source venv/bin/activate.fish && pip install -r requirements.txt'
+fn activate { |dir|
+  var _paths = $paths
+  set paths = [$E:PWD/$dir/bin $@paths]
+}
 
 # Pulumi
 set edit:small-word-abbr['pu'] = 'pulumi'
@@ -171,4 +175,5 @@ fn code-extension-install { xargs <"$HOME/Library/Application Support/Code/User/
 
 # Web Browser
 fn webbrowser { rm -rf /tmp/chrome_dev_test; /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --user-data-dir="/tmp/chrome_dev_test" --disable-web-security --incognito --no-first-run --new-window "http://localhost:4200" }
+
 
