@@ -44,11 +44,12 @@ if (path:is-regular &follow-symlink=$true ~/.config/elvish/lib/asdf.elv | not (o
   mkdir -p ~/.config/elvish/lib
   ln -s /opt/homebrew/opt/asdf/libexec/asdf.elv ~/.config/elvish/lib/asdf.elv
 }
+set E:ASDF_DIR = /opt/homebrew/opt/asdf/libexec/
 use asdf _asdf; var asdf~ = $_asdf:asdf~
 set edit:completion:arg-completer[asdf] = $_asdf:arg-completer~
 
 # Azure
-fn az-account-set { az account list | from-json | drop 0 (one) | each {|s| put [&to-filter=$s[name] &to-accept=$s[id] &to-show=(if (eq $s[isDefault] $true) { put (styled $s[name] green) } else { put $s[name] })] } | edit:listing:start-custom [(all)] &caption='Azure Subscription' &accept={|s| az account set --subscription $s > /dev/tty } }
+fn az-account-set { az account list | from-json | drop 0 (one) | each { |s| put [&to-filter=$s[name] &to-accept=$s[id] &to-show=(if (eq $s[isDefault] $true) { put (styled $s[name] green) } else { put $s[name] })] } | edit:listing:start-custom [(all)] &caption='Azure Subscription' &accept={ |s| az account set --subscription $s > /dev/tty } }
 
 # Brew
 set edit:small-word-abbr['b'] = 'brew'
@@ -73,7 +74,7 @@ set edit:small-word-abbr['dfsi'] = 'dotnet fsi'
 set edit:small-word-abbr['dr'] = 'dotnet run'
 set edit:small-word-abbr['dt'] = 'dotnet test'
 set edit:small-word-abbr['dtup'] = 'dotnet outdated --upgrade'
-fn dotnet-tool-up { dotnet tool list -g | from-lines | drop 2 | each {|l| str:split ' ' $l | take 1 } | each {|l| dotnet tool update -g $l }}
+fn dotnet-tool-up { dotnet tool list -g | from-lines | drop 2 | each { |l| str:split ' ' $l | take 1 } | each { |l| dotnet tool update -g $l }}
 
 # Edit
 set edit:small-word-abbr['e'] = 'nvim'
@@ -84,10 +85,10 @@ set edit:small-word-abbr['er'] = 'nvim -MR'
 # File System
 set edit:small-word-abbr['l'] = 'exa -al'
 fn dir-size { du -h -d 1 | sort -hr }
-fn file-backup {|f| cp $f "$HOME/Library/Mobile Documents/com~apple~CloudDocs/" }
-fn file-rmrf { fd . --hidden --max-depth 1 --no-ignore | from-lines | each {|f| put [&to-filter=$f &to-accept=$f &to-show=$f] } | edit:listing:start-custom [(all)] &caption='Remove File' &accept={|f| rm -rf $f } }
-fn file-yank { rg --files | from-lines | each {|f| put [&to-filter=$f &to-accept=$f &to-show=$f] } | edit:listing:start-custom [(all)] &caption='Yank File' &accept={|f| cat $f | pbcopy } }
-fn p {|p|
+fn file-backup { |f| cp $f "$HOME/Library/Mobile Documents/com~apple~CloudDocs/" }
+fn file-rmrf { fd . --hidden --max-depth 1 --no-ignore | from-lines | each { |f| put [&to-filter=$f &to-accept=$f &to-show=$f] } | edit:listing:start-custom [(all)] &caption='Remove File' &accept={ |f| rm -rf $f } }
+fn file-yank { rg --files | from-lines | each { |f| put [&to-filter=$f &to-accept=$f &to-show=$f] } | edit:listing:start-custom [(all)] &caption='Yank File' &accept={ |f| cat $f | pbcopy } }
+fn p { |p|
   if (path:is-dir $p) {
     exa --tree --level 3 $p
   } elif (str:has-suffix $p .md) {
@@ -107,6 +108,20 @@ set edit:small-word-abbr['gs'] = 'git status -s'
 set edit:small-word-abbr['gunstage'] = 'git reset HEAD --'
 fn git-config { git config --list --show-origin }
 
+# Jetbrains
+fn jetbrains-keymaps {
+  var paths = [
+    '/Users/brunoroque/Library/Application Support/JetBrains/DataGrip2021.3/keymaps'
+    '/Users/brunoroque/Library/Application Support/JetBrains/PyCharm2021.3/jba_config/mac.keymaps'
+    '/Users/brunoroque/Library/Application Support/JetBrains/Rider2021.3/keymaps'
+    '/Users/brunoroque/Library/Application Support/JetBrains/WebStorm2021.3/jba_config/mac.keymaps'
+  ]
+  for p $paths {
+    echo 'Copying to:' $p
+    cp ~/Projects/dotfiles/jetbrains/bruno-roque.xml $p
+  }
+}
+
 # Network
 fn network-scan { nmap -sP 192.168.1.0/24 }
 
@@ -116,14 +131,13 @@ set edit:small-word-abbr['nci'] = 'npm ci'
 set edit:small-word-abbr['ni'] = 'npm install'
 set edit:small-word-abbr['nlg'] = 'npm list -g --depth=0'
 set edit:small-word-abbr['nr'] = 'npm run'
-set edit:small-word-abbr['ns'] = 'cat package.json | from-json | put (one)[scripts] | pprint (one)'
 set edit:small-word-abbr['nupg'] = 'npm update -g'
-fn nri {
+fn npm-run {
   var scripts = (cat package.json | from-json | put (one)[scripts])
-  keys $scripts | each {|k| put [&to-filter=$k &to-accept=$k &to-show=(echo $k': '$scripts[$k])] } | edit:listing:start-custom [(all)] &caption='npm run' &accept={|s| npm run $s > /dev/tty }
+  keys $scripts | each { |k| put [&to-filter=$k &to-accept=$k &to-show=(echo $k': '$scripts[$k])] } | edit:listing:start-custom [(all)] &caption='npm run' &accept={ |s| npm run $s > /dev/tty }
 }
 fn npm-up { npx npm-check-updates --deep -i }
-fn node-clean { fd -HI --prune node_modules | from-lines | peach {|d| rm -rf $d } }
+fn node-clean { fd -HI --prune node_modules | from-lines | peach { |d| rm -rf $d } }
 fn yarn-up { yarn upgrade-interactive }
 
 # PostgreSQL
@@ -143,12 +157,12 @@ set edit:small-word-abbr['pup'] = 'pulumi preview'
 set edit:small-word-abbr['puso'] = 'pulumi stack output --show-secrets'
 set edit:small-word-abbr['puu'] = 'pulumi up'
 set edit:small-word-abbr['puus'] = 'pulumi up --skip-preview'
-fn pulumi-stack-select { pulumi stack ls --json | from-json | drop 0 (all) | each {|s| put [&to-filter=$s[name] &to-accept=$s[name] &to-show=(if (eq $s[current] $true) { put (styled $s[name] green) } else { put $s[name] })] } | edit:listing:start-custom [(all)] &caption='Pulumi Stack' &accept={|s| pulumi stack select $s > /dev/tty } }
-fn pulumi-resource-delete { pulumi stack export | from-json | put (one)[deployment][resources] | drop 0 (one) | each {|r| put [&to-filter=$r[urn] &to-accept=$r[urn] &to-show=$r[urn]] } | edit:listing:start-custom [(all)] &caption='Pulumi Delete Resource' &accept={|r| pulumi state delete $r > /dev/tty } }
-fn pulumi-resource-yank { pulumi stack export | from-json | put (one)[deployment][resources] | drop 0 (one) | each {|r| put [&to-filter=$r[urn] &to-accept=$r[urn] &to-show=$r[urn]] } | edit:listing:start-custom [(all)] &caption='Pulumi Yank Resource' &accept={|r| echo $r } }
+fn pulumi-stack-select { pulumi stack ls --json | from-json | drop 0 (all) | each { |s| put [&to-filter=$s[name] &to-accept=$s[name] &to-show=(if (eq $s[current] $true) { put (styled $s[name] green) } else { put $s[name] })] } | edit:listing:start-custom [(all)] &caption='Pulumi Stack' &accept={ |s| pulumi stack select $s > /dev/tty } }
+fn pulumi-resource-delete { pulumi stack export | from-json | put (one)[deployment][resources] | drop 0 (one) | each { |r| put [&to-filter=$r[urn] &to-accept=$r[urn] &to-show=$r[urn]] } | edit:listing:start-custom [(all)] &caption='Pulumi Delete Resource' &accept={ |r| pulumi state delete $r > /dev/tty } }
+fn pulumi-resource-yank { pulumi stack export | from-json | put (one)[deployment][resources] | drop 0 (one) | each { |r| put [&to-filter=$r[urn] &to-accept=$r[urn] &to-show=$r[urn]] } | edit:listing:start-custom [(all)] &caption='Pulumi Yank Resource' &accept={ |r| echo $r } }
 
 # SSH
-fn ssh-trust {|@a| ssh-copy-id -i ~/.ssh/id_rsa.pub $@a }
+fn ssh-trust { |@a| ssh-copy-id -i ~/.ssh/id_rsa.pub $@a }
 
 # VSCode
 set edit:small-word-abbr['c.'] = 'code .'
