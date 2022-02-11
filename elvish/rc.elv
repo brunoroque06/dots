@@ -7,11 +7,11 @@ set E:BAT_THEME = 1337
 set E:EDITOR = nvim
 set E:MANPAGER = "sh -c 'col -bx | bat -l man -p'"
 set E:PAGER = less
-set E:RIPGREP_CONFIG_PATH = ~/.config/ripgreprc
+set E:RIPGREP_CONFIG_PATH = $E:HOME/.config/ripgreprc
 set E:VISUAL = nvim
 
 set paths = [
-  ~/.asdf/shims
+  $E:HOME/.asdf/shims
   /opt/homebrew/bin
   /usr/local/bin
   /usr/bin
@@ -19,10 +19,17 @@ set paths = [
   /usr/sbin
   /sbin
   /usr/local/share/dotnet
-  ~/.dotnet/tools
+  $E:HOME/.dotnet/tools
 ]
+var _paths
 
-set edit:prompt = { styled (tilde-abbr $pwd) blue; put (styled ' Λ ' magenta) }
+set edit:prompt = {
+  if (not-eq $_paths $nil) {
+    put '* '
+  }
+  styled (tilde-abbr $pwd) blue
+  put (styled ' Λ ' magenta)
+}
 set edit:rprompt = (constantly (whoami)@(hostname))
 
 # set edit:insert:binding["Ctrl-["] = { edit:command:start }
@@ -40,9 +47,9 @@ set edit:command:binding['x'] = { edit:move-dot-right; edit:kill-rune-left }
 
 eval (carapace _carapace | slurp) # https://github.com/rsteube/carapace-bin
 
-if (path:is-regular &follow-symlink=$true ~/.config/elvish/lib/asdf.elv | not (one)) {
-  mkdir -p ~/.config/elvish/lib
-  ln -s /opt/homebrew/opt/asdf/libexec/asdf.elv ~/.config/elvish/lib/asdf.elv
+if (path:is-regular &follow-symlink=$true $E:HOME/.config/elvish/lib/asdf.elv | not (one)) {
+  mkdir -p $E:HOME/.config/elvish/lib
+  ln -s /opt/homebrew/opt/asdf/libexec/asdf.elv $E:HOME/.config/elvish/lib/asdf.elv
 }
 set E:ASDF_DIR = /opt/homebrew/opt/asdf/libexec/
 use asdf _asdf; var asdf~ = $_asdf:asdf~
@@ -56,7 +63,7 @@ set edit:small-word-abbr['b'] = 'brew'
 set edit:small-word-abbr['bi'] = 'brew install'
 set edit:small-word-abbr['bl'] = 'brew leaves'
 set edit:small-word-abbr['blc'] = 'brew leaves --cask -1'
-fn brew-dump { brew bundle dump --file ~/Projects/dotfiles/brew/Brewfile --force }
+fn brew-dump { brew bundle dump --file $E:HOME/Projects/dotfiles/brew/Brewfile --force }
 fn brew-up { brew update; brew upgrade --ignore-pinned; brew cleanup; brew doctor }
 
 # Docker
@@ -85,7 +92,7 @@ set edit:small-word-abbr['er'] = 'nvim -MR'
 # File System
 set edit:small-word-abbr['l'] = 'exa -al'
 fn dir-size { du -h -d 1 | sort -hr }
-fn file-backup { |f| cp $f "$HOME/Library/Mobile Documents/com~apple~CloudDocs/" }
+fn file-backup { |f| cp $f $E:HOME'/Library/Mobile Documents/com~apple~CloudDocs/' }
 fn file-rmrf { fd . --hidden --max-depth 1 --no-ignore | from-lines | each { |f| put [&to-filter=$f &to-accept=$f &to-show=$f] } | edit:listing:start-custom [(all)] &caption='Remove File' &accept={ |f| rm -rf $f } }
 fn file-yank { rg --files | from-lines | each { |f| put [&to-filter=$f &to-accept=$f &to-show=$f] } | edit:listing:start-custom [(all)] &caption='Yank File' &accept={ |f| cat $f | pbcopy } }
 fn p { |p|
@@ -118,7 +125,7 @@ fn jetbrains-keymaps {
   ]
   for p $paths {
     echo 'Copying to:' $p
-    cp ~/Projects/dotfiles/jetbrains/bruno-roque.xml $p
+    cp $E:HOME/Projects/dotfiles/jetbrains/bruno-roque.xml $p
   }
 }
 
@@ -132,10 +139,6 @@ set edit:small-word-abbr['ni'] = 'npm install'
 set edit:small-word-abbr['nlg'] = 'npm list -g --depth=0'
 set edit:small-word-abbr['nr'] = 'npm run'
 set edit:small-word-abbr['nupg'] = 'npm update -g'
-fn npm-run {
-  var scripts = (cat package.json | from-json | put (one)[scripts])
-  keys $scripts | each { |k| put [&to-filter=$k &to-accept=$k &to-show=(echo $k': '$scripts[$k])] } | edit:listing:start-custom [(all)] &caption='npm run' &accept={ |s| npm run $s > /dev/tty }
-}
 fn npm-up { npx npm-check-updates --deep -i }
 fn node-clean { fd -HI --prune node_modules | from-lines | peach { |d| rm -rf $d } }
 fn yarn-up { yarn upgrade-interactive }
@@ -147,10 +150,21 @@ fn postgresql-upgrade { brew postgresql-upgrade-database }
 
 # Python
 set edit:small-word-abbr['py'] = 'python'
-set edit:small-word-abbr['python-setup'] = 'asdf shell python 3.9.9 && python -m venv venv && source venv/bin/activate.fish && pip install -r requirements.txt'
-fn activate { |dir|
-  var _paths = $paths
-  set paths = [$E:PWD/$dir/bin $@paths]
+set edit:small-word-abbr['python-setup'] = 'asdf shell python 3.9.9 && python -m venv venv && activate && pip install -r requirements.txt'
+fn activate {
+  var venv = $E:PWD/venv/bin
+  if (path:is-dir $venv | not (one)) {
+    fail 'No virtual environment detected'
+  }
+  set _paths = $paths
+  set paths = [$venv $@paths]
+}
+fn deactivate {
+  if (eq $_paths $nil) {
+    fail 'No virtual environment is active'
+  }
+  set paths = $_paths
+  set _paths = $nil
 }
 
 # Pulumi
@@ -166,12 +180,12 @@ fn pulumi-resource-delete { pulumi stack export | from-json | put (one)[deployme
 fn pulumi-resource-yank { pulumi stack export | from-json | put (one)[deployment][resources] | drop 0 (one) | each { |r| put [&to-filter=$r[urn] &to-accept=$r[urn] &to-show=$r[urn]] } | edit:listing:start-custom [(all)] &caption='Pulumi Yank Resource' &accept={ |r| echo $r } }
 
 # SSH
-fn ssh-trust { |@a| ssh-copy-id -i ~/.ssh/id_rsa.pub $@a }
+fn ssh-trust { |@a| ssh-copy-id -i $E:HOME/.ssh/id_rsa.pub $@a }
 
 # VSCode
 set edit:small-word-abbr['c.'] = 'code .'
-fn code-extension-dump { code --list-extensions > "$HOME/Library/Application Support/Code/User/extensions.txt" }
-fn code-extension-install { xargs <"$HOME/Library/Application Support/Code/User/extensions.txt" -L 1 code --force --install-extension }
+fn code-extension-dump { code --list-extensions > $E:HOME'/Library/Application Support/Code/User/extensions.txt' }
+fn code-extension-install { xargs < $E:HOME'/Library/Application Support/Code/User/extensions.txt' -L 1 code --force --install-extension }
 
 # Web Browser
 fn webbrowser { rm -rf /tmp/chrome_dev_test; /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --user-data-dir="/tmp/chrome_dev_test" --disable-web-security --incognito --no-first-run --new-window "http://localhost:4200" }
