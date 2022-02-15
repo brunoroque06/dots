@@ -62,18 +62,13 @@ require("packer").startup(function()
 	use("wbthomason/packer.nvim")
 
 	use({
-		"blackCauldron7/surround.nvim",
-		config = function()
-			require("surround").setup({ mappings_style = "surround" })
-		end,
-	})
-	use({
 		"numToStr/Comment.nvim",
 		config = function()
 			require("Comment").setup()
 		end,
 	})
 	use("tpope/vim-repeat")
+	use("tpope/vim-surround")
 	use("tpope/vim-unimpaired")
 	use("tpope/vim-vinegar")
 
