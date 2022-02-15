@@ -9,6 +9,7 @@ set E:MANPAGER = "sh -c 'col -bx | bat -l man -p'"
 set E:PAGER = less
 set E:RIPGREP_CONFIG_PATH = $E:HOME/.config/ripgreprc
 set E:VISUAL = nvim
+# set E:REQUESTS_CA_BUNDLE = $E:HOME/.proxyman/proxyman-ca.pem # proxyman with python
 
 set paths = [
   $E:HOME/.asdf/shims
@@ -189,5 +190,4 @@ fn code-extension-install { xargs < $E:HOME'/Library/Application Support/Code/Us
 
 # Web Browser
 fn webbrowser { rm -rf /tmp/chrome_dev_test; /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --user-data-dir="/tmp/chrome_dev_test" --disable-web-security --incognito --no-first-run --new-window "http://localhost:4200" }
-
 
