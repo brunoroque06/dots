@@ -62,11 +62,11 @@ nnoremap ]e ddp
 nnoremap [f :action MethodUp<cr>
 nnoremap ]f :action MethodDown<cr>
 
-nnoremap ga :action ShowIntentionActions<cr>
+" ga -> <m-enter> ShowIntentionActions
 nnoremap gd :action GotoDeclaration<cr>
 nnoremap gh :action ShowErrorDescription<cr>
 nnoremap gi :action GotoImplementation<cr>
-" gr -> <m-enter>
-nnoremap gs :action FileStructurePopup<cr>
+nnoremap gr :action Refactorings.QuickListPopupAction<cr>
+" gr -> <m-shift-s> FileStructurePopup
 nnoremap gu :action ShowUsages<cr>
 

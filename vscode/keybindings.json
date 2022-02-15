@@ -27,6 +27,10 @@
     "command": "workbench.action.navigateForward"
   },
   {
+    "key": "cmd+shift+\\",
+    "command": "workbench.action.splitEditorOrthogonal"
+  },
+  {
     "key": "cmd+shift+a",
     "command": "workbench.action.showCommands"
   },
@@ -37,6 +41,11 @@
   {
     "key": "cmd+shift+b",
     "command": "bookmarks.listFromAllFiles"
+  },
+  {
+    "key": "cmd+enter",
+    "command": "editor.action.quickFix",
+    "when": "editorHasCodeActionsProvider && editorTextFocus"
   },
   {
     "key": "cmd+shift+h",
