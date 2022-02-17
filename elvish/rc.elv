@@ -20,6 +20,7 @@ set paths = [
   /usr/sbin
   /sbin
   /usr/local/share/dotnet
+  $E:HOME/bin
   $E:HOME/.dotnet/tools
 ]
 var _paths
