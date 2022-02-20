@@ -58,7 +58,11 @@ if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
 	vim.api.nvim_command("packadd packer.nvim")
 end
 
-require("packer").startup(function()
+local packer = require("packer")
+
+packer.init({ display = { open_cmd = "vnew \\[packer\\]" } })
+
+packer.startup(function()
 	use("wbthomason/packer.nvim")
 
 	use({
@@ -329,5 +333,5 @@ vim.keymap.set("n", "<leader>l", ":Telescope zoxide list<cr>")
 vim.keymap.set("n", "<leader>m", ":Telescope marks<cr>")
 vim.keymap.set("n", "<leader>o", ":lua require('telescope.builtin').find_files({hidden = true})<cr>")
 vim.keymap.set("n", "<leader>p", ":Telescope planets<cr>")
-vim.keymap.set("n", "<leader>q", ":wq<cr>")
+vim.keymap.set("n", "<leader>q", ":q<cr>")
 vim.keymap.set("n", "<leader>t", ":terminal<cr>")
