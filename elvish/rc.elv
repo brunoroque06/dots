@@ -61,10 +61,6 @@ set edit:completion:arg-completer[asdf] = $_asdf:arg-completer~
 fn az-account-set { az account list | from-json | drop 0 (one) | each { |s| put [&to-filter=$s[name] &to-accept=$s[id] &to-show=(if (eq $s[isDefault] $true) { put (styled $s[name] green) } else { put $s[name] })] } | edit:listing:start-custom [(all)] &caption='Azure Subscription' &accept={ |s| az account set --subscription $s > /dev/tty } }
 
 # Brew
-set edit:small-word-abbr['b'] = 'brew'
-set edit:small-word-abbr['bi'] = 'brew install'
-set edit:small-word-abbr['bl'] = 'brew leaves'
-set edit:small-word-abbr['blc'] = 'brew leaves --cask -1'
 fn brew-dump { brew bundle dump --file $E:HOME/Projects/dotfiles/brew/Brewfile --force }
 fn brew-up { brew update; brew upgrade --ignore-pinned; brew cleanup; brew doctor }
 
@@ -77,12 +73,9 @@ fn docker-rm-image { docker rmi -f (docker images -a -q) }
 fn docker-stop-container { docker stop (docker ps -a -q) }
 
 # Dotnet
-set edit:small-word-abbr['d'] = 'dotnet'
-set edit:small-word-abbr['df'] = 'dotnet format'
-set edit:small-word-abbr['dfsi'] = 'dotnet fsi'
-set edit:small-word-abbr['dr'] = 'dotnet run'
-set edit:small-word-abbr['dt'] = 'dotnet test'
-set edit:small-word-abbr['dtup'] = 'dotnet outdated --upgrade'
+set edit:small-word-abbr['dot'] = 'dotnet'
+set edit:small-word-abbr['dotfsi'] = 'dotnet fsi'
+fn dotnet-up { dotnet outdated --upgrade }
 fn dotnet-tool-up { dotnet tool list -g | from-lines | drop 2 | each { |l| str:split ' ' $l | take 1 } | each { |l| dotnet tool update -g $l }}
 
 # Edit
@@ -108,11 +101,8 @@ fn p { |p|
 }
 
 # Git
-set edit:small-word-abbr['g'] = 'git'
 set edit:small-word-abbr['gi'] = 'lazygit'
 set edit:small-word-abbr['gl'] = "git log --all --decorate --graph --format=format:'%Cblue%h %Creset- %Cgreen%ar %Creset%s %C(dim white)- %an %C(auto)%d' -100"
-set edit:small-word-abbr['gph'] = 'git push'
-set edit:small-word-abbr['gphf'] = 'git push --force'
 set edit:small-word-abbr['gs'] = 'git status -s'
 set edit:small-word-abbr['gunstage'] = 'git reset HEAD --'
 fn git-config { git config --list --show-origin }
@@ -135,12 +125,9 @@ fn jetbrains-keymaps {
 fn network-scan { nmap -sP 192.168.1.0/24 }
 
 # Node.js
-set edit:small-word-abbr['n'] = 'npm'
-set edit:small-word-abbr['nci'] = 'npm ci'
 set edit:small-word-abbr['ni'] = 'npm install'
 set edit:small-word-abbr['nlg'] = 'npm list -g --depth=0'
 set edit:small-word-abbr['nr'] = 'npm run'
-set edit:small-word-abbr['nupg'] = 'npm update -g'
 fn npm-up { npx npm-check-updates --deep -i }
 fn node-clean { fd -HI --prune node_modules | from-lines | peach { |d| rm -rf $d } }
 fn yarn-up { yarn upgrade-interactive }
@@ -151,8 +138,7 @@ fn postgresql-reset { brew uninstall --ignore-dependencies postgresql; rm -rf /u
 fn postgresql-upgrade { brew postgresql-upgrade-database }
 
 # Python
-set edit:small-word-abbr['py'] = 'python'
-set edit:small-word-abbr['python-setup'] = 'asdf shell python 3.9.9 && python -m venv venv && activate && pip install -r requirements.txt'
+set edit:small-word-abbr['python-setup'] = 'asdf shell python 3.9.9; python -m venv venv; activate; pip install --upgrade pip; pip install -r requirements.txt'
 fn activate {
   var venv = $E:PWD/venv/bin
   if (path:is-dir $venv | not (one)) {
