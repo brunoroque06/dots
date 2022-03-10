@@ -83,7 +83,6 @@ packer.startup(function()
 		end,
 	})
 
-	use("p00f/nvim-ts-rainbow")
 	use({
 		"hoob3rt/lualine.nvim",
 		config = function()
@@ -263,6 +262,7 @@ packer.startup(function()
 
 	use({
 		"nvim-treesitter/nvim-treesitter",
+		requires = { "p00f/nvim-ts-rainbow" },
 		run = ":TSUpdate",
 		config = function()
 			require("nvim-treesitter.configs").setup({
