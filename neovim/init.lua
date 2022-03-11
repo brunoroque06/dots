@@ -283,7 +283,7 @@ packer.startup(function()
 					enable = true,
 				},
 				rainbow = {
-					enable = true,
+					enable = false,
 				},
 			})
 		end,
