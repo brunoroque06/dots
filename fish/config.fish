@@ -70,7 +70,7 @@ abbr Y pbcopy
 
 # Directories
 abbr dir_rmi 'du -hd 1 | fzf -m | awk \'{print $2}\' | xargs -t rm -rf'
-abbr dir_size 'du -h -d 1 | sort -hr'
+abbr dir_size 'dust -d 1'
 
 # Docker
 abbr doc docker

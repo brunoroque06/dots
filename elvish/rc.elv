@@ -86,7 +86,7 @@ set edit:small-word-abbr['er'] = 'nvim -MR'
 
 # File System
 set edit:small-word-abbr['l'] = 'exa -al'
-fn dir-size { du -h -d 1 | sort -hr }
+fn dir-size { dust -d 1 }
 fn file-backup { |f| cp $f $E:HOME'/Library/Mobile Documents/com~apple~CloudDocs/' }
 fn file-rmrf { fd . --hidden --max-depth 1 --no-ignore | from-lines | each { |f| put [&to-filter=$f &to-accept=$f &to-show=$f] } | edit:listing:start-custom [(all)] &caption='Remove File' &accept={ |f| rm -rf $f } }
 fn file-yank { rg --files | from-lines | each { |f| put [&to-filter=$f &to-accept=$f &to-show=$f] } | edit:listing:start-custom [(all)] &caption='Yank File' &accept={ |f| cat $f | pbcopy } }
