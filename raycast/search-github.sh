@@ -6,4 +6,4 @@
 # @raycast.icon 🔍
 # @raycast.argument1 { "type": "text", "placeholder": "keyword(s)", "percentEncoded": true }
 
-open https://github.com/search?q=$1
+open "https://github.com/search?q=$1"

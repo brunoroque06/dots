@@ -6,4 +6,4 @@
 # @raycast.icon 🔍
 # @raycast.argument1 { "type": "text", "placeholder": "keyword(s)", "percentEncoded": true }
 
-open https://www.google.com/maps?oi=map\&q=$1
+open "https://www.google.com/maps?oi=map&q=$1"
