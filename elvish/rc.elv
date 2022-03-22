@@ -4,6 +4,7 @@ use str
 
 set E:BAT_STYLE = auto
 set E:BAT_THEME = 1337
+set E:DOCKER_DEFAULT_PLATFORM = linux/amd64 # good idea?
 set E:EDITOR = nvim
 set E:MANPAGER = "sh -c 'col -bx | bat -l man -p'"
 set E:PAGER = less
