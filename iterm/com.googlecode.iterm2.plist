@@ -362,8 +362,10 @@
 	<false/>
 	<key>DisableFullscreenTransparency</key>
 	<false/>
-	<key>EnableAPIServer</key>
+	<key>DoubleClickPerformsSmartSelection</key>
 	<true/>
+	<key>EnableAPIServer</key>
+	<false/>
 	<key>EnableDivisionView</key>
 	<true/>
 	<key>EnableProxyIcon</key>
