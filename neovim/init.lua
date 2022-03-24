@@ -8,6 +8,7 @@ vim.o.clipboard = "unnamed"
 vim.o.colorcolumn = "120"
 vim.o.cursorline = true
 vim.o.encoding = "utf-8"
+vim.o.fileformat = "unix"
 vim.o.grepprg = "rg --vimgrep --hidden --smart-case"
 vim.o.hidden = true
 vim.o.hlsearch = true
@@ -149,7 +150,6 @@ packer.startup(function()
 				  autocmd FileType sql set formatprg=pg_format
 				  autocmd FileType typescript set formatprg=prettier
 				  autocmd FileType yaml set formatprg=prettier
-				  autocmd BufWritePre * try | undojoin | Neoformat | catch /^Vim\%((\a\+)\)\=:E790/ | finally | silent Neoformat | endtry
 				augroup END
 				]],
 				false
