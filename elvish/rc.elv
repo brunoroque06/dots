@@ -72,6 +72,18 @@ set edit:small-word-abbr['docps'] = 'docker ps -a'
 fn docker-rm-container { docker stop (docker ps -a -q); docker rm (docker ps -a -q); docker system prune --volumes -f }
 fn docker-rm-image { docker rmi -f (docker images -a -q) }
 fn docker-stop-container { docker stop (docker ps -a -q) }
+fn limactl-config {
+  # /opt/homebrew/Cellar/lima/0.9.1/share/lima/examples/default.yaml
+  nvim $E:HOME/.lima/_config/default.yaml
+}
+fn limactl-start {
+  limactl start --name=default template://docker
+  docker context update lima --docker 'host=unix://'$E:HOME'/.lima/default/sock/docker.sock'
+  docker context use lima
+  var config = $E:HOME/.docker/config.json
+  var keychain = (cat $config | from-json)
+  assoc $keychain credsStore osxkeychain | to-json | jq > $config
+}
 
 # Dotnet
 set edit:small-word-abbr['dot'] = 'dotnet'
