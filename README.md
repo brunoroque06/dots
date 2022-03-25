@@ -10,7 +10,7 @@ Supported: macOS.
 
 ## Manual Steps
 
-- Setup `Colemak` keyboard layout, and remap `Caps Lock` to `Escape`;
+- Setup `Colemak` keyboard layout, and remap `Caps Lock` to `Control`;
 - Load `Raycast` configuration;
 - Load `iTerm` configuration;
 - Install fonts: [Apple Fonts](https://developer.apple.com/fonts/).

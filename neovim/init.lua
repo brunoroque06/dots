@@ -306,7 +306,7 @@ packer.startup(function()
 	})
 end)
 
-vim.api.nvim_exec("command! Reload source $MYVIMRC", false)
+vim.api.nvim_exec("command! Reload source $MYVIMRC | PackerCompile", false)
 
 vim.keymap.set("i", "<f1>", vim.lsp.buf.signature_help)
 
