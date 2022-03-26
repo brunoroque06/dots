@@ -35,18 +35,10 @@ set edit:prompt = {
 }
 set edit:rprompt = (constantly (whoami)@(hostname))
 
-# set edit:insert:binding["Ctrl-["] = { edit:command:start }
 set edit:insert:binding['Ctrl-d'] = { edit:navigation:start }
 set edit:insert:binding['Ctrl-l'] = { edit:location:start }
 set edit:insert:binding['Ctrl-o'] = { edit:lastcmd:start }
 set edit:insert:binding['Ctrl-r'] = { edit:histlist:start }
-
-set edit:command:binding['a'] = { edit:move-dot-right; edit:close-mode }
-set edit:command:binding['A'] = { edit:move-dot-eol; edit:close-mode }
-set edit:command:binding['C'] = { edit:kill-line-right; edit:close-mode }
-set edit:command:binding['I'] = { edit:move-dot-sol; edit:close-mode }
-set edit:command:binding['s'] = { edit:move-dot-right; edit:kill-rune-left; edit:close-mode }
-set edit:command:binding['x'] = { edit:move-dot-right; edit:kill-rune-left }
 
 eval (carapace _carapace | slurp) # https://github.com/rsteube/carapace-bin
 
@@ -66,9 +58,8 @@ fn brew-dump { brew bundle dump --file $E:HOME/Projects/dotfiles/brew/Brewfile -
 fn brew-up { brew update; brew upgrade --ignore-pinned; brew cleanup; brew doctor }
 
 # Docker
-set edit:small-word-abbr['doc'] = 'docker'
-set edit:small-word-abbr['docc'] = 'docker-compose'
-set edit:small-word-abbr['docps'] = 'docker ps -a'
+fn doc { |@a| docker $@a }
+fn docker-ps { |@a| docker ps -a $@a }
 fn docker-rm-container { docker stop (docker ps -a -q); docker rm (docker ps -a -q); docker system prune --volumes -f }
 fn docker-rm-image { docker rmi -f (docker images -a -q) }
 fn docker-stop-container { docker stop (docker ps -a -q) }
@@ -86,23 +77,19 @@ fn limactl-start {
 }
 
 # Dotnet
-set edit:small-word-abbr['dot'] = 'dotnet'
-set edit:small-word-abbr['dotfsi'] = 'dotnet fsi'
+fn dot { |@a| dotnet $@a }
 fn dotnet-up { dotnet outdated --upgrade }
 fn dotnet-tool-up { dotnet tool list -g | from-lines | drop 2 | each { |l| str:split ' ' $l | take 1 } | each { |l| dotnet tool update -g $l }}
 
 # Edit
-set edit:small-word-abbr['e'] = 'nvim'
-set edit:small-word-abbr['ed'] = 'nvim -d'
-set edit:small-word-abbr['en'] = 'nvim -u NONE'
-set edit:small-word-abbr['er'] = 'nvim -MR'
+fn e { |@a| nvim $@a }
 
 # File System
-set edit:small-word-abbr['l'] = 'exa -al'
 fn dir-size { dust -d 1 }
 fn file-backup { |f| cp $f $E:HOME'/Library/Mobile Documents/com~apple~CloudDocs/' }
 fn file-rmrf { fd . --hidden --max-depth 1 --no-ignore | from-lines | each { |f| put [&to-filter=$f &to-accept=$f &to-show=$f] } | edit:listing:start-custom [(all)] &caption='Remove File' &accept={ |f| rm -rf $f } }
 fn file-yank { rg --files | from-lines | each { |f| put [&to-filter=$f &to-accept=$f &to-show=$f] } | edit:listing:start-custom [(all)] &caption='Yank File' &accept={ |f| cat $f | pbcopy } }
+fn l { |@a| exa -al }
 fn p { |p|
   if (path:is-dir $p) {
     exa --tree --level 3 $p
@@ -114,11 +101,9 @@ fn p { |p|
 }
 
 # Git
-set edit:small-word-abbr['gi'] = 'lazygit'
-set edit:small-word-abbr['gl'] = "git log --all --decorate --graph --format=format:'%Cblue%h %Creset- %Cgreen%ar %Creset%s %C(dim white)- %an %C(auto)%d' -100"
-set edit:small-word-abbr['gs'] = 'git status -s'
-set edit:small-word-abbr['gunstage'] = 'git reset HEAD --'
 fn git-config { git config --list --show-origin }
+fn gl { git log --all --decorate --graph --format=format:'%Cblue%h %Creset- %Cgreen%ar %Creset%s %C(dim white)- %an %C(auto)%d' -100 }
+fn gi { lazygit }
 
 # Jetbrains
 fn jetbrains-keymaps {
@@ -138,9 +123,6 @@ fn jetbrains-keymaps {
 fn network-scan { nmap -sP 192.168.1.0/24 }
 
 # Node.js
-set edit:small-word-abbr['ni'] = 'npm install'
-set edit:small-word-abbr['nlg'] = 'npm list -g --depth=0'
-set edit:small-word-abbr['nr'] = 'npm run'
 fn npm-up { npx npm-check-updates --deep -i }
 fn node-clean { fd -HI --prune node_modules | from-lines | peach { |d| rm -rf $d } }
 fn yarn-up { yarn upgrade-interactive }
@@ -169,13 +151,7 @@ fn deactivate {
 }
 
 # Pulumi
-set edit:small-word-abbr['pu'] = 'pulumi'
-set edit:small-word-abbr['pud'] = 'pulumi destroy'
-set edit:small-word-abbr['puds'] = 'pulumi destroy --skip-preview'
-set edit:small-word-abbr['pup'] = 'pulumi preview'
-set edit:small-word-abbr['puso'] = 'pulumi stack output --show-secrets'
-set edit:small-word-abbr['puu'] = 'pulumi up'
-set edit:small-word-abbr['puus'] = 'pulumi up --skip-preview'
+fn pu { |@a| pulumi $@a }
 fn pulumi-stack-select { pulumi stack ls --json | from-json | drop 0 (all) | each { |s| put [&to-filter=$s[name] &to-accept=$s[name] &to-show=(if (eq $s[current] $true) { put (styled $s[name] green) } else { put $s[name] })] } | edit:listing:start-custom [(all)] &caption='Pulumi Stack' &accept={ |s| pulumi stack select $s > /dev/tty } }
 fn pulumi-resource-delete { pulumi stack export | from-json | put (one)[deployment][resources] | drop 0 (one) | each { |r| put [&to-filter=$r[urn] &to-accept=$r[urn] &to-show=$r[urn]] } | edit:listing:start-custom [(all)] &caption='Pulumi Delete Resource' &accept={ |r| pulumi state delete $r > /dev/tty } }
 fn pulumi-resource-yank { pulumi stack export | from-json | put (one)[deployment][resources] | drop 0 (one) | each { |r| put [&to-filter=$r[urn] &to-accept=$r[urn] &to-show=$r[urn]] } | edit:listing:start-custom [(all)] &caption='Pulumi Yank Resource' &accept={ |r| echo $r } }
@@ -184,7 +160,7 @@ fn pulumi-resource-yank { pulumi stack export | from-json | put (one)[deployment
 fn ssh-trust { |@a| ssh-copy-id -i $E:HOME/.ssh/id_rsa.pub $@a }
 
 # VSCode
-set edit:small-word-abbr['c.'] = 'code .'
+fn code-open { code . }
 fn code-extension-dump { code --list-extensions > $E:HOME'/Library/Application Support/Code/User/extensions.txt' }
 fn code-extension-install { xargs < $E:HOME'/Library/Application Support/Code/User/extensions.txt' -L 1 code --force --install-extension }
 
