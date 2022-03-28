@@ -23,6 +23,7 @@ link_manager() {
 	link "$1" "$HOME" git
 	link "$1" "$HOME" jetbrains
 	link "$1" "$HOME/.config/nvim" neovim
+	link "$1" "$HOME/Library/Application Support/nushell" nushell
 	link "$1" "$HOME" postgresql
 	link "$1" "$HOME/.config" ripgrep
 	link "$1" "$HOME/Library/Application Support/Code/User" vscode
