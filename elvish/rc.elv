@@ -1,13 +1,12 @@
 use path
 use readline-binding
+use store
 use str
 
 set E:BAT_STYLE = auto
 set E:BAT_THEME = 1337
 set E:DOCKER_DEFAULT_PLATFORM = linux/amd64 # good idea?
 set E:EDITOR = nvim
-set E:MANPAGER = "sh -c 'col -bx | bat -l man -p'"
-set E:PAGER = less
 set E:RIPGREP_CONFIG_PATH = $E:HOME/.config/ripgreprc
 set E:VISUAL = nvim
 # set E:REQUESTS_CA_BUNDLE = $E:HOME/.proxyman/proxyman-ca.pem # proxyman with python
@@ -60,15 +59,20 @@ fn brew-up { brew update; brew upgrade --ignore-pinned; brew cleanup; brew docto
 # Docker
 fn doc { |@a| docker $@a }
 fn docker-ps { |@a| docker ps -a $@a }
-fn docker-rm-container { docker stop (docker ps -a -q); docker rm (docker ps -a -q); docker system prune --volumes -f }
-fn docker-rm-image { docker rmi -f (docker images -a -q) }
-fn docker-stop-container { docker stop (docker ps -a -q) }
+fn docker-rm-container { docker stop (docker ps -aq); docker rm (docker ps -aq); docker system prune --volumes -f }
+fn docker-rm-image { docker rmi -f (docker images -aq) }
+fn docker-stop-container { docker stop (docker ps -aq) }
 fn limactl-config {
   # /opt/homebrew/Cellar/lima/0.9.1/share/lima/examples/default.yaml
   nvim $E:HOME/.lima/_config/default.yaml
 }
 fn limactl-start {
-  limactl start --name=default template://docker
+  var exists = (limactl ls --json | from-json | each { |v| put $v[name] } | has-value [(all)] default)
+  if (eq $exists $true) {
+    limactl start default
+  } else {
+    limactl start --name=default template://docker
+  }
   docker context update lima --docker 'host=unix://'$E:HOME'/.lima/default/sock/docker.sock'
   docker context use lima
   var config = $E:HOME/.docker/config.json
@@ -84,12 +88,16 @@ fn dotnet-tool-up { dotnet tool list -g | from-lines | drop 2 | each { |l| str:s
 # Edit
 fn e { |@a| nvim $@a }
 
+# Environment
+fn env-ls { env | from-lines | each { |e| var k v = (str:split '=' $e); put [$k $v] } }
+fn cmd-del { store:cmds 0 -1 | each { |c| put [&to-filter=$c[text] &to-accept=""$c[seq] &to-show=$c[text]] } | edit:listing:start-custom [(all)] &caption='Delete Command' &accept={ |c| store:del-cmd $c } }
+
 # File System
 fn dir-size { dust -d 1 }
 fn file-backup { |f| cp $f $E:HOME'/Library/Mobile Documents/com~apple~CloudDocs/' }
 fn file-rmrf { fd . --hidden --max-depth 1 --no-ignore | from-lines | each { |f| put [&to-filter=$f &to-accept=$f &to-show=$f] } | edit:listing:start-custom [(all)] &caption='Remove File' &accept={ |f| rm -rf $f } }
 fn file-yank { rg --files | from-lines | each { |f| put [&to-filter=$f &to-accept=$f &to-show=$f] } | edit:listing:start-custom [(all)] &caption='Yank File' &accept={ |f| cat $f | pbcopy } }
-fn l { |@a| exa -al }
+fn l { |@a| exa -al $@a }
 fn p { |p|
   if (path:is-dir $p) {
     exa --tree --level 3 $p
