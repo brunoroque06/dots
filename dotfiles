@@ -10,23 +10,35 @@ install() {
 	chsh -s $SH
 
 	echo "export PATH=/opt/homebrew/bin:$PATH" >~/.bash_profile
+
+	defaults write -g ApplePressAndHoldEnabled -bool true
 }
 
+paths=(
+	"$HOME/.config/elvish" elvish
+	"$HOME/.config/fish" fish
+	"$HOME" git
+	"$HOME" jetbrains
+	"$HOME/.config/nvim" neovim
+	"$HOME/Library/Application Support/nushell" nushell
+	"$HOME" postgresql
+	"$HOME/.config" ripgrep
+	"$HOME/Library/Application Support/Code/User" vscode
+)
+
 link() {
-	mkdir -p "$2"
-	stow -"$1" -v 1 -t "$2" "$3"
+	mkdir -p "$1"
+	stow -S -v 1 -t "$1" "$2"
+}
+
+unlink() {
+	stow -D -v 1 -t "$1" "$2"
 }
 
 link_manager() {
-	link "$1" "$HOME/.config/elvish" elvish
-	link "$1" "$HOME/.config/fish" fish
-	link "$1" "$HOME" git
-	link "$1" "$HOME" jetbrains
-	link "$1" "$HOME/.config/nvim" neovim
-	link "$1" "$HOME/Library/Application Support/nushell" nushell
-	link "$1" "$HOME" postgresql
-	link "$1" "$HOME/.config" ripgrep
-	link "$1" "$HOME/Library/Application Support/Code/User" vscode
+	for ((i = 0; i < ${#paths[@]}; i += 2)); do
+		$1 "${paths[i]}" "${paths[i + 1]}"
+	done
 }
 
 case "$1" in
@@ -34,10 +46,10 @@ install)
 	install
 	;;
 link)
-	link_manager S
+	link_manager link
 	;;
 unlink)
-	link_manager D
+	link_manager unlink
 	;;
 *)
 	printf 'Available Commands:\n\ninstall\nlink\nunlink\n'
