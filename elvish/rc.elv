@@ -52,6 +52,13 @@ set edit:completion:arg-completer[asdf] = $_asdf:arg-completer~
 # Azure
 fn az-account-set { az account list | from-json | drop 0 (one) | each { |s| put [&to-filter=$s[name] &to-accept=$s[id] &to-show=(if (eq $s[isDefault] $true) { put (styled $s[name] green) } else { put $s[name] })] } | edit:listing:start-custom [(all)] &caption='Azure Subscription' &accept={ |s| az account set --subscription $s > /dev/tty } }
 
+# Bazel
+fn bazel-macossdk {
+  var dir = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs
+  mkdir -p $dir
+  ln -s /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk $dir
+}
+
 # Brew
 fn brew-dump { brew bundle dump --file $E:HOME/Projects/dotfiles/brew/Brewfile --force }
 fn brew-up { brew update; brew upgrade --ignore-pinned; brew cleanup; brew doctor }
@@ -89,7 +96,7 @@ fn dotnet-tool-up { dotnet tool list -g | from-lines | drop 2 | each { |l| str:s
 fn e { |@a| nvim $@a }
 
 # Environment
-fn env-ls { env | from-lines | each { |e| var k v = (str:split '=' $e); put [$k $v] } }
+fn env-ls { env | from-lines | each { |e| var k v = (str:split '=' $e); put [$k $v] } | order }
 fn cmd-del { store:cmds 0 -1 | each { |c| put [&to-filter=$c[text] &to-accept=""$c[seq] &to-show=$c[text]] } | edit:listing:start-custom [(all)] &caption='Delete Command' &accept={ |c| store:del-cmd $c } }
 
 # File System

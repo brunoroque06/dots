@@ -363,7 +363,7 @@
 	<key>DisableFullscreenTransparency</key>
 	<false/>
 	<key>DoubleClickPerformsSmartSelection</key>
-	<true/>
+	<false/>
 	<key>EnableAPIServer</key>
 	<false/>
 	<key>EnableDivisionView</key>
