@@ -15,24 +15,24 @@ install() {
 }
 
 paths=(
-	"$HOME/.config/elvish" elvish
-	"$HOME/.config/fish" fish
-	"$HOME" git
-	"$HOME" jetbrains
-	"$HOME/.config/nvim" neovim
-	"$HOME/Library/Application Support/nushell" nushell
-	"$HOME" postgresql
-	"$HOME/.config" ripgrep
-	"$HOME/Library/Application Support/Code/User" vscode
+	elvish "$HOME/.config/elvish"
+	fish "$HOME/.config/fish"
+	git "$HOME"
+	jetbrains "$HOME"
+	neovim "$HOME/.config/nvim"
+	nushell "$HOME/Library/Application Support/nushell"
+	postgresql "$HOME"
+	ripgrep "$HOME/.config"
+	vscode "$HOME/Library/Application Support/Code/User"
 )
 
 link() {
-	mkdir -p "$1"
-	stow -S -v 1 -t "$1" "$2"
+	mkdir -p "$2"
+	stow -S -v 1 -t "$2" "$1"
 }
 
 unlink() {
-	stow -D -v 1 -t "$1" "$2"
+	stow -D -v 1 -t "$2" "$1"
 }
 
 link_manager() {
