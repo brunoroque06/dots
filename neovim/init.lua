@@ -37,7 +37,7 @@ augroup markdown_spell
   autocmd!
   autocmd FileType markdown setlocal spell
   autocmd BufRead,BufNewFile *.md setlocal spell
-augroup END
+augroup end
 ]],
 	false
 )
@@ -47,7 +47,17 @@ vim.api.nvim_exec(
 augroup yank_highlight
   autocmd!
   autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank()
-augroup END
+augroup end
+]],
+	false
+)
+
+vim.api.nvim_exec(
+	[[
+augroup elvish
+  autocmd!
+  autocmd BufNewFile,BufRead *.elv set filetype=elvish
+augroup end
 ]],
 	false
 )
@@ -271,6 +281,7 @@ packer.startup(function()
 					"css",
 					"dockerfile",
 					"fish",
+					"elvish",
 					"html",
 					"javascript",
 					"json",
@@ -328,10 +339,8 @@ vim.keymap.set("n", "<leader>a", ":Telescope commands<cr>")
 vim.keymap.set("n", "<leader>b", ":Telescope buffers<cr>")
 vim.keymap.set("n", "<leader>d", ":Telescope diagnostics<cr>")
 vim.keymap.set("n", "<leader>g", ":Telescope live_grep<cr>")
-vim.keymap.set("n", "<leader>h", ":Telescope help_tags<cr>")
 vim.keymap.set("n", "<leader>l", ":Telescope zoxide list<cr>")
 vim.keymap.set("n", "<leader>m", ":Telescope marks<cr>")
 vim.keymap.set("n", "<leader>o", ":lua require('telescope.builtin').find_files({hidden = true})<cr>")
-vim.keymap.set("n", "<leader>p", ":Telescope planets<cr>")
 vim.keymap.set("n", "<leader>q", ":q<cr>")
 vim.keymap.set("n", "<leader>t", ":terminal<cr>")
