@@ -108,7 +108,6 @@
       "commands": ["editor.action.goToImplementation"]
     },
     { "before": ["g", "r"], "commands": ["editor.action.rename"] },
-    { "before": ["g", "s"], "commands": ["workbench.action.gotoSymbol"] },
     { "before": ["g", "u"], "commands": ["references-view.find"] },
     { "before": ["m"], "commands": ["bookmarks.toggle"] }
   ],

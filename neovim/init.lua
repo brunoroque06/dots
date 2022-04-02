@@ -1,3 +1,4 @@
+vim.g.mapleader = " "
 vim.g.netrw_banner = true
 vim.g.netrw_liststyle = 1
 vim.g.netrw_preview = 1
@@ -317,12 +318,12 @@ packer.startup(function()
 	})
 end)
 
+vim.api.nvim_exec("command! ChangeDirectory Telescope zoxide list", false)
 vim.api.nvim_exec("command! Reload source $MYVIMRC | PackerCompile", false)
 
 vim.keymap.set("i", "<f1>", vim.lsp.buf.signature_help)
 
 vim.keymap.set("n", "==", ":Neoformat<cr>")
-
 vim.keymap.set("n", "[d", vim.lsp.diagnostic.goto_prev)
 vim.keymap.set("n", "]d", vim.lsp.diagnostic.goto_next)
 vim.keymap.set("n", "ga", ":Telescope lsp_code_actions<cr>")
@@ -333,14 +334,7 @@ vim.keymap.set("n", "gr", vim.lsp.buf.rename)
 vim.keymap.set("n", "gs", ":Telescope treesitter<cr>")
 vim.keymap.set("n", "gu", ":Telescope lsp_references<cr>")
 
-vim.keymap.set("n", "<leader>\\", ":vsplit<cr>")
-vim.keymap.set("n", "<leader>|", ":split<cr>")
-vim.keymap.set("n", "<leader>a", ":Telescope commands<cr>")
-vim.keymap.set("n", "<leader>b", ":Telescope buffers<cr>")
-vim.keymap.set("n", "<leader>d", ":Telescope diagnostics<cr>")
-vim.keymap.set("n", "<leader>g", ":Telescope live_grep<cr>")
-vim.keymap.set("n", "<leader>l", ":Telescope zoxide list<cr>")
-vim.keymap.set("n", "<leader>m", ":Telescope marks<cr>")
-vim.keymap.set("n", "<leader>o", ":lua require('telescope.builtin').find_files({hidden = true})<cr>")
-vim.keymap.set("n", "<leader>q", ":q<cr>")
-vim.keymap.set("n", "<leader>t", ":terminal<cr>")
+vim.keymap.set("n", "<leader>s", ":w<cr>")
+vim.keymap.set("n", "<leader>w", ":q<cr>")
+
+vim.cmd("source ~/.config/nvim/keybinds.lua")
