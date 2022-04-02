@@ -5,7 +5,7 @@ use str
 
 set E:BAT_STYLE = auto
 set E:BAT_THEME = 1337
-set E:DOCKER_DEFAULT_PLATFORM = linux/amd64 # good idea?
+# set E:DOCKER_DEFAULT_PLATFORM = linux/amd64 # good idea?
 set E:EDITOR = nvim
 set E:RIPGREP_CONFIG_PATH = $E:HOME/.config/ripgreprc
 set E:VISUAL = nvim
@@ -73,7 +73,7 @@ fn limactl-config {
   # /opt/homebrew/Cellar/lima/0.9.1/share/lima/examples/default.yaml
   nvim $E:HOME/.lima/_config/default.yaml
 }
-fn limactl-start {
+fn limactl-setup {
   var exists = (limactl ls --json | from-json | each { |v| put $v[name] } | has-value [(all)] default)
   if (eq $exists $true) {
     limactl start default
@@ -107,7 +107,7 @@ fn file-yank { rg --files | from-lines | each { |f| put [&to-filter=$f &to-accep
 fn l { |@a| exa -al $@a }
 fn p { |p|
   if (path:is-dir $p) {
-    exa --tree --level 3 $p
+    exa -al $p
   } elif (str:has-suffix $p .md) {
     glow $p
   } else {
@@ -119,20 +119,6 @@ fn p { |p|
 fn git-config { git config --list --show-origin }
 fn gl { git log --all --decorate --graph --format=format:'%Cblue%h %Creset- %Cgreen%ar %Creset%s %C(dim white)- %an %C(auto)%d' -100 }
 fn gi { lazygit }
-
-# Jetbrains
-fn jetbrains-keymaps {
-  var paths = [
-    $E:HOME'/Library/Application Support/JetBrains/DataGrip2021.3/keymaps'
-    $E:HOME'/Library/Application Support/JetBrains/PyCharm2021.3/jba_config/mac.keymaps'
-    $E:HOME'/Library/Application Support/JetBrains/Rider2021.3/keymaps'
-    $E:HOME'/Library/Application Support/JetBrains/WebStorm2021.3/jba_config/mac.keymaps'
-  ]
-  for p $paths {
-    echo 'Copying to:' $p
-    cp $E:HOME/Projects/dotfiles/jetbrains/bruno-roque.xml $p
-  }
-}
 
 # Network
 fn network-scan { nmap -sP 192.168.1.0/24 }
