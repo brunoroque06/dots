@@ -334,7 +334,8 @@ vim.keymap.set("n", "gr", vim.lsp.buf.rename)
 vim.keymap.set("n", "gs", ":Telescope treesitter<cr>")
 vim.keymap.set("n", "gu", ":Telescope lsp_references<cr>")
 
-vim.keymap.set("n", "<leader>s", ":w<cr>")
-vim.keymap.set("n", "<leader>w", ":q<cr>")
+vim.keymap.set("n", "<leader>w", ":w<cr>")
+vim.keymap.set("n", "<leader>q", ":q<cr>")
 
-vim.cmd("source ~/.config/nvim/keybinds.lua")
+local keybinds = vim.fn.stdpath("config") .. "/keybinds.lua"
+vim.cmd("source " .. keybinds)

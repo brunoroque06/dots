@@ -83,7 +83,8 @@ module JetBrains =
         let mapped = List.map mapMeta metas
 
         let disabled =
-            [ "GotoClass"
+            [ "FindNext"
+              "GotoClass"
               "QuickImplementations"
               "org.intellij.plugins.markdown.ui.actions.styling.ToggleBoldAction"
               "Vcs.UpdateProject" ]
