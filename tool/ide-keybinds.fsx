@@ -145,8 +145,13 @@ module NeoVim =
             content = mapped } ]
 
 module VsCode =
-    let keybind action bind =
-        $"  {{\n    \"key\": \"{bind}\",\n    \"command\": \"{action}\"\n  }},"
+    let keybind action bind condition =
+        let cond =
+            match condition with
+            | Some c -> $"    \"when\": \"{c}\"\n"
+            | _ -> ""
+
+        $"  {{\n    \"key\": \"{bind}\",\n    \"command\": \"{action}\"\n{cond}  }},"
 
     let mapMeta (meta: MetaKeybind) =
         let action =
@@ -182,7 +187,7 @@ module VsCode =
             | _ -> "cmd+shift"
             |> fun s -> $"{s}+{char}"
 
-        keybind action bind
+        keybind action bind None
 
     let configMetas metas =
         let extras =
@@ -194,7 +199,7 @@ module VsCode =
             metas
             |> (+) extras
             |> List.map mapMeta
-            |> (+) [ (keybind "workbench.action.focusActiveEditorGroup" "escape") ]
+            |> (+) [ (keybind "workbench.action.focusActiveEditorGroup" "escape" (Some "!editorFocus")) ]
 
         let content = [ "[" ] |> (+) mapped |> (+) [ "]" ]
 
