@@ -21,7 +21,6 @@ module Keybind =
         | Zen
 
     type Key =
-        | Backslash
         | Enter
         | LeftSquareBracket
         | Letter of string
@@ -66,7 +65,6 @@ module JetBrains =
 
         let char =
             match meta.key with
-            | Backslash -> "back_slash"
             | Enter -> "enter"
             | Letter l -> l
             | _ -> failwith ""
@@ -83,7 +81,9 @@ module JetBrains =
         let mapped = List.map mapMeta metas
 
         let disabled =
-            [ "FindNext"
+            [ "CompareTwoFiles"
+              "EditorDuplicate"
+              "FindNext"
               "GotoClass"
               "QuickImplementations"
               "org.intellij.plugins.markdown.ui.actions.styling.ToggleBoldAction"
@@ -116,7 +116,7 @@ module NeoVim =
             | GoToFileRecent -> ":Telescope buffers<cr>"
             | GoToSymbol -> ":Telescope lsp_references<cr>"
             | GoToSymbolInFile -> ":Telescope lsp_references<cr>"
-            | Navigate -> ":NTree<cr>"
+            | Navigate -> ":Explore<cr>"
             | Search -> ":Telescope live_grep<cr>"
             | ShowActions -> ":Telescope lsp_code_actions<cr>"
             | SplitHorizontally -> ":vsplit<cr>"
@@ -127,12 +127,11 @@ module NeoVim =
 
         let bind =
             match meta.key with
-            | Backslash ->
-                match meta.shift with
-                | false -> "\\\\"
-                | _ -> "|"
             | Enter -> "<enter>"
-            | Letter l -> l
+            | Letter l ->
+                match meta.shift with
+                | false -> l
+                | _ -> $"<S-{l}>"
             | _ -> failwith ""
             |> fun c -> $"<leader>{c}"
 
@@ -175,7 +174,6 @@ module VsCode =
 
         let char =
             match meta.key with
-            | Backslash -> "\\\\"
             | Enter -> "enter"
             | LeftSquareBracket -> "["
             | Letter l -> l
@@ -217,8 +215,8 @@ let metas =
       (Navigate, Letter("l"), false)
       (Search, Letter("g"), false)
       (ShowActions, Enter, false)
-      (SplitHorizontally, Backslash, true)
-      (SplitVertically, Backslash, false)
+      (SplitHorizontally, Letter("d"), true)
+      (SplitVertically, Letter("d"), false)
       (Terminal, Letter("t"), false)
       (Zen, Letter("h"), true) ]
     |> List.map (fun (a, k, s) -> { action = a; key = k; shift = s })
