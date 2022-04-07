@@ -98,7 +98,7 @@ module JetBrains =
 
         List.map
             (fun (p: string) -> p.Split "/")
-            [ "DataGrip2021.3/keymaps"
+            [ "DataGrip2022.1/keymaps"
               "PyCharm2021.3/jba_config/mac.keymaps"
               "Rider2021.3/jba_config/mac.keymaps"
               "WebStorm2021.3/jba_config/mac.keymaps" ]
@@ -119,8 +119,8 @@ module NeoVim =
             | Navigate -> ":Explore<cr>"
             | Search -> ":Telescope live_grep<cr>"
             | ShowActions -> ":Telescope lsp_code_actions<cr>"
-            | SplitHorizontally -> ":vsplit<cr>"
-            | SplitVertically -> ":split<cr>"
+            | SplitHorizontally -> ":split<cr>"
+            | SplitVertically -> ":vsplit<cr>"
             | Terminal -> ":terminal<cr>"
             | Zen -> ":only"
             | _ -> failwith ""
