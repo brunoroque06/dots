@@ -22,7 +22,7 @@ set -g hydro_color_error red
 set -g hydro_color_git blue
 set -g hydro_color_prompt purple
 set -g hydro_color_pwd yellow
-set -g hydro_symbol_prompt Λ
+set -g hydro_symbol_prompt '~>'
 
 set -g fish_color_autosuggestion grey
 set -g fish_color_command green

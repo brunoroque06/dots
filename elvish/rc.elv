@@ -30,7 +30,7 @@ set edit:prompt = {
     put '* '
   }
   styled (tilde-abbr $pwd) blue
-  put (styled ' Λ ' magenta)
+  put (styled ' ~> ' magenta)
 }
 set edit:rprompt = (constantly (whoami)@(hostname))
 
