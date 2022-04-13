@@ -1,3 +1,4 @@
+use math
 use path
 use readline-binding
 use store
@@ -25,12 +26,23 @@ set paths = [
 ]
 var _paths
 
+var _duration = 0
+set edit:after-command = [{ |m| set _duration = $m[duration] }]
+
 set edit:prompt = {
   if (not-eq $_paths $nil) {
     put '* '
   }
   styled (tilde-abbr $pwd) blue
-  put (styled ' ~> ' magenta)
+  if (> $_duration 1) {
+    var m = (/ $_duration 60 | math:floor (one))
+    if (> $m 0) {
+      printf ' %.0fm' $m | styled (one) yellow
+    }
+    var s = (math:floor $_duration | printf '%.0f' (one) | % (one) 60)
+    printf ' %.0fs' $s | styled (one) yellow
+  }
+  styled ' ~> ' magenta
 }
 set edit:rprompt = (constantly (whoami)@(hostname))
 
@@ -49,8 +61,10 @@ set E:ASDF_DIR = /opt/homebrew/opt/asdf/libexec/
 use asdf _asdf; var asdf~ = $_asdf:asdf~
 set edit:completion:arg-completer[asdf] = $_asdf:arg-completer~
 
+fn map { |f l| each { |i| $f $i } $l | put [(all)] }
+
 # Azure
-fn az-account-set { az account list | from-json | drop 0 (one) | each { |s| put [&to-filter=$s[name] &to-accept=$s[id] &to-show=(if (eq $s[isDefault] $true) { put (styled $s[name] green) } else { put $s[name] })] } | edit:listing:start-custom [(all)] &caption='Azure Subscription' &accept={ |s| az account set --subscription $s > /dev/tty } }
+fn az-account-set { az account list | from-json | map { |s| put [&to-filter=$s[name] &to-accept=$s[id] &to-show=(if (eq $s[isDefault] $true) { put (styled $s[name] green) } else { put $s[name] })] } (one) | edit:listing:start-custom (one) &caption='Azure Subscription' &accept={ |s| az account set --subscription $s > /dev/tty } }
 
 # Bazel
 fn bazel-macossdk {
@@ -90,10 +104,7 @@ fn limactl-setup {
 # Dotnet
 fn dot { |@a| dotnet $@a }
 fn dotnet-up { dotnet outdated --upgrade }
-fn dotnet-tool-up { dotnet tool list -g | from-lines | drop 2 | each { |l| str:split ' ' $l | take 1 } | each { |l| dotnet tool update -g $l }}
-
-# Edit
-fn e { |@a| nvim $@a }
+fn dotnet-tool-up { dotnet tool list -g | from-lines | drop 2 | each { |l| str:split ' ' $l | take 1 } | each { |l| dotnet tool update -g $l } }
 
 # Environment
 fn env-ls { env | from-lines | each { |e| var k v = (str:split '=' $e); put [$k $v] } | order }
@@ -101,9 +112,6 @@ fn cmd-del { store:cmds 0 -1 | each { |c| put [&to-filter=$c[text] &to-accept=""
 
 # File System
 fn dir-size { dust -d 1 }
-fn file-backup { |f| cp $f $E:HOME'/Library/Mobile Documents/com~apple~CloudDocs/' }
-fn file-rmrf { fd . --hidden --max-depth 1 --no-ignore | from-lines | each { |f| put [&to-filter=$f &to-accept=$f &to-show=$f] } | edit:listing:start-custom [(all)] &caption='Remove File' &accept={ |f| rm -rf $f } }
-fn file-yank { rg --files | from-lines | each { |f| put [&to-filter=$f &to-accept=$f &to-show=$f] } | edit:listing:start-custom [(all)] &caption='Yank File' &accept={ |f| cat $f | pbcopy } }
 fn l { |@a| exa -al $@a }
 fn p { |p|
   if (path:is-dir $p) {
@@ -115,10 +123,28 @@ fn p { |p|
   }
 }
 
+# Files
+fn e { |@a| nvim $@a }
+fn file-rmrf { fd . --hidden --max-depth 1 --no-ignore | from-lines | each { |f| put [&to-filter=$f &to-accept=$f &to-show=$f] } | edit:listing:start-custom [(all)] &caption='Remove File' &accept={ |f| rm -rf $f } }
+fn file-yank { rg --files | from-lines | each { |f| put [&to-filter=$f &to-accept=$f &to-show=$f] } | edit:listing:start-custom [(all)] &caption='Yank File' &accept={ |f| cat $f | pbcopy } }
+fn r { |@a| nvim -R $@a }
+fn rn { |@a| nvim -R -u NONE $@a }
+
 # Git
 fn git-config { git config --list --show-origin }
 fn gl { git log --all --decorate --graph --format=format:'%Cblue%h %Creset- %Cgreen%ar %Creset%s %C(dim white)- %an %C(auto)%d' -100 }
 fn gi { lazygit }
+
+# JetBrains
+fn jetbrains-clean { |a|
+  var dirs = ['Application Support/JetBrains' 'Caches/JetBrains' 'Logs/JetBrains']
+  for d $dirs {
+    rm -rf $E:HOME/Library/$d/$a
+  }
+}
+set edit:completion:arg-completer[jetbrains-clean] = { |@args|
+  ls $E:HOME/'Library/Application Support/JetBrains' | from-lines
+}
 
 # Network
 fn network-scan { nmap -sP 192.168.1.0/24 }
@@ -153,9 +179,9 @@ fn deactivate {
 
 # Pulumi
 fn pu { |@a| pulumi $@a }
-fn pulumi-stack-select { pulumi stack ls --json | from-json | drop 0 (all) | each { |s| put [&to-filter=$s[name] &to-accept=$s[name] &to-show=(if (eq $s[current] $true) { put (styled $s[name] green) } else { put $s[name] })] } | edit:listing:start-custom [(all)] &caption='Pulumi Stack' &accept={ |s| pulumi stack select $s > /dev/tty } }
-fn pulumi-resource-delete { pulumi stack export | from-json | put (one)[deployment][resources] | drop 0 (one) | each { |r| put [&to-filter=$r[urn] &to-accept=$r[urn] &to-show=$r[urn]] } | edit:listing:start-custom [(all)] &caption='Pulumi Delete Resource' &accept={ |r| pulumi state delete $r > /dev/tty } }
-fn pulumi-resource-yank { pulumi stack export | from-json | put (one)[deployment][resources] | drop 0 (one) | each { |r| put [&to-filter=$r[urn] &to-accept=$r[urn] &to-show=$r[urn]] } | edit:listing:start-custom [(all)] &caption='Pulumi Yank Resource' &accept={ |r| echo $r } }
+fn pulumi-stack-select { pulumi stack ls --json | from-json | map { |s| put [&to-filter=$s[name] &to-accept=$s[name] &to-show=(if (eq $s[current] $true) { put (styled $s[name] green) } else { put $s[name] })] } | edit:listing:start-custom (one) &caption='Pulumi Stack' &accept={ |s| pulumi stack select $s > /dev/tty } }
+fn pulumi-resource-delete { pulumi stack export | from-json | put (one)[deployment][resources] | map { |r| put [&to-filter=$r[urn] &to-accept=$r[urn] &to-show=$r[urn]] } (one) | edit:listing:start-custom (one) &caption='Pulumi Delete Resource' &accept={ |r| pulumi state delete $r > /dev/tty } }
+fn pulumi-resource-yank { pulumi stack export | from-json | put (one)[deployment][resources] | map { |r| put [&to-filter=$r[urn] &to-accept=$r[urn] &to-show=$r[urn]] } (one) | edit:listing:start-custom (one) &caption='Pulumi Yank Resource' &accept={ |r| echo $r } }
 
 # SSH
 fn ssh-trust { |@a| ssh-copy-id -i $E:HOME/.ssh/id_rsa.pub $@a }
