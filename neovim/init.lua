@@ -134,7 +134,12 @@ packer.startup(function()
 		"goolord/alpha-nvim",
 		requires = { "kyazdani42/nvim-web-devicons" },
 		config = function()
-			require("alpha").setup(require("alpha.themes.startify").opts)
+			local alpha = require("alpha")
+			local cfg = require("alpha.themes.startify")
+
+			cfg.section.header.val = { "@" }
+
+			alpha.setup(cfg.opts)
 		end,
 	})
 
