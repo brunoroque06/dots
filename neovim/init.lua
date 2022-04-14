@@ -2,6 +2,7 @@ vim.g.mapleader = " "
 vim.g.netrw_banner = true
 vim.g.netrw_liststyle = 1
 vim.g.netrw_preview = 1
+vim.g.netrw_alto = 0
 
 vim.o.autoread = true
 vim.o.backspace = "indent,eol,start"
@@ -128,18 +129,6 @@ packer.startup(function()
 		requires = { { "kyazdani42/nvim-web-devicons" } },
 		config = function()
 			require("circles").setup()
-		end,
-	})
-	use({
-		"goolord/alpha-nvim",
-		requires = { "kyazdani42/nvim-web-devicons" },
-		config = function()
-			local alpha = require("alpha")
-			local cfg = require("alpha.themes.startify")
-
-			cfg.section.header.val = { "@" }
-
-			alpha.setup(cfg.opts)
 		end,
 	})
 
