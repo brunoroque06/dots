@@ -59,7 +59,6 @@
     "shell": { "path": "/usr/local/bin/fish" }
   },
   "terminal.integrated.defaultProfile.windows": "shell",
-  "terminal.external.osxExec": "iTerm.app",
   "typescript.implementationsCodeLens.enabled": false,
   "typescript.referencesCodeLens.enabled": false,
   "typescript.updateImportsOnFileMove.enabled": "always",

@@ -24,6 +24,7 @@ paths=(
 	postgresql "$HOME"
 	ripgrep "$HOME/.config"
 	vscode "$HOME/Library/Application Support/Code/User"
+	wezterm "$HOME/.config/wezterm"
 )
 
 link() {
