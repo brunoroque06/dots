@@ -34,7 +34,7 @@ set edit:prompt = {
     put '* '
   }
   styled (tilde-abbr $pwd) blue
-  if (> $_duration 1) {
+  if (> $_duration 5) {
     var m = (/ $_duration 60 | math:floor (one))
     if (> $m 0) {
       printf ' %.0fm' $m | styled (one) yellow
