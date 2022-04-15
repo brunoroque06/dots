@@ -302,14 +302,6 @@ packer.startup(function()
 			vim.g["test#neovim#term_position"] = "vertical"
 		end,
 	})
-
-	use({
-		"TimUntersberger/neogit",
-		requires = "nvim-lua/plenary.nvim",
-		config = function()
-			require("neogit").setup({ kind = "tab" })
-		end,
-	})
 end)
 
 vim.api.nvim_exec("command! ChangeDirectory Telescope zoxide list", false)
