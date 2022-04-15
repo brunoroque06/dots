@@ -33,36 +33,48 @@ vim.o.smartcase = true
 vim.o.termguicolors = true
 
 vim.cmd("syntax enable")
-vim.api.nvim_exec(
-	[[
-augroup markdown_spell
-  autocmd!
-  autocmd FileType markdown setlocal spell
-  autocmd BufRead,BufNewFile *.md setlocal spell
-augroup end
-]],
-	false
-)
 
-vim.api.nvim_exec(
-	[[
-augroup yank_highlight
-  autocmd!
-  autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank()
-augroup end
-]],
-	false
-)
+local format = vim.api.nvim_create_augroup("format", { clear = true })
+local formatters = {
+	{ "bzl", "buildifier" },
+	{ "css", "prettier" },
+	{ "html", "prettier" },
+	{ "javascript", "prettier" },
+	{ "json", "prettier" },
+	{ "lua", "stylua" },
+	{ "markdown", "prettier" },
+	{ "python", "black" },
+	{ "scss", "prettier" },
+	{ "sql", "pg_format" },
+	{ "typescript", "prettier" },
+	{ "yaml", "prettier" },
+}
+for _, f in pairs(formatters) do
+	vim.api.nvim_create_autocmd("FileType", {
+		callback = function()
+			vim.cmd("set formatprg=" .. f[2])
+		end,
+		group = format,
+		pattern = f[1],
+	})
+end
 
-vim.api.nvim_exec(
-	[[
-augroup elvish
-  autocmd!
-  autocmd BufNewFile,BufRead *.elv set filetype=elvish
-augroup end
-]],
-	false
-)
+local spell = vim.api.nvim_create_augroup("spell", { clear = true })
+vim.api.nvim_create_autocmd("FileType", {
+	callback = function()
+		vim.cmd("setlocal spell")
+	end,
+	group = spell,
+	pattern = { "markdown", "txt" },
+})
+
+local yank = vim.api.nvim_create_augroup("yank", { clear = true })
+vim.api.nvim_create_autocmd("TextYankPost", {
+	callback = function()
+		vim.highlight.on_yank()
+	end,
+	group = yank,
+})
 
 local install_path = vim.fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 
@@ -101,8 +113,8 @@ packer.startup(function()
 		config = function()
 			require("lualine").setup({
 				options = {
-					component_separators = { "", "" },
-					section_separators = { "", "" },
+					component_separators = "",
+					section_separators = "",
 					theme = "kanagawa",
 				},
 				sections = {
@@ -113,10 +125,23 @@ packer.startup(function()
 							path = 1,
 						},
 					},
+					lualine_x = {
+						"encoding",
+						{
+							"fileformat",
+							symbols = {
+								unix = "unix",
+								dos = "dos",
+								mac = "mac",
+							},
+						},
+						"filetype",
+					},
 				},
 			})
 		end,
 	})
+
 	use({
 		"lewis6991/gitsigns.nvim",
 		requires = { "nvim-lua/plenary.nvim" },
@@ -124,6 +149,7 @@ packer.startup(function()
 			require("gitsigns").setup()
 		end,
 	})
+
 	use({
 		"projekt0n/circles.nvim",
 		requires = { { "kyazdani42/nvim-web-devicons" } },
@@ -137,28 +163,6 @@ packer.startup(function()
 		config = function()
 			vim.g.neoformat_basic_format_trim = 1
 			vim.g.shfmt_opt = "-i 0"
-
-			-- https://github.com/sbdchd/neoformat/issues/134#issuecomment-347180213
-			vim.api.nvim_exec(
-				[[
-				augroup format
-				  autocmd!
-				  autocmd FileType bzl set formatprg=buildifier
-				  autocmd FileType css set formatprg=prettier
-				  autocmd FileType html set formatprg=prettier
-				  autocmd FileType javascript set formatprg=prettier
-				  autocmd FileType json set formatprg=prettier
-				  autocmd FileType lua set formatprg=stylua
-				  autocmd FileType markdown set formatprg=prettier
-				  autocmd FileType python set formatprg=black
-				  autocmd FileType scss set formatprg=prettier
-				  autocmd FileType sql set formatprg=pg_format
-				  autocmd FileType typescript set formatprg=prettier
-				  autocmd FileType yaml set formatprg=prettier
-				augroup END
-				]],
-				false
-			)
 		end,
 	})
 
@@ -183,7 +187,24 @@ packer.startup(function()
 		end,
 		config = function()
 			require("nvim-lsp-installer").on_server_ready(function(server)
-				server:setup({})
+				local opts = {}
+
+				if server.name == "sumneko_lua" then
+					opts = {
+						settings = {
+							Lua = {
+								diagnostics = {
+									globals = { "use", "vim" },
+								},
+								workspace = {
+									library = vim.api.nvim_get_runtime_file("", true),
+								},
+							},
+						},
+					}
+				end
+
+				server:setup(opts)
 			end)
 		end,
 	})
@@ -239,6 +260,7 @@ packer.startup(function()
 			})
 		end,
 	})
+
 	use("github/copilot.vim")
 
 	use({
@@ -304,8 +326,8 @@ packer.startup(function()
 	})
 end)
 
-vim.api.nvim_exec("command! ChangeDirectory Telescope zoxide list", false)
-vim.api.nvim_exec("command! Reload source $MYVIMRC | PackerCompile", false)
+vim.api.nvim_create_user_command("ChangeDirectory", "Telescope zoxide list", {})
+vim.api.nvim_create_user_command("Reload", "source $MYVIMRC | PackerCompile", {})
 
 vim.keymap.set("i", "<f1>", vim.lsp.buf.signature_help)
 
