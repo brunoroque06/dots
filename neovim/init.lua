@@ -65,7 +65,7 @@ vim.api.nvim_create_autocmd("FileType", {
 		vim.cmd("setlocal spell")
 	end,
 	group = spell,
-	pattern = { "markdown", "txt" },
+	pattern = { "markdown", "text" },
 })
 
 local yank = vim.api.nvim_create_augroup("yank", { clear = true })

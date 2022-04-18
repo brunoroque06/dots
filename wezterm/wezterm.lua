@@ -10,10 +10,16 @@ wez.on("update-right-status", function(window, _)
 	window:set_right_status(name or "")
 end)
 
+local scheme = wez.get_builtin_color_schemes()["Gruvbox Dark"]
+scheme.scrollbar_thumb = scheme.ansi[8]
+
 return {
 	default_prog = { "/opt/homebrew/bin/fish", "-l" },
 
-	color_scheme = "Gruvbox Dark",
+	color_schemes = {
+		["Scheme"] = scheme,
+	},
+	color_scheme = "Scheme",
 
 	font = wez.font({
 		family = "JetBrains Mono",
@@ -25,6 +31,8 @@ return {
 		font = wez.font({ family = "JetBrains Mono" }),
 		font_size = 13.0,
 	},
+
+	enable_scroll_bar = true,
 
 	launch_menu = {
 		{
