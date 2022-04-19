@@ -179,7 +179,7 @@ fn deactivate {
 
 # Pulumi
 fn pu { |@a| pulumi $@a }
-fn pulumi-stack-select { pulumi stack ls --json | from-json | map { |s| put [&to-filter=$s[name] &to-accept=$s[name] &to-show=(if (eq $s[current] $true) { put (styled $s[name] green) } else { put $s[name] })] } | edit:listing:start-custom (one) &caption='Pulumi Stack' &accept={ |s| pulumi stack select $s > /dev/tty } }
+fn pulumi-stack-select { pulumi stack ls --json | from-json | map { |s| put [&to-filter=$s[name] &to-accept=$s[name] &to-show=(if (eq $s[current] $true) { put (styled $s[name] green) } else { put $s[name] })] } (one) | edit:listing:start-custom (one) &caption='Pulumi Stack' &accept={ |s| pulumi stack select $s > /dev/tty } }
 fn pulumi-resource-delete { pulumi stack export | from-json | put (one)[deployment][resources] | map { |r| put [&to-filter=$r[urn] &to-accept=$r[urn] &to-show=$r[urn]] } (one) | edit:listing:start-custom (one) &caption='Pulumi Delete Resource' &accept={ |r| pulumi state delete $r > /dev/tty } }
 fn pulumi-resource-yank { pulumi stack export | from-json | put (one)[deployment][resources] | map { |r| put [&to-filter=$r[urn] &to-accept=$r[urn] &to-show=$r[urn]] } (one) | edit:listing:start-custom (one) &caption='Pulumi Yank Resource' &accept={ |r| echo $r } }
 
