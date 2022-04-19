@@ -100,6 +100,12 @@ packer.startup(function()
 	use("tpope/vim-surround")
 	use("tpope/vim-unimpaired")
 	use("tpope/vim-vinegar")
+	use({
+		"windwp/nvim-autopairs",
+		config = function()
+			require("nvim-autopairs").setup({})
+		end,
+	})
 
 	use({
 		"rebelot/kanagawa.nvim",
@@ -311,17 +317,9 @@ packer.startup(function()
 					enable = true,
 				},
 				rainbow = {
-					enable = false,
+					enable = true,
 				},
 			})
-		end,
-	})
-
-	use({
-		"vim-test/vim-test",
-		config = function()
-			vim.g["test#strategy"] = "neovim"
-			vim.g["test#neovim#term_position"] = "vertical"
 		end,
 	})
 end)
