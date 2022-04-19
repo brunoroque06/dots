@@ -5,7 +5,7 @@ local home = os.getenv("HOME")
 wez.on("update-right-status", function(window, _)
 	local name = window:active_key_table()
 	if name then
-		name = "TABLE: " .. name
+		name = "TABLE: " .. name .. " "
 	end
 	window:set_right_status(name or "")
 end)
@@ -21,14 +21,12 @@ return {
 	},
 	color_scheme = "Scheme",
 
-	font = wez.font({
-		family = "JetBrains Mono",
-	}),
+	font = wez.font("JetBrains Mono", { weight = "Regular" }),
 	font_size = 13.0,
 	harfbuzz_features = { "calt=0", "clig=0", "liga=0" },
 
 	window_frame = {
-		font = wez.font({ family = "JetBrains Mono" }),
+		font = wez.font("JetBrains Mono", { weight = "Bold" }),
 		font_size = 13.0,
 	},
 
@@ -48,6 +46,23 @@ return {
 		{ key = "d", mods = "CMD", action = wez.action({ ScrollByPage = 0.5 }) },
 		{ key = "l", mods = "CMD", action = "ShowLauncher" },
 		{ key = "m", mods = "CMD", action = "DisableDefaultAssignment" },
+		{
+			key = "o",
+			mods = "CMD",
+			action = wez.action({
+				QuickSelectArgs = {
+					label = "open url",
+					patterns = {
+						"https?://\\S+",
+					},
+					action = wez.action_callback(function(window, pane)
+						local url = window:get_selection_text_for_pane(pane)
+						wez.log_info("opening: " .. url)
+						wez.open_with(url)
+					end),
+				},
+			}),
+		},
 		{
 			key = "r",
 			mods = "CMD",
