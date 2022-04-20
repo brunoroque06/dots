@@ -14,7 +14,9 @@ local scheme = wez.get_builtin_color_schemes()["Gruvbox Dark"]
 scheme.scrollbar_thumb = scheme.ansi[8]
 
 return {
-	default_prog = { "/opt/homebrew/bin/fish", "-l" },
+	-- Why is my directory $TMPDIR removed periodically, regardless of the age of the file/directory?
+	-- Debug: sudo fs_usage -w | rg rmdir | rg var/folders/*/*/T/elvish
+	default_prog = { "/opt/homebrew/bin/elvish", "-sock", home .. "/.local/state/elvish/sock" },
 
 	color_schemes = {
 		["Scheme"] = scheme,
@@ -33,9 +35,6 @@ return {
 	enable_scroll_bar = true,
 
 	launch_menu = {
-		{
-			args = { "top" },
-		},
 		{
 			label = "dotfiles",
 			cwd = home .. "/Projects/dotfiles",
