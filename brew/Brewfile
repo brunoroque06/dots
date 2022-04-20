@@ -54,7 +54,6 @@ brew "tokei"
 brew "vim"
 brew "wget"
 brew "yarn"
-brew "zoxide"
 
 cask "appcleaner"
 cask "dotnet-sdk"

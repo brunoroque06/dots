@@ -275,11 +275,12 @@ packer.startup(function()
 			{ "nvim-lua/popup.nvim" },
 			{ "nvim-lua/plenary.nvim" },
 			{ "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
-			{ "jvgrootveld/telescope-zoxide" },
 		},
 		config = function()
 			local actions = require("telescope.actions")
-			require("telescope").setup({
+			local telescope = require("telescope")
+
+			telescope.setup({
 				defaults = {
 					mappings = {
 						i = {
@@ -288,8 +289,8 @@ packer.startup(function()
 					},
 				},
 			})
-			require("telescope").load_extension("fzf")
-			require("telescope").load_extension("zoxide")
+
+			telescope.load_extension("fzf")
 		end,
 	})
 
@@ -324,7 +325,30 @@ packer.startup(function()
 	})
 end)
 
-vim.api.nvim_create_user_command("ChangeDirectory", "Telescope zoxide list", {})
+local cd = function()
+	local action_state = require("telescope.actions.state")
+	local actions = require("telescope.actions")
+	local finders = require("telescope.finders")
+	local pickers = require("telescope.pickers")
+	local sorters = require("telescope.sorters")
+
+	local ls = { "fd", "--base-directory", "/Users/brunoroque/Projects", "-a", "-d", "2", "-t", "d" }
+
+	pickers.new({
+		prompt_title = "Change Directory",
+		finder = finders.new_oneshot_job(ls),
+		sorter = sorters.get_generic_fuzzy_sorter(),
+		attach_mappings = function(prompt, _)
+			actions.select_default:replace(function()
+				actions.close(prompt)
+				vim.cmd("cd " .. action_state.get_selected_entry()[1])
+			end)
+			return true
+		end,
+	}):find()
+end
+
+vim.api.nvim_create_user_command("ChangeDirectory", cd, {})
 vim.api.nvim_create_user_command("Reload", "source $MYVIMRC | PackerCompile", {})
 
 vim.keymap.set("i", "<f1>", vim.lsp.buf.signature_help)
