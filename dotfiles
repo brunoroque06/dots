@@ -16,7 +16,6 @@ install() {
 
 paths=(
 	elvish "$HOME/.config/elvish"
-	fish "$HOME/.config/fish"
 	git "$HOME"
 	jetbrains "$HOME"
 	neovim "$HOME/.config/nvim"

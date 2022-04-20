@@ -304,7 +304,6 @@ packer.startup(function()
 					"bash",
 					"css",
 					"dockerfile",
-					"fish",
 					"elvish",
 					"html",
 					"javascript",
