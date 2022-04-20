@@ -46,10 +46,12 @@ set edit:prompt = {
 }
 set edit:rprompt = (constantly (whoami)@(hostname))
 
-set edit:insert:binding['Ctrl-d'] = { edit:navigation:start }
-set edit:insert:binding['Ctrl-l'] = { edit:location:start }
-set edit:insert:binding['Ctrl-o'] = { edit:lastcmd:start }
-set edit:insert:binding['Ctrl-r'] = { edit:histlist:start }
+set edit:insert:binding[Ctrl-d] = $edit:navigation:start~
+set edit:insert:binding[Ctrl-l] = $edit:location:start~
+set edit:insert:binding[Ctrl-o] = $edit:lastcmd:start~
+set edit:insert:binding[Ctrl-r] = $edit:histlist:start~
+set edit:insert:binding[Ctrl-w] = $edit:kill-small-word-left~
+set edit:insert:binding[Alt-Backspace] = $edit:kill-small-word-left~
 
 eval (carapace _carapace | slurp) # https://github.com/rsteube/carapace-bin
 
@@ -77,17 +79,21 @@ fn bazel-macossdk {
 fn brew-dump { brew bundle dump --file $E:HOME/Projects/dotfiles/brew/Brewfile --force }
 fn brew-up { brew update; brew upgrade --ignore-pinned; brew cleanup; brew doctor }
 
+# Command
+fn cmd-del { store:cmds 0 -1 | each { |c| put [&to-filter=$c[text] &to-accept=""$c[seq] &to-show=$c[text]] } | edit:listing:start-custom [(all)] &caption='Delete Command' &accept={ |c| store:del-cmd $c } }
+fn cmd-yank { store:cmds 0 -1 | each { |c| put [&to-filter=$c[text] &to-accept=$c[text] &to-show=$c[text]] } | edit:listing:start-custom [(all)] &caption='Yank Command' &accept={ |c| printf $c | pbcopy } }
+
 # Docker
 fn doc { |@a| docker $@a }
-fn docker-ps { |@a| docker ps -a $@a }
-fn docker-rm-container { docker stop (docker ps -aq); docker rm (docker ps -aq); docker system prune --volumes -f }
-fn docker-rm-image { docker rmi -f (docker images -aq) }
-fn docker-stop-container { docker stop (docker ps -aq) }
-fn limactl-config {
+fn doc-ps { |@a| docker ps -a $@a }
+fn doc-rm-container { docker stop (docker ps -aq); docker rm (docker ps -aq); docker system prune --volumes -f }
+fn doc-rm-image { docker rmi -f (docker images -aq) }
+fn doc-stop-container { docker stop (docker ps -aq) }
+fn lima-config {
   # /opt/homebrew/Cellar/lima/0.9.1/share/lima/examples/default.yaml
   nvim $E:HOME/.lima/_config/default.yaml
 }
-fn limactl-setup {
+fn lima-setup {
   var exists = (limactl ls --json | from-json | each { |v| put $v[name] } | has-value [(all)] default)
   if (eq $exists $true) {
     limactl start default
@@ -103,12 +109,11 @@ fn limactl-setup {
 
 # Dotnet
 fn dot { |@a| dotnet $@a }
-fn dotnet-up { dotnet outdated --upgrade }
-fn dotnet-tool-up { dotnet tool list -g | from-lines | drop 2 | each { |l| str:split ' ' $l | take 1 } | each { |l| dotnet tool update -g $l } }
+fn dot-up { dotnet outdated --upgrade }
+fn dot-tool-up { dotnet tool list -g | from-lines | drop 2 | each { |l| str:split ' ' $l | take 1 } | each { |l| dotnet tool update -g $l } }
 
 # Environment
 fn env-ls { env | from-lines | each { |e| var k v = (str:split '=' $e); put [$k $v] } | order }
-fn cmd-del { store:cmds 0 -1 | each { |c| put [&to-filter=$c[text] &to-accept=""$c[seq] &to-show=$c[text]] } | edit:listing:start-custom [(all)] &caption='Delete Command' &accept={ |c| store:del-cmd $c } }
 
 # File System
 fn dir-size { dust -d 1 }
@@ -155,9 +160,9 @@ fn node-clean { fd -HI --prune node_modules | from-lines | peach { |d| rm -rf $d
 fn yarn-up { yarn upgrade-interactive }
 
 # PostgreSQL
-fn postgresql-up { postgres -D /usr/local/var/postgres }
-fn postgresql-reset { brew uninstall --ignore-dependencies postgresql; rm -rf /usr/local/var/postgres; brew install postgresql; /usr/local/bin/timescaledb_move.sh }
-fn postgresql-upgrade { brew postgresql-upgrade-database }
+fn pg-up { postgres -D /usr/local/var/postgres }
+fn pg-reset { brew uninstall --ignore-dependencies postgresql; rm -rf /usr/local/var/postgres; brew install postgresql; /usr/local/bin/timescaledb_move.sh }
+fn pg-upgrade { brew postgresql-upgrade-database }
 
 # Python
 set edit:small-word-abbr['python-setup'] = 'asdf shell python 3.9.9; python -m venv venv; activate; pip install --upgrade pip; pip install -r requirements.txt'
@@ -179,9 +184,9 @@ fn deactivate {
 
 # Pulumi
 fn pu { |@a| pulumi $@a }
-fn pulumi-stack-select { pulumi stack ls --json | from-json | map { |s| put [&to-filter=$s[name] &to-accept=$s[name] &to-show=(if (eq $s[current] $true) { put (styled $s[name] green) } else { put $s[name] })] } (one) | edit:listing:start-custom (one) &caption='Pulumi Stack' &accept={ |s| pulumi stack select $s > /dev/tty } }
-fn pulumi-resource-delete { pulumi stack export | from-json | put (one)[deployment][resources] | map { |r| put [&to-filter=$r[urn] &to-accept=$r[urn] &to-show=$r[urn]] } (one) | edit:listing:start-custom (one) &caption='Pulumi Delete Resource' &accept={ |r| pulumi state delete $r > /dev/tty } }
-fn pulumi-resource-yank { pulumi stack export | from-json | put (one)[deployment][resources] | map { |r| put [&to-filter=$r[urn] &to-accept=$r[urn] &to-show=$r[urn]] } (one) | edit:listing:start-custom (one) &caption='Pulumi Yank Resource' &accept={ |r| echo $r } }
+fn pu-stack-select { pulumi stack ls --json | from-json | map { |s| put [&to-filter=$s[name] &to-accept=$s[name] &to-show=(if (eq $s[current] $true) { put (styled $s[name] green) } else { put $s[name] })] } (one) | edit:listing:start-custom (one) &caption='Pulumi Stack' &accept={ |s| pulumi stack select $s > /dev/tty } }
+fn pu-resource-delete { pulumi stack export | from-json | put (one)[deployment][resources] | map { |r| put [&to-filter=$r[urn] &to-accept=$r[urn] &to-show=$r[urn]] } (one) | edit:listing:start-custom (one) &caption='Pulumi Delete Resource' &accept={ |r| pulumi state delete $r > /dev/tty } }
+fn pu-resource-yank { pulumi stack export | from-json | put (one)[deployment][resources] | map { |r| put [&to-filter=$r[urn] &to-accept=$r[urn] &to-show=$r[urn]] } (one) | edit:listing:start-custom (one) &caption='Pulumi Yank Resource' &accept={ |r| echo $r } }
 
 # SSH
 fn ssh-trust { |@a| ssh-copy-id -i $E:HOME/.ssh/id_rsa.pub $@a }
