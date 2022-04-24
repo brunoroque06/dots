@@ -12,11 +12,17 @@ jobs:
       - name: Install shfmt
         run: sudo snap install shfmt
 
-      - name: Format Shell
-        run: shfmt -f . | xargs -t -I % shfmt -d %
+      - name: Install stylua
+        run: cargo install stylua
+
+      - name: Format Lua
+        run: stylua --check .
 
       - name: Format Prettier
         run: npx prettier -l '**/*.{json,md,yaml,yml}'
 
-      - name: Lint
+      - name: Format Shell
+        run: shfmt -f . | xargs -t -I % shfmt -d %
+
+      - name: Lint Shell
         run: shfmt -f . | xargs -t -I % shellcheck -x %
