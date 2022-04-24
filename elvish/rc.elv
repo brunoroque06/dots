@@ -5,8 +5,8 @@ use store
 use str
 
 set E:BAT_STYLE = auto
-set E:BAT_THEME = 1337
-# set E:DOCKER_DEFAULT_PLATFORM = linux/amd64 # good idea?
+set E:BAT_THEME = GitHub
+set E:DOCKER_DEFAULT_PLATFORM = linux/amd64
 set E:EDITOR = nvim
 set E:RIPGREP_CONFIG_PATH = $E:HOME/.config/ripgreprc
 set E:VISUAL = nvim
@@ -85,23 +85,10 @@ fn cmd-yank { store:cmds 0 -1 | each { |c| put [&to-filter=$c[text] &to-accept=$
 
 # Docker
 fn doc { |@a| docker $@a }
-fn doc-ps { |@a| docker ps -a $@a }
-fn doc-rm-container { docker stop (docker ps -aq); docker rm (docker ps -aq); docker system prune --volumes -f }
-fn doc-rm-image { docker rmi -f (docker images -aq) }
-fn doc-stop-container { docker stop (docker ps -aq) }
-fn lima-config {
-  # /opt/homebrew/Cellar/lima/0.9.1/share/lima/examples/default.yaml
-  nvim $E:HOME/.lima/_config/default.yaml
-}
-fn lima-setup {
-  var exists = (limactl ls --json | from-json | each { |v| put $v[name] } | has-value [(all)] default)
-  if (eq $exists $true) {
-    limactl start default
-  } else {
-    limactl start --name=default template://docker
-  }
-  docker context update lima --docker 'host=unix://'$E:HOME'/.lima/default/sock/docker.sock'
-  docker context use lima
+fn doc-container-rm { docker stop (docker ps -aq); docker rm (docker ps -aq); docker system prune --volumes -f }
+fn doc-container-stop { docker stop (docker ps -aq) }
+fn doc-image-rm { docker rmi -f (docker images -aq) }
+fn doc-setup {
   var config = $E:HOME/.docker/config.json
   var keychain = (cat $config | from-json)
   assoc $keychain credsStore osxkeychain | to-json | jq > $config
@@ -197,5 +184,5 @@ fn code-extension-dump { code --list-extensions > $E:HOME'/Library/Application S
 fn code-extension-install { xargs < $E:HOME'/Library/Application Support/Code/User/extensions.txt' -L 1 code --force --install-extension }
 
 # Web Browser
-fn webbrowser { rm -rf /tmp/chrome_dev_test; /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --user-data-dir="/tmp/chrome_dev_test" --disable-web-security --incognito --no-first-run --new-window "http://localhost:4200" }
+fn webbrowser { rm -rf $E:TMPDIR/webbrowser; '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --user-data-dir=$E:TMPDIR/webbrowser --disable-web-security --incognito --no-first-run --new-window http://localhost:4200 }
 
