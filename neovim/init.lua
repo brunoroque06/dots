@@ -108,20 +108,35 @@ packer.startup(function()
 	})
 
 	use({
-		"rebelot/kanagawa.nvim",
+		"mcchrish/zenbones.nvim",
+		requires = { "rktjmp/lush.nvim" },
 		config = function()
-			require("kanagawa").load()
+			vim.cmd("colorscheme zenbones")
 		end,
 	})
 
 	use({
-		"hoob3rt/lualine.nvim",
+		"rose-pine/neovim",
+		config = function()
+			-- vim.cmd("colorscheme rose-pine")
+		end,
+	})
+
+	use({
+		"projekt0n/github-nvim-theme",
+		config = function()
+			-- vim.cmd("colorscheme github_light")
+		end,
+	})
+
+	use({
+		"nvim-lualine/lualine.nvim",
+		event = "ColorScheme",
 		config = function()
 			require("lualine").setup({
 				options = {
 					component_separators = "",
 					section_separators = "",
-					theme = "kanagawa",
 				},
 				sections = {
 					lualine_c = {
@@ -150,6 +165,7 @@ packer.startup(function()
 
 	use({
 		"lewis6991/gitsigns.nvim",
+		event = "ColorScheme",
 		requires = { "nvim-lua/plenary.nvim" },
 		config = function()
 			require("gitsigns").setup()
@@ -158,6 +174,7 @@ packer.startup(function()
 
 	use({
 		"projekt0n/circles.nvim",
+		event = "ColorScheme",
 		requires = { { "kyazdani42/nvim-web-devicons" } },
 		config = function()
 			require("circles").setup()
@@ -185,7 +202,6 @@ packer.startup(function()
 				"tsserver",
 				"yamlls",
 			}
-
 			for _, server in pairs(servers) do
 				local _, s = require("nvim-lsp-installer").get_server(server)
 				s:install()
@@ -209,7 +225,6 @@ packer.startup(function()
 						},
 					}
 				end
-
 				server:setup(opts)
 			end)
 		end,
@@ -331,7 +346,7 @@ local cd = function()
 	local pickers = require("telescope.pickers")
 	local sorters = require("telescope.sorters")
 
-	local ls = { "fd", "--base-directory", "/Users/brunoroque/Projects", "-a", "-d", "2", "-t", "d" }
+	local ls = { "fd", "--base-directory", vim.fn.expand("$HOME") .. "/Projects", "-a", "-d", "2", "-t", "d" }
 
 	pickers.new({
 		prompt_title = "Change Directory",

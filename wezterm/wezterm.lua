@@ -10,29 +10,88 @@ wez.on("update-right-status", function(window, _)
 	window:set_right_status(name or "")
 end)
 
-local scheme = wez.get_builtin_color_schemes()["Gruvbox Dark"]
-scheme.scrollbar_thumb = scheme.ansi[8]
+local gruv = wez.get_builtin_color_schemes()["Gruvbox Dark"]
+
+local rose = {
+	foreground = "#575279",
+	background = "#faf4ed",
+	cursor_bg = "#9893a5",
+	cursor_border = "#9893a5",
+	cursor_fg = "#575279",
+	selection_bg = "#f2e9e1",
+	selection_fg = "#575279",
+	ansi = { "#f2e9de", "#b4637a", "#286983", "#ea9d34", "#56949f", "#907aa9", "#d7827e", "#575279" },
+	brights = { "#6e6a86", "#b4637a", "#286983", "#ea9d34", "#56949f", "#907aa9", "#d7827e", "#575279" },
+}
+
+local zenbones = {
+	foreground = "#2c363c",
+	background = "#f0edec",
+	cursor_bg = "#2c363c",
+	cursor_border = "#f0edec",
+	cursor_fg = "#f0edec",
+	selection_bg = "#cbd9e3",
+	selection_fg = "#2c363c",
+	ansi = { "#f0edec", "#a8334c", "#4f6c31", "#944927", "#286486", "#88507d", "#3b8992", "#2c363c" },
+	brights = { "#cfc1ba", "#94253e", "#3f5a22", "#803d1c", "#1d5573", "#7b3b70", "#2b747c", "#4f5e68" },
+}
+
+local scheme = zenbones
+
+local colors = {
+	foreground = scheme.foreground,
+	background = scheme.background,
+	cursor_bg = scheme.cursor_bg,
+	cursor_border = scheme.cursor_border,
+	cursor_fg = scheme.cursor_fg,
+	selection_bg = scheme.selection_bg,
+	selection_fg = scheme.selection_fg,
+	ansi = scheme.ansi,
+	brights = scheme.brights,
+
+	scrollbar_thumb = scheme.selection_bg,
+	split = scheme.background,
+
+	tab_bar = {
+		background = scheme.background,
+		active_tab = {
+			bg_color = scheme.selection_bg,
+			fg_color = scheme.selection_fg,
+		},
+		inactive_tab = {
+			bg_color = scheme.background,
+			fg_color = scheme.foreground,
+		},
+		inactive_tab_hover = {
+			bg_color = scheme.selection_bg,
+			fg_color = scheme.selection_fg,
+		},
+		new_tab = {
+			bg_color = scheme.background,
+			fg_color = scheme.foreground,
+		},
+		new_tab_hover = {
+			bg_color = scheme.selection_bg,
+			fg_color = scheme.selection_fg,
+		},
+	},
+}
 
 return {
 	-- Why is my directory $TMPDIR removed periodically, regardless of the age of the file/directory?
 	-- Debug: sudo fs_usage -w | rg rmdir | rg var/folders/*/*/T/elvish
-	default_prog = { "/opt/homebrew/bin/elvish", "-sock", home .. "/.local/state/elvish/sock" },
+	-- { "/opt/homebrew/bin/elvish", "-sock", home .. "/.local/state/elvish/sock" },
+	default_prog = { "/opt/homebrew/bin/elvish" },
 
-	color_schemes = {
-		["Scheme"] = scheme,
-	},
-	color_scheme = "Scheme",
+	colors = colors,
 
 	font = wez.font("JetBrains Mono", { weight = "Regular" }),
 	font_size = 13.0,
 	harfbuzz_features = { "calt=0", "clig=0", "liga=0" },
 
-	window_frame = {
-		font = wez.font("JetBrains Mono", { weight = "Bold" }),
-		font_size = 13.0,
-	},
-
 	enable_scroll_bar = true,
+
+	use_fancy_tab_bar = false,
 
 	launch_menu = {
 		{

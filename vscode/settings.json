@@ -114,6 +114,7 @@
   "vim.useSystemClipboard": true,
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
   "window.title": "${activeEditorLong}${separator}${rootPath}",
+  "workbench.colorTheme": "Default Light+",
   "workbench.editor.enablePreview": false,
   "workbench.editor.limit.enabled": true,
   "workbench.editor.limit.perEditorGroup": true,
