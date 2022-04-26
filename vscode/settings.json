@@ -1,5 +1,5 @@
 {
-  "[css][html][javascript][json][markdown][scss][typescript][yaml]": {
+  "[css][html][javascript][json][jsonc][markdown][scss][typescript][yaml]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[python]": {
@@ -24,7 +24,7 @@
   "editor.fontFamily": "JetBrains Mono",
   "editor.fontLigatures": true,
   "editor.fontSize": 13,
-  "editor.formatOnSave": true,
+  "editor.formatOnSave": false,
   "editor.guides.bracketPairs": true,
   "editor.inlineSuggest.enabled": true,
   "editor.lineNumbers": "relative",
@@ -65,6 +65,18 @@
   "vim.highlightedyank.enable": true,
   "vim.hlsearch": true,
   "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": ["=", "="],
+      "commands": [
+        "editor.action.organizeImports",
+        "editor.action.autoFix",
+        "editor.action.format"
+      ]
+    },
+    {
+      "before": ["=", "i"],
+      "commands": ["editor.action.organizeImports"]
+    },
     {
       "before": ["[", "<space>"],
       "commands": ["editor.action.insertLineBefore"]

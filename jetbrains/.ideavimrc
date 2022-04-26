@@ -66,6 +66,5 @@ nnoremap gd :action GotoDeclaration<cr>
 nnoremap gh :action ShowErrorDescription<cr>
 nnoremap gi :action GotoImplementation<cr>
 nnoremap gr :action Refactorings.QuickListPopupAction<cr>
-" gr -> <m-shift-s> FileStructurePopup
 nnoremap gu :action ShowUsages<cr>
 
