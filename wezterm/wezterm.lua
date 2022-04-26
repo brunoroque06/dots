@@ -80,8 +80,7 @@ local colors = {
 return {
 	-- Why is my directory $TMPDIR removed periodically, regardless of the age of the file/directory?
 	-- Debug: sudo fs_usage -w | rg rmdir | rg var/folders/*/*/T/elvish
-	-- { "/opt/homebrew/bin/elvish", "-sock", home .. "/.local/state/elvish/sock" },
-	default_prog = { "/opt/homebrew/bin/elvish" },
+	default_prog = { "/opt/homebrew/bin/elvish", "-sock", home .. "/.local/state/elvish/sock" },
 
 	colors = colors,
 

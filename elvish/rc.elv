@@ -91,7 +91,7 @@ fn doc-image-rm { docker rmi -f (docker images -aq) }
 fn doc-setup {
   var config = $E:HOME/.docker/config.json
   var keychain = (cat $config | from-json)
-  assoc $keychain credsStore osxkeychain | to-json | jq > $config
+  assoc $keychain credsStore osxkeychain | to-json > $config
 }
 
 # Dotnet
