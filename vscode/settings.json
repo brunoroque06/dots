@@ -69,7 +69,6 @@
       "before": ["=", "="],
       "commands": [
         "editor.action.organizeImports",
-        "editor.action.autoFix",
         "editor.action.format"
       ]
     },
