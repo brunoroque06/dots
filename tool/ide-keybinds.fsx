@@ -112,7 +112,7 @@ module NeoVim =
             match meta.action with
             | GoToAction -> ":Telescope commands<cr>"
             | GoToBookmark -> ":Telescope marks<cr>"
-            | GoToFile -> ":lua require('telescope.builtin').find_files({hidden = true})<cr>"
+            | GoToFile -> ":lua require('telescope.builtin').find_files({})<cr>"
             | GoToFileRecent -> ":Telescope buffers<cr>"
             | GoToSymbol -> ":Telescope treesitter<cr>"
             | GoToSymbolInFile -> ":Telescope treesitter<cr>"

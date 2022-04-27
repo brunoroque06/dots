@@ -21,7 +21,6 @@ paths=(
 	neovim "$HOME/.config/nvim"
 	nushell "$HOME/Library/Application Support/nushell"
 	postgresql "$HOME"
-	ripgrep "$HOME/.config"
 	vscode "$HOME/Library/Application Support/Code/User"
 	wezterm "$HOME/.config/wezterm"
 )
