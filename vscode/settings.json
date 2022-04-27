@@ -67,10 +67,7 @@
   "vim.normalModeKeyBindingsNonRecursive": [
     {
       "before": ["=", "="],
-      "commands": [
-        "editor.action.organizeImports",
-        "editor.action.format"
-      ]
+      "commands": ["editor.action.organizeImports", "editor.action.format"]
     },
     {
       "before": ["=", "i"],
