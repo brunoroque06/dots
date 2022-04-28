@@ -53,6 +53,6 @@ unlink)
 	;;
 *)
 	printf 'Available Commands:\n'
-	printf '  %s\n' $(cat dotfiles | grep -e '[a-z])' | tr -d ')')
+	for o in $(grep -e '[a-z])' dotfiles | tr -d ')'); do printf '  %s\n' "$o"; done
 	;;
 esac
