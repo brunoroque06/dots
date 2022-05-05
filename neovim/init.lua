@@ -116,20 +116,6 @@ packer.startup(function()
 	})
 
 	use({
-		"rose-pine/neovim",
-		config = function()
-			-- vim.cmd("colorscheme rose-pine")
-		end,
-	})
-
-	use({
-		"projekt0n/github-nvim-theme",
-		config = function()
-			-- vim.cmd("colorscheme github_light")
-		end,
-	})
-
-	use({
 		"nvim-lualine/lualine.nvim",
 		event = "ColorScheme",
 		config = function()
@@ -150,11 +136,6 @@ packer.startup(function()
 						"encoding",
 						{
 							"fileformat",
-							symbols = {
-								unix = "unix",
-								dos = "dos",
-								mac = "mac",
-							},
 						},
 						"filetype",
 					},

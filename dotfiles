@@ -8,7 +8,7 @@ install() {
 	SH=/opt/homebrew/bin/bash
 	grep -qxF $SH /etc/shells || echo $SH | sudo tee -a /etc/shells
 	chsh -s $SH
-	echo "export PATH=/opt/homebrew/bin:$PATH" >~/.bash_profile
+	echo "export PATH=/opt/homebrew/bin:$PATH" >"$HOME/.bash_profile"
 
 	wget https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/NerdFontsSymbolsOnly/complete/Symbols-1000-em%20Nerd%20Font%20Complete%20Mono.ttf -O "$HOME/Library/Fonts/Symbols-1000-em Nerd Font Complete Mono.ttf"
 

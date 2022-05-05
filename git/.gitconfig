@@ -18,9 +18,9 @@
 [mergetool "vimdiff2"]
 	path = nvim
 
+[pull]
+	rebase = false
+
 [user]
 	name = Bruno Roque
 	email = brunoroque06@gmail.com
-
-[pull]
-	rebase = false
