@@ -53,7 +53,7 @@ set edit:insert:binding[Ctrl-r] = $edit:histlist:start~
 set edit:insert:binding[Ctrl-w] = $edit:kill-small-word-left~
 set edit:insert:binding[Alt-Backspace] = $edit:kill-small-word-left~
 
-eval (carapace _carapace | slurp) # https://github.com/rsteube/carapace-bin
+eval (carapace _carapace | slurp)
 
 if (path:is-regular &follow-symlink=$true $E:HOME/.config/elvish/lib/asdf.elv | not (one)) {
   mkdir -p $E:HOME/.config/elvish/lib
@@ -119,12 +119,24 @@ fn p { |p|
 fn e { |@a| nvim $@a }
 fn file-rmrf { fd . --hidden --max-depth 1 --no-ignore | from-lines | each { |f| put [&to-filter=$f &to-accept=$f &to-show=$f] } | edit:listing:start-custom [(all)] &caption='Remove File' &accept={ |f| rm -rf $f } }
 fn file-yank { rg --files | from-lines | each { |f| put [&to-filter=$f &to-accept=$f &to-show=$f] } | edit:listing:start-custom [(all)] &caption='Yank File' &accept={ |f| cat $f | pbcopy } }
+fn file-unix { |f|
+  var con = (cat $f | from-lines | put [(all)])
+  rm $f
+  touch $f
+  each { |l| echo $l >> $f } $con
+}
 fn r { |@a| nvim -R $@a }
 fn rn { |@a| nvim -R -u NONE $@a }
 
 # Git
 fn git-config { git config --list --show-origin }
-fn gl { git log --all --decorate --graph --format=format:'%Cblue%h %Creset- %Cgreen%ar %Creset%s %C(dim white)- %an %C(auto)%d' -100 }
+set edit:small-word-abbr[ga] = 'git add'
+set edit:small-word-abbr[gc] = 'git commit'
+set edit:small-word-abbr[gco] = 'git checkout'
+set edit:small-word-abbr[gph] = 'git push'
+fn gd { |@a| git diff $@a }
+fn gl { |&c=10| git log --all --decorate --graph --format=format:'%Cblue%h %Creset- %Cgreen%ar %Creset%s %C(dim white)- %an %C(auto)%d' -$c }
+fn gs { |@a| git status $@a }
 fn gi { lazygit }
 
 # JetBrains
@@ -170,7 +182,6 @@ fn deactivate {
 }
 
 # Pulumi
-fn pu { |@a| pulumi $@a }
 fn pu-stack-select { pulumi stack ls --json | from-json | map { |s| put [&to-filter=$s[name] &to-accept=$s[name] &to-show=(if (eq $s[current] $true) { put (styled $s[name] green) } else { put $s[name] })] } (one) | edit:listing:start-custom (one) &caption='Pulumi Stack' &accept={ |s| pulumi stack select $s > /dev/tty } }
 fn pu-resource-delete { pulumi stack export | from-json | put (one)[deployment][resources] | map { |r| put [&to-filter=$r[urn] &to-accept=$r[urn] &to-show=$r[urn]] } (one) | edit:listing:start-custom (one) &caption='Pulumi Delete Resource' &accept={ |r| pulumi state delete $r > /dev/tty } }
 fn pu-resource-yank { pulumi stack export | from-json | put (one)[deployment][resources] | map { |r| put [&to-filter=$r[urn] &to-accept=$r[urn] &to-show=$r[urn]] } (one) | edit:listing:start-custom (one) &caption='Pulumi Yank Resource' &accept={ |r| echo $r } }
