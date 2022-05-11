@@ -12,8 +12,7 @@ Supported: macOS.
 
 - Setup `Colemak` keyboard layout, and remap `Caps Lock` to `Control` (HHKB);
 - Load `iTerm` configuration;
-- Load `Raycast` configuration;
-- Install fonts: [Apple Fonts](https://developer.apple.com/fonts/).
+- Load `Raycast` configuration.
 
 ## Keep In Mind
 
