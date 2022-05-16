@@ -213,7 +213,7 @@ let metas =
       (GoToSymbol, Letter("y"), true)
       (GoToSymbolInFile, Letter("y"), false)
       (Navigate, Letter("l"), false)
-      (Search, Letter("g"), false)
+      (Search, Letter("f"), true)
       (ShowActions, Enter, false)
       (SplitHorizontally, Letter("d"), true)
       (SplitVertically, Letter("d"), false)

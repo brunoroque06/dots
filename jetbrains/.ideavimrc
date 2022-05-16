@@ -61,6 +61,8 @@ nnoremap [e ddP
 nnoremap ]e ddp
 nnoremap [f :action MethodUp<cr>
 nnoremap ]f :action MethodDown<cr>
+nnoremap [q :action PreviousOccurence<cr>
+nnoremap ]q :action NextOccurence<cr>
 " ga -> <m-enter> ShowIntentionActions
 nnoremap gd :action GotoDeclaration<cr>
 nnoremap gh :action ShowErrorDescription<cr>
