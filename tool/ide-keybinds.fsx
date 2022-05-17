@@ -12,6 +12,7 @@ module Keybind =
         | GoToSymbol
         | GoToSymbolInFile
         | Navigate
+        | ParameterInfo
         | Reformat
         | Search
         | ShowActions
@@ -55,6 +56,7 @@ module JetBrains =
             | GoToSymbol -> "GotoSymbol"
             | GoToSymbolInFile -> "FileStructurePopup"
             | Navigate -> "ShowNavBar"
+            | ParameterInfo -> "ParameterInfo"
             | Search -> "FindInPath"
             | ShowActions -> "ShowIntentionActions"
             | SplitHorizontally -> "SplitHorizontally"
@@ -86,6 +88,7 @@ module JetBrains =
               "FindNext"
               "GotoClass"
               "QuickImplementations"
+              "QuickJavaDoc"
               "org.intellij.plugins.markdown.ui.actions.styling.ToggleBoldAction"
               "Vcs.UpdateProject" ]
             |> List.map (fun a -> keybind a None)
@@ -117,6 +120,7 @@ module NeoVim =
             | GoToSymbol -> ":Telescope treesitter<cr>"
             | GoToSymbolInFile -> ":Telescope treesitter<cr>"
             | Navigate -> ":Explore<cr>"
+            | ParameterInfo -> ":lua vim.lsp.buf.signature_help()<cr>"
             | Search -> ":Telescope live_grep<cr>"
             | ShowActions -> ":Telescope lsp_code_actions<cr>"
             | SplitHorizontally -> ":split<cr>"
@@ -164,6 +168,7 @@ module VsCode =
             | GoToSymbol -> "workbench.action.showAllSymbols"
             | GoToSymbolInFile -> "workbench.action.gotoSymbol"
             | Navigate -> "breadcrumbs.focusAndSelect"
+            | ParameterInfo -> "editor.action.triggerParameterHints"
             | Search -> "workbench.action.findInFiles"
             | ShowActions -> "editor.action.quickFix"
             | SplitHorizontally -> "workbench.action.splitEditorOrthogonal"
@@ -213,6 +218,7 @@ let metas =
       (GoToSymbol, Letter("y"), true)
       (GoToSymbolInFile, Letter("y"), false)
       (Navigate, Letter("l"), false)
+      (ParameterInfo, Letter("i"), false)
       (Search, Letter("f"), true)
       (ShowActions, Enter, false)
       (SplitHorizontally, Letter("d"), true)
