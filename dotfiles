@@ -10,7 +10,7 @@ install() {
 	chsh -s $SH
 	echo "export PATH=/opt/homebrew/bin:$PATH" >"$HOME/.bash_profile"
 
-	wget https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/NerdFontsSymbolsOnly/complete/Symbols-1000-em%20Nerd%20Font%20Complete%20Mono.ttf -O "$HOME/Library/Fonts/Symbols-1000-em Nerd Font Complete Mono.ttf"
+	wget https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/NerdFontsSymbolsOnly/complete/Symbols-2048-em%20Nerd%20Font%20Complete%20Mono.ttf -O "$HOME/Library/Fonts/Symbols-2048-em Nerd Font Complete Mono.ttf"
 
 	defaults write -g ApplePressAndHoldEnabled -bool true
 }
