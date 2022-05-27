@@ -33,7 +33,7 @@ set edit:prompt = {
   if (not-eq $_paths $nil) {
     put '* '
   }
-  styled (tilde-abbr $pwd) blue
+  tilde-abbr $pwd | put ' '(one)' ' | styled (one) blue inverse
   if (> $_duration 5) {
     var m = (/ $_duration 60 | math:floor (one))
     if (> $m 0) {
@@ -117,6 +117,7 @@ fn p { |p|
 
 # Files
 fn e { |@a| nvim $@a }
+fn en { |@a| nvim -u NONE $@a }
 fn file-rmrf { fd . --hidden --max-depth 1 --no-ignore | from-lines | each { |f| put [&to-filter=$f &to-accept=$f &to-show=$f] } | edit:listing:start-custom [(all)] &caption='Remove File' &accept={ |f| rm -rf $f } }
 fn file-yank { rg --files | from-lines | each { |f| put [&to-filter=$f &to-accept=$f &to-show=$f] } | edit:listing:start-custom [(all)] &caption='Yank File' &accept={ |f| cat $f | pbcopy } }
 fn file-unix { |f|
@@ -131,13 +132,14 @@ fn rn { |@a| nvim -R -u NONE $@a }
 # Git
 fn git-config { git config --list --show-origin }
 set edit:small-word-abbr[ga] = 'git add'
+set edit:small-word-abbr[gb] = 'git branch'
 set edit:small-word-abbr[gc] = 'git commit'
+set edit:small-word-abbr[gd] = 'git diff'
+set edit:small-word-abbr[gds] = 'git diff --staged'
 set edit:small-word-abbr[gco] = 'git checkout'
 set edit:small-word-abbr[gph] = 'git push'
-fn gd { |@a| git diff $@a }
-fn gl { |&c=10| git log --all --decorate --graph --format=format:'%Cblue%h %Creset- %Cgreen%ar %Creset%s %C(dim white)- %an %C(auto)%d' -$c }
-fn gs { |@a| git status $@a }
-fn gi { lazygit }
+set edit:small-word-abbr[gs] = 'git status -s'
+fn gl { |&c=10| git log --all --decorate --graph --format=format:'%Cblue%h %Creset- %Cgreen%ar %Creset%s %C(dim)- %an%C(auto)%d' -$c }
 
 # JetBrains
 fn jetbrains-clean { |a|
@@ -164,7 +166,7 @@ fn pg-reset { brew uninstall --ignore-dependencies postgresql; rm -rf /usr/local
 fn pg-upgrade { brew postgresql-upgrade-database }
 
 # Python
-set edit:small-word-abbr['python-setup'] = 'asdf shell python 3.9.9; python -m venv venv; activate; pip install --upgrade pip; pip install -r requirements.txt'
+set edit:small-word-abbr['python-setup'] = 'asdf shell python latest; python -m venv venv; activate; pip install --upgrade pip; pip install -r requirements.txt'
 fn activate {
   var venv = $E:PWD/venv/bin
   if (path:is-dir $venv | not (one)) {
