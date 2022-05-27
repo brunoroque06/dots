@@ -21,13 +21,13 @@
 				<key>Alpha Component</key>
 				<real>1</real>
 				<key>Blue Component</key>
-				<real>0.92549019607843142</real>
+				<real>0.23529411764705879</real>
 				<key>Color Space</key>
 				<string>sRGB</string>
 				<key>Green Component</key>
-				<real>0.92941176470588238</real>
+				<real>0.21176470588235291</real>
 				<key>Red Component</key>
-				<real>0.94117647058823528</real>
+				<real>0.17254901960784311</real>
 			</dict>
 			<key>Ansi 1 Color</key>
 			<dict>
@@ -112,13 +112,13 @@
 				<key>Alpha Component</key>
 				<real>1</real>
 				<key>Blue Component</key>
-				<real>0.40784313725490201</real>
+				<real>0.72941176470588232</real>
 				<key>Color Space</key>
 				<string>sRGB</string>
 				<key>Green Component</key>
-				<real>0.36862745098039218</real>
+				<real>0.75686274509803919</real>
 				<key>Red Component</key>
-				<real>0.30980392156862752</real>
+				<real>0.81176470588235294</real>
 			</dict>
 			<key>Ansi 2 Color</key>
 			<dict>
@@ -190,26 +190,26 @@
 				<key>Alpha Component</key>
 				<real>1</real>
 				<key>Blue Component</key>
-				<real>0.23529411764705879</real>
+				<real>0.92549019607843142</real>
 				<key>Color Space</key>
 				<string>sRGB</string>
 				<key>Green Component</key>
-				<real>0.21176470588235291</real>
+				<real>0.92941176470588238</real>
 				<key>Red Component</key>
-				<real>0.17254901960784311</real>
+				<real>0.94117647058823528</real>
 			</dict>
 			<key>Ansi 8 Color</key>
 			<dict>
 				<key>Alpha Component</key>
 				<real>1</real>
 				<key>Blue Component</key>
-				<real>0.72941176470588232</real>
+				<real>0.40784313725490201</real>
 				<key>Color Space</key>
 				<string>sRGB</string>
 				<key>Green Component</key>
-				<real>0.75686274509803919</real>
+				<real>0.36862745098039218</real>
 				<key>Red Component</key>
-				<real>0.81176470588235294</real>
+				<real>0.30980392156862752</real>
 			</dict>
 			<key>Ansi 9 Color</key>
 			<dict>
@@ -574,13 +574,13 @@ Maximize Active Pane</string>
 				<key>Alpha Component</key>
 				<real>1</real>
 				<key>Blue Component</key>
-				<real>0.92549019607843142</real>
+				<real>0.23529411764705879</real>
 				<key>Color Space</key>
 				<string>sRGB</string>
 				<key>Green Component</key>
-				<real>0.92941176470588238</real>
+				<real>0.21176470588235291</real>
 				<key>Red Component</key>
-				<real>0.94117647058823528</real>
+				<real>0.17254901960784311</real>
 			</dict>
 			<key>Ansi 1 Color</key>
 			<dict>
@@ -665,13 +665,13 @@ Maximize Active Pane</string>
 				<key>Alpha Component</key>
 				<real>1</real>
 				<key>Blue Component</key>
-				<real>0.40784313725490201</real>
+				<real>0.72941176470588232</real>
 				<key>Color Space</key>
 				<string>sRGB</string>
 				<key>Green Component</key>
-				<real>0.36862745098039218</real>
+				<real>0.75686274509803919</real>
 				<key>Red Component</key>
-				<real>0.30980392156862752</real>
+				<real>0.81176470588235294</real>
 			</dict>
 			<key>Ansi 2 Color</key>
 			<dict>
@@ -743,26 +743,26 @@ Maximize Active Pane</string>
 				<key>Alpha Component</key>
 				<real>1</real>
 				<key>Blue Component</key>
-				<real>0.23529411764705879</real>
+				<real>0.92549019607843142</real>
 				<key>Color Space</key>
 				<string>sRGB</string>
 				<key>Green Component</key>
-				<real>0.21176470588235291</real>
+				<real>0.92941176470588238</real>
 				<key>Red Component</key>
-				<real>0.17254901960784311</real>
+				<real>0.94117647058823528</real>
 			</dict>
 			<key>Ansi 8 Color</key>
 			<dict>
 				<key>Alpha Component</key>
 				<real>1</real>
 				<key>Blue Component</key>
-				<real>0.72941176470588232</real>
+				<real>0.40784313725490201</real>
 				<key>Color Space</key>
 				<string>sRGB</string>
 				<key>Green Component</key>
-				<real>0.75686274509803919</real>
+				<real>0.36862745098039218</real>
 				<key>Red Component</key>
-				<real>0.81176470588235294</real>
+				<real>0.30980392156862752</real>
 			</dict>
 			<key>Ansi 9 Color</key>
 			<dict>
@@ -1427,6 +1427,10 @@ Maximize Active Pane</string>
 	<false/>
 	<key>findMode_iTerm</key>
 	<integer>0</integer>
+	<key>kCPKSelectionViewPreferredModeKey</key>
+	<integer>0</integer>
+	<key>kCPKSelectionViewShowHSBTextFieldsKey</key>
+	<false/>
 	<key>metalMaximizeThroughput</key>
 	<true/>
 </dict>
