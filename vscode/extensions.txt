@@ -1,7 +1,6 @@
 alefragnani.Bookmarks
 Angular.ng-template
 BazelBuild.vscode-bazel
-bradymholt.pgformatter
 christian-kohler.path-intellisense
 DavidAnson.vscode-markdownlint
 dbaeumer.vscode-eslint
@@ -20,7 +19,6 @@ ms-dotnettools.csharp
 ms-dotnettools.vscode-dotnet-runtime
 ms-python.python
 ms-python.vscode-pylance
-ms-toolsai.jupyter
 ms-vscode-remote.remote-containers
 ms-vscode.cpptools
 redhat.vscode-yaml
