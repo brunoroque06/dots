@@ -157,6 +157,7 @@ fn network-scan { nmap -sP 192.168.1.0/24 }
 
 # Node.js
 fn npm-up { npx npm-check-updates --deep -i }
+fn npm-up-g { npx npm-check-updates -g -i }
 fn node-clean { fd -HI --prune node_modules | from-lines | peach { |d| rm -rf $d } }
 fn yarn-up { yarn upgrade-interactive }
 
