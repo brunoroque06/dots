@@ -8,6 +8,7 @@ set E:BAT_STYLE = auto
 set E:BAT_THEME = GitHub
 set E:DOCKER_DEFAULT_PLATFORM = linux/amd64
 set E:EDITOR = nvim
+set E:JAVA_HOME = /opt/homebrew/opt/openjdk/libexec/openjdk.jdk/Contents/Home
 set E:RIPGREP_CONFIG_PATH = $E:HOME/.config/ripgreprc
 set E:VISUAL = nvim
 # set E:REQUESTS_CA_BUNDLE = $E:HOME/.proxyman/proxyman-ca.pem # proxyman with python
