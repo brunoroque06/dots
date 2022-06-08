@@ -1,3 +1,6 @@
+[credential]
+	helper = osxkeychain
+
 [core]
 	editor = nvim
 	pager = delta
