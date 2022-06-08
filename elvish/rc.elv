@@ -65,6 +65,7 @@ use asdf _asdf; var asdf~ = $_asdf:asdf~
 set edit:completion:arg-completer[asdf] = $_asdf:arg-completer~
 
 fn map { |f l| each { |i| $f $i } $l | put [(all)] }
+fn reload { eval (slurp < $E:HOME/.config/elvish/rc.elv) }
 
 # Azure
 fn az-account-set { az account list | from-json | map { |s| put [&to-filter=$s[name] &to-accept=$s[id] &to-show=(if (eq $s[isDefault] $true) { put (styled $s[name] green) } else { put $s[name] })] } (one) | edit:listing:start-custom (one) &caption='Azure Subscription' &accept={ |s| az account set --subscription $s > /dev/tty } }
@@ -110,7 +111,7 @@ fn p { |p|
   if (path:is-dir $p) {
     exa -al $p
   } elif (str:has-suffix $p .md) {
-    glow $p
+    glow -p $p
   } else {
     bat $p
   }
