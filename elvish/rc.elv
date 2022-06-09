@@ -68,7 +68,12 @@ fn map { |f l| each { |i| $f $i } $l | put [(all)] }
 fn reload { eval (slurp < $E:HOME/.config/elvish/rc.elv) }
 
 # Azure
-fn az-account-set { az account list | from-json | map { |s| put [&to-filter=$s[name] &to-accept=$s[id] &to-show=(if (eq $s[isDefault] $true) { put (styled $s[name] green) } else { put $s[name] })] } (one) | edit:listing:start-custom (one) &caption='Azure Subscription' &accept={ |s| az account set --subscription $s > /dev/tty } }
+fn az-account-set {
+  az account list ^
+    | from-json ^
+    | map { |s| put [&to-filter=$s[name] &to-accept=$s[id] &to-show=(if (eq $s[isDefault] $true) { put (styled $s[name] green) } else { put $s[name] })] } (one) ^
+    | edit:listing:start-custom (one) &caption='Azure Subscription' &accept={ |s| az account set --subscription $s > /dev/tty }
+}
 
 # Bazel
 fn bazel-macossdk {
@@ -82,8 +87,15 @@ fn brew-dump { brew bundle dump --file $E:HOME/Projects/dotfiles/brew/Brewfile -
 fn brew-up { brew update; brew upgrade --ignore-pinned; brew cleanup; brew doctor }
 
 # Command
-fn cmd-del { store:cmds 0 -1 | each { |c| put [&to-filter=$c[text] &to-accept=""$c[seq] &to-show=$c[text]] } | edit:listing:start-custom [(all)] &caption='Delete Command' &accept={ |c| store:del-cmd $c } }
-fn cmd-yank { store:cmds 0 -1 | each { |c| put [&to-filter=$c[text] &to-accept=$c[text] &to-show=$c[text]] } | edit:listing:start-custom [(all)] &caption='Yank Command' &accept={ |c| printf $c | pbcopy } }
+fn cmd-del {
+  store:cmds 0 -1 ^
+    | each { |c| put [&to-filter=$c[text] &to-accept=""$c[seq] &to-show=$c[text]] } ^
+    | edit:listing:start-custom [(all)] &caption='Delete Command' &accept={ |c| store:del-cmd $c } }
+fn cmd-yank {
+  store:cmds 0 -1 ^
+    | each { |c| put [&to-filter=$c[text] &to-accept=$c[text] &to-show=$c[text]] } ^
+    | edit:listing:start-custom [(all)] &caption='Yank Command' &accept={ |c| printf $c | pbcopy }
+}
 
 # Docker
 fn doc { |@a| docker $@a }
@@ -99,10 +111,21 @@ fn doc-setup {
 # Dotnet
 fn dot { |@a| dotnet $@a }
 fn dot-up { dotnet outdated --upgrade }
-fn dot-tool-up { dotnet tool list -g | from-lines | drop 2 | each { |l| str:split ' ' $l | take 1 } | each { |l| dotnet tool update -g $l } }
+fn dot-tool-up {
+  dotnet tool list -g ^
+    | from-lines ^
+    | drop 2 ^
+    | each { |l| str:split ' ' $l | take 1 } ^
+    | each { |l| dotnet tool update -g $l }
+}
 
 # Environment
-fn env-ls { env | from-lines | each { |e| var k v = (str:split '=' $e); put [$k $v] } | order }
+fn env-ls {
+  env ^
+    | from-lines ^
+    | each { |e| var k v = (str:split '=' $e); put [$k $v] } ^
+    | order
+}
 
 # File System
 fn dir-size { dust -d 1 }
@@ -120,8 +143,18 @@ fn p { |p|
 # Files
 fn e { |@a| nvim $@a }
 fn en { |@a| nvim -u NONE $@a }
-fn file-rmrf { fd . --hidden --max-depth 1 --no-ignore | from-lines | each { |f| put [&to-filter=$f &to-accept=$f &to-show=$f] } | edit:listing:start-custom [(all)] &caption='Remove File' &accept={ |f| rm -rf $f } }
-fn file-yank { rg --files | from-lines | each { |f| put [&to-filter=$f &to-accept=$f &to-show=$f] } | edit:listing:start-custom [(all)] &caption='Yank File' &accept={ |f| cat $f | pbcopy } }
+fn file-rmrf {
+  fd . --hidden --max-depth 1 --no-ignore ^
+    | from-lines ^
+    | each { |f| put [&to-filter=$f &to-accept=$f &to-show=$f] } ^
+    | edit:listing:start-custom [(all)] &caption='Remove File' &accept={ |f| rm -rf $f }
+}
+fn file-yank {
+  rg --files ^
+    | from-lines ^
+    | each { |f| put [&to-filter=$f &to-accept=$f &to-show=$f] } ^
+    | edit:listing:start-custom [(all)] &caption='Yank File' &accept={ |f| cat $f pbcopy }
+}
 fn file-unix { |f|
   var con = (cat $f | from-lines | put [(all)])
   rm $f
@@ -160,7 +193,11 @@ fn network-scan { nmap -sP 192.168.1.0/24 }
 # Node.js
 fn npm-up { npx npm-check-updates --deep -i }
 fn npm-up-g { npx npm-check-updates -g -i }
-fn node-clean { fd -HI --prune node_modules | from-lines | peach { |d| rm -rf $d } }
+fn node-clean {
+  fd -HI --prune node_modules ^
+    | from-lines ^
+    | peach { |d| rm -rf $d }
+}
 fn yarn-up { yarn upgrade-interactive }
 
 # PostgreSQL
@@ -187,9 +224,26 @@ fn deactivate {
 }
 
 # Pulumi
-fn pu-stack-select { pulumi stack ls --json | from-json | map { |s| put [&to-filter=$s[name] &to-accept=$s[name] &to-show=(if (eq $s[current] $true) { put (styled $s[name] green) } else { put $s[name] })] } (one) | edit:listing:start-custom (one) &caption='Pulumi Stack' &accept={ |s| pulumi stack select $s > /dev/tty } }
-fn pu-resource-delete { pulumi stack export | from-json | put (one)[deployment][resources] | map { |r| put [&to-filter=$r[urn] &to-accept=$r[urn] &to-show=$r[urn]] } (one) | edit:listing:start-custom (one) &caption='Pulumi Delete Resource' &accept={ |r| pulumi state delete $r > /dev/tty } }
-fn pu-resource-yank { pulumi stack export | from-json | put (one)[deployment][resources] | map { |r| put [&to-filter=$r[urn] &to-accept=$r[urn] &to-show=$r[urn]] } (one) | edit:listing:start-custom (one) &caption='Pulumi Yank Resource' &accept={ |r| echo $r } }
+fn pu-stack-select {
+  pulumi stack ls --json ^
+    | from-json ^
+    | map { |s| put [&to-filter=$s[name] &to-accept=$s[name] &to-show=(if (eq $s[current] $true) { put (styled $s[name] green) } else { put $s[name] })] } (one) ^
+    | edit:listing:start-custom (one) &caption='Pulumi Stack' &accept={ |s| pulumi stack select $s > /dev/tty }
+}
+fn pu-resource-delete {
+  pulumi stack export ^
+    | from-json ^
+    | put (one)[deployment][resources] ^
+    | map { |r| put [&to-filter=$r[urn] &to-accept=$r[urn] &to-show=$r[urn]] } (one) ^
+    | edit:listing:start-custom (one) &caption='Pulumi Delete Resource' &accept={ |r| pulumi state delete $r > /dev/tty }
+}
+fn pu-resource-yank {
+  pulumi stack export ^
+    | from-json ^
+    | put (one)[deployment][resources] ^
+    | map { |r| put [&to-filter=$r[urn] &to-accept=$r[urn] &to-show=$r[urn]] } (one) ^
+    | edit:listing:start-custom (one) &caption='Pulumi Yank Resource' &accept={ |r| echo $r }
+}
 
 # SSH
 fn ssh-trust { |@a| ssh-copy-id -i $E:HOME/.ssh/id_rsa.pub $@a }
