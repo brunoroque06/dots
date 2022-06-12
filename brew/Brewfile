@@ -70,6 +70,7 @@ cask "visual-studio-code"
 cask "zoom"
 
 mas "Affinity Designer", id: 824171161
+mas "Bear", id: 1091189122
 mas "Hush Nag Blocker", id: 1544743900
 mas "Keys Multiplatform", id: 1494642810
 mas "Reeder", id: 1529448980
