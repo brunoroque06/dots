@@ -119,28 +119,8 @@ fn dot-tool-up {
     | each { |l| dotnet tool update -g $l }
 }
 
-# Environment
-fn env-ls {
-  env ^
-    | from-lines ^
-    | each { |e| var k v = (str:split '=' $e); put [$k $v] } ^
-    | order
-}
-
 # File System
 fn dir-size { dust -d 1 }
-fn l { |@a| exa -al $@a }
-fn p { |p|
-  if (path:is-dir $p) {
-    exa -al $p
-  } elif (str:has-suffix $p .md) {
-    glow -p $p
-  } else {
-    bat $p
-  }
-}
-
-# Files
 fn e { |@a| nvim $@a }
 fn en { |@a| nvim -u NONE $@a }
 fn file-rmrf {
@@ -160,6 +140,16 @@ fn file-unix { |f|
   rm $f
   touch $f
   each { |l| echo $l >> $f } $con
+}
+fn l { |@a| exa -al $@a }
+fn p { |p|
+  if (path:is-dir $p) {
+    exa -al $p
+  } elif (str:has-suffix $p .md) {
+    glow -p $p
+  } else {
+    bat $p
+  }
 }
 fn r { |@a| nvim -R $@a }
 fn rn { |@a| nvim -R -u NONE $@a }
@@ -244,6 +234,15 @@ fn pu-resource-yank {
     | map { |r| put [&to-filter=$r[urn] &to-accept=$r[urn] &to-show=$r[urn]] } (one) ^
     | edit:listing:start-custom (one) &caption='Pulumi Yank Resource' &accept={ |r| echo $r }
 }
+
+# Shell
+fn env-ls {
+  env ^
+    | from-lines ^
+    | each { |e| var k v = (str:split '=' $e); put [$k $v] } ^
+    | order
+}
+fn colortest { curl -s https://raw.githubusercontent.com/pablopunk/colortest/master/colortest | bash }
 
 # SSH
 fn ssh-trust { |@a| ssh-copy-id -i $E:HOME/.ssh/id_rsa.pub $@a }
