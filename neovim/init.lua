@@ -176,6 +176,7 @@ packer.startup(function()
 		run = function()
 			local servers = {
 				"bashls",
+				"cssls",
 				"dockerls",
 				"jsonls",
 				"pyright",
