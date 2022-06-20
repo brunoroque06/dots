@@ -31,10 +31,11 @@ var _duration = 0
 set edit:after-command = [{ |m| set _duration = $m[duration] }]
 
 set edit:prompt = {
+  styled ' ' blue inverse
   if (not-eq $_paths $nil) {
-    put '* '
+    put ' *'
   }
-  tilde-abbr $pwd | put ' '(one)' ' | styled (one) blue inverse
+  tilde-abbr $pwd | styled ' '(one) blue
   if (> $_duration 5) {
     var m = (/ $_duration 60 | math:floor (one))
     if (> $m 0) {
@@ -98,10 +99,16 @@ fn cmd-yank {
 }
 
 # Docker
-fn doc { |@a| docker $@a }
-fn doc-container-rm { docker stop (docker ps -aq); docker rm (docker ps -aq); docker system prune --volumes -f }
-fn doc-container-stop { docker stop (docker ps -aq) }
-fn doc-image-rm { docker rmi -f (docker images -aq) }
+fn doc-cnt-rm { docker stop (docker ps -aq); docker rm (docker ps -aq); docker system prune --volumes -f }
+fn doc-cnt-stop { docker stop (docker ps -aq) }
+fn doc-exec { |cnt| docker exec -it $cnt bash }
+set edit:completion:arg-completer[doc-exec] = { |@args|
+  docker ps --format "{{.Image}} {{.Names}}" ^
+    | from-lines ^
+    | each { |cnt| var c = (str:split ' ' $cnt | put [(all)]); put [&img=$c[0] &name=$c[1]] } ^
+    | each { |cnt| edit:complex-candidate &display=$cnt[name]' ('$cnt[img]')' $cnt[name] }
+}
+fn doc-img-rm { docker rmi -f (docker images -aq) }
 fn doc-setup {
   var config = $E:HOME/.docker/config.json
   var keychain = (cat $config | from-json)
@@ -109,7 +116,6 @@ fn doc-setup {
 }
 
 # Dotnet
-fn dot { |@a| dotnet $@a }
 fn dot-up { dotnet outdated --upgrade }
 fn dot-tool-up {
   dotnet tool list -g ^
