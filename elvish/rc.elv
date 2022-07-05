@@ -57,13 +57,6 @@ set edit:prompt = {
 }
 set edit:rprompt = (constantly (whoami)@(hostname))
 
-set edit:insert:binding[Ctrl-d] = $edit:navigation:start~
-set edit:insert:binding[Ctrl-l] = $edit:location:start~
-set edit:insert:binding[Ctrl-o] = $edit:lastcmd:start~
-set edit:insert:binding[Ctrl-r] = $edit:histlist:start~
-set edit:insert:binding[Ctrl-w] = $edit:kill-small-word-left~
-set edit:insert:binding[Alt-Backspace] = $edit:kill-small-word-left~
-
 eval (carapace _carapace | slurp)
 
 if (path:is-regular &follow-symlink=$true $E:HOME/.config/elvish/lib/asdf.elv | not (one)) {
@@ -100,7 +93,19 @@ fn brew-up { brew update; brew upgrade --ignore-pinned; brew cleanup; brew docto
 fn cmd-del {
   store:cmds 0 -1 ^
     | each { |c| put [&to-filter=$c[text] &to-accept=""$c[seq] &to-show=$c[text]] } ^
-    | edit:listing:start-custom [(all)] &caption='Delete Command' &accept={ |c| store:del-cmd $c } }
+    | edit:listing:start-custom [(all)] &caption='Delete Command' &accept={ |c| store:del-cmd $c }
+}
+fn cmd-edit {
+  var tmp = (path:temp-file '*.elv')
+  print $edit:current-command > $tmp
+  try {
+    e:nvim $tmp[name] </dev/tty >/dev/tty 2>&1
+    set edit:current-command = (slurp < $tmp[name])[..-1]
+  } catch {
+    file:close $tmp
+  }
+  rm $tmp[name]
+}
 fn cmd-yank {
   store:cmds 0 -1 ^
     | each { |c| put [&to-filter=$c[text] &to-accept=$c[text] &to-show=$c[text]] } ^
@@ -269,4 +274,13 @@ fn code-extension-install { xargs < $E:HOME'/Library/Application Support/Code/Us
 
 # Web Browser
 fn webbrowser { rm -rf $E:TMPDIR/webbrowser; '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --user-data-dir=$E:TMPDIR/webbrowser --disable-web-security --incognito --no-first-run --new-window http://localhost:4200 }
+
+# Taken: a, b, f, e, i, n, p
+set edit:insert:binding[Ctrl-d] = $edit:navigation:start~
+set edit:insert:binding[Ctrl-l] = $edit:location:start~
+set edit:insert:binding[Ctrl-o] = $edit:lastcmd:start~
+set edit:insert:binding[Ctrl-r] = $edit:histlist:start~
+set edit:insert:binding[Ctrl-t] = $cmd-edit~
+set edit:insert:binding[Ctrl-w] = $edit:kill-small-word-left~
+set edit:insert:binding[Alt-Backspace] = $edit:kill-small-word-left~
 
