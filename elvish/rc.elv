@@ -28,14 +28,22 @@ set paths = [
 var _paths
 
 var _duration = 0
-set edit:after-command = [{ |m| set _duration = $m[duration] }]
+var _error
+set edit:after-command = [{ |m| set _duration = $m[duration] } { |m| set _error = (not-eq $m[error] $nil) }]
 
 set edit:prompt = {
-  styled ' ' blue inverse
+  if (eq $_error $true) {
+    styled ' ' red inverse
+  } else {
+    styled ' ' blue inverse
+  }
+
   if (not-eq $_paths $nil) {
     put ' *'
   }
+
   tilde-abbr $pwd | styled ' '(one) blue
+
   if (> $_duration 5) {
     var m = (/ $_duration 60 | math:floor (one))
     if (> $m 0) {
@@ -44,6 +52,7 @@ set edit:prompt = {
     var s = (math:floor $_duration | printf '%.0f' (one) | % (one) 60)
     printf ' %.0fs' $s | styled (one) yellow
   }
+
   styled ' ~> ' magenta
 }
 set edit:rprompt = (constantly (whoami)@(hostname))
@@ -243,9 +252,9 @@ fn pu-resource-yank {
 
 # Shell
 fn env-ls {
-  env ^
-    | from-lines ^
-    | each { |e| var k v = (str:split '=' $e); put [$k $v] } ^
+  env -0 ^
+    | from-terminated "\x00" ^
+    | each { |e| var k v = (str:split = $e); put [$k $v] } ^
     | order
 }
 fn colortest { curl -s https://raw.githubusercontent.com/pablopunk/colortest/master/colortest | bash }
