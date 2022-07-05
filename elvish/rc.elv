@@ -7,10 +7,10 @@ use str
 set E:BAT_STYLE = auto
 set E:BAT_THEME = GitHub
 set E:DOCKER_DEFAULT_PLATFORM = linux/amd64
-set E:EDITOR = nvim
+set E:EDITOR = /opt/homebrew/bin/nvim
 set E:JAVA_HOME = /opt/homebrew/opt/openjdk/libexec/openjdk.jdk/Contents/Home
 set E:RIPGREP_CONFIG_PATH = $E:HOME/.config/ripgreprc
-set E:VISUAL = nvim
+set E:VISUAL = /opt/homebrew/bin/nvim
 # set E:REQUESTS_CA_BUNDLE = $E:HOME/.proxyman/proxyman-ca.pem # proxyman with python
 
 set paths = [
@@ -99,7 +99,7 @@ fn cmd-edit {
   var tmp = (path:temp-file '*.elv')
   print $edit:current-command > $tmp
   try {
-    e:nvim $tmp[name] </dev/tty >/dev/tty 2>&1
+    $E:EDITOR $tmp[name] </dev/tty >/dev/tty 2>&1
     set edit:current-command = (slurp < $tmp[name])[..-1]
   } catch {
     file:close $tmp
@@ -141,8 +141,8 @@ fn dot-tool-up {
 
 # File System
 fn dir-size { dust -d 1 }
-fn e { |@a| nvim $@a }
-fn en { |@a| nvim -u NONE $@a }
+fn e { |@a| $E:EDITOR $@a }
+fn en { |@a| $E:EDITOR -u NONE $@a }
 fn file-rmrf {
   fd . --hidden --max-depth 1 --no-ignore ^
     | from-lines ^
@@ -171,8 +171,8 @@ fn p { |p|
     bat $p
   }
 }
-fn r { |@a| nvim -R $@a }
-fn rn { |@a| nvim -R -u NONE $@a }
+fn r { |@a| $E:EDITOR -R $@a }
+fn rn { |@a| $E:EDITOR -R -u NONE $@a }
 
 # Git
 fn git-config { git config --list --show-origin }
