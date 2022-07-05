@@ -41,7 +41,7 @@
   "files.trimTrailingWhitespace": true,
   "javascript.updateImportsOnFileMove.enabled": "always",
   "javascript.validate.enable": true,
-  "markdown.preview.fontFamily": "SF Pro Text",
+  "markdown.preview.fontFamily": "Sora",
   "pgFormatter.commaBreak": true,
   "pgFormatter.keywordCase": "lowercase",
   "plantuml.render": "PlantUMLServer",

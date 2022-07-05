@@ -56,8 +56,7 @@ cask "appcleaner"
 cask "docker"
 cask "dotnet-sdk"
 cask "font-jetbrains-mono"
-cask "font-sf-mono"
-cask "font-sf-pro"
+cask "font-sora"
 cask "google-chrome"
 cask "iterm2"
 cask "jetbrains-toolbox"
@@ -74,4 +73,5 @@ mas "Bear", id: 1091189122
 mas "Hush Nag Blocker", id: 1544743900
 mas "Keys Multiplatform", id: 1494642810
 mas "Reeder", id: 1529448980
+mas "Typeface 3", id: 1062679359
 mas "Wipr", id: 1320666476
