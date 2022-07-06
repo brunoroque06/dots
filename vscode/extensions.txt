@@ -4,6 +4,7 @@ BazelBuild.vscode-bazel
 christian-kohler.path-intellisense
 DavidAnson.vscode-markdownlint
 dbaeumer.vscode-eslint
+elves.elvish
 esbenp.prettier-vscode
 eseom.nunjucks-template
 GitHub.copilot
