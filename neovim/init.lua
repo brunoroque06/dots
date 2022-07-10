@@ -330,18 +330,20 @@ local cd = function()
 
 	local ls = { "fd", "--base-directory", vim.fn.expand("$HOME") .. "/Projects", "-a", "-d", "2", "-t", "d" }
 
-	pickers.new({}, {
-		prompt_title = "Change Directory",
-		finder = finders.new_oneshot_job(ls),
-		sorter = sorters.get_generic_fuzzy_sorter(),
-		attach_mappings = function(prompt, _)
-			actions.select_default:replace(function()
-				actions.close(prompt)
-				vim.cmd("cd " .. action_state.get_selected_entry()[1])
-			end)
-			return true
-		end,
-	}):find()
+	pickers
+		.new({}, {
+			prompt_title = "Change Directory",
+			finder = finders.new_oneshot_job(ls),
+			sorter = sorters.get_generic_fuzzy_sorter(),
+			attach_mappings = function(prompt, _)
+				actions.select_default:replace(function()
+					actions.close(prompt)
+					vim.cmd("cd " .. action_state.get_selected_entry()[1])
+				end)
+				return true
+			end,
+		})
+		:find()
 end
 
 vim.api.nvim_create_user_command("ChangeDirectory", cd, {})
