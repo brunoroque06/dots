@@ -67,8 +67,8 @@ set E:ASDF_DIR = /opt/homebrew/opt/asdf/libexec/
 use asdf _asdf; var asdf~ = $_asdf:asdf~
 set edit:completion:arg-completer[asdf] = $_asdf:arg-completer~
 
+set edit:small-word-abbr[reload] = 'eval (cat $E:HOME/.config/elvish/rc.elv | slurp)'
 fn map { |f l| each { |i| $f $i } $l | put [(all)] }
-fn reload { eval (slurp < $E:HOME/.config/elvish/rc.elv) }
 
 # Azure
 fn az-account-set {
@@ -113,7 +113,7 @@ fn cmd-yank {
 }
 
 # Docker
-fn doc-cnt-rm { docker stop (docker ps -aq); docker rm (docker ps -aq); docker system prune --volumes -f }
+fn doc-cnt-rm { docker stop (docker ps -aq); docker rm (docker ps -aq) }
 fn doc-cnt-stop { docker stop (docker ps -aq) }
 fn doc-exec { |cnt| docker exec -it $cnt bash }
 set edit:completion:arg-completer[doc-exec] = { |@args|
@@ -123,6 +123,7 @@ set edit:completion:arg-completer[doc-exec] = { |@args|
     | each { |cnt| edit:complex-candidate &display=$cnt[name]' ('$cnt[img]')' $cnt[name] }
 }
 fn doc-img-rm { docker rmi -f (docker images -aq) }
+fn doc-prune { docker system prune --volumes -f }
 fn doc-setup {
   var config = $E:HOME/.docker/config.json
   var keychain = (cat $config | from-json)
@@ -140,6 +141,13 @@ fn dot-tool-up {
 }
 
 # File System
+fn c { |f|
+  if (str:has-suffix $f .md) {
+    glow -p $f
+  } else {
+    bat $f
+  }
+}
 fn dir-size { dust -d 1 }
 fn e { |@a| $E:EDITOR $@a }
 fn en { |@a| $E:EDITOR -u NONE $@a }
@@ -161,18 +169,12 @@ fn file-unix { |f|
   touch $f
   each { |l| echo $l >> $f } $con
 }
-fn l { |@a| exa -al $@a }
-fn p { |p|
-  if (path:is-dir $p) {
-    exa -al $p
-  } elif (str:has-suffix $p .md) {
-    glow -p $p
-  } else {
-    bat $p
-  }
-}
+fn l { |@a| exa -al --git --no-permissions $@a }
 fn r { |@a| $E:EDITOR -R $@a }
 fn rn { |@a| $E:EDITOR -R -u NONE $@a }
+fn t { |&l=2 @d|
+  exa -al --git --level $l --no-permissions --tree $@d
+}
 
 # Git
 fn git-config { git config --list --show-origin }
