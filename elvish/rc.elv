@@ -67,7 +67,6 @@ set E:ASDF_DIR = /opt/homebrew/opt/asdf/libexec/
 use asdf _asdf; var asdf~ = $_asdf:asdf~
 set edit:completion:arg-completer[asdf] = $_asdf:arg-completer~
 
-set edit:small-word-abbr[reload] = 'eval (cat $E:HOME/.config/elvish/rc.elv | slurp)'
 fn map { |f l| each { |i| $f $i } $l | put [(all)] }
 
 # Azure
@@ -265,6 +264,7 @@ fn env-ls {
     | order
 }
 fn colortest { curl -s https://raw.githubusercontent.com/pablopunk/colortest/master/colortest | bash }
+fn reload { exec elvish -sock $E:HOME/.local/state/elvish/sock }
 
 # SSH
 fn ssh-trust { |@a| ssh-copy-id -i $E:HOME/.ssh/id_rsa.pub $@a }
