@@ -235,20 +235,27 @@ fn deactivate {
 }
 
 # Pulumi
-fn pu-stack-select {
+fn pu-res { |@args|
+  pulumi stack export ^
+    | from-json ^
+    | put (one)[deployment][resources] ^
+    | each { |r| put $r[urn] } (one)
+}
+fn pu-res-del { |r|
+  pulumi state delete $r
+}
+set edit:completion:arg-completer[pu-res-del] = $pu-res~
+fn pu-res-des { |r|
+  pulumi destroy -t $r
+}
+set edit:completion:arg-completer[pu-res-destroy] = $pu-res~
+fn pu-stack-sel {
   pulumi stack ls --json ^
     | from-json ^
     | map { |s| put [&to-filter=$s[name] &to-accept=$s[name] &to-show=(if (eq $s[current] $true) { put (styled $s[name] green) } else { put $s[name] })] } (one) ^
     | edit:listing:start-custom (one) &caption='Pulumi Stack' &accept={ |s| pulumi stack select $s > /dev/tty }
 }
-fn pu-resource-delete {
-  pulumi stack export ^
-    | from-json ^
-    | put (one)[deployment][resources] ^
-    | map { |r| put [&to-filter=$r[urn] &to-accept=$r[urn] &to-show=$r[urn]] } (one) ^
-    | edit:listing:start-custom (one) &caption='Pulumi Delete Resource' &accept={ |r| pulumi state delete $r > /dev/tty }
-}
-fn pu-resource-yank {
+fn pu-res-yank {
   pulumi stack export ^
     | from-json ^
     | put (one)[deployment][resources] ^
