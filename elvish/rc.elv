@@ -248,7 +248,7 @@ set edit:completion:arg-completer[pu-res-del] = $pu-res~
 fn pu-res-des { |r|
   pulumi destroy -t $r
 }
-set edit:completion:arg-completer[pu-res-destroy] = $pu-res~
+set edit:completion:arg-completer[pu-res-des] = $pu-res~
 fn pu-stack-sel {
   pulumi stack ls --json ^
     | from-json ^
