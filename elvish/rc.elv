@@ -218,7 +218,7 @@ fn pg-upgrade { brew postgresql-upgrade-database }
 
 # Python
 set edit:small-word-abbr['python-setup'] = 'asdf shell python latest; python -m venv venv; activate; pip install --upgrade pip; pip install -r requirements.txt'
-fn activate {
+fn py-act {
   var venv = $E:PWD/venv/bin
   if (path:is-dir $venv | not (one)) {
     fail 'No virtual environment detected'
@@ -226,7 +226,7 @@ fn activate {
   set _paths = $paths
   set paths = [$venv $@paths]
 }
-fn deactivate {
+fn py-dea {
   if (eq $_paths $nil) {
     fail 'No virtual environment is active'
   }

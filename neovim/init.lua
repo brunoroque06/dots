@@ -279,6 +279,7 @@ packer.startup(function()
 
 			telescope.setup({
 				defaults = {
+					layout_strategy = "vertical",
 					mappings = {
 						i = {
 							["<esc>"] = actions.close,
@@ -352,8 +353,8 @@ vim.api.nvim_create_user_command("Reload", "source $MYVIMRC | PackerCompile", {}
 vim.keymap.set("i", "<f1>", vim.lsp.buf.signature_help)
 
 vim.keymap.set("n", "==", ":Neoformat<cr>")
-vim.keymap.set("n", "[d", vim.lsp.diagnostic.goto_prev)
-vim.keymap.set("n", "]d", vim.lsp.diagnostic.goto_next)
+vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
+vim.keymap.set("n", "]d", vim.diagnostic.goto_next)
 vim.keymap.set("n", "ga", ":Telescope lsp_code_actions<cr>")
 vim.keymap.set("n", "gd", vim.lsp.buf.definition)
 vim.keymap.set("n", "gh", vim.lsp.buf.hover)
