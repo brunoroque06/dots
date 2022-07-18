@@ -5,7 +5,7 @@ use store
 use str
 
 set E:BAT_STYLE = auto
-set E:BAT_THEME = GitHub
+set E:BAT_THEME = ansi
 set E:DOCKER_DEFAULT_PLATFORM = linux/amd64
 set E:EDITOR = /opt/homebrew/bin/nvim
 set E:JAVA_HOME = /opt/homebrew/opt/openjdk/libexec/openjdk.jdk/Contents/Home
@@ -32,11 +32,8 @@ var _error
 set edit:after-command = [{ |m| set _duration = $m[duration] } { |m| set _error = (not-eq $m[error] $nil) }]
 
 set edit:prompt = {
-  if (eq $_error $true) {
-    styled ' ' red inverse
-  } else {
-    styled ' ' blue inverse
-  }
+  var err = (if (put $_error) { put red } else { put blue })
+  styled ' ' $err inverse
 
   if (not-eq $_paths $nil) {
     put ' *'
@@ -70,15 +67,15 @@ set edit:completion:arg-completer[asdf] = $_asdf:arg-completer~
 fn map { |f l| each { |i| $f $i } $l | put [(all)] }
 
 # Azure
-fn az-account-set {
+fn az-act-set {
   az account list ^
     | from-json ^
-    | map { |s| put [&to-filter=$s[name] &to-accept=$s[id] &to-show=(if (eq $s[isDefault] $true) { put (styled $s[name] green) } else { put $s[name] })] } (one) ^
+    | map { |s| put [&to-filter=$s[name] &to-accept=$s[id] &to-show=(if (put $s[isDefault]) { put (styled $s[name] green) } else { put $s[name] })] } (one) ^
     | edit:listing:start-custom (one) &caption='Azure Subscription' &accept={ |s| az account set --subscription $s > /dev/tty }
 }
 
 # Bazel
-fn bazel-macossdk {
+fn bzl-setup {
   var dir = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs
   mkdir -p $dir
   ln -s /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk $dir
@@ -188,7 +185,7 @@ set edit:small-word-abbr[gs] = 'git status -s'
 fn gl { |&c=10| git log --all --decorate --graph --format=format:'%Cblue%h %Creset- %Cgreen%ar %Creset%s %C(dim)- %an%C(auto)%d' -$c }
 
 # JetBrains
-fn jetbrains-clean { |a|
+fn jb-clean { |a|
   var dirs = ['Application Support/JetBrains' 'Caches/JetBrains' 'Logs/JetBrains']
   for d $dirs {
     rm -rf $E:HOME/Library/$d/$a
@@ -199,7 +196,7 @@ set edit:completion:arg-completer[jetbrains-clean] = { |@args|
 }
 
 # Network
-fn network-scan { nmap -sP 192.168.1.0/24 }
+fn ntw-scan { nmap -sP 192.168.1.0/24 }
 
 # Node.js
 fn npm-up { npx npm-check-updates --deep -i }
@@ -217,18 +214,21 @@ fn pg-reset { brew uninstall --ignore-dependencies postgresql; rm -rf /usr/local
 fn pg-upgrade { brew postgresql-upgrade-database }
 
 # Python
-set edit:small-word-abbr['python-setup'] = 'asdf shell python latest; python -m venv venv; activate; pip install --upgrade pip; pip install -r requirements.txt'
+set edit:small-word-abbr['py-setup'] = 'asdf shell python latest; python -m venv venv; py-act; pip install --upgrade pip; pip install -r requirements.txt'
 fn py-act {
+  if (not-eq $_paths $nil) {
+    fail 'A venv is already active'
+  }
   var venv = $E:PWD/venv/bin
   if (path:is-dir $venv | not (one)) {
-    fail 'No virtual environment detected'
+    fail 'No venv found'
   }
   set _paths = $paths
   set paths = [$venv $@paths]
 }
 fn py-dea {
   if (eq $_paths $nil) {
-    fail 'No virtual environment is active'
+    fail 'No venv is active'
   }
   set paths = $_paths
   set _paths = $nil
@@ -252,7 +252,7 @@ set edit:completion:arg-completer[pu-res-des] = $pu-res~
 fn pu-stack-sel {
   pulumi stack ls --json ^
     | from-json ^
-    | map { |s| put [&to-filter=$s[name] &to-accept=$s[name] &to-show=(if (eq $s[current] $true) { put (styled $s[name] green) } else { put $s[name] })] } (one) ^
+    | map { |s| put [&to-filter=$s[name] &to-accept=$s[name] &to-show=(if (put $s[current]) { put (styled $s[name] green) } else { put $s[name] })] } (one) ^
     | edit:listing:start-custom (one) &caption='Pulumi Stack' &accept={ |s| pulumi stack select $s > /dev/tty }
 }
 fn pu-res-yank {
