@@ -6,7 +6,6 @@ DavidAnson.vscode-markdownlint
 dbaeumer.vscode-eslint
 elves.elvish
 esbenp.prettier-vscode
-eseom.nunjucks-template
 GitHub.copilot
 golang.go
 GraphQL.vscode-graphql
