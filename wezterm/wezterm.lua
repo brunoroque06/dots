@@ -92,6 +92,10 @@ return {
 		bottom = "0.5cell",
 	},
 
+	quick_select_patterns = {
+		"[0-9a-zA-Z-]{6,32}",
+	},
+
 	launch_menu = {
 		{
 			label = "dotfiles",
