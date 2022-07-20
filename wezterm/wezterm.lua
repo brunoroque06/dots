@@ -74,8 +74,6 @@ return {
 
 	font = wez.font("JetBrains Mono", { weight = "Medium" }),
 	font_size = 13,
-	-- font = wez.font("Iosevka Term", { weight = "Medium" }),
-	-- font_size = 14,
 	harfbuzz_features = { "calt=0", "clig=0", "liga=0" },
 
 	enable_scroll_bar = true,

@@ -154,15 +154,6 @@ packer.startup(function()
 	})
 
 	use({
-		"projekt0n/circles.nvim",
-		event = "ColorScheme",
-		requires = { { "kyazdani42/nvim-web-devicons" } },
-		config = function()
-			require("circles").setup()
-		end,
-	})
-
-	use({
 		"sbdchd/neoformat",
 		config = function()
 			vim.g.neoformat_basic_format_trim = 1
@@ -190,25 +181,21 @@ packer.startup(function()
 			end
 		end,
 		config = function()
-			require("nvim-lsp-installer").on_server_ready(function(server)
-				local opts = {}
+			require("nvim-lsp-installer").setup({})
+			local cfg = require("lspconfig")
 
-				if server.name == "sumneko_lua" then
-					opts = {
-						settings = {
-							Lua = {
-								diagnostics = {
-									globals = { "use", "vim" },
-								},
-								workspace = {
-									library = vim.api.nvim_get_runtime_file("", true),
-								},
-							},
+			cfg.sumneko_lua.setup({
+				settings = {
+					Lua = {
+						diagnostics = {
+							globals = { "use", "vim" },
 						},
-					}
-				end
-				server:setup(opts)
-			end)
+						workspace = {
+							library = vim.api.nvim_get_runtime_file("", true),
+						},
+					},
+				},
+			})
 		end,
 	})
 
@@ -269,6 +256,7 @@ packer.startup(function()
 	use({
 		"nvim-telescope/telescope.nvim",
 		requires = {
+			{ "kyazdani42/nvim-web-devicons" },
 			{ "nvim-lua/popup.nvim" },
 			{ "nvim-lua/plenary.nvim" },
 			{ "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
