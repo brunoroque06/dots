@@ -14,7 +14,6 @@ set E:VISUAL = /opt/homebrew/bin/nvim
 # set E:REQUESTS_CA_BUNDLE = $E:HOME/.proxyman/proxyman-ca.pem # proxyman with python
 
 set paths = [
-  $E:HOME/.asdf/shims
   /opt/homebrew/bin
   /usr/local/bin
   /usr/bin
@@ -60,8 +59,10 @@ if (path:is-regular &follow-symlink=$true $E:HOME/.config/elvish/lib/asdf.elv | 
   mkdir -p $E:HOME/.config/elvish/lib
   ln -s /opt/homebrew/opt/asdf/libexec/asdf.elv $E:HOME/.config/elvish/lib/asdf.elv
 }
-set E:ASDF_DIR = /opt/homebrew/opt/asdf/libexec/
-use asdf _asdf; var asdf~ = $_asdf:asdf~
+set E:ASDF_DIR = /opt/homebrew/opt/asdf/libexec
+set E:ASDF_DATA_DIR = $E:HOME/.asdf
+use asdf _asdf
+var asdf~ = $_asdf:asdf~
 set edit:completion:arg-completer[asdf] = $_asdf:arg-completer~
 
 fn map { |f l| each { |i| $f $i } $l | put [(all)] }
@@ -191,7 +192,7 @@ fn jb-clean { |a|
     rm -rf $E:HOME/Library/$d/$a
   }
 }
-set edit:completion:arg-completer[jetbrains-clean] = { |@args|
+set edit:completion:arg-completer[jb-clean] = { |@args|
   ls $E:HOME/'Library/Application Support/JetBrains' | from-lines
 }
 

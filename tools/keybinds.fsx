@@ -101,7 +101,7 @@ module JetBrains =
 
         List.map
             (fun (p: string) -> p.Split "/")
-            [ "DataGrip2022.1/keymaps"
+            [ "DataGrip2022.2/keymaps"
               "PyCharm2022.1/jba_config/mac.keymaps"
               "Rider2022.1/jba_config/mac.keymaps"
               "WebStorm2022.1/jba_config/mac.keymaps" ]

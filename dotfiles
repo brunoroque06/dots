@@ -8,7 +8,8 @@ install() {
 	SH=/opt/homebrew/bin/bash
 	grep -qxF $SH /etc/shells || echo $SH | sudo tee -a /etc/shells
 	chsh -s $SH
-	echo "export PATH=/opt/homebrew/bin:$PATH" >"$HOME/.bash_profile"
+
+	grep -q homebrew "$HOME/.bash_profile" || echo "export PATH=/opt/homebrew/bin:$PATH" >"$HOME/.bash_profile"
 
 	defaults write -g ApplePressAndHoldEnabled -bool true
 }
