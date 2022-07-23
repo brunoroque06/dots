@@ -5,7 +5,7 @@ local home = os.getenv("HOME")
 wez.on("update-right-status", function(window, _)
 	local name = window:active_key_table()
 	if name then
-		name = "TABLE: " .. name .. " "
+		name = "table: " .. name .. " "
 	end
 	window:set_right_status(name or "")
 end)

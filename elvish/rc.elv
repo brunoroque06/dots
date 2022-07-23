@@ -84,7 +84,10 @@ fn bzl-setup {
 
 # Brew
 fn brew-dump { brew bundle dump --file $E:HOME/Projects/dotfiles/brew/Brewfile --force }
-fn brew-up { brew update; brew upgrade --ignore-pinned; brew cleanup; brew doctor }
+fn brew-up {
+  brew update; brew upgrade --ignore-pinned; brew cleanup
+  try { brew doctor } catch { }
+}
 
 # Command
 fn cmd-del {
