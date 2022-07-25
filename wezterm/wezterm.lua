@@ -105,6 +105,7 @@ return {
 		{ key = ",", mods = "CMD", action = wez.action.MoveTabRelative(-1) },
 		{ key = ".", mods = "CMD", action = wez.action.MoveTabRelative(1) },
 		{ key = "d", mods = "CMD", action = wez.action({ ScrollByPage = 0.5 }) },
+		{ key = "f", mods = "CMD", action = wez.action.Search({ CaseInSensitiveString = "" }) },
 		{ key = "m", mods = "CMD", action = "DisableDefaultAssignment" },
 		{
 			key = "o",

@@ -104,7 +104,7 @@ module JetBrains =
             [ "DataGrip2022.2/keymaps"
               "PyCharm2022.1/jba_config/mac.keymaps"
               "Rider2022.1/jba_config/mac.keymaps"
-              "WebStorm2022.1/jba_config/mac.keymaps" ]
+              "WebStorm2022.2/jba_config/mac.keymaps" ]
         |> List.map Path.Combine
         |> List.map (fun p -> Path.Combine("Library", "Application Support", "JetBrains", p, "bruno-roque.xml"))
         |> List.map (fun p -> { name = p; content = content })
