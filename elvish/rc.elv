@@ -4,11 +4,13 @@ use readline-binding
 use store
 use str
 
-set E:BAT_STYLE = auto
+set E:BAT_STYLE = plain
 set E:BAT_THEME = ansi
 set E:DOCKER_DEFAULT_PLATFORM = linux/amd64
 set E:EDITOR = /opt/homebrew/bin/nvim
 set E:JAVA_HOME = /opt/homebrew/opt/openjdk/libexec/openjdk.jdk/Contents/Home
+set E:MOAR = '-statusbar=bold -style=friendly'
+set E:PAGER = /opt/homebrew/bin/moar
 set E:RIPGREP_CONFIG_PATH = $E:HOME/.config/ripgreprc
 set E:VISUAL = /opt/homebrew/bin/nvim
 # set E:REQUESTS_CA_BUNDLE = $E:HOME/.proxyman/proxyman-ca.pem # proxyman with python
@@ -24,19 +26,17 @@ set paths = [
   $E:HOME/bin
   $E:HOME/.dotnet/tools
 ]
-var _paths
+var _paths = $nil
 
 var _duration = 0
-var _error
+var _error = $false
 set edit:after-command = [{ |m| set _duration = $m[duration] } { |m| set _error = (not-eq $m[error] $nil) }]
 
 set edit:prompt = {
   var err = (if (put $_error) { put red } else { put blue })
   styled ' ' $err inverse
 
-  if (not-eq $_paths $nil) {
-    put ' *'
-  }
+  if (not-eq $_paths $nil) { put ' *' }
 
   tilde-abbr $pwd | styled ' '(one) blue
 
@@ -125,9 +125,9 @@ set edit:completion:arg-completer[doc-exec] = { |@args|
 fn doc-img-rm { docker rmi -f (docker images -aq) }
 fn doc-prune { docker system prune --volumes -f }
 fn doc-setup {
-  var config = $E:HOME/.docker/config.json
-  var keychain = (cat $config | from-json)
-  assoc $keychain credsStore osxkeychain | to-json > $config
+  var cfg = $E:HOME/.docker/config.json
+  var kc = (cat $cfg | from-json)
+  assoc $kc credsStore osxkeychain | to-json > $cfg
 }
 
 # Dotnet
@@ -155,7 +155,7 @@ fn file-rmrf {
   fd . --hidden --max-depth 1 --no-ignore ^
     | from-lines ^
     | each { |f| put [&to-filter=$f &to-accept=$f &to-show=$f] } ^
-    | edit:listing:start-custom [(all)] &caption='Remove File' &accept={ |f| rm -rf $f }
+    | edit:listing:start-custom [(all)] &caption='Remove File' &accept={ |f| rm -fr $f }
 }
 fn file-yank {
   rg --files ^
@@ -192,11 +192,11 @@ fn gl { |&c=10| git log --all --decorate --graph --format=format:'%Cblue%h %Cres
 fn jb-clean { |a|
   var dirs = ['Application Support/JetBrains' 'Caches/JetBrains' 'Logs/JetBrains']
   for d $dirs {
-    rm -rf $E:HOME/Library/$d/$a
+    rm -fr $E:HOME/Library/$d/$a
   }
 }
 set edit:completion:arg-completer[jb-clean] = { |@args|
-  ls $E:HOME/'Library/Application Support/JetBrains' | from-lines
+  ls $E:HOME/Library/Caches/JetBrains | from-lines
 }
 
 # Network
@@ -208,13 +208,13 @@ fn npm-up-g { npx npm-check-updates -g -i }
 fn node-clean {
   fd -HI --prune node_modules ^
     | from-lines ^
-    | peach { |d| rm -rf $d }
+    | peach { |d| rm -fr $d }
 }
 fn yarn-up { yarn upgrade-interactive }
 
 # PostgreSQL
 fn pg-up { postgres -D /usr/local/var/postgres }
-fn pg-reset { brew uninstall --ignore-dependencies postgresql; rm -rf /usr/local/var/postgres; brew install postgresql; /usr/local/bin/timescaledb_move.sh }
+fn pg-reset { brew uninstall --ignore-dependencies postgresql; rm -fr /usr/local/var/postgres; brew install postgresql; /usr/local/bin/timescaledb_move.sh }
 fn pg-upgrade { brew postgresql-upgrade-database }
 
 # Python
@@ -286,7 +286,7 @@ fn code-ext-dump { code --list-extensions > $E:HOME'/Library/Application Support
 fn code-ext-install { xargs < $E:HOME'/Library/Application Support/Code/User/extensions.txt' -L 1 code --force --install-extension }
 
 # Web Browser
-fn webbrowser { rm -rf $E:TMPDIR/webbrowser; '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --user-data-dir=$E:TMPDIR/webbrowser --disable-web-security --incognito --no-first-run --new-window http://localhost:4200 }
+fn webbrowser { rm -fr $E:TMPDIR/webbrowser; '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --user-data-dir=$E:TMPDIR/webbrowser --disable-web-security --incognito --no-first-run --new-window http://localhost:4200 }
 
 # Taken: a, b, f, e, i, n, p
 set edit:insert:binding[Ctrl-d] = $edit:navigation:start~
