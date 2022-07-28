@@ -106,7 +106,7 @@ return {
 		{ key = ".", mods = "CMD", action = wez.action.MoveTabRelative(1) },
 		{ key = "d", mods = "CMD", action = wez.action({ ScrollByPage = 0.5 }) },
 		{ key = "f", mods = "CMD", action = wez.action.Search({ CaseInSensitiveString = "" }) },
-		{ key = "m", mods = "CMD", action = "DisableDefaultAssignment" },
+		{ key = "m", mods = "CMD", action = wez.action.DisableDefaultAssignment },
 		{
 			key = "o",
 			mods = "CMD",
@@ -124,7 +124,7 @@ return {
 				},
 			}),
 		},
-		{ key = "p", mods = "CMD", action = "ShowLauncher" },
+		{ key = "p", mods = "CMD", action = wez.action.ShowLauncher },
 		{
 			key = "r",
 			mods = "CMD",
@@ -138,9 +138,9 @@ return {
 		},
 		{ key = "u", mods = "CMD", action = wez.action({ ScrollByPage = -0.5 }) },
 		{ key = "w", mods = "CMD", action = wez.action({ CloseCurrentPane = { confirm = false } }) },
-		{ key = "x", mods = "CMD", action = "ActivateCopyMode" },
-		{ key = "y", mods = "CMD", action = "QuickSelect" },
-		{ key = "z", mods = "CMD", action = "TogglePaneZoomState" },
+		{ key = "x", mods = "CMD", action = wez.action.ActivateCopyMode },
+		{ key = "y", mods = "CMD", action = wez.action.QuickSelect },
+		{ key = "z", mods = "CMD", action = wez.action.TogglePaneZoomState },
 		{ key = "Enter", mods = "CMD", action = wez.action({ SplitHorizontal = { domain = "CurrentPaneDomain" } }) },
 		{
 			key = "Enter",
@@ -161,7 +161,7 @@ return {
 			{ key = "k", action = wez.action({ AdjustPaneSize = { "Up", 10 } }) },
 			{ key = "DownArrow", action = wez.action({ AdjustPaneSize = { "Down", 10 } }) },
 			{ key = "j", action = wez.action({ AdjustPaneSize = { "Down", 10 } }) },
-			{ key = "Escape", action = "PopKeyTable" },
+			{ key = "Escape", action = wez.action.PopKeyTable },
 		},
 	},
 }

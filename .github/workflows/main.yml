@@ -16,10 +16,10 @@ jobs:
         run: cargo install stylua
 
       - name: Format Lua
-        run: stylua --check .
+        run: stylua --check --verbose .
 
       - name: Format Prettier
-        run: npx prettier -l '**/*.{json,md,yaml,yml}'
+        run: npx prettier -c '**/*.{json,md,yaml,yml}' --loglevel debug
 
       - name: Format Shell
         run: shfmt -f . | xargs -t -I % shfmt -d %
