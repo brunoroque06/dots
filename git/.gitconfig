@@ -4,10 +4,9 @@
 [core]
 	editor = nvim
 	pager = delta
-	excludesfile = ~/.gitignore_global
+	excludesfile = ~/.gitignore-global
 
 [delta]
-	navigate = true
 	light = true
 
 [filter "lfs"]
