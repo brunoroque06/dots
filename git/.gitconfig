@@ -8,6 +8,7 @@
 
 [delta]
 	light = true
+	navigate = true
 
 [filter "lfs"]
 	clean = git-lfs clean -- %f

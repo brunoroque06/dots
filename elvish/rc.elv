@@ -177,15 +177,11 @@ fn t { |&l=2 @d|
 }
 
 # Git
-fn git-config { git config --list --show-origin }
-set edit:small-word-abbr[ga] = 'git add'
-set edit:small-word-abbr[gb] = 'git branch'
-set edit:small-word-abbr[gc] = 'git commit'
-set edit:small-word-abbr[gd] = 'git diff'
-set edit:small-word-abbr[gds] = 'git diff --staged'
-set edit:small-word-abbr[gco] = 'git checkout'
-set edit:small-word-abbr[gph] = 'git push'
-set edit:small-word-abbr[gs] = 'git status -s'
+fn git-cfg { git config --list --show-origin }
+fn gd { git diff }
+fn gds { git diff --staged }
+fn gph { git push }
+fn gs { git status -s }
 fn gl { |&c=10| git log --all --decorate --graph --format=format:'%Cblue%h %Creset- %Cgreen%ar %Creset%s %C(dim)- %an%C(auto)%d' -$c }
 
 # JetBrains
@@ -271,7 +267,7 @@ fn pu-res-yank {
 fn env-ls {
   env -0 ^
     | from-terminated "\x00" ^
-    | each { |e| var k v = (str:split = $e); put [$k $v] } ^
+    | each { |e| var k v = (str:split &max=2 = $e); put [$k $v] } ^
     | order
 }
 fn colortest { curl -s https://raw.githubusercontent.com/pablopunk/colortest/master/colortest | bash }
