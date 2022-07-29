@@ -38,6 +38,16 @@ local colors = {
 	scrollbar_thumb = scheme.selection_bg,
 	split = scheme.background,
 
+	copy_mode_active_highlight_bg = { Color = scheme.selection_bg },
+	copy_mode_active_highlight_fg = { Color = scheme.selection_fg },
+	copy_mode_inactive_highlight_bg = { Color = scheme.ansi[5] },
+	copy_mode_inactive_highlight_fg = { Color = scheme.ansi[8] },
+
+	quick_select_label_bg = { Color = scheme.ansi[4] },
+	quick_select_label_fg = { Color = scheme.ansi[8] },
+	quick_select_match_bg = { Color = scheme.ansi[5] },
+	quick_select_match_fg = { Color = scheme.ansi[8] },
+
 	tab_bar = {
 		background = scheme.background,
 		active_tab = {
