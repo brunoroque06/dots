@@ -28,24 +28,24 @@ set paths = [
 ]
 var _paths = $nil
 
-var _duration = 0
-var _error = $false
-set edit:after-command = [{ |m| set _duration = $m[duration] } { |m| set _error = (not-eq $m[error] $nil) }]
+var _dur = 0
+var _err = $false
+set edit:after-command = [{ |m| set _dur = $m[duration] } { |m| set _err = (not-eq $m[error] $nil) }]
 
 set edit:prompt = {
-  var err = (if (put $_error) { put red } else { put blue })
+  var err = (if (put $_err) { put red } else { put blue })
   styled ' ' $err inverse
 
   if (not-eq $_paths $nil) { put ' *' }
 
   tilde-abbr $pwd | styled ' '(one) blue
 
-  if (> $_duration 5) {
-    var m = (/ $_duration 60 | math:floor (one))
+  if (> $_dur 5) {
+    var m = (/ $_dur 60 | math:floor (one))
     if (> $m 0) {
       printf ' %.0fm' $m | styled (one) yellow
     }
-    var s = (math:floor $_duration | printf '%.0f' (one) | % (one) 60)
+    var s = (math:floor $_dur | printf '%.0f' (one) | % (one) 60)
     printf ' %.0fs' $s | styled (one) yellow
   }
 
@@ -71,7 +71,7 @@ fn map { |f l| each { |i| $f $i } $l | put [(all)] }
 fn az-act-set {
   az account list ^
     | from-json ^
-    | map { |s| put [&to-filter=$s[name] &to-accept=$s[id] &to-show=(if (put $s[isDefault]) { put (styled $s[name] green) } else { put $s[name] })] } (one) ^
+    | map { |s| put [&to-filter=$s[name] &to-accept=$s[id] &to-show=(if (put $s[isDefault]) { styled $s[name] green } else { put $s[name] })] } (one) ^
     | edit:listing:start-custom (one) &caption='Azure Subscription' &accept={ |s| az account set --subscription $s > /dev/tty }
 }
 
@@ -233,6 +233,7 @@ fn py-dea {
   set paths = $_paths
   set _paths = $nil
 }
+fn py-up { py-act; pip install pur; pur; py-dea }
 
 # Pulumi
 fn pu-res { |@args|
