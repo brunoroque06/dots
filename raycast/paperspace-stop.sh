@@ -5,5 +5,5 @@
 # @raycast.mode compact
 # @raycast.icon 🕹
 
-paperspace machines stop --machineId ps8jo1fga
-paperspace machines waitfor --machineId ps8jo1fga --state off
+paperspace machines stop --machineId psoxnh2i7
+paperspace machines waitfor --machineId psoxnh2i7 --state off

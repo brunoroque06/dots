@@ -5,4 +5,4 @@
 # @raycast.mode compact
 # @raycast.icon 🕹
 
-paperspace machines show --machineId ps8jo1fga | jq .state
+paperspace machines show --machineId psoxnh2i7 | jq .state
