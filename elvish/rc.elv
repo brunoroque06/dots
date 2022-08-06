@@ -65,14 +65,13 @@ use asdf _asdf
 var asdf~ = $_asdf:asdf~
 set edit:completion:arg-completer[asdf] = $_asdf:arg-completer~
 
-fn map { |f l| each { |i| $f $i } $l | put [(all)] }
-
 # Azure
 fn az-act-set {
   az account list ^
     | from-json ^
-    | map { |s| put [&to-filter=$s[name] &to-accept=$s[id] &to-show=(if (put $s[isDefault]) { styled $s[name] green } else { put $s[name] })] } (one) ^
-    | edit:listing:start-custom (one) &caption='Azure Subscription' &accept={ |s| az account set --subscription $s > /dev/tty }
+    | all (one) ^
+    | each { |s| put [&to-filter=$s[name] &to-accept=$s[id] &to-show=(if (put $s[isDefault]) { styled $s[name] green } else { put $s[name] })] } ^
+    | edit:listing:start-custom [(all)] &caption='Azure Subscription' &accept={ |s| az account set --subscription $s }
 }
 
 # Bazel
@@ -90,10 +89,15 @@ fn brew-up {
 }
 
 # Command
+fn cmd-del-by-name { |cmd|
+  store:cmds 0 -1 ^
+    | each { |c| if (eq $c[text] $cmd) { put $c } } ^
+    | peach { |c| store:del-cmd $c[seq] }
+}
 fn cmd-del {
   store:cmds 0 -1 ^
-    | each { |c| put [&to-filter=$c[text] &to-accept=""$c[seq] &to-show=$c[text]] } ^
-    | edit:listing:start-custom [(all)] &caption='Delete Command' &accept={ |c| store:del-cmd $c }
+    | each { |c| put [&to-filter=$c[text] &to-accept=$c[text] &to-show=$c[text]] } ^
+    | edit:listing:start-custom [(all)] &caption='Delete Command' &accept={ |c| cmd-del-by-name $c }
 }
 fn cmd-edit {
   var tmp = (path:temp-file '*.elv')
@@ -250,18 +254,19 @@ fn pu-res-des { |r|
   pulumi destroy -t $r
 }
 set edit:completion:arg-completer[pu-res-des] = $pu-res~
-fn pu-stack-sel {
+fn pu-stk-sel {
   pulumi stack ls --json ^
     | from-json ^
-    | map { |s| put [&to-filter=$s[name] &to-accept=$s[name] &to-show=(if (put $s[current]) { put (styled $s[name] green) } else { put $s[name] })] } (one) ^
-    | edit:listing:start-custom (one) &caption='Pulumi Stack' &accept={ |s| pulumi stack select $s > /dev/tty }
+    | all (one) ^
+    | each { |s| put [&to-filter=$s[name] &to-accept=$s[name] &to-show=(if (put $s[current]) { put (styled $s[name] green) } else { put $s[name] })] } ^
+    | edit:listing:start-custom [(all)] &caption='Pulumi Stack' &accept={ |s| pulumi stack select $s }
 }
 fn pu-res-yank {
   pulumi stack export ^
     | from-json ^
-    | put (one)[deployment][resources] ^
-    | map { |r| put [&to-filter=$r[urn] &to-accept=$r[urn] &to-show=$r[urn]] } (one) ^
-    | edit:listing:start-custom (one) &caption='Pulumi Yank Resource' &accept={ |r| echo $r }
+    | all (one)[deployment][resources] ^
+    | each { |r| put [&to-filter=$r[urn] &to-accept=$r[urn] &to-show=$r[urn]] } ^
+    | edit:listing:start-custom [(all)] &caption='Pulumi Yank Resource' &accept={ |r| echo $r }
 }
 
 # Shell
