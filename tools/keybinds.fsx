@@ -87,6 +87,7 @@ module JetBrains =
               "EditorDuplicate"
               "FindNext"
               "GotoClass"
+              "GotoLine"
               "QuickImplementations"
               "QuickJavaDoc"
               "org.intellij.plugins.markdown.ui.actions.styling.ToggleBoldAction"
@@ -102,6 +103,7 @@ module JetBrains =
         List.map
             (fun (p: string) -> p.Split "/")
             [ "DataGrip2022.2/keymaps"
+              "GoLand2022.2/keymaps"
               "PyCharm2022.2/jba_config/mac.keymaps"
               "Rider2022.2/jba_config/mac.keymaps"
               "WebStorm2022.2/jba_config/mac.keymaps" ]
