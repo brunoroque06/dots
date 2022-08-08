@@ -101,7 +101,7 @@ return {
 	},
 
 	quick_select_patterns = {
-		"[0-9a-zA-Z-]{6,32}",
+		"urn:pulumi:[0-9a-zA-Z-:/_]{32,128}",
 	},
 
 	launch_menu = {

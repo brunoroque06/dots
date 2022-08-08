@@ -66,12 +66,12 @@ var asdf~ = $_asdf:asdf~
 set edit:completion:arg-completer[asdf] = $_asdf:arg-completer~
 
 # Azure
-fn az-act-set {
+fn az-act-set { |s| az account set --subscription $s }
+set edit:completion:arg-completer[az-act-set] = { |@args|
   az account list ^
     | from-json ^
     | all (one) ^
-    | each { |s| put [&to-filter=$s[name] &to-accept=$s[id] &to-show=(if (put $s[isDefault]) { styled $s[name] green } else { put $s[name] })] } ^
-    | edit:listing:start-custom [(all)] &caption='Azure Subscription' &accept={ |s| az account set --subscription $s }
+    | each { |s| edit:complex-candidate $s[id] &display=(if (put $s[isDefault]) { styled $s[name] green } else { put $s[name] }) }
 }
 
 # Bazel
@@ -81,24 +81,7 @@ fn bzl-setup {
   ln -s /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk $dir
 }
 
-# Brew
-fn brew-dump { brew bundle dump --file $E:HOME/Projects/dotfiles/brew/Brewfile --force }
-fn brew-up {
-  brew update; brew upgrade --ignore-pinned; brew cleanup
-  try { brew doctor } catch { }
-}
-
 # Command
-fn cmd-del-by-name { |cmd|
-  store:cmds 0 -1 ^
-    | each { |c| if (eq $c[text] $cmd) { put $c } } ^
-    | peach { |c| store:del-cmd $c[seq] }
-}
-fn cmd-del {
-  store:cmds 0 -1 ^
-    | each { |c| put [&to-filter=$c[text] &to-accept=$c[text] &to-show=$c[text]] } ^
-    | edit:listing:start-custom [(all)] &caption='Delete Command' &accept={ |c| cmd-del-by-name $c }
-}
 fn cmd-edit {
   var tmp = (path:temp-file '*.elv')
   print $edit:current-command > $tmp
@@ -109,11 +92,6 @@ fn cmd-edit {
     file:close $tmp
   }
   rm $tmp[name]
-}
-fn cmd-yank {
-  store:cmds 0 -1 ^
-    | each { |c| put [&to-filter=$c[text] &to-accept=$c[text] &to-show=$c[text]] } ^
-    | edit:listing:start-custom [(all)] &caption='Yank Command' &accept={ |c| printf $c | pbcopy }
 }
 
 # Docker
@@ -155,17 +133,15 @@ fn c { |f|
 fn dir-size { dust -d 1 }
 fn e { |@a| $E:EDITOR $@a }
 fn en { |@a| $E:EDITOR -u NONE $@a }
-fn file-rmrf {
-  fd . --hidden --max-depth 1 --no-ignore ^
-    | from-lines ^
-    | each { |f| put [&to-filter=$f &to-accept=$f &to-show=$f] } ^
-    | edit:listing:start-custom [(all)] &caption='Remove File' &accept={ |f| rm -fr $f }
+fn rmr { |f| rmr $f }
+set edit:completion:arg-completer[rmr] = { |@args|
+  fd . --hidden --max-depth 1 --no-ignore --strip-cwd-prefix ^
+    | from-lines
 }
-fn file-yank {
+fn file-yank { |f| cat $f pbcopy }
+set edit:completion:arg-completer[file-yank] = { |@args|
   rg --files ^
-    | from-lines ^
-    | each { |f| put [&to-filter=$f &to-accept=$f &to-show=$f] } ^
-    | edit:listing:start-custom [(all)] &caption='Yank File' &accept={ |f| cat $f pbcopy }
+    | from-lines
 }
 fn file-unix { |f|
   var con = (cat $f | from-lines | put [(all)])
@@ -212,6 +188,18 @@ fn node-clean {
 }
 fn yarn-up { yarn upgrade-interactive }
 
+# Packages
+fn brew-dump { brew bundle dump --file $E:HOME/Projects/dotfiles/brew/Brewfile --force }
+fn brew-up {
+  brew update; brew upgrade --ignore-pinned; brew cleanup
+  try { brew doctor } catch { }
+}
+fn pkg-up {
+  brew-up
+  dot-tool-up
+  npm-up-g
+}
+
 # PostgreSQL
 fn pg-up { postgres -D /usr/local/var/postgres }
 fn pg-reset { brew uninstall --ignore-dependencies postgresql; rm -fr /usr/local/var/postgres; brew install postgresql; /usr/local/bin/timescaledb_move.sh }
@@ -246,27 +234,22 @@ fn pu-res { |@args|
     | put (one)[deployment][resources] ^
     | each { |r| put $r[urn] } (one)
 }
-fn pu-res-del { |r|
-  pulumi state delete $r
-}
+fn pu-res-del { |r| pulumi state delete $r }
 set edit:completion:arg-completer[pu-res-del] = $pu-res~
-fn pu-res-des { |r|
-  pulumi destroy -t $r
-}
+fn pu-res-des { |r| pulumi destroy -t $r }
 set edit:completion:arg-completer[pu-res-des] = $pu-res~
-fn pu-stk-sel {
-  pulumi stack ls --json ^
-    | from-json ^
-    | all (one) ^
-    | each { |s| put [&to-filter=$s[name] &to-accept=$s[name] &to-show=(if (put $s[current]) { put (styled $s[name] green) } else { put $s[name] })] } ^
-    | edit:listing:start-custom [(all)] &caption='Pulumi Stack' &accept={ |s| pulumi stack select $s }
-}
-fn pu-res-yank {
+fn pu-res-ls {
   pulumi stack export ^
     | from-json ^
     | all (one)[deployment][resources] ^
-    | each { |r| put [&to-filter=$r[urn] &to-accept=$r[urn] &to-show=$r[urn]] } ^
-    | edit:listing:start-custom [(all)] &caption='Pulumi Yank Resource' &accept={ |r| echo $r }
+    | put (all)[urn]
+}
+fn pu-stk-sel { |s| pulumi stack select $s }
+set edit:completion:arg-completer[pu-stk-sel] = { |@args|
+  pulumi stack ls --json ^
+    | from-json ^
+    | all (one) ^
+    | each { |s| edit:complex-candidate $s[name] &display=(if (put $s[current]) { styled $s[name] green } else { put $s[name] }) }
 }
 
 # Shell
