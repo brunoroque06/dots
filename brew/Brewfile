@@ -48,7 +48,7 @@ brew "shfmt"
 brew "stow"
 brew "stylua"
 brew "tokei"
-brew "vim"
+brew "vivid"
 brew "wget"
 brew "yarn"
 

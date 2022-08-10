@@ -4,18 +4,8 @@ use readline-binding
 use store
 use str
 
-set E:BAT_STYLE = plain
-set E:BAT_THEME = ansi
-set E:DOCKER_DEFAULT_PLATFORM = linux/amd64
-set E:EDITOR = /opt/homebrew/bin/nvim
-set E:JAVA_HOME = /opt/homebrew/opt/openjdk/libexec/openjdk.jdk/Contents/Home
-set E:MOAR = '-statusbar=bold -style=friendly'
-set E:PAGER = /opt/homebrew/bin/moar
-set E:RIPGREP_CONFIG_PATH = $E:HOME/.config/ripgreprc
-set E:VISUAL = /opt/homebrew/bin/nvim
-# set E:REQUESTS_CA_BUNDLE = $E:HOME/.proxyman/proxyman-ca.pem # proxyman with python
-
 set paths = [
+  $E:HOME/bin
   /opt/homebrew/bin
   /usr/local/bin
   /usr/bin
@@ -23,13 +13,25 @@ set paths = [
   /usr/sbin
   /sbin
   /usr/local/share/dotnet
-  $E:HOME/bin
   $E:HOME/.dotnet/tools
 ]
 var _paths = $nil
 
+set E:BAT_STYLE = plain
+set E:BAT_THEME = ansi
+set E:DOCKER_DEFAULT_PLATFORM = linux/amd64
+set E:EDITOR = /opt/homebrew/bin/nvim
+set E:JAVA_HOME = /opt/homebrew/opt/openjdk/libexec/openjdk.jdk/Contents/Home
+set E:LS_COLORS = (vivid generate $E:HOME/.config/vivid/theme.yml)
+set E:MOAR = '-statusbar=bold -style=friendly'
+set E:PAGER = /opt/homebrew/bin/moar
+set E:RIPGREP_CONFIG_PATH = $E:HOME/.config/ripgreprc
+set E:VISUAL = /opt/homebrew/bin/nvim
+# set E:REQUESTS_CA_BUNDLE = $E:HOME/.proxyman/proxyman-ca.pem # proxyman with python
+
 var _dur = 0
 var _err = $false
+
 set edit:after-command = [{ |m| set _dur = $m[duration] } { |m| set _err = (not-eq $m[error] $nil) }]
 
 set edit:prompt = {
@@ -133,7 +135,7 @@ fn c { |f|
 fn dir-size { dust -d 1 }
 fn e { |@a| $E:EDITOR $@a }
 fn en { |@a| $E:EDITOR -u NONE $@a }
-fn rmr { |f| rmr $f }
+fn rmr { |f| rm -fr $f }
 set edit:completion:arg-completer[rmr] = { |@args|
   fd . --hidden --max-depth 1 --no-ignore --strip-cwd-prefix ^
     | from-lines
@@ -279,6 +281,12 @@ set edit:insert:binding[Ctrl-l] = $edit:location:start~
 set edit:insert:binding[Ctrl-o] = $edit:lastcmd:start~
 set edit:insert:binding[Ctrl-r] = $edit:histlist:start~
 set edit:insert:binding[Ctrl-t] = $cmd-edit~
+set edit:insert:binding[Ctrl-y] = {
+  fd --hidden --strip-cwd-prefix . ^
+    | from-lines ^
+    | each { |f| put [&to-accept=$f &to-filter=$f &to-show=$f] } ^
+    | edit:listing:start-custom &caption='Files' &accept={ |f| edit:insert-at-dot $f } [(all)]
+}
 set edit:insert:binding[Ctrl-w] = $edit:kill-small-word-left~
 set edit:insert:binding[Alt-Backspace] = $edit:kill-small-word-left~
 
