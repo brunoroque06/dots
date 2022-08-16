@@ -36,7 +36,7 @@ unlink() {
 	stow -D -v 1 -t "$2" "$1"
 }
 
-link_manager() {
+for_config() {
 	for ((i = 0; i < ${#paths[@]}; i += 2)); do
 		$1 "${paths[i]}" "${paths[i + 1]}"
 	done
@@ -46,12 +46,12 @@ case "$1" in
 install)
 	install
 	;;
-link)
-	link_manager link
+config)
+	for_config link
 	dotnet fsi tools/keybinds.fsx
 	;;
-unlink)
-	link_manager unlink
+unconfig)
+	for_config unlink
 	;;
 *)
 	printf 'Available Commands:\n'
