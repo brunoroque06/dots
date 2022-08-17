@@ -34,31 +34,6 @@ vim.o.termguicolors = true
 
 vim.cmd("syntax enable")
 
-local format = vim.api.nvim_create_augroup("format", { clear = true })
-local formatters = {
-	{ "bzl", "buildifier" },
-	{ "css", "prettier" },
-	{ "html", "prettier" },
-	{ "javascript", "prettier" },
-	{ "json", "prettier" },
-	{ "lua", "stylua" },
-	{ "markdown", "prettier" },
-	{ "python", "black" },
-	{ "scss", "prettier" },
-	{ "sql", "pg_format" },
-	{ "typescript", "prettier" },
-	{ "yaml", "prettier" },
-}
-for _, f in pairs(formatters) do
-	vim.api.nvim_create_autocmd("FileType", {
-		callback = function()
-			vim.cmd("set formatprg=" .. f[2])
-		end,
-		group = format,
-		pattern = f[1],
-	})
-end
-
 local spell = vim.api.nvim_create_augroup("spell", { clear = true })
 vim.api.nvim_create_autocmd("FileType", {
 	callback = function()
@@ -154,35 +129,74 @@ packer.startup(function()
 	})
 
 	use({
-		"sbdchd/neoformat",
+		"mhartington/formatter.nvim",
 		config = function()
-			vim.g.neoformat_basic_format_trim = 1
-			vim.g.shfmt_opt = "-i 0"
+			require("formatter").setup({
+				logging = true,
+				log_level = vim.log.levels.WARN,
+				filetype = {
+					["*"] = {
+						function()
+							return { exe = "sed", args = { "-i", "''", "'s/[	 ]*$//'" } }
+						end,
+					},
+					bzl = {
+						function()
+							return { exe = "buildifier" }
+						end,
+					},
+					css = { require("formatter.filetypes.lua").prettier },
+					html = { require("formatter.filetypes.lua").prettier },
+					go = {
+						function()
+							return { exe = "gofmt", args = { "-w" } }
+						end,
+					},
+					javascript = { require("formatter.filetypes.lua").prettier },
+					json = { require("formatter.filetypes.lua").prettier },
+					lua = { require("formatter.filetypes.lua").stylua },
+					markdown = { require("formatter.filetypes.lua").prettier },
+					python = {
+						function()
+							return { exe = "black" }
+						end,
+					},
+					scss = { require("formatter.filetypes.lua").prettier },
+					sh = {
+						function()
+							return { exe = "shfmt", args = { "-w" } }
+						end,
+					},
+					sql = {
+						function()
+							return { exe = "pg_format", args = { "-i" } }
+						end,
+					},
+					typescript = { require("formatter.filetypes.lua").prettier },
+					yaml = { require("formatter.filetypes.lua").prettier },
+				},
+			})
 		end,
 	})
 
 	use({
 		"neovim/nvim-lspconfig",
-		requires = { "williamboman/nvim-lsp-installer" },
-		run = function()
+		config = function()
+			local cfg = require("lspconfig")
+
 			local servers = {
 				"bashls",
 				"cssls",
 				"dockerls",
+				"gopls",
 				"jsonls",
 				"pyright",
-				"sumneko_lua",
 				"tsserver",
 				"yamlls",
 			}
-			for _, server in pairs(servers) do
-				local _, s = require("nvim-lsp-installer").get_server(server)
-				s:install()
+			for _, s in pairs(servers) do
+				require("lspconfig")[s].setup({})
 			end
-		end,
-		config = function()
-			require("nvim-lsp-installer").setup({})
-			local cfg = require("lspconfig")
 
 			cfg.sumneko_lua.setup({
 				settings = {
@@ -292,6 +306,7 @@ packer.startup(function()
 					"dockerfile",
 					"elvish",
 					"html",
+					"go",
 					"javascript",
 					"json",
 					"lua",
@@ -340,7 +355,7 @@ vim.api.nvim_create_user_command("Reload", "source $MYVIMRC | PackerCompile", {}
 
 vim.keymap.set("i", "<f1>", vim.lsp.buf.signature_help)
 
-vim.keymap.set("n", "==", ":Neoformat<cr>")
+vim.keymap.set("n", "==", ":Format<cr>")
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next)
 vim.keymap.set("n", "ga", ":Telescope lsp_code_actions<cr>")

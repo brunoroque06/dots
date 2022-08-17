@@ -116,13 +116,6 @@ fn doc-setup {
 
 # Dotnet
 fn dot-up { dotnet outdated --upgrade }
-fn dot-tool-up {
-  dotnet tool list -g ^
-    | from-lines ^
-    | drop 2 ^
-    | each { |l| str:split ' ' $l | take 1 } ^
-    | each { |l| dotnet tool update -g $l }
-}
 
 # File System
 fn c { |f|
@@ -161,8 +154,6 @@ fn t { |&l=2 @d|
 # Git
 fn git-cfg { git config --list --show-origin }
 fn gd { git diff }
-fn gds { git diff --staged }
-fn gph { git push }
 fn gs { git status -s }
 fn gl { |&c=10| git log --all --decorate --graph --format=format:'%Cblue%h %Creset- %Cgreen%ar %Creset%s %C(dim)- %an%C(auto)%d' -$c }
 
@@ -181,14 +172,12 @@ set edit:completion:arg-completer[jb-clean] = { |@args|
 fn ntw-scan { nmap -sP 192.168.1.0/24 }
 
 # Node.js
-fn npm-up { npx npm-check-updates --deep -i }
-fn npm-up-g { npx npm-check-updates -g -i }
+fn npm-up { npm-check-updates --deep -i }
 fn node-clean {
   fd -HI --prune node_modules ^
     | from-lines ^
     | peach { |d| rm -fr $d }
 }
-fn yarn-up { yarn upgrade-interactive }
 
 # Packages
 fn brew-dump { brew bundle dump --file $E:HOME/Projects/dotfiles/brew/Brewfile --force }
@@ -198,8 +187,23 @@ fn brew-up {
 }
 fn pkg-up {
   brew-up
-  dot-tool-up
-  npm-up-g
+
+  put dotnet-outdated-tool dotnet-fsharplint fantomas-tool ^
+    | each { |p| try { dotnet tool install -g $p } catch { } }
+  dotnet tool list -g ^
+    | from-lines ^
+    | drop 2 ^
+    | each { |l| str:split ' ' $l | take 1 } ^
+    | each { |p| dotnet tool update -g $p }
+
+  npm install -g ^
+    dockerfile-language-server-nodejs ^
+    npm ^
+    npm-check-updates ^
+    paperspace-node ^
+    typescript-language-server ^
+    vscode-langservers-extracted
+  npm-check-updates -g -i
 }
 
 # PostgreSQL
@@ -208,7 +212,6 @@ fn pg-reset { brew uninstall --ignore-dependencies postgresql; rm -fr /usr/local
 fn pg-upgrade { brew postgresql-upgrade-database }
 
 # Python
-set edit:small-word-abbr['py-setup'] = 'asdf shell python latest; python -m venv venv; py-act; pip install --upgrade pip; pip install -r requirements.txt'
 fn py-act {
   if (not-eq $_paths $nil) {
     fail 'A venv is already active'
@@ -226,6 +229,12 @@ fn py-dea {
   }
   set paths = $_paths
   set _paths = $nil
+}
+fn py-setup {
+  python -m venv venv
+  py-act
+  pip install --upgrade pip
+  pip install -r requirements.txt
 }
 fn py-up { py-act; pip install pur; pur; py-dea }
 
@@ -268,7 +277,6 @@ fn reload { exec elvish -sock $E:HOME/.local/state/elvish/sock }
 fn ssh-trust { |@a| ssh-copy-id -i $E:HOME/.ssh/id_rsa.pub $@a }
 
 # VSCode
-fn code-open { code . }
 fn code-ext-dump { code --list-extensions > $E:HOME'/Library/Application Support/Code/User/extensions.txt' }
 fn code-ext-install { xargs < $E:HOME'/Library/Application Support/Code/User/extensions.txt' -L 1 code --force --install-extension }
 
