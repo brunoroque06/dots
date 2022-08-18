@@ -30,6 +30,7 @@ vim.o.scrolloff = 8
 vim.o.showcmd = true
 vim.o.showmode = false
 vim.o.smartcase = true
+vim.o.tabstop = 4
 vim.o.termguicolors = true
 
 vim.cmd("syntax enable")
@@ -131,49 +132,77 @@ packer.startup(function()
 	use({
 		"mhartington/formatter.nvim",
 		config = function()
+			local prettier = function()
+				return {
+					exe = "prettier",
+					args = { "--stdin-filepath", vim.api.nvim_buf_get_name(0) },
+					stdin = true,
+				}
+			end
+
 			require("formatter").setup({
 				logging = true,
 				log_level = vim.log.levels.WARN,
 				filetype = {
 					["*"] = {
 						function()
-							return { exe = "sed", args = { "-i", "''", "'s/[	 ]*$//'" } }
+							return {
+								exe = "elvish",
+								args = {
+									"-c",
+									"'use str; from-lines | each { |l| str:trim-right $l \" \" } | to-lines'",
+								},
+								stdin = true,
+								-- exe = "sed",
+								-- args = { "-i", "''", "'s/[	 ]*$//'" },
+							}
 						end,
 					},
 					bzl = {
 						function()
-							return { exe = "buildifier" }
+							return {
+								exe = "buildifier",
+								args = { "-path", vim.api.nvim_buf_get_name(0) },
+								stdin = true,
+							}
 						end,
 					},
-					css = { require("formatter.filetypes.lua").prettier },
-					html = { require("formatter.filetypes.lua").prettier },
+					css = { prettier },
+					html = { prettier },
 					go = {
 						function()
-							return { exe = "gofmt", args = { "-w" } }
+							return { exe = "gofmt", stdin = true }
 						end,
 					},
-					javascript = { require("formatter.filetypes.lua").prettier },
-					json = { require("formatter.filetypes.lua").prettier },
+					javascript = { prettier },
+					json = { prettier },
 					lua = { require("formatter.filetypes.lua").stylua },
-					markdown = { require("formatter.filetypes.lua").prettier },
+					markdown = { prettier },
 					python = {
 						function()
-							return { exe = "black" }
+							return {
+								exe = "black",
+								args = { "-" },
+								stdin = true,
+							}
 						end,
 					},
-					scss = { require("formatter.filetypes.lua").prettier },
+					scss = { prettier },
 					sh = {
 						function()
-							return { exe = "shfmt", args = { "-w" } }
+							return { exe = "shfmt", stdin = true }
 						end,
 					},
 					sql = {
 						function()
-							return { exe = "pg_format", args = { "-i" } }
+							return {
+								exe = "pg_format",
+								stdin = true,
+							}
 						end,
 					},
-					typescript = { require("formatter.filetypes.lua").prettier },
-					yaml = { require("formatter.filetypes.lua").prettier },
+					typescript = { prettier },
+					yaml = { prettier },
 				},
 			})
 		end,

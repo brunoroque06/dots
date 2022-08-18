@@ -23,7 +23,7 @@ set E:DOCKER_DEFAULT_PLATFORM = linux/amd64
 set E:EDITOR = /opt/homebrew/bin/nvim
 set E:JAVA_HOME = /opt/homebrew/opt/openjdk/libexec/openjdk.jdk/Contents/Home
 set E:LS_COLORS = (vivid generate $E:HOME/.config/vivid/theme.yml)
-set E:MOAR = '-statusbar=bold -style=friendly'
+set E:MOAR = '-no-linenumbers -statusbar=bold -style=friendly'
 set E:PAGER = /opt/homebrew/bin/moar
 set E:RIPGREP_CONFIG_PATH = $E:HOME/.config/ripgreprc
 set E:VISUAL = /opt/homebrew/bin/nvim
@@ -118,7 +118,7 @@ fn doc-setup {
 fn dot-up { dotnet outdated --upgrade }
 
 # File System
-fn c { |f|
+fn p { |f|
   if (str:has-suffix $f .md) {
     glow -p $f
   } else {
@@ -203,7 +203,7 @@ fn pkg-up {
     paperspace-node ^
     typescript-language-server ^
     vscode-langservers-extracted
-  npm-check-updates -g -i
+  npm-check-updates -g
 }
 
 # PostgreSQL
