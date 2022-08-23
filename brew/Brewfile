@@ -1,15 +1,13 @@
-tap "azure/functions"
 tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/cask-fonts"
 tap "homebrew/core"
 tap "rsteube/homebrew-tap"
+tap "wez/wezterm"
 
 brew "angular-cli"
 brew "asdf"
-brew "azcopy"
 brew "azure-cli"
-brew "azure/functions/azure-functions-core-tools@3"
 brew "bash"
 brew "bash-language-server"
 brew "bat"
@@ -23,7 +21,6 @@ brew "dust"
 brew "elvish"
 brew "exa"
 brew "fd"
-brew "fzf"
 brew "gh"
 brew "git"
 brew "git-delta"
@@ -32,19 +29,17 @@ brew "glow"
 brew "gnu-tar"
 brew "go"
 brew "gopls"
-brew "imagemagick"
 brew "jq"
 brew "lua-language-server"
 brew "mas"
 brew "moar"
 brew "mypy"
-brew "neovim"
+brew "neovim", args: ["HEAD"]
 brew "node"
 brew "nushell"
 brew "openjdk"
 brew "pgformatter"
 brew "postgresql"
-brew "potrace"
 brew "prettier"
 brew "pulumi"
 brew "pylint"
@@ -71,14 +66,14 @@ cask "parsec"
 cask "paw"
 cask "proxyman"
 cask "raycast"
-cask "tower"
 cask "visual-studio-code"
-cask "wezterm"
+cask "wezterm-nightly"
 cask "zoom"
 
 mas "Affinity Designer", id: 824171161
 mas "Bear", id: 1091189122
-mas "Hush Nag Blocker", id: 1544743900
+mas "Gitfox", id: 1475511261
+mas "Hush", id: 1544743900
 mas "Keys Multiplatform", id: 1494642810
 mas "Reeder", id: 1529448980
 mas "Wipr", id: 1320666476

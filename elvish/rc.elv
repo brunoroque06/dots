@@ -185,16 +185,9 @@ fn brew-up {
   brew update; brew upgrade --ignore-pinned; brew cleanup
   try { brew doctor } catch { }
 }
-fn pkg-up {
-  brew-up
-
+fn pkg-setup {
   put dotnet-outdated-tool dotnet-fsharplint fantomas-tool ^
     | each { |p| try { dotnet tool install -g $p } catch { } }
-  dotnet tool list -g ^
-    | from-lines ^
-    | drop 2 ^
-    | each { |l| str:split ' ' $l | take 1 } ^
-    | each { |p| dotnet tool update -g $p }
 
   npm install -g ^
     dockerfile-language-server-nodejs ^
@@ -203,6 +196,16 @@ fn pkg-up {
     paperspace-node ^
     typescript-language-server ^
     vscode-langservers-extracted
+}
+fn pkg-up {
+  brew-up
+
+  dotnet tool list -g ^
+    | from-lines ^
+    | drop 2 ^
+    | each { |l| str:split ' ' $l | take 1 } ^
+    | each { |p| dotnet tool update -g $p }
+
   npm-check-updates -g
 }
 

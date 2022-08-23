@@ -3,15 +3,23 @@
 set -e
 
 install() {
-	./brew/setup
+	brew update
+	brew bundle install --file brew/Brewfile
+	brew doctor
+}
+
+setup() {
+	if [ ! -f /opt/homebrew/bin/brew ]; then
+		/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+	fi
+
+	install
 
 	SH=/opt/homebrew/bin/bash
-	grep -qxF $SH /etc/shells || echo $SH | sudo tee -a /etc/shells
+	grep -qxF $SH /etc/shells || printf '%s\n' "$SH" | sudo tee -a /etc/shells
 	chsh -s $SH
 
-	grep -q homebrew "$HOME/.bash_profile" || echo "export PATH=/opt/homebrew/bin:$PATH" >"$HOME/.bash_profile"
-
-	defaults write -g ApplePressAndHoldEnabled -bool true
+	grep -q homebrew "$HOME/.bash_profile" || printf 'export PATH=/opt/homebrew/bin:%s\n' "$PATH" >"$HOME/.bash_profile"
 }
 
 paths=(
@@ -43,6 +51,9 @@ for_config() {
 }
 
 case "$1" in
+setup)
+	setup
+	;;
 install)
 	install
 	;;
@@ -55,6 +66,6 @@ unconfig)
 	;;
 *)
 	printf 'Available Commands:\n'
-	for o in $(grep -e '[a-z])' dotfiles | tr -d ')'); do printf '  %s\n' "$o"; done
+	for o in $(grep -e '[a-z])$' dotfiles | tr -d ')'); do printf '  %s\n' "$o"; done
 	;;
 esac

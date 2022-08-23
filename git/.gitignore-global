@@ -11,21 +11,12 @@ target
 *.user
 .ionide
 .tmp
-bin
-obj
 
 # Git
 .git
 
-# Haskell
-dist-newstyle
-
 # Jetbrains
 .idea
-
-# Jekyll
-.jekyll-cache
-_site
 
 # macOS
 .DS_Store

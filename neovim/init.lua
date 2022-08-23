@@ -61,7 +61,7 @@ end
 
 local packer = require("packer")
 
-packer.init({ display = { open_cmd = "vnew \\[packer\\]" } })
+packer.init({ display = { open_cmd = "tabnew \\[packer\\]" } })
 
 packer.startup(function()
 	use("wbthomason/packer.nvim")
@@ -153,8 +153,6 @@ packer.startup(function()
 									"'use str; from-lines | each { |l| str:trim-right $l \" \" } | to-lines'",
 								},
 								stdin = true,
-								-- exe = "sed",
-								-- args = { "-i", "''", "'s/[	 ]*$//'" },
 							}
 						end,
 					},
@@ -379,7 +377,7 @@ local cd = function()
 		:find()
 end
 
-vim.api.nvim_create_user_command("ChangeDirectory", cd, {})
+vim.api.nvim_create_user_command("Cd", cd, {})
 vim.api.nvim_create_user_command("Reload", "source $MYVIMRC | PackerCompile", {})
 
 vim.keymap.set("i", "<f1>", vim.lsp.buf.signature_help)
