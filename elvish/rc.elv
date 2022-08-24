@@ -89,7 +89,7 @@ fn cmd-edit {
   print $edit:current-command > $tmp
   try {
     $E:EDITOR $tmp[name] </dev/tty >/dev/tty 2>&1
-    set edit:current-command = (slurp < $tmp[name])[..-1]
+    set edit:current-command = (slurp < $tmp[name] | str:trim-right (one) "\n")
   } catch {
     file:close $tmp
   }
@@ -133,7 +133,7 @@ set edit:completion:arg-completer[rmr] = { |@args|
   fd . --hidden --max-depth 1 --no-ignore --strip-cwd-prefix ^
     | from-lines
 }
-fn file-yank { |f| cat $f pbcopy }
+fn file-yank { |f| pbcopy < $f }
 set edit:completion:arg-completer[file-yank] = { |@args|
   rg --files ^
     | from-lines
@@ -300,4 +300,3 @@ set edit:insert:binding[Ctrl-y] = {
 }
 set edit:insert:binding[Ctrl-w] = $edit:kill-small-word-left~
 set edit:insert:binding[Alt-Backspace] = $edit:kill-small-word-left~
-
