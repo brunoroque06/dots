@@ -180,7 +180,7 @@ fn node-clean {
 }
 
 # Packages
-fn brew-dump { brew bundle dump --file $E:HOME/Projects/dotfiles/brew/Brewfile --force }
+fn brew-dump { brew bundle dump --file $E:HOME/Projects/dotfiles/brew/brewfile --force }
 fn brew-up {
   brew update; brew upgrade --ignore-pinned; brew cleanup
   try { brew doctor } catch { }

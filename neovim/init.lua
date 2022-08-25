@@ -32,6 +32,8 @@ vim.o.showmode = false
 vim.o.smartcase = true
 vim.o.tabstop = 4
 vim.o.termguicolors = true
+vim.o.wildmenu = true
+vim.o.wildmode = "list:longest,full"
 
 vim.cmd("syntax enable")
 

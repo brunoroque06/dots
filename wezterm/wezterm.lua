@@ -102,6 +102,7 @@ return {
 	},
 
 	quick_select_patterns = {
+		"npm -g install .*",
 		"urn:pulumi:[0-9a-zA-Z-:/_]{32,128}",
 	},
 
