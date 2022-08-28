@@ -39,7 +39,7 @@ brew "node"
 brew "nushell"
 brew "openjdk"
 brew "pgformatter"
-brew "postgresql"
+brew "postgresql@14"
 brew "prettier"
 brew "pulumi"
 brew "pylint"
@@ -72,6 +72,7 @@ cask "zoom"
 
 mas "Affinity Designer", id: 824171161
 mas "Bear", id: 1091189122
+mas "Cyberduck", id: 409222199
 mas "Gitfox", id: 1475511261
 mas "Hush", id: 1544743900
 mas "Keys Multiplatform", id: 1494642810
