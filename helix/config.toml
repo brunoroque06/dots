@@ -1,0 +1,19 @@
+theme = "flatwhite"
+
+[editor]
+color-modes = true
+cursorline = true
+auto-format = false
+line-number = "relative"
+
+[editor.cursor-shape]
+insert = "bar"
+
+[editor.indent-guides]
+render = true
+
+[editor.lsp]
+display-messages = true
+
+[keys.normal]
+"=" = { "=" = ":fmt" }

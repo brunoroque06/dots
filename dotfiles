@@ -23,16 +23,17 @@ setup() {
 }
 
 paths=(
-	elvish "$HOME/.config/elvish"
+	elvish "$HOME"/.config/elvish
 	git "$HOME"
+	helix "$HOME"/.config/helix
 	jetbrains "$HOME"
-	neovim "$HOME/.config/nvim"
+	neovim "$HOME"/.config/nvim
 	nushell "$HOME/Library/Application Support/nushell"
 	postgresql "$HOME"
-	ripgrep "$HOME/.config"
-	vivid "$HOME/.config/vivid"
+	ripgrep "$HOME"/.config
+	vivid "$HOME"/.config/vivid
 	vscode "$HOME/Library/Application Support/Code/User"
-	wezterm "$HOME/.config/wezterm"
+	wezterm "$HOME"/.config/wezterm
 )
 
 link() {
