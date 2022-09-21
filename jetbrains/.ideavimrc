@@ -22,6 +22,7 @@ set NERDTree
 set surround
 
 sethandler <c-2> a:vim
+sethandler <c-6> a:vim
 sethandler <c-[> a:vim
 sethandler <c-\> a:vim
 sethandler <c-a> a:vim
@@ -51,22 +52,33 @@ sethandler <c-v> a:vim
 sethandler <c-w> a:vim
 sethandler <f1> a:ide
 
-nnoremap == :action ReformatCode<cr>
-nnoremap =i :action OptimizeImports<cr>
-nnoremap [<space> O<esc>j
-nnoremap ]<space> o<esc>k
-nnoremap [d :action GotoPreviousError<cr>
-nnoremap ]d :action GotoNextError<cr>
-nnoremap [e ddP
-nnoremap ]e ddp
-nnoremap [f :action MethodUp<cr>
-nnoremap ]f :action MethodDown<cr>
-nnoremap [q :action PreviousOccurence<cr>
-nnoremap ]q :action NextOccurence<cr>
-" ga -> <m-enter> ShowIntentionActions
-nnoremap gd :action GotoDeclaration<cr>
-nnoremap gh :action ShowErrorDescription<cr>
-nnoremap gi :action GotoImplementation<cr>
-nnoremap gr :action Refactorings.QuickListPopupAction<cr>
-nnoremap gu :action ShowUsages<cr>
+map == <Action>(ReformatCode)
+map =i <Action>(OptimizeImports)
+map [<space> k<Action>(EditorStartNewLine)j
+map ]<space> <Action>(EditorStartNewLine)k
+map [d <Action>(GotoPreviousError)
+map ]d <Action>(GotoNextError)
+map [f <Action>(MethodUp)
+map ]f <Action>(MethodDown)
+map [q <Action>(PreviousOccurence)
+map ]q <Action>(NextOccurence)
 
+map gd <Action>(GotoDeclaration)
+" map gh <Action>(ShowErrorDescription)
+map gi <Action>(GotoImplementation)
+map gr <Action>(ShowUsages)
+
+" ga -> <m-enter> ShowIntentionActions
+nnoremap ge G
+nnoremap gh 0
+nnoremap gl $
+nnoremap gs ^
+
+map U <Action>($Redo)
+
+let mapleader="\<space>"
+
+map <leader>a <Action>(Refactorings.QuickListPopupAction)
+map <leader>f <Action>(GotoFile)
+map <leader>j <Action>(ShowBookmarks)
+map <leader>s <Action>(FileStructurePopup)

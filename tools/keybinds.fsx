@@ -6,9 +6,9 @@ module Keybind =
         | Back
         | Forward
         | GoToAction
-        | GoToBookmark
+        | GoToBuffer
         | GoToFile
-        | GoToFileRecent
+        | GoToJump
         | GoToSymbol
         | GoToSymbolInFile
         | Navigate
@@ -32,7 +32,7 @@ module Keybind =
           key: Key
           shift: bool }
 
-    type VimKeybind = { action: Action; key: Key }
+    type ModalKeybind = { action: Action; key: Key }
 
     type KeybindFile = { name: string; content: string list }
 
@@ -50,9 +50,9 @@ module JetBrains =
         let action =
             match meta.action with
             | GoToAction -> "GotoAction"
-            | GoToBookmark -> "ShowBookmarks"
+            | GoToBuffer -> "RecentFiles"
             | GoToFile -> "GotoFile"
-            | GoToFileRecent -> "RecentFiles"
+            | GoToJump -> "ShowBookmarks"
             | GoToSymbol -> "GotoSymbol"
             | GoToSymbolInFile -> "FileStructurePopup"
             | Navigate -> "ShowNavBar"
@@ -116,9 +116,9 @@ module NeoVim =
         let action =
             match meta.action with
             | GoToAction -> ":Telescope commands<cr>"
-            | GoToBookmark -> ":Telescope marks<cr>"
+            | GoToBuffer -> ":Telescope buffers<cr>"
             | GoToFile -> ":lua require('telescope.builtin').find_files({hidden = true})<cr>"
-            | GoToFileRecent -> ":Telescope buffers<cr>"
+            | GoToJump -> ":Telescope marks<cr>"
             | GoToSymbol -> ":Telescope treesitter<cr>"
             | GoToSymbolInFile -> ":Telescope treesitter<cr>"
             | Navigate -> ":Explore<cr>"
@@ -164,9 +164,9 @@ module VsCode =
             | Back -> "workbench.action.navigateBack"
             | Forward -> "workbench.action.navigateForward"
             | GoToAction -> "workbench.action.showCommands"
-            | GoToBookmark -> "bookmarks.listFromAllFiles"
+            | GoToBuffer -> "workbench.action.quickOpen"
             | GoToFile -> "workbench.action.quickOpen"
-            | GoToFileRecent -> "workbench.action.quickOpen"
+            | GoToJump -> "bookmarks.listFromAllFiles"
             | GoToSymbol -> "workbench.action.showAllSymbols"
             | GoToSymbolInFile -> "workbench.action.gotoSymbol"
             | Navigate -> "breadcrumbs.focusAndSelect"
@@ -206,7 +206,8 @@ module VsCode =
             |> List.map mapMeta
             |> (+) [ (keybind "workbench.action.focusActiveEditorGroup" "escape" (Some "!editorFocus")) ]
 
-        let content = [ "[" ] |> (+) mapped |> (+) [ "]" ]
+        let content =
+            [ "[" ] |> (+) mapped |> (+) [ "]" ]
 
         [ { name = Path.Combine("Library", "Application Support", "Code", "User", "keybindings.json")
             content = content } ]
@@ -214,9 +215,9 @@ module VsCode =
 
 let metas =
     [ (GoToAction, Letter("p"), false)
-      (GoToBookmark, Letter("b"), false)
+      (GoToBuffer, Letter("b"), false)
       (GoToFile, Letter("o"), false)
-      (GoToFileRecent, Letter("e"), false)
+      (GoToJump, Letter("j"), false)
       (GoToSymbol, Letter("y"), true)
       (GoToSymbolInFile, Letter("y"), false)
       (Navigate, Letter("l"), false)
