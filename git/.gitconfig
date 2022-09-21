@@ -1,33 +1,28 @@
 [credential]
-	helper = osxkeychain
+helper = osxkeychain
 
 [core]
-	editor = nvim
-	pager = delta
-	excludesfile = ~/.gitignore-global
+editor = nvim
+excludesfile = ~/.giti
+pager = delta
 
 [delta]
-	light = true
-	navigate = true
+hunk-header-style = omit
+light = true
+navigate = true
+pager = less
+right-arrow = ->
+side-by-side = true
 
 [filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
-
-[merge]
-	tool = vimdiff2
-
-[mergetool]
-	keepBackup = false
-
-[mergetool "vimdiff2"]
-	path = nvim
+required = true
+clean = git-lfs clean -- %f
+process = git-lfs filter-process
+smudge = git-lfs smudge -- %f
 
 [pull]
-	rebase = false
+rebase = false
 
 [user]
-	name = Bruno Roque
-	email = brunoroque06@gmail.com
+email = brunoroque06@gmail.com
+name = Bruno Roque
