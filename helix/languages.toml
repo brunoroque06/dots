@@ -33,6 +33,8 @@ formatter = { command = "prettier", args = ["--parser", "markdown"] }
 [[language]]
 name = "python"
 formatter = { command = "black", args = ["-"] }
+language-server = { command = "pyright-langserver", args = ["--stdio"] }
+config = {}
 
 [[language]]
 name = "scss"

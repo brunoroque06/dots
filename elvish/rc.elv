@@ -57,16 +57,6 @@ set edit:rprompt = (constantly (whoami)@(hostname))
 
 eval (carapace _carapace | slurp)
 
-if (path:is-regular &follow-symlink=$true $E:HOME/.config/elvish/lib/asdf.elv | not (one)) {
-  mkdir -p $E:HOME/.config/elvish/lib
-  ln -s /opt/homebrew/opt/asdf/libexec/asdf.elv $E:HOME/.config/elvish/lib/asdf.elv
-}
-set E:ASDF_DIR = /opt/homebrew/opt/asdf/libexec
-set E:ASDF_DATA_DIR = $E:HOME/.asdf
-use asdf _asdf
-var asdf~ = $_asdf:asdf~
-set edit:completion:arg-completer[asdf] = $_asdf:arg-completer~
-
 # Azure
 fn az-act-set { |s| az account set --subscription $s }
 set edit:completion:arg-completer[az-act-set] = { |@args|
@@ -182,8 +172,10 @@ fn node-clean {
 # Packages
 fn brew-dump { brew bundle dump --file $E:HOME/Projects/dotfiles/brew/brewfile --force }
 fn brew-up {
-  brew update; brew upgrade --ignore-pinned; brew cleanup
-  try { brew doctor } catch { }
+  brew update
+  brew upgrade --ignore-pinned
+  brew cleanup
+  brew doctor
 }
 fn pkg-setup {
   put dotnet-outdated-tool dotnet-fsharplint fantomas-tool ^
@@ -194,6 +186,7 @@ fn pkg-setup {
     npm ^
     npm-check-updates ^
     paperspace-node ^
+    typescript ^
     typescript-language-server ^
     vscode-langservers-extracted
 }
@@ -234,7 +227,7 @@ fn py-dea {
   set _paths = $nil
 }
 fn py-setup {
-  python -m venv venv
+  python3 -m venv venv
   py-act
   pip install --upgrade pip
   pip install -r requirements.txt

@@ -10,7 +10,7 @@ Supported: macOS.
 
 ## Manual Steps
 
-- Setup `Colemak` keyboard layout
+- Setup `Colemak` keyboard layout;
 - Remap `Caps Lock` to `Control` (HHKB);
 - Load `Raycast` configuration.
 

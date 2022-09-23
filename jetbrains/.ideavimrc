@@ -76,6 +76,8 @@ nnoremap gs ^
 
 map U <Action>($Redo)
 
+map <c-c> <Action>(CommentByLineComment)
+
 let mapleader="\<space>"
 
 map <leader>a <Action>(Refactorings.QuickListPopupAction)
