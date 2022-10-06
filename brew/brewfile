@@ -16,7 +16,7 @@ brew "carapace"
 brew "curl"
 brew "docker-credential-helper"
 brew "dust"
-brew "elvish"
+brew "elvish", args: ["HEAD"]
 brew "exa"
 brew "fd"
 brew "gh"

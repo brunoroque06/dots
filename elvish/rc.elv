@@ -173,7 +173,7 @@ fn node-clean {
 fn brew-dump { brew bundle dump --file $E:HOME/Projects/dotfiles/brew/brewfile --force }
 fn brew-up {
   brew update
-  brew upgrade --ignore-pinned
+  brew upgrade --fetch-HEAD --ignore-pinned
   brew cleanup
   brew doctor
 }
