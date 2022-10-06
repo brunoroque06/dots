@@ -12,6 +12,7 @@ set paths = [
   /bin
   /usr/sbin
   /sbin
+  $E:HOME/go/bin
   /usr/local/share/dotnet
   $E:HOME/.dotnet/tools
 ]
@@ -40,7 +41,22 @@ set edit:prompt = {
 
   if (not-eq $_paths $nil) { put ' *' }
 
-  tilde-abbr $pwd | styled ' '(one) blue
+  fn abbr { |dirs|
+    each { |d|
+      if (eq $d[0] '.') {
+        put $d[0..2]
+      } else {
+        put $d[0]
+      }
+    } $dirs[0..-1]
+    put $dirs[-1]
+  }
+
+  tilde-abbr $pwd ^
+    | str:split $path:separator (one) ^
+    | abbr [(all)] ^
+    | path:join (all) ^
+    | styled ' '(one) blue
 
   if (> $_dur 5) {
     var m = (/ $_dur 60 | math:floor (one))
@@ -58,12 +74,12 @@ set edit:rprompt = (constantly (whoami)@(hostname))
 eval (carapace _carapace | slurp)
 
 # Azure
-fn az-act-set { |s| az account set --subscription $s }
+fn az-act-set { |n| az account set -n $n }
 set edit:completion:arg-completer[az-act-set] = { |@args|
   az account list ^
     | from-json ^
     | all (one) ^
-    | each { |s| edit:complex-candidate $s[id] &display=(if (put $s[isDefault]) { styled $s[name] green } else { put $s[name] }) }
+    | each { |s| edit:complex-candidate $s[name] &display=(if (put $s[isDefault]) { styled $s[name] green } else { put $s[name] }) }
 }
 
 # Bazel
@@ -117,7 +133,6 @@ fn p { |f|
 }
 fn dir-size { dust -d 1 }
 fn e { |@a| $E:EDITOR $@a }
-fn en { |@a| $E:EDITOR -u NONE $@a }
 fn rmr { |f| rm -fr $f }
 set edit:completion:arg-completer[rmr] = { |@args|
   fd . --hidden --max-depth 1 --no-ignore --strip-cwd-prefix ^
@@ -135,8 +150,6 @@ fn file-unix { |f|
   each { |l| echo $l >> $f } $con
 }
 fn l { |@a| exa -al --git --no-permissions $@a }
-fn r { |@a| $E:EDITOR -R $@a }
-fn rn { |@a| $E:EDITOR -R -u NONE $@a }
 fn t { |&l=2 @d|
   exa -al --git --level $l --no-permissions --tree $@d
 }
@@ -241,16 +254,10 @@ fn pu-res { |@args|
     | put (one)[deployment][resources] ^
     | each { |r| put $r[urn] } (one)
 }
-fn pu-res-del { |r| pulumi state delete $r }
-set edit:completion:arg-completer[pu-res-del] = $pu-res~
-fn pu-res-des { |r| pulumi destroy -t $r }
-set edit:completion:arg-completer[pu-res-des] = $pu-res~
-fn pu-res-ls {
-  pulumi stack export ^
-    | from-json ^
-    | all (one)[deployment][resources] ^
-    | put (all)[urn]
-}
+
+fn pu-des-t { |r| pulumi destroy -t $r }
+set edit:completion:arg-completer[pu-des-t] = $pu-res~
+
 fn pu-stk-sel { |s| pulumi stack select $s }
 set edit:completion:arg-completer[pu-stk-sel] = { |@args|
   pulumi stack ls --json ^
@@ -258,6 +265,12 @@ set edit:completion:arg-completer[pu-stk-sel] = { |@args|
     | all (one) ^
     | each { |s| edit:complex-candidate $s[name] &display=(if (put $s[current]) { styled $s[name] green } else { put $s[name] }) }
 }
+
+fn pu-sta-del { |r| pulumi state delete $r }
+set edit:completion:arg-completer[pu-sta-del] = $pu-res~
+
+fn pu-up-t { |t| pulumi up -t $t }
+set edit:completion:arg-completer[pu-up-t] = $pu-res~
 
 # Shell
 fn env-ls {
@@ -267,14 +280,17 @@ fn env-ls {
     | order
 }
 fn colortest { curl -s https://raw.githubusercontent.com/pablopunk/colortest/master/colortest | bash }
-fn reload { exec elvish -sock $E:HOME/.local/state/elvish/sock }
+fn re { exec elvish -sock $E:HOME/.local/state/elvish/sock }
 
 # SSH
 fn ssh-trust { |@a| ssh-copy-id -i $E:HOME/.ssh/id_rsa.pub $@a }
 
 # VSCode
 fn code-ext-dump { code --list-extensions > $E:HOME'/Library/Application Support/Code/User/extensions.txt' }
-fn code-ext-install { xargs < $E:HOME'/Library/Application Support/Code/User/extensions.txt' -L 1 code --force --install-extension }
+fn code-ext-install {
+  from-lines < $E:HOME'/Library/Application Support/Code/User/extensions.txt' ^
+    | each { |e| code --force --install-extension $e } [(all)]
+}
 
 # Web Browser
 fn webbrowser { rm -fr $E:TMPDIR/webbrowser; '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --user-data-dir=$E:TMPDIR/webbrowser --disable-web-security --incognito --no-first-run --new-window http://localhost:4200 }
