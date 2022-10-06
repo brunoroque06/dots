@@ -5,5 +5,5 @@
 # @raycast.mode compact
 # @raycast.icon 🕹
 
-paperspace machines start --machineId psoxnh2i7
-paperspace machines waitfor --machineId psoxnh2i7 --state ready
+paperspace machines start --machineId ps5ljod8i
+paperspace machines waitfor --machineId ps5ljod8i --state ready
