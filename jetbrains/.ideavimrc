@@ -77,6 +77,7 @@ nnoremap gs ^
 map U <Action>($Redo)
 
 map <c-c> <Action>(CommentByLineComment)
+map <c-s> <Action>(ToggleBookmark)
 
 let mapleader="\<space>"
 

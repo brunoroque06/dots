@@ -41,7 +41,7 @@
   "files.trimTrailingWhitespace": true,
   "javascript.updateImportsOnFileMove.enabled": "always",
   "javascript.validate.enable": true,
-  "markdown.preview.fontFamily": "Sora",
+  "markdown.preview.fontFamily": "Rubik",
   "plantuml.render": "PlantUMLServer",
   "plantuml.server": "https://www.plantuml.com/plantuml",
   "python.formatting.provider": "black",
@@ -62,15 +62,13 @@
   "typescript.updateImportsOnFileMove.enabled": "always",
   "vim.highlightedyank.enable": true,
   "vim.hlsearch": true,
+  "vim.leader": "<space>",
   "vim.normalModeKeyBindingsNonRecursive": [
     {
       "before": ["=", "="],
       "commands": ["editor.action.organizeImports", "editor.action.format"]
     },
-    {
-      "before": ["=", "i"],
-      "commands": ["editor.action.organizeImports"]
-    },
+    { "before": ["=", "i"], "commands": ["editor.action.organizeImports"] },
     {
       "before": ["[", "<space>"],
       "commands": ["editor.action.insertLineBefore"]
@@ -79,16 +77,8 @@
       "before": ["]", "<space>"],
       "commands": ["editor.action.insertLineAfter"]
     },
-    {
-      "before": ["[", "d"],
-      "commands": ["editor.action.marker.prev"]
-    },
-    {
-      "before": ["]", "d"],
-      "commands": ["editor.action.marker.next"]
-    },
-    { "before": ["[", "e"], "after": ["d", "d", "k", "P"] },
-    { "before": ["]", "e"], "after": ["d", "d", "p"] },
+    { "before": ["[", "d"], "commands": ["editor.action.marker.prev"] },
+    { "before": ["]", "d"], "commands": ["editor.action.marker.next"] },
     {
       "before": ["[", "q"],
       "commands": ["search.action.focusPreviousSearchResult"],
@@ -99,22 +89,19 @@
       "commands": ["search.action.focusNextSearchResult"],
       "when": "hasSearchResult"
     },
-    { "before": ["g", "a"], "commands": ["editor.action.quickFix"] },
-    {
-      "before": ["g", "d"],
-      "commands": ["editor.action.peekDefinition"]
-    },
-    {
-      "before": ["g", "h"],
-      "commands": ["editor.action.showDefinitionPreviewHover"]
-    },
-    {
-      "before": ["g", "i"],
-      "commands": ["editor.action.goToImplementation"]
-    },
-    { "before": ["g", "r"], "commands": ["editor.action.rename"] },
-    { "before": ["g", "u"], "commands": ["references-view.find"] },
-    { "before": ["m"], "commands": ["bookmarks.toggle"] }
+    { "before": ["g", "d"], "commands": ["editor.action.peekDefinition"] },
+    { "before": ["g", "e"], "commands": ["cursorBottom"] },
+    { "before": ["g", "h"], "commands": ["cursorLineStart"] },
+    { "before": ["g", "i"], "commands": ["editor.action.goToImplementation"] },
+    { "before": ["g", "l"], "commands": ["cursorLineEnd"] },
+    { "before": ["g", "r"], "commands": ["references-view.find"] },
+    { "before": ["g", "s"], "after": ["^"] },
+    { "before": ["m"], "commands": ["bookmarks.toggle"] },
+    { "before": ["U"], "commands": ["redo"] },
+    { "before": ["<leader>", "a"], "commands": ["editor.action.quickFix"] },
+    { "before": ["<leader>", "f"], "commands": ["workbench.action.quickOpen"] },
+    { "before": ["<leader>", "j"], "commands": ["bookmarks.listFromAllFiles"] },
+    { "before": ["<leader>", "s"], "commands": ["workbench.action.gotoSymbol"] }
   ],
   "vim.surround": true,
   "vim.useSystemClipboard": true,

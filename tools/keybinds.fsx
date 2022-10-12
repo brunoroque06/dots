@@ -5,17 +5,17 @@ module Keybind =
     type Action =
         | Back
         | Forward
-        | GoToAction
+        | Actions
+        | CodeActions
         | GoToBuffer
         | GoToFile
         | GoToJump
         | GoToSymbol
-        | GoToSymbolInFile
+        | GoToSymbolGlobal
         | Navigate
         | ParameterInfo
         | Reformat
-        | Search
-        | ShowActions
+        | SearchGlobal
         | SplitHorizontally
         | SplitVertically
         | Terminal
@@ -49,16 +49,16 @@ module JetBrains =
     let mapMeta (meta: MetaKeybind) =
         let action =
             match meta.action with
-            | GoToAction -> "GotoAction"
+            | Actions -> "GotoAction"
+            | CodeActions -> "ShowIntentionActions"
             | GoToBuffer -> "RecentFiles"
             | GoToFile -> "GotoFile"
             | GoToJump -> "ShowBookmarks"
-            | GoToSymbol -> "GotoSymbol"
-            | GoToSymbolInFile -> "FileStructurePopup"
+            | GoToSymbol -> "FileStructurePopup"
+            | GoToSymbolGlobal -> "GotoSymbol"
             | Navigate -> "ShowNavBar"
             | ParameterInfo -> "ParameterInfo"
-            | Search -> "FindInPath"
-            | ShowActions -> "ShowIntentionActions"
+            | SearchGlobal -> "FindInPath"
             | SplitHorizontally -> "SplitHorizontally"
             | SplitVertically -> "SplitVertically"
             | Terminal -> "ActivateTerminalToolWindow"
@@ -115,16 +115,16 @@ module NeoVim =
     let mapMeta (meta: MetaKeybind) =
         let action =
             match meta.action with
-            | GoToAction -> ":Telescope commands<cr>"
+            | Actions -> ":Telescope commands<cr>"
+            | CodeActions -> ":Telescope lsp_code_actions<cr>"
             | GoToBuffer -> ":Telescope buffers<cr>"
             | GoToFile -> ":lua require('telescope.builtin').find_files({hidden = true})<cr>"
             | GoToJump -> ":Telescope marks<cr>"
             | GoToSymbol -> ":Telescope treesitter<cr>"
-            | GoToSymbolInFile -> ":Telescope treesitter<cr>"
+            | GoToSymbolGlobal -> ":Telescope treesitter<cr>"
             | Navigate -> ":Explore<cr>"
             | ParameterInfo -> ":lua vim.lsp.buf.signature_help()<cr>"
-            | Search -> ":Telescope live_grep<cr>"
-            | ShowActions -> ":Telescope lsp_code_actions<cr>"
+            | SearchGlobal -> ":Telescope live_grep<cr>"
             | SplitHorizontally -> ":split<cr>"
             | SplitVertically -> ":vsplit<cr>"
             | Terminal -> ":terminal<cr>"
@@ -156,23 +156,23 @@ module VsCode =
             | Some c -> $"    \"when\": \"{c}\"\n"
             | _ -> ""
 
-        $"  {{\n    \"key\": \"{bind}\",\n    \"command\": \"{action}\"\n{cond}  }},"
+        $"  {{\n    \"key\": \"{bind}\",\n    \"command\": \"{action}\",\n{cond}  }},"
 
     let mapMeta (meta: MetaKeybind) =
         let action =
             match meta.action with
+            | Actions -> "workbench.action.showCommands"
+            | CodeActions -> "editor.action.quickFix"
             | Back -> "workbench.action.navigateBack"
             | Forward -> "workbench.action.navigateForward"
-            | GoToAction -> "workbench.action.showCommands"
             | GoToBuffer -> "workbench.action.quickOpen"
             | GoToFile -> "workbench.action.quickOpen"
             | GoToJump -> "bookmarks.listFromAllFiles"
-            | GoToSymbol -> "workbench.action.showAllSymbols"
-            | GoToSymbolInFile -> "workbench.action.gotoSymbol"
+            | GoToSymbol -> "workbench.action.gotoSymbol"
+            | GoToSymbolGlobal -> "workbench.action.showAllSymbols"
             | Navigate -> "breadcrumbs.focusAndSelect"
             | ParameterInfo -> "editor.action.triggerParameterHints"
-            | Search -> "workbench.action.findInFiles"
-            | ShowActions -> "editor.action.quickFix"
+            | SearchGlobal -> "workbench.action.findInFiles"
             | SplitHorizontally -> "workbench.action.splitEditorOrthogonal"
             | SplitVertically -> "workbench.action.splitEditor"
             | Terminal -> "workbench.action.terminal.toggleTerminal"
@@ -205,6 +205,7 @@ module VsCode =
             |> (+) extras
             |> List.map mapMeta
             |> (+) [ (keybind "workbench.action.focusActiveEditorGroup" "escape" (Some "!editorFocus")) ]
+            |> (+) [ (keybind "bookmarks.toggle" "ctrl-s" (Some "editorFocus")) ]
 
         let content =
             [ "[" ] |> (+) mapped |> (+) [ "]" ]
@@ -214,16 +215,16 @@ module VsCode =
 
 
 let metas =
-    [ (GoToAction, Letter("p"), false)
+    [ (Actions, Letter("p"), false)
+      (CodeActions, Enter, false)
       (GoToBuffer, Letter("b"), false)
       (GoToFile, Letter("o"), false)
       (GoToJump, Letter("j"), false)
-      (GoToSymbol, Letter("y"), true)
-      (GoToSymbolInFile, Letter("y"), false)
+      (GoToSymbol, Letter("y"), false)
+      (GoToSymbolGlobal, Letter("y"), true)
       (Navigate, Letter("l"), false)
       (ParameterInfo, Letter("i"), false)
-      (Search, Letter("f"), true)
-      (ShowActions, Enter, false)
+      (SearchGlobal, Letter("f"), true)
       (SplitHorizontally, Letter("d"), true)
       (SplitVertically, Letter("d"), false)
       (Terminal, Letter("t"), false)
