@@ -63,14 +63,17 @@ local colors = {
 		inactive_tab_hover = {
 			bg_color = scheme.selection_bg,
 			fg_color = scheme.selection_fg,
+			intensity = "Bold",
 		},
 		new_tab = {
 			bg_color = scheme.background,
 			fg_color = scheme.foreground,
+			intensity = "Bold",
 		},
 		new_tab_hover = {
 			bg_color = scheme.selection_bg,
 			fg_color = scheme.selection_fg,
+			intensity = "Bold",
 		},
 	},
 }

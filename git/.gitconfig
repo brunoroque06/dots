@@ -12,7 +12,6 @@ light = true
 navigate = true
 pager = less
 right-arrow = ->
-side-by-side = true
 
 [filter "lfs"]
 required = true

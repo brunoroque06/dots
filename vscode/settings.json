@@ -97,7 +97,7 @@
     { "before": ["g", "r"], "commands": ["references-view.find"] },
     { "before": ["g", "s"], "after": ["^"] },
     { "before": ["m"], "commands": ["bookmarks.toggle"] },
-    { "before": ["U"], "commands": ["redo"] },
+    { "before": ["U"], "commands": ["extension.vim_ctrl+r"] },
     { "before": ["<leader>", "a"], "commands": ["editor.action.quickFix"] },
     { "before": ["<leader>", "f"], "commands": ["workbench.action.quickOpen"] },
     { "before": ["<leader>", "j"], "commands": ["bookmarks.listFromAllFiles"] },

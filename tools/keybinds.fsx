@@ -16,8 +16,6 @@ module Keybind =
         | ParameterInfo
         | Reformat
         | SearchGlobal
-        | SplitHorizontally
-        | SplitVertically
         | Terminal
         | Zen
 
@@ -59,8 +57,6 @@ module JetBrains =
             | Navigate -> "ShowNavBar"
             | ParameterInfo -> "ParameterInfo"
             | SearchGlobal -> "FindInPath"
-            | SplitHorizontally -> "SplitHorizontally"
-            | SplitVertically -> "SplitVertically"
             | Terminal -> "ActivateTerminalToolWindow"
             | Zen -> "HideAllWindows"
             | _ -> failwith ""
@@ -125,8 +121,6 @@ module NeoVim =
             | Navigate -> ":Explore<cr>"
             | ParameterInfo -> ":lua vim.lsp.buf.signature_help()<cr>"
             | SearchGlobal -> ":Telescope live_grep<cr>"
-            | SplitHorizontally -> ":split<cr>"
-            | SplitVertically -> ":vsplit<cr>"
             | Terminal -> ":terminal<cr>"
             | Zen -> ":only"
             | _ -> failwith ""
@@ -173,8 +167,6 @@ module VsCode =
             | Navigate -> "breadcrumbs.focusAndSelect"
             | ParameterInfo -> "editor.action.triggerParameterHints"
             | SearchGlobal -> "workbench.action.findInFiles"
-            | SplitHorizontally -> "workbench.action.splitEditorOrthogonal"
-            | SplitVertically -> "workbench.action.splitEditor"
             | Terminal -> "workbench.action.terminal.toggleTerminal"
             | Zen -> "workbench.action.toggleSidebarVisibility"
             | _ -> failwith ""
@@ -225,8 +217,6 @@ let metas =
       (Navigate, Letter("l"), false)
       (ParameterInfo, Letter("i"), false)
       (SearchGlobal, Letter("f"), true)
-      (SplitHorizontally, Letter("d"), true)
-      (SplitVertically, Letter("d"), false)
       (Terminal, Letter("t"), false)
       (Zen, Letter("h"), true) ]
     |> List.map (fun (a, k, s) -> { action = a; key = k; shift = s })

@@ -27,7 +27,7 @@ set E:LS_COLORS = (vivid generate $E:HOME/.config/vivid/theme.yml)
 set E:MOAR = '-no-linenumbers -statusbar=bold -style=friendly'
 set E:PAGER = /opt/homebrew/bin/moar
 set E:RIPGREP_CONFIG_PATH = $E:HOME/.config/ripgreprc
-set E:VISUAL = /opt/homebrew/bin/nvim
+set E:VISUAL = $E:EDITOR
 # set E:REQUESTS_CA_BUNDLE = $E:HOME/.proxyman/proxyman-ca.pem # proxyman with python
 
 var _dur = 0
