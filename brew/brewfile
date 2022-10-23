@@ -39,7 +39,7 @@ brew "node"
 brew "nushell"
 brew "openjdk"
 brew "pgformatter"
-brew "postgresql@14"
+brew "postgresql@15"
 brew "prettier"
 brew "pulumi"
 brew "pylint"
@@ -49,6 +49,7 @@ brew "ripgrep"
 brew "shellcheck"
 brew "shfmt"
 brew "stow"
+brew "streamlink"
 brew "stylua"
 brew "tokei"
 brew "vivid"
@@ -64,7 +65,6 @@ cask "font-rubik"
 cask "font-sf-pro"
 cask "google-chrome"
 cask "jetbrains-toolbox"
-cask "iina"
 cask "parsec"
 cask "paw"
 cask "proxyman"
@@ -76,6 +76,7 @@ cask "zoom"
 mas "Affinity Designer", id: 824171161
 mas "Bear", id: 1091189122
 mas "Cyberduck", id: 409222199
+mas "Elmedia:universal video player", id: 937759555  
 mas "Gitfox", id: 1475511261
 mas "Hush", id: 1544743900
 mas "Keys Multiplatform", id: 1494642810

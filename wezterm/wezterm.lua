@@ -2,12 +2,12 @@ local wez = require("wezterm")
 
 local home = os.getenv("HOME")
 
-wez.on("update-right-status", function(window, _)
-	local name = window:active_key_table()
+wez.on("update-right-status", function(win)
+	local name = win:active_key_table()
 	if name then
 		name = "table: " .. name .. " "
 	end
-	window:set_right_status(name or "")
+	win:set_right_status(name or "")
 end)
 
 local zenbones = {
