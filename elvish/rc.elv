@@ -24,7 +24,7 @@ set E:DOCKER_DEFAULT_PLATFORM = linux/amd64
 set E:EDITOR = /opt/homebrew/bin/nvim
 set E:JAVA_HOME = /opt/homebrew/opt/openjdk/libexec/openjdk.jdk/Contents/Home
 set E:LS_COLORS = (vivid generate $E:HOME/.config/vivid/theme.yml)
-set E:MOAR = '-no-linenumbers -statusbar=bold -style=friendly'
+set E:MOAR = '-no-linenumbers -statusbar=bold -style=friendly -wrap'
 set E:PAGER = /opt/homebrew/bin/moar
 set E:RIPGREP_CONFIG_PATH = $E:HOME/.config/ripgreprc
 set E:VISUAL = $E:EDITOR
@@ -33,7 +33,20 @@ set E:VISUAL = $E:EDITOR
 var _dur = 0
 var _err = $false
 
-set edit:after-command = [{ |m| set _dur = $m[duration] } { |m| set _err = (not-eq $m[error] $nil) }]
+set edit:after-command = [
+  { |m| set _dur = $m[duration] }
+  { |m| set _err = (not-eq $m[error] $nil) }
+]
+
+fn set-title { |t| print "\x1b]0;"$t"\x1b\\" }
+
+set edit:before-readline = [
+  { set-title elvish }
+]
+
+set edit:after-readline = [
+  { |c| str:split ' ' $c | take 1 | set-title (one) }
+]
 
 set edit:prompt = {
   var err = (if (put $_err) { put red } else { put blue })
@@ -43,7 +56,9 @@ set edit:prompt = {
 
   fn abbr { |dirs|
     each { |d|
-      if (eq $d[0] '.') {
+      if (eq $d '') {
+        put /$d
+      } elif (eq $d[0] '.') {
         put $d[0..2]
       } else {
         put $d[0]
