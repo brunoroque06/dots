@@ -2,7 +2,6 @@
 helper = osxkeychain
 
 [core]
-editor = nvim
 excludesfile = ~/.giti
 pager = delta
 
@@ -13,11 +12,24 @@ navigate = true
 pager = less
 right-arrow = ->
 
+[diff]
+tool = "code"
+
+[difftool "code"]
+cmd = code --wait --diff $LOCAL $REMOTE
+
 [filter "lfs"]
 required = true
 clean = git-lfs clean -- %f
 process = git-lfs filter-process
 smudge = git-lfs smudge -- %f
+
+[merge]
+tool = "code"
+
+[mergetool "code"]
+cmd = code --wait $MERGED
+keepBackup = false
 
 [pull]
 rebase = false
@@ -25,3 +37,4 @@ rebase = false
 [user]
 email = brunoroque06@gmail.com
 name = Bruno Roque
+

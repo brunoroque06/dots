@@ -1,9 +1,9 @@
-# Dotfiles
+# Dots
 
 ## Installation
 
 ```shell
-./dotfiles
+./dots
 ```
 
 Supported: macOS.

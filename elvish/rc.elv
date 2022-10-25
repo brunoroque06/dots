@@ -198,7 +198,7 @@ fn node-clean {
 }
 
 # Packages
-fn brew-dump { brew bundle dump --file $E:HOME/Projects/dotfiles/brew/brewfile --force }
+fn brew-dump { brew bundle dump --file $E:HOME/Projects/dots/brew/brewfile --force }
 fn brew-up {
   brew update
   brew upgrade --fetch-HEAD --ignore-pinned

@@ -87,8 +87,8 @@ return {
 
 	font = wez.font("JetBrains Mono", { weight = "Medium" }),
 	font_size = 13,
-	line_height = 1.0,
-	harfbuzz_features = { "calt=0", "clig=0", "liga=0" },
+	line_height = 1,
+	harfbuzz_features = { "calt=0" },
 
 	enable_scroll_bar = true,
 
@@ -113,8 +113,8 @@ return {
 
 	launch_menu = {
 		{
-			label = "dotfiles",
-			cwd = home .. "/Projects/dotfiles",
+			label = "dots",
+			cwd = home .. "/Projects/dots",
 		},
 	},
 

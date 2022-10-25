@@ -8,7 +8,7 @@ setup() {
 	fi
 
 	brew update
-	brew bundle install --file brew/brewfile
+	brew bundle install --file brew/brewfile --no-lock
 	brew doctor
 
 	SH=/opt/homebrew/bin/bash
@@ -64,6 +64,6 @@ unconfig)
 	;;
 *)
 	printf 'Commands:\n'
-	for o in $(grep -e '[a-z])$' dotfiles | tr -d ')'); do printf '  %s\n' "$o"; done
+	for o in $(grep -e '[a-z])$' dots | tr -d ')'); do printf '  %s\n' "$o"; done
 	;;
 esac
