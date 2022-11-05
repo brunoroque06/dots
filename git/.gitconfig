@@ -9,7 +9,6 @@ pager = delta
 hunk-header-style = omit
 light = true
 navigate = true
-pager = less
 right-arrow = ->
 
 [diff]

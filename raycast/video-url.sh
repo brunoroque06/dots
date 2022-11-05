@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 # @raycast.schemaVersion 1
-# @raycast.title Open Video
+# @raycast.title Video URL
 # @raycast.mode compact
 # @raycast.icon 🎬
 
-open "$(streamlink --stream-url "$(pbpaste)" best)"
+streamlink --stream-url "$(pbpaste)" best | pbcopy

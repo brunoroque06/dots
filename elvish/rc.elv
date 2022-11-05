@@ -38,6 +38,7 @@ set edit:after-command = [
   { |m| set _err = (not-eq $m[error] $nil) }
 ]
 
+# https://wezfurlong.org/wezterm/escape-sequences.html#operating-system-command-sequences
 fn set-title { |t| print "\x1b]0;"$t"\x1b\\" }
 
 set edit:before-readline = [
@@ -150,7 +151,7 @@ fn dir-size { dust -d 1 }
 fn e { |@a| $E:EDITOR $@a }
 fn rmr { |f| rm -fr $f }
 set edit:completion:arg-completer[rmr] = { |@args|
-  fd . --hidden --max-depth 1 --no-ignore --strip-cwd-prefix ^
+  fd . -H -d 1 --no-ignore --strip-cwd-prefix ^
     | from-lines
 }
 fn file-yank { |f| pbcopy < $f }
@@ -317,7 +318,7 @@ set edit:insert:binding[Ctrl-o] = $edit:lastcmd:start~
 set edit:insert:binding[Ctrl-r] = $edit:histlist:start~
 set edit:insert:binding[Ctrl-t] = $cmd-edit~
 set edit:insert:binding[Ctrl-y] = {
-  fd --hidden --strip-cwd-prefix . ^
+  fd -H --strip-cwd-prefix . ^
     | from-lines ^
     | each { |f| put [&to-accept=$f &to-filter=$f &to-show=$f] } ^
     | edit:listing:start-custom &caption='Files' &accept={ |f| edit:insert-at-dot $f } [(all)]
