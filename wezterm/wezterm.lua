@@ -87,7 +87,7 @@ return {
 
 	font = wez.font("JetBrains Mono", { weight = "Medium" }),
 	font_size = 13,
-	line_height = 1,
+	line_height = 0.95,
 	harfbuzz_features = { "calt=0" },
 
 	enable_scroll_bar = true,

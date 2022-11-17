@@ -20,7 +20,7 @@ var _paths = $nil
 
 set E:BAT_STYLE = plain
 set E:BAT_THEME = ansi
-set E:DOCKER_DEFAULT_PLATFORM = linux/amd64
+# set E:DOCKER_DEFAULT_PLATFORM = linux/amd64
 set E:EDITOR = /opt/homebrew/bin/nvim
 set E:JAVA_HOME = /opt/homebrew/opt/openjdk/libexec/openjdk.jdk/Contents/Home
 set E:LS_COLORS = (vivid generate $E:HOME/.config/vivid/theme.yml)
