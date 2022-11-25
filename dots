@@ -24,7 +24,7 @@ setup() {
 
 paths=(
 	elvish "$HOME"/.config/elvish
-	git "$HOME"
+	git "$HOME"/.config/git
 	helix "$HOME"/.config/helix
 	jetbrains "$HOME"
 	neovim "$HOME"/.config/nvim

@@ -16,5 +16,5 @@ Supported: macOS.
 
 ## Shortcuts
 
-- [GNU Readline](https://en.wikipedia.org/wiki/GNU_Readline);
-- [macOS](https://support.apple.com/en-us/HT201236).
+- <https://en.wikipedia.org/wiki/GNU_Readline>;
+- <https://support.apple.com/en-us/HT201236>.

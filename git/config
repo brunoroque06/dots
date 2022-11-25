@@ -2,7 +2,7 @@
 helper = osxkeychain
 
 [core]
-excludesfile = ~/.giti
+excludesfile = ~/.config/git/ignore
 pager = delta
 
 [delta]
