@@ -241,7 +241,7 @@ fn py-act {
   if (not-eq $_paths $nil) {
     fail 'A venv is already active'
   }
-  var venv = $E:PWD/venv/bin
+  var venv = $pwd/venv/bin
   if (path:is-dir $venv | not (one)) {
     fail 'No venv found'
   }
