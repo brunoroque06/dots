@@ -12,7 +12,8 @@ Supported: macOS.
 
 - Setup `Colemak` keyboard layout;
 - Remap `Caps Lock` to `Control` (HHKB);
-- Load `Raycast` configuration.
+- Load `Raycast` configuration;
+- Configure `rcmd` (`lctrl` + `rshift`).
 
 ## Shortcuts
 

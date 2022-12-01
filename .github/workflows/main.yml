@@ -1,28 +1,16 @@
-name: CI
+name: ci
 
 on: [push]
 
 jobs:
   ci:
     runs-on: ubuntu-latest
-
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
-      - name: Install shfmt
-        run: sudo snap install shfmt
-
-      - name: Install stylua
-        run: cargo install stylua
-
-      - name: Format Lua
-        run: stylua --check --verbose .
-
-      - name: Format Prettier
-        run: npx prettier -c '**/*.{json,md,yaml,yml}' --loglevel debug
-
-      - name: Format Shell
-        run: shfmt -f . | xargs -t -I % shfmt -d %
-
-      - name: Lint Shell
-        run: shfmt -f . | xargs -t -I % shellcheck -x %
+      - uses: dagger/dagger-for-github@v3
+        with:
+          cmds: |
+            project init
+            project update
+            do check
