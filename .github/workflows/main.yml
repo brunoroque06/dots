@@ -6,10 +6,9 @@ jobs:
   ci:
     runs-on: ubuntu-latest
     steps:
+      - run: curl -L https://dl.dagger.io/dagger-cue/install.sh | sh
+        working-directory: /usr/local
+
       - uses: actions/checkout@v3
 
-      - uses: dagger/dagger-for-github@v3
-        with:
-          cmds: |
-            project update
-            do check
+      - run: dagger-cue project init && dagger-cue project update && dagger-cue do check
