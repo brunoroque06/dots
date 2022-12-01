@@ -30,13 +30,7 @@ dagger.#Plan & {
 				docker.#Run & {
 					command: {
 						name: "apt"
-						args: ["install", "cargo", "golang-go", "npm", "shellcheck", "-y"]
-					}
-				},
-				docker.#Run & {
-					command: {
-						name: "cargo"
-						args: ["install", "stylua"]
+						args: ["install", "golang-go", "npm", "shellcheck", "-y"]
 					}
 				},
 				docker.#Run & {
@@ -48,12 +42,12 @@ dagger.#Plan & {
 				docker.#Run & {
 					command: {
 						name: "npm"
-						args: ["install", "-g", "prettier"]
+						args: ["install", "-g", "@johnnymorganz/stylua-bin", "prettier"]
 					}
 				},
 				docker.#Set & {
 					input: _
-					config: env: PATH: "/root/go/bin:/root/.cargo/bin:\(input.config.env.PATH)"
+					config: env: PATH: "/root/go/bin:\(input.config.env.PATH)"
 				},
 				docker.#Set & {
 					config: workdir: "/dots"
