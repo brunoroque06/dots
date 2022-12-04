@@ -5,7 +5,6 @@ use store
 use str
 
 set paths = [
-  $E:HOME/bin
   /opt/homebrew/bin
   /usr/local/bin
   /usr/bin
