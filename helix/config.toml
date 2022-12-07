@@ -1,9 +1,10 @@
 theme = "spacebones_light"
 
 [editor]
+auto-format = false
+auto-save = true
 color-modes = true
 cursorline = true
-auto-format = false
 line-number = "relative"
 
 [editor.cursor-shape]

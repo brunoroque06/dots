@@ -176,7 +176,7 @@ fn gs { git status -s }
 fn gl { |&c=10| git log --all --decorate --graph --format=format:'%Cblue%h %Creset- %Cgreen%ar %Creset%s %C(dim)- %an%C(auto)%d' -$c }
 
 # JetBrains
-fn jb-clean { |a|
+fn jb-rm { |a|
   var dirs = ['Application Support/JetBrains' 'Caches/JetBrains' 'Logs/JetBrains']
   for d $dirs {
     rm -fr $E:HOME/Library/$d/$a
