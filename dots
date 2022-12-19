@@ -27,13 +27,13 @@ paths=(
 	git "$HOME"/.config/git
 	helix "$HOME"/.config/helix
 	jetbrains "$HOME"
+	kitty "$HOME"/.config/kitty
 	neovim "$HOME"/.config/nvim
 	nushell "$HOME/Library/Application Support/nushell"
 	postgresql "$HOME"
 	ripgrep "$HOME"/.config
 	vivid "$HOME"/.config/vivid
 	vscode "$HOME/Library/Application Support/Code/User"
-	wezterm "$HOME"/.config/wezterm
 )
 
 link() {

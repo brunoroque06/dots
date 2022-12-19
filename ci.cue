@@ -54,7 +54,6 @@ dagger.#Plan & {
 				},
 				docker.#Copy & {
 					contents: client.filesystem.".".read.contents
-					dest:     "/dots"
 				},
 			]
 		}

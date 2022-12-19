@@ -2,6 +2,7 @@
 helper = osxkeychain
 
 [core]
+autocrlf = input
 excludesfile = ~/.config/git/ignore
 pager = delta
 

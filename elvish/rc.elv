@@ -1,3 +1,4 @@
+use file
 use math
 use path
 use readline-binding
@@ -22,9 +23,9 @@ set E:BAT_THEME = ansi
 # set E:DOCKER_DEFAULT_PLATFORM = linux/amd64
 set E:EDITOR = /opt/homebrew/bin/nvim
 set E:JAVA_HOME = /opt/homebrew/opt/openjdk/libexec/openjdk.jdk/Contents/Home
+set E:LESS = '-i --incsearch'
 set E:LS_COLORS = (vivid generate $E:HOME/.config/vivid/theme.yml)
-set E:MOAR = '-no-linenumbers -statusbar=bold -style=friendly -wrap'
-set E:PAGER = /opt/homebrew/bin/moar
+set E:PAGER = /opt/homebrew/bin/less
 set E:RIPGREP_CONFIG_PATH = $E:HOME/.config/ripgreprc
 set E:VISUAL = $E:EDITOR
 # set E:REQUESTS_CA_BUNDLE = $E:HOME/.proxyman/proxyman-ca.pem # proxyman with python
@@ -37,7 +38,6 @@ set edit:after-command = [
   { |m| set _err = (not-eq $m[error] $nil) }
 ]
 
-# https://wezfurlong.org/wezterm/escape-sequences.html#operating-system-command-sequences
 fn set-title { |t| print "\x1b]0;"$t"\x1b\\" }
 
 set edit:before-readline = [
@@ -118,8 +118,13 @@ fn cmd-edit {
 }
 
 # Docker
-fn doc-cnt-rm { docker stop (docker ps -aq); docker rm (docker ps -aq) }
-fn doc-cnt-stop { docker stop (docker ps -aq) }
+fn doc-clean {
+  docker rmi -f (docker images -aq)
+  docker system prune --volumes -f
+}
+fn doc-cnt-rm {
+  docker stop (docker ps -aq); docker rm (docker ps -aq)
+}
 fn doc-exec { |cnt| docker exec -it $cnt bash }
 set edit:completion:arg-completer[doc-exec] = { |@args|
   docker ps --format "{{.Image}} {{.Names}}" ^
@@ -127,8 +132,6 @@ set edit:completion:arg-completer[doc-exec] = { |@args|
     | each { |cnt| var c = (str:split ' ' $cnt | put [(all)]); put [&img=$c[0] &name=$c[1]] } ^
     | each { |cnt| edit:complex-candidate &display=$cnt[name]' ('$cnt[img]')' $cnt[name] }
 }
-fn doc-img-rm { docker rmi -f (docker images -aq) }
-fn doc-prune { docker system prune --volumes -f }
 fn doc-setup {
   var cfg = $E:HOME/.docker/config.json
   var kc = (cat $cfg | from-json)
@@ -141,7 +144,7 @@ fn dot-up { dotnet outdated --upgrade }
 # File System
 fn p { |f|
   if (str:has-suffix $f .md) {
-    glow -p $f
+    glow $f
   } else {
     bat $f
   }
@@ -157,12 +160,6 @@ fn file-yank { |f| pbcopy < $f }
 set edit:completion:arg-completer[file-yank] = { |@args|
   rg --files ^
     | from-lines
-}
-fn file-unix { |f|
-  var con = (cat $f | from-lines | put [(all)])
-  rm $f
-  touch $f
-  each { |l| echo $l >> $f } $con
 }
 fn l { |@a| exa -al --git --no-permissions $@a }
 fn t { |&l=2 @d|
@@ -182,7 +179,7 @@ fn jb-rm { |a|
     rm -fr $E:HOME/Library/$d/$a
   }
 }
-set edit:completion:arg-completer[jb-clean] = { |@args|
+set edit:completion:arg-completer[jb-rm] = { |@args|
   ls $E:HOME/Library/Caches/JetBrains | from-lines
 }
 

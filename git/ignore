@@ -19,6 +19,7 @@ cue.mod
 .git
 
 # Jetbrains
+.fleet
 .idea
 
 # macOS
