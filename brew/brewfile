@@ -79,7 +79,6 @@ cask "visual-studio-code"
 cask "webstorm"
 cask "zoom"
 
-mas "Affinity Designer", id: 824171161
 mas "Bear", id: 1091189122
 mas "Cyberduck", id: 409222199
 mas "Elmedia:universal video player", id: 937759555  
