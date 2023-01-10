@@ -20,17 +20,15 @@ module Keybind =
         | Zen
 
     type Key =
+        | Cmd
         | Enter
-        | LeftSquareBracket
         | Letter of string
-        | RightSquareBracket
 
-    type MetaKeybind =
-        { action: Action
+    type ModKeybind =
+        { mo: Key
           key: Key
-          shift: bool }
-
-    type ModalKeybind = { action: Action; key: Key }
+          shift: bool
+          act: Action }
 
     type KeybindFile = { name: string; content: string list }
 
@@ -39,14 +37,14 @@ open Keybind
 let (+) a b = List.append b a
 
 module JetBrains =
-    let keybind action bind =
+    let keybind act bind =
         match bind with
-        | Some b -> $"  <action id=\"{action}\">\n    <keyboard-shortcut first-keystroke=\"{b}\"/>\n  </action>"
-        | _ -> $"  <action id=\"{action}\"/>"
+        | Some b -> $"  <action id=\"{act}\">\n    <keyboard-shortcut first-keystroke=\"{b}\"/>\n  </action>"
+        | _ -> $"  <action id=\"{act}\"/>"
 
-    let mapMeta (meta: MetaKeybind) =
-        let action =
-            match meta.action with
+    let mapMod (modKey: ModKeybind) =
+        let act =
+            match modKey.act with
             | Actions -> "GotoAction"
             | CodeActions -> "ShowIntentionActions"
             | GoToBuffer -> "RecentFiles"
@@ -62,21 +60,23 @@ module JetBrains =
             | _ -> failwith ""
 
         let char =
-            match meta.key with
+            match modKey.key with
             | Enter -> "enter"
             | Letter l -> l
             | _ -> failwith ""
 
         let bind =
-            match meta.shift with
-            | false -> "meta"
-            | _ -> "shift meta"
+            match modKey.mo with
+            | Cmd ->
+                match modKey.shift with
+                | true -> "shift meta"
+                | _ -> "meta"
             |> fun s -> $"{s} {char}"
 
-        keybind action (Some bind)
+        keybind act (Some bind)
 
-    let configMetas metas =
-        let mapped = List.map mapMeta metas
+    let configMods mods =
+        let mapped = List.map mapMod mods
 
         let disabled =
             [ "CompareTwoFiles"
@@ -101,60 +101,24 @@ module JetBrains =
             [ "DataGrip2022.3/keymaps"
               "GoLand2022.3/keymaps"
               "PyCharm2022.3/jba_config/mac.keymaps"
-              "Rider2022.3/jba_config/mac.keymaps"
+              "Rider2022.3/keymaps"
               "WebStorm2022.3/jba_config/mac.keymaps" ]
         |> List.map Path.Combine
         |> List.map (fun p -> Path.Combine("Library", "Application Support", "JetBrains", p, "bruno-roque.xml"))
         |> List.map (fun p -> { name = p; content = content })
 
-module NeoVim =
-    let mapMeta (meta: MetaKeybind) =
-        let action =
-            match meta.action with
-            | Actions -> ":Telescope commands<cr>"
-            | CodeActions -> ":Telescope lsp_code_actions<cr>"
-            | GoToBuffer -> ":Telescope buffers<cr>"
-            | GoToFile -> ":lua require('telescope.builtin').find_files({hidden = true})<cr>"
-            | GoToJump -> ":Telescope marks<cr>"
-            | GoToSymbol -> ":Telescope treesitter<cr>"
-            | GoToSymbolGlobal -> ":Telescope treesitter<cr>"
-            | Navigate -> ":Explore<cr>"
-            | ParameterInfo -> ":lua vim.lsp.buf.signature_help()<cr>"
-            | SearchGlobal -> ":Telescope live_grep<cr>"
-            | Terminal -> ":terminal<cr>"
-            | Zen -> ":only"
-            | _ -> failwith ""
-
-        let bind =
-            match meta.key with
-            | Enter -> "<enter>"
-            | Letter l ->
-                match meta.shift with
-                | false -> l
-                | _ -> $"<S-{l}>"
-            | _ -> failwith ""
-            |> fun c -> $"<leader>{c}"
-
-        $"vim.keymap.set(\"n\", \"{bind}\", \"{action}\")"
-
-    let configMetas metas =
-        let mapped = List.map mapMeta metas
-
-        [ { name = Path.Combine(".config", "nvim", "keybinds.lua")
-            content = mapped } ]
-
 module VsCode =
-    let keybind action bind condition =
+    let keybind act bind cond =
         let cond =
-            match condition with
+            match cond with
             | Some c -> $"    \"when\": \"{c}\"\n"
             | _ -> ""
 
-        $"  {{\n    \"key\": \"{bind}\",\n    \"command\": \"{action}\",\n{cond}  }},"
+        $"  {{\n    \"key\": \"{bind}\",\n    \"command\": \"{act}\",\n{cond}  }},"
 
-    let mapMeta (meta: MetaKeybind) =
-        let action =
-            match meta.action with
+    let mapMeta (modKey: ModKeybind) =
+        let act =
+            match modKey.act with
             | Actions -> "workbench.action.showCommands"
             | CodeActions -> "editor.action.quickFix"
             | Back -> "workbench.action.navigateBack"
@@ -172,54 +136,54 @@ module VsCode =
             | _ -> failwith ""
 
         let char =
-            match meta.key with
+            match modKey.key with
             | Enter -> "enter"
-            | LeftSquareBracket -> "["
             | Letter l -> l
-            | RightSquareBracket -> "]"
+            | _ -> failwith ""
 
         let bind =
-            match meta.shift with
-            | false -> "cmd"
-            | _ -> "cmd+shift"
+            match modKey.mo with
+            | Cmd ->
+                match modKey.shift with
+                | true -> "cmd+shift"
+                | _ -> "cmd"
             |> fun s -> $"{s}+{char}"
 
-        keybind action bind None
+        keybind act bind None
 
-    let configMetas metas =
+    let configMods mods =
         let extras =
-            [ (Back, LeftSquareBracket, false)
-              (Forward, RightSquareBracket, false) ]
-            |> List.map (fun (a, k, s) -> { action = a; key = k; shift = s })
+            [ (Cmd, Letter("["), false, Back); (Cmd, Letter("]"), false, Forward) ]
+            |> List.map (fun (m, k, s, a) -> { mo = m; key = k; shift = s; act = a })
 
         let mapped =
-            metas
+            mods
             |> (+) extras
             |> List.map mapMeta
-            |> (+) [ (keybind "workbench.action.focusActiveEditorGroup" "escape" (Some "!editorFocus")) ]
+            |> (+) [ (keybind "editor.action.commentLine" "ctrl-c" (Some "editorFocus")) ]
             |> (+) [ (keybind "bookmarks.toggle" "ctrl-s" (Some "editorFocus")) ]
+            |> (+) [ (keybind "workbench.action.focusActiveEditorGroup" "escape" (Some "!editorFocus")) ]
 
-        let content =
-            [ "[" ] |> (+) mapped |> (+) [ "]" ]
+        let content = [ "[" ] |> (+) mapped |> (+) [ "]" ]
 
         [ { name = Path.Combine("Library", "Application Support", "Code", "User", "keybindings.json")
             content = content } ]
 
 
-let metas =
-    [ (Actions, Letter("p"), false)
-      (CodeActions, Enter, false)
-      (GoToBuffer, Letter("b"), false)
-      (GoToFile, Letter("o"), false)
-      (GoToJump, Letter("j"), false)
-      (GoToSymbol, Letter("y"), false)
-      (GoToSymbolGlobal, Letter("y"), true)
-      (Navigate, Letter("l"), false)
-      (ParameterInfo, Letter("i"), false)
-      (SearchGlobal, Letter("f"), true)
-      (Terminal, Letter("t"), false)
-      (Zen, Letter("h"), true) ]
-    |> List.map (fun (a, k, s) -> { action = a; key = k; shift = s })
+let mods =
+    [ (Cmd, Enter, false, CodeActions)
+      (Cmd, Letter("b"), false, GoToBuffer)
+      (Cmd, Letter("f"), false, SearchGlobal)
+      (Cmd, Letter("h"), true, Zen)
+      (Cmd, Letter("i"), false, ParameterInfo)
+      (Cmd, Letter("j"), false, GoToJump)
+      (Cmd, Letter("l"), false, Navigate)
+      (Cmd, Letter("o"), false, GoToFile)
+      (Cmd, Letter("p"), false, Actions)
+      (Cmd, Letter("t"), false, Terminal)
+      (Cmd, Letter("y"), false, GoToSymbol)
+      (Cmd, Letter("y"), true, GoToSymbolGlobal) ]
+    |> List.map (fun (m, k, s, a) -> { mo = m; key = k; shift = s; act = a })
 
 let writeFile f =
     let path =
@@ -229,7 +193,6 @@ let writeFile f =
     File.WriteAllLines(path, f.content)
     true
 
-JetBrains.configMetas metas
-|> (+) (NeoVim.configMetas metas)
-|> (+) (VsCode.configMetas metas)
+JetBrains.configMods mods
+|> (+) (VsCode.configMods mods)
 |> List.forall writeFile

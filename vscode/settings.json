@@ -88,7 +88,6 @@
     { "before": ["g", "l"], "commands": ["cursorLineEnd"] },
     { "before": ["g", "r"], "commands": ["references-view.find"] },
     { "before": ["g", "s"], "after": ["^"] },
-    { "before": ["m"], "commands": ["bookmarks.toggle"] },
     { "before": ["U"], "commands": ["extension.vim_ctrl+r"] },
     { "before": ["<leader>", "a"], "commands": ["editor.action.quickFix"] },
     { "before": ["<leader>", "f"], "commands": ["workbench.action.quickOpen"] },
