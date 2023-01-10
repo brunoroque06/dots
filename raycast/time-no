@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+# @raycast.schemaVersion 1
+# @raycast.title Time No
+# @raycast.mode compact
+# @raycast.icon ⏳
+
+crontab -r
