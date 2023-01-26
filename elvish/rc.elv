@@ -139,6 +139,7 @@ fn doc-setup {
 }
 
 # Dotnet
+fn dot-csi { csharprepl -t themes/VisualStudio_Light.json }
 fn dot-up { dotnet outdated --upgrade }
 
 # File System
@@ -203,7 +204,7 @@ fn brew-up {
   brew doctor
 }
 fn pkg-setup {
-  put dotnet-outdated-tool dotnet-fsharplint fantomas-tool ^
+  put csharprepl dotnet-outdated-tool dotnet-fsharplint fantomas-tool ^
     | each { |p| try { dotnet tool install -g $p } catch { } }
 
   npm install -g ^
@@ -257,7 +258,7 @@ fn py-setup {
   pip install --upgrade pip
   pip install -r requirements.txt
 }
-fn py-up { py-act; pip install pur; pur; py-dea }
+fn py-up { py-act; pip install pur; pur; pip install -r requirements.txt; py-dea }
 
 # Pulumi
 fn pu-res { |@args|
