@@ -13,7 +13,8 @@ navigate = true
 right-arrow = ->
 
 [diff]
-tool = "code"
+conflictstyle = zdiff3
+tool = code
 
 [difftool "code"]
 cmd = code --wait --diff $LOCAL $REMOTE
@@ -25,7 +26,7 @@ process = git-lfs filter-process
 smudge = git-lfs smudge -- %f
 
 [merge]
-tool = "code"
+tool = code
 
 [mergetool "code"]
 cmd = code --wait $MERGED
