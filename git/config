@@ -13,7 +13,7 @@ navigate = true
 right-arrow = ->
 
 [diff]
-conflictstyle = zdiff3
+algorithm = histogram
 tool = code
 
 [difftool "code"]
@@ -26,6 +26,7 @@ process = git-lfs filter-process
 smudge = git-lfs smudge -- %f
 
 [merge]
+conflictstyle = zdiff3
 tool = code
 
 [mergetool "code"]
