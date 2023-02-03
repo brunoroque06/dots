@@ -28,3 +28,5 @@ C-f = "move_char_right"
 
 [keys.normal]
 "=" = { "=" = ":fmt" }
+"C" = ["collapse_selection", "select_mode", "goto_line_end", "delete_selection", "insert_mode"]
+"D" = ["collapse_selection", "select_mode", "goto_line_end", "delete_selection"]
