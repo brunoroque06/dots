@@ -21,7 +21,7 @@ var _paths = $nil
 set E:BAT_STYLE = plain
 set E:BAT_THEME = ansi
 # set E:DOCKER_DEFAULT_PLATFORM = linux/amd64
-set E:EDITOR = /opt/homebrew/bin/nvim
+set E:EDITOR = /opt/homebrew/bin/hx
 set E:JAVA_HOME = /opt/homebrew/opt/openjdk/libexec/openjdk.jdk/Contents/Home
 set E:LESS = '-i --incsearch'
 set E:LS_COLORS = (vivid generate $E:HOME/.config/vivid/theme.yml)
@@ -109,7 +109,9 @@ fn cmd-edit {
   var tmp = (path:temp-file '*.elv')
   print $edit:current-command > $tmp
   try {
-    $E:EDITOR $tmp[name] </dev/tty >/dev/tty 2>&1
+    # https://github.com/helix-editor/helix/pull/5468
+    # $E:EDITOR $tmp[name] </dev/tty >/dev/tty 2>&1
+    nvim $tmp[name] </dev/tty >/dev/tty 2>&1
     set edit:current-command = (slurp < $tmp[name] | str:trim-right (one) "\n")
   } catch {
     file:close $tmp
@@ -172,6 +174,9 @@ fn git-cfg { git config --list --show-origin }
 fn gd { git diff }
 fn gs { git status -s }
 fn gl { |&c=10| git log --all --decorate --graph --format=format:'%Cblue%h %Creset- %Cgreen%ar %Creset%s %C(dim)- %an%C(auto)%d' -$c }
+
+# Go
+fn go-up { go get -u; go mod tidy }
 
 # JetBrains
 fn jb-rm { |a|
