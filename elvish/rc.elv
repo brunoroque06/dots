@@ -38,14 +38,16 @@ set edit:after-command = [
   { |m| set _err = (not-eq $m[error] $nil) }
 ]
 
-fn set-title { |t| print "\x1b]0;"$t"\x1b\\" }
+fn esc { |c| print "\e]"$c"\a" }
 
 set edit:before-readline = [
-  { set-title elvish }
+  { esc elvish }
+  { esc '133;A' }
 ]
 
 set edit:after-readline = [
-  { |c| str:split ' ' $c | take 1 | set-title (one) }
+  { |c| str:split ' ' $c | take 1 | esc (one) }
+  { |c| esc '133;C' }
 ]
 
 set edit:prompt = {
@@ -298,7 +300,7 @@ fn env-ls {
     | order
 }
 fn colortest { curl -s https://raw.githubusercontent.com/pablopunk/colortest/master/colortest | bash }
-fn re { exec elvish -sock $E:HOME/.local/state/elvish/sock }
+fn re { exec elvish }
 
 # SSH
 fn ssh-trust { |@a| ssh-copy-id -i $E:HOME/.ssh/id_rsa.pub $@a }
