@@ -38,16 +38,27 @@ set edit:after-command = [
   { |m| set _err = (not-eq $m[error] $nil) }
 ]
 
-fn esc { |c| print "\e]"$c"\a" }
+fn osc { |c| print "\e]"$c"\a" }
+
+fn send-title { |t| osc '0;'$t }
+
+fn send-pwd {
+  send-title (tilde-abbr $pwd | path:base (one))
+  osc '7;'(put $pwd)
+}
 
 set edit:before-readline = [
-  { esc elvish }
-  { esc '133;A' }
+  { send-pwd }
+  { osc '133;A' }
 ]
 
 set edit:after-readline = [
-  { |c| str:split ' ' $c | take 1 | esc (one) }
-  { |c| esc '133;C' }
+  { |c| send-title (str:split ' ' $c | take 1) }
+  { |c| osc '133;C' }
+]
+
+set after-chdir = [
+  { |_| send-pwd }
 ]
 
 set edit:prompt = {
