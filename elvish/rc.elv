@@ -2,7 +2,6 @@ use file
 use math
 use path
 use readline-binding
-use store
 use str
 
 set paths = [
@@ -111,7 +110,7 @@ set edit:completion:arg-completer[az-act-set] = { |@args|
 }
 
 # Bazel
-fn bzl-setup {
+fn bzl-su {
   var dir = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs
   mkdir -p $dir
   ln -s /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk $dir
@@ -142,12 +141,12 @@ fn doc-cnt-rm {
 }
 fn doc-exec { |cnt| docker exec -it $cnt bash }
 set edit:completion:arg-completer[doc-exec] = { |@args|
-  docker ps --format "{{.Image}} {{.Names}}" ^
+  docker ps --format '{{.Image}} {{.Names}}' ^
     | from-lines ^
     | each { |cnt| var c = (str:split ' ' $cnt | put [(all)]); put [&img=$c[0] &name=$c[1]] } ^
     | each { |cnt| edit:complex-candidate &display=$cnt[name]' ('$cnt[img]')' $cnt[name] }
 }
-fn doc-setup {
+fn doc-su {
   var cfg = $E:HOME/.docker/config.json
   var kc = (cat $cfg | from-json)
   assoc $kc credsStore osxkeychain | to-json > $cfg
@@ -191,6 +190,11 @@ fn gl { |&c=10| git log --all --decorate --graph --format=format:'%Cblue%h %Cres
 # Go
 fn go-up { go get -u; go mod tidy }
 
+# Java
+fn java-su {
+  sudo ln -s /opt/homebrew/opt/openjdk/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk.jdk
+}
+
 # JetBrains
 fn jb-rm { |a|
   var dirs = ['Application Support/JetBrains' 'Caches/JetBrains' 'Logs/JetBrains']
@@ -221,7 +225,7 @@ fn brew-up {
   brew cleanup
   brew doctor
 }
-fn pkg-setup {
+fn pkg-su {
   put csharprepl dotnet-outdated-tool dotnet-fsharplint fantomas-tool ^
     | each { |p| try { dotnet tool install -g $p } catch { } }
 
@@ -270,13 +274,19 @@ fn py-dea {
   set paths = $_paths
   set _paths = $nil
 }
-fn py-setup {
+fn py-su {
   python3 -m venv venv
   py-act
   pip install --upgrade pip
   pip install -r requirements.txt
 }
-fn py-up { py-act; pip install pur; pur; pip install -r requirements.txt; py-dea }
+fn py-up {
+  py-act
+  pip install --upgrade pip pur
+  pur
+  pip install -r requirements.txt
+  py-dea
+}
 
 # Pulumi
 fn pu-res { |@args|
