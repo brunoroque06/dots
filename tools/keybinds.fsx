@@ -19,13 +19,14 @@ module Keybind =
         | Terminal
         | Zen
 
+    type ModKey = | Cmd
+
     type Key =
-        | Cmd
         | Enter
         | Letter of string
 
     type ModKeybind =
-        { mo: Key
+        { mo: ModKey
           key: Key
           shift: bool
           act: Action }
@@ -63,7 +64,6 @@ module JetBrains =
             match modKey.key with
             | Enter -> "enter"
             | Letter l -> l
-            | _ -> failwith ""
 
         let bind =
             match modKey.mo with
@@ -140,7 +140,6 @@ module VsCode =
             match modKey.key with
             | Enter -> "enter"
             | Letter l -> l
-            | _ -> failwith ""
 
         let bind =
             match modKey.mo with

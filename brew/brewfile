@@ -54,7 +54,6 @@ brew "stow"
 brew "streamlink"
 brew "stylua"
 brew "tokei"
-brew "vivid"
 brew "wget"
 brew "yaml-language-server"
 
