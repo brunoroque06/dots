@@ -121,8 +121,8 @@ fn cmd-edit {
   print $edit:current-command > $tmp
   try {
     # https://github.com/helix-editor/helix/pull/5468
-    # $E:EDITOR $tmp[name] </dev/tty >/dev/tty 2>&1
-    nvim $tmp[name] </dev/tty >/dev/tty 2>&1
+    # $E:EDITOR
+    nvim $tmp[name] <$path:dev-tty >$path:dev-tty 2>&1
     set edit:current-command = (slurp < $tmp[name] | str:trim-right (one) "\n")
   } catch {
     file:close $tmp

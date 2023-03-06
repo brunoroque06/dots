@@ -100,7 +100,6 @@ module JetBrains =
             (fun (p: string) -> p.Split "/")
             [ "DataGrip2022.3/keymaps"
               "GoLand2022.3/keymaps"
-              "IntelliJIdea2022.3/keymaps"
               "PyCharm2022.3/jba_config/mac.keymaps"
               "Rider2022.3/keymaps"
               "WebStorm2022.3/jba_config/mac.keymaps" ]
@@ -173,7 +172,7 @@ module VsCode =
 let mods =
     [ (Cmd, Enter, false, CodeActions)
       (Cmd, Letter("b"), false, GoToBuffer)
-      (Cmd, Letter("f"), false, SearchGlobal)
+      (Cmd, Letter("f"), true, SearchGlobal)
       (Cmd, Letter("h"), true, Zen)
       (Cmd, Letter("i"), false, ParameterInfo)
       (Cmd, Letter("j"), false, GoToJump)
