@@ -165,6 +165,7 @@ fn p { |f|
 }
 fn dir-size { dust -d 1 }
 fn e { |@a| $E:EDITOR $@a }
+fn fd { |@a| e:fd -c never $@a }
 fn rmr { |f| rm -fr $f }
 set edit:completion:arg-completer[rmr] = { |@args|
   fd . -H -d 1 --no-ignore --strip-cwd-prefix ^
