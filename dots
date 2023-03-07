@@ -28,7 +28,6 @@ paths=(
 	helix "$HOME"/.config/helix
 	jetbrains "$HOME"
 	kitty "$HOME"/.config/kitty
-	nushell "$HOME/Library/Application Support/nushell"
 	postgresql "$HOME"
 	ripgrep "$HOME"/.config
 	vscode "$HOME/Library/Application Support/Code/User"
