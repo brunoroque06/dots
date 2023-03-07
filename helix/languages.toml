@@ -23,10 +23,6 @@ name = "json"
 formatter = { command = "prettier", args = ["--parser", "json"] }
 
 [[language]]
-name = "lua"
-formatter = { command = "stylua", args = ["--", "-"] }
-
-[[language]]
 name = "markdown"
 formatter = { command = "prettier", args = ["--parser", "markdown"] }
 

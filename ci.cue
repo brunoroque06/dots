@@ -42,7 +42,7 @@ dagger.#Plan & {
 				docker.#Run & {
 					command: {
 						name: "npm"
-						args: ["install", "-g", "@johnnymorganz/stylua-bin", "prettier"]
+						args: ["install", "-g", "prettier"]
 					}
 				},
 				docker.#Set & {
@@ -59,10 +59,6 @@ dagger.#Plan & {
 		}
 
 		check: {
-			luafmt: bash.#Run & {
-				input: img.output
-				script: contents: "stylua --check --verbose ."
-			}
 			prettier: bash.#Run & {
 				input: img.output
 				script: contents: "prettier -c '**/*.{json,md,yaml,yml}' --loglevel debug"
