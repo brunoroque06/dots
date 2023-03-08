@@ -6,8 +6,9 @@ jobs:
   ci:
     runs-on: ubuntu-latest
     steps:
-      - run: curl -L https://dl.dagger.io/dagger-cue/install.sh | sh
-        working-directory: /usr/local
+      - uses: actions/setup-python@v4
+        with:
+          python-version: 3.11
       - uses: actions/checkout@v3
-      - run: dagger-cue project init && dagger-cue project update
-      - run: dagger-cue do check
+      - run: pip install dagger-io
+      - run: python ci.py

@@ -1,4 +1,3 @@
-tap "dagger/tap"
 tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/cask-fonts"
@@ -15,8 +14,6 @@ brew "black"
 brew "buildifier"
 brew "carapace"
 brew "curl"
-brew "dagger"
-brew "dagger-cue"
 brew "docker-credential-helper"
 brew "dust"
 brew "elvish", args: ["HEAD"]
