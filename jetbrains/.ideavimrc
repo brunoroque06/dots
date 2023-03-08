@@ -81,13 +81,14 @@ map U <Action>($Redo)
 map <c-c> <Action>(CommentByLineComment)
 map <c-s> <Action>(ToggleBookmark)
 
-map <c-w>q <c-w>c
-map <c-w>J <Action>(MoveTabDown)
-map <c-w>L <Action>(MoveTabRight)
-
 let mapleader="\<space>"
 
 map <leader>a <Action>(Refactorings.QuickListPopupAction)
 map <leader>f <Action>(GotoFile)
 map <leader>j <Action>(ShowBookmarks)
-map <leader>s <Action>(FileStructurePopup)
+map <leader>r <Action>(RenameElement)
+map <leader>y <Action>(FileStructurePopup)
+
+map <c-w>q <c-w>c
+map <c-w>J <Action>(MoveTabDown)
+map <c-w>L <Action>(MoveTabRight)
