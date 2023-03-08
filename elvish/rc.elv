@@ -256,7 +256,7 @@ fn pg-reset { brew uninstall --ignore-dependencies postgresql; rm -fr /usr/local
 fn pg-upgrade { brew postgresql-upgrade-database }
 
 # Python
-fn py-act {
+fn py-a {
   if (not-eq $_paths $nil) {
     fail 'A venv is already active'
   }
@@ -267,7 +267,7 @@ fn py-act {
   set _paths = $paths
   set paths = [$venv $@paths]
 }
-fn py-dea {
+fn py-d {
   if (eq $_paths $nil) {
     fail 'No venv is active'
   }
@@ -276,16 +276,16 @@ fn py-dea {
 }
 fn py-su {
   python3 -m venv venv
-  py-act
+  py-a
   pip install --upgrade pip
   pip install -r requirements.txt
 }
 fn py-up {
-  py-act
+  py-a
   pip install --upgrade pip pur
   pur
   pip install -r requirements.txt
-  py-dea
+  py-d
 }
 
 # Pulumi
