@@ -11,8 +11,8 @@ jobs:
 
       - name: Install
         run: |
-          apt update
-          apt install npm shellcheck shfmt -y
+          sudo apt update
+          sudo apt install npm shellcheck shfmt -y
 
       - name: Prettier
         run: npx prettier -c .
