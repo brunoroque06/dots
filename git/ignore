@@ -5,9 +5,6 @@ obj
 out
 target
 
-# Cue
-cue.mod
-
 # Dotnet
 *.sln.DotSettings
 *.sln.DotSettings.user
