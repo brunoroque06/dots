@@ -5,20 +5,11 @@ on: [push]
 jobs:
   ci:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v3
-
-      - name: Install
-        run: |
+      - run: |
           sudo apt update
           sudo apt install npm shellcheck shfmt -y
-
-      - name: Prettier
-        run: npx prettier -c .
-
-      - name: Shell Fmt
-        run: shfmt -f . | xargs -t -I % shfmt -d %
-
-      - name: Shell Lint
-        run: shfmt -f . | xargs -t -I % shellcheck -x %
+      - run: npx prettier -c .
+      - run: shfmt -f . | xargs -t -I % shfmt -d %
+      - run: shfmt -f . | xargs -t -I % shellcheck -x %
