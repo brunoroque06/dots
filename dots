@@ -29,6 +29,7 @@ paths=(
 	jetbrains "$HOME"
 	kitty "$HOME"/.config/kitty
 	postgresql "$HOME"
+	powershell "$HOME"/.config/powershell
 	ripgrep "$HOME"/.config
 	vscode "$HOME/Library/Application Support/Code/User"
 )
