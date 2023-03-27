@@ -4,6 +4,7 @@ tap "homebrew/cask-fonts"
 tap "homebrew/core"
 tap "rsteube/homebrew-tap"
 
+brew "act"
 brew "angular-cli"
 brew "azure-cli"
 brew "bash"
@@ -60,6 +61,7 @@ cask "dotnet-sdk"
 cask "font-jetbrains-mono"
 cask "font-rubik"
 cask "font-sf-pro"
+cask "gitup"
 cask "goland"
 cask "google-chrome"
 cask "kitty"
@@ -71,12 +73,10 @@ cask "raycast"
 cask "rider"
 cask "visual-studio-code"
 cask "webstorm"
-cask "zoom"
 
 mas "Bear", id: 1091189122
 mas "Cyberduck", id: 409222199
 mas "Elmedia:universal video player", id: 937759555  
-mas "Gitfox", id: 1475511261
 mas "Hush", id: 1544743900
 mas "Keys Multiplatform", id: 1494642810
 mas "Reeder", id: 1529448980
