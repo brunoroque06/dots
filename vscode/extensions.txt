@@ -2,7 +2,6 @@ alefragnani.Bookmarks
 Angular.ng-template
 christian-kohler.path-intellisense
 DavidAnson.vscode-markdownlint
-dbaeumer.vscode-eslint
 elves.elvish
 esbenp.prettier-vscode
 golang.go
@@ -14,6 +13,7 @@ ms-dotnettools.csharp
 ms-python.isort
 ms-python.python
 ms-python.vscode-pylance
+ms-vscode.powershell
 naumovs.color-highlight
 redhat.vscode-yaml
 streetsidesoftware.code-spell-checker
