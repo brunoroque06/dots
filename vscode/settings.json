@@ -15,10 +15,10 @@
     "source.organizeImports": true
   },
   "editor.cursorBlinking": "solid",
-  "editor.cursorSurroundingLines": 8,
+  "editor.cursorSurroundingLines": 5,
   "editor.cursorWidth": 2,
   "editor.fontFamily": "JetBrains Mono",
-  "editor.fontLigatures": true,
+  "editor.fontLigatures": false,
   "editor.fontSize": 13,
   "editor.formatOnSave": false,
   "editor.guides.bracketPairs": true,

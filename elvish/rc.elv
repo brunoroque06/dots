@@ -65,24 +65,7 @@ set edit:prompt = {
 
   if (not-eq $_paths $nil) { put ' *' }
 
-  fn abbr { |dirs|
-    each { |d|
-      if (eq $d '') {
-        put /$d
-      } elif (eq $d[0] '.') {
-        put $d[0..2]
-      } else {
-        put $d[0]
-      }
-    } $dirs[0..-1]
-    put $dirs[-1]
-  }
-
-  tilde-abbr $pwd ^
-    | str:split $path:separator (one) ^
-    | abbr [(all)] ^
-    | path:join (all) ^
-    | styled ' '(one) blue
+  styled ' '(path:base $pwd) blue
 
   if (> $_dur 5) {
     var m = (/ $_dur 60 | math:floor (one))
