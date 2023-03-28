@@ -1,53 +1,55 @@
 open System
 open System.IO
 
-module Keybind =
-    type Action =
-        | Back
-        | Forward
-        | Actions
-        | CodeActions
-        | GoToBuffer
-        | GoToFile
-        | GoToJump
-        | GoToSymbol
-        | GoToSymbolGlobal
-        | Navigate
-        | ParameterInfo
-        | Reformat
-        | SearchGlobal
-        | Terminal
-        | Zen
-
-    type ModKey = | Cmd
-
-    type Key =
-        | Enter
-        | Letter of string
-
-    type ModKeybind =
-        { mo: ModKey
-          key: Key
-          shift: bool
-          act: Action }
-
-    type KeybindFile = { name: string; content: string list }
-
-open Keybind
-
 let (+) a b = List.append b a
 
+type Action =
+    | Actions
+    | Back
+    | Close
+    | CodeActions
+    | Find
+    | FindGlobal
+    | Forward
+    | GoToBuffer
+    | GoToFile
+    | GoToJump
+    | GoToSymbol
+    | GoToSymbolGlobal
+    | Navigate
+    | ParameterInfo
+    | Replace
+    | ReplaceGlobal
+    | Settings
+    | Terminal
+    | Zen
+
+type Key =
+    | Enter
+    | OpenBracket
+    | CloseBracket
+    | Char of string
+
+type Bind = { key: Key; shift: bool; act: Action }
+
+type File = { name: string; content: string list }
+
 module JetBrains =
-    let keybind act bind =
+    let toText act bind =
         match bind with
         | Some b -> $"  <action id=\"{act}\">\n    <keyboard-shortcut first-keystroke=\"{b}\"/>\n  </action>"
         | _ -> $"  <action id=\"{act}\"/>"
 
-    let mapMod (modKey: ModKeybind) =
+    let map (bind: Bind) =
         let act =
-            match modKey.act with
+            match bind.act with
             | Actions -> "GotoAction"
+            | Back -> "Back"
+            | Close -> "CloseContent"
             | CodeActions -> "ShowIntentionActions"
+            | Find -> "Find"
+            | FindGlobal -> "FindInPath"
+            | Forward -> "Forward"
             | GoToBuffer -> "RecentFiles"
             | GoToFile -> "GotoFile"
             | GoToJump -> "ShowBookmarks"
@@ -55,28 +57,29 @@ module JetBrains =
             | GoToSymbolGlobal -> "GotoSymbol"
             | Navigate -> "ShowNavBar"
             | ParameterInfo -> "ParameterInfo"
-            | SearchGlobal -> "FindInPath"
+            | Replace -> "Replace"
+            | ReplaceGlobal -> "ReplaceInPath"
+            | Settings -> "ShowSettings"
             | Terminal -> "ActivateTerminalToolWindow"
             | Zen -> "HideAllWindows"
-            | _ -> failwith ""
 
         let char =
-            match modKey.key with
+            match bind.key with
             | Enter -> "enter"
-            | Letter l -> l
+            | OpenBracket -> "open_bracket"
+            | CloseBracket -> "close_bracket"
+            | Char l -> l
 
         let bind =
-            match modKey.mo with
-            | Cmd ->
-                match modKey.shift with
-                | true -> "shift meta"
-                | _ -> "meta"
+            match bind.shift with
+            | true -> "shift meta"
+            | _ -> "meta"
             |> fun s -> $"{s} {char}"
 
-        keybind act (Some bind)
+        toText act (Some bind)
 
-    let configMods mods =
-        let mapped = List.map mapMod mods
+    let config binds =
+        let mapped = List.map map binds
 
         let disabled =
             [ "CompareTwoFiles"
@@ -88,7 +91,7 @@ module JetBrains =
               "QuickJavaDoc"
               "org.intellij.plugins.markdown.ui.actions.styling.ToggleBoldAction"
               "Vcs.UpdateProject" ]
-            |> List.map (fun a -> keybind a None)
+            |> List.map (fun a -> toText a None)
 
         let content =
             [ "<keymap version=\"1\" name=\"bruno-roque\" parent=\"macOS System Shortcuts\">" ]
@@ -108,7 +111,7 @@ module JetBrains =
         |> List.map (fun p -> { name = p; content = content })
 
 module VsCode =
-    let keybind act bind cond =
+    let toText act bind cond =
         let cond =
             match cond with
             | Some c -> $"    \"when\": \"{c}\"\n"
@@ -116,12 +119,15 @@ module VsCode =
 
         $"  {{\n    \"key\": \"{bind}\",\n    \"command\": \"{act}\",\n{cond}  }},"
 
-    let mapMeta (modKey: ModKeybind) =
+    let map (bind: Bind) =
         let act =
-            match modKey.act with
+            match bind.act with
             | Actions -> "workbench.action.showCommands"
             | CodeActions -> "editor.action.quickFix"
+            | Close -> "workbench.action.closeActiveEditor"
             | Back -> "workbench.action.navigateBack"
+            | Find -> "actions.find"
+            | FindGlobal -> "workbench.action.findInFiles"
             | Forward -> "workbench.action.navigateForward"
             | GoToBuffer -> "workbench.action.quickOpen"
             | GoToFile -> "workbench.action.quickOpen"
@@ -130,38 +136,34 @@ module VsCode =
             | GoToSymbolGlobal -> "workbench.action.showAllSymbols"
             | Navigate -> "breadcrumbs.focusAndSelect"
             | ParameterInfo -> "editor.action.triggerParameterHints"
-            | SearchGlobal -> "workbench.action.findInFiles"
+            | Replace -> "editor.action.startFindReplaceAction"
+            | ReplaceGlobal -> "workbench.action.replaceInFiles"
+            | Settings -> "workbench.action.openSettings"
             | Terminal -> "workbench.action.terminal.toggleTerminal"
             | Zen -> "workbench.action.toggleSidebarVisibility"
-            | _ -> failwith ""
 
         let char =
-            match modKey.key with
+            match bind.key with
             | Enter -> "enter"
-            | Letter l -> l
+            | OpenBracket -> "["
+            | CloseBracket -> "]"
+            | Char l -> l
 
         let bind =
-            match modKey.mo with
-            | Cmd ->
-                match modKey.shift with
-                | true -> "cmd+shift"
-                | _ -> "cmd"
+            match bind.shift with
+            | true -> "cmd+shift"
+            | _ -> "cmd"
             |> fun s -> $"{s}+{char}"
 
-        keybind act bind None
+        toText act bind None
 
-    let configMods mods =
-        let extras =
-            [ (Cmd, Letter("["), false, Back); (Cmd, Letter("]"), false, Forward) ]
-            |> List.map (fun (m, k, s, a) -> { mo = m; key = k; shift = s; act = a })
-
+    let config binds =
         let mapped =
-            mods
-            |> (+) extras
-            |> List.map mapMeta
-            |> (+) [ (keybind "editor.action.commentLine" "ctrl-c" (Some "editorFocus")) ]
-            |> (+) [ (keybind "bookmarks.toggle" "ctrl-s" (Some "editorFocus")) ]
-            |> (+) [ (keybind "workbench.action.focusActiveEditorGroup" "escape" (Some "!editorFocus")) ]
+            binds
+            |> List.map map
+            |> (+) [ (toText "editor.action.commentLine" "ctrl-c" (Some "editorFocus")) ]
+            |> (+) [ (toText "bookmarks.toggle" "ctrl-s" (Some "editorFocus")) ]
+            |> (+) [ (toText "workbench.action.focusActiveEditorGroup" "escape" (Some "!editorFocus")) ]
 
         let content = [ "[" ] |> (+) mapped |> (+) [ "]" ]
 
@@ -169,20 +171,28 @@ module VsCode =
             content = content } ]
 
 
-let mods =
-    [ (Cmd, Enter, false, CodeActions)
-      (Cmd, Letter("b"), false, GoToBuffer)
-      (Cmd, Letter("f"), true, SearchGlobal)
-      (Cmd, Letter("h"), true, Zen)
-      (Cmd, Letter("i"), false, ParameterInfo)
-      (Cmd, Letter("j"), false, GoToJump)
-      (Cmd, Letter("l"), false, Navigate)
-      (Cmd, Letter("o"), false, GoToFile)
-      (Cmd, Letter("p"), false, Actions)
-      (Cmd, Letter("t"), false, Terminal)
-      (Cmd, Letter("y"), false, GoToSymbol)
-      (Cmd, Letter("y"), true, GoToSymbolGlobal) ]
-    |> List.map (fun (m, k, s, a) -> { mo = m; key = k; shift = s; act = a })
+let binds =
+    [ (Enter, false, CodeActions)
+      (OpenBracket, false, Back)
+      (CloseBracket, false, Forward)
+      (Char(","), false, Settings)
+      (Char("b"), false, GoToBuffer)
+      (Char("f"), false, Find)
+      (Char("f"), true, FindGlobal)
+      (Char("h"), true, Zen)
+      (Char("i"), false, ParameterInfo)
+      (Char("j"), false, GoToJump)
+      (Char("l"), false, Navigate)
+      (Char("o"), false, GoToFile)
+      (Char("p"), false, Actions)
+      (Char("r"), false, Replace)
+      (Char("r"), true, ReplaceGlobal)
+      (Char("t"), false, Terminal)
+      (Char("w"), false, Close)
+      (Char("y"), false, GoToSymbol)
+      (Char("y"), true, GoToSymbolGlobal) ]
+    |> List.map (fun (k, s, a) -> { key = k; shift = s; act = a })
+
 
 let writeFile f =
     let path =
@@ -192,6 +202,6 @@ let writeFile f =
     File.WriteAllLines(path, f.content)
     true
 
-JetBrains.configMods mods
-|> (+) (VsCode.configMods mods)
+JetBrains.config binds
+|> (+) (VsCode.config binds)
 |> List.forall writeFile

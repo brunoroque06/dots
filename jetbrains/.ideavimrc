@@ -66,7 +66,6 @@ map [q <Action>(PreviousOccurence)
 map ]q <Action>(NextOccurence)
 
 map gd <Action>(GotoDeclaration)
-" map gh <Action>(ShowErrorDescription)
 map gi <Action>(GotoImplementation)
 map gr <Action>(ShowUsages)
 
@@ -85,6 +84,7 @@ let mapleader="\<space>"
 
 map <leader>a <Action>(Refactorings.QuickListPopupAction)
 map <leader>f <Action>(GotoFile)
+map <leader>h <Action>(ShowErrorDescription)
 map <leader>j <Action>(ShowBookmarks)
 map <leader>r <Action>(RenameElement)
 map <leader>y <Action>(FileStructurePopup)

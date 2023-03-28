@@ -34,8 +34,8 @@ $ReadLineOption = @{
 Set-PSReadLineOption @ReadLineOption
 
 Set-PSReadLineKeyHandler -Key Tab -Function MenuComplete
-Set-PSReadLineKeyHandler -Key ctrl+p -Function HistorySearchBackward
-Set-PSReadLineKeyHandler -Key ctrl+n -Function HistorySearchForward
+Set-PSReadLineKeyHandler -Key Ctrl+p -Function HistorySearchBackward
+Set-PSReadLineKeyHandler -Key Ctrl+n -Function HistorySearchForward
 Set-PSReadLineKeyHandler -Key UpArrow -Function HistorySearchBackward
 Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
 
@@ -46,7 +46,7 @@ function Fmt {
     )
     $cnt = [IO.File]::ReadAllText($file.FullName);
     $fmted = Invoke-Formatter -ScriptDefinition $cnt;
-    Set-Content $path $fmted -NoNewline;
+    Set-Content $file.FullName $fmted -NoNewline;
 }
 
 Set-PSReadLineOption -Colors @{
