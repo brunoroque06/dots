@@ -1,6 +1,6 @@
-$ErrorActionPreference = "Stop"
+$ErrorActionPreference = 'Stop'
 
-Import-Module CompletionPredictor
+# Import-Module CompletionPredictor
 Import-Module PSScriptAnalyzer
 Import-Module ZLocation
 
@@ -19,17 +19,18 @@ $bgblue = "$esc[44m"
 $default = "$esc[0m"
 
 function Prompt {
-    $exitCode = If ($?) { $bgblue } Else { $bgred }
-    "$exitCode $default $blue$(Split-Path -Path $pwd -Leaf) $magenta~> $default"
+    $path = if ($pwd.Path -eq $home) { '~' } else { Split-Path -Path $pwd -Leaf }
+    $exitCode = if ($?) { $bgblue } else { $bgred }
+    "$exitCode $default $blue$path $magenta~> $default"
 }
 
 $ReadLineOption = @{
-    EditMode                      = "Emacs"
+    EditMode                      = 'Emacs'
     HistoryNoDuplicates           = $true
     HistorySearchCaseSensitive    = $false
     HistorySearchCursorMovesToEnd = $true
-    PredictionSource              = "HistoryAndPlugin"
-    PredictionViewStyle           = "ListView"
+    PredictionSource              = 'None'
+    PredictionViewStyle           = 'ListView'
 }
 Set-PSReadLineOption @ReadLineOption
 
@@ -72,6 +73,13 @@ $PSStyle.FileInfo.Directory = "$black"
 $PSStyle.FileInfo.SymbolicLink = "$blue"
 $PSStyle.FileInfo.Executable = "$red"
 
+function Re { Switch-Process pwsh }
+function gd { git diff }
+function gs { git status -s }
+
 Set-Alias .. cd..
 Set-Alias l Get-ChildItem
 Set-Alias touch New-Item
+
+carapace _carapace | Out-String | Invoke-Expression
+

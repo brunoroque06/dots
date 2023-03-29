@@ -40,8 +40,10 @@ fn osc { |c| print "\e]"$c"\a" }
 
 fn send-title { |t| osc '0;'$t }
 
+fn path { tilde-abbr $pwd | path:base (one) }
+
 fn send-pwd {
-  send-title (tilde-abbr $pwd | path:base (one))
+  send-title (path)
   osc '7;'(put $pwd)
 }
 
@@ -65,7 +67,7 @@ set edit:prompt = {
 
   if (not-eq $_paths $nil) { put ' *' }
 
-  styled ' '(path:base $pwd) blue
+  styled ' '(path) blue
 
   if (> $_dur 5) {
     var m = (/ $_dur 60 | math:floor (one))
