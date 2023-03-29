@@ -67,6 +67,7 @@ cask "google-chrome"
 cask "kitty"
 cask "parsec"
 cask "paw"
+cask "powershell"
 cask "proxyman"
 cask "pycharm"
 cask "raycast"
@@ -76,7 +77,7 @@ cask "webstorm"
 
 mas "Bear", id: 1091189122
 mas "Cyberduck", id: 409222199
-mas "Elmedia:universal video player", id: 937759555  
+mas "Elmedia:universal video player", id: 937759555
 mas "Hush", id: 1544743900
 mas "Keys Multiplatform", id: 1494642810
 mas "Reeder", id: 1529448980

@@ -6,7 +6,6 @@ let (+) a b = List.append b a
 type Action =
     | Actions
     | Back
-    | Close
     | CodeActions
     | Find
     | FindGlobal
@@ -20,7 +19,6 @@ type Action =
     | ParameterInfo
     | Replace
     | ReplaceGlobal
-    | Settings
     | Terminal
     | Zen
 
@@ -45,7 +43,6 @@ module JetBrains =
             match bind.act with
             | Actions -> "GotoAction"
             | Back -> "Back"
-            | Close -> "CloseContent"
             | CodeActions -> "ShowIntentionActions"
             | Find -> "Find"
             | FindGlobal -> "FindInPath"
@@ -59,7 +56,6 @@ module JetBrains =
             | ParameterInfo -> "ParameterInfo"
             | Replace -> "Replace"
             | ReplaceGlobal -> "ReplaceInPath"
-            | Settings -> "ShowSettings"
             | Terminal -> "ActivateTerminalToolWindow"
             | Zen -> "HideAllWindows"
 
@@ -124,7 +120,6 @@ module VsCode =
             match bind.act with
             | Actions -> "workbench.action.showCommands"
             | CodeActions -> "editor.action.quickFix"
-            | Close -> "workbench.action.closeActiveEditor"
             | Back -> "workbench.action.navigateBack"
             | Find -> "actions.find"
             | FindGlobal -> "workbench.action.findInFiles"
@@ -138,7 +133,6 @@ module VsCode =
             | ParameterInfo -> "editor.action.triggerParameterHints"
             | Replace -> "editor.action.startFindReplaceAction"
             | ReplaceGlobal -> "workbench.action.replaceInFiles"
-            | Settings -> "workbench.action.openSettings"
             | Terminal -> "workbench.action.terminal.toggleTerminal"
             | Zen -> "workbench.action.toggleSidebarVisibility"
 
@@ -161,8 +155,6 @@ module VsCode =
         let mapped =
             binds
             |> List.map map
-            |> (+) [ (toText "editor.action.commentLine" "ctrl-c" (Some "editorFocus")) ]
-            |> (+) [ (toText "bookmarks.toggle" "ctrl-s" (Some "editorFocus")) ]
             |> (+) [ (toText "workbench.action.focusActiveEditorGroup" "escape" (Some "!editorFocus")) ]
 
         let content = [ "[" ] |> (+) mapped |> (+) [ "]" ]
@@ -175,7 +167,6 @@ let binds =
     [ (Enter, false, CodeActions)
       (OpenBracket, false, Back)
       (CloseBracket, false, Forward)
-      (Char(","), false, Settings)
       (Char("b"), false, GoToBuffer)
       (Char("f"), false, Find)
       (Char("f"), true, FindGlobal)
@@ -188,7 +179,6 @@ let binds =
       (Char("r"), false, Replace)
       (Char("r"), true, ReplaceGlobal)
       (Char("t"), false, Terminal)
-      (Char("w"), false, Close)
       (Char("y"), false, GoToSymbol)
       (Char("y"), true, GoToSymbolGlobal) ]
     |> List.map (fun (k, s, a) -> { key = k; shift = s; act = a })

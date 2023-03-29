@@ -90,11 +90,9 @@
     { "before": ["g", "r"], "commands": ["references-view.find"] },
     { "before": ["g", "s"], "after": ["^"] },
     { "before": ["U"], "commands": ["extension.vim_ctrl+r"] },
-    { "before": ["<leader>", "a"], "commands": ["editor.action.quickFix"] },
-    { "before": ["<leader>", "f"], "commands": ["workbench.action.quickOpen"] },
     { "before": ["<leader>", "h"], "commands": ["editor.action.showHover"] },
-    { "before": ["<leader>", "j"], "commands": ["bookmarks.listFromAllFiles"] },
-    { "before": ["<leader>", "s"], "commands": ["workbench.action.gotoSymbol"] }
+    { "before": ["<leader>", "j"], "commands": ["bookmarks.toggle"] },
+    { "before": ["<leader>", "r"], "commands": ["editor.action.rename"] }
   ],
   "vim.surround": true,
   "vim.useSystemClipboard": true,
