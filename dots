@@ -25,12 +25,12 @@ setup() {
 paths=(
 	elvish "$HOME"/.config/elvish
 	git "$HOME"/.config/git
-	helix "$HOME"/.config/helix
 	jetbrains "$HOME"
 	kitty "$HOME"/.config/kitty
 	postgresql "$HOME"
 	powershell "$HOME"/.config/powershell
 	ripgrep "$HOME"/.config
+	vim "$HOME"
 	vscode "$HOME/Library/Application Support/Code/User"
 )
 

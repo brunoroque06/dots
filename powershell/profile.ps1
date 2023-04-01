@@ -78,6 +78,7 @@ function gd { git diff }
 function gs { git status -s }
 
 Set-Alias .. cd..
+Set-Alias e vim
 Set-Alias l Get-ChildItem
 Set-Alias touch New-Item
 

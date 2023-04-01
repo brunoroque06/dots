@@ -7,7 +7,7 @@ set ignorecase
 set incsearch
 set number
 set relativenumber
-set scrolloff=8
+set scrolloff=5
 set showcmd
 set showmode
 set smartcase
@@ -68,13 +68,6 @@ map ]q <Action>(NextOccurence)
 map gd <Action>(GotoDeclaration)
 map gi <Action>(GotoImplementation)
 map gr <Action>(ShowUsages)
-
-nnoremap ge G
-nnoremap gh 0
-nnoremap gl $
-nnoremap gs ^
-
-map U <Action>($Redo)
 
 let mapleader="\<space>"
 

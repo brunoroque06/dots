@@ -83,13 +83,8 @@
       "when": "hasSearchResult"
     },
     { "before": ["g", "d"], "commands": ["editor.action.peekDefinition"] },
-    { "before": ["g", "e"], "commands": ["cursorBottom"] },
-    { "before": ["g", "h"], "commands": ["cursorLineStart"] },
     { "before": ["g", "i"], "commands": ["editor.action.goToImplementation"] },
-    { "before": ["g", "l"], "commands": ["cursorLineEnd"] },
     { "before": ["g", "r"], "commands": ["references-view.find"] },
-    { "before": ["g", "s"], "after": ["^"] },
-    { "before": ["U"], "commands": ["extension.vim_ctrl+r"] },
     { "before": ["<leader>", "h"], "commands": ["editor.action.showHover"] },
     { "before": ["<leader>", "j"], "commands": ["bookmarks.toggle"] },
     { "before": ["<leader>", "r"], "commands": ["editor.action.rename"] }

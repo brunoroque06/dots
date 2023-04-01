@@ -20,9 +20,9 @@ var _paths = $nil
 set E:BAT_STYLE = plain
 set E:BAT_THEME = ansi
 # set E:DOCKER_DEFAULT_PLATFORM = linux/amd64
-set E:EDITOR = /opt/homebrew/bin/hx
+set E:EDITOR = /opt/homebrew/bin/vim
 set E:JAVA_HOME = /opt/homebrew/opt/openjdk/libexec/openjdk.jdk/Contents/Home
-set E:LESS = '-i --incsearch -M'
+set E:LESS = '-i --incsearch -m'
 set E:PAGER = /opt/homebrew/bin/less
 set E:RIPGREP_CONFIG_PATH = $E:HOME/.config/ripgreprc
 set E:VISUAL = $E:EDITOR
@@ -105,9 +105,7 @@ fn cmd-edit {
   var tmp = (path:temp-file '*.elv')
   print $edit:current-command > $tmp
   try {
-    # https://github.com/helix-editor/helix/pull/5468
-    # $E:EDITOR
-    nvim $tmp[name] <$path:dev-tty >$path:dev-tty 2>&1
+    $E:EDITOR $tmp[name] <$path:dev-tty >$path:dev-tty 2>&1
     set edit:current-command = (slurp < $tmp[name] | str:trim-right (one) "\n")
   } catch {
     file:close $tmp
