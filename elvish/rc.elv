@@ -21,7 +21,6 @@ set E:BAT_STYLE = plain
 set E:BAT_THEME = ansi
 # set E:DOCKER_DEFAULT_PLATFORM = linux/amd64
 set E:EDITOR = /opt/homebrew/bin/vim
-set E:JAVA_HOME = /opt/homebrew/opt/openjdk/libexec/openjdk.jdk/Contents/Home
 set E:LESS = '-i --incsearch -m'
 set E:PAGER = /opt/homebrew/bin/less
 set E:RIPGREP_CONFIG_PATH = $E:HOME/.config/ripgreprc
@@ -93,13 +92,6 @@ set edit:completion:arg-completer[az-act-set] = { |@args|
     | each { |s| edit:complex-candidate $s[name] &display=(if (put $s[isDefault]) { styled $s[name] green } else { put $s[name] }) }
 }
 
-# Bazel
-fn bzl-su {
-  var dir = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs
-  mkdir -p $dir
-  ln -s /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk $dir
-}
-
 # Command
 fn cmd-edit {
   var tmp = (path:temp-file '*.elv')
@@ -149,11 +141,6 @@ fn p { |f|
 fn dir-size { dust -d 1 }
 fn e { |@a| $E:EDITOR $@a }
 fn fd { |@a| e:fd -c never $@a }
-fn rmr { |f| rm -fr $f }
-set edit:completion:arg-completer[rmr] = { |@args|
-  fd . -H -d 1 --no-ignore --strip-cwd-prefix ^
-    | from-lines
-}
 fn file-yank { |f| pbcopy < $f }
 set edit:completion:arg-completer[file-yank] = { |@args|
   rg --files ^
@@ -173,16 +160,11 @@ fn gl { |&c=10| git log --all --decorate --graph --format=format:'%Cblue%h %Cres
 # Go
 fn go-up { go get -u; go mod tidy }
 
-# Java
-fn java-su {
-  sudo ln -s /opt/homebrew/opt/openjdk/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk.jdk
-}
-
 # JetBrains
 fn jb-rm { |a|
   var dirs = ['Application Support/JetBrains' 'Caches/JetBrains' 'Logs/JetBrains']
   for d $dirs {
-    rm -fr $E:HOME/Library/$d/$a
+    rm -rf $E:HOME/Library/$d/$a
   }
 }
 set edit:completion:arg-completer[jb-rm] = { |@args|
@@ -197,7 +179,7 @@ fn npm-up { npm-check-updates --deep -i }
 fn node-clean {
   fd -HI --prune node_modules ^
     | from-lines ^
-    | peach { |d| rm -fr $d }
+    | peach { |d| rm -rf $d }
 }
 
 # Packages
@@ -270,31 +252,6 @@ fn py-up {
   pip install -r requirements.txt
   py-d
 }
-
-# Pulumi
-fn pu-res { |@args|
-  pulumi stack export ^
-    | from-json ^
-    | put (one)[deployment][resources] ^
-    | each { |r| put $r[urn] } (one)
-}
-
-fn pu-des-t { |r| pulumi destroy -t $r }
-set edit:completion:arg-completer[pu-des-t] = $pu-res~
-
-fn pu-stk-sel { |s| pulumi stack select $s }
-set edit:completion:arg-completer[pu-stk-sel] = { |@args|
-  pulumi stack ls --json ^
-    | from-json ^
-    | all (one) ^
-    | each { |s| edit:complex-candidate $s[name] &display=(if (put $s[current]) { styled $s[name] green } else { put $s[name] }) }
-}
-
-fn pu-sta-del { |r| pulumi state delete $r }
-set edit:completion:arg-completer[pu-sta-del] = $pu-res~
-
-fn pu-up-t { |t| pulumi up -t $t }
-set edit:completion:arg-completer[pu-up-t] = $pu-res~
 
 # Shell
 fn env-ls {
