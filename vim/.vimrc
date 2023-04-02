@@ -87,6 +87,7 @@ nmap == :Neoformat<cr>
 
 nmap <leader>c :make<cr>
 nmap <leader>l :Explore<cr>
+nmap <leader>f :grep<space>
 nmap <leader>q :q<cr>
 nmap <leader>w :w<cr>
 

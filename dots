@@ -55,7 +55,7 @@ setup)
 	;;
 config)
 	for_config link
-	dotnet fsi tools/keybinds.fsx
+	dotnet fsi keybinds.fsx
 	;;
 unconfig)
 	for_config unlink

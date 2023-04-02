@@ -96,14 +96,12 @@ module JetBrains =
             |> (+) [ "</keymap>" ]
 
         List.map
-            (fun (p: string) -> p.Split "/")
-            [ "DataGrip2022.3/keymaps"
-              "GoLand2022.3/keymaps"
-              "PyCharm2022.3/jba_config/mac.keymaps"
-              "Rider2022.3/keymaps"
-              "WebStorm2022.3/jba_config/mac.keymaps" ]
-        |> List.map Path.Combine
-        |> List.map (fun p -> Path.Combine("Library", "Application Support", "JetBrains", p, "bruno-roque.xml"))
+            (fun p -> Path.Combine("Library", "Application Support", "JetBrains", p, "keymaps", "bruno-roque.xml"))
+            [ "DataGrip2022.3"
+              "GoLand2022.3"
+              "PyCharm2023.1"
+              "Rider2022.3"
+              "WebStorm2022.3" ]
         |> List.map (fun p -> { name = p; content = content })
 
 module VsCode =

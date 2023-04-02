@@ -10,7 +10,6 @@ pager = delta
 hunk-header-style = omit
 light = true
 navigate = true
-right-arrow = ->
 
 [diff]
 algorithm = histogram
