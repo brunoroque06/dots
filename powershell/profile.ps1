@@ -1,8 +1,10 @@
 $ErrorActionPreference = 'Stop'
 
-# Import-Module CompletionPredictor
-Import-Module PSScriptAnalyzer
-Import-Module ZLocation
+function Setup {
+    # Import-Module CompletionPredictor
+    Install-Module PSScriptAnalyzer
+    Install-Module ZLocation
+}
 
 # https://en.wikipedia.org/wiki/ANSI_escape_code#Colors
 $esc = "`e"
@@ -40,16 +42,6 @@ Set-PSReadLineKeyHandler -Key Ctrl+n -Function HistorySearchForward
 Set-PSReadLineKeyHandler -Key UpArrow -Function HistorySearchBackward
 Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
 
-function Fmt {
-    Param(
-        [Parameter(Mandatory)]
-        [IO.FileInfo]$file
-    )
-    $cnt = [IO.File]::ReadAllText($file.FullName);
-    $fmted = Invoke-Formatter -ScriptDefinition $cnt;
-    Set-Content $file.FullName $fmted -NoNewline;
-}
-
 Set-PSReadLineOption -Colors @{
     Command                = "$green"
     Comment                = "$yellow"
@@ -73,14 +65,45 @@ $PSStyle.FileInfo.Directory = "$black"
 $PSStyle.FileInfo.SymbolicLink = "$blue"
 $PSStyle.FileInfo.Executable = "$red"
 
-function Re { Switch-Process pwsh }
+function def {
+    Param(
+        [Parameter(Mandatory)]
+        [string]$Cmd
+    )
+		(Get-Command $Cmd).Definition
+}
+function fd {
+    Param(
+        [Parameter(Mandatory)]
+        [string]$File
+    )
+    Get-ChildItem –Path $file -Recurse
+}
+function fmt {
+    Param(
+        [Parameter(Mandatory)]
+        [IO.FileInfo]$File
+    )
+    $path = [System.IO.Path]::Combine($pwd, $File)
+    $cnt = [IO.File]::ReadAllText($path);
+    $fmted = Invoke-Formatter -ScriptDefinition $cnt;
+    Set-Content $path $fmted -NoNewline;
+}
 function gd { git diff }
 function gs { git status -s }
+function re { Switch-Process pwsh }
+function rg {
+    Param(
+        [Parameter(Mandatory)]
+        [string]$Pattern
+    )
+    Select-String -Path * -Pattern $Pattern
+}
 
 Set-Alias .. cd..
 Set-Alias e vim
 Set-Alias l Get-ChildItem
+Set-Alias rm Remove-Item
 Set-Alias touch New-Item
-
-carapace _carapace | Out-String | Invoke-Expression
+Set-Alias which Get-Command
 

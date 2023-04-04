@@ -191,17 +191,14 @@ fn brew-up {
   brew doctor
 }
 fn pkg-su {
-  put csharprepl dotnet-outdated-tool dotnet-fsharplint fantomas-tool ^
+  put csharpier csharprepl dotnet-outdated-tool dotnet-fsharplint fantomas-tool ^
     | each { |p| try { dotnet tool install -g $p } catch { } }
 
   npm install -g ^
-    dockerfile-language-server-nodejs ^
     npm ^
     npm-check-updates ^
     paperspace-node ^
-    typescript ^
-    typescript-language-server ^
-    vscode-langservers-extracted
+    typescript
 }
 fn pkg-up {
   brew-up
