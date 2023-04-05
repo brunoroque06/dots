@@ -75,9 +75,12 @@ function def {
 function fd {
     Param(
         [Parameter(Mandatory)]
-        [string]$File
+        [string]$Pattern
     )
-    Get-ChildItem –Path $file -Recurse
+    git ls-files `
+    | Get-ChildItem -Hidden `
+    | where Name -Match $Pattern `
+    | select FullName
 }
 function fmt {
     Param(
@@ -97,7 +100,9 @@ function rg {
         [Parameter(Mandatory)]
         [string]$Pattern
     )
-    Select-String -Path * -Pattern $Pattern
+    git ls-files `
+    | Get-ChildItem -Hidden `
+    | Select-String -Pattern $Pattern
 }
 
 Set-Alias .. cd..

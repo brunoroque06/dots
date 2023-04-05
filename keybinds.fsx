@@ -98,9 +98,9 @@ module JetBrains =
         List.map
             (fun p -> Path.Combine("Library", "Application Support", "JetBrains", p, "keymaps", "bruno-roque.xml"))
             [ "DataGrip2023.1"
-              "GoLand2022.3"
+              "GoLand2023.1"
               "PyCharm2023.1"
-              "Rider2022.3"
+              "Rider2023.1"
               "WebStorm2023.1" ]
         |> List.map (fun p -> { name = p; content = content })
 
