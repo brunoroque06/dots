@@ -191,7 +191,7 @@ fn brew-up {
   brew doctor
 }
 fn pkg-su {
-  put csharpier csharprepl dotnet-outdated-tool dotnet-fsharplint fantomas-tool ^
+  put csharpier csharprepl dotnet-outdated-tool fantomas-tool ^
     | each { |p| try { dotnet tool install -g $p } catch { } }
 
   npm install -g ^

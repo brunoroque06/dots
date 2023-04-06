@@ -1,0 +1,9 @@
+#!/usr/bin/env elvish
+
+# @raycast.schemaVersion 1
+# @raycast.title Clean URL
+# @raycast.mode compact
+# @raycast.icon 🧹
+
+use str
+str:split '?' (pbpaste) | take 1 | printf (one) | pbcopy
