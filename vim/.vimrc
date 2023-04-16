@@ -91,7 +91,8 @@ nmap <leader>f :grep<space>
 nmap <leader>q :q<cr>
 nmap <leader>w :w<cr>
 
-autocmd filetype sh setlocal makeprg=shellcheck\ -f\ gcc\ %
+autocmd FileType markdown setlocal spell
+autocmd FileType sh setlocal makeprg=shellcheck\ -f\ gcc\ %
 
 defcompile
 

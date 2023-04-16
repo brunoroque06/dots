@@ -40,6 +40,7 @@
   "javascript.updateImportsOnFileMove.enabled": "always",
   "javascript.validate.enable": true,
   "markdown.preview.fontFamily": "Rubik",
+  "plantuml.exportSubFolder": false,
   "plantuml.render": "PlantUMLServer",
   "plantuml.server": "https://www.plantuml.com/plantuml",
   "python.analysis.typeCheckingMode": "basic",

@@ -1,5 +1,8 @@
 $ErrorActionPreference = 'Stop'
 
+$env:EDITOR = '/opt/homebrew/bin/vim'
+$env:VISUAL = $env:EDITOR
+
 function Setup {
     # Import-Module CompletionPredictor
     Install-Module PSScriptAnalyzer
@@ -65,6 +68,13 @@ $PSStyle.FileInfo.Directory = "$black"
 $PSStyle.FileInfo.SymbolicLink = "$blue"
 $PSStyle.FileInfo.Executable = "$red"
 
+Set-PSReadLineKeyHandler -Chord Ctrl+l -ScriptBlock {
+    [Microsoft.PowerShell.PSConsoleReadLine]::DeleteLine()
+    [Microsoft.PowerShell.PSConsoleReadLine]::Insert("z ")
+    [Microsoft.PowerShell.PSConsoleReadLine]::MenuComplete()
+}
+Set-PSReadLineKeyHandler -Chord Ctrl+t -Function ViEditVisually
+
 function def {
     Param(
         [Parameter(Mandatory)]
@@ -92,8 +102,14 @@ function fmt {
     $fmted = Invoke-Formatter -ScriptDefinition $cnt;
     Set-Content $path $fmted -NoNewline;
 }
-function gd { git diff }
-function gs { git status -s }
+function gid { git diff }
+function gil {
+    Param(
+        [int]$Num = 10
+    )
+    git log --all --decorate --graph --format=format:'%Cblue%h %Creset- %Cgreen%ar %Creset%s %C(dim)- %an%C(auto)%d' -$Num
+}
+function gis { git status -s }
 function re { Switch-Process pwsh }
 function rg {
     Param(

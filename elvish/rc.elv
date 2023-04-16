@@ -17,15 +17,15 @@ set paths = [
 ]
 var _paths = $nil
 
-set E:BAT_STYLE = plain
-set E:BAT_THEME = ansi
-# set E:DOCKER_DEFAULT_PLATFORM = linux/amd64
-set E:EDITOR = /opt/homebrew/bin/vim
-set E:LESS = '-i --incsearch -m'
-set E:PAGER = /opt/homebrew/bin/less
-set E:RIPGREP_CONFIG_PATH = $E:HOME/.config/ripgreprc
-set E:VISUAL = $E:EDITOR
-# set E:REQUESTS_CA_BUNDLE = $E:HOME/.proxyman/proxyman-ca.pem # proxyman with python
+set-env BAT_STYLE plain
+set-env BAT_THEME ansi
+# set-env DOCKER_DEFAULT_PLATFORM linux/amd64
+set-env EDITOR /opt/homebrew/bin/vim
+set-env LESS '-i --incsearch -m'
+set-env PAGER /opt/homebrew/bin/less
+set-env RIPGREP_CONFIG_PATH $E:HOME/.config/ripgreprc
+set-env VISUAL $E:EDITOR
+# set-env REQUESTS_CA_BUNDLE $E:HOME/.proxyman/proxyman-ca.pem # proxyman with python
 
 var _dur = 0
 var _err = $false
@@ -153,9 +153,9 @@ fn t { |&l=2 @d|
 
 # Git
 fn git-cfg { git config --list --show-origin }
-fn gd { git diff }
-fn gs { git status -s }
-fn gl { |&c=10| git log --all --decorate --graph --format=format:'%Cblue%h %Creset- %Cgreen%ar %Creset%s %C(dim)- %an%C(auto)%d' -$c }
+fn gid { git diff }
+fn gis { git status -s }
+fn gil { |&c=10| git log --all --decorate --graph --format=format:'%Cblue%h %Creset- %Cgreen%ar %Creset%s %C(dim)- %an%C(auto)%d' -$c }
 
 # Go
 fn go-up { go get -u; go mod tidy }
@@ -197,8 +197,7 @@ fn pkg-su {
   npm install -g ^
     npm ^
     npm-check-updates ^
-    paperspace-node ^
-    typescript
+    paperspace-node
 }
 fn pkg-up {
   brew-up
