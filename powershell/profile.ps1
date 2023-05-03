@@ -1,12 +1,17 @@
 $ErrorActionPreference = 'Stop'
 
-$env:EDITOR = '/opt/homebrew/bin/vim'
+$env:EDITOR = 'vim'
+$Env:FZF_DEFAULT_OPTS = '--color bw --height ~40% --layout=default'
 $env:VISUAL = $env:EDITOR
 
 function Setup {
     # Import-Module CompletionPredictor
+    # Install-Module Microsoft.PowerShell.ConsoleGuiTools
+		If ($IsWindows) { go install github.com/junegunn/fzf@latest; fzf --version }
+    Install-Module PSFzf
     Install-Module PSScriptAnalyzer
     Install-Module ZLocation
+    Get-Module -l
 }
 
 # https://en.wikipedia.org/wiki/ANSI_escape_code#Colors
@@ -39,12 +44,6 @@ $ReadLineOption = @{
 }
 Set-PSReadLineOption @ReadLineOption
 
-Set-PSReadLineKeyHandler -Key Tab -Function MenuComplete
-Set-PSReadLineKeyHandler -Key Ctrl+p -Function HistorySearchBackward
-Set-PSReadLineKeyHandler -Key Ctrl+n -Function HistorySearchForward
-Set-PSReadLineKeyHandler -Key UpArrow -Function HistorySearchBackward
-Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
-
 Set-PSReadLineOption -Colors @{
     Command                = "$green"
     Comment                = "$yellow"
@@ -67,13 +66,6 @@ Set-PSReadLineOption -Colors @{
 $PSStyle.FileInfo.Directory = "$black"
 $PSStyle.FileInfo.SymbolicLink = "$blue"
 $PSStyle.FileInfo.Executable = "$red"
-
-Set-PSReadLineKeyHandler -Chord Ctrl+l -ScriptBlock {
-    [Microsoft.PowerShell.PSConsoleReadLine]::DeleteLine()
-    [Microsoft.PowerShell.PSConsoleReadLine]::Insert("z ")
-    [Microsoft.PowerShell.PSConsoleReadLine]::MenuComplete()
-}
-Set-PSReadLineKeyHandler -Chord Ctrl+t -Function ViEditVisually
 
 function def {
     Param(
@@ -127,3 +119,24 @@ Set-Alias l Get-ChildItem
 Set-Alias rm Remove-Item
 Set-Alias touch New-Item
 Set-Alias which Get-Command
+
+Set-PSReadLineKeyHandler -Key Tab -Function MenuComplete
+Set-PSReadLineKeyHandler -Key Ctrl+p -Function HistorySearchBackward
+Set-PSReadLineKeyHandler -Key Ctrl+n -Function HistorySearchForward
+Set-PSReadLineKeyHandler -Key UpArrow -Function HistorySearchBackward
+Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
+
+Set-PSReadLineKeyHandler -Chord Ctrl+l -ScriptBlock {
+    [Microsoft.PowerShell.PSConsoleReadLine]::DeleteLine()
+    [Microsoft.PowerShell.PSConsoleReadLine]::Insert('Invoke-FuzzyZLocation')
+    [Microsoft.PowerShell.PSConsoleReadLine]::AcceptLine()
+}
+Set-PsFzfOption -PSReadlineChordReverseHistory 'Ctrl+r'
+Set-PSReadLineKeyHandler -Chord Ctrl+t -Function ViEditVisually
+
+Register-ArgumentCompleter -Native -CommandName dotnet -ScriptBlock {
+    param($commandName, $wordToComplete, $cursorPosition)
+    dotnet complete --position $cursorPosition "$wordToComplete" | ForEach-Object {
+        [System.Management.Automation.CompletionResult]::new($_, $_, 'ParameterValue', $_)
+    }
+}

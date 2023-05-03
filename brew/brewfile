@@ -15,6 +15,7 @@ brew "dust"
 brew "elvish", args: ["HEAD"]
 brew "exa"
 brew "fd"
+brew "fzf"
 brew "git"
 brew "git-delta"
 brew "git-lfs"

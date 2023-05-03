@@ -1,6 +1,6 @@
 vim9script
 
-const packs	= expand($"{split(&packpath, ",")[0]}/pack/z/start")
+const packs = expand($"{split(&packpath, ",")[0]}/pack/z/start")
 
 def g:PackUninstall()
 	confirm($"Deleting {packs}")

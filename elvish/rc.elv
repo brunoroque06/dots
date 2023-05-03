@@ -129,6 +129,9 @@ fn doc-su {
 # Dotnet
 fn dot-csi { csharprepl -t themes/VisualStudio_Light.json }
 fn dot-up { dotnet outdated --upgrade }
+set edit:completion:arg-completer[dotnet] = { |@args|
+	dotnet complete (str:join ' ' $args) | from-lines
+}
 
 # File System
 fn p { |f|

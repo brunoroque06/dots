@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-
-# @raycast.schemaVersion 1
-# @raycast.title Time
-# @raycast.mode compact
-# @raycast.icon ⏳
-
-echo "*/20 * * * * osascript -e 'display notification \"...\" with title \"Time\"'" | crontab -
