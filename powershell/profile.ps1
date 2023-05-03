@@ -1,18 +1,8 @@
 $ErrorActionPreference = 'Stop'
 
 $env:EDITOR = 'vim'
-$Env:FZF_DEFAULT_OPTS = '--color bw --height ~40% --layout=default'
+$Env:FZF_DEFAULT_OPTS = '--color bw --height ~40% --layout=reverse'
 $env:VISUAL = $env:EDITOR
-
-function Setup {
-    # Import-Module CompletionPredictor
-    # Install-Module Microsoft.PowerShell.ConsoleGuiTools
-		If ($IsWindows) { go install github.com/junegunn/fzf@latest; fzf --version }
-    Install-Module PSFzf
-    Install-Module PSScriptAnalyzer
-    Install-Module ZLocation
-    Get-Module -l
-}
 
 # https://en.wikipedia.org/wiki/ANSI_escape_code#Colors
 $esc = "`e"
@@ -29,9 +19,9 @@ $bgblue = "$esc[44m"
 $default = "$esc[0m"
 
 function Prompt {
-    $path = if ($pwd.Path -eq $home) { '~' } else { Split-Path -Path $pwd -Leaf }
+    $dir = if ($pwd.Path -eq $home) { '~' } else { Split-Path -Path $pwd -Leaf }
     $exitCode = if ($?) { $bgblue } else { $bgred }
-    "$exitCode $default $blue$path $magenta~> $default"
+    "$exitCode $default $blue$dir $magenta~> $default"
 }
 
 $ReadLineOption = @{
@@ -67,14 +57,25 @@ $PSStyle.FileInfo.Directory = "$black"
 $PSStyle.FileInfo.SymbolicLink = "$blue"
 $PSStyle.FileInfo.Executable = "$red"
 
-function def {
+function Get-CommandDef {
     Param(
         [Parameter(Mandatory)]
         [string]$Cmd
     )
 		(Get-Command $Cmd).Definition
 }
-function fd {
+
+function Invoke-Setup {
+    # Import-Module CompletionPredictor
+    # Install-Module Microsoft.PowerShell.ConsoleGuiTools
+    If ($IsWindows) { go install github.com/junegunn/fzf@latest; fzf --version }
+    Install-Module PSFzf
+    Install-Module PSScriptAnalyzer
+    Install-Module ZLocation
+    Get-Module -l
+}
+
+function Find-File {
     Param(
         [Parameter(Mandatory)]
         [string]$Pattern
@@ -84,26 +85,8 @@ function fd {
     | where Name -Match $Pattern `
     | select FullName
 }
-function fmt {
-    Param(
-        [Parameter(Mandatory)]
-        [IO.FileInfo]$File
-    )
-    $path = [System.IO.Path]::Combine($pwd, $File)
-    $cnt = [IO.File]::ReadAllText($path);
-    $fmted = Invoke-Formatter -ScriptDefinition $cnt;
-    Set-Content $path $fmted -NoNewline;
-}
-function gid { git diff }
-function gil {
-    Param(
-        [int]$Num = 10
-    )
-    git log --all --decorate --graph --format=format:'%Cblue%h %Creset- %Cgreen%ar %Creset%s %C(dim)- %an%C(auto)%d' -$Num
-}
-function gis { git status -s }
-function re { Switch-Process pwsh }
-function rg {
+
+function Find-String {
     Param(
         [Parameter(Mandatory)]
         [string]$Pattern
@@ -113,13 +96,43 @@ function rg {
     | Select-String -Pattern $Pattern
 }
 
+function Format-Pwsh {
+    Param(
+        [Parameter(Mandatory)]
+        [IO.FileInfo]$File
+    )
+    $path = [System.IO.Path]::Combine($pwd, $File)
+    $cnt = [IO.File]::ReadAllText($path);
+    $fmted = Invoke-Formatter -ScriptDefinition $cnt;
+    Set-Content $path $fmted -NoNewline;
+}
+
+function Get-GitDiff { git diff }
+function Get-GitLog {
+    Param(
+        [int]$Num = 10
+    )
+    git log --all --decorate --graph --format=format:'%Cblue%h %Creset- %Cgreen%ar %Creset%s %C(dim)- %an%C(auto)%d' -$Num
+}
+function Get-GitStatus { git status -s }
+
+function Restart-Pwsh { Switch-Process pwsh }
+
 Set-Alias .. cd..
 Set-Alias e vim
-Set-Alias l Get-ChildItem
-Set-Alias rm Remove-Item
-Set-Alias touch New-Item
-Set-Alias which Get-Command
+Set-Alias ff Find-File
+Set-Alias fs Find-String
+# Set-Alias gc Get-Command
+Set-Alias gcd Get-CommandDef
+# Set-Alias gci Get-ChildItem
+Set-Alias ggd Get-GitDiff
+Set-Alias ggl Get-GitLog
+Set-Alias ggs Get-GitStatus
+# Set-Alias ni New-Item
+# Set-Alias ri Remove-Item
+Set-Alias re Restart-Pwsh
 
+# Set-PSReadLineKeyHandler -Key Tab -ScriptBlock { Invoke-FzfTabCompletion }
 Set-PSReadLineKeyHandler -Key Tab -Function MenuComplete
 Set-PSReadLineKeyHandler -Key Ctrl+p -Function HistorySearchBackward
 Set-PSReadLineKeyHandler -Key Ctrl+n -Function HistorySearchForward

@@ -6,6 +6,7 @@ use str
 
 set paths = [
   /opt/homebrew/bin
+  /opt/homebrew/opt/libpq/bin
   /usr/local/bin
   /usr/bin
   /bin
