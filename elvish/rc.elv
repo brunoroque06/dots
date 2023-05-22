@@ -24,9 +24,9 @@ set-env BAT_THEME ansi
 set-env EDITOR /opt/homebrew/bin/vim
 set-env LESS '-i --incsearch -m'
 set-env PAGER /opt/homebrew/bin/less
+# set-env REQUESTS_CA_BUNDLE $E:HOME/.proxyman/proxyman-ca.pem # proxyman with python
 set-env RIPGREP_CONFIG_PATH $E:HOME/.config/ripgreprc
 set-env VISUAL $E:EDITOR
-# set-env REQUESTS_CA_BUNDLE $E:HOME/.proxyman/proxyman-ca.pem # proxyman with python
 
 var _dur = 0
 var _err = $false
@@ -214,11 +214,6 @@ fn pkg-up {
 
   npm-check-updates -g
 }
-
-# PostgreSQL
-fn pg-up { postgres -D /usr/local/var/postgres }
-fn pg-reset { brew uninstall --ignore-dependencies postgresql; rm -fr /usr/local/var/postgres; brew install postgresql; /usr/local/bin/timescaledb_move.sh }
-fn pg-upgrade { brew postgresql-upgrade-database }
 
 # Python
 fn py-a {

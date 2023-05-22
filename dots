@@ -18,7 +18,7 @@ setup() {
 	fi
 
 	if ! grep -q homebrew "$HOME"/.bash_profile; then
-		printf 'export PATH=/opt/homebrew/bin:%s\n' "$PATH" >"$HOME/.bash_profile"
+		printf 'export PATH=/opt/homebrew/bin:/usr/local/bin:%s\n' "$PATH" >"$HOME/.bash_profile"
 	fi
 }
 

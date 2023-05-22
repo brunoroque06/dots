@@ -1,8 +1,10 @@
-#!/usr/bin/env elvish
+#!/usr/bin/env pwsh
 
 # @raycast.schemaVersion 1
 # @raycast.title Paperspace Show
 # @raycast.mode compact
 # @raycast.icon 🕹
 
-paperspace machines show --machineId ps5ljod8i | from-json | put (one)[state]
+paperspace machines show --machineId ps5ljod8i `
+| ConvertFrom-Json `
+| Select-Object state
