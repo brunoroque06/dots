@@ -1,44 +1,69 @@
 $ErrorActionPreference = 'Stop'
 
-$env:BAT_STYLE = 'plain'
-$env:BAT_THEME = 'ansi'
 $env:EDITOR = 'vim'
-$env:FZF_DEFAULT_OPTS = '--color bw --height ~40% --layout=reverse'
-$env:LESS = '-i --incsearch -m'
-$env:PAGER = '/opt/homebrew/bin/less'
-$env:RIPGREP_CONFIG_PATH = "$HOME/.config/ripgreprc"
-$env:PATH = (
-    '/opt/homebrew/bin',
-    '/opt/homebrew/opt/libpq/bin',
-    '/usr/local/bin',
-    '/usr/bin',
-    '/bin',
-    '/usr/sbin',
-    '/sbin',
-    "$HOME/go/bin",
-    '/usr/local/share/dotnet',
-    "$HOME/.dotnet/tools"
-) -join ':'
 $env:VISUAL = $env:EDITOR
+if ($IsMacOS) {
+    $env:BAT_STYLE = 'plain'
+    $env:BAT_THEME = 'ansi'
+    $env:FZF_DEFAULT_OPTS = '--color bw --height ~40% --layout=reverse'
+    $env:LESS = '-i --incsearch -m'
+    $env:PAGER = '/opt/homebrew/bin/less'
+    $env:RIPGREP_CONFIG_PATH = "$HOME/.config/ripgreprc"
+    $env:PATH = (
+        '/opt/homebrew/bin',
+        '/opt/homebrew/opt/libpq/bin',
+        '/usr/local/bin',
+        '/usr/bin',
+        '/bin',
+        '/usr/sbin',
+        '/sbin',
+        "$HOME/go/bin",
+        '/usr/local/share/dotnet',
+        "$HOME/.dotnet/tools"
+    ) -join ':'
+}
 
 # https://en.wikipedia.org/wiki/ANSI_escape_code#Colors
-$esc = "`e"
-$black = "$esc[30m"
-$red = "$esc[31m"
-$green = "$esc[32m"
-$yellow = "$esc[33m"
-$blue = "$esc[34m"
-$magenta = "$esc[35m"
-$white = "$esc[37m"
-$bgblack = "$esc[40m"
-$bgred = "$esc[41m"
-$bgblue = "$esc[44m"
-$default = "$esc[0m"
+$black = "`e[30m"
+$red = "`e[31m"
+$green = "`e[32m"
+$yellow = "`e[33m"
+$blue = "`e[34m"
+$magenta = "`e[35m"
+$white = "`e[37m"
+$bgblack = "`e[40m"
+$bgred = "`e[41m"
+$bgblue = "`e[44m"
+$default = "`e[0m"
+
+$promptStart = "`e]133;A`a"
+$cmdStart = "`e]133;C`a"
+
+function Get-PwdLeaf {
+    if ($pwd.Path -eq $HOME) {
+        return '~'
+    }
+    if ($pwd.Path -eq '/') {
+        return $pwd.Path
+    }
+    return Split-Path -Leaf $pwd
+}
+function Set-Title {
+    Param(
+        [Parameter(Mandatory)]
+        [string]$Title
+    )
+    Write-Host -NoNewline "`e]0;$Title`a"
+}
 
 function Prompt {
-    $dir = if ($pwd.Path -eq $HOME) { '~' } else { Split-Path -Path $pwd -Leaf }
-    $exitCode = if ($?) { $bgblue } else { $bgred }
-    "$exitCode $default $blue$dir $magenta~> $default"
+    $lastCmd = Get-History -Count 1
+    $exitCode = if ($lastCmd.ExecutionStatus -eq 'Failed') { $bgred } else { $bgblue }
+    $sec = ($lastCmd.EndExecutionTime - $lastCmd.StartExecutionTime).TotalSeconds
+    $dur = if ($sec -ge 5) { '{0:N0}s ' -f $sec }
+    $dir = Get-PwdLeaf
+    Set-Title $dir
+    "$promptStart$exitCode $default $blue$dir $yellow$dur$magenta~> $default"
 }
 
 $ReadLineOption = @{
@@ -73,6 +98,13 @@ Set-PSReadLineOption -Colors @{
 $PSStyle.FileInfo.Directory = "$black"
 $PSStyle.FileInfo.SymbolicLink = "$blue"
 $PSStyle.FileInfo.Executable = "$red"
+
+Set-PSReadLineKeyHandler Enter -ScriptBlock {
+    $cmd = $null; [Microsoft.PowerShell.PSConsoleReadLine]::GetBufferState([ref] $cmd, [ref] $null)
+    if ($cmd) { Set-Title $cmd.Split()[0] }
+    Write-Host -NoNewline $cmdStart
+    [Microsoft.PowerShell.PSConsoleReadLine]::AcceptLine()
+}
 
 # Set-PSReadLineKeyHandler -Key Tab -ScriptBlock { Invoke-FzfTabCompletion }
 Set-PSReadLineKeyHandler -Key Tab -Function MenuComplete

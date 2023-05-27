@@ -28,14 +28,6 @@ set-env PAGER /opt/homebrew/bin/less
 set-env RIPGREP_CONFIG_PATH $E:HOME/.config/ripgreprc
 set-env VISUAL $E:EDITOR
 
-var _dur = 0
-var _err = $false
-
-set edit:after-command = [
-  { |m| set _dur = $m[duration] }
-  { |m| set _err = (not-eq $m[error] $nil) }
-]
-
 fn osc { |c| print "\e]"$c"\a" }
 
 fn send-title { |t| osc '0;'$t }
@@ -47,14 +39,19 @@ fn send-pwd {
   osc '7;'(put $pwd)
 }
 
-set edit:before-readline = [
-  { send-pwd }
-  { osc '133;A' }
+var _dur = 0
+var _err = $false
+
+set edit:after-command = [
+  { |_| osc '133;A' }
+  { |_| send-pwd }
+  { |m| set _dur = $m[duration] }
+  { |m| set _err = (not-eq $m[error] $nil) }
 ]
 
 set edit:after-readline = [
+  { |_| osc '133;C' }
   { |c| send-title (str:split ' ' $c | take 1) }
-  { |c| osc '133;C' }
 ]
 
 set after-chdir = [
