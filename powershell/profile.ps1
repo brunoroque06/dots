@@ -1,11 +1,11 @@
 $ErrorActionPreference = 'Stop'
 
 $env:EDITOR = 'vim'
+$env:FZF_DEFAULT_OPTS = '--color bw --height ~40% --layout=reverse'
 $env:VISUAL = $env:EDITOR
 if ($IsMacOS) {
     $env:BAT_STYLE = 'plain'
     $env:BAT_THEME = 'ansi'
-    $env:FZF_DEFAULT_OPTS = '--color bw --height ~40% --layout=reverse'
     $env:LESS = '-i --incsearch -m'
     $env:PAGER = '/opt/homebrew/bin/less'
     $env:RIPGREP_CONFIG_PATH = "$HOME/.config/ripgreprc"
@@ -48,22 +48,34 @@ function Get-PwdLeaf {
     }
     return Split-Path -Leaf $pwd
 }
-function Set-Title {
+function Set-TerminalDirectory {
+    Write-Host -NoNewline ("`e]7;{0}`a" -f $pwd.Path)
+}
+function Set-TerminalTitle {
     Param(
         [Parameter(Mandatory)]
         [string]$Title
     )
     Write-Host -NoNewline "`e]0;$Title`a"
 }
+function Get-LastCommandDuration {
+    $duration = (Get-History -Count 1).Duration
+    if ($duration.TotalSeconds -lt 5) {
+        return
+    }
+    if ($duration.TotalMinutes -lt 1) {
+        return '{0:N0}s ' -f $duration.TotalSeconds
+    }
+    '{0:N0}m {0:N0}s ' -f $duration.TotalMinutes, $duration.Seconds
+}
 
 function Prompt {
     $lastCmd = Get-History -Count 1
     $exitCode = if ($lastCmd.ExecutionStatus -eq 'Failed') { $bgred } else { $bgblue }
-    $sec = ($lastCmd.EndExecutionTime - $lastCmd.StartExecutionTime).TotalSeconds
-    $dur = if ($sec -ge 5) { '{0:N0}s ' -f $sec }
     $dir = Get-PwdLeaf
-    Set-Title $dir
-    "$promptStart$exitCode $default $blue$dir $yellow$dur$magenta~> $default"
+    Set-TerminalDirectory
+    Set-TerminalTitle $dir
+    "$promptStart$exitCode $default $blue$dir $yellow$(Get-LastCommandDuration)$magenta~> $default"
 }
 
 $ReadLineOption = @{
@@ -101,7 +113,7 @@ $PSStyle.FileInfo.Executable = "$red"
 
 Set-PSReadLineKeyHandler Enter -ScriptBlock {
     $cmd = $null; [Microsoft.PowerShell.PSConsoleReadLine]::GetBufferState([ref] $cmd, [ref] $null)
-    if ($cmd) { Set-Title $cmd.Split()[0] }
+    if ($cmd) { Set-TerminalTitle $cmd.Split()[0] }
     Write-Host -NoNewline $cmdStart
     [Microsoft.PowerShell.PSConsoleReadLine]::AcceptLine()
 }
@@ -120,6 +132,13 @@ Set-PSReadLineKeyHandler -Chord Ctrl+l -ScriptBlock {
 }
 Set-PsFzfOption -PSReadlineChordReverseHistory 'Ctrl+r'
 Set-PSReadLineKeyHandler -Chord Ctrl+t -Function ViEditVisually
+
+Set-PSReadLineKeyHandler -Chord Ctrl+o -ScriptBlock {
+    $last = Get-History -Count 1
+    $opts = @($last.CommandLine) + $last.CommandLine.Split()
+    $sel = $opts | Invoke-Fzf
+    [Microsoft.PowerShell.PSConsoleReadLine]::Insert($sel)
+}
 
 # carapace _carapace | Out-String | Invoke-Expression
 
@@ -240,7 +259,7 @@ function Initialize-Powershell {
     Install-Module ZLocation
     Get-Module -l
 }
-function Restart-Powershell { Switch-Process pwsh }
+function Restart-Powershell { Switch-Process -WithCommand 'pwsh','-WorkingDirectory',$pwd }
 function Update-Powershell { Update-Module; Update-Help }
 
 function Find-String {
