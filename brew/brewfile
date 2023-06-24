@@ -24,7 +24,7 @@ brew "gnu-tar"
 brew "go"
 brew "hexyl"
 brew "less"
-brew "libpg"
+brew "libpq"
 brew "marp-cli"
 brew "mas"
 brew "node"
@@ -46,8 +46,9 @@ cask "appcleaner"
 cask "dash"
 cask "docker"
 cask "dotnet-sdk"
-cask "font-m-plus-1-code"
-cask "font-rambla"
+cask "font-cascadia-code"
+cask "font-sf-compact"
+cask "font-sf-mono"
 cask "font-sf-pro"
 cask "gitup"
 cask "google-chrome"
@@ -67,4 +68,4 @@ mas "Hush", id: 1544743900
 mas "Keys Multiplatform", id: 1494642810
 mas "Reeder", id: 1529448980
 mas "Wipr", id: 1320666476
-mas "rcmd • App Switcher", id: 1596283165
+mas "rcmd", id: 1596283165

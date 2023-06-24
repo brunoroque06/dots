@@ -1,0 +1,8 @@
+#!/usr/bin/env pwsh
+
+# @raycast.schemaVersion 1
+# @raycast.title Fun Get
+# @raycast.mode compact
+# @raycast.icon 🕹
+
+pspace machine get -F state ps5ljod8i

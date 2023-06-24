@@ -15,6 +15,7 @@ set paths = [
   $E:HOME/go/bin
   /usr/local/share/dotnet
   $E:HOME/.dotnet/tools
+  $E:HOME/.paperspace/bin
 ]
 var _paths = $nil
 
@@ -197,8 +198,7 @@ fn pkg-su {
 
   npm install -g ^
     npm ^
-    npm-check-updates ^
-    paperspace-node
+    npm-check-updates
 }
 fn pkg-up {
   brew-up

@@ -19,7 +19,8 @@ if ($IsMacOS) {
         '/sbin',
         "$HOME/go/bin",
         '/usr/local/share/dotnet',
-        "$HOME/.dotnet/tools"
+        "$HOME/.dotnet/tools",
+        "$HOME/.paperspace/bin"
     ) -join ':'
 }
 
@@ -40,12 +41,8 @@ $promptStart = "`e]133;A`a"
 $cmdStart = "`e]133;C`a"
 
 function Get-PwdLeaf {
-    if ($pwd.Path -eq $HOME) {
-        return '~'
-    }
-    if ($pwd.Path -eq '/') {
-        return $pwd.Path
-    }
+    if ($pwd.Path -eq $HOME) { return '~' }
+    if ($pwd.Path -eq '/') { return $pwd.Path }
     return Split-Path -Leaf $pwd
 }
 function Set-TerminalDirectory {
@@ -60,22 +57,19 @@ function Set-TerminalTitle {
 }
 function Get-LastCommandDuration {
     $duration = (Get-History -Count 1).Duration
-    if ($duration.TotalSeconds -lt 5) {
-        return
-    }
-    if ($duration.TotalMinutes -lt 1) {
-        return '{0:N0}s ' -f $duration.TotalSeconds
-    }
+    if ($duration.TotalSeconds -lt 5) { return }
+    if ($duration.TotalMinutes -lt 1) { return '{0:N0}s ' -f $duration.TotalSeconds }
     '{0:N0}m {0:N0}s ' -f $duration.TotalMinutes, $duration.Seconds
 }
 
 function Prompt {
-    $lastCmd = Get-History -Count 1
-    $exitCode = if ($lastCmd.ExecutionStatus -eq 'Failed') { $bgred } else { $bgblue }
+    $last = Get-History -Count 1
+    $exitCode = if ($last.ExecutionStatus -eq 'Failed') { $bgred } else { $bgblue }
     $dir = Get-PwdLeaf
     Set-TerminalDirectory
     Set-TerminalTitle $dir
-    "$promptStart$exitCode $default $blue$dir $yellow$(Get-LastCommandDuration)$magenta~> $default"
+    # "$promptStart$exitCode $default $blue$dir $yellow$(Get-LastCommandDuration)$magenta~> $default"
+    "$exitCode $default $blue$dir $yellow$(Get-LastCommandDuration)$magenta~> $default"
 }
 
 $ReadLineOption = @{
@@ -136,8 +130,8 @@ Set-PSReadLineKeyHandler -Chord Ctrl+t -Function ViEditVisually
 Set-PSReadLineKeyHandler -Chord Ctrl+o -ScriptBlock {
     $last = Get-History -Count 1
     $opts = @($last.CommandLine) + $last.CommandLine.Split()
-    $sel = $opts | Invoke-Fzf
-    [Microsoft.PowerShell.PSConsoleReadLine]::Insert($sel)
+    $sel = $opts | Get-Unique | Invoke-Fzf
+    if ($sel) { [Microsoft.PowerShell.PSConsoleReadLine]::Insert($sel) }
 }
 
 # carapace _carapace | Out-String | Invoke-Expression
@@ -169,7 +163,7 @@ function Update-Brew {
 
 function Start-DotnetCsharp { csharprepl -t themes/VisualStudio_Light.json }
 function Start-DotnetFsharp { dotnet fsi }
-function Update-DotnetPackages { dotnet outdated --upgrade }
+function Update-Dotnet { dotnet outdated --upgrade }
 Register-ArgumentCompleter -Native -CommandName dotnet -ScriptBlock {
     Param($commandName, $wordToComplete, $cursorPosition)
     dotnet complete --position $cursorPosition "$wordToComplete" | ForEach-Object {
@@ -229,8 +223,7 @@ function Initialize-Packages {
 
     npm install -g `
         npm `
-        npm-check-updates `
-        paperspace-node
+        npm-check-updates
 }
 function Update-Packages {
     Update-Powershell
@@ -259,7 +252,7 @@ function Initialize-Powershell {
     Install-Module ZLocation
     Get-Module -l
 }
-function Restart-Powershell { Switch-Process -WithCommand 'pwsh','-WorkingDirectory',$pwd }
+function Restart-Powershell { Switch-Process -WithCommand 'pwsh', '-WorkingDirectory', $pwd }
 function Update-Powershell { Update-Module; Update-Help }
 
 function Find-String {
