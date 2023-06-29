@@ -64,7 +64,7 @@ function Get-LastCommandDuration {
 
 function Prompt {
     $last = Get-History -Count 1
-    $exitCode = if ($last.ExecutionStatus -eq 'Failed') { $bgred } else { $bgblue }
+    $exitCode = $last.ExecutionStatus -eq 'Failed' ? $bgred : $bgblue
     $dir = Get-PwdLeaf
     Set-TerminalDirectory
     Set-TerminalTitle $dir

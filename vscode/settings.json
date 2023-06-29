@@ -86,6 +86,7 @@
     { "before": ["g", "d"], "commands": ["editor.action.peekDefinition"] },
     { "before": ["g", "i"], "commands": ["editor.action.goToImplementation"] },
     { "before": ["g", "r"], "commands": ["references-view.find"] },
+    { "before": ["U"], "after": ["c-r"] },
     { "before": ["<leader>", "h"], "commands": ["editor.action.showHover"] },
     { "before": ["<leader>", "j"], "commands": ["bookmarks.toggle"] },
     { "before": ["<leader>", "r"], "commands": ["editor.action.rename"] }

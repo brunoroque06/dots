@@ -64,6 +64,7 @@ map [g <Action>(VcsShowPrevChangeMarker)
 map ]g <Action>(VcsShowNextChangeMarker)
 map [q <Action>(PreviousOccurence)
 map ]q <Action>(NextOccurence)
+map U <Action>($Redo)
 
 map gd <Action>(GotoDeclaration)
 map gi <Action>(GotoImplementation)

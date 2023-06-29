@@ -84,6 +84,7 @@ cmap <c-p> <up>
 cmap <c-n> <down>
 
 nmap == :Neoformat<cr>
+nmap U <c-r>
 
 nmap <leader>c :make<cr>
 nmap <leader>l :Explore<cr>
