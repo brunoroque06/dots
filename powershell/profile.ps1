@@ -59,7 +59,7 @@ function Get-LastCommandDuration {
     $duration = (Get-History -Count 1).Duration
     if ($duration.TotalSeconds -lt 5) { return }
     if ($duration.TotalMinutes -lt 1) { return '{0:N0}s ' -f $duration.TotalSeconds }
-    '{0:N0}m {0:N0}s ' -f $duration.TotalMinutes, $duration.Seconds
+    '{0:N0}m {1:N0}s ' -f $duration.TotalMinutes, $duration.Seconds
 }
 
 function Prompt {
