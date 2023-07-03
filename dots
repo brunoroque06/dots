@@ -16,10 +16,6 @@ setup() {
 		printf '%s\n' $SH | sudo tee -a /etc/shells
 		chsh -s $SH
 	fi
-
-	if ! grep -q homebrew "$HOME"/.bash_profile; then
-		printf 'export PATH=/opt/homebrew/bin:/usr/local/bin:%s\n' "$PATH" >"$HOME/.bash_profile"
-	fi
 }
 
 paths=(
