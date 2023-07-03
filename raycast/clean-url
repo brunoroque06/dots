@@ -1,4 +1,4 @@
-#!/usr/bin/env pwsh
+#!/usr/bin/env pwsh -NoProfile
 
 # @raycast.schemaVersion 1
 # @raycast.title Clean URL

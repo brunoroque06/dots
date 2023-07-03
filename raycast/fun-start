@@ -1,8 +1,8 @@
-#!/usr/bin/env pwsh
+#!/usr/bin/env pwsh -NoProfile
 
 # @raycast.schemaVersion 1
 # @raycast.title Fun Start
 # @raycast.mode compact
 # @raycast.icon 🕹
 
-pspace machine start ps5ljod8i
+& $HOME/.paperspace/bin/pspace machine start ps5ljod8i
