@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Email Personal",
+    "text": "brunoroque06@gmail.com",
+    "keyword": ",ep"
+  },
+  {
+    "name": "Localhost",
+    "text": "http://localhost",
+    "keyword": ",wl"
+  },
+  {
+    "name": "Website Dug",
+    "text": "https://brunoroque06.streamlit.app",
+    "keyword": ",wd"
+  },
+  {
+    "name": "Website Personal",
+    "text": "https://brunoroque06.github.io",
+    "keyword": ",wp"
+  }
+]

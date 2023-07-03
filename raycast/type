@@ -1,0 +1,12 @@
+#!/usr/bin/env osascript
+
+# @raycast.schemaVersion 1
+# @raycast.title Type
+# @raycast.mode compact
+# @raycast.icon 🔑
+
+delay 2
+
+tell application "System Events"
+    keystroke "Hello"
+end tell
