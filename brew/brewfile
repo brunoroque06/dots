@@ -59,6 +59,7 @@ cask "powershell"
 cask "proxyman"
 cask "raycast"
 cask "rider"
+cask "transmission"
 cask "visual-studio-code"
 
 mas "Bear", id: 1091189122

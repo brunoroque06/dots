@@ -1,7 +1,7 @@
 $ErrorActionPreference = 'Stop'
 
 $env:EDITOR = 'vim'
-$env:FZF_DEFAULT_OPTS = '--color bw --height ~40% --layout=reverse'
+$env:FZF_DEFAULT_OPTS = '--color bw --header-first --layout=reverse --no-separator'
 $env:VISUAL = $env:EDITOR
 if ($IsMacOS) {
     $env:BAT_STYLE = 'plain'
@@ -112,26 +112,70 @@ Set-PSReadLineKeyHandler Enter -ScriptBlock {
     [Microsoft.PowerShell.PSConsoleReadLine]::AcceptLine()
 }
 
-# Set-PSReadLineKeyHandler -Key Tab -ScriptBlock { Invoke-FzfTabCompletion }
 Set-PSReadLineKeyHandler -Key Tab -Function MenuComplete
 Set-PSReadLineKeyHandler -Key Ctrl+p -Function HistorySearchBackward
 Set-PSReadLineKeyHandler -Key Ctrl+n -Function HistorySearchForward
 Set-PSReadLineKeyHandler -Key UpArrow -Function HistorySearchBackward
 Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
 
-Set-PSReadLineKeyHandler -Chord Ctrl+l -ScriptBlock {
-    [Microsoft.PowerShell.PSConsoleReadLine]::DeleteLine()
-    [Microsoft.PowerShell.PSConsoleReadLine]::Insert('Invoke-FuzzyZLocation')
-    [Microsoft.PowerShell.PSConsoleReadLine]::AcceptLine()
+function Invoke-InteractiveSelect {
+    Param(
+        [Parameter(Mandatory)]
+        [string[]]$Options,
+        [string]$Header
+    )
+    $argus = @()
+    if ($Header) {
+        $argus += "--header `"$Header`""
+    }
+    $p = [System.Diagnostics.Process]@{StartInfo = @{
+            FileName               = 'fzf'
+            Arguments              = $argus -join ' '
+            RedirectStandardInput  = $true
+            RedirectStandardOutput = $true
+        }
+    }
+    [void]$p.Start()
+    $p.StandardInput.Write($Options -join "`n")
+    $p.StandardInput.Close()
+    $out = $p.StandardOutput.ReadToEnd()
+    $p.WaitForExit()
+    $res = $out.Trim()
+    return -not [string]::IsNullOrWhiteSpace($res), $res
 }
-Set-PsFzfOption -PSReadlineChordReverseHistory 'Ctrl+r'
-Set-PSReadLineKeyHandler -Chord Ctrl+t -Function ViEditVisually
 
+Set-PSReadLineKeyHandler -Chord Ctrl+l -ScriptBlock {
+    $sel, $res = Invoke-InteractiveSelect -Options (Invoke-ZLocation -l).Path -Header 'Location'
+
+    if ($sel) {
+        [Microsoft.PowerShell.PSConsoleReadLine]::DeleteLine()
+        [Microsoft.PowerShell.PSConsoleReadLine]::Insert("Set-Location '$res'")
+        [Microsoft.PowerShell.PSConsoleReadLine]::AcceptLine()
+    }
+}
+Set-PSReadLineKeyHandler -Chord Ctrl+r -ScriptBlock {
+    $hist = Get-Content -Raw (Get-PSReadLineOption).HistorySavePath
+    $hist = $hist.Split("`n") | Where-Object { $_ -ne '' }
+    $hist = $hist[($hist.Length - 1)..0]
+
+    $sel, $res = Invoke-InteractiveSelect -Options $hist -Header 'History'
+
+    if ($sel) {
+        [Microsoft.PowerShell.PSConsoleReadLine]::RevertLine()
+        [Microsoft.PowerShell.PSConsoleReadLine]::Insert($res)
+    }
+}
+Set-PSReadLineKeyHandler -Chord Ctrl+t -Function ViEditVisually
 Set-PSReadLineKeyHandler -Chord Ctrl+o -ScriptBlock {
     $last = Get-History -Count 1
+    if ($last -eq $null) { return }
     $opts = @($last.CommandLine) + $last.CommandLine.Split()
-    $sel = $opts | Get-Unique | Invoke-Fzf
-    if ($sel) { [Microsoft.PowerShell.PSConsoleReadLine]::Insert($sel) }
+
+    $sel, $res = Invoke-InteractiveSelect -Options $opts -Header 'Last Command'
+
+    if ($sel) {
+        [Microsoft.PowerShell.PSConsoleReadLine]::Insert($res)
+    }
 }
 
 # carapace _carapace | Out-String | Invoke-Expression
@@ -247,7 +291,6 @@ function Format-PowershellFile {
 function Initialize-Powershell {
     # Install-Module CompletionPredictor
     if ($IsWindows) { go install github.com/junegunn/fzf@latest; fzf --version }
-    Install-Module PSFzf
     Install-Module PSScriptAnalyzer
     Install-Module ZLocation
     Get-Module -l
@@ -265,6 +308,10 @@ function Find-String {
     | Select-String -Pattern $Pattern
 }
 
+function Get-PythonRequirements {
+    Get-ChildItem `
+    | Where-Object Name -Like 'requirements*.txt'
+}
 function Initialize-Python {
     python3 -m venv venv
     ./venv/bin/Activate.ps1
@@ -274,8 +321,8 @@ function Initialize-Python {
 function Update-Python {
     ./venv/bin/Activate.ps1
     pip install --upgrade pip pur
-    pur
-    pip install -r requirements.txt
+    Get-PythonRequirements `
+    | ForEach-Object { pur -r $_; pip install -r $_ }
     deactivate
 }
 
