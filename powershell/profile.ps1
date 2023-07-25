@@ -26,6 +26,7 @@ if ($IsMacOS) {
 }
 
 # https://en.wikipedia.org/wiki/ANSI_escape_code#Colors
+$inverse = "`e[7m"
 $black = "`e[30m"
 $red = "`e[31m"
 $green = "`e[32m"
@@ -91,12 +92,12 @@ Set-PSReadLineOption -Colors @{
     Error                  = "$red"
     Keyword                = "$blue"
     ListPrediction         = "$yellow"
-    ListPredictionSelected = "$bgblack$white"
+    ListPredictionSelected = "$inverse"
     Member                 = "$blue"
     Number                 = "$magenta"
     Operator               = "$blue"
     Parameter              = "$black"
-    Selection              = "$bgblack$white"
+    Selection              = "$inverse"
     String                 = "$yellow"
     Type                   = "$blue"
     Variable               = "$green"
@@ -156,20 +157,20 @@ Set-PSReadLineKeyHandler -Chord Ctrl+l -ScriptBlock {
 }
 
 function Get-UniqueUnsorted {
-  Param(
-    [Parameter(Mandatory, ValueFromPipeline)]
-    [object[]]$Objects
-  )
-  $set = [System.Collections.Generic.HashSet[object]]::new()
-  $res = [System.Collections.Generic.List[object]]::new()
-  foreach ($o in $Objects) {
-    if ($set.Contains($o)) {
-      continue
+    Param(
+        [Parameter(Mandatory, ValueFromPipeline)]
+        [object[]]$Objects
+    )
+    $set = New-Object System.Collections.Generic.HashSet[object]
+    $res = New-Object System.Collections.Generic.List[object]
+    foreach ($o in $Objects) {
+        if ($set.Contains($o)) {
+            continue
+        }
+        [void]$set.Add($o)
+        $res.Add($o)
     }
-    [void]$set.Add($o)
-    $res.Add($o)
-  }
-  return $res
+    return $res
 }
 
 Set-PSReadLineKeyHandler -Chord Ctrl+r -ScriptBlock {
@@ -198,7 +199,9 @@ Set-PSReadLineKeyHandler -Chord Ctrl+o -ScriptBlock {
     }
 }
 
-# carapace _carapace | Out-String | Invoke-Expression
+if ($IsMacOS) {
+    carapace _carapace | Out-String | Invoke-Expression
+}
 
 # https://learn.microsoft.com/en-us/powershell/scripting/developer/cmdlet/approved-verbs-for-windows-powershell-commands
 function Set-AliasByConvention {
@@ -231,7 +234,7 @@ function Update-Dotnet { dotnet outdated --upgrade }
 Register-ArgumentCompleter -Native -CommandName dotnet -ScriptBlock {
     Param($commandName, $wordToComplete, $cursorPosition)
     dotnet complete --position $cursorPosition "$wordToComplete" | ForEach-Object {
-        [System.Management.Automation.CompletionResult]::new($_)
+        New-Object System.Management.Automation.CompletionResult $_
     }
 }
 
@@ -269,12 +272,12 @@ function Remove-JetBrainsCache {
         [string]$Dir
     )
     foreach ($d in 'Application Support/JetBrains', 'Caches/JetBrains', 'Logs/JetBrains') {
-        Remove-Item -Confirm $(Join-Path $HOME 'Library' $d $Dir)
+        Remove-Item -Confirm -Force $(Join-Path $HOME 'Library' $d $Dir)
     }
 }
 Register-ArgumentCompleter -CommandName Remove-JetBrainsCache -ParameterName Dir -ScriptBlock {
     Get-ChildItem -Directory $HOME/Library/Caches/JetBrains | ForEach-Object {
-        [System.Management.Automation.CompletionResult]::new($_.Name)
+        New-Object System.Management.Automation.CompletionResult $_.Name
     }
 }
 
