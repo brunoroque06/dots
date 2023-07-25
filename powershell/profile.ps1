@@ -1,6 +1,7 @@
 $ErrorActionPreference = 'Stop'
 
 $env:EDITOR = 'vim'
+# $env:DOCKER_DEFAULT_PLATFORM = 'linux/amd64'
 $env:FZF_DEFAULT_OPTS = '--color bw --header-first --layout=reverse --no-separator'
 $env:VISUAL = $env:EDITOR
 if ($IsMacOS) {
@@ -120,7 +121,7 @@ Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
 
 function Invoke-InteractiveSelect {
     Param(
-        [Parameter(Mandatory)]
+        [Parameter(Mandatory, ValueFromPipeline)]
         [string[]]$Options,
         [string]$Header
     )
@@ -153,9 +154,28 @@ Set-PSReadLineKeyHandler -Chord Ctrl+l -ScriptBlock {
         [Microsoft.PowerShell.PSConsoleReadLine]::AcceptLine()
     }
 }
+
+function Get-UniqueUnsorted {
+  Param(
+    [Parameter(Mandatory, ValueFromPipeline)]
+    [object[]]$Objects
+  )
+  $set = [System.Collections.Generic.HashSet[object]]::new()
+  $res = [System.Collections.Generic.List[object]]::new()
+  foreach ($o in $Objects) {
+    if ($set.Contains($o)) {
+      continue
+    }
+    [void]$set.Add($o)
+    $res.Add($o)
+  }
+  return $res
+}
+
 Set-PSReadLineKeyHandler -Chord Ctrl+r -ScriptBlock {
     $hist = Get-Content -Raw (Get-PSReadLineOption).HistorySavePath
     $hist = $hist.Split("`n") | Where-Object { $_ -ne '' }
+    $hist = Get-UniqueUnsorted -Objects $hist
     $hist = $hist[($hist.Length - 1)..0]
 
     $sel, $res = Invoke-InteractiveSelect -Options $hist -Header 'History'
