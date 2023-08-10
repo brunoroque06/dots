@@ -5,6 +5,7 @@
   "[Log]": {
     "editor.wordWrap": "on"
   },
+  "D2.execPath": "/opt/homebrew/bin/d2",
   "debug.allowBreakpointsEverywhere": true,
   "debug.inlineValues": "on",
   "debug.internalConsoleOptions": "neverOpen",
@@ -54,6 +55,7 @@
   "typescript.implementationsCodeLens.enabled": false,
   "typescript.referencesCodeLens.enabled": false,
   "typescript.updateImportsOnFileMove.enabled": "always",
+  "vim.foldfix": true,
   "vim.highlightedyank.enable": true,
   "vim.hlsearch": true,
   "vim.leader": "<space>",
