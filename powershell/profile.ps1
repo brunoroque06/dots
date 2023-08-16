@@ -266,6 +266,8 @@ function Get-GitLog {
 }
 function Get-GitStatus { git status -s }
 
+function Update-Go { go get -u; go mod tidy }
+
 function Remove-JetBrainsCache {
     Param(
         [Parameter(Mandatory)]
