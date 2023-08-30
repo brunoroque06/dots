@@ -228,7 +228,6 @@ function Update-Brew {
     brew doctor
 }
 
-function Start-DotnetCsharp { csharprepl -t themes/VisualStudio_Light.json }
 function Start-DotnetFsharp { dotnet fsi }
 function Update-Dotnet { dotnet outdated --upgrade }
 Register-ArgumentCompleter -Native -CommandName dotnet -ScriptBlock {
@@ -286,7 +285,7 @@ Register-ArgumentCompleter -CommandName Remove-JetBrainsCache -ParameterName Dir
 function Update-Npm { npm-check-updates --deep -i }
 
 function Initialize-Packages {
-    foreach ($p in 'csharprepl', 'dotnet-outdated-tool', 'fantomas-tool') {
+    foreach ($p in 'dotnet-outdated-tool', 'fantomas-tool') {
         dotnet tool install -g $p
     }
 
@@ -365,6 +364,11 @@ function Start-WebBrowser {
         --new-window http://localhost:4200 `
         --no-first-run `
         --user-data-dir=$env:TMPDIR/webbrowser
+}
+
+function Update-Zlocation {
+    Invoke-ZLocation -l `
+    | ForEach-Object { if (!(Test-Path $_.Path)) { Write-Output $_.Path; Remove-ZLocation $_.Path } }
 }
 
 Set-Alias .. cd..

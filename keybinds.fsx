@@ -97,7 +97,7 @@ module JetBrains =
 
         List.map
             (fun p -> Path.Combine("Library", "Application Support", "JetBrains", p, "keymaps", "bruno-roque.xml"))
-            [ "Rider2023.1" ]
+            [ "Rider2023.2" ]
         |> List.map (fun p -> { name = p; content = content })
 
 module VsCode =
@@ -149,7 +149,9 @@ module VsCode =
         let mapped =
             binds
             |> List.map map
-            |> (+) [ (toText "workbench.action.focusActiveEditorGroup" "escape" (Some "!editorFocus")) ]
+            |> (+)
+                [ (toText "workbench.action.focusActiveEditorGroup" "escape" (Some "!editorFocus"))
+                  (toText "workbench.action.openSettingsJson" "cmd+," None) ]
 
         let content = [ "[" ] |> (+) mapped |> (+) [ "]" ]
 

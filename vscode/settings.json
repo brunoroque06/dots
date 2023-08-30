@@ -5,6 +5,9 @@
   "[Log]": {
     "editor.wordWrap": "on"
   },
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter"
+  },
   "D2.execPath": "/opt/homebrew/bin/d2",
   "debug.allowBreakpointsEverywhere": true,
   "debug.inlineValues": "on",
@@ -45,9 +48,7 @@
   "plantuml.render": "PlantUMLServer",
   "plantuml.server": "https://www.plantuml.com/plantuml",
   "python.analysis.typeCheckingMode": "basic",
-  "python.formatting.provider": "black",
   "python.languageServer": "Pylance",
-  "python.linting.pylintEnabled": true,
   "python.testing.pytestEnabled": true,
   "scm.alwaysShowRepositories": true,
   "terminal.integrated.drawBoldTextInBrightColors": false,

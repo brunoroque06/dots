@@ -126,7 +126,6 @@ fn doc-su {
 }
 
 # Dotnet
-fn dot-csi { csharprepl -t themes/VisualStudio_Light.json }
 fn dot-up { dotnet outdated --upgrade }
 set edit:completion:arg-completer[dotnet] = { |@args|
 	dotnet complete (str:join ' ' $args) | from-lines
@@ -193,7 +192,7 @@ fn brew-up {
   brew doctor
 }
 fn pkg-su {
-  put csharpier csharprepl dotnet-outdated-tool fantomas-tool ^
+  put csharpier dotnet-outdated-tool fantomas-tool ^
     | each { |p| try { dotnet tool install -g $p } catch { } }
 
   npm install -g ^

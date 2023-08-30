@@ -56,20 +56,18 @@ cask "gitup"
 cask "google-chrome"
 cask "kitty"
 cask "parsec"
-cask "paw"
 cask "powershell"
 cask "proxyman"
+cask "rapidapi"
 cask "raycast"
 cask "rider"
 cask "transmission"
 cask "visual-studio-code"
 
 mas "1Blocker", id: 1365531024
-mas "Baking Soda", id: 1601151613
 mas "Bear", id: 1091189122
 mas "Cyberduck", id: 409222199
 mas "Elmedia:universal video player", id: 937759555
 mas "Keys Multiplatform", id: 1494642810
 mas "Reeder", id: 1529448980
-mas "Vinegar", id: 1591303229
 mas "rcmd", id: 1596283165
