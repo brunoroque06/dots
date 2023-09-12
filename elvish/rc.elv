@@ -147,9 +147,9 @@ set edit:completion:arg-completer[file-yank] = { |@args|
   rg --files ^
     | from-lines
 }
-fn l { |@a| exa -al --git --no-permissions $@a }
+fn l { |@a| eza -al --git --no-permissions $@a }
 fn t { |&l=2 @d|
-  exa -al --git --level $l --no-permissions --tree $@d
+  eza -al --git --level $l --no-permissions --tree $@d
 }
 
 # Git

@@ -9,6 +9,7 @@
     "editor.defaultFormatter": "ms-python.black-formatter"
   },
   "D2.execPath": "/opt/homebrew/bin/d2",
+  "breadcrumbs.symbolPath": "off",
   "debug.allowBreakpointsEverywhere": true,
   "debug.inlineValues": "on",
   "debug.internalConsoleOptions": "neverOpen",
@@ -65,7 +66,10 @@
       "before": ["=", "="],
       "commands": ["editor.action.organizeImports", "editor.action.format"]
     },
-    { "before": ["=", "i"], "commands": ["editor.action.organizeImports"] },
+    {
+      "before": ["=", "i"],
+      "commands": ["editor.action.organizeImports"]
+    },
     {
       "before": ["[", "<space>"],
       "commands": ["editor.action.insertLineBefore"]
@@ -74,8 +78,14 @@
       "before": ["]", "<space>"],
       "commands": ["editor.action.insertLineAfter"]
     },
-    { "before": ["[", "d"], "commands": ["editor.action.marker.prev"] },
-    { "before": ["]", "d"], "commands": ["editor.action.marker.next"] },
+    {
+      "before": ["[", "d"],
+      "commands": ["editor.action.marker.prev"]
+    },
+    {
+      "before": ["]", "d"],
+      "commands": ["editor.action.marker.next"]
+    },
     {
       "before": ["[", "q"],
       "commands": ["search.action.focusPreviousSearchResult"],
@@ -86,13 +96,34 @@
       "commands": ["search.action.focusNextSearchResult"],
       "when": "hasSearchResult"
     },
-    { "before": ["g", "d"], "commands": ["editor.action.peekDefinition"] },
-    { "before": ["g", "i"], "commands": ["editor.action.goToImplementation"] },
-    { "before": ["g", "r"], "commands": ["references-view.find"] },
-    { "before": ["U"], "after": ["c-r"] },
-    { "before": ["<leader>", "h"], "commands": ["editor.action.showHover"] },
-    { "before": ["<leader>", "j"], "commands": ["bookmarks.toggle"] },
-    { "before": ["<leader>", "r"], "commands": ["editor.action.rename"] }
+    {
+      "before": ["g", "d"],
+      "commands": ["editor.action.peekDefinition"]
+    },
+    {
+      "before": ["g", "i"],
+      "commands": ["editor.action.goToImplementation"]
+    },
+    {
+      "before": ["g", "r"],
+      "commands": ["references-view.find"]
+    },
+    {
+      "after": ["c-r"],
+      "before": ["U"]
+    },
+    {
+      "before": ["<leader>", "h"],
+      "commands": ["editor.action.showHover"]
+    },
+    {
+      "before": ["<leader>", "j"],
+      "commands": ["bookmarks.toggle"]
+    },
+    {
+      "before": ["<leader>", "r"],
+      "commands": ["editor.action.rename"]
+    }
   ],
   "vim.surround": true,
   "vim.useSystemClipboard": true,
