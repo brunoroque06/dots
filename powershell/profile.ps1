@@ -2,7 +2,12 @@ $ErrorActionPreference = 'Stop'
 
 $env:EDITOR = 'vim'
 # $env:DOCKER_DEFAULT_PLATFORM = 'linux/amd64'
-$env:FZF_DEFAULT_OPTS = '--color bw --header-first --layout=reverse --no-separator'
+$env:GUM_FILTER_CURSOR_TEXT_BACKGROUND = '4'
+$env:GUM_FILTER_CURSOR_TEXT_FOREGROUND = '7'
+$env:GUM_FILTER_INDICATOR_FOREGROUND = '4'
+$env:GUM_FILTER_MATCH_BACKGROUND = '4'
+$env:GUM_FILTER_MATCH_FOREGROUND = '7'
+$env:GUM_FILTER_MATCH_UNDERLINE = '1'
 $env:VISUAL = $env:EDITOR
 if ($IsMacOS) {
     $env:BAT_STYLE = 'plain'
@@ -128,10 +133,10 @@ function Invoke-InteractiveSelect {
     )
     $argus = @()
     if ($Header) {
-        $argus += "--header `"$Header`""
+        $argus += "filter --header `"$Header`""
     }
     $p = [System.Diagnostics.Process]@{StartInfo = @{
-            FileName               = 'fzf'
+            FileName               = 'gum'
             Arguments              = $argus -join ' '
             RedirectStandardInput  = $true
             RedirectStandardOutput = $true
@@ -244,15 +249,34 @@ function Copy-FileContent {
     )
     Get-Content $File | Set-Clipboard
 }
+function Find-Directory {
+    Param(
+        [Parameter(Mandatory)]
+        [string]$Pattern
+    )
+    Get-ChildItem -Directory -Force -Recurse `
+    | Where-Object Name -Match $Pattern `
+    | Select-Object FullName
+}
 function Find-File {
     Param(
         [Parameter(Mandatory)]
         [string]$Pattern
     )
-    git ls-files `
-    | Get-ChildItem -Hidden `
+    Get-ChildItem -Force -File -Recurse . `
     | Where-Object Name -Match $Pattern `
     | Select-Object FullName
+}
+
+function Format-D2 {
+    Get-ChildItem -File `
+    | Where-Object -Property Extension -EQ '.d2' `
+    | ForEach-Object { d2 fmt $_.Name }
+}
+function Invoke-D2 {
+    Get-ChildItem -File `
+    | Where-Object -Property Extension -EQ '.d2' `
+    | ForEach-Object { d2 --font-bold '/Users/brunoroque/Library/Fonts/CascadiaCode.ttf' --font-italic '/Users/brunoroque/Library/Fonts/CascadiaCodeItalic.ttf' --font-regular '/Users/brunoroque/Library/Fonts/CascadiaCode.ttf' --pad 0 $_.Name ('out/' + $_.BaseName + '.svg') }
 }
 
 function Get-GitConfig { git config --list --show-origin }
@@ -285,7 +309,7 @@ Register-ArgumentCompleter -CommandName Remove-JetBrainsCache -ParameterName Dir
 function Update-Npm { npm-check-updates --deep -i }
 
 function Initialize-Packages {
-    foreach ($p in 'dotnet-outdated-tool', 'fantomas-tool') {
+    foreach ($p in 'csharpier', 'dotnet-outdated-tool', 'fantomas-tool') {
         dotnet tool install -g $p
     }
 
@@ -314,7 +338,7 @@ function Format-PowershellFile {
 }
 function Initialize-Powershell {
     # Install-Module CompletionPredictor
-    if ($IsWindows) { go install github.com/junegunn/fzf@latest; fzf --version }
+    if ($IsWindows) { go install github.com/charmbracelet/gum@latest; gum --version }
     Install-Module PSScriptAnalyzer
     Install-Module ZLocation
     Get-Module -l
@@ -327,8 +351,7 @@ function Find-String {
         [Parameter(Mandatory)]
         [string]$Pattern
     )
-    git ls-files `
-    | Get-ChildItem -Hidden `
+    Get-ChildItem -File -Force -Recurse `
     | Select-String -Pattern $Pattern
 }
 

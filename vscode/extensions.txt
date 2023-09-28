@@ -6,7 +6,6 @@ elves.elvish
 esbenp.prettier-vscode
 golang.go
 Ionide.Ionide-fsharp
-jebbs.plantuml
 mechatroner.rainbow-csv
 ms-azuretools.vscode-bicep
 ms-azuretools.vscode-docker
@@ -17,7 +16,6 @@ ms-python.isort
 ms-python.python
 ms-python.vscode-pylance
 ms-vscode.powershell
-naumovs.color-highlight
 redhat.vscode-yaml
 streetsidesoftware.code-spell-checker
 Terrastruct.d2
