@@ -2,12 +2,7 @@ $ErrorActionPreference = 'Stop'
 
 $env:EDITOR = 'vim'
 # $env:DOCKER_DEFAULT_PLATFORM = 'linux/amd64'
-$env:GUM_FILTER_CURSOR_TEXT_BACKGROUND = '4'
-$env:GUM_FILTER_CURSOR_TEXT_FOREGROUND = '7'
-$env:GUM_FILTER_INDICATOR_FOREGROUND = '4'
-$env:GUM_FILTER_MATCH_BACKGROUND = '4'
-$env:GUM_FILTER_MATCH_FOREGROUND = '7'
-$env:GUM_FILTER_MATCH_UNDERLINE = '1'
+$env:FZF_DEFAULT_OPTS = '--color bw --header-first --layout=reverse --no-separator'
 $env:VISUAL = $env:EDITOR
 if ($IsMacOS) {
     $env:BAT_STYLE = 'plain'
@@ -133,10 +128,10 @@ function Invoke-InteractiveSelect {
     )
     $argus = @()
     if ($Header) {
-        $argus += "filter --header `"$Header`""
+        $argus += "--header `"$Header`""
     }
     $p = [System.Diagnostics.Process]@{StartInfo = @{
-            FileName               = 'gum'
+            FileName               = 'fzf'
             Arguments              = $argus -join ' '
             RedirectStandardInput  = $true
             RedirectStandardOutput = $true
@@ -338,7 +333,7 @@ function Format-PowershellFile {
 }
 function Initialize-Powershell {
     # Install-Module CompletionPredictor
-    if ($IsWindows) { go install github.com/charmbracelet/gum@latest; gum --version }
+    if ($IsWindows) { go install github.com/junegunn/fzf@latest; fzf --version }
     Install-Module PSScriptAnalyzer
     Install-Module ZLocation
     Get-Module -l
