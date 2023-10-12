@@ -391,4 +391,9 @@ function Update-Zlocation {
 
 Set-Alias .. cd..
 Set-Alias e vim
+
+$kitten = '/Applications/kitty.app/Contents/MacOS/kitten'
+Set-Alias kitten $kitten
+function icat { & $kitten icat $args }
+
 Set-AliasByConvention
