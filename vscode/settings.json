@@ -1,9 +1,12 @@
 {
+  "[csharp]": {
+    "editor.defaultFormatter": "csharpier.csharpier-vscode"
+  },
   "[css][dockercompose][html][javascript][json][jsonc][markdown][scss][typescript][yaml]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "[Log]": {
-    "editor.wordWrap": "on"
+  "[csv]": {
+    "editor.stickyScroll.enabled": true
   },
   "[python]": {
     "editor.defaultFormatter": "ms-python.black-formatter"
@@ -14,6 +17,8 @@
   "debug.inlineValues": "on",
   "debug.internalConsoleOptions": "neverOpen",
   "debug.toolBarLocation": "docked",
+  "diffEditor.renderSideBySide": false,
+  "dotnet.automaticallyCreateSolutionInWorkspace": false,
   "editor.accessibilitySupport": "off",
   "editor.bracketPairColorization.enabled": true,
   "editor.codeActionsOnSave": {
@@ -31,10 +36,10 @@
   "editor.lineNumbers": "relative",
   "editor.minimap.enabled": false,
   "editor.renderWhitespace": "trailing",
+  "editor.scrollbar.verticalScrollbarSize": 8,
   "editor.suggestSelection": "first",
   "editor.tabSize": 2,
   "editor.wordWrap": "on",
-  "errorLens.exclude": ["(.*): Unknown word."],
   "explorer.confirmDragAndDrop": false,
   "explorer.openEditors.sortOrder": "alphabetical",
   "explorer.openEditors.visible": 1,
@@ -51,8 +56,6 @@
   "scm.alwaysShowRepositories": true,
   "terminal.integrated.drawBoldTextInBrightColors": false,
   "terminal.integrated.lineHeight": 1,
-  "typescript.implementationsCodeLens.enabled": false,
-  "typescript.referencesCodeLens.enabled": false,
   "typescript.updateImportsOnFileMove.enabled": "always",
   "vim.foldfix": true,
   "vim.highlightedyank.enable": true,
@@ -125,14 +128,16 @@
   "vim.surround": true,
   "vim.useSystemClipboard": true,
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-  "window.commandCenter": true,
+  "window.commandCenter": false,
   "window.title": "${activeEditorLong}${separator}${rootPath}",
+  "workbench.activityBar.visible": false,
   "workbench.colorTheme": "Default Light Modern",
   "workbench.editor.enablePreview": false,
   "workbench.editor.limit.enabled": true,
   "workbench.editor.limit.perEditorGroup": true,
   "workbench.editor.limit.value": 1,
   "workbench.editor.showTabs": false,
+  "workbench.layoutControl.enabled": false,
   "workbench.tree.indent": 15,
   "workbench.tree.renderIndentGuides": "always"
 }

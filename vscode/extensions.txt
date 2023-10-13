@@ -1,6 +1,7 @@
 alefragnani.Bookmarks
 Angular.ng-template
 christian-kohler.path-intellisense
+csharpier.csharpier-vscode
 DavidAnson.vscode-markdownlint
 elves.elvish
 esbenp.prettier-vscode
@@ -9,8 +10,10 @@ Ionide.Ionide-fsharp
 mechatroner.rainbow-csv
 ms-azuretools.vscode-bicep
 ms-azuretools.vscode-docker
+ms-dotnettools.csdevkit
 ms-dotnettools.csharp
 ms-dotnettools.vscode-dotnet-runtime
+ms-dotnettools.vscodeintellicode-csharp
 ms-python.black-formatter
 ms-python.isort
 ms-python.python
@@ -19,6 +22,5 @@ ms-vscode.powershell
 redhat.vscode-yaml
 streetsidesoftware.code-spell-checker
 Terrastruct.d2
-usernamehw.errorlens
 VisualStudioExptTeam.vscodeintellicode
 vscodevim.vim

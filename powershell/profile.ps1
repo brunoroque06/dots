@@ -70,8 +70,7 @@ function Prompt {
     $dir = Get-PwdLeaf
     Set-TerminalDirectory
     Set-TerminalTitle $dir
-    # "$promptStart$exitCode $default $blue$dir $yellow$(Get-LastCommandDuration)$magenta~> $default"
-    "$exitCode $default $blue$dir $yellow$(Get-LastCommandDuration)$magenta~> $default"
+    "$promptStart$exitCode $default $blue$dir $yellow$(Get-LastCommandDuration)$magenta~> $default"
 }
 
 $ReadLineOption = @{
@@ -300,6 +299,7 @@ Register-ArgumentCompleter -CommandName Remove-JetBrainsCache -ParameterName Dir
         New-Object System.Management.Automation.CompletionResult $_.Name
     }
 }
+function rider { /Applications/Rider.app/Contents/MacOS/rider $args }
 
 function Update-Npm { npm-check-updates --deep -i }
 
@@ -350,10 +350,6 @@ function Find-String {
     | Select-String -Pattern $Pattern
 }
 
-function Get-PythonRequirements {
-    Get-ChildItem `
-    | Where-Object Name -Like 'requirements*.txt'
-}
 function Initialize-Python {
     python3 -m venv venv
     ./venv/bin/Activate.ps1
@@ -363,7 +359,8 @@ function Initialize-Python {
 function Update-Python {
     ./venv/bin/Activate.ps1
     pip install --upgrade pip pur
-    Get-PythonRequirements `
+    Get-ChildItem `
+    | Where-Object Name -Like 'requirements*.txt' `
     | ForEach-Object { pur -r $_; pip install -r $_ }
     deactivate
 }
