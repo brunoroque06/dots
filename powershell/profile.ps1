@@ -21,7 +21,8 @@ if ($IsMacOS) {
         "$HOME/go/bin",
         '/usr/local/share/dotnet',
         "$HOME/.dotnet/tools",
-        "$HOME/.paperspace/bin"
+        "$HOME/.paperspace/bin",
+        "/Applications/Rider.app/Contents/MacOS"
     ) -join ':'
 }
 
@@ -227,6 +228,7 @@ function Update-Brew {
     brew doctor
 }
 
+function Start-DotnetCsharp { csharprepl -t themes/VisualStudio_Light.json $args }
 function Start-DotnetFsharp { dotnet fsi }
 function Update-Dotnet { dotnet outdated --upgrade }
 Register-ArgumentCompleter -Native -CommandName dotnet -ScriptBlock {
@@ -299,12 +301,11 @@ Register-ArgumentCompleter -CommandName Remove-JetBrainsCache -ParameterName Dir
         New-Object System.Management.Automation.CompletionResult $_.Name
     }
 }
-function rider { /Applications/Rider.app/Contents/MacOS/rider $args }
 
 function Update-Npm { npm-check-updates --deep -i }
 
 function Initialize-Packages {
-    foreach ($p in 'csharpier', 'dotnet-outdated-tool', 'fantomas-tool') {
+    foreach ($p in 'csharpier', 'csharprepl', 'dotnet-outdated-tool', 'fantomas-tool') {
         dotnet tool install -g $p
     }
 

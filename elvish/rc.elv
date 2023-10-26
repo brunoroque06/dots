@@ -16,6 +16,7 @@ set paths = [
   /usr/local/share/dotnet
   $E:HOME/.dotnet/tools
   $E:HOME/.paperspace/bin
+  /Applications/Rider.app/Contents/MacOS
 ]
 var _paths = $nil
 
