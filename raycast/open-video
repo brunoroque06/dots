@@ -1,8 +1,8 @@
-#!/usr/bin/env elvish
+#!/usr/bin/env pwsh -NoProfile
 
 # @raycast.schemaVersion 1
 # @raycast.title Open Video
 # @raycast.mode compact
 # @raycast.icon 🎬
 
-open -a 'QuickTime Player' "$(streamlink --stream-url "$(pbpaste)" best)"
+open -a 'QuickTime Player' (streamlink --stream-url (Get-Clipboard) best)

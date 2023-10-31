@@ -117,6 +117,7 @@ Set-PSReadLineKeyHandler Enter -ScriptBlock {
 Set-PSReadLineKeyHandler -Key Tab -Function MenuComplete
 Set-PSReadLineKeyHandler -Key Ctrl+p -Function HistorySearchBackward
 Set-PSReadLineKeyHandler -Key Ctrl+n -Function HistorySearchForward
+Set-PSReadLineKeyHandler -Key Ctrl+w -Function BackwardKillWord
 Set-PSReadLineKeyHandler -Key UpArrow -Function HistorySearchBackward
 Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
 
