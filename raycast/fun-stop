@@ -1,8 +1,8 @@
-#!/usr/bin/env pwsh -NoProfile
+#!/usr/bin/env elvish
 
 # @raycast.schemaVersion 1
 # @raycast.title Fun Stop
 # @raycast.mode compact
 # @raycast.icon 🕹
 
-& $HOME/.paperspace/bin/pspace machine stop ps5ljod8i
+$E:HOME/.paperspace/bin/pspace machine stop ps5ljod8i

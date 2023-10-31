@@ -72,7 +72,7 @@ map gr <Action>(ShowUsages)
 
 let mapleader="\<space>"
 
-map <leader>h <Action>(ShowErrorDescription)
+map <leader>h <Action>(ShowHoverInfo)
 map <leader>j <Action>(ToggleBookmark)
 map <leader>r <Action>(RenameElement)
 

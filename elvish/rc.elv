@@ -253,7 +253,7 @@ fn env-ls {
     | order
 }
 fn colortest { curl -s https://raw.githubusercontent.com/pablopunk/colortest/master/colortest | bash }
-fn re { exec elvish }
+fn reload { exec elvish }
 
 # SSH
 fn ssh-trust { |@a| ssh-copy-id -i $E:HOME/.ssh/id_rsa.pub $@a }

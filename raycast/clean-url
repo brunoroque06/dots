@@ -1,9 +1,10 @@
-#!/usr/bin/env pwsh -NoProfile
+#!/usr/bin/env elvish
 
 # @raycast.schemaVersion 1
 # @raycast.title Clean URL
 # @raycast.mode compact
 # @raycast.icon 🧹
 
-(Get-Clipboard).Split('?')[0] | Set-Clipboard
+use str
 
+pbpaste | str:split '?' (one) | take 1 | print (one) | pbcopy
