@@ -40,8 +40,8 @@ $bgred = "`e[41m"
 $bgblue = "`e[44m"
 $default = "`e[0m"
 
-$promptStart = "`e]133;A`a"
-$cmdStart = "`e]133;C`a"
+$ps1 = "`e]133;A`a"
+$ps0 = "`e]133;C`a"
 
 function Get-PwdLeaf {
     if ($pwd.Path -eq $HOME) { return '~' }
@@ -71,7 +71,7 @@ function Prompt {
     $dir = Get-PwdLeaf
     Set-TerminalDirectory
     Set-TerminalTitle $dir
-    "$promptStart$exitCode $default $blue$dir $yellow$(Get-LastCommandDuration)$magenta~> $default"
+    "$ps1$exitCode $default $blue$dir $yellow$(Get-LastCommandDuration)$magenta~> $default"
 }
 
 $ReadLineOption = @{
@@ -110,7 +110,7 @@ $PSStyle.FileInfo.Executable = "$red"
 Set-PSReadLineKeyHandler Enter -ScriptBlock {
     $cmd = $null; [Microsoft.PowerShell.PSConsoleReadLine]::GetBufferState([ref] $cmd, [ref] $null)
     if ($cmd) { Set-TerminalTitle $cmd.Split()[0] }
-    Write-Host -NoNewline $cmdStart
+    Write-Host -NoNewline $ps0
     [Microsoft.PowerShell.PSConsoleReadLine]::AcceptLine()
 }
 
