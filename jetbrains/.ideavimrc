@@ -70,6 +70,8 @@ map gd <Action>(GotoDeclaration)
 map gi <Action>(GotoImplementation)
 map gr <Action>(ShowUsages)
 
+map zd <Action>(RiderCollapseToDefinitions)
+
 let mapleader="\<space>"
 
 map <leader>h <Action>(ShowHoverInfo)
