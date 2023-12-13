@@ -1,0 +1,16 @@
+#!/usr/bin/env pwsh -NoProfile
+
+# @raycast.schemaVersion 1
+# @raycast.title Pip Latest
+# @raycast.mode compact
+# @raycast.icon 🐍
+# @raycast.argument1 { "type": "text", "placeholder": "package" }
+
+$res = Invoke-WebRequest https://pypi.org/project/$args
+$pattern = '<p class="release__version">(?:\s*)(.*)(?:\s*)<\/p>'
+$matches = [regex]::Matches($res.Content, $pattern)
+$ver = $matches[0].Groups[1].Value
+$line = "$args==$ver"
+
+Write-Output $line
+$line | Set-Clipboard

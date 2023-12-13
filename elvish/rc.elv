@@ -22,6 +22,7 @@ var _paths = $nil
 
 set-env BAT_STYLE plain
 set-env BAT_THEME ansi
+set-env HOMEBREW_AUTOREMOVE true
 # set-env DOCKER_DEFAULT_PLATFORM linux/amd64
 set-env EDITOR /opt/homebrew/bin/vim
 set-env LESS '-i --incsearch -m'
@@ -105,6 +106,21 @@ fn cmd-edit {
   rm $tmp[name]
 }
 
+# D2
+fn d2-fmt {
+  ls ^
+  | from-lines ^
+  | each { |f| if (str:equal-fold (path:ext $f) .d2) { d2 fmt $f } }
+}
+fn d2-run {
+  ls ^
+  | from-lines ^
+  | each { |f| if (str:equal-fold (path:ext $f) .d2) {
+      d2 fmt $f
+    }
+  }
+}
+
 # Docker
 fn doc-clean {
   docker rmi -f (docker images -aq)
@@ -127,6 +143,8 @@ fn doc-su {
 }
 
 # Dotnet
+fn dot-csi { |@a| csharprepl -t themes/VisualStudio_Light.json $@a }
+fn dot-fsi { |@a| dotnet fsi $@a }
 fn dot-up { dotnet outdated --upgrade }
 set edit:completion:arg-completer[dotnet] = { |@args|
 	dotnet complete (str:join ' ' $args) | from-lines
@@ -148,6 +166,9 @@ set edit:completion:arg-completer[file-yank] = { |@args|
   rg --files ^
     | from-lines
 }
+var _kitten = /Applications/kitty.app/Contents/MacOS/kitten
+fn kitten { |@a| $_kitten $@a }
+fn icat { |@a| $_kitten icat $@a }
 fn l { |@a| eza -al --git --no-permissions $@a }
 fn t { |&l=2 @d|
   eza -al --git --level $l --no-permissions --tree $@d
@@ -193,7 +214,7 @@ fn brew-up {
   brew doctor
 }
 fn pkg-su {
-  put csharpier dotnet-outdated-tool fantomas-tool ^
+  put csharpier csharprepl dotnet-outdated-tool fantomas-tool ^
     | each { |p| try { dotnet tool install -g $p } catch { } }
 
   npm install -g ^
@@ -253,7 +274,7 @@ fn env-ls {
     | order
 }
 fn colortest { curl -s https://raw.githubusercontent.com/pablopunk/colortest/master/colortest | bash }
-fn reload { exec elvish }
+fn re { exec elvish }
 
 # SSH
 fn ssh-trust { |@a| ssh-copy-id -i $E:HOME/.ssh/id_rsa.pub $@a }

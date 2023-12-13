@@ -22,7 +22,7 @@
   "editor.accessibilitySupport": "off",
   "editor.bracketPairColorization.enabled": true,
   "editor.codeActionsOnSave": {
-    "source.organizeImports": true
+    "source.organizeImports": "explicit"
   },
   "editor.cursorBlinking": "solid",
   "editor.cursorSurroundingLines": 5,

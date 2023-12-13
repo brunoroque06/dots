@@ -1,8 +1,0 @@
-#!/usr/bin/env pwsh -NoProfile
-
-# @raycast.schemaVersion 1
-# @raycast.title Break On
-# @raycast.mode compact
-# @raycast.icon ⏳
-
-echo "*/20 * * * * osascript -e 'display notification \"...\" with title \"Break\"'" | crontab -

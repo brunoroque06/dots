@@ -1,8 +1,0 @@
-#!/usr/bin/env pwsh -NoProfile
-
-# @raycast.schemaVersion 1
-# @raycast.title Break Off
-# @raycast.mode compact
-# @raycast.icon ⏳
-
-crontab -r
