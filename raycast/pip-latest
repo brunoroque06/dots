@@ -12,5 +12,5 @@ $matches = [regex]::Matches($res.Content, $pattern)
 $ver = $matches[0].Groups[1].Value
 $line = "$args==$ver"
 
-Write-Output $line
 $line | Set-Clipboard
+Write-Output $line

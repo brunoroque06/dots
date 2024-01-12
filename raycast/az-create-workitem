@@ -1,0 +1,23 @@
+#!/usr/bin/env pwsh -NoProfile
+
+# @raycast.schemaVersion 1
+# @raycast.title Az Create WorkItem
+# @raycast.mode compact
+# @raycast.icon 🌀
+# @raycast.argument1 { "placeholder": "title", "type": "text" }
+# @raycast.argument2 { "placeholder": "type", "type": "dropdown", "data": [{ "title": "Bug", "value": "bug" }, { "title": "Feature", "value": "feature" }, { "title": "User Story", "value": "user story" }] }
+
+$title = $args[0]
+$type = $args[1]
+
+$item = az boards work-item create `
+	--org '' `
+	--project '' `
+	--area '' `
+	--title "$title" `
+	--type "$type" `
+	--assigned-to '' `
+	--open `
+| ConvertFrom-Json
+
+$item.id | Set-Clipboard
