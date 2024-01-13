@@ -10,6 +10,8 @@
 $title = $args[0]
 $type = $args[1]
 
+az login
+
 $item = az boards work-item create `
 	--org '' `
 	--project '' `
