@@ -1,0 +1,10 @@
+#!/usr/bin/env pwsh -NoProfile
+
+# @raycast.schemaVersion 1
+# @raycast.title Sort String
+# @raycast.mode compact
+# @raycast.icon 🔄
+# @raycast.argument1 { "type": "text", "placeholder": "string" }
+
+$order = $args.ToCharArray() | Sort-Object | Join-String
+Write-Output "$args -> $order"
