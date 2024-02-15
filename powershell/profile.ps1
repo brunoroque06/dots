@@ -211,7 +211,7 @@ function Set-AliasByConvention {
     foreach ($v in Get-Verb) {
         $verbs[$v.Verb] = $v.AliasPrefix
     }
-    $funcs = Get-Command | Where-Object { -not $_.Source }
+    $funcs = Get-ChildItem Function:
     foreach ($f in $funcs) {
         $v, $n = ($f.Name -split '-')[0, 1]
         if (-not $verbs.ContainsKey($v)) { continue }
@@ -316,7 +316,7 @@ function Initialize-Packages {
         npm-check-updates
 }
 function Update-Packages {
-    Update-Powershell
+    # Update-Powershell
     Update-Brew
     dotnet tool list -g `
     | Select-Object -Skip 2 `
@@ -344,7 +344,7 @@ function Initialize-Powershell {
     Get-Module -l
 }
 function Restart-Powershell { Switch-Process -WithCommand 'pwsh', '-WorkingDirectory', $pwd }
-function Update-Powershell { Update-Module; Update-Help }
+function Update-Powershell { Update-Module -Force; Update-Help }
 
 function Find-String {
     Param(

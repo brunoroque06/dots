@@ -52,7 +52,7 @@ sethandler <c-v> a:vim
 sethandler <c-w> a:vim
 sethandler <f1> a:ide
 
-map == <Action>(ReformatCode)
+map == <Action>(SilentCodeCleanup)
 map =i <Action>(OptimizeImports)
 map [<space> k<Action>(EditorStartNewLine)j
 map ]<space> <Action>(EditorStartNewLine)k
@@ -74,6 +74,7 @@ map zd <Action>(RiderCollapseToDefinitions)
 
 let mapleader="\<space>"
 
+map <leader>b <Action>(ToggleLineBreakpoint)
 map <leader>h <Action>(ShowHoverInfo)
 map <leader>j <Action>(ToggleBookmark)
 map <leader>r <Action>(RenameElement)
