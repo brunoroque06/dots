@@ -337,8 +337,6 @@ function Format-PowershellFile {
 function Initialize-Powershell {
     # Install-Module CompletionPredictor
     if ($IsWindows) { go install github.com/junegunn/fzf@latest; fzf --version }
-    Install-Module Az
-    Install-Module Microsoft.Graph
     Install-Module PSScriptAnalyzer
     Install-Module ZLocation
     Get-Module -l

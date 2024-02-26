@@ -12,6 +12,7 @@
     "editor.defaultFormatter": "ms-python.black-formatter"
   },
   "D2.execPath": "/opt/homebrew/bin/d2",
+  "bicep.enableSurveys": false,
   "breadcrumbs.symbolPath": "off",
   "debug.allowBreakpointsEverywhere": true,
   "debug.inlineValues": "on",
