@@ -1,22 +1,47 @@
 [
   {
+    "keyword": "xa",
+    "name": "Address",
+    "text": ""
+  },
+  {
+    "keyword": "xcp",
+    "name": "C# Print",
+    "text": "Console.WriteLine(\"{cursor}\")"
+  },
+  {
+    "keyword": "xdp",
+    "name": "Document Passport",
+    "text": ""
+  },
+  {
+    "keyword": "xcn",
+    "name": "C# Nullable",
+    "text": "#nullable enable"
+  },
+  {
+    "keyword": "xep",
     "name": "Email Personal",
-    "text": "brunoroque06@gmail.com",
-    "keyword": ",ep"
+    "text": ""
   },
   {
-    "name": "Localhost",
-    "text": "http://localhost",
-    "keyword": ",wl"
+    "keyword": "xew",
+    "name": "Email Work",
+    "text": ""
   },
   {
-    "name": "Website Dug",
-    "text": "https://brunoroque06.streamlit.app",
-    "keyword": ",wd"
+    "keyword": "xm",
+    "name": "Mobile",
+    "text": ""
   },
   {
-    "name": "Website Personal",
-    "text": "https://brunoroque06.github.io",
-    "keyword": ",wp"
+    "keyword": "xnp",
+    "name": "Node.js Print",
+    "text": "console.log(\"{cursor}\")"
+  },
+  {
+    "keyword": "xpp",
+    "name": "Python Print",
+    "text": "print(\"{cursor}\")"
   }
 ]
