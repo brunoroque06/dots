@@ -97,7 +97,7 @@ module JetBrains =
 
         List.map
             (fun p -> Path.Combine("Library", "Application Support", "JetBrains", p, "keymaps", "bruno-roque.xml"))
-            [ "Rider2023.2" ]
+            [ "Rider2024.1" ]
         |> List.map (fun p -> { name = p; content = content })
 
 module VsCode =

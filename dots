@@ -23,8 +23,8 @@ paths=(
 	git "$HOME"/.config/git
 	jetbrains "$HOME"
 	kitty "$HOME"/.config/kitty
-	postgresql "$HOME"
-	powershell "$HOME"/.config/powershell
+	psql "$HOME"
+	pwsh "$HOME"/.config/powershell
 	ripgrep "$HOME"/.config
 	vim "$HOME"
 	vscode "$HOME/Library/Application Support/Code/User"

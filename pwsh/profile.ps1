@@ -324,7 +324,7 @@ function Update-Packages {
     npm-check-updates -g
 }
 
-function Format-PowershellFile {
+function Format-PwshFile {
     Param(
         [Parameter(Mandatory)]
         [System.IO.FileInfo]$File
@@ -334,15 +334,15 @@ function Format-PowershellFile {
     $fmted = Invoke-Formatter -ScriptDefinition $cnt;
     Set-Content $path $fmted -NoNewline;
 }
-function Initialize-Powershell {
+function Initialize-Pwsh {
     # Install-Module CompletionPredictor
     if ($IsWindows) { go install github.com/junegunn/fzf@latest; fzf --version }
     Install-Module PSScriptAnalyzer
     Install-Module ZLocation
     Get-Module -l
 }
-function Restart-Powershell { Switch-Process -WithCommand 'pwsh', '-WorkingDirectory', $pwd }
-function Update-Powershell { Update-Module -Force; Update-Help }
+function Restart-Pwsh { Switch-Process -WithCommand 'pwsh', '-WorkingDirectory', $pwd }
+function Update-Pwsh { Update-Module -Force; Update-Help }
 
 function Find-String {
     Param(
