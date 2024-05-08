@@ -307,7 +307,7 @@ Register-ArgumentCompleter -CommandName Remove-JetBrainsCache -ParameterName Dir
 function Update-Npm { npm-check-updates --deep -i }
 
 function Initialize-Packages {
-    foreach ($p in 'csharpier', 'csharprepl', 'dotnet-outdated-tool', 'fantomas-tool') {
+    foreach ($p in 'csharpier', 'csharprepl', 'dotnet-outdated-tool', 'fantomas') {
         dotnet tool install -g $p
     }
 
