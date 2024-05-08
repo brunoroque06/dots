@@ -1,0 +1,10 @@
+#!/usr/bin/env pwsh -NoProfile
+
+# @raycast.schemaVersion 1
+# @raycast.title Type Clipboard
+# @raycast.mode compact
+# @raycast.icon 📋
+
+. ./os.ps1
+
+TypeKeys -Esc $true (Get-Clipboard)
