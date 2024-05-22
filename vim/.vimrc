@@ -55,7 +55,6 @@ set tabstop=2
 
 # UI
 # set list
-# set listchars="eol:↵,nbsp:␣,tab:> ,trail:~"
 set mouse=a
 set number
 set relativenumber
@@ -69,9 +68,7 @@ set laststatus=2
 set noshowmode
 set termguicolors
 colorscheme zenbones
-g:lightline = {
-	'colorscheme': 'zenbones',
-}
+g:lightline = { 'colorscheme': 'zenbones' }
 
 g:mapleader = ' '
 g:neoformat_basic_format_trim = 1

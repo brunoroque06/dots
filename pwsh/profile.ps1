@@ -7,7 +7,6 @@ $env:VISUAL = $env:EDITOR
 if ($IsMacOS) {
     $env:BAT_STYLE = 'plain'
     $env:BAT_THEME = 'ansi'
-    $env:HOMEBREW_AUTOREMOVE = $true
     $env:LESS = '-i --incsearch -m'
     $env:PAGER = '/opt/homebrew/bin/less'
     $env:RIPGREP_CONFIG_PATH = "$HOME/.config/ripgreprc"

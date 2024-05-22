@@ -22,7 +22,6 @@ var _paths = $nil
 
 set-env BAT_STYLE plain
 set-env BAT_THEME ansi
-set-env HOMEBREW_AUTOREMOVE true
 # set-env DOCKER_DEFAULT_PLATFORM linux/amd64
 set-env EDITOR /opt/homebrew/bin/vim
 set-env LESS '-i --incsearch -m'
