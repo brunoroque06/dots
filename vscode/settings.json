@@ -9,7 +9,7 @@
     "editor.stickyScroll.enabled": true
   },
   "[python]": {
-    "editor.defaultFormatter": "ms-python.black-formatter"
+    "editor.defaultFormatter": "charliermarsh.ruff"
   },
   "D2.execPath": "/opt/homebrew/bin/d2",
   "bicep.enableSurveys": false,
