@@ -188,6 +188,4 @@ let writeFile f =
     File.WriteAllLines(path, f.content)
     true
 
-JetBrains.config binds
-|> (+) (VsCode.config binds)
-|> List.forall writeFile
+JetBrains.config binds |> (+) (VsCode.config binds) |> List.forall writeFile

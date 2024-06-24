@@ -12,6 +12,7 @@
     "editor.defaultFormatter": "charliermarsh.ruff"
   },
   "D2.execPath": "/opt/homebrew/bin/d2",
+  "D2.previewLayout": "elk",
   "bicep.enableSurveys": false,
   "breadcrumbs.symbolPath": "off",
   "debug.allowBreakpointsEverywhere": true,
@@ -48,6 +49,7 @@
   "files.autoSave": "afterDelay",
   "files.trimTrailingWhitespace": true,
   "git.openRepositoryInParentFolders": "never",
+  "github.copilot.editor.enableAutoCompletions": true,
   "javascript.updateImportsOnFileMove.enabled": "always",
   "javascript.validate.enable": true,
   "markdown.preview.fontFamily": "SF Compact Rounded",
@@ -110,12 +112,12 @@
       "commands": ["references-view.find"]
     },
     {
-      "after": ["c-r"],
-      "before": ["U"]
+      "before": ["K"],
+      "commands": ["editor.action.showHover"]
     },
     {
-      "before": ["<leader>", "h"],
-      "commands": ["editor.action.showHover"]
+      "after": ["c-r"],
+      "before": ["U"]
     },
     {
       "before": ["<leader>", "j"],

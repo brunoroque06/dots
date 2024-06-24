@@ -22,6 +22,7 @@ var _paths = $nil
 
 set-env BAT_STYLE plain
 set-env BAT_THEME ansi
+set-env D2_LAYOUT elk
 # set-env DOCKER_DEFAULT_PLATFORM linux/amd64
 set-env EDITOR /opt/homebrew/bin/vim
 set-env LESS '-i --incsearch -m'
@@ -237,7 +238,7 @@ fn py-a {
   if (not-eq $_paths $nil) {
     fail 'A venv is already active'
   }
-  var venv = $pwd/venv/bin
+  var venv = $pwd/.venv/bin
   if (path:is-dir $venv | not (one)) {
     fail 'No venv found'
   }
@@ -252,7 +253,7 @@ fn py-d {
   set _paths = $nil
 }
 fn py-su {
-  python3 -m venv venv
+  python3 -m venv .venv
   py-a
   pip install --upgrade pip
   pip install -r requirements.txt

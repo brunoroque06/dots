@@ -7,6 +7,7 @@ $env:VISUAL = $env:EDITOR
 if ($IsMacOS) {
     $env:BAT_STYLE = 'plain'
     $env:BAT_THEME = 'ansi'
+    $env:D2_LAYOUT = 'elk'
     $env:LESS = '-i --incsearch -m'
     $env:PAGER = '/opt/homebrew/bin/less'
     $env:RIPGREP_CONFIG_PATH = "$HOME/.config/ripgreprc"
@@ -353,13 +354,13 @@ function Find-String {
 }
 
 function Initialize-Python {
-    python3 -m venv venv
-    ./venv/bin/Activate.ps1
+    python3 -m venv .venv
+    ./.venv/bin/Activate.ps1
     pip install --upgrade pip
     pip install -r requirements.txt
 }
 function Update-Python {
-    ./venv/bin/Activate.ps1
+    ./.venv/bin/Activate.ps1
     pip install --upgrade pip pur
     Get-ChildItem `
     | Where-Object Name -Like 'requirements*.txt' `
@@ -383,9 +384,8 @@ function Start-WebBrowser {
         --user-data-dir=$env:TMPDIR/webbrowser
 }
 
-function Update-Zlocation {
-    Invoke-ZLocation -l `
-    | ForEach-Object { if (!(Test-Path $_.Path)) { Write-Output $_.Path; Remove-ZLocation $_.Path } }
+function Sync-ZLocation {
+    (Get-ZLocation).Keys | ForEach-Object { if (!(Test-Path $_)) { Remove-ZLocation $_ } }
 }
 
 Set-Alias .. cd..

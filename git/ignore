@@ -26,8 +26,8 @@ target
 node_modules
 
 # Python
+.venv
 __pycache__
-venv
 
 # VSCode
 .vscode

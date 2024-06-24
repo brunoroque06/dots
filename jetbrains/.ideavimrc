@@ -56,14 +56,15 @@ map == <Action>(SilentCodeCleanup)
 map =i <Action>(OptimizeImports)
 map [<space> k<Action>(EditorStartNewLine)j
 map ]<space> <Action>(EditorStartNewLine)k
+map [c <Action>(VcsShowPrevChangeMarker)
+map ]c <Action>(VcsShowNextChangeMarker)
 map [d <Action>(GotoPreviousError)
 map ]d <Action>(GotoNextError)
 map [f <Action>(MethodUp)
 map ]f <Action>(MethodDown)
-map [g <Action>(VcsShowPrevChangeMarker)
-map ]g <Action>(VcsShowNextChangeMarker)
 map [q <Action>(PreviousOccurence)
 map ]q <Action>(NextOccurence)
+map K <Action>(ShowHoverInfo)
 map U <Action>($Redo)
 
 map gd <Action>(GotoDeclaration)
@@ -75,7 +76,6 @@ map zd <Action>(RiderCollapseToDefinitions)
 let mapleader="\<space>"
 
 map <leader>b <Action>(ToggleLineBreakpoint)
-map <leader>h <Action>(ShowHoverInfo)
 map <leader>j <Action>(ToggleBookmark)
 map <leader>r <Action>(RenameElement)
 
