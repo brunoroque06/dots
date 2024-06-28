@@ -17,7 +17,7 @@
   {
     "context": "Editor && vim_mode == normal",
     "bindings": {
-      "==": "editor::Format"
+      "= =": "editor::Format"
     }
   }
 ]

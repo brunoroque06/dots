@@ -1,6 +1,6 @@
 " https://youtrack.jetbrains.com/issue/IDEA-67559
 
-" https://github.com/JetBrains/ideavim/wiki/%22set%22-commands
+" https://github.com/JetBrains/ideavim/wiki
 set clipboard=unnamed
 set hlsearch
 set ignorecase
@@ -52,35 +52,39 @@ sethandler <c-v> a:vim
 sethandler <c-w> a:vim
 sethandler <f1> a:ide
 
-map == <Action>(SilentCodeCleanup)
-map =i <Action>(OptimizeImports)
-map [<space> k<Action>(EditorStartNewLine)j
-map ]<space> <Action>(EditorStartNewLine)k
-map [c <Action>(VcsShowPrevChangeMarker)
-map ]c <Action>(VcsShowNextChangeMarker)
-map [d <Action>(GotoPreviousError)
-map ]d <Action>(GotoNextError)
-map [f <Action>(MethodUp)
-map ]f <Action>(MethodDown)
-map [q <Action>(PreviousOccurence)
-map ]q <Action>(NextOccurence)
-map U <Action>($Redo)
+nmap == <Action>(SilentCodeCleanup)
+nmap =i <Action>(OptimizeImports)
+nmap [<space> k<Action>(EditorStartNewLine)j
+nmap ]<space> <Action>(EditorStartNewLine)k
+nmap [c <Action>(VcsShowPrevChangeMarker)
+nmap ]c <Action>(VcsShowNextChangeMarker)
+nmap [d <Action>(GotoPreviousError)
+nmap ]d <Action>(GotoNextError)
+nmap [f <Action>(MethodUp)
+nmap ]f <Action>(MethodDown)
+nmap [q <Action>(PreviousOccurence)
+nmap ]q <Action>(NextOccurence)
+nmap U <Action>($Redo)
 
-map cd <Action>(RenameElement)
+nmap cd <Action>(RenameElement)
 
-map g/ <Action>(FindInPath)
-map gd <Action>(GotoDeclaration)
-map gh <Action>(ShowHoverInfo)
-map gi <Action>(GotoImplementation)
-map gr <Action>(ShowUsages)
+nmap g/ <Action>(FindInPath)
+nmap gd <Action>(GotoDeclaration)
+nmap gD <Action>(GotoTypeDeclaration)
+nmap gh <Action>(ShowHoverInfo)
+nmap gi <Action>(GotoImplementation)
+nmap gr <Action>(ShowUsages)
 
-map zd <Action>(RiderCollapseToDefinitions)
+nmap zd <Action>(RiderCollapseToDefinitions)
 
 let mapleader="\<space>"
 
-map <leader>b <Action>(ToggleLineBreakpoint)
-map <leader>j <Action>(ToggleBookmark)
+nmap <leader>b <Action>(ToggleLineBreakpoint)
+nmap <leader>j <Action>(ToggleBookmark)
 
-map <c-w>q <c-w>c
-map <c-w>J <Action>(MoveTabDown)
-map <c-w>L <Action>(MoveTabRight)
+nmap <c-w>gd <Action>(SplitVertically)<Action>(GotoDeclaration)
+nmap <c-w>gD <Action>(SplitVertically)<Action>(GotoTypeDeclaration)
+nmap <c-w>gi <Action>(SplitVertically)<Action>(GotoImplementation)
+nmap <c-w>q <c-w>c
+nmap <c-w>J <Action>(MoveTabDown)
+nmap <c-w>L <Action>(MoveTabRight)
