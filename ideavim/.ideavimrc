@@ -64,10 +64,13 @@ map [f <Action>(MethodUp)
 map ]f <Action>(MethodDown)
 map [q <Action>(PreviousOccurence)
 map ]q <Action>(NextOccurence)
-map K <Action>(ShowHoverInfo)
 map U <Action>($Redo)
 
+map cd <Action>(RenameElement)
+
+map g/ <Action>(FindInPath)
 map gd <Action>(GotoDeclaration)
+map gh <Action>(ShowHoverInfo)
 map gi <Action>(GotoImplementation)
 map gr <Action>(ShowUsages)
 
@@ -77,7 +80,6 @@ let mapleader="\<space>"
 
 map <leader>b <Action>(ToggleLineBreakpoint)
 map <leader>j <Action>(ToggleBookmark)
-map <leader>r <Action>(RenameElement)
 
 map <c-w>q <c-w>c
 map <c-w>J <Action>(MoveTabDown)

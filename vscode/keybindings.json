@@ -1,0 +1,79 @@
+[
+  {
+    "key": "cmd+,",
+    "command": "workbench.action.openSettingsJson"
+  },
+  {
+    "key": "cmd+[",
+    "command": "workbench.action.navigateBack"
+  },
+  {
+    "key": "cmd+]",
+    "command": "workbench.action.navigateForward"
+  },
+  {
+    "key": "cmd+b",
+    "command": "workbench.action.quickOpen"
+  },
+  {
+    "key": "cmd+enter",
+    "command": "editor.action.quickFix"
+  },
+  {
+    "key": "cmd+f",
+    "command": "actions.find"
+  },
+  {
+    "key": "cmd+shift+f",
+    "command": "workbench.action.findInFiles"
+  },
+  {
+    "key": "cmd+shift+h",
+    "command": "workbench.action.toggleSidebarVisibility"
+  },
+  {
+    "key": "cmd+i",
+    "command": "editor.action.triggerParameterHints"
+  },
+  {
+    "key": "cmd+j",
+    "command": "bookmarks.listFromAllFiles"
+  },
+  {
+    "key": "cmd+l",
+    "command": "breadcrumbs.focusAndSelect"
+  },
+  {
+    "key": "cmd+o",
+    "command": "workbench.action.quickOpen"
+  },
+  {
+    "key": "cmd+p",
+    "command": "workbench.action.showCommands"
+  },
+  {
+    "key": "cmd+r",
+    "command": "editor.action.startFindReplaceAction"
+  },
+  {
+    "key": "cmd+shift+r",
+    "command": "workbench.action.replaceInFiles"
+  },
+  {
+    "key": "cmd+t",
+    "command": "workbench.action.terminal.toggleTerminal"
+  },
+  {
+    "key": "cmd+y",
+    "command": "workbench.action.gotoSymbol"
+  },
+  {
+    "key": "cmd+shift+y",
+    "command": "workbench.action.showAllSymbols"
+  },
+  {
+    "key": "escape",
+    "command": "workbench.action.focusActiveEditorGroup",
+    "when": "!editorFocus"
+  }
+]

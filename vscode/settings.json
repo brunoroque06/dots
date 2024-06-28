@@ -104,6 +104,10 @@
       "commands": ["editor.action.peekDefinition"]
     },
     {
+      "before": ["g", "h"],
+      "commands": ["editor.action.showHover"]
+    },
+    {
       "before": ["g", "i"],
       "commands": ["editor.action.goToImplementation"]
     },
@@ -111,10 +115,7 @@
       "before": ["g", "r"],
       "commands": ["references-view.find"]
     },
-    {
-      "before": ["K"],
-      "commands": ["editor.action.showHover"]
-    },
+    ,
     {
       "after": ["c-r"],
       "before": ["U"]
@@ -124,7 +125,7 @@
       "commands": ["bookmarks.toggle"]
     },
     {
-      "before": ["<leader>", "r"],
+      "before": ["c", "d"],
       "commands": ["editor.action.rename"]
     }
   ],

@@ -21,13 +21,15 @@ setup() {
 paths=(
 	elvish "$HOME"/.config/elvish
 	git "$HOME"/.config/git
-	jetbrains "$HOME"
+	ideavim "$HOME"
+	jetbrains "$HOME/Library/Application Support/JetBrains/Rider2024.1/keymaps"
 	kitty "$HOME"/.config/kitty
 	psql "$HOME"
 	pwsh "$HOME"/.config/powershell
 	ripgrep "$HOME"/.config
 	vim "$HOME"
 	vscode "$HOME/Library/Application Support/Code/User"
+	zed "$HOME"/.config/zed
 )
 
 link() {
@@ -51,7 +53,6 @@ setup)
 	;;
 config)
 	for_config link
-	dotnet fsi keybinds.fsx
 	;;
 unconfig)
 	for_config unlink

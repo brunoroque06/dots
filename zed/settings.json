@@ -1,0 +1,33 @@
+{
+  "buffer_font_family": "Cascadia Code",
+  "buffer_font_size": 13,
+  "cursor_blink": false,
+  "languages": {
+    "Python": {
+      "formatter": {
+        "external": {
+          "command": "/opt/homebrew/bin/ruff",
+          "arguments": [
+            "check",
+            "--exit-zero",
+            "--fix",
+            "--stdin-filename",
+            "{buffer_path}",
+            "-"
+          ]
+        }
+      }
+    }
+  },
+  "relative_line_numbers": true,
+  "soft_wrap": "editor_width",
+  "terminal": {
+    "shell": {
+      "program": "/opt/homebrew/bin/elvish"
+    }
+  },
+  "theme": "Solarized Light",
+  "ui_font_family": "Cascadia Code",
+  "ui_font_size": 14,
+  "vim_mode": true
+}

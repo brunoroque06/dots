@@ -1,6 +1,5 @@
 tap "azure/bicep"
 tap "homebrew/bundle"
-tap "homebrew/cask-fonts"
 tap "rsteube/homebrew-tap"
 
 brew "act"
@@ -9,7 +8,6 @@ brew "azure-cli"
 brew "bash"
 brew "bat"
 brew "bicep"
-brew "black"
 brew "carapace"
 brew "curl"
 brew "d2"
@@ -38,6 +36,7 @@ brew "pyright"
 brew "python3"
 brew "ripgrep"
 brew "rsync"
+brew "ruff"
 brew "shellcheck"
 brew "shfmt"
 brew "sqlite"
@@ -61,20 +60,20 @@ cask "gitup"
 cask "google-chrome"
 cask "kitty"
 cask "lookaway"
-cask "parsec"
 cask "powershell"
 cask "proxyman"
-cask "rapidapi"
 cask "raycast"
 cask "rider"
 cask "transmission"
 cask "visual-studio-code"
+cask "zed"
 
 mas "1Blocker", id: 1365531024
 mas "Bear", id: 1091189122
-mas "Cyberduck", id: 409222199
 mas "DaisyDisk", id: 411643860
-mas "Elmedia:universal video player", id: 937759555
+mas "Fresh Eyes", id: 6480411697
+mas "Grila", id: 6444335028
 mas "Keys Multiplatform", id: 1494642810
 mas "Reeder", id: 1529448980
+mas "Steam Link", id: 1246969117
 mas "rcmd", id: 1596283165
