@@ -45,6 +45,7 @@ brew "staticcheck"
 brew "stow"
 brew "streamlink"
 brew "tokei"
+brew "typst"
 brew "vim"
 brew "wget"
 
