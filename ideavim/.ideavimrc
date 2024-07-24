@@ -80,7 +80,10 @@ nmap zd <Action>(RiderCollapseToDefinitions)
 let mapleader="\<space>"
 
 nmap <leader>b <Action>(ToggleLineBreakpoint)
+nmap <leader>d <Action>(Debug)
 nmap <leader>j <Action>(ToggleBookmark)
+nmap <leader>r <Action>(Run)
+nmap <leader>s <Action>(Stop)
 
 nmap <c-w>gd <Action>(SplitVertically)<Action>(GotoDeclaration)
 nmap <c-w>gD <Action>(SplitVertically)<Action>(GotoTypeDeclaration)

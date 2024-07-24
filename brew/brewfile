@@ -66,7 +66,6 @@ cask "proxyman"
 cask "raycast"
 cask "rider"
 cask "transmission"
-cask "typst"
 cask "visual-studio-code"
 cask "zed"
 
