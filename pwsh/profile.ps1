@@ -390,6 +390,7 @@ function Sync-ZLocation {
 
 Set-Alias .. cd..
 Set-Alias e vim
+Set-Alias tf terraform
 
 $kitten = '/Applications/kitty.app/Contents/MacOS/kitten'
 Set-Alias kitten $kitten

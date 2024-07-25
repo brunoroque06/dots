@@ -115,7 +115,6 @@
       "before": ["g", "r"],
       "commands": ["references-view.find"]
     },
-    ,
     {
       "after": ["c-r"],
       "before": ["U"]
