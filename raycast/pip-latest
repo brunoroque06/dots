@@ -3,7 +3,6 @@
 # @raycast.schemaVersion 1
 # @raycast.title Pip Latest
 # @raycast.mode compact
-# @raycast.icon 🐍
 # @raycast.argument1 { "type": "text", "placeholder": "package" }
 
 $res = Invoke-WebRequest https://pypi.org/project/$args

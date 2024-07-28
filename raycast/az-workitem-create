@@ -3,7 +3,6 @@
 # @raycast.schemaVersion 1
 # @raycast.title Az WorkItem Create
 # @raycast.mode compact
-# @raycast.icon 🌀
 # @raycast.argument1 { "placeholder": "title", "type": "text" }
 # @raycast.argument2 { "placeholder": "type", "type": "dropdown", "data": [{ "title": "Bug", "value": "bug" }, { "title": "Feature", "value": "feature" }, { "title": "User Story", "value": "user story" }] }
 

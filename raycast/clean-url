@@ -3,6 +3,5 @@
 # @raycast.schemaVersion 1
 # @raycast.title Clean URL
 # @raycast.mode compact
-# @raycast.icon 🧹
 
 (Get-Clipboard).Split('?')[0] | Set-Clipboard

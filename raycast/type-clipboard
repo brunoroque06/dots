@@ -3,7 +3,6 @@
 # @raycast.schemaVersion 1
 # @raycast.title Type Clipboard
 # @raycast.mode compact
-# @raycast.icon 📋
 
 . ./os.ps1
 
