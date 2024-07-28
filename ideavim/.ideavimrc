@@ -1,5 +1,3 @@
-" https://youtrack.jetbrains.com/issue/IDEA-67559
-
 " https://github.com/JetBrains/ideavim/wiki
 set clipboard=unnamed
 set hlsearch

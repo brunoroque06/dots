@@ -1,0 +1,11 @@
+#!/usr/bin/env pwsh -NoProfile
+
+# @raycast.schemaVersion 1
+# @raycast.title List Snippets
+# @raycast.mode fullOutput
+
+defaults read -g NSUserDictionaryReplacementItems `
+| plutil -convert json -o - - `
+| ConvertFrom-Json
+| Sort-Object -Property replace
+| Select-Object { $_.replace + ' - ' + $_.with }
