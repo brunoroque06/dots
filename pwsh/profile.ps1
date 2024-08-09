@@ -289,6 +289,24 @@ function Get-GitStatus { git status -s }
 
 function Update-Go { go get -u; go mod tidy }
 
+function Remove-LoginItem {
+    Param(
+        [Parameter(Mandatory)]
+        [string]$Dir
+    )
+    Remove-Item -Confirm -Force $Dir
+}
+Register-ArgumentCompleter -CommandName Remove-LoginItem -ParameterName Dir -ScriptBlock {
+    $paths = @(
+        "/Library/LaunchAgents",
+        "/Library/LaunchDaemons",
+        "~/Library/LaunchAgents"
+    )
+    $paths | ForEach-Object { Get-ChildItem $_ } | ForEach-Object {
+        New-Object System.Management.Automation.CompletionResult $_.FullName
+    }
+}
+
 function Remove-JetBrainsCache {
     Param(
         [Parameter(Mandatory)]
