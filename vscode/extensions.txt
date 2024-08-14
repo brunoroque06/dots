@@ -24,6 +24,7 @@ ms-python.vscode-pylance
 ms-vscode.powershell
 nvarner.typst-lsp
 redhat.vscode-yaml
+rust-lang.rust-analyzer
 streetsidesoftware.code-spell-checker
 terrastruct.d2
 visualstudioexptteam.vscodeintellicode

@@ -100,6 +100,10 @@
       "when": "hasSearchResult"
     },
     {
+      "before": ["c", "d"],
+      "commands": ["editor.action.rename"]
+    },
+    {
       "before": ["g", "d"],
       "commands": ["editor.action.peekDefinition"]
     },
@@ -120,12 +124,24 @@
       "before": ["U"]
     },
     {
+      "before": ["<leader>", "b"],
+      "commands": ["editor.debug.action.toggleBreakpoint"]
+    },
+    {
+      "before": ["<leader>", "c"],
+      "commands": ["workbench.action.debug.continue"]
+    },
+    {
+      "before": ["<leader>", "d"],
+      "commands": ["workbench.action.debug.start"]
+    },
+    {
       "before": ["<leader>", "j"],
       "commands": ["bookmarks.toggle"]
     },
     {
-      "before": ["c", "d"],
-      "commands": ["editor.action.rename"]
+      "before": ["<leader>", "s"],
+      "commands": ["workbench.action.debug.stop"]
     }
   ],
   "vim.surround": true,

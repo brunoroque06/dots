@@ -12,10 +12,10 @@ set paths = [
   /bin
   /usr/sbin
   /sbin
-  $E:HOME/go/bin
+  $E:HOME/.cargo/bin
   /usr/local/share/dotnet
   $E:HOME/.dotnet/tools
-  $E:HOME/.paperspace/bin
+  $E:HOME/go/bin
   /Applications/Rider.app/Contents/MacOS
 ]
 var _paths = $nil

@@ -19,10 +19,10 @@ if ($IsMacOS) {
         '/bin',
         '/usr/sbin',
         '/sbin',
-        "$HOME/go/bin",
+        "$HOME/.cargo/bin",
         '/usr/local/share/dotnet',
         "$HOME/.dotnet/tools",
-        "$HOME/.paperspace/bin",
+        "$HOME/go/bin",
         "/Applications/Rider.app/Contents/MacOS"
     ) -join ':'
 }
