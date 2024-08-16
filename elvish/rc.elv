@@ -24,7 +24,7 @@ set-env BAT_STYLE plain
 set-env BAT_THEME ansi
 set-env D2_LAYOUT elk
 # set-env DOCKER_DEFAULT_PLATFORM linux/amd64
-set-env EDITOR /opt/homebrew/bin/vim
+set-env EDITOR /opt/homebrew/bin/hx
 set-env LESS '-i --incsearch -m'
 set-env PAGER /opt/homebrew/bin/less
 # set-env REQUESTS_CA_BUNDLE $E:HOME/.proxyman/proxyman-ca.pem # proxyman with python

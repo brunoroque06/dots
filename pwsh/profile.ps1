@@ -1,6 +1,6 @@
 $ErrorActionPreference = 'Stop'
 
-$env:EDITOR = 'vim'
+$env:EDITOR = 'hx'
 # $env:DOCKER_DEFAULT_PLATFORM = 'linux/amd64'
 $env:FZF_DEFAULT_OPTS = '--color bw --header-first --layout=reverse --no-separator --scrollbar ┃'
 $env:VISUAL = $env:EDITOR
@@ -407,7 +407,7 @@ function Sync-ZLocation {
 }
 
 Set-Alias .. cd..
-Set-Alias e vim
+Set-Alias e hx
 Set-Alias tf terraform
 
 $kitten = '/Applications/kitty.app/Contents/MacOS/kitten'

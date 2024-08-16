@@ -1,0 +1,23 @@
+theme = "onelight"
+
+[editor]
+line-number = "relative"
+mouse = false
+
+[editor.cursor-shape]
+insert = "bar"
+
+[editor.file-picker]
+hidden = false
+
+[editor.lsp]
+display-messages = true
+
+[keys.insert]
+C-a = "goto_line_start"
+C-b = "move_char_left"
+C-e = "goto_line_end_newline"
+C-f = "move_char_right"
+
+[keys.normal]
+"=" = { "=" = ":fmt" }

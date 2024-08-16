@@ -1,0 +1,56 @@
+[[language]]
+name = "bash"
+formatter = { command = "shfmt" }
+
+[[language]]
+name = "css"
+formatter = { command = "prettier", args = ["--parser", "css"] }
+
+[[language]]
+name = "go"
+formatter = { command = "gofmt" }
+
+[[language]]
+name = "hcl"
+formatter = { command = "terraform", args = ["fmt", "-"] }
+
+[[language]]
+name = "html"
+formatter = { command = "prettier", args = ["--parser", "html"] }
+
+[[language]]
+name = "javascript"
+formatter = { command = "prettier", args = ["--parser", "babel"] }
+
+[[language]]
+name = "json"
+formatter = { command = "prettier", args = ["--parser", "json"] }
+
+[[language]]
+name = "markdown"
+formatter = { command = "prettier", args = ["--parser", "markdown"] }
+
+[[language]]
+name = "python"
+formatter = { command = "ruff", args = ["format", "-"] }
+language-servers = [ "pyright" ]
+
+[[language]]
+name = "rust"
+formatter = { command = "rustfmt" }
+
+[[language]]
+name = "scss"
+formatter = { command = "prettier", args = ["--parser", "scss"] }
+
+[[language]]
+name = "sql"
+formatter = { command = "pg_format" }
+
+[[language]]
+name = "typescript"
+formatter = { command = "prettier", args = ["--parser", "typescript"] }
+
+[[language]]
+name = "yaml"
+formatter = { command = "prettier", args = ["--parser", "yaml"] }

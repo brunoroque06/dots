@@ -17,13 +17,21 @@
           ]
         }
       }
+    },
+    "Rust": {
+      "formatter": {
+        "external": {
+          "command": "~/.cargo/bin/rustfmt",
+          "arguments": ["-"]
+        }
+      }
     }
   },
   "relative_line_numbers": true,
   "soft_wrap": "editor_width",
   "terminal": {
     "shell": {
-      "program": "/opt/homebrew/bin/elvish"
+      "program": "/usr/local/bin/pwsh"
     }
   },
   "theme": "Solarized Light",
