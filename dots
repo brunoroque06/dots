@@ -22,7 +22,7 @@ paths=(
 	elvish "$HOME"/.config/elvish
 	git "$HOME"/.config/git
 	ideavim "$HOME"
-	jetbrains "$HOME/Library/Application Support/JetBrains/Rider2024.1/keymaps"
+	jetbrains "$HOME/Library/Application Support/JetBrains/Rider2024.2/keymaps"
 	kitty "$HOME"/.config/kitty
 	psql "$HOME"
 	pwsh "$HOME"/.config/powershell
