@@ -72,7 +72,7 @@ function Prompt {
     $dir = Get-PwdLeaf
     Set-TerminalDirectory
     Set-TerminalTitle $dir
-    "$ps1$exitCode $default $blue$dir $yellow$(Get-LastCommandDuration)$magenta~> $default"
+    "$ps1$exitCode $default $blue$dir $yellow$(Get-LastCommandDuration)$magenta> $default"
 }
 
 $ReadLineOption = @{

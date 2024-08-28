@@ -52,7 +52,7 @@
   "github.copilot.editor.enableAutoCompletions": true,
   "javascript.updateImportsOnFileMove.enabled": "always",
   "javascript.validate.enable": true,
-  "markdown.preview.fontFamily": "SF Compact Rounded",
+  "markdown.preview.fontFamily": "SF Pro Rounded",
   "python.analysis.typeCheckingMode": "basic",
   "python.languageServer": "Pylance",
   "python.testing.pytestEnabled": true,

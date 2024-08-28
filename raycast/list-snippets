@@ -1,11 +1,12 @@
-#!/usr/bin/env pwsh -NoProfile
+#!/usr/bin/env elvish
 
 # @raycast.schemaVersion 1
 # @raycast.title List Snippets
 # @raycast.mode fullOutput
 
-defaults read -g NSUserDictionaryReplacementItems `
-| plutil -convert json -o - - `
-| ConvertFrom-Json
-| Sort-Object -Property replace
-| Select-Object { $_.replace + ' - ' + $_.with }
+defaults read -g NSUserDictionaryReplacementItems ^
+  | plutil -convert json -o - - ^
+  | from-json ^
+  | all (one) ^
+  | order &key={ |s| put $s[replace] } ^
+  | each { |s| put $s[replace]' - '$s[with] }

@@ -28,13 +28,23 @@
     }
   },
   "relative_line_numbers": true,
+  "scrollbar": {
+    "show": "auto"
+  },
   "soft_wrap": "editor_width",
+  "tab_bar": {
+    "show": false
+  },
   "terminal": {
     "shell": {
-      "program": "/usr/local/bin/pwsh"
+      "program": "/opt/homebrew/bin/elvish"
     }
   },
-  "theme": "Solarized Light",
+  "theme": "One Light",
+  "toolbar": {
+    "breadcrumbs": true,
+    "quick_actions": false
+  },
   "ui_font_family": "Cascadia Code",
   "ui_font_size": 14,
   "vim_mode": true

@@ -78,7 +78,7 @@ set edit:prompt = {
     printf ' %.0fs' $s | styled (one) yellow
   }
 
-  styled ' ~> ' magenta
+  styled ' > ' magenta
 }
 set edit:rprompt = (constantly (whoami)@(hostname))
 
@@ -107,24 +107,20 @@ fn cmd-edit {
 }
 
 # D2
-fn d2-fmt {
-  ls ^
-  | from-lines ^
-  | each { |f| if (str:equal-fold (path:ext $f) .d2) { d2 fmt $f } }
-}
+fn d2-ls { ls *.d2 | from-lines }
+fn d2-fmt { d2-ls | each { |f| d2 fmt $f } }
 fn d2-run {
-  ls ^
-  | from-lines ^
-  | each { |f| if (str:equal-fold (path:ext $f) .d2) {
-      d2 fmt $f
-    }
+  d2-ls | each { |f| d2 ^
+    --font-bold $E:HOME/Library/Fonts/CascadiaCode.ttf ^
+    --font-italic $E:HOME/Library/Fonts/CascadiaCodeItalic.ttf ^
+    --font-regular $E:HOME/Library/Fonts/CascadiaCode.ttf ^
+    --pad 0 $f out/(str:trim-right $f .d2).svg
   }
 }
 
 # Docker
 fn doc-clean {
-  docker rmi -f (docker images -aq)
-  docker system prune --volumes -f
+  docker system prune --force --volumes
 }
 fn doc-cnt-rm {
   docker stop (docker ps -aq); docker rm (docker ps -aq)
@@ -143,15 +139,15 @@ fn doc-su {
 }
 
 # Dotnet
-fn dot-csi { |@a| csharprepl -t themes/VisualStudio_Light.json $@a }
-fn dot-fsi { |@a| dotnet fsi $@a }
+fn dot-ci { |@a| csharprepl -t themes/VisualStudio_Light.json $@a }
+fn dot-fi { |@a| dotnet fsi $@a }
 fn dot-up { dotnet outdated --upgrade }
 set edit:completion:arg-completer[dotnet] = { |@args|
 	dotnet complete (str:join ' ' $args) | from-lines
 }
 
 # File System
-fn p { |f|
+fn c { |f|
   if (str:has-suffix $f .md) {
     glow $f
   } else {
@@ -163,13 +159,12 @@ fn e { |@a| $E:EDITOR $@a }
 fn fd { |@a| e:fd -c never $@a }
 fn file-yank { |f| pbcopy < $f }
 set edit:completion:arg-completer[file-yank] = { |@args|
-  rg --files ^
-    | from-lines
+  fd -H -t file | from-lines
 }
 var _kitten = /Applications/kitty.app/Contents/MacOS/kitten
 fn kitten { |@a| $_kitten $@a }
 fn icat { |@a| $_kitten icat $@a }
-fn l { |@a| eza -al --git --no-permissions $@a }
+fn l { |@a| eza -al $@a }
 fn t { |&l=2 @d|
   eza -al --git --level $l --no-permissions --tree $@d
 }
@@ -185,7 +180,7 @@ fn go-up { go get -u; go mod tidy }
 
 # JetBrains
 fn jb-rm { |a|
-  var dirs = ['Application Support/JetBrains' 'Caches/JetBrains' 'Logs/JetBrains']
+  var dirs = ['Application Support/JetBrains' Caches/JetBrains Logs/JetBrains]
   for d $dirs {
     rm -rf $E:HOME/Library/$d/$a
   }
@@ -198,21 +193,22 @@ set edit:completion:arg-completer[jb-rm] = { |@args|
 fn ntw-scan { nmap -sP 192.168.1.0/24 }
 
 # Node.js
-fn npm-up { npm-check-updates --deep -i }
-fn node-clean {
+fn npm-clean {
   fd -HI --prune node_modules ^
     | from-lines ^
     | peach { |d| rm -rf $d }
 }
+fn npm-up { npm-check-updates --deep -i }
 
 # Packages
 fn brew-dump { brew bundle dump --file $E:HOME/Projects/dots/brew/brewfile --force }
 fn brew-up {
   brew update
-  brew upgrade --fetch-HEAD --ignore-pinned
+  brew upgrade --fetch-HEAD
   brew cleanup
   brew doctor
 }
+
 fn pkg-su {
   put csharpier csharprepl dotnet-outdated-tool fantomas ^
     | each { |p| try { dotnet tool install -g $p } catch { } }
@@ -280,8 +276,8 @@ fn re { exec elvish }
 fn ssh-trust { |@a| ssh-copy-id -i $E:HOME/.ssh/id_rsa.pub $@a }
 
 # VSCode
-fn code-ext-dump { code --list-extensions > $E:HOME'/Library/Application Support/Code/User/extensions.txt' }
-fn code-ext-install {
+fn code-dump { code --list-extensions > $E:HOME'/Library/Application Support/Code/User/extensions.txt' }
+fn code-su {
   from-lines < $E:HOME'/Library/Application Support/Code/User/extensions.txt' ^
     | each { |e| code --force --install-extension $e } [(all)]
 }
@@ -296,7 +292,7 @@ set edit:insert:binding[Ctrl-o] = $edit:lastcmd:start~
 set edit:insert:binding[Ctrl-r] = $edit:histlist:start~
 set edit:insert:binding[Ctrl-t] = $cmd-edit~
 set edit:insert:binding[Ctrl-y] = {
-  fd -H --strip-cwd-prefix . ^
+  fd -H -t file ^
     | from-lines ^
     | each { |f| put [&to-accept=$f &to-filter=$f &to-show=$f] } ^
     | edit:listing:start-custom &caption='Files' &accept={ |f| edit:insert-at-dot $f } [(all)]
