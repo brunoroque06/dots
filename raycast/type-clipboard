@@ -1,9 +1,7 @@
-#!/usr/bin/env pwsh -NoProfile
+#!/usr/bin/env elvish
 
 # @raycast.schemaVersion 1
 # @raycast.title Type Clipboard
 # @raycast.mode compact
 
-. ./os.ps1
-
-TypeKeys -Esc $true (Get-Clipboard)
+elvish type-keys.elv (pbpaste) $true $false

@@ -1,9 +1,10 @@
-#!/usr/bin/env pwsh -NoProfile
+#!/usr/bin/env elvish
 
 # @raycast.schemaVersion 1
 # @raycast.title Sort String
 # @raycast.mode compact
 # @raycast.argument1 { "type": "text", "placeholder": "string" }
 
-$order = $args.ToCharArray() | Sort-Object | Join-String
-Write-Output "$args -> $order"
+use str
+var order = (str:split '' $args[0] | order | str:join '')
+put $args[0]' -> '$order

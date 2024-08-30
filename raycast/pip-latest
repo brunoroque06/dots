@@ -1,15 +1,19 @@
-#!/usr/bin/env pwsh -NoProfile
+#!/usr/bin/env elvish
 
 # @raycast.schemaVersion 1
 # @raycast.title Pip Latest
 # @raycast.mode compact
 # @raycast.argument1 { "type": "text", "placeholder": "package" }
 
-$res = Invoke-WebRequest https://pypi.org/project/$args
-$pattern = '<p class="release__version">(?:\s*)(.*)(?:\s*)<\/p>'
-$matches = [regex]::Matches($res.Content, $pattern)
-$ver = $matches[0].Groups[1].Value
-$line = "$args==$ver"
+use re
 
-$line | Set-Clipboard
-Write-Output $line
+var ver = (curl https://pypi.org/project/$args[0]/ ^
+  | slurp ^
+  | re:find '<p class="release__version">(?:\s*)(.*)(?:\s*)<\/p>' (one) ^
+  | take 1 ^
+  | put (one)[groups][1][text])
+
+var pkg = $args[0]==$ver
+
+print $pkg | pbcopy
+put $pkg
