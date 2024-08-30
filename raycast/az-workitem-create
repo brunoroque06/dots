@@ -1,4 +1,4 @@
-#!/usr/bin/env pwsh -NoProfile
+#!/usr/bin/env elvish
 
 # @raycast.schemaVersion 1
 # @raycast.title Az WorkItem Create
@@ -6,19 +6,18 @@
 # @raycast.argument1 { "placeholder": "title", "type": "text" }
 # @raycast.argument2 { "placeholder": "type", "type": "dropdown", "data": [{ "title": "Bug", "value": "bug" }, { "title": "Feature", "value": "feature" }, { "title": "User Story", "value": "user story" }] }
 
-$title = $args[0]
-$type = $args[1]
+var title = $args[0]
+var type = $args[1]
 
-az login
+az login --tenant ''
 
-$item = az boards work-item create `
-	--org '' `
-	--project '' `
-	--area '' `
-	--title "$title" `
-	--type "$type" `
-	--assigned-to '' `
-	--open `
-| ConvertFrom-Json
+var item = (az boards work-item create ^
+	--org '' ^
+	--project '' ^
+	--area '' ^
+	--title $title ^
+	--type $type ^
+	--assigned-to '' ^
+	--open | from-json)
 
-$item.id | Set-Clipboard
+print $item[id] | pbcopy
