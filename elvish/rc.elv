@@ -164,10 +164,8 @@ set edit:completion:arg-completer[file-yank] = { |@args|
 var _kitten = /Applications/kitty.app/Contents/MacOS/kitten
 fn kitten { |@a| $_kitten $@a }
 fn icat { |@a| $_kitten icat $@a }
-fn l { |@a| eza -al $@a }
-fn t { |&l=2 @d|
-  eza -al --git --level $l --no-permissions --tree $@d
-}
+fn l { |@a| ls -Ahop $@a }
+fn t { |&l=2 @a| tree -L $l $@a }
 
 # Git
 fn git-cfg { git config --list --show-origin }
