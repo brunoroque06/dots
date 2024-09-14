@@ -34,6 +34,9 @@
   <action id="HideAllWindows">
     <keyboard-shortcut first-keystroke="shift meta h" />
   </action>
+  <action id="OpenInlineChatAction">
+    <keyboard-shortcut first-keystroke="shift ctrl g" />
+  </action>
   <action id="ParameterInfo">
     <keyboard-shortcut first-keystroke="meta i" />
   </action>

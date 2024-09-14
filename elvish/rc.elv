@@ -107,7 +107,7 @@ fn cmd-edit {
 }
 
 # D2
-fn d2-ls { ls *.d2 | from-lines }
+fn d2-ls { put *.d2 }
 fn d2-fmt { d2-ls | each { |f| d2 fmt $f } }
 fn d2-run {
   d2-ls | each { |f| d2 ^
@@ -164,7 +164,7 @@ set edit:completion:arg-completer[file-yank] = { |@args|
 var _kitten = /Applications/kitty.app/Contents/MacOS/kitten
 fn kitten { |@a| $_kitten $@a }
 fn icat { |@a| $_kitten icat $@a }
-fn l { |@a| ls -Ahop $@a }
+fn l { |@a| ls -Aho --color $@a }
 fn t { |&l=2 @a| tree -L $l $@a }
 
 # Git
@@ -184,7 +184,7 @@ fn jb-rm { |a|
   }
 }
 set edit:completion:arg-completer[jb-rm] = { |@args|
-  ls $E:HOME/Library/Caches/JetBrains | from-lines
+  put /Users/brunoroque/Library/Caches/JetBrains/* | each { |p| path:base $p }
 }
 
 # Network
@@ -246,17 +246,19 @@ fn py-d {
   set paths = $_paths
   set _paths = $nil
 }
+fn py-re-ls {
+  put requirements*.txt
+}
 fn py-su {
   python3 -m venv .venv
   py-a
   pip install --upgrade pip
-  pip install -r requirements.txt
+  py-re-ls | each { |r| pip install -r $r }
 }
 fn py-up {
   py-a
   pip install --upgrade pip pur
-  pur
-  pip install -r requirements.txt
+  py-re-ls | each { |r| pur -r $r; pip install -r $r }
   py-d
 }
 
