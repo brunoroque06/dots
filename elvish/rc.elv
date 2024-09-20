@@ -285,6 +285,8 @@ fn code-su {
 # Web Browser
 fn webbrowser { rm -fr $E:TMPDIR/webbrowser; '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --user-data-dir=$E:TMPDIR/webbrowser --disable-web-security --incognito --no-first-run --new-window http://localhost:4200 }
 
+set edit:abbr['..'] = 'cd ..'
+
 # Taken: a, b, f, e, i, n, p
 set edit:insert:binding[Ctrl-d] = $edit:navigation:start~
 set edit:insert:binding[Ctrl-l] = $edit:location:start~

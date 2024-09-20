@@ -54,23 +54,29 @@ nmap == <Action>(SilentCodeCleanup)
 nmap =i <Action>(OptimizeImports)
 nmap [<space> k<Action>(EditorStartNewLine)j
 nmap ]<space> <Action>(EditorStartNewLine)k
+nmap [c <Action>(VcsShowPrevChangeMarker)
+nmap ]c <Action>(VcsShowNextChangeMarker)
 nmap [d <Action>(GotoPreviousError)
 nmap ]d <Action>(GotoNextError)
 nmap [f <Action>(MethodUp)
 nmap ]f <Action>(MethodDown)
-nmap [g <Action>(VcsShowPrevChangeMarker)
-nmap ]g <Action>(VcsShowNextChangeMarker)
 nmap [q <Action>(PreviousOccurence)
 nmap ]q <Action>(NextOccurence)
 nmap U <Action>($Redo)
 
 nmap cd <Action>(RenameElement)
 
+nmap do <Action>(VcsShowNextChangeMarker)
+nmap dp <Action>(Vcs.RollbackChangedLines)
+
 nmap g/ <Action>(FindInPath)
-nmap gd <Action>(GotoDeclaration)
+nmap gA <Action>(ShowUsages)
 nmap gD <Action>(GotoTypeDeclaration)
+nmap gd <Action>(GotoDeclaration)
+nmap gh <Action>(ShowHoverInfo)
 nmap gi <Action>(GotoImplementation)
-nmap gr <Action>(ShowUsages)
+nmap gs <Action>(FileStructurePopup)
+nmap gS <Action>(GotoSymbol)
 
 nmap zd <Action>(RiderCollapseToDefinitions)
 
@@ -80,7 +86,6 @@ nmap <leader>b <Action>(ToggleLineBreakpoint)
 nmap <leader>c <Action>(Resume)
 nmap <leader>d <Action>(Debug)
 nmap <leader>j <Action>(ToggleBookmark)
-nmap <leader>k <Action>(ShowHoverInfo)
 nmap <leader>r <Action>(Run)
 nmap <leader>s <Action>(Stop)
 

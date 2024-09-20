@@ -104,6 +104,18 @@
       "commands": ["editor.action.rename"]
     },
     {
+      "before": ["d", "o"],
+      "commands": ["editor.action.dirtydiff.next"]
+    },
+    {
+      "before": ["d", "p"],
+      "commands": ["git.revertSelectedRanges"]
+    },
+    {
+      "before": ["g", "A"],
+      "commands": ["references-view.find"]
+    },
+    {
       "before": ["g", "d"],
       "commands": ["editor.action.peekDefinition"]
     },
@@ -116,8 +128,12 @@
       "commands": ["editor.action.goToImplementation"]
     },
     {
-      "before": ["g", "r"],
-      "commands": ["references-view.find"]
+      "before": ["g", "s"],
+      "commands": ["workbench.action.gotoSymbol"]
+    },
+    {
+      "before": ["g", "S"],
+      "commands": ["workbench.action.showAllSymbols"]
     },
     {
       "after": ["c-r"],
