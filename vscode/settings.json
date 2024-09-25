@@ -1,4 +1,6 @@
 {
+  "D2.execPath": "/opt/homebrew/bin/d2",
+  "D2.previewLayout": "elk",
   "[csharp]": {
     "editor.defaultFormatter": "csharpier.csharpier-vscode"
   },
@@ -11,8 +13,6 @@
   "[python]": {
     "editor.defaultFormatter": "charliermarsh.ruff"
   },
-  "D2.execPath": "/opt/homebrew/bin/d2",
-  "D2.previewLayout": "elk",
   "bicep.enableSurveys": false,
   "breadcrumbs.symbolPath": "off",
   "debug.allowBreakpointsEverywhere": true,

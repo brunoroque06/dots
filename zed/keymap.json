@@ -1,23 +1,23 @@
 [
   {
     "bindings": {
-      "cmd-enter": "editor::ToggleCodeActions",
       "cmd-[": "pane::GoBack",
       "cmd-]": "pane::GoForward",
       "cmd-b": "file_finder::Toggle",
+      "cmd-enter": "editor::ToggleCodeActions",
       "cmd-o": "file_finder::Toggle",
       "cmd-p": "command_palette::Toggle",
       "cmd-r": ["vim::Search", "search::ToggleReplace"],
       "cmd-shift-r": ["vim::Search", "search::ToggleReplace"],
+      "cmd-shift-y": "project_symbols::Toggle",
       "cmd-t": "terminal_panel::ToggleFocus",
-      "cmd-y": "outline::Toggle",
-      "cmd-shift-y": "project_symbols::Toggle"
+      "cmd-y": "outline::Toggle"
     }
   },
   {
-    "context": "Editor && vim_mode == normal",
     "bindings": {
       "= =": "editor::Format"
-    }
+    },
+    "context": "Editor && vim_mode == normal"
   }
 ]

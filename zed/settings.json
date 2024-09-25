@@ -1,12 +1,12 @@
 {
   "buffer_font_family": "Cascadia Code",
   "buffer_font_size": 13,
+  "buffer_line_height": "standard",
   "cursor_blink": false,
   "languages": {
     "Python": {
       "formatter": {
         "external": {
-          "command": "/opt/homebrew/bin/ruff",
           "arguments": [
             "check",
             "--exit-zero",
@@ -14,15 +14,16 @@
             "--stdin-filename",
             "{buffer_path}",
             "-"
-          ]
+          ],
+          "command": "/opt/homebrew/bin/ruff"
         }
       }
     },
     "Rust": {
       "formatter": {
         "external": {
-          "command": "~/.cargo/bin/rustfmt",
-          "arguments": ["-"]
+          "arguments": ["-"],
+          "command": "~/.cargo/bin/rustfmt"
         }
       }
     }

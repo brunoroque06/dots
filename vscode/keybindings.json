@@ -1,79 +1,79 @@
 [
   {
-    "key": "cmd+,",
-    "command": "workbench.action.openSettingsJson"
+    "command": "workbench.action.openSettingsJson",
+    "key": "cmd+,"
   },
   {
-    "key": "cmd+[",
-    "command": "workbench.action.navigateBack"
+    "command": "workbench.action.navigateBack",
+    "key": "cmd+["
   },
   {
-    "key": "cmd+]",
-    "command": "workbench.action.navigateForward"
+    "command": "workbench.action.navigateForward",
+    "key": "cmd+]"
   },
   {
-    "key": "cmd+b",
-    "command": "workbench.action.quickOpen"
+    "command": "workbench.action.quickOpen",
+    "key": "cmd+b"
   },
   {
-    "key": "cmd+enter",
-    "command": "editor.action.quickFix"
+    "command": "editor.action.quickFix",
+    "key": "cmd+enter"
   },
   {
-    "key": "cmd+f",
-    "command": "actions.find"
+    "command": "actions.find",
+    "key": "cmd+f"
   },
   {
-    "key": "cmd+shift+f",
-    "command": "workbench.action.findInFiles"
+    "command": "workbench.action.findInFiles",
+    "key": "cmd+shift+f"
   },
   {
-    "key": "cmd+shift+h",
-    "command": "workbench.action.toggleSidebarVisibility"
+    "command": "workbench.action.toggleSidebarVisibility",
+    "key": "cmd+shift+h"
   },
   {
-    "key": "cmd+i",
-    "command": "editor.action.triggerParameterHints"
+    "command": "editor.action.triggerParameterHints",
+    "key": "cmd+i"
   },
   {
-    "key": "cmd+j",
-    "command": "bookmarks.listFromAllFiles"
+    "command": "bookmarks.listFromAllFiles",
+    "key": "cmd+j"
   },
   {
-    "key": "cmd+l",
-    "command": "breadcrumbs.focusAndSelect"
+    "command": "breadcrumbs.focusAndSelect",
+    "key": "cmd+l"
   },
   {
-    "key": "cmd+o",
-    "command": "workbench.action.quickOpen"
+    "command": "workbench.action.quickOpen",
+    "key": "cmd+o"
   },
   {
-    "key": "cmd+p",
-    "command": "workbench.action.showCommands"
+    "command": "workbench.action.showCommands",
+    "key": "cmd+p"
   },
   {
-    "key": "cmd+r",
-    "command": "editor.action.startFindReplaceAction"
+    "command": "editor.action.startFindReplaceAction",
+    "key": "cmd+r"
   },
   {
-    "key": "cmd+shift+r",
-    "command": "workbench.action.replaceInFiles"
+    "command": "workbench.action.replaceInFiles",
+    "key": "cmd+shift+r"
   },
   {
-    "key": "cmd+t",
-    "command": "workbench.action.terminal.toggleTerminal"
+    "command": "workbench.action.terminal.toggleTerminal",
+    "key": "cmd+t"
   },
   {
-    "key": "cmd+y",
-    "command": "workbench.action.gotoSymbol"
+    "command": "workbench.action.gotoSymbol",
+    "key": "cmd+y"
   },
   {
-    "key": "cmd+shift+y",
-    "command": "workbench.action.showAllSymbols"
+    "command": "workbench.action.showAllSymbols",
+    "key": "cmd+shift+y"
   },
   {
-    "key": "escape",
     "command": "workbench.action.focusActiveEditorGroup",
+    "key": "escape",
     "when": "!editorFocus"
   }
 ]

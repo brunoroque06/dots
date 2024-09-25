@@ -187,6 +187,12 @@ set edit:completion:arg-completer[jb-rm] = { |@args|
   put /Users/brunoroque/Library/Caches/JetBrains/* | each { |p| path:base $p }
 }
 
+# Json
+fn json-fmt { |f|
+  var cnt = (cat $f | jq -S | prettier --parser json | slurp)
+  printf $cnt > $f
+}
+
 # Network
 fn ntw-scan { nmap -sP 192.168.1.0/24 }
 

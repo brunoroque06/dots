@@ -1,7 +1,7 @@
 tap "azure/bicep"
+tap "hashicorp/tap"
 tap "homebrew/bundle"
 tap "rsteube/homebrew-tap"
-tap "hashicorp/tap"
 
 brew "act"
 brew "angular-cli"
@@ -27,6 +27,7 @@ brew "go"
 brew "gopls"
 brew "helix"
 brew "hexyl"
+brew "jq"
 brew "less"
 brew "libpq"
 brew "marp-cli"
@@ -81,4 +82,5 @@ mas "Fresh Eyes", id: 6480411697
 mas "Keys Multiplatform", id: 1494642810
 mas "Reeder", id: 1529448980
 mas "Steam Link", id: 1246969117
+mas "TestFlight", id: 899247664
 mas "rcmd", id: 1596283165
