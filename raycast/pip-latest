@@ -6,14 +6,14 @@
 # @raycast.argument1 { "type": "text", "placeholder": "package" }
 
 use re
+use str
 
-var ver = (curl https://pypi.org/project/$args[0]/ ^
+var pkg = (curl -L https://pypi.org/project/$args[0]/ ^
   | slurp ^
-  | re:find '<p class="release__version">(?:\s*)(.*)(?:\s*)<\/p>' (one) ^
+  | re:find '<h1 class="package-header__name">(?:\s*)(.*)(?:\s*)<\/h1>' (one) ^
   | take 1 ^
-  | put (one)[groups][1][text])
-
-var pkg = $args[0]==$ver
+  | put (one)[groups][1][text] ^
+  | str:replace ' ' == (one))
 
 print $pkg | pbcopy
 put $pkg
