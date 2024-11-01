@@ -11,9 +11,6 @@ def g:PackInstall()
 	g:PackUninstall()
 	mkdir(packs, 'p')
 	for p in [
-			'itchyny/lightline.vim',
-			'machakann/vim-highlightedyank',
-			'mcchrish/zenbones.nvim',
 			'sbdchd/neoformat',
 			'tpope/vim-commentary',
 			'tpope/vim-repeat',
@@ -51,10 +48,12 @@ set smartcase
 # Spaces
 set noexpandtab
 set shiftwidth=2
+set smarttab
 set tabstop=2
 
 # UI
 # set list
+# set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
 set mouse=a
 set number
 set relativenumber
@@ -62,13 +61,6 @@ set scrolloff=5
 set showcmd
 set showmatch
 set showmode
-
-set background=light
-set laststatus=2
-set noshowmode
-set termguicolors
-colorscheme zenbones
-g:lightline = { 'colorscheme': 'zenbones' }
 
 g:mapleader = ' '
 g:neoformat_basic_format_trim = 1
