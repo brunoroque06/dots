@@ -1,6 +1,7 @@
 use file
 use math
 use path
+use re
 use readline-binding
 use str
 
@@ -22,9 +23,8 @@ var _paths = $nil
 
 set-env BAT_STYLE plain
 set-env BAT_THEME ansi
-set-env D2_LAYOUT elk
 # set-env DOCKER_DEFAULT_PLATFORM linux/amd64
-set-env EDITOR /opt/homebrew/bin/hx
+set-env EDITOR /opt/homebrew/bin/vim
 set-env LESS '-i --incsearch -m'
 set-env PAGER /opt/homebrew/bin/less
 # set-env REQUESTS_CA_BUNDLE $E:HOME/.proxyman/proxyman-ca.pem # proxyman with python
@@ -93,6 +93,13 @@ set edit:completion:arg-completer[az-act-set] = { |@args|
     | each { |s| edit:complex-candidate $s[name] &display=(if (put $s[isDefault]) { styled $s[name] green } else { put $s[name] }) }
 }
 
+# Citrix
+fn citrix-keyboard {
+  var cfg = $E:HOME'/Library/Application Support/Citrix Receiver/Config'
+  var us = (cat $cfg | slurp | re:replace 'KeyboardLayout=(.*)' KeyboardLayout=US (one))
+  printf $us > $cfg
+}
+
 # Command
 fn cmd-edit {
   var tmp = (path:temp-file '*.elv')
@@ -147,6 +154,7 @@ set edit:completion:arg-completer[dotnet] = { |@args|
 }
 
 # File System
+fn .. { cd .. }
 fn c { |f|
   if (str:has-suffix $f .md) {
     glow $f
@@ -224,11 +232,10 @@ fn pkg-su {
 fn pkg-up {
   brew-up
 
-  dotnet tool list -g ^
-    | from-lines ^
-    | drop 2 ^
-    | each { |l| str:split ' ' $l | take 1 } ^
-    | each { |p| dotnet tool update -g $p }
+  dotnet tool list --format json -g ^
+    | from-json ^
+    | all (one)[data] ^
+    | each { |p| dotnet tool update -g $p[packageId] }
 
   npm-check-updates -g
 }
@@ -290,8 +297,6 @@ fn code-su {
 
 # Web Browser
 fn webbrowser { rm -fr $E:TMPDIR/webbrowser; '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --user-data-dir=$E:TMPDIR/webbrowser --disable-web-security --incognito --no-first-run --new-window http://localhost:4200 }
-
-set edit:abbr['..'] = 'cd ..'
 
 # Taken: a, b, f, e, i, n, p
 set edit:insert:binding[Ctrl-d] = $edit:navigation:start~
