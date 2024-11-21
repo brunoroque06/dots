@@ -17,7 +17,6 @@ brew "docker-credential-helper"
 brew "dust"
 brew "elvish"
 brew "fd"
-brew "fzf"
 brew "git"
 brew "git-delta"
 brew "git-lfs"
@@ -74,13 +73,14 @@ cask "transmission"
 cask "visual-studio-code"
 cask "zed"
 
-mas "1Blocker", id: 1365531024
 mas "Bear", id: 1091189122
 mas "DaisyDisk", id: 411643860
 mas "Dato", id: 1470584107
 mas "Fresh Eyes", id: 6480411697
 mas "Keys Multiplatform", id: 1494642810
+mas "Raycast Companion", id: 6738274497
 mas "Reeder", id: 1529448980
 mas "Steam Link", id: 1246969117
 mas "TestFlight", id: 899247664
+mas "Wipr 2", id: 1662217862
 mas "rcmd", id: 1596283165

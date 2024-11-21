@@ -79,7 +79,7 @@ nmap gi <Action>(GotoImplementation)
 nmap gs <Action>(FileStructurePopup)
 nmap gS <Action>(GotoSymbol)
 
-nmap zd <Action>(RiderCollapseToDefinitions)
+nmap zM <Action>(RiderCollapseToDefinitions)
 
 let mapleader="\<space>"
 
