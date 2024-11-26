@@ -9,7 +9,9 @@ jobs:
       - uses: actions/checkout@v4
       - run: |
           sudo apt update
-          sudo apt install shellcheck shfmt -y
+          sudo apt install elvish shellcheck shfmt -y
       - run: npx prettier -c .
       - run: shfmt -f . | xargs -t -I % shfmt -d %
       - run: shfmt -f . | xargs -t -I % shellcheck -x %
+      - run: ls raycast/* | from-lines | each { |f| elvish -compileonly $f }
+        shell: elvish {0}
