@@ -5,19 +5,20 @@
   "cursor_blink": false,
   "languages": {
     "Python": {
-      "formatter": {
-        "external": {
-          "arguments": [
-            "check",
-            "--exit-zero",
-            "--fix",
-            "--stdin-filename",
-            "{buffer_path}",
-            "-"
-          ],
-          "command": "/opt/homebrew/bin/ruff"
+      "language_servers": ["pyright"],
+      "formatter": [
+        {
+          "code_actions": {
+            "source.organizeImports.ruff": true,
+            "source.fixAll.ruff": true
+          }
+        },
+        {
+          "language_server": {
+            "name": "ruff"
+          }
         }
-      }
+      ]
     },
     "Rust": {
       "formatter": {
