@@ -124,6 +124,10 @@ fn d2-run {
     --pad 0 $f out/(str:trim-right $f .d2).svg
   }
 }
+fn d2-watch-png { |f|
+  var stem = (str:trim-right $f (path:ext $f))
+  d2 -w --browser 0 $f $stem.png
+}
 
 # Docker
 fn doc-clean {
@@ -169,9 +173,11 @@ fn file-yank { |f| pbcopy < $f }
 set edit:completion:arg-completer[file-yank] = { |@args|
   fd -H -t file | from-lines
 }
-var _kitten = /Applications/kitty.app/Contents/MacOS/kitten
-fn kitten { |@a| $_kitten $@a }
-fn icat { |@a| $_kitten icat $@a }
+fn icat { |@a| kitten icat $@a }
+fn icat-watch { |i|
+  clear; kitten icat $i
+  while $true { fswatch -1 $i; clear; kitten icat $i }
+}
 fn l { |@a| ls -Aho --color $@a }
 fn t { |&l=2 @a| tree -L $l $@a }
 
@@ -287,6 +293,21 @@ fn re { exec elvish }
 
 # SSH
 fn ssh-trust { |@a| ssh-copy-id -i $E:HOME/.ssh/id_rsa.pub $@a }
+
+# Typst
+fn typst-to-pptx { |f|
+  var stem = (str:trim-right $f (path:ext $f))
+  var out = out/$stem
+  var ppi = 512
+  mkdir -p $out
+  typst compile --ppi $ppi $f $out'/page-{0p}.png'
+  cd $out
+  var md = (put *.png | each { |p| put '# {background-image="'$p'"}' } | str:join "\n\n---\n\n" [(all)])
+  printf $md > main.md
+  pandoc --dpi $ppi main.md -o ../../$stem.pptx
+  cd ../..
+  rm -rf $out
+}
 
 # VSCode
 fn code-dump { code --list-extensions > $E:HOME'/Library/Application Support/Code/User/extensions.txt' }
