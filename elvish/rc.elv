@@ -128,6 +128,7 @@ fn d2-watch-png { |f|
   var stem = (str:trim-right $f (path:ext $f))
   d2 -w --browser 0 $f $stem.png
 }
+set edit:completion:arg-completer[d2-watch-png] = { |@args| put *.d2 }
 
 # Docker
 fn doc-clean {
@@ -178,6 +179,7 @@ fn icat-watch { |i|
   clear; kitten icat $i
   while $true { fswatch -1 $i; clear; kitten icat $i }
 }
+set edit:completion:arg-completer[icat-watch] = { |@args| put *.png }
 fn l { |@a| ls -Aho --color $@a }
 fn t { |&l=2 @a| tree -L $l $@a }
 
@@ -308,6 +310,7 @@ fn typst-to-pptx { |f|
   cd ../..
   rm -rf $out
 }
+set edit:completion:arg-completer[typst-to-pptx] = { |@args| put *.typ }
 
 # VSCode
 fn code-dump { code --list-extensions > $E:HOME'/Library/Application Support/Code/User/extensions.txt' }
