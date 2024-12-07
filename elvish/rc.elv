@@ -23,6 +23,10 @@ var _paths = $nil
 
 set-env BAT_STYLE plain
 set-env BAT_THEME ansi
+set-env D2_FONT_BOLD $E:HOME/Library/Fonts/CascadiaCode.ttf
+set-env D2_FONT_ITALIC $E:HOME/Library/Fonts/CascadiaCodeItalic.ttf
+set-env D2_FONT_REGULAR $E:HOME/Library/Fonts/CascadiaCode.ttf
+set-env D2_FONT_SEMIBOLD $E:HOME/Library/Fonts/CascadiaCode.ttf
 # set-env DOCKER_DEFAULT_PLATFORM linux/amd64
 set-env EDITOR /opt/homebrew/bin/vim
 set-env LESS '-i --incsearch -m'
@@ -84,6 +88,32 @@ set edit:rprompt = (constantly (whoami)@(hostname))
 
 eval (carapace _carapace | slurp)
 
+# File System
+fn .. { cd .. }
+fn c { |f|
+  if (str:has-suffix $f .md) {
+    glow $f
+  } else {
+    bat $f
+  }
+}
+fn dir-size { dust -d 1 }
+fn e { |@a| $E:EDITOR $@a }
+fn fd { |@a| e:fd -c never $@a }
+fn file-stem { |f| str:trim-right $f (path:ext $f) }
+fn file-yank { |f| pbcopy < $f }
+set edit:completion:arg-completer[file-yank] = { |@args|
+  fd -H -t file | from-lines
+}
+fn icat { |@a| kitten icat $@a }
+fn icat-watch { |i|
+  clear; kitten icat $i
+  while $true { fswatch -1 $i; clear; kitten icat $i }
+}
+set edit:completion:arg-completer[icat-watch] = { |@args| put *.png }
+fn l { |@a| ls -Aho --color $@a }
+fn t { |&l=2 @a| tree -L $l $@a }
+
 # Azure
 fn az-act-set { |n| az account set -n $n }
 set edit:completion:arg-completer[az-act-set] = { |@args|
@@ -116,19 +146,9 @@ fn cmd-edit {
 # D2
 fn d2-ls { put *.d2 }
 fn d2-fmt { d2-ls | each { |f| d2 fmt $f } }
-fn d2-run {
-  d2-ls | each { |f| d2 ^
-    --font-bold $E:HOME/Library/Fonts/CascadiaCode.ttf ^
-    --font-italic $E:HOME/Library/Fonts/CascadiaCodeItalic.ttf ^
-    --font-regular $E:HOME/Library/Fonts/CascadiaCode.ttf ^
-    --pad 0 $f out/(str:trim-right $f .d2).svg
-  }
-}
-fn d2-watch-png { |f|
-  var stem = (str:trim-right $f (path:ext $f))
-  d2 -w --browser 0 $f $stem.png
-}
-set edit:completion:arg-completer[d2-watch-png] = { |@args| put *.d2 }
+fn d2-run { d2-ls | each { |f| d2 --pad 0 $f out/(file-stem $f).svg } }
+fn d2-watch-png { |f| d2 --browser 0 --pad 0 -w $f (file-stem $f).png }
+set edit:completion:arg-completer[d2-watch-png] = { |@args| d2-ls }
 
 # Docker
 fn doc-clean {
@@ -157,31 +177,6 @@ fn dot-up { dotnet outdated --upgrade }
 set edit:completion:arg-completer[dotnet] = { |@args|
 	dotnet complete (str:join ' ' $args) | from-lines
 }
-
-# File System
-fn .. { cd .. }
-fn c { |f|
-  if (str:has-suffix $f .md) {
-    glow $f
-  } else {
-    bat $f
-  }
-}
-fn dir-size { dust -d 1 }
-fn e { |@a| $E:EDITOR $@a }
-fn fd { |@a| e:fd -c never $@a }
-fn file-yank { |f| pbcopy < $f }
-set edit:completion:arg-completer[file-yank] = { |@args|
-  fd -H -t file | from-lines
-}
-fn icat { |@a| kitten icat $@a }
-fn icat-watch { |i|
-  clear; kitten icat $i
-  while $true { fswatch -1 $i; clear; kitten icat $i }
-}
-set edit:completion:arg-completer[icat-watch] = { |@args| put *.png }
-fn l { |@a| ls -Aho --color $@a }
-fn t { |&l=2 @a| tree -L $l $@a }
 
 # Git
 fn git-cfg { git config --list --show-origin }
@@ -296,9 +291,21 @@ fn re { exec elvish }
 # SSH
 fn ssh-trust { |@a| ssh-copy-id -i $E:HOME/.ssh/id_rsa.pub $@a }
 
+# Terminal
+fn term-d2 { |f|
+	kitty @ launch --cwd current --type=tab
+	kitty @ send-text -m id:-1 'icat-watch '(file-stem $f)".png\n"
+	kitty @ launch --cwd current --type=window --location=vsplit
+	kitty @ send-text -m id:-1 $E:EDITOR' '$f"\n"
+	kitty @ launch --cwd current --type=window --location=vsplit
+	kitty @ send-text -m id:-1 'd2-watch-png '$f"\n"
+	kitty @ goto-layout -m id:-1 tall
+}
+set edit:completion:arg-completer[term-d2] = { |@args| put *.d2 }
+
 # Typst
 fn typst-to-pptx { |f|
-  var stem = (str:trim-right $f (path:ext $f))
+  var stem = (file-stem $f)
   var out = out/$stem
   var ppi = 512
   mkdir -p $out
