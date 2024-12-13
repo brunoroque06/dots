@@ -76,6 +76,7 @@ nmap == :Neoformat<cr>
 nmap U <c-r>
 nmap g/ :grep<space>
 
+nmap <leader>j :jumps<cr>
 nmap <leader>l :Explore<cr>
 nmap <leader>q :q<cr>
 nmap <leader>w :w<cr>

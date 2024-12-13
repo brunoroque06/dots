@@ -52,5 +52,9 @@ name = "typescript"
 formatter = { command = "prettier", args = ["--parser", "typescript"] }
 
 [[language]]
+name = "typst"
+formatter = { command = "typstyle" }
+
+[[language]]
 name = "yaml"
 formatter = { command = "prettier", args = ["--parser", "yaml"] }

@@ -27,8 +27,9 @@ set-env D2_FONT_BOLD $E:HOME/Library/Fonts/CascadiaCode.ttf
 set-env D2_FONT_ITALIC $E:HOME/Library/Fonts/CascadiaCodeItalic.ttf
 set-env D2_FONT_REGULAR $E:HOME/Library/Fonts/CascadiaCode.ttf
 set-env D2_FONT_SEMIBOLD $E:HOME/Library/Fonts/CascadiaCode.ttf
+set-env D2_LAYOUT dagre
 # set-env DOCKER_DEFAULT_PLATFORM linux/amd64
-set-env EDITOR /opt/homebrew/bin/vim
+set-env EDITOR /opt/homebrew/bin/hx
 set-env LESS '-i --incsearch -m'
 set-env PAGER /opt/homebrew/bin/less
 # set-env REQUESTS_CA_BUNDLE $E:HOME/.proxyman/proxyman-ca.pem # proxyman with python
@@ -100,15 +101,18 @@ fn c { |f|
 fn dir-size { dust -d 1 }
 fn e { |@a| $E:EDITOR $@a }
 fn fd { |@a| e:fd -c never $@a }
-fn file-stem { |f| str:trim-right $f (path:ext $f) }
+fn file-stem { |f| str:trim-suffix $f (path:ext $f) }
 fn file-yank { |f| pbcopy < $f }
 set edit:completion:arg-completer[file-yank] = { |@args|
   fd -H -t file | from-lines
 }
 fn icat { |@a| kitten icat $@a }
 fn icat-watch { |i|
-  clear; kitten icat $i
-  while $true { fswatch -1 $i; clear; kitten icat $i }
+  while $true {
+    clear
+    kitten icat $i
+    fswatch -1 $i
+  }
 }
 set edit:completion:arg-completer[icat-watch] = { |@args| put *.png }
 fn l { |@a| ls -Aho --color $@a }
@@ -147,7 +151,7 @@ fn cmd-edit {
 fn d2-ls { put *.d2 }
 fn d2-fmt { d2-ls | each { |f| d2 fmt $f } }
 fn d2-run { d2-ls | each { |f| d2 --pad 0 $f out/(file-stem $f).svg } }
-fn d2-watch-png { |f| d2 --browser 0 --pad 0 -w $f (file-stem $f).png }
+fn d2-watch-png { |f| d2 --browser 0 -w $f (file-stem $f).png }
 set edit:completion:arg-completer[d2-watch-png] = { |@args| d2-ls }
 
 # Docker
@@ -188,13 +192,13 @@ fn gil { |&c=10| git log --all --decorate --graph --format=format:'%Cblue%h %Cre
 fn go-up { go get -u; go mod tidy }
 
 # JetBrains
-fn jb-rm { |a|
+fn jebtrains-rm { |a|
   var dirs = ['Application Support/JetBrains' Caches/JetBrains Logs/JetBrains]
   for d $dirs {
     rm -rf $E:HOME/Library/$d/$a
   }
 }
-set edit:completion:arg-completer[jb-rm] = { |@args|
+set edit:completion:arg-completer[jebtrains-rm] = { |@args|
   put /Users/brunoroque/Library/Caches/JetBrains/* | each { |p| path:base $p }
 }
 
@@ -293,13 +297,15 @@ fn ssh-trust { |@a| ssh-copy-id -i $E:HOME/.ssh/id_rsa.pub $@a }
 
 # Terminal
 fn term-d2 { |f|
-	kitty @ launch --cwd current --type=tab
-	kitty @ send-text -m id:-1 'icat-watch '(file-stem $f)".png\n"
-	kitty @ launch --cwd current --type=window --location=vsplit
-	kitty @ send-text -m id:-1 $E:EDITOR' '$f"\n"
-	kitty @ launch --cwd current --type=window --location=vsplit
-	kitty @ send-text -m id:-1 'd2-watch-png '$f"\n"
-	kitty @ goto-layout -m id:-1 tall
+  touch $f
+  kitty @ launch --cwd current --type=tab
+  kitty @ launch --cwd current --type=window --location=vsplit
+  kitty @ launch --cwd current --type=window --location=vsplit
+  kitty @ goto-layout -m id:-1 tall
+  kitty @ send-text -m id:-3 'icat-watch '(file-stem $f)".png\n"
+  kitty @ send-text -m id:-2 $E:EDITOR' '$f"\n"
+  kitty @ send-text -m id:-1 'd2-watch-png '$f"\n"
+  kitty @ focus-window -m id:-2
 }
 set edit:completion:arg-completer[term-d2] = { |@args| put *.d2 }
 

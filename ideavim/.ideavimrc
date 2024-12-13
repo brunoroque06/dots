@@ -86,10 +86,11 @@ let mapleader="\<space>"
 nmap <leader>b <Action>(ToggleLineBreakpoint)
 nmap <leader>c <Action>(Resume)
 nmap <leader>d <Action>(Debug)
-nmap <leader>j <Action>(ToggleBookmark)
+nmap <leader>j <Action>(ShowBookmarks)
 nmap <leader>r <Action>(Run)
 nmap <leader>s <Action>(Stop)
 
+nmap <c-s> <Action>(ToggleBookmark)
 nmap <c-w>gd <Action>(SplitVertically)<Action>(GotoDeclaration)
 nmap <c-w>gD <Action>(SplitVertically)<Action>(GotoTypeDeclaration)
 nmap <c-w>gi <Action>(SplitVertically)<Action>(GotoImplementation)

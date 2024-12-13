@@ -12,7 +12,6 @@
   "[python]": {
     "editor.defaultFormatter": "charliermarsh.ruff"
   },
-  "bicep.enableSurveys": false,
   "breadcrumbs.symbolPath": "off",
   "debug.allowBreakpointsEverywhere": true,
   "debug.inlineValues": "on",
@@ -58,6 +57,7 @@
   "scm.alwaysShowRepositories": true,
   "terminal.integrated.drawBoldTextInBrightColors": false,
   "terminal.integrated.lineHeight": 1,
+  "tinymist.formatterMode": "typstyle",
   "typescript.updateImportsOnFileMove.enabled": "always",
   "vim.foldfix": true,
   "vim.highlightedyank.enable": true,
@@ -139,6 +139,10 @@
       "before": ["U"]
     },
     {
+      "before": ["c-s"],
+      "commands": ["bookmarks.toggle"]
+    },
+    {
       "before": ["<leader>", "b"],
       "commands": ["editor.debug.action.toggleBreakpoint"]
     },
@@ -152,7 +156,7 @@
     },
     {
       "before": ["<leader>", "j"],
-      "commands": ["bookmarks.toggle"]
+      "commands": ["bookmarks.listFromAllFiles"]
     },
     {
       "before": ["<leader>", "s"],
