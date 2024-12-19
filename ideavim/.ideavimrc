@@ -97,3 +97,6 @@ nmap <c-w>gi <Action>(SplitVertically)<Action>(GotoImplementation)
 nmap <c-w>q <c-w>c
 nmap <c-w>J <Action>(MoveTabDown)
 nmap <c-w>L <Action>(MoveTabRight)
+
+imap <c-x> <Action>(CodeCompletion)
+imap <c-y> <Action>(EditorChooseLookupItem)

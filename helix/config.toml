@@ -18,6 +18,9 @@ C-a = "goto_line_start"
 C-b = "move_char_left"
 C-e = "goto_line_end_newline"
 C-f = "move_char_right"
+C-x = "completion"
 
 [keys.normal]
 "=" = { "=" = ":fmt" }
+"]" = { "b" = ":buffer-next" }
+"[" = { "b" = ":buffer-previous" }

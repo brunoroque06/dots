@@ -19,5 +19,11 @@
       "= =": "editor::Format"
     },
     "context": "Editor && vim_mode == normal"
+  },
+  {
+    "bindings": {
+      "ctrl-y": "editor::ConfirmCompletion"
+    },
+    "context": "Editor && vim_mode == insert"
   }
 ]
