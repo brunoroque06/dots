@@ -177,7 +177,11 @@ fn doc-su {
 # Dotnet
 fn dot-ci { |@a| csharprepl -t themes/VisualStudio_Light.json $@a }
 fn dot-fi { |@a| dotnet fsi $@a }
-fn dot-up { dotnet outdated --upgrade }
+fn dot-up {
+  dotnet list package --outdated --format json ^
+    | from-json | put (one)[projects][0][frameworks][0][topLevelPackages] ^
+    | each { |p| dotnet add package $p[id] --version $p[latestVersion] } (all)
+}
 set edit:completion:arg-completer[dotnet] = { |@args|
 	dotnet complete (str:join ' ' $args) | from-lines
 }
@@ -229,7 +233,7 @@ fn brew-up {
 }
 
 fn pkg-su {
-  put csharpier csharprepl dotnet-outdated-tool fantomas ^
+  put csharpier csharprepl fantomas ^
     | each { |p| try { dotnet tool install -g $p } catch { } }
 
   npm install -g ^
