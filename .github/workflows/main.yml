@@ -9,10 +9,11 @@ jobs:
       - uses: actions/checkout@v4
         with:
           persist-credentials: false
+      - run: cargo install zizmor
+      - run: zizmor ./github/workflows/main.yml
       - run: |
           sudo apt update
-          sudo apt install elvish shellcheck shfmt zizmor -y
-      - run: zizmor ./github/workflows/main.yml
+          sudo apt install elvish shellcheck shfmt -y
       - run: npx prettier -c .
       - run: shfmt -f . | xargs -t -I % shfmt -d %
       - run: shfmt -f . | xargs -t -I % shellcheck -x %
