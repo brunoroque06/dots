@@ -7,9 +7,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
       - run: |
           sudo apt update
-          sudo apt install elvish shellcheck shfmt -y
+          sudo apt install elvish shellcheck shfmt zizmor -y
+      - run: zizmor ./github/workflows/main.yml
       - run: npx prettier -c .
       - run: shfmt -f . | xargs -t -I % shfmt -d %
       - run: shfmt -f . | xargs -t -I % shellcheck -x %
