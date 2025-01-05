@@ -9,7 +9,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           persist-credentials: false
-      - run: cargo install --locked zizmor
+      - run: pip install zizmor
       - run: zizmor .github/workflows/main.yml
       - run: |
           sudo apt update
