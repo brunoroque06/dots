@@ -1,0 +1,15 @@
+command = /opt/homebrew/bin/elvish
+
+cursor-style = block
+cursor-style-blink = false
+
+font-family = Cascadia Code
+
+shell-integration-features = no-cursor
+
+theme = Raycast_Light
+
+window-padding-x = 10
+window-padding-y = 10
+
+keybind = super+f=write_screen_file:open

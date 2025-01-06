@@ -21,6 +21,7 @@ setup() {
 
 paths=(
 	elvish "$HOME"/.config/elvish
+	ghostty "$HOME/Library/Application Support/com.mitchellh.ghostty"
 	git "$HOME"/.config/git
 	helix "$HOME"/.config/helix
 	ideavim "$HOME"
