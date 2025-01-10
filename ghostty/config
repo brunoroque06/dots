@@ -4,6 +4,11 @@ cursor-style = block
 cursor-style-blink = false
 
 font-family = Cascadia Code
+font-feature = -calt
+font-feature = -liga
+font-feature = -dlig
+
+macos-option-as-alt = true
 
 shell-integration-features = no-cursor
 
