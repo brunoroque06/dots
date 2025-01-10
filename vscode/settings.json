@@ -120,10 +120,6 @@
       "commands": ["git.revertSelectedRanges"]
     },
     {
-      "before": ["g", "A"],
-      "commands": ["references-view.find"]
-    },
-    {
       "before": ["g", "d"],
       "commands": ["editor.action.peekDefinition"]
     },
@@ -134,6 +130,10 @@
     {
       "before": ["g", "i"],
       "commands": ["editor.action.goToImplementation"]
+    },
+    {
+      "before": ["g", "r"],
+      "commands": ["references-view.find"]
     },
     {
       "before": ["g", "s"],
