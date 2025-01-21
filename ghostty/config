@@ -17,4 +17,8 @@ theme = Raycast_Light
 window-padding-x = 10
 window-padding-y = 10
 
+keybind = page_up=scroll_page_up
+keybind = page_down=scroll_page_down
 keybind = super+f=write_screen_file:open
+keybind = super+shift+.=move_tab:1
+keybind = super+shift+,=move_tab:-1

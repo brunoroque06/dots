@@ -8,12 +8,14 @@
 use re
 use str
 
-var pkg = (curl -L https://pypi.org/project/$args[0]/ ^
-  | slurp ^
-  | re:find '<h1 class="package-header__name">(?:\s*)(.*)(?:\s*)<\/h1>' (one) ^
-  | take 1 ^
-  | put (one)[groups][1][text] ^
-  | str:replace ' ' == (one))
+var pkg = $args[0]
 
-print $pkg | pbcopy
-put $pkg
+var ver = (pip3 index versions $pkg ^
+  | slurp ^
+  | re:find $pkg' \((.*)\)' (one) ^
+  | put (one)[groups][1][text])
+
+var req = $pkg'=='$ver
+
+print $req | pbcopy
+put $req
