@@ -21,7 +21,7 @@ ms-python.debugpy
 ms-python.python
 ms-python.vscode-pylance
 ms-vscode.powershell
-nvarner.typst-lsp
+myriad-dreamin.tinymist
 redhat.vscode-yaml
 rust-lang.rust-analyzer
 streetsidesoftware.code-spell-checker
