@@ -196,13 +196,13 @@ fn gil { |&c=10| git log --all --decorate --graph --format=format:'%Cblue%h %Cre
 fn go-up { go get -u; go mod tidy }
 
 # JetBrains
-fn jebtrains-rm { |a|
+fn jetbrains-rm { |a|
   var dirs = ['Application Support/JetBrains' Caches/JetBrains Logs/JetBrains]
   for d $dirs {
     rm -rf $E:HOME/Library/$d/$a
   }
 }
-set edit:completion:arg-completer[jebtrains-rm] = { |@args|
+set edit:completion:arg-completer[jetbrains-rm] = { |@args|
   put /Users/brunoroque/Library/Caches/JetBrains/* | each { |p| path:base $p }
 }
 
@@ -319,13 +319,13 @@ fn typst-to-pptx { |f|
   var out = out/$stem
   var ppi = 512
   mkdir -p $out
+  defer { rm -rf $out }
   typst compile --ppi $ppi $f $out'/page-{0p}.png'
   cd $out
   var md = (put *.png | each { |p| put '# {background-image="'$p'"}' } | str:join "\n\n---\n\n" [(all)])
   printf $md > main.md
   pandoc --dpi $ppi main.md -o ../../$stem.pptx
   cd ../..
-  rm -rf $out
 }
 set edit:completion:arg-completer[typst-to-pptx] = { |@args| put *.typ }
 

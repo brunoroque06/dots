@@ -13,7 +13,7 @@ Supported: macOS.
 - Setup `Colemak` keyboard layout;
 - Remap `caps lock` to `control`;
 - Load `Raycast` configuration;
-- Configure `rcmd` (`right control` + `right shift`).
+- Configure `rcmd`: `right control` (`caps lock`) + `right shift`.
 
 ## Shortcuts
 
