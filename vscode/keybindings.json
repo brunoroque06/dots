@@ -28,6 +28,10 @@
     "key": "cmd+shift+f"
   },
   {
+    "key": "alt+cmd+f",
+    "command": "editor.action.startFindReplaceAction",
+  },
+  {
     "command": "workbench.action.toggleSidebarVisibility",
     "key": "cmd+shift+h"
   },

@@ -5,8 +5,34 @@
   <action id="Back">
     <keyboard-shortcut first-keystroke="meta open_bracket" />
   </action>
+  <action id="ChooseDebugConfiguration">
+    <keyboard-shortcut first-keystroke="ctrl alt d" />
+    <keyboard-shortcut first-keystroke="meta alt d" />
+  </action>
+  <action id="ChooseRunConfiguration">
+    <keyboard-shortcut first-keystroke="meta alt r" />
+  </action>
   <action id="CompareTwoFiles" />
+  <action id="Console.TableResult.EditFilterCriteria" />
+  <action id="DatabaseView.FullTextSearch" />
+  <action id="Debug">
+    <keyboard-shortcut first-keystroke="meta d" />
+  </action>
   <action id="EditorDuplicate" />
+  <action id="EditorLineEnd">
+    <keyboard-shortcut first-keystroke="ctrl e" />
+    <keyboard-shortcut first-keystroke="end" />
+  </action>
+  <action id="EditorLineStart">
+    <keyboard-shortcut first-keystroke="ctrl a" />
+    <keyboard-shortcut first-keystroke="home" />
+  </action>
+  <action id="EditorTextEnd">
+    <keyboard-shortcut first-keystroke="meta end" />
+  </action>
+  <action id="EditorTextStart">
+    <keyboard-shortcut first-keystroke="meta home" />
+  </action>
   <action id="FileStructurePopup">
     <keyboard-shortcut first-keystroke="meta y" />
   </action>
@@ -34,6 +60,7 @@
   <action id="HideAllWindows">
     <keyboard-shortcut first-keystroke="shift meta h" />
   </action>
+  <action id="IntroduceField" />
   <action id="OpenInlineChatAction">
     <keyboard-shortcut first-keystroke="shift ctrl g" />
   </action>
@@ -46,12 +73,19 @@
     <keyboard-shortcut first-keystroke="meta b" />
   </action>
   <action id="Replace">
-    <keyboard-shortcut first-keystroke="meta r" />
+    <keyboard-shortcut first-keystroke="meta alt f" />
   </action>
   <action id="ReplaceInPath">
-    <keyboard-shortcut first-keystroke="shift meta r" />
+    <keyboard-shortcut first-keystroke="shift meta alt f" />
+  </action>
+  <action id="Resume">
+    <keyboard-shortcut first-keystroke="meta left" />
   </action>
   <action id="RiderUnitTestRunSolutionTwAction" />
+  <action id="Run">
+    <keyboard-shortcut first-keystroke="meta r" />
+  </action>
+  <action id="SaveAll" />
   <action id="ShowBookmarks">
     <keyboard-shortcut first-keystroke="meta j" />
   </action>
@@ -61,6 +95,19 @@
   <action id="ShowNavBar">
     <keyboard-shortcut first-keystroke="meta l" />
   </action>
+  <action id="StepInto">
+    <keyboard-shortcut first-keystroke="meta down" />
+  </action>
+  <action id="StepOut">
+    <keyboard-shortcut first-keystroke="meta up" />
+  </action>
+  <action id="StepOver">
+    <keyboard-shortcut first-keystroke="meta right" />
+  </action>
+  <action id="Stop">
+    <keyboard-shortcut first-keystroke="meta s" />
+  </action>
+  <action id="TFFmtFileAction" />
   <action id="Vcs.UpdateProject" />
   <action id="copilot.disposeInlays" />
   <action id="org.intellij.plugins.markdown.ui.actions.styling.ToggleBoldAction" />

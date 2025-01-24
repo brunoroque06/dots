@@ -69,7 +69,6 @@ nmap cd <Action>(RenameElement)
 nmap do <Action>(VcsShowNextChangeMarker)
 nmap dp <Action>(Vcs.RollbackChangedLines)
 
-nmap g/ <Action>(FindInPath)
 nmap gD <Action>(GotoTypeDeclaration)
 nmap gd <Action>(GotoDeclaration)
 nmap gh <Action>(ShowHoverInfo)
@@ -82,16 +81,7 @@ nmap zM <Action>(RiderCollapseToDefinitions)
 
 let mapleader="\<space>"
 
-nmap <leader>db <Action>(ToggleLineBreakpoint)
-nmap <leader>dc <Action>(Resume)
-nmap <leader>di <Action>(StepInto)
-nmap <leader>dr <Action>(Debug)
-nmap <leader>ds <Action>(StepOver)
-nmap <leader>do <Action>(StepOut)
-
-nmap <leader>j <Action>(ShowBookmarks)
-nmap <leader>r <Action>(Run)
-nmap <leader>s <Action>(Stop)
+nmap <leader>b <Action>(ToggleLineBreakpoint)
 
 nmap <c-s> <Action>(ToggleBookmark)
 nmap <c-w>gd <Action>(SplitVertically)<Action>(GotoDeclaration)
