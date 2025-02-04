@@ -187,6 +187,7 @@ set edit:completion:arg-completer[dotnet] = { |@args|
 }
 
 # Git
+fn gi { gitu }
 fn git-cfg { git config --list --show-origin }
 fn gid { git diff }
 fn gis { git status -s }
