@@ -47,7 +47,7 @@
     <keyboard-shortcut first-keystroke="meta close_bracket" />
   </action>
   <action id="GotoAction">
-    <keyboard-shortcut first-keystroke="meta p" />
+    <keyboard-shortcut first-keystroke="meta k" />
   </action>
   <action id="GotoClass" />
   <action id="GotoFile">

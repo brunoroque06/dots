@@ -154,22 +154,6 @@
     {
       "before": ["<leader>", "b"],
       "commands": ["editor.debug.action.toggleBreakpoint"]
-    },
-    {
-      "before": ["<leader>", "c"],
-      "commands": ["workbench.action.debug.continue"]
-    },
-    {
-      "before": ["<leader>", "d"],
-      "commands": ["workbench.action.debug.start"]
-    },
-    {
-      "before": ["<leader>", "j"],
-      "commands": ["bookmarks.listFromAllFiles"]
-    },
-    {
-      "before": ["<leader>", "s"],
-      "commands": ["workbench.action.debug.stop"]
     }
   ],
   "vim.surround": true,
