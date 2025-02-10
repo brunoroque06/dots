@@ -69,7 +69,6 @@ cask "gitup"
 cask "google-chrome"
 cask "homerow"
 cask "kitty"
-cask "lookaway"
 cask "powershell"
 cask "pronotes"
 cask "proxyman"
@@ -82,7 +81,6 @@ cask "zed"
 mas "1Blocker", id: 1365531024
 mas "DaisyDisk", id: 411643860
 mas "Dato", id: 1470584107
-mas "Fresh Eyes", id: 6480411697
 mas "Raycast Companion", id: 6738274497
 mas "TestFlight", id: 899247664
 mas "rcmd", id: 1596283165

@@ -186,6 +186,14 @@ set edit:completion:arg-completer[dotnet] = { |@args|
 	dotnet complete (str:join ' ' $args) | from-lines
 }
 
+# Eyes
+fn eyes-cfg {
+  var domain = gui/501
+  var plist = $E:HOME/Projects/dots/eyes/eyes.plist
+  try { launchctl bootout $domain $plist } catch { nop }
+  launchctl bootstrap $domain $plist
+}
+
 # Git
 fn gi { gitu }
 fn git-cfg { git config --list --show-origin }
