@@ -23,11 +23,6 @@ var _paths = $nil
 
 set-env BAT_STYLE plain
 set-env BAT_THEME ansi
-set-env D2_FONT_BOLD $E:HOME/Library/Fonts/CascadiaCode.ttf
-set-env D2_FONT_ITALIC $E:HOME/Library/Fonts/CascadiaCodeItalic.ttf
-set-env D2_FONT_REGULAR $E:HOME/Library/Fonts/CascadiaCode.ttf
-set-env D2_FONT_SEMIBOLD $E:HOME/Library/Fonts/CascadiaCode.ttf
-set-env D2_LAYOUT dagre
 # set-env DOCKER_DEFAULT_PLATFORM linux/amd64
 set-env EDITOR /opt/homebrew/bin/hx
 set-env LESS '-i --incsearch -m'
@@ -150,9 +145,15 @@ fn cmd-edit {
 # D2
 fn d2-ls { put *.d2 }
 fn d2-fmt { d2-ls | each { |f| d2 fmt $f } }
-fn d2-run { d2-ls | each { |f| d2 --pad 0 $f out/(file-stem $f).svg } }
-fn d2-watch-png { |f| d2 --browser 0 -w $f (file-stem $f).png }
-set edit:completion:arg-completer[d2-watch-png] = { |@args| d2-ls }
+fn d2-run { |&ext=svg| d2-ls | each { |f| d2 --pad 0 $f out/(file-stem $f).$ext } }
+fn d2-watch { |f|
+  while $true {
+    clear
+    d2 $f --stdout-format png - | icat
+    fswatch -1 $f
+  }
+}
+set edit:completion:arg-completer[d2-watch] = { |@args| d2-ls }
 
 # Docker
 fn doc-clean {
@@ -307,20 +308,6 @@ fn re { exec elvish }
 
 # SSH
 fn ssh-trust { |@a| ssh-copy-id -i $E:HOME/.ssh/id_rsa.pub $@a }
-
-# Terminal
-fn term-d2 { |f|
-  touch $f
-  kitty @ launch --cwd current --type=tab
-  kitty @ launch --cwd current --type=window --location=vsplit
-  kitty @ launch --cwd current --type=window --location=vsplit
-  kitty @ goto-layout -m id:-1 tall
-  kitty @ send-text -m id:-3 'icat-watch '(file-stem $f)".png\n"
-  kitty @ send-text -m id:-2 $E:EDITOR' '$f"\n"
-  kitty @ send-text -m id:-1 'd2-watch-png '$f"\n"
-  kitty @ focus-window -m id:-2
-}
-set edit:completion:arg-completer[term-d2] = { |@args| put *.d2 }
 
 # Typst
 fn typst-to-pptx { |f|
