@@ -1,0 +1,14 @@
+#!/opt/homebrew/bin/elvish
+
+fn notify { |m s|
+  osascript -e 'display notification "'$m'" with title "Eyes Break" sound name "'$s'"'
+}
+
+while $true {
+  notify 't - 10' Frog
+  sleep 10s
+  notify Go Frog
+  sleep 20s
+  notify Done Glass
+  sleep 20m
+}
