@@ -28,3 +28,4 @@ streetsidesoftware.code-spell-checker
 terrastruct.d2
 visualstudioexptteam.vscodeintellicode
 vscodevim.vim
+ziglang.vscode-zig

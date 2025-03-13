@@ -33,7 +33,7 @@ formatter = { command = "prettier", args = ["--parser", "markdown"] }
 [[language]]
 name = "python"
 formatter = { command = "ruff", args = ["format", "-"] }
-language-servers = [ "pyright" ]
+language-servers = ["pyright", "ruff"]
 
 [[language]]
 name = "rust"

@@ -1,5 +1,5 @@
 {
-  "buffer_font_family": "Cascadia Code",
+  "buffer_font_family": "JetBrains Mono",
   "buffer_font_size": 13,
   "buffer_line_height": "standard",
   "cursor_blink": false,
@@ -47,7 +47,7 @@
     "breadcrumbs": true,
     "quick_actions": false
   },
-  "ui_font_family": "Cascadia Code",
+  "ui_font_family": "JetBrains Mono",
   "ui_font_size": 14,
   "vim_mode": true
 }

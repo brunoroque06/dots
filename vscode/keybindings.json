@@ -28,8 +28,8 @@
     "key": "cmd+shift+f"
   },
   {
-    "key": "alt+cmd+f",
-    "command": "editor.action.startFindReplaceAction"
+    "command": "editor.action.startFindReplaceAction",
+    "key": "alt+cmd+f"
   },
   {
     "command": "workbench.action.toggleSidebarVisibility",
@@ -81,77 +81,77 @@
     "when": "!editorFocus"
   },
   {
-    "key": "cmd+left",
     "command": "workbench.action.debug.continue",
+    "key": "cmd+left",
     "when": "debugState == 'stopped'"
   },
   {
-    "key": "cmd+down",
     "command": "workbench.action.debug.stepInto",
+    "key": "cmd+down",
     "when": "debugState != 'inactive'"
   },
   {
-    "key": "f11",
     "command": "-workbench.action.debug.stepInto",
+    "key": "f11",
     "when": "debugState != 'inactive'"
   },
   {
-    "key": "f5",
     "command": "-workbench.action.debug.continue",
+    "key": "f5",
     "when": "debugState == 'stopped'"
   },
   {
-    "key": "cmd+up",
     "command": "workbench.action.debug.stepOut",
+    "key": "cmd+up",
     "when": "debugState == 'stopped'"
   },
   {
-    "key": "shift+f11",
     "command": "-workbench.action.debug.stepOut",
+    "key": "shift+f11",
     "when": "debugState == 'stopped'"
   },
   {
-    "key": "cmd+right",
     "command": "workbench.action.debug.stepOver",
+    "key": "cmd+right",
     "when": "debugState == 'stopped'"
   },
   {
-    "key": "f10",
     "command": "-workbench.action.debug.stepOver",
+    "key": "f10",
     "when": "debugState == 'stopped'"
   },
   {
-    "key": "cmd+s",
     "command": "workbench.action.debug.stop",
+    "key": "cmd+s",
     "when": "inDebugMode && !focusedSessionIsAttach"
   },
   {
-    "key": "shift+f5",
     "command": "-workbench.action.debug.stop",
+    "key": "shift+f5",
     "when": "inDebugMode && !focusedSessionIsAttach"
   },
   {
-    "key": "cmd+d",
     "command": "-editor.action.addSelectionToNextFindMatch",
+    "key": "cmd+d",
     "when": "editorFocus"
   },
   {
-    "key": "cmd+d",
     "command": "-notebook.addFindMatchToSelection",
+    "key": "cmd+d",
     "when": "config.notebook.multiCursor.enabled && notebookCellEditorFocused && activeEditor == 'workbench.editor.notebook'"
   },
   {
-    "key": "cmd+d",
     "command": "workbench.action.debug.start",
+    "key": "cmd+d",
     "when": "debuggersAvailable && debugState == 'inactive'"
   },
   {
-    "key": "f5",
     "command": "-workbench.action.debug.start",
+    "key": "f5",
     "when": "debuggersAvailable && debugState == 'inactive'"
   },
   {
-    "key": "cmd+k",
-    "command": "workbench.action.showCommands"
+    "command": "workbench.action.showCommands",
+    "key": "cmd+k"
   }
 ]

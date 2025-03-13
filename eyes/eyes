@@ -5,7 +5,7 @@ fn notify { |m s|
 }
 
 while $true {
-  notify 't - 10' Frog
+  notify 't - 10s' Frog
   sleep 10s
   notify Go Frog
   sleep 20s

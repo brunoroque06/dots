@@ -27,7 +27,7 @@
   "editor.cursorBlinking": "solid",
   "editor.cursorSurroundingLines": 5,
   "editor.cursorWidth": 2,
-  "editor.fontFamily": "Cascadia Code",
+  "editor.fontFamily": "JetBrains Mono",
   "editor.fontLigatures": false,
   "editor.fontSize": 13,
   "editor.formatOnSave": false,
@@ -48,12 +48,14 @@
   "files.trimTrailingWhitespace": true,
   "git.openRepositoryInParentFolders": "never",
   "github.copilot.editor.enableAutoCompletions": true,
+  "github.copilot.nextEditSuggestions.enabled": true,
   "javascript.updateImportsOnFileMove.enabled": "always",
   "javascript.validate.enable": true,
   "markdown.preview.fontFamily": "SF Pro Rounded",
   "python.languageServer": "Pylance",
   "python.testing.pytestEnabled": true,
   "scm.alwaysShowRepositories": true,
+  "search.mode": "reuseEditor",
   "terminal.integrated.drawBoldTextInBrightColors": false,
   "terminal.integrated.lineHeight": 1,
   "tinymist.formatterMode": "typstyle",
@@ -61,7 +63,6 @@
   "vim.foldfix": true,
   "vim.highlightedyank.enable": true,
   "vim.hlsearch": true,
-  "vim.leader": "<space>",
   "vim.insertModeKeyBindings": [
     {
       "before": ["c-x"],
@@ -72,6 +73,7 @@
       "commands": ["acceptSelectedSuggestion"]
     }
   ],
+  "vim.leader": "<space>",
   "vim.normalModeKeyBindingsNonRecursive": [
     {
       "before": ["=", "="],
@@ -167,5 +169,6 @@
   "workbench.editor.showTabs": "single",
   "workbench.layoutControl.enabled": false,
   "workbench.tree.indent": 15,
-  "workbench.tree.renderIndentGuides": "always"
+  "workbench.tree.renderIndentGuides": "always",
+  "zig.zls.enabled": "on"
 }

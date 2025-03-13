@@ -1,9 +1,22 @@
 use file
 use math
 use path
+use platform
 use re
 use readline-binding
 use str
+
+if (eq $E:TERM xterm-ghostty) {
+	try { use ghostty-integration }
+	catch { printf 'Could not load ghostty integration' }
+}
+
+if ($platform:is-windows) {
+	coreutils --list ^
+    | from-lines ^
+    | drop 1 ^
+    | each { |c| edit:add-var $c'~' { |@a| coreutils $c $@a } }
+}
 
 set paths = [
   /opt/homebrew/bin
@@ -24,41 +37,21 @@ var _paths = $nil
 set-env BAT_STYLE plain
 set-env BAT_THEME ansi
 # set-env DOCKER_DEFAULT_PLATFORM linux/amd64
-set-env EDITOR /opt/homebrew/bin/hx
+set-env EDITOR /opt/homebrew/bin/nvim
 set-env LESS '-i --incsearch -m'
 set-env PAGER /opt/homebrew/bin/less
 # set-env REQUESTS_CA_BUNDLE $E:HOME/.proxyman/proxyman-ca.pem # proxyman with python
 set-env RIPGREP_CONFIG_PATH $E:HOME/.config/ripgreprc
 set-env VISUAL $E:EDITOR
 
-fn osc { |c| print "\e]"$c"\a" }
-
-fn send-title { |t| osc '0;'$t }
-
 fn path { tilde-abbr $pwd | path:base (one) }
-
-fn send-pwd {
-  send-title (path)
-  osc '7;'(put $pwd)
-}
 
 var _dur = 0
 var _err = $false
 
 set edit:after-command = [
-  { |_| osc '133;A' }
-  { |_| send-pwd }
   { |m| set _dur = $m[duration] }
   { |m| set _err = (not-eq $m[error] $nil) }
-]
-
-set edit:after-readline = [
-  { |_| osc '133;C' }
-  { |c| send-title (str:split ' ' $c | take 1) }
-]
-
-set after-chdir = [
-  { |_| send-pwd }
 ]
 
 set edit:prompt = {
@@ -144,9 +137,9 @@ fn cmd-edit {
 
 # D2
 fn d2-ls { put *.d2 }
-fn d2-fmt { d2-ls | each { |f| d2 fmt $f } }
-fn d2-run { |&ext=svg| d2-ls | each { |f| d2 --pad 0 $f out/(file-stem $f).$ext } }
-fn d2-watch { |f|
+fn d2-fmt-all { d2-ls | each { |f| d2 fmt $f } }
+fn d2-run-all { |&ext=svg| d2-ls | each { |f| d2 --pad 0 $f out/(file-stem $f).$ext } }
+fn d2-icat-watch { |f|
   while $true {
     clear
     d2 $f --stdout-format png - | icat
@@ -204,6 +197,13 @@ fn gil { |&c=10| git log --all --decorate --graph --format=format:'%Cblue%h %Cre
 
 # Go
 fn go-up { go get -u; go mod tidy }
+set edit:completion:arg-completer[go] = { |@args|
+  if (and (eq $args[1] test) (eq $args[2] -run)) {
+		go test -list=. ^
+		  | from-lines ^
+			| each { |l| if (str:has-prefix $l ok) { continue }; put $l }
+	}
+}
 
 # JetBrains
 fn jetbrains-rm { |a|
@@ -246,9 +246,7 @@ fn pkg-su {
   put csharpier csharprepl fantomas ^
     | each { |p| try { dotnet tool install -g $p } catch { } }
 
-  npm install -g ^
-    npm ^
-    npm-check-updates
+  npm install -g npm
 }
 fn pkg-up {
   brew-up
@@ -294,6 +292,11 @@ fn py-up {
   pip install --upgrade pip pur
   py-re-ls | each { |r| pur -r $r; pip install -r $r }
   py-d
+}
+set edit:completion:arg-completer[pytest] = { |@args| 
+	pytest --collect-only -q ^
+		| from-lines ^
+		| each { |l| if (or (eq $l '') (str:contains $l 'tests collected in')) { continue }; put $l }
 }
 
 # Shell

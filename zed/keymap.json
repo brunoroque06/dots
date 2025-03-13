@@ -3,12 +3,13 @@
     "bindings": {
       "cmd-[": "pane::GoBack",
       "cmd-]": "pane::GoForward",
+      "cmd-alt-f": "search::ToggleReplace",
       "cmd-b": "file_finder::Toggle",
       "cmd-enter": "editor::ToggleCodeActions",
+      "cmd-f": "search::FocusSearch",
+      "cmd-k": "command_palette::Toggle",
+      "cmd-l": "project_panel::ToggleFocus",
       "cmd-o": "file_finder::Toggle",
-      "cmd-p": "command_palette::Toggle",
-      "cmd-r": ["vim::Search", "search::ToggleReplace"],
-      "cmd-shift-r": ["vim::Search", "search::ToggleReplace"],
       "cmd-shift-y": "project_symbols::Toggle",
       "cmd-t": "terminal_panel::ToggleFocus",
       "cmd-y": "outline::Toggle"

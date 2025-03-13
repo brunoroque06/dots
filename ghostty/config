@@ -1,12 +1,14 @@
 command = /opt/homebrew/bin/elvish
 
+cursor-color = #000000
+cursor-text = #FFFFFF
 cursor-style = block
 cursor-style-blink = false
 
-font-family = Cascadia Code
-font-feature = -calt
-font-feature = -liga
-font-feature = -dlig
+adjust-cell-height = -10%
+font-family = JetBrains Mono
+font-size = 13
+font-style = Regular
 
 macos-option-as-alt = true
 
