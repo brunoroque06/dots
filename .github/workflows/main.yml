@@ -17,7 +17,7 @@ jobs:
       - run: npx prettier -c .
       - run: shfmt -f . | xargs -t -I % shfmt -d %
       - run: shfmt -f . | xargs -t -I % shellcheck -x %
-      - run cargo install stylua
+      - run: cargo install stylua
       - run: stylua --check --verbose .
       - run: ls raycast/* | from-lines | each { |f| elvish -compileonly $f }
         shell: elvish {0}
