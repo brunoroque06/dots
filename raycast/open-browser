@@ -1,0 +1,8 @@
+#!/usr/bin/env elvish
+
+# @raycast.schemaVersion 1
+# @raycast.title Open Browser
+# @raycast.mode compact
+# @raycast.argument1 { "type": "text", "placeholder": "url" }
+
+open https://$args[0]

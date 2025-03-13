@@ -7,11 +7,10 @@ use readline-binding
 use str
 
 if (eq $E:TERM xterm-ghostty) {
-	try { use ghostty-integration }
-	catch { printf 'Could not load ghostty integration' }
+	try { use ghostty-integration } catch { printf 'Could not load ghostty integration' }
 }
 
-if ($platform:is-windows) {
+if (put $platform:is-windows) {
 	coreutils --list ^
     | from-lines ^
     | drop 1 ^

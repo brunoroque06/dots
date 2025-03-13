@@ -13,9 +13,10 @@ jobs:
       - run: zizmor .github/workflows/main.yml
       - run: |
           sudo apt update
-          sudo apt install elvish shellcheck shfmt -y
+          sudo apt install elvish shellcheck shfmt stylua -y
       - run: npx prettier -c .
       - run: shfmt -f . | xargs -t -I % shfmt -d %
       - run: shfmt -f . | xargs -t -I % shellcheck -x %
+      - run: stylua --check --verbose .
       - run: ls raycast/* | from-lines | each { |f| elvish -compileonly $f }
         shell: elvish {0}
