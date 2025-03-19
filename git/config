@@ -4,15 +4,11 @@ helper = osxkeychain
 [core]
 autocrlf = input
 excludesfile = ~/.config/git/ignore
-pager = delta
-
-[delta]
-hunk-header-style = omit
-light = true
-navigate = true
+pager = less -R
 
 [diff]
 algorithm = histogram
+external = difft
 tool = code
 
 [difftool "code"]

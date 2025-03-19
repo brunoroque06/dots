@@ -9,7 +9,7 @@ setup() {
 	fi
 
 	brew update
-	brew bundle install --file brew/brewfile --no-lock
+	brew bundle install --file brew/brewfile
 	brew doctor
 
 	SH=/opt/homebrew/bin/bash

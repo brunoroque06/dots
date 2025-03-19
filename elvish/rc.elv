@@ -10,7 +10,7 @@ if (eq $E:TERM xterm-ghostty) {
 	try { use ghostty-integration } catch { printf 'Could not load ghostty integration' }
 }
 
-if (put $platform:is-windows) {
+if (has-external coreutils) {
 	coreutils --list ^
     | from-lines ^
     | drop 1 ^
@@ -35,6 +35,7 @@ var _paths = $nil
 
 set-env BAT_STYLE plain
 set-env BAT_THEME ansi
+set-env DFT_DISPLAY inline
 # set-env DOCKER_DEFAULT_PLATFORM linux/amd64
 set-env EDITOR /opt/homebrew/bin/nvim
 set-env LESS '-i --incsearch -m'
