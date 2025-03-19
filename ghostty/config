@@ -1,20 +1,15 @@
 command = /opt/homebrew/bin/elvish
 
-cursor-color = #000000
-cursor-text = #FFFFFF
 cursor-style = block
 cursor-style-blink = false
 
 adjust-cell-height = -10%
 font-family = JetBrains Mono
-font-size = 13
-font-style = Regular
+font-feature = -calt,-dlig,-liga
 
 macos-option-as-alt = true
 
 shell-integration-features = no-cursor
-
-theme = Raycast_Light
 
 window-padding-x = 10
 window-padding-y = 10
@@ -24,3 +19,39 @@ keybind = page_down=scroll_page_down
 keybind = super+f=write_screen_file:open
 keybind = super+shift+.=move_tab:1
 keybind = super+shift+,=move_tab:-1
+
+# Theme
+# https://github.com/kdrag0n/base16-kitty/blob/master/colors/base16-tomorrow-256.conf
+palette = 0=#000000
+palette = 8=#000000
+
+palette = 1=#c82829
+palette = 9=#c82829
+
+palette = 2=#718b00
+palette = 10=#718b00
+
+palette = 3=#eab700
+palette = 11=#eab700
+
+palette = 4=#4271ae
+palette = 12=#4271ae
+
+palette = 5=#8959a8
+palette = 13=#8959a8
+
+palette = 6=#3e999f
+palette = 14=#3e999f
+
+palette = 7=#ffffff
+palette = 15=#ffffff
+
+background = #ffffff
+foreground = #000000
+
+cursor-color = #000000
+cursor-text = #ffffff
+
+selection-background = #4271ae
+selection-foreground = #ffffff
+

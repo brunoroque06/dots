@@ -1,4 +1,4 @@
-theme = "emacs"
+theme = "github_light_high_contrast"
 
 [editor]
 end-of-line-diagnostics = "hint"
