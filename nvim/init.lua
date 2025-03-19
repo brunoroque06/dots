@@ -34,6 +34,7 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.showcmd = true
 vim.opt.showmode = true
+vim.opt.signcolumn = "yes"
 
 vim.api.nvim_create_autocmd("TextYankPost", {
 	callback = function()
@@ -171,26 +172,6 @@ setup("lspconfig", {
 	},
 }, "lua_ls")
 
-add({
-	source = "WhoIsSethDaniel/mason-tool-installer.nvim",
-	depends = { "williamboman/mason.nvim", "williamboman/mason-lspconfig.nvim" },
-})
-setup("mason")
-setup("mason-lspconfig")
-setup("mason-tool-installer", {
-	ensure_installed = {
-		"angular-language-server",
-		"gopls",
-		"lua-language-server",
-		"stylua",
-		"terraform-ls",
-		"tinymist",
-		"typescript-language-server",
-	},
-	auto_update = true,
-	run_on_start = true,
-})
-
 add({ source = "seblyng/roslyn.nvim" })
 setup("roslyn")
 
@@ -210,10 +191,13 @@ add({ source = "stevearc/conform.nvim" })
 setup("conform", {
 	formatters_by_ft = {
 		go = { "gofmt" },
+		json = { "prettier" },
 		lua = { "stylua" },
 		python = { "ruff_fix", "ruff_format", "ruff_organize_imports" },
 		terraform = { "terraform_fmt" },
+		typescript = { "prettier" },
 		typst = { "typstyle" },
+		yaml = { "prettier" },
 	},
 })
 
@@ -242,7 +226,7 @@ map("n", "gr", vim.lsp.buf.references)
 map("n", "gs", function()
 	MiniExtra.pickers.lsp({ scope = "document_symbol" })
 end)
-map("n", "gs", function()
+map("n", "gS", function()
 	MiniExtra.pickers.lsp({ scope = "workspace_symbol" })
 end)
 
@@ -250,4 +234,7 @@ map("n", "<leader>a", vim.lsp.buf.code_action)
 map("n", "<leader>b", MiniPick.builtin.buffers)
 map("n", "<leader>f", MiniPick.builtin.files)
 map("n", "<leader>g", MiniPick.builtin.grep_live)
+map("n", "<leader>k", function()
+	MiniExtra.pickers.commands()
+end)
 map("n", "<leader>l", require("mini.files").open)

@@ -246,7 +246,7 @@ fn pkg-su {
   put csharpier csharprepl fantomas ^
     | each { |p| try { dotnet tool install -g $p } catch { } }
 
-  npm install -g npm
+  npm install -g @angular/language-server npm
 }
 fn pkg-up {
   brew-up
