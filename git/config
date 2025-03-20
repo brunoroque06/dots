@@ -9,10 +9,10 @@ pager = less -R
 [diff]
 algorithm = histogram
 external = difft
-tool = code
+tool = nvim
 
-[difftool "code"]
-cmd = code --wait --diff $LOCAL $REMOTE
+[difftool "nvim"]
+cmd = nvim -d $LOCAL $REMOTE
 
 [filter "lfs"]
 required = true
@@ -25,10 +25,10 @@ defaultBranch = main
 
 [merge]
 conflictstyle = zdiff3
-tool = code
+tool = nvim
 
-[mergetool "code"]
-cmd = code --wait $MERGED
+[mergetool "nvim"]
+cmd = nvim -d $MERGED
 keepBackup = false
 
 [pull]
