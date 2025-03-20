@@ -171,6 +171,24 @@ fn doc-su {
 # Dotnet
 fn dot-ci { |@a| csharprepl -t themes/VisualStudio_Light.json $@a }
 fn dot-fi { |@a| dotnet fsi $@a }
+fn dot-roslyn {
+  open https://dev.azure.com/azure-public/vside/_artifacts/feed/vs-impl/NuGet/Microsoft.CodeAnalysis.LanguageServer.osx-arm64/versions
+
+  var ver = (read-line)
+  var zip = roslyn.zip
+  var dir = roslyn
+  var dest = $E:HOME/.local/share/nvim/roslyn
+
+  cd $E:HOME/Downloads
+
+  rm -rf $dir $zip
+  curl -L 'https://pkgs.dev.azure.com/azure-public/vside/_packaging/vs-impl/nuget/v3/flat2/microsoft.codeanalysis.languageserver.osx-arm64/'$ver'/microsoft.codeanalysis.languageserver.osx-arm64.'$ver'.nupkg' -o $zip
+  unzip $zip -d $dir
+  
+  rm -rf $zip $dest
+  mv $dir/content/LanguageServer/osx-arm64 $dest
+  rm -rf $dir
+}
 fn dot-up {
   dotnet list package --outdated --format json ^
     | from-json | put (one)[projects][0][frameworks][0][topLevelPackages] ^
@@ -190,10 +208,15 @@ fn eyes-cfg {
 
 # Git
 fn gi { gitu }
-fn git-cfg { git config --list --show-origin }
+fn gi-cfg { git config --list --show-origin }
+fn gic { git commit }
 fn gid { git diff }
 fn gis { git status -s }
+fn gishow { git show --ext-diff }
 fn gil { |&c=10| git log --all --decorate --graph --format=format:'%Cblue%h %Creset- %Cgreen%ar %Creset%s %C(dim)- %an%C(auto)%d' -$c }
+fn gilp { git log -p --ext-diff }
+fn gip { git fetch; git pull }
+fn giP { git push }
 
 # Go
 fn go-up { go get -u; go mod tidy }
@@ -249,7 +272,7 @@ fn pkg-su {
   npm install -g @angular/language-server npm
 }
 fn pkg-up {
-  brew-up
+  try { brew-up } catch { }
 
   dotnet tool list --format json -g ^
     | from-json ^

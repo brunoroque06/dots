@@ -190,6 +190,7 @@ setup("mini.surround")
 add({ source = "stevearc/conform.nvim" })
 setup("conform", {
 	formatters_by_ft = {
+		cs = { "csharpier" },
 		go = { "gofmt" },
 		json = { "prettier" },
 		lua = { "stylua" },
@@ -213,7 +214,7 @@ map("n", "]<space>", "o<esc>k")
 
 map("n", "==", function()
 	require("conform").format({ async = true, lsp_fallback = true })
-end, { desc = "Format entire file" })
+end)
 
 map("n", "cd", vim.lsp.buf.rename)
 
@@ -230,6 +231,9 @@ map("n", "gS", function()
 	MiniExtra.pickers.lsp({ scope = "workspace_symbol" })
 end)
 
+map("n", "<leader>,", function()
+	vim.cmd("edit " .. vim.fn.stdpath("config") .. "/init.lua")
+end)
 map("n", "<leader>a", vim.lsp.buf.code_action)
 map("n", "<leader>b", MiniPick.builtin.buffers)
 map("n", "<leader>f", MiniPick.builtin.files)
