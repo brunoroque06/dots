@@ -189,11 +189,20 @@ setup("mini.surround")
 
 add({ source = "stevearc/conform.nvim" })
 setup("conform", {
+	formatters = {
+		elv = {
+			command = "sed",
+			args = { "-E", "-e", "s/[ 	]+$//", "-e", "s/ {2}/\t/g" },
+			stdin = true,
+		},
+	},
 	formatters_by_ft = {
 		cs = { "csharpier" },
+		elvish = { "elv" },
 		go = { "gofmt" },
 		json = { "prettier" },
 		lua = { "stylua" },
+		markdown = { "prettier" },
 		python = { "ruff_fix", "ruff_format", "ruff_organize_imports" },
 		terraform = { "terraform_fmt" },
 		typescript = { "prettier" },
