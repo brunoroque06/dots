@@ -11,6 +11,9 @@ vim.opt.wildmenu = true
 vim.opt.wildmode = "longest:list,full"
 vim.opt.wildoptions = "fuzzy"
 
+-- Edition
+vim.opt.swapfile = false
+
 -- Fold
 vim.opt.foldenable = false
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
@@ -29,6 +32,7 @@ vim.opt.grepprg = "rg --hidden --smart-case --vimgrep"
 vim.opt.smartcase = true
 
 -- UI
+vim.opt.list = true
 vim.opt.mouse = "a"
 vim.opt.number = true
 vim.opt.relativenumber = true
@@ -181,6 +185,7 @@ vim.cmd("colorscheme github_light")
 add({ source = "echasnovski/mini.nvim" })
 setup("mini.bracketed")
 setup("mini.completion")
+setup("mini.diff", { view = { style = "sign" } })
 setup("mini.extra")
 setup("mini.pairs")
 setup("mini.files")
@@ -218,6 +223,9 @@ local function map(mode, lhs, rhs, opts)
 	vim.keymap.set(mode, lhs, rhs, opts)
 end
 
+map("i", "<c-f>", "<right>")
+map("i", "<c-b>", "<left>")
+
 map("n", "[<space>", "O<esc>j")
 map("n", "]<space>", "o<esc>k")
 
@@ -227,10 +235,11 @@ end)
 
 map("n", "cd", vim.lsp.buf.rename)
 
+map("n", "K", vim.lsp.buf.hover)
+
 map("n", "g/", ":grep ")
 map("n", "gD", vim.lsp.buf.type_definition)
 map("n", "gd", vim.lsp.buf.definition)
-map("n", "gh", vim.lsp.buf.hover)
 map("n", "gi", vim.lsp.buf.implementation)
 map("n", "gr", vim.lsp.buf.references)
 map("n", "gs", function()
@@ -245,9 +254,8 @@ map("n", "<leader>,", function()
 end)
 map("n", "<leader>a", vim.lsp.buf.code_action)
 map("n", "<leader>b", MiniPick.builtin.buffers)
+map("n", "<leader>d", MiniDiff.toggle_overlay)
 map("n", "<leader>f", MiniPick.builtin.files)
 map("n", "<leader>g", MiniPick.builtin.grep_live)
-map("n", "<leader>k", function()
-	MiniExtra.pickers.commands()
-end)
+map("n", "<leader>k", MiniExtra.pickers.commands)
 map("n", "<leader>l", require("mini.files").open)
