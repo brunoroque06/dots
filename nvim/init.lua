@@ -4,9 +4,9 @@ vim.opt.clipboard = "unnamedplus"
 
 -- Commands
 vim.opt.timeout = false
-vim.opt.ttimeout = false
 
 -- Completion
+vim.cmd("set completeopt+=noselect")
 vim.opt.wildmenu = true
 vim.opt.wildmode = "longest:list,full"
 vim.opt.wildoptions = "fuzzy"
@@ -32,6 +32,7 @@ vim.opt.grepprg = "rg --hidden --smart-case --vimgrep"
 vim.opt.smartcase = true
 
 -- UI
+vim.o.winborder = "single"
 vim.opt.list = true
 vim.opt.mouse = "a"
 vim.opt.number = true
@@ -46,32 +47,91 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	end,
 })
 
-local pcks = vim.fn.stdpath("data") .. "/site/"
-local mini = pcks .. "pack/deps/start/mini.nvim"
+-- LSP
+--- @param id string
+--- @param cfg table
+local function lsp(id, cfg)
+	vim.lsp.config[id] = cfg
+	vim.lsp.enable(id)
+end
+
+lsp("elv", { cmd = { "elvish", "-lsp" }, filetypes = { "elvish" } })
+lsp("go", { cmd = { "gopls" }, filetypes = { "go" } })
+lsp("grammar", { cmd = { "harper-ls", "--stdio" }, filetypes = { "markdown" } })
+lsp("lua", {
+	cmd = { "lua-language-server" },
+	filetypes = { "lua" },
+	settings = {
+		Lua = {
+			diagnostics = {
+				globals = { "vim" },
+			},
+			runtime = {
+				version = "LuaJIT",
+			},
+			workspace = {
+				library = vim.api.nvim_get_runtime_file("", true),
+			},
+		},
+	},
+})
+lsp("ng", {
+	cmd = { "ngserver", "--stdio", "--ngProbeLocations", ".", "--tsProbeLocations", "." },
+	filetypes = { "typescript" },
+	root_markers = { "angular.json" },
+})
+lsp("py", {
+	cmd = { "pyright-langserver", "--stdio" },
+	filetypes = { "python" },
+})
+lsp("tf", {
+	cmd = { "terraform-ls", "serve" },
+	filetypes = { "terraform" },
+})
+lsp("ts", {
+	cmd = { "typescript-language-server", "--stdio" },
+	filetypes = { "typescript" },
+	root_markers = { "package.json" },
+})
+lsp("typ", {
+	cmd = { "tinymist" },
+	filetypes = { "typst" },
+})
+
+vim.api.nvim_create_autocmd("LspAttach", {
+	callback = function(ev)
+		local c = vim.lsp.get_client_by_id(ev.data.client_id)
+		if c and c:supports_method("textDocument/completion") then
+			vim.lsp.completion.enable(true, c.id, ev.buf, { autotrigger = true })
+		end
+	end,
+})
+
+vim.diagnostic.config({ virtual_lines = false, virtual_text = true })
+
+-- Plugins
+local plugs = vim.fn.stdpath("data") .. "/site/"
+local mini = plugs .. "pack/deps/start/mini.nvim"
 if not vim.loop.fs_stat(mini) then
-	local clone_cmd = {
+	local clone = {
 		"git",
 		"clone",
 		"--filter=blob:none",
 		"https://github.com/echasnovski/mini.nvim",
 		mini,
 	}
-	vim.fn.system(clone_cmd)
+	vim.fn.system(clone)
 end
 
-local function setup(name, cfg, sub)
+---@param id string
+---@param cfg table?
+local function setup(id, cfg)
 	cfg = cfg or {}
-
-	local pkg = require(name)
-
-	if sub then
-		pkg[sub].setup(cfg)
-	else
-		pkg.setup(cfg)
-	end
+	local pkg = require(id)
+	pkg.setup(cfg)
 end
 
-setup("mini.deps", { path = { package = pcks } })
+setup("mini.deps", { path = { package = plugs } })
 
 local add = MiniDeps.add
 
@@ -137,54 +197,11 @@ setup("nvim-treesitter.configs", {
 	},
 })
 
-add({ source = "neovim/nvim-lspconfig" })
-setup("lspconfig", nil, "angularls")
-setup("lspconfig", nil, "gopls")
-setup("lspconfig", nil, "pyright")
-setup("lspconfig", nil, "ruff")
-setup("lspconfig", nil, "terraformls")
-setup("lspconfig", nil, "tinymist")
-setup("lspconfig", nil, "ts_ls")
-setup("lspconfig", {
-	on_init = function(client)
-		if client.workspace_folders then
-			local path = client.workspace_folders[1].name
-			if
-				path ~= vim.fn.stdpath("config")
-				and (vim.loop.fs_stat(path .. "/.luarc.json") or vim.loop.fs_stat(path .. "/.luarc.jsonc"))
-			then
-				return
-			end
-		end
-
-		client.config.settings.Lua = vim.tbl_deep_extend("force", client.config.settings.Lua, {
-			runtime = {
-				version = "LuaJIT",
-			},
-			workspace = {
-				checkThirdParty = false,
-				library = {
-					vim.env.VIMRUNTIME,
-					mini .. "/lua",
-					"${3rd}/luv/library",
-				},
-			},
-		})
-	end,
-	settings = {
-		Lua = {},
-	},
-}, "lua_ls")
-
 add({ source = "seblyng/roslyn.nvim" })
 setup("roslyn")
 
-add({ source = "projekt0n/github-nvim-theme" })
-vim.cmd("colorscheme github_light")
-
 add({ source = "echasnovski/mini.nvim" })
 setup("mini.bracketed")
-setup("mini.completion")
 setup("mini.diff", { view = { style = "sign" } })
 setup("mini.extra")
 setup("mini.pairs")
@@ -216,6 +233,13 @@ setup("conform", {
 	},
 })
 
+add({ source = "projekt0n/github-nvim-theme" })
+vim.cmd("colorscheme github_light")
+
+---@param mode string
+---@param lhs string
+---@param rhs function|string
+---@param opts table?
 local function map(mode, lhs, rhs, opts)
 	opts = opts or {}
 	opts.noremap = true
@@ -225,6 +249,7 @@ end
 
 map("i", "<c-f>", "<right>")
 map("i", "<c-b>", "<left>")
+map("i", "<c-k>", vim.lsp.buf.signature_help)
 
 map("n", "[<space>", "O<esc>j")
 map("n", "]<space>", "o<esc>k")
