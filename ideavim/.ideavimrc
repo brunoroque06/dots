@@ -62,12 +62,10 @@ nmap [h <Action>(VcsShowPrevChangeMarker)
 nmap ]h <Action>(VcsShowNextChangeMarker)
 nmap [q <Action>(PreviousOccurence)
 nmap ]q <Action>(NextOccurence)
-nmap U <Action>($Redo)
 
 nmap cd <Action>(RenameElement)
 
-nmap do <Action>(VcsShowNextChangeMarker)
-nmap dp <Action>(Vcs.RollbackChangedLines)
+nmap gH <Action>(Vcs.RollbackChangedLines)
 
 nmap K <Action>(ShowHoverInfo)
 
@@ -93,5 +91,6 @@ nmap <c-w>q <c-w>c
 nmap <c-w>J <Action>(MoveTabDown)
 nmap <c-w>L <Action>(MoveTabRight)
 
+imap <c-k> <Action>(ShowHoverInfo)
 imap <c-x> <Action>(CodeCompletion)
 imap <c-y> <Action>(EditorChooseLookupItem)

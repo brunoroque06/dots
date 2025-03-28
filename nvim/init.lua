@@ -6,7 +6,7 @@ vim.opt.clipboard = "unnamedplus"
 vim.opt.timeout = false
 
 -- Completion
-vim.cmd("set completeopt+=noselect")
+vim.o.completeopt = "fuzzy,menuone,noselect"
 vim.opt.wildmenu = true
 vim.opt.wildmode = "longest:list,full"
 vim.opt.wildoptions = "fuzzy"
@@ -16,7 +16,7 @@ vim.opt.swapfile = false
 
 -- Fold
 vim.opt.foldenable = false
-vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 vim.opt.foldmethod = "expr"
 
 -- Indentation
