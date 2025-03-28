@@ -1,8 +1,6 @@
-alefragnani.bookmarks
 angular.ng-template
 charliermarsh.ruff
 christian-kohler.path-intellisense
-csharpier.csharpier-vscode
 davidanson.vscode-markdownlint
 elves.elvish
 esbenp.prettier-vscode
@@ -16,7 +14,6 @@ ms-azuretools.vscode-docker
 ms-dotnettools.csdevkit
 ms-dotnettools.csharp
 ms-dotnettools.vscode-dotnet-runtime
-ms-dotnettools.vscodeintellicode-csharp
 ms-python.debugpy
 ms-python.python
 ms-python.vscode-pylance
@@ -26,6 +23,5 @@ redhat.vscode-yaml
 rust-lang.rust-analyzer
 streetsidesoftware.code-spell-checker
 terrastruct.d2
-visualstudioexptteam.vscodeintellicode
 vscodevim.vim
 ziglang.vscode-zig

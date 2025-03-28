@@ -17,7 +17,7 @@
   },
   {
     "command": "editor.action.quickFix",
-    "key": "cmd+enter"
+    "key": "cmd+."
   },
   {
     "command": "actions.find",
@@ -32,16 +32,14 @@
     "key": "alt+cmd+f"
   },
   {
-    "command": "workbench.action.toggleSidebarVisibility",
-    "key": "cmd+shift+h"
-  },
-  {
-    "command": "editor.action.triggerParameterHints",
-    "key": "cmd+i"
-  },
-  {
-    "command": "bookmarks.listFromAllFiles",
-    "key": "cmd+j"
+    "command": "runCommands",
+    "key": "cmd+shift+h",
+    "args": {
+      "commands": [
+        "workbench.action.maximizeEditorHideSidebar",
+        "workbench.action.closePanel"
+      ]
+    }
   },
   {
     "command": "breadcrumbs.focusAndSelect",
@@ -52,10 +50,6 @@
     "key": "cmd+o"
   },
   {
-    "command": "workbench.action.showCommands",
-    "key": "cmd+p"
-  },
-  {
     "command": "editor.action.startFindReplaceAction",
     "key": "cmd+r"
   },
@@ -64,7 +58,7 @@
     "key": "cmd+shift+r"
   },
   {
-    "command": "workbench.action.terminal.toggleTerminal",
+    "command": "workbench.action.createTerminalEditor",
     "key": "cmd+t"
   },
   {
@@ -91,23 +85,8 @@
     "when": "debugState != 'inactive'"
   },
   {
-    "command": "-workbench.action.debug.stepInto",
-    "key": "f11",
-    "when": "debugState != 'inactive'"
-  },
-  {
-    "command": "-workbench.action.debug.continue",
-    "key": "f5",
-    "when": "debugState == 'stopped'"
-  },
-  {
     "command": "workbench.action.debug.stepOut",
     "key": "cmd+up",
-    "when": "debugState == 'stopped'"
-  },
-  {
-    "command": "-workbench.action.debug.stepOut",
-    "key": "shift+f11",
     "when": "debugState == 'stopped'"
   },
   {
@@ -116,38 +95,13 @@
     "when": "debugState == 'stopped'"
   },
   {
-    "command": "-workbench.action.debug.stepOver",
-    "key": "f10",
-    "when": "debugState == 'stopped'"
-  },
-  {
     "command": "workbench.action.debug.stop",
     "key": "cmd+s",
     "when": "inDebugMode && !focusedSessionIsAttach"
   },
   {
-    "command": "-workbench.action.debug.stop",
-    "key": "shift+f5",
-    "when": "inDebugMode && !focusedSessionIsAttach"
-  },
-  {
-    "command": "-editor.action.addSelectionToNextFindMatch",
-    "key": "cmd+d",
-    "when": "editorFocus"
-  },
-  {
-    "command": "-notebook.addFindMatchToSelection",
-    "key": "cmd+d",
-    "when": "config.notebook.multiCursor.enabled && notebookCellEditorFocused && activeEditor == 'workbench.editor.notebook'"
-  },
-  {
     "command": "workbench.action.debug.start",
     "key": "cmd+d",
-    "when": "debuggersAvailable && debugState == 'inactive'"
-  },
-  {
-    "command": "-workbench.action.debug.start",
-    "key": "f5",
     "when": "debuggersAvailable && debugState == 'inactive'"
   },
   {

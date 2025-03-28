@@ -1,7 +1,7 @@
 {
   "D2.execPath": "/opt/homebrew/bin/d2",
   "[csharp]": {
-    "editor.defaultFormatter": "csharpier.csharpier-vscode"
+    "editor.defaultFormatter": "ms-dotnettools.csharp"
   },
   "[css][dockercompose][html][javascript][json][jsonc][markdown][scss][typescript][yaml]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -19,6 +19,11 @@
   "debug.toolBarLocation": "docked",
   "diffEditor.renderSideBySide": false,
   "dotnet.automaticallyCreateSolutionInWorkspace": false,
+  "dotnet.codeLens.enableReferencesCodeLens": false,
+  "dotnet.formatting.organizeImportsOnFormat": true,
+  "dotnet.inlayHints.enableInlayHintsForLiteralParameters": true,
+  "dotnet.inlayHints.enableInlayHintsForOtherParameters": true,
+  "dotnet.inlayHints.enableInlayHintsForParameters": true,
   "editor.accessibilitySupport": "off",
   "editor.bracketPairColorization.enabled": true,
   "editor.codeActionsOnSave": {
@@ -34,6 +39,7 @@
   "editor.guides.bracketPairs": true,
   "editor.inlineSuggest.enabled": true,
   "editor.lineNumbers": "relative",
+  "editor.lineHeight": 1.45,
   "editor.minimap.enabled": false,
   "editor.renderWhitespace": "trailing",
   "editor.scrollbar.verticalScrollbarSize": 8,
@@ -43,6 +49,9 @@
   "explorer.confirmDragAndDrop": false,
   "explorer.openEditors.sortOrder": "alphabetical",
   "explorer.openEditors.visible": 1,
+  "extensions.experimental.affinity": {
+    "vscodevim.vim": 1
+  },
   "extensions.ignoreRecommendations": true,
   "files.autoSave": "afterDelay",
   "files.trimTrailingWhitespace": true,
@@ -58,12 +67,22 @@
   "search.mode": "reuseEditor",
   "terminal.integrated.drawBoldTextInBrightColors": false,
   "terminal.integrated.lineHeight": 1,
+  "terminal.integrated.profiles.osx": {
+    "elvish": {
+      "path": "/opt/homebrew/bin/elvish"
+    }
+  },
+  "terminal.integrated.defaultProfile.osx": "elvish",
   "tinymist.formatterMode": "typstyle",
   "typescript.updateImportsOnFileMove.enabled": "always",
   "vim.foldfix": true,
   "vim.highlightedyank.enable": true,
   "vim.hlsearch": true,
   "vim.insertModeKeyBindings": [
+    {
+      "before": ["c-k"],
+      "commands": ["editor.action.showHover"]
+    },
     {
       "before": ["c-x"],
       "commands": ["editor.action.triggerSuggest"]
@@ -114,20 +133,20 @@
       "commands": ["editor.action.rename"]
     },
     {
-      "before": ["d", "o"],
-      "commands": ["editor.action.dirtydiff.next"]
+      "before": ["K"],
+      "commands": ["editor.action.showHover"]
     },
     {
-      "before": ["d", "p"],
-      "commands": ["git.revertSelectedRanges"]
+      "before": ["[", "h"],
+      "commands": ["editor.action.dirtydiff.previous"]
+    },
+    {
+      "before": ["]", "h"],
+      "commands": ["editor.action.dirtydiff.next"]
     },
     {
       "before": ["g", "d"],
       "commands": ["editor.action.peekDefinition"]
-    },
-    {
-      "before": ["g", "h"],
-      "commands": ["editor.action.showHover"]
     },
     {
       "before": ["g", "i"],
@@ -146,28 +165,34 @@
       "commands": ["workbench.action.showAllSymbols"]
     },
     {
-      "after": ["c-r"],
-      "before": ["U"]
-    },
-    {
-      "before": ["c-s"],
-      "commands": ["bookmarks.toggle"]
-    },
-    {
       "before": ["<leader>", "b"],
       "commands": ["editor.debug.action.toggleBreakpoint"]
+    },
+    {
+      "before": ["<leader>", "d"],
+      "commands": ["git.openChange"]
+    }
+  ],
+  "vim.visualModeKeyBindings": [
+    {
+      "before": ["g", "h"],
+      "commands": ["git.diff.stageSelection"]
+    },
+    {
+      "before": ["g", "H"],
+      "commands": ["git.revertSelectedRanges"]
     }
   ],
   "vim.surround": true,
   "vim.useSystemClipboard": true,
-  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
   "window.commandCenter": false,
   "window.title": "${activeEditorLong}${separator}${rootPath}",
-  "workbench.activityBar.location": "top",
+  "workbench.activityBar.location": "hidden",
   "workbench.colorTheme": "Default Light Modern",
   "workbench.editor.enablePreview": false,
   "workbench.editor.showTabs": "single",
   "workbench.layoutControl.enabled": false,
+  "workbench.startupEditor": "none",
   "workbench.tree.indent": 15,
   "workbench.tree.renderIndentGuides": "always",
   "zig.zls.enabled": "on"
