@@ -50,7 +50,7 @@ sethandler <c-v> a:vim
 sethandler <c-w> a:vim
 sethandler <f1> a:ide
 
-nmap == <Action>(SilentCodeCleanup)
+nmap == <Action>(OptimizeImports)<Action>(SilentCodeCleanup)
 nmap =i <Action>(OptimizeImports)
 nmap [<space> k<Action>(EditorStartNewLine)j
 nmap ]<space> <Action>(EditorStartNewLine)k
@@ -79,6 +79,8 @@ nmap gS <Action>(GotoSymbol)
 nmap zM <Action>(RiderCollapseToDefinitions)
 
 let mapleader="\<space>"
+
+nmap - <Action>(ShowNavBar)
 
 nmap <leader>b <Action>(ToggleLineBreakpoint)
 nmap <leader>d <Action>(VcsShowCurrentChangeMarker)

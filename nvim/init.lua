@@ -274,6 +274,8 @@ map("n", "gS", function()
 	MiniExtra.pickers.lsp({ scope = "workspace_symbol" })
 end)
 
+map("n", "-", MiniFiles.open)
+
 map("n", "<leader>,", function()
 	vim.cmd("edit " .. vim.fn.stdpath("config") .. "/init.lua")
 end)
@@ -283,4 +285,3 @@ map("n", "<leader>d", MiniDiff.toggle_overlay)
 map("n", "<leader>f", MiniPick.builtin.files)
 map("n", "<leader>g", MiniPick.builtin.grep_live)
 map("n", "<leader>k", MiniExtra.pickers.commands)
-map("n", "<leader>l", require("mini.files").open)

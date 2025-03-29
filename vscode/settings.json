@@ -95,6 +95,10 @@
   "vim.leader": "<space>",
   "vim.normalModeKeyBindingsNonRecursive": [
     {
+      "before": ["-"],
+      "commands": ["breadcrumbs.focusAndSelect"]
+    },
+    {
       "before": ["=", "="],
       "commands": ["editor.action.organizeImports", "editor.action.format"]
     },

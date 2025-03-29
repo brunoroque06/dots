@@ -12,7 +12,7 @@
     "key": "cmd+]"
   },
   {
-    "command": "workbench.action.quickOpen",
+    "command": "workbench.action.showAllEditorsByMostRecentlyUsed",
     "key": "cmd+b"
   },
   {
