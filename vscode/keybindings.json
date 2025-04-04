@@ -70,11 +70,6 @@
     "key": "cmd+shift+y"
   },
   {
-    "command": "workbench.action.focusActiveEditorGroup",
-    "key": "escape",
-    "when": "!editorFocus"
-  },
-  {
     "command": "workbench.action.debug.continue",
     "key": "cmd+left",
     "when": "debugState == 'stopped'"

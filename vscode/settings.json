@@ -191,7 +191,7 @@
   "vim.useSystemClipboard": true,
   "window.commandCenter": false,
   "window.title": "${activeEditorLong}${separator}${rootPath}",
-  "workbench.activityBar.location": "hidden",
+  "workbench.activityBar.location": "top",
   "workbench.colorTheme": "Default Light Modern",
   "workbench.editor.enablePreview": false,
   "workbench.editor.showTabs": "single",
