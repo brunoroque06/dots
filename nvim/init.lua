@@ -1,3 +1,5 @@
+_G.vim = vim
+
 vim.g.mapleader = " "
 
 vim.opt.clipboard = "unnamedplus"
@@ -133,7 +135,7 @@ end
 
 setup("mini.deps", { path = { package = plugs } })
 
-local add = MiniDeps.add
+local add = require("mini.deps").add
 
 add({
 	source = "nvim-treesitter/nvim-treesitter-textobjects",
@@ -204,6 +206,7 @@ add({ source = "echasnovski/mini.nvim" })
 setup("mini.bracketed")
 setup("mini.diff", { view = { style = "sign" } })
 setup("mini.extra")
+setup("mini.icons")
 setup("mini.pairs")
 setup("mini.files")
 setup("mini.pick")
@@ -268,20 +271,20 @@ map("n", "gd", vim.lsp.buf.definition)
 map("n", "gi", vim.lsp.buf.implementation)
 map("n", "gr", vim.lsp.buf.references)
 map("n", "gs", function()
-	MiniExtra.pickers.lsp({ scope = "document_symbol" })
+	require("mini.extra").pickers.lsp({ scope = "document_symbol" })
 end)
 map("n", "gS", function()
-	MiniExtra.pickers.lsp({ scope = "workspace_symbol" })
+	require("mini.extra").pickers.lsp({ scope = "workspace_symbol" })
 end)
 
-map("n", "-", MiniFiles.open)
+map("n", "-", require("mini.files").open)
 
 map("n", "<leader>,", function()
 	vim.cmd("edit " .. vim.fn.stdpath("config") .. "/init.lua")
 end)
 map("n", "<leader>a", vim.lsp.buf.code_action)
-map("n", "<leader>b", MiniPick.builtin.buffers)
-map("n", "<leader>d", MiniDiff.toggle_overlay)
-map("n", "<leader>f", MiniPick.builtin.files)
-map("n", "<leader>g", MiniPick.builtin.grep_live)
-map("n", "<leader>k", MiniExtra.pickers.commands)
+map("n", "<leader>b", require("mini.pick").builtin.buffers)
+map("n", "<leader>d", require("mini.diff").toggle_overlay)
+map("n", "<leader>f", require("mini.pick").builtin.files)
+map("n", "<leader>g", require("mini.pick").builtin.grep_live)
+map("n", "<leader>k", require("mini.extra").pickers.commands)
