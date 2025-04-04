@@ -207,16 +207,8 @@ fn eyes-cfg {
 }
 
 # Git
+set edit:command-abbr['g'] = 'git'
 fn gi { gitu }
-fn gi-cfg { git config --list --show-origin }
-fn gic { git commit }
-fn gid { git diff }
-fn gis { git status -s }
-fn gishow { git show --ext-diff }
-fn gil { |&c=10| git log --all --decorate --graph --format=format:'%Cblue%h %Creset- %Cgreen%ar %Creset%s %C(dim)- %an%C(auto)%d' -$c }
-fn gilp { git log -p --ext-diff }
-fn gip { git fetch; git pull }
-fn giP { git push }
 
 # Go
 fn go-up { go get -u; go mod tidy }

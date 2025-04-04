@@ -1,3 +1,21 @@
+[alias]
+a = add
+b = branch
+ch = checkout
+co = commit
+con-edit = config --edit --global
+con-list = config --list --show-origin
+d = diff
+f = fetch
+l = log
+ll = log --all --decorate --graph --format=format:'%Cblue%h %Creset- %Cgreen%ar %Creset%s %C(dim)- %an%C(auto)%d' -10
+lp = log -p --ext-diff
+pul = pull
+pus = push
+sh = show --ext-diff
+st = status -s
+sw = switch
+
 [credential]
 helper = osxkeychain
 
