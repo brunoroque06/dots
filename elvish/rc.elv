@@ -207,7 +207,7 @@ fn eyes-cfg {
 }
 
 # Git
-set edit:command-abbr['g'] = 'git'
+set edit:command-abbr['g'] = git
 fn gi { gitu }
 
 # Go
@@ -286,6 +286,7 @@ fn py-a {
 	}
 	set _paths = $paths
 	set paths = [$venv $@paths]
+	set-env PYTHONPATH (pwd)
 }
 fn py-d {
 	if (eq $_paths $nil) {
@@ -293,6 +294,7 @@ fn py-d {
 	}
 	set paths = $_paths
 	set _paths = $nil
+	unset-env PYTHONPATH
 }
 fn py-re-ls {
 	put requirements*.txt
@@ -327,6 +329,9 @@ fn re { exec elvish }
 
 # SSH
 fn ssh-trust { |@a| ssh-copy-id -i $E:HOME/.ssh/id_rsa.pub $@a }
+
+# Terraform
+set edit:command-abbr['tf'] = terraform
 
 # Typst
 fn typst-to-pptx { |f|

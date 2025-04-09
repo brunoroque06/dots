@@ -64,7 +64,6 @@
   "python.languageServer": "Pylance",
   "python.testing.pytestEnabled": true,
   "scm.alwaysShowRepositories": true,
-  "search.mode": "reuseEditor",
   "terminal.integrated.drawBoldTextInBrightColors": false,
   "terminal.integrated.lineHeight": 1,
   "terminal.integrated.profiles.osx": {
