@@ -220,9 +220,14 @@ setup("conform", {
 			args = { "-E", "-e", "s/[ 	]+$//", "-e", "s/ {2}/\t/g" },
 			stdin = true,
 		},
+		jb = {
+			command = "jb",
+			args = { "cleanupcode", "$FILENAME" },
+			stdin = false,
+		},
 	},
 	formatters_by_ft = {
-		cs = { "csharpier" },
+		cs = { "jb" },
 		elvish = { "elv" },
 		go = { "gofmt" },
 		json = { "prettier" },
@@ -238,6 +243,8 @@ setup("conform", {
 
 add({ source = "projekt0n/github-nvim-theme" })
 vim.cmd("colorscheme github_light")
+
+add({ source = "github/copilot.vim" })
 
 ---@param mode string
 ---@param lhs string
@@ -277,7 +284,9 @@ map("n", "gS", function()
 	require("mini.extra").pickers.lsp({ scope = "workspace_symbol" })
 end)
 
-map("n", "-", require("mini.files").open)
+map("n", "-", function()
+	require("mini.files").open(vim.fn.expand("%:p"))
+end)
 
 map("n", "<leader>,", function()
 	vim.cmd("edit " .. vim.fn.stdpath("config") .. "/init.lua")

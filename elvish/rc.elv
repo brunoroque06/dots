@@ -259,7 +259,7 @@ fn brew-up {
 }
 
 fn pkg-su {
-	put csharpier csharprepl fantomas ^
+	put JetBrains.ReSharper.GlobalTools csharpier csharprepl fantomas ^
 		| each { |p| try { dotnet tool install -g $p } catch { } }
 
 	npm install -g @angular/language-server npm
@@ -324,7 +324,7 @@ fn env-ls {
 		| each { |e| var k v = (str:split &max=2 = $e); put [$k $v] } ^
 		| order
 }
-fn colortest { curl -s https://raw.githubusercontent.com/pablopunk/colortest/master/colortest | bash }
+fn colortest { curl -s https://raw.githubusercontent.com/pablopunk/colortest/master/colortest | zsh }
 fn re { exec elvish }
 
 # SSH
