@@ -20,6 +20,11 @@
     "key": "cmd+."
   },
   {
+    "command": "editor.action.showContextMenu",
+    "key": "cmd+enter",
+    "when": "editorTextFocus"
+  },
+  {
     "command": "actions.find",
     "key": "cmd+f"
   },

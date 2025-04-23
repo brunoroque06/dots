@@ -56,13 +56,17 @@
   "files.autoSave": "afterDelay",
   "files.trimTrailingWhitespace": true,
   "git.openRepositoryInParentFolders": "never",
-  "github.copilot.editor.enableAutoCompletions": true,
+  "github.copilot.enable": {
+    "editor": true,
+    "inlineSuggest": true
+  },
   "github.copilot.nextEditSuggestions.enabled": true,
   "javascript.updateImportsOnFileMove.enabled": "always",
   "javascript.validate.enable": true,
   "markdown.preview.fontFamily": "SF Pro Rounded",
   "python.languageServer": "Pylance",
   "python.testing.pytestEnabled": true,
+  "ruff.organizeImports": true,
   "scm.alwaysShowRepositories": true,
   "terminal.integrated.drawBoldTextInBrightColors": false,
   "terminal.integrated.lineHeight": 1,
@@ -73,6 +77,10 @@
   },
   "terminal.integrated.defaultProfile.osx": "elvish",
   "tinymist.formatterMode": "typstyle",
+  "typescript.inlayHints.functionLikeReturnTypes.enabled": true,
+  "typescript.inlayHints.parameterTypes.enabled": true,
+  "typescript.inlayHints.propertyDeclarationTypes.enabled": true,
+  "typescript.inlayHints.variableTypes.enabled": true,
   "typescript.updateImportsOnFileMove.enabled": "always",
   "vim.foldfix": true,
   "vim.highlightedyank.enable": true,
@@ -93,6 +101,10 @@
   ],
   "vim.leader": "<space>",
   "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": ["<tab>"],
+      "commands": ["editor.action.inlineSuggest.commit"]
+    },
     {
       "before": ["-"],
       "commands": ["breadcrumbs.focusAndSelect"]
@@ -174,6 +186,14 @@
     {
       "before": ["<leader>", "d"],
       "commands": ["git.openChange"]
+    },
+    {
+      "before": ["<leader>", "h"],
+      "commands": ["inlineChat.start"]
+    },
+    {
+      "before": ["<leader>", "H"],
+      "commands": ["workbench.action.chat.openEditSession"]
     }
   ],
   "vim.visualModeKeyBindings": [
