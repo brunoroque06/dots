@@ -77,27 +77,27 @@
   {
     "command": "workbench.action.debug.continue",
     "key": "cmd+left",
-    "when": "debugState == 'stopped'"
+    "when": "inDebugMode"
   },
   {
     "command": "workbench.action.debug.stepInto",
     "key": "cmd+down",
-    "when": "debugState != 'inactive'"
+    "when": "inDebugMode"
   },
   {
     "command": "workbench.action.debug.stepOut",
     "key": "cmd+up",
-    "when": "debugState == 'stopped'"
+    "when": "inDebugMode"
   },
   {
     "command": "workbench.action.debug.stepOver",
     "key": "cmd+right",
-    "when": "debugState == 'stopped'"
+    "when": "inDebugMode"
   },
   {
     "command": "workbench.action.debug.stop",
-    "key": "cmd+s",
-    "when": "inDebugMode && !focusedSessionIsAttach"
+    "key": "cmd+d",
+    "when": "inDebugMode"
   },
   {
     "command": "workbench.action.debug.start",
@@ -107,5 +107,10 @@
   {
     "command": "workbench.action.showCommands",
     "key": "cmd+k"
+  },
+  {
+    "key": "cmd+d",
+    "command": "workbench.action.terminal.split",
+    "when": "terminalFocus"
   }
 ]
