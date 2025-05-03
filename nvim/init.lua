@@ -200,7 +200,17 @@ setup("nvim-treesitter.configs", {
 })
 
 add({ source = "seblyng/roslyn.nvim" })
-setup("roslyn")
+setup("roslyn", {
+	config = {
+		cmd = {
+			"dotnet",
+			vim.fn.stdpath("data") .. "/roslyn/Microsoft.CodeAnalysis.LanguageServer.dll",
+			"--logLevel=Information",
+			"--extensionLogDirectory=" .. vim.fs.dirname(vim.lsp.get_log_path()),
+			"--stdio",
+		},
+	},
+})
 
 add({ source = "echasnovski/mini.nvim" })
 setup("mini.bracketed")
