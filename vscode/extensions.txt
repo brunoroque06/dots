@@ -1,4 +1,5 @@
 angular.ng-template
+asvetliakov.vscode-neovim
 charliermarsh.ruff
 christian-kohler.path-intellisense
 davidanson.vscode-markdownlint
@@ -11,7 +12,7 @@ golang.go
 hashicorp.terraform
 ionide.ionide-fsharp
 mechatroner.rainbow-csv
-ms-azuretools.vscode-docker
+ms-azuretools.vscode-containers
 ms-dotnettools.csdevkit
 ms-dotnettools.csharp
 ms-dotnettools.vscode-dotnet-runtime
@@ -26,5 +27,4 @@ redhat.vscode-yaml
 rust-lang.rust-analyzer
 streetsidesoftware.code-spell-checker
 terrastruct.d2
-vscodevim.vim
 ziglang.vscode-zig

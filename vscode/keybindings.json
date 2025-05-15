@@ -112,5 +112,20 @@
     "key": "cmd+d",
     "command": "workbench.action.terminal.split",
     "when": "terminalFocus"
+  },
+  {
+    "key": "ctrl+k",
+    "command": "editor.action.showHover",
+    "when": "editorFocus"
+  },
+  {
+    "key": "ctrl+x",
+    "command": "editor.action.triggerSuggest",
+    "when": "editorFocus"
+  },
+  {
+    "key": "ctrl+y",
+    "command": "acceptSelectedSuggestion",
+    "when": "editorFocus"
   }
 ]

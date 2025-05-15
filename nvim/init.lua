@@ -267,43 +267,101 @@ local function map(mode, lhs, rhs, opts)
 	vim.keymap.set(mode, lhs, rhs, opts)
 end
 
-map("i", "<c-f>", "<right>")
-map("i", "<c-b>", "<left>")
-map("i", "<c-k>", vim.lsp.buf.signature_help)
+---@param mode string
+---@param lhs string
+---@param cmds string|string[]
+local function code_map(mode, lhs, cmds)
+	if type(cmds) == "string" then
+		cmds = { cmds }
+	end
+	local func = function()
+		for _, cmd in ipairs(cmds) do
+			require("vscode").call(cmd)
+		end
+	end
+	map(mode, lhs, func)
+end
 
-map("n", "[<space>", "O<esc>j")
-map("n", "]<space>", "o<esc>k")
+local binds = {
+	{ "i", "<c-f>", "<right>" },
+	{ "i", "<c-b>", "<left>" },
+	{ "i", "<c-k>", vim.lsp.buf.signature_help },
+	{ "n", "[<space>", "O<esc>j" },
+	{ "n", "]<space>", "o<esc>k" },
+	{
+		"n",
+		"==",
+		function()
+			require("conform").format({ async = true, lsp_fallback = true })
+		end,
+	},
+	{ "n", "cd", vim.lsp.buf.rename },
+	{ "n", "K", vim.lsp.buf.hover },
+	{ "n", "g/", ":grep " },
+	{ "n", "gD", vim.lsp.buf.type_definition },
+	{ "n", "gd", vim.lsp.buf.definition },
+	{ "n", "gi", vim.lsp.buf.implementation },
+	{ "n", "gr", vim.lsp.buf.references },
+	{
+		"n",
+		"gs",
+		function()
+			require("mini.extra").pickers.lsp({ scope = "document_symbol" })
+		end,
+	},
+	{
+		"n",
+		"gS",
+		function()
+			require("mini.extra").pickers.lsp({ scope = "workspace_symbol" })
+		end,
+	},
+	{
+		"n",
+		"-",
+		function()
+			require("mini.files").open(vim.fn.expand("%:p"))
+		end,
+	},
+	{
+		"n",
+		"<leader>,",
+		function()
+			vim.cmd("edit " .. vim.fn.stdpath("config") .. "/init.lua")
+		end,
+	},
+	{ "n", "<leader>a", vim.lsp.buf.code_action },
+	{ "n", "<leader>b", require("mini.pick").builtin.buffers },
+	{ "n", "<leader>d", require("mini.diff").toggle_overlay },
+	{ "n", "<leader>f", require("mini.pick").builtin.files },
+	{ "n", "<leader>g", require("mini.pick").builtin.grep_live },
+	{ "n", "<leader>k", require("mini.extra").pickers.commands },
 
-map("n", "==", function()
-	require("conform").format({ async = true, lsp_fallback = true })
-end)
+	{ "n", "-", "breadcrumbs.focusAndSelect", true },
+	{ "n", "<tab>", "editor.action.inlineSuggest.commit", true },
+	{ "n", "==", { "editor.action.organizeImports", "editor.action.format" }, true },
+	{ "n", "=i", "editor.action.organizeImports", true },
+	{ "n", "[d", "editor.action.marker.prev", true },
+	{ "n", "]d", "editor.action.marker.next", true },
+	{ "n", "[q", "search.action.focusPreviousSearchResult", true },
+	{ "n", "]q", "search.action.focusNextSearchResult", true },
+	{ "n", "[h", "editor.action.dirtydiff.previous", true },
+	{ "n", "]h", "editor.action.dirtydiff.next", true },
+	{ "n", "<leader>b", "editor.debug.action.toggleBreakpoint", true },
+	{ "n", "<leader>d", "git.openChange", true },
+	{ "n", "<leader>h", "inlineChat.start", true },
+	{ "n", "<leader>H", "workbench.action.chat.openEditSession", true },
+	{ "v", "gh", "git.diff.stageSelection", true },
+	{ "v", "gH", "git.revertSelectedRanges", true },
+}
 
-map("n", "cd", vim.lsp.buf.rename)
-
-map("n", "K", vim.lsp.buf.hover)
-
-map("n", "g/", ":grep ")
-map("n", "gD", vim.lsp.buf.type_definition)
-map("n", "gd", vim.lsp.buf.definition)
-map("n", "gi", vim.lsp.buf.implementation)
-map("n", "gr", vim.lsp.buf.references)
-map("n", "gs", function()
-	require("mini.extra").pickers.lsp({ scope = "document_symbol" })
-end)
-map("n", "gS", function()
-	require("mini.extra").pickers.lsp({ scope = "workspace_symbol" })
-end)
-
-map("n", "-", function()
-	require("mini.files").open(vim.fn.expand("%:p"))
-end)
-
-map("n", "<leader>,", function()
-	vim.cmd("edit " .. vim.fn.stdpath("config") .. "/init.lua")
-end)
-map("n", "<leader>a", vim.lsp.buf.code_action)
-map("n", "<leader>b", require("mini.pick").builtin.buffers)
-map("n", "<leader>d", require("mini.diff").toggle_overlay)
-map("n", "<leader>f", require("mini.pick").builtin.files)
-map("n", "<leader>g", require("mini.pick").builtin.grep_live)
-map("n", "<leader>k", require("mini.extra").pickers.commands)
+for _, b in ipairs(binds) do
+	local mode, lhs, rhs, code = unpack(b)
+	if code then
+		if vim.g.vscode then
+			code_map(mode, lhs, rhs)
+		end
+	else
+		map(mode, lhs, rhs)
+	end
+end

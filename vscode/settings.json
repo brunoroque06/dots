@@ -50,7 +50,7 @@
   "explorer.openEditors.sortOrder": "alphabetical",
   "explorer.openEditors.visible": 1,
   "extensions.experimental.affinity": {
-    "vscodevim.vim": 1
+    "asvetliakov.vscode-neovim": 1
   },
   "extensions.ignoreRecommendations": true,
   "files.autoSave": "afterDelay",
@@ -61,6 +61,9 @@
     "inlineSuggest": true
   },
   "github.copilot.nextEditSuggestions.enabled": true,
+  "github.copilot.nextEditSuggestions.fixes": true,
+  "inlineChat.enableV2": true,
+  "inlineChat.hideOnRequest": true,
   "javascript.updateImportsOnFileMove.enabled": "always",
   "javascript.validate.enable": true,
   "markdown.preview.fontFamily": "SF Pro Rounded",
@@ -68,146 +71,19 @@
   "python.testing.pytestEnabled": true,
   "ruff.organizeImports": true,
   "scm.alwaysShowRepositories": true,
-  "terminal.integrated.drawBoldTextInBrightColors": false,
-  "terminal.integrated.lineHeight": 1,
+  "terminal.integrated.fontSize": 14,
+  "terminal.integrated.defaultProfile.osx": "elvish",
   "terminal.integrated.profiles.osx": {
     "elvish": {
       "path": "/opt/homebrew/bin/elvish"
     }
   },
-  "terminal.integrated.defaultProfile.osx": "elvish",
   "tinymist.formatterMode": "typstyle",
   "typescript.inlayHints.functionLikeReturnTypes.enabled": true,
   "typescript.inlayHints.parameterTypes.enabled": true,
   "typescript.inlayHints.propertyDeclarationTypes.enabled": true,
   "typescript.inlayHints.variableTypes.enabled": true,
   "typescript.updateImportsOnFileMove.enabled": "always",
-  "vim.foldfix": true,
-  "vim.highlightedyank.enable": true,
-  "vim.hlsearch": true,
-  "vim.insertModeKeyBindings": [
-    {
-      "before": ["c-k"],
-      "commands": ["editor.action.showHover"]
-    },
-    {
-      "before": ["c-x"],
-      "commands": ["editor.action.triggerSuggest"]
-    },
-    {
-      "before": ["c-y"],
-      "commands": ["acceptSelectedSuggestion"]
-    }
-  ],
-  "vim.leader": "<space>",
-  "vim.normalModeKeyBindingsNonRecursive": [
-    {
-      "before": ["<tab>"],
-      "commands": ["editor.action.inlineSuggest.commit"]
-    },
-    {
-      "before": ["-"],
-      "commands": ["breadcrumbs.focusAndSelect"]
-    },
-    {
-      "before": ["=", "="],
-      "commands": ["editor.action.organizeImports", "editor.action.format"]
-    },
-    {
-      "before": ["=", "i"],
-      "commands": ["editor.action.organizeImports"]
-    },
-    {
-      "before": ["[", "<space>"],
-      "commands": ["editor.action.insertLineBefore"]
-    },
-    {
-      "before": ["]", "<space>"],
-      "commands": ["editor.action.insertLineAfter"]
-    },
-    {
-      "before": ["[", "d"],
-      "commands": ["editor.action.marker.prev"]
-    },
-    {
-      "before": ["]", "d"],
-      "commands": ["editor.action.marker.next"]
-    },
-    {
-      "before": ["[", "q"],
-      "commands": ["search.action.focusPreviousSearchResult"],
-      "when": "hasSearchResult"
-    },
-    {
-      "before": ["]", "q"],
-      "commands": ["search.action.focusNextSearchResult"],
-      "when": "hasSearchResult"
-    },
-    {
-      "before": ["c", "d"],
-      "commands": ["editor.action.rename"]
-    },
-    {
-      "before": ["K"],
-      "commands": ["editor.action.showHover"]
-    },
-    {
-      "before": ["[", "h"],
-      "commands": ["editor.action.dirtydiff.previous"]
-    },
-    {
-      "before": ["]", "h"],
-      "commands": ["editor.action.dirtydiff.next"]
-    },
-    {
-      "before": ["g", "d"],
-      "commands": ["editor.action.peekDefinition"]
-    },
-    {
-      "before": ["g", "i"],
-      "commands": ["editor.action.goToImplementation"]
-    },
-    {
-      "before": ["g", "r"],
-      "commands": ["references-view.find"]
-    },
-    {
-      "before": ["g", "s"],
-      "commands": ["workbench.action.gotoSymbol"]
-    },
-    {
-      "before": ["g", "S"],
-      "commands": ["workbench.action.showAllSymbols"]
-    },
-    {
-      "before": ["<leader>", "b"],
-      "commands": ["editor.debug.action.toggleBreakpoint"]
-    },
-    {
-      "before": ["<leader>", "d"],
-      "commands": ["git.openChange"]
-    },
-    {
-      "before": ["<leader>", "h"],
-      "commands": ["inlineChat.start"]
-    },
-    {
-      "before": ["<leader>", "H"],
-      "commands": ["workbench.action.chat.openEditSession"]
-    }
-  ],
-  "vim.visualModeKeyBindings": [
-    {
-      "before": ["g", "h"],
-      "commands": ["git.diff.stageSelection"]
-    },
-    {
-      "before": ["g", "H"],
-      "commands": ["git.revertSelectedRanges"]
-    }
-  ],
-  "vim.surround": true,
-  "vim.useSystemClipboard": true,
   "window.commandCenter": false,
   "window.title": "${activeEditorLong}${separator}${rootPath}",
   "workbench.activityBar.location": "top",
