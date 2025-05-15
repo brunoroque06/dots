@@ -2,6 +2,7 @@ angular.ng-template
 charliermarsh.ruff
 christian-kohler.path-intellisense
 davidanson.vscode-markdownlint
+docker.docker
 elves.elvish
 esbenp.prettier-vscode
 github.copilot
@@ -18,6 +19,8 @@ ms-python.debugpy
 ms-python.python
 ms-python.vscode-pylance
 ms-vscode.powershell
+ms-vscode.remote-explorer
+ms-vscode.remote-server
 myriad-dreamin.tinymist
 redhat.vscode-yaml
 rust-lang.rust-analyzer

@@ -26,7 +26,6 @@ pager = less -R
 
 [diff]
 algorithm = histogram
-external = difft
 tool = nvim
 
 [difftool "nvim"]

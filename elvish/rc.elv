@@ -199,12 +199,13 @@ set edit:completion:arg-completer[dotnet] = { |@args|
 }
 
 # Eyes
-fn eyes-cfg {
-	var domain = gui/501
-	var plist = $E:HOME/Projects/dots/eyes/eyes.plist
-	try { launchctl bootout $domain $plist } catch { nop }
-	launchctl bootstrap $domain $plist
+var eyes-domain = gui/501
+var eyes-plist = $E:HOME/Projects/dots/eyes/eyes.plist
+fn eyes-up {
+	try { launchctl bootout $eyes-domain $eyes-plist } catch { nop }
+	launchctl bootstrap $eyes-domain $eyes-plist
 }
+fn eyes-down { launchctl bootout $eyes-domain $eyes-plist }
 
 # Git
 set edit:command-abbr['g'] = git
@@ -252,7 +253,7 @@ fn npm-up { npm-check-updates --deep -i }
 fn brew-dump { brew bundle dump --file $E:HOME/Projects/dots/brew/brewfile --force }
 fn brew-up {
 	brew update
-	brew upgrade --fetch-HEAD
+	brew upgrade
 	brew autoremove
 	brew cleanup
 	brew doctor
