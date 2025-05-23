@@ -67,6 +67,7 @@
   "javascript.updateImportsOnFileMove.enabled": "always",
   "javascript.validate.enable": true,
   "markdown.preview.fontFamily": "SF Pro Rounded",
+  "python.analysis.typeCheckingMode": "strict",
   "python.languageServer": "Pylance",
   "python.testing.pytestEnabled": true,
   "ruff.organizeImports": true,

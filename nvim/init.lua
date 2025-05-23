@@ -35,6 +35,7 @@ vim.opt.smartcase = true
 
 -- UI
 vim.o.winborder = "single"
+vim.opt.background = "light"
 vim.opt.list = true
 vim.opt.mouse = "a"
 vim.opt.number = true
@@ -42,6 +43,7 @@ vim.opt.relativenumber = true
 vim.opt.showcmd = true
 vim.opt.showmode = true
 vim.opt.signcolumn = "yes"
+vim.opt.termguicolors = true
 
 vim.api.nvim_create_autocmd("TextYankPost", {
 	callback = function()
@@ -147,6 +149,10 @@ add({
 	depends = { "nvim-treesitter/nvim-treesitter" },
 })
 setup("nvim-treesitter.configs", {
+	auto_install = true,
+	highlight = {
+		enable = true,
+	},
 	textobjects = {
 		move = {
 			enable = true,
@@ -156,14 +162,12 @@ setup("nvim-treesitter.configs", {
 				["]c"] = "@conditional.outer",
 				["]f"] = "@function.outer",
 				["]l"] = "@loop.outer",
-				["]s"] = "@statement.outer",
 			},
 			goto_previous_start = {
 				["[a"] = "@parameter.inner",
 				["[c"] = "@conditional.outer",
 				["[f"] = "@function.outer",
 				["[l"] = "@loop.outer",
-				["[s"] = "@statement.outer",
 			},
 		},
 		select = {
@@ -178,24 +182,19 @@ setup("nvim-treesitter.configs", {
 				["if"] = "@function.inner",
 				["al"] = "@loop.outer",
 				["il"] = "@loop.inner",
-				["as"] = "@statement.outer",
 			},
 		},
 		swap = {
 			enable = true,
 			swap_next = {
-				["<leader>sa"] = "@parameter.inner",
-				["<leader>sf"] = "@function.outer",
+				["]sa"] = "@parameter.inner",
+				["]sf"] = "@function.outer",
 			},
 			swap_previous = {
-				["<leader>sA"] = "@parameter.inner",
-				["<leader>sF"] = "@function.outer",
+				["[sa"] = "@parameter.inner",
+				["[sf"] = "@function.outer",
 			},
 		},
-	},
-	auto_install = true,
-	highlight = {
-		enable = true,
 	},
 })
 
@@ -216,6 +215,7 @@ add({ source = "echasnovski/mini.nvim" })
 setup("mini.bracketed")
 setup("mini.diff", { view = { style = "sign" } })
 setup("mini.extra")
+setup("mini.hues", { background = "#ffffff", foreground = "#000080", accent = "fg", saturation = "high" })
 setup("mini.icons")
 setup("mini.pairs")
 setup("mini.files")
@@ -250,9 +250,6 @@ setup("conform", {
 		yaml = { "prettier" },
 	},
 })
-
-add({ source = "projekt0n/github-nvim-theme" })
-vim.cmd("colorscheme github_light")
 
 add({ source = "github/copilot.vim" })
 
@@ -350,9 +347,16 @@ local binds = {
 	{ "n", "<leader>b", "editor.debug.action.toggleBreakpoint", true },
 	{ "n", "<leader>d", "git.openChange", true },
 	{ "n", "<leader>h", "inlineChat.start", true },
-	{ "n", "<leader>H", "workbench.action.chat.openEditSession", true },
+	{ "n", "<leader>H", "workbench.action.chat.openAgent", true },
 	{ "v", "gh", "git.diff.stageSelection", true },
 	{ "v", "gH", "git.revertSelectedRanges", true },
+	{ "n", "zM", "editor.foldAll", true },
+	{ "n", "zR", "editor.unfoldAll", true },
+	{ "n", "zc", "editor.fold", true },
+	{ "n", "zC", "editor.foldRecursively", true },
+	{ "n", "zo", "editor.unfold", true },
+	{ "n", "zO", "editor.unfoldRecursively", true },
+	{ "n", "za", "editor.toggleFold", true },
 }
 
 for _, b in ipairs(binds) do
