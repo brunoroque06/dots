@@ -17,7 +17,7 @@ jobs:
       - run: cargo install stylua
       - run: |
           wget https://github.com/LuaLS/lua-language-server/releases/download/3.14.0/lua-language-server-3.14.0-linux-x64.tar.gz
-          tar -xzf lua-language-server-3.14.0-linux-x64.tar.gz
+          tar -xzf lua-language-server-3.14.0-linux-x64.tar.gz -C /usr/local/bin
 
       - run: ./task ci-lint
       - run: ./task elvish-lint
