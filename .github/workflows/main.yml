@@ -9,15 +9,17 @@ jobs:
       - uses: actions/checkout@v4
         with:
           persist-credentials: false
+
       - run: pip install zizmor
-      - run: zizmor .github/workflows/main.yml
       - run: |
           sudo apt update
-          sudo apt install elvish shellcheck shfmt -y
-      - run: npx prettier -c .
-      - run: shfmt -f . | xargs -t -I % shfmt -d %
-      - run: shfmt -f . | xargs -t -I % shellcheck -x %
+          sudo apt install elvish -y
       - run: cargo install stylua
-      - run: stylua --check --verbose .
-      - run: ls raycast/* | from-lines | each { |f| elvish -compileonly $f }
-        shell: elvish {0}
+      - run: |
+          wget https://github.com/LuaLS/lua-language-server/releases/download/3.14.0/lua-language-server-3.14.0-linux-x64.tar.gz
+          tar -xzf lua-language-server-3.14.0-linux-x64.tar.gz
+
+      - run: ./task ci-lint
+      - run: ./task elvish-lint
+      - run: ./task lua-lint
+      - run: ./task text-lint

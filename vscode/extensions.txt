@@ -3,7 +3,6 @@ asvetliakov.vscode-neovim
 charliermarsh.ruff
 christian-kohler.path-intellisense
 davidanson.vscode-markdownlint
-docker.docker
 elves.elvish
 esbenp.prettier-vscode
 github.copilot

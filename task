@@ -1,0 +1,72 @@
+#!/usr/bin/env elvish
+
+use flag
+use str
+use os
+
+fn ci-lint { zizmor .github/workflows/main.yml }
+
+fn cfg-setup {
+	softwareupdate --install --all
+
+	if (not (os:exists /opt/homebrew/bin/brew)) {
+		/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+	}
+
+	brew update
+	brew bundle install --file brew/brewfile
+	brew doctor
+}
+
+var paths = [
+	[&s=elvish &d=$E:HOME/.config/elvish]
+	[&s=ghostty &d=$E:HOME'/Library/Application Support/com.mitchellh.ghostty']
+	[&s=git &d=$E:HOME/.config/git]
+	[&s=helix &d=$E:HOME/.config/helix]
+	[&s=ideavim &d=$E:HOME]
+	[&s=jetbrains &d=$E:HOME'/Library/Application Support/JetBrains/Rider2025.1/keymaps']
+	[&s=kitty &d=$E:HOME/.config/kitty]
+	[&s=nvim &d=$E:HOME/.config/nvim]
+	[&s=psql &d=$E:HOME]
+	[&s=pwsh &d=$E:HOME/.config/powershell]
+	[&s=ripgrep &d=$E:HOME/.config]
+	[&s=vim &d=$E:HOME]
+	[&s=vscode &d=$E:HOME'/Library/Application Support/Code/User']
+	[&s=zed &d=$E:HOME/.config/zed]
+]
+
+fn cfg-link {
+	each { |p| mkdir -p $p[t]; stow -S -v 1 -t $p[t] $p[d] } $paths
+}
+
+fn cfg-unlink {
+	each { |p| stow -D -v 1 -t $p[t] $p[d] } $paths
+}
+
+fn elvish-lint {
+	put raycast/* task ^
+		| each { |f| elvish -compileonly $f }
+}
+
+fn lua-lint {
+	stylua --check --verbose nvim/init.lua
+	lua-language-server --check nvim/init.lua
+}
+
+fn text-lint { npx prettier -c . }
+
+var cmds = [
+	&ci-lint=$ci-lint~
+	&cfg-link=$cfg-link~
+	&cfg-setup=$cfg-setup~
+	&cfg-unlink=$cfg-unlink~
+	&elvish-lint=$elvish-lint~
+	&lua-lint=$lua-lint~
+	&text-lint=$text-lint~
+]
+
+if (and (> (count $args) 0) (has-key $cmds $args[0])) {
+	flag:call $cmds[$args[0]] []
+} else {
+	echo 'Usage: ./task ['(str:join '|' [(keys $cmds)])']'
+}

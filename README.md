@@ -3,7 +3,7 @@
 ## Installation
 
 ```shell
-./dots
+./task
 ```
 
 Supported: macOS.
