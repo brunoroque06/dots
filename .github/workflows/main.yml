@@ -16,9 +16,9 @@ jobs:
           sudo apt install elvish -y
       - run: cargo install stylua
       - run: |
-          wget https://github.com/LuaLS/lua-language-server/releases/download/3.14.0/lua-language-server-3.14.0-linux-x64.tar.gz
+          wget https://github.com/LuaLS/lua-language-server/releases/download/3.15.0/lua-language-server-3.15.0-linux-x64.tar.gz
           sudo mkdir /usr/lib/lua-language-server
-          sudo tar -xzf lua-language-server-3.14.0-linux-x64.tar.gz -C /usr/lib/lua-language-server
+          sudo tar -xzf lua-language-server-3.15.0-linux-x64.tar.gz -C /usr/lib/lua-language-server
           sudo ln -s /usr/lib/lua-language-server/bin/lua-language-server /usr/bin/lua-language-server
 
       - run: ./task ci-lint
