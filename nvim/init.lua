@@ -213,6 +213,7 @@ setup("roslyn", {
 
 add({ source = "echasnovski/mini.nvim" })
 setup("mini.bracketed")
+setup("mini.completion")
 setup("mini.diff", { view = { style = "sign" } })
 setup("mini.extra")
 setup("mini.hues", { background = "#ffffff", foreground = "#000080", accent = "fg", saturation = "high" })
@@ -238,6 +239,7 @@ setup("conform", {
 	},
 	formatters_by_ft = {
 		cs = { "jb" },
+		d2 = { "d2" },
 		elvish = { "elv" },
 		go = { "gofmt" },
 		json = { "prettier" },
