@@ -3,9 +3,10 @@ command = /opt/homebrew/bin/elvish
 cursor-style = block
 cursor-style-blink = false
 
-adjust-cell-height = -10%
-font-family = JetBrains Mono
-font-feature = -calt,-dlig,-liga
+font-family = M Plus 1 Code
+font-size = 14
+font-style = Regular
+font-style-bold = Medium
 
 macos-option-as-alt = true
 

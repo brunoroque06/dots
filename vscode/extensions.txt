@@ -3,6 +3,7 @@ asvetliakov.vscode-neovim
 charliermarsh.ruff
 christian-kohler.path-intellisense
 davidanson.vscode-markdownlint
+editorconfig.editorconfig
 elves.elvish
 esbenp.prettier-vscode
 github.copilot
@@ -15,6 +16,7 @@ ms-azuretools.vscode-containers
 ms-dotnettools.csdevkit
 ms-dotnettools.csharp
 ms-dotnettools.vscode-dotnet-runtime
+ms-ossdata.vscode-pgsql
 ms-python.debugpy
 ms-python.python
 ms-python.vscode-pylance

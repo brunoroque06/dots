@@ -41,6 +41,7 @@
     "key": "cmd+shift+h",
     "args": {
       "commands": [
+        "notifications.clearAll",
         "workbench.action.maximizeEditorHideSidebar",
         "workbench.action.closePanel"
       ]
