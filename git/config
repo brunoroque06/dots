@@ -37,6 +37,9 @@ clean = git-lfs clean -- %f
 process = git-lfs filter-process
 smudge = git-lfs smudge -- %f
 
+[help]
+autocorrect = prompt
+
 [init]
 defaultBranch = main
 
@@ -50,6 +53,12 @@ keepBackup = false
 
 [pull]
 rebase = false
+
+[push]
+default = current
+
+[rerere]
+enabled = true
 
 [user]
 email = brunoroque06@gmail.com
