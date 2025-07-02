@@ -13,10 +13,12 @@
     "editor.defaultFormatter": "charliermarsh.ruff"
   },
   "breadcrumbs.symbolPath": "off",
+  "chat.editor.fontSize": 14,
   "debug.allowBreakpointsEverywhere": true,
   "debug.inlineValues": "on",
   "debug.internalConsoleOptions": "neverOpen",
   "debug.toolBarLocation": "docked",
+  "diffEditor.ignoreTrimWhitespace": true,
   "diffEditor.renderSideBySide": false,
   "dotnet.automaticallyCreateSolutionInWorkspace": false,
   "dotnet.codeLens.enableReferencesCodeLens": false,

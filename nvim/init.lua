@@ -51,66 +51,6 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	end,
 })
 
--- LSP
---- @param id string
---- @param cfg table
-local function lsp(id, cfg)
-	vim.lsp.config[id] = cfg
-	vim.lsp.enable(id)
-end
-
-lsp("elv", { cmd = { "elvish", "-lsp" }, filetypes = { "elvish" } })
-lsp("go", { cmd = { "gopls" }, filetypes = { "go" } })
-lsp("grammar", { cmd = { "harper-ls", "--stdio" }, filetypes = { "markdown" } })
-lsp("lua", {
-	cmd = { "lua-language-server" },
-	filetypes = { "lua" },
-	settings = {
-		Lua = {
-			diagnostics = {
-				globals = { "vim" },
-			},
-			runtime = {
-				version = "LuaJIT",
-			},
-			workspace = {
-				library = vim.api.nvim_get_runtime_file("", true),
-			},
-		},
-	},
-})
-lsp("ng", {
-	cmd = { "ngserver", "--stdio", "--ngProbeLocations", ".", "--tsProbeLocations", "." },
-	filetypes = { "typescript" },
-	root_markers = { "angular.json" },
-})
-lsp("py", {
-	cmd = { "pyright-langserver", "--stdio" },
-	filetypes = { "python" },
-})
-lsp("tf", {
-	cmd = { "terraform-ls", "serve" },
-	filetypes = { "terraform" },
-})
-lsp("ts", {
-	cmd = { "typescript-language-server", "--stdio" },
-	filetypes = { "typescript" },
-	root_markers = { "package.json" },
-})
-lsp("typ", {
-	cmd = { "tinymist" },
-	filetypes = { "typst" },
-})
-
-vim.api.nvim_create_autocmd("LspAttach", {
-	callback = function(ev)
-		local c = vim.lsp.get_client_by_id(ev.data.client_id)
-		if c and c:supports_method("textDocument/completion") then
-			vim.lsp.completion.enable(true, c.id, ev.buf, { autotrigger = true })
-		end
-	end,
-})
-
 vim.diagnostic.config({ virtual_lines = false, virtual_text = true })
 
 -- Plugins
@@ -138,6 +78,17 @@ end
 setup("mini.deps", { path = { package = plugs } })
 
 local add = require("mini.deps").add
+
+add({ source = "neovim/nvim-lspconfig" })
+vim.lsp.enable("angularls")
+vim.lsp.enable("gopls")
+vim.lsp.enable("harper_ls")
+vim.lsp.enable("lua_ls")
+vim.lsp.enable("pyright")
+vim.lsp.enable("roslyn_ls")
+vim.lsp.enable("terraformls")
+vim.lsp.enable("ts_ls")
+vim.lsp.enable("tinymist")
 
 add({
 	source = "nvim-treesitter/nvim-treesitter-textobjects",
@@ -194,19 +145,6 @@ setup("nvim-treesitter.configs", {
 				["[sa"] = "@parameter.inner",
 				["[sf"] = "@function.outer",
 			},
-		},
-	},
-})
-
-add({ source = "seblyng/roslyn.nvim" })
-setup("roslyn", {
-	config = {
-		cmd = {
-			"dotnet",
-			vim.fn.stdpath("data") .. "/roslyn/Microsoft.CodeAnalysis.LanguageServer.dll",
-			"--logLevel=Information",
-			"--extensionLogDirectory=" .. vim.fs.dirname(vim.lsp.get_log_path()),
-			"--stdio",
 		},
 	},
 })

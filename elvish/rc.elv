@@ -28,6 +28,7 @@ set paths = [
 	$E:HOME/.cargo/bin
 	/usr/local/share/dotnet
 	$E:HOME/.dotnet/tools
+	$E:HOME/.dotnet/tools/roslyn
 	$E:HOME/go/bin
 	/Applications/Rider.app/Contents/MacOS
 ]
@@ -177,7 +178,7 @@ fn dot-roslyn {
 	var ver = (read-line)
 	var zip = roslyn.zip
 	var dir = roslyn
-	var dest = $E:HOME/.local/share/nvim/roslyn
+	var dest = $E:HOME/.dotnet/tools/roslyn
 
 	cd $E:HOME/Downloads
 
@@ -188,6 +189,9 @@ fn dot-roslyn {
 	rm -rf $zip $dest
 	mv $dir/content/LanguageServer/osx-arm64 $dest
 	rm -rf $dir
+
+	chmod +x $dest/Microsoft.CodeAnalysis.LanguageServer
+	codesign --force --sign - $dest/Microsoft.CodeAnalysis.LanguageServer
 }
 fn dot-up {
 	dotnet list package --outdated --format json ^
