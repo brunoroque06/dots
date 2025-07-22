@@ -1,9 +1,0 @@
-#!/usr/bin/env elvish
-
-# @raycast.schemaVersion 1
-# @raycast.title Clean URL
-# @raycast.mode compact
-
-use str
-
-str:split '?' (pbpaste) | take 1 | print (one) | pbcopy   

@@ -1,7 +1,0 @@
-#!/usr/bin/env elvish
-
-# @raycast.schemaVersion 1
-# @raycast.title Type Clipboard
-# @raycast.mode compact
-
-elvish type-keys.elv (pbpaste) $true $false

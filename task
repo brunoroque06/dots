@@ -44,7 +44,7 @@ fn cfg-unlink {
 }
 
 fn elvish-lint {
-	put raycast/* task ^
+	put task ^
 		| each { |f| elvish -compileonly $f }
 }
 
