@@ -113,12 +113,14 @@ setup("nvim-treesitter.configs", {
 				["]c"] = "@conditional.outer",
 				["]f"] = "@function.outer",
 				["]l"] = "@loop.outer",
+				["]r"] = "@return.outer",
 			},
 			goto_previous_start = {
 				["[a"] = "@parameter.inner",
 				["[c"] = "@conditional.outer",
 				["[f"] = "@function.outer",
 				["[l"] = "@loop.outer",
+				["[r"] = "@return.outer",
 			},
 		},
 		select = {
@@ -276,7 +278,7 @@ local binds = {
 
 	{ "n", "-", "breadcrumbs.focusAndSelect", true },
 	{ "n", "<tab>", "editor.action.inlineSuggest.commit", true },
-	{ "n", "==", { "editor.action.organizeImports", "editor.action.format" }, true },
+	{ "n", "==", "editor.action.format", true },
 	{ "n", "=i", "editor.action.organizeImports", true },
 	{ "n", "[d", "editor.action.marker.prev", true },
 	{ "n", "]d", "editor.action.marker.next", true },
