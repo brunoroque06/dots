@@ -149,26 +149,6 @@ fn d2-icat-watch { |f|
 }
 set edit:completion:arg-completer[d2-watch] = { |@args| d2-ls }
 
-# Docker
-fn doc-clean {
-	docker system prune --force --volumes
-}
-fn doc-cnt-rm {
-	docker stop (docker ps -aq); docker rm (docker ps -aq)
-}
-fn doc-exec { |cnt| docker exec -it $cnt bash }
-set edit:completion:arg-completer[doc-exec] = { |@args|
-	docker ps --format '{{.Image}} {{.Names}}' ^
-		| from-lines ^
-		| each { |cnt| var c = (str:split ' ' $cnt | put [(all)]); put [&img=$c[0] &name=$c[1]] } ^
-		| each { |cnt| edit:complex-candidate &display=$cnt[name]' ('$cnt[img]')' $cnt[name] }
-}
-fn doc-su {
-	var cfg = $E:HOME/.docker/config.json
-	var kc = (cat $cfg | from-json)
-	assoc $kc credsStore osxkeychain | to-json > $cfg
-}
-
 # Dotnet
 fn dot-ci { |@a| csharprepl -t themes/VisualStudio_Light.json $@a }
 fn dot-fi { |@a| dotnet fsi $@a }
@@ -269,6 +249,21 @@ fn pkg-up {
 		| each { |p| dotnet tool update -g $p[packageId] }
 
 	npm-check-updates -g
+}
+
+# Podman
+fn pod-clean {
+	podman system prune -af
+}
+fn pod-cnt-rm {
+	podman stop (podman ps -aq); podman rm (podman ps -aq)
+}
+fn pod-exec { |cnt| podman exec -it $cnt bash }
+set edit:completion:arg-completer[pod-exec] = { |@args|
+	podman ps --format '{{.Image}} {{.Names}}' ^
+		| from-lines ^
+		| each { |cnt| var c = (str:split ' ' $cnt | put [(all)]); put [&img=$c[0] &name=$c[1]] } ^
+		| each { |cnt| edit:complex-candidate &display=$cnt[name]' ('$cnt[img]')' $cnt[name] }
 }
 
 # Python
