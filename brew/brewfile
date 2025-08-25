@@ -84,7 +84,6 @@ cask "visual-studio-code"
 cask "zed"
 
 mas "DaisyDisk", id: 411643860
-mas "Raycast Companion", id: 6738274497
 mas "TestFlight", id: 899247664
 mas "rcmd", id: 1596283165
 mas "uBlock Origin Lite", id: 6745342698

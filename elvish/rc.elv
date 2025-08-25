@@ -202,15 +202,6 @@ set edit:completion:arg-completer[dotnet] = { |@args|
 	dotnet complete (str:join ' ' $args) | from-lines
 }
 
-# Eyes
-var eyes-domain = gui/501
-var eyes-plist = $E:HOME/Projects/dots/eyes/eyes.plist
-fn eyes-up {
-	try { launchctl bootout $eyes-domain $eyes-plist } catch { nop }
-	launchctl bootstrap $eyes-domain $eyes-plist
-}
-fn eyes-down { launchctl bootout $eyes-domain $eyes-plist }
-
 # Git
 set edit:command-abbr['g'] = git
 fn gi { gitu }
