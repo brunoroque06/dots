@@ -1,7 +1,6 @@
 {
-  "D2.execPath": "/opt/homebrew/bin/d2",
   "[csharp]": {
-    "editor.defaultFormatter": "ms-dotnettools.csharp"
+    "editor.defaultFormatter": "csharpier.csharpier-vscode"
   },
   "[css][dockercompose][html][javascript][json][jsonc][markdown][scss][typescript][yaml]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -14,11 +13,12 @@
   },
   "breadcrumbs.symbolPath": "off",
   "chat.editor.fontSize": 14,
+  "D2.execPath": "/opt/homebrew/bin/d2",
   "debug.allowBreakpointsEverywhere": true,
   "debug.inlineValues": "on",
   "debug.internalConsoleOptions": "neverOpen",
   "debug.toolBarLocation": "docked",
-  "diffEditor.ignoreTrimWhitespace": false,
+  "diffEditor.ignoreTrimWhitespace": true,
   "diffEditor.renderSideBySide": false,
   "dotnet.automaticallyCreateSolutionInWorkspace": false,
   "dotnet.codeLens.enableReferencesCodeLens": false,
@@ -29,7 +29,8 @@
   "editor.accessibilitySupport": "off",
   "editor.bracketPairColorization.enabled": true,
   "editor.codeActionsOnSave": {
-    "source.organizeImports": "explicit"
+    "source.organizeImports": "always",
+    "source.sort.json": "always"
   },
   "editor.cursorBlinking": "solid",
   "editor.cursorSurroundingLines": 5,
@@ -37,6 +38,7 @@
   "editor.fontFamily": "MPLUS1Code-Regular",
   "editor.fontSize": 14,
   "editor.formatOnSave": false,
+  "editor.formatOnType": true,
   "editor.guides.bracketPairs": true,
   "editor.inlineSuggest.enabled": true,
   "editor.lineHeight": 1.45,
@@ -68,13 +70,26 @@
   "javascript.updateImportsOnFileMove.enabled": "always",
   "javascript.validate.enable": true,
   "markdown.preview.fontFamily": "SF Pro Rounded",
+  "python.analysis.inlayHints.callArgumentNames": "all",
+  "python.analysis.inlayHints.functionReturnTypes": true,
+  "python.analysis.inlayHints.pytestParameters": true,
+  "python.analysis.inlayHints.variableTypes": true,
   "python.analysis.typeCheckingMode": "strict",
+  "python.defaultInterpreterPath": "/opt/homebrew/bin/python3",
   "python.languageServer": "Pylance",
   "python.testing.pytestEnabled": true,
   "ruff.organizeImports": true,
   "scm.alwaysShowRepositories": true,
-  "terminal.integrated.fontSize": 14,
+  "settingsSync.ignoredSettings": [
+    "D2.execPath",
+    "chat.editor.fontSize",
+    "editor.fontFamily",
+    "editor.fontSize",
+    "editor.lineHeight",
+    "markdown.preview.fontFamily"
+  ],
   "terminal.integrated.defaultProfile.osx": "elvish",
+  "terminal.integrated.fontSize": 14,
   "terminal.integrated.profiles.osx": {
     "elvish": {
       "path": "/opt/homebrew/bin/elvish"
@@ -96,6 +111,7 @@
   "workbench.editor.revealIfOpen": false,
   "workbench.editor.showTabs": "single",
   "workbench.layoutControl.enabled": false,
+  "workbench.panel.showLabels": false,
   "workbench.startupEditor": "none",
   "workbench.tree.indent": 15,
   "workbench.tree.renderIndentGuides": "always",

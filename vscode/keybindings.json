@@ -37,15 +37,37 @@
     "key": "alt+cmd+f"
   },
   {
-    "command": "runCommands",
-    "key": "cmd+shift+h",
     "args": {
       "commands": [
         "notifications.clearAll",
         "workbench.action.maximizeEditorHideSidebar",
         "workbench.action.closePanel"
       ]
-    }
+    },
+    "command": "runCommands",
+    "key": "cmd+shift+h"
+  },
+  {
+    "args": {
+      "commands": [
+        "workbench.action.toggleMaximizedAuxiliaryBar",
+        "workbench.action.chat.openAgent"
+      ]
+    },
+    "command": "runCommands",
+    "key": "cmd+shift+i",
+    "when": "!inChat"
+  },
+  {
+    "args": {
+      "commands": [
+        "workbench.action.toggleMaximizedAuxiliaryBar",
+        "workbench.action.chat.toggle"
+      ]
+    },
+    "command": "runCommands",
+    "key": "cmd+shift+i",
+    "when": "inChat"
   },
   {
     "command": "breadcrumbs.focusAndSelect",
@@ -64,8 +86,27 @@
     "key": "cmd+shift+r"
   },
   {
-    "command": "workbench.action.createTerminalEditor",
-    "key": "cmd+t"
+    "args": {
+      "commands": [
+        "workbench.action.toggleMaximizedPanel",
+        "workbench.action.terminal.toggleTerminal"
+      ]
+    },
+    "command": "runCommands",
+    "key": "cmd+t",
+    "when": "!terminalFocus"
+  },
+  {
+    "args": {
+      "commands": [
+        "workbench.action.toggleMaximizedPanel",
+        "workbench.action.closePanel",
+        "workbench.action.terminal.toggleTerminal"
+      ]
+    },
+    "command": "runCommands",
+    "key": "cmd+t",
+    "when": "terminalFocus"
   },
   {
     "command": "workbench.action.gotoSymbol",
@@ -103,30 +144,30 @@
   {
     "command": "workbench.action.debug.start",
     "key": "cmd+d",
-    "when": "debuggersAvailable && debugState == 'inactive'"
+    "when": "!inDebugMode"
   },
   {
     "command": "workbench.action.showCommands",
     "key": "cmd+k"
   },
   {
-    "key": "cmd+d",
     "command": "workbench.action.terminal.split",
+    "key": "cmd+d",
     "when": "terminalFocus"
   },
   {
-    "key": "ctrl+k",
-    "command": "editor.action.showHover",
-    "when": "editorFocus"
-  },
-  {
-    "key": "ctrl+x",
     "command": "editor.action.triggerSuggest",
+    "key": "ctrl+x",
     "when": "editorFocus"
   },
   {
-    "key": "ctrl+y",
     "command": "acceptSelectedSuggestion",
+    "key": "ctrl+y",
     "when": "editorFocus"
+  },
+  {
+    "command": "workbench.action.focusActiveEditorGroup",
+    "key": "escape",
+    "when": "!editorFocus"
   }
 ]

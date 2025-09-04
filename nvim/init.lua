@@ -61,7 +61,7 @@ if not vim.loop.fs_stat(mini) then
 		"git",
 		"clone",
 		"--filter=blob:none",
-		"https://github.com/echasnovski/mini.nvim",
+		"https://github.com/nvim-mini/mini.nvim",
 		mini,
 	}
 	vim.fn.system(clone)
@@ -151,7 +151,7 @@ setup("nvim-treesitter.configs", {
 	},
 })
 
-add({ source = "echasnovski/mini.nvim" })
+add({ source = "nvim-mini/mini.nvim" })
 setup("mini.bracketed")
 setup("mini.completion")
 setup("mini.diff", { view = { style = "sign" } })
@@ -182,6 +182,7 @@ setup("conform", {
 		d2 = { "d2" },
 		elvish = { "elv" },
 		go = { "gofmt" },
+		javascript = { "prettier" },
 		json = { "prettier" },
 		lua = { "stylua" },
 		markdown = { "prettier" },
@@ -276,7 +277,7 @@ local binds = {
 	{ "n", "<leader>g", require("mini.pick").builtin.grep_live },
 	{ "n", "<leader>k", require("mini.extra").pickers.commands },
 
-	{ "n", "-", "breadcrumbs.focusAndSelect", true },
+	{ "n", "-", "workbench.view.explorer", true },
 	{ "n", "<tab>", "editor.action.inlineSuggest.commit", true },
 	{ "n", "==", "editor.action.format", true },
 	{ "n", "=i", "editor.action.organizeImports", true },
@@ -286,10 +287,9 @@ local binds = {
 	{ "n", "]q", "search.action.focusNextSearchResult", true },
 	{ "n", "[h", "editor.action.dirtydiff.previous", true },
 	{ "n", "]h", "editor.action.dirtydiff.next", true },
+	{ "n", "<leader>-", "workbench.files.action.focusOpenEditorsView", true },
 	{ "n", "<leader>b", "editor.debug.action.toggleBreakpoint", true },
 	{ "n", "<leader>d", "git.openChange", true },
-	{ "n", "<leader>h", "inlineChat.start", true },
-	{ "n", "<leader>H", "workbench.action.chat.openAgent", true },
 	{ "v", "gh", "git.diff.stageSelection", true },
 	{ "v", "gH", "git.revertSelectedRanges", true },
 	{ "n", "zM", "editor.foldAll", true },
