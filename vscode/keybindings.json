@@ -40,7 +40,7 @@
     "args": {
       "commands": [
         "notifications.clearAll",
-        "workbench.action.maximizeEditorHideSidebar",
+        "workbench.action.closeSidebar",
         "workbench.action.closePanel"
       ]
     },
