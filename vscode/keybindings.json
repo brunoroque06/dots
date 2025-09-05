@@ -40,8 +40,9 @@
     "args": {
       "commands": [
         "notifications.clearAll",
-        "workbench.action.closeSidebar",
-        "workbench.action.closePanel"
+        "workbench.action.closeAuxiliaryBar",
+        "workbench.action.closePanel",
+        "workbench.action.closeSidebar"
       ]
     },
     "command": "runCommands",
