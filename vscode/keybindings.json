@@ -4,6 +4,10 @@
     "key": "cmd+,"
   },
   {
+    "command": "workbench.action.openGlobalKeybindingsFile",
+    "key": "cmd+shift+,"
+  },
+  {
     "command": "workbench.action.navigateBack",
     "key": "cmd+["
   },
@@ -35,6 +39,10 @@
   {
     "command": "editor.action.startFindReplaceAction",
     "key": "alt+cmd+f"
+  },
+  {
+    "command": "workbench.view.scm",
+    "key": "cmd+g"
   },
   {
     "args": {
@@ -146,6 +154,11 @@
     "command": "workbench.action.debug.start",
     "key": "cmd+d",
     "when": "!inDebugMode"
+  },
+  {
+    "command": "workbench.action.debug.restart",
+    "key": "cmd+r",
+    "when": "inDebugMode"
   },
   {
     "command": "workbench.action.showCommands",

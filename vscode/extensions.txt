@@ -2,6 +2,7 @@ angular.ng-template
 asvetliakov.vscode-neovim
 charliermarsh.ruff
 christian-kohler.path-intellisense
+csharpier.csharpier-vscode
 davidanson.vscode-markdownlint
 editorconfig.editorconfig
 elijah-potter.harper
@@ -17,6 +18,10 @@ ms-azuretools.vscode-containers
 ms-dotnettools.csdevkit
 ms-dotnettools.csharp
 ms-dotnettools.vscode-dotnet-runtime
+ms-mssql.data-workspace-vscode
+ms-mssql.mssql
+ms-mssql.sql-bindings-vscode
+ms-mssql.sql-database-projects-vscode
 ms-ossdata.vscode-pgsql
 ms-python.debugpy
 ms-python.python
@@ -29,4 +34,5 @@ myriad-dreamin.tinymist
 redhat.vscode-yaml
 rust-lang.rust-analyzer
 terrastruct.d2
+tombi-toml.tombi
 ziglang.vscode-zig

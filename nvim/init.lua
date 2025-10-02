@@ -89,6 +89,7 @@ vim.lsp.enable("roslyn_ls")
 vim.lsp.enable("terraformls")
 vim.lsp.enable("ts_ls")
 vim.lsp.enable("tinymist")
+vim.lsp.enable("tombi")
 
 add({
 	source = "nvim-treesitter/nvim-treesitter-textobjects",
@@ -292,6 +293,9 @@ local binds = {
 	{ "n", "<leader>d", "git.openChange", true },
 	{ "v", "gh", "git.diff.stageSelection", true },
 	{ "v", "gH", "git.revertSelectedRanges", true },
+	{ "n", "z1", "editor.foldLevel1", true },
+	{ "n", "z2", "editor.foldLevel2", true },
+	{ "n", "z3", "editor.foldLevel3", true },
 	{ "n", "zM", "editor.foldAll", true },
 	{ "n", "zR", "editor.unfoldAll", true },
 	{ "n", "zc", "editor.fold", true },

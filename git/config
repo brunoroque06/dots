@@ -55,6 +55,7 @@ keepBackup = false
 rebase = false
 
 [push]
+autoSetupRemote = true
 default = current
 
 [rerere]
