@@ -8,7 +8,7 @@ font-size = 14
 font-style = Regular
 font-style-bold = Medium
 
-macos-option-as-alt = true
+macos-option-as-alt = false
 
 shell-integration-features = no-cursor
 

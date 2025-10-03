@@ -1,14 +1,12 @@
-tap "azure/bicep"
 tap "hashicorp/tap"
 tap "homebrew/bundle"
 
-brew "act"
 brew "angular-cli"
 brew "azure-cli"
 brew "bash"
 brew "bat"
-brew "bicep"
 brew "carapace"
+brew "container"
 brew "curl"
 brew "d2"
 brew "delve"
@@ -30,7 +28,6 @@ brew "jq"
 brew "less"
 brew "libpq"
 brew "lua-language-server"
-brew "marp-cli"
 brew "mas"
 brew "neovim"
 brew "npm-check-updates"
@@ -66,12 +63,11 @@ brew "wget"
 brew "zig"
 brew "zls"
 
-cask "dash"
 cask "dotnet-sdk"
 cask "font-m-plus-1-code"
 cask "font-sf-pro"
 cask "ghostty"
-cask "gitup"
+cask "gitup-app"
 cask "google-chrome"
 cask "homerow"
 cask "kitty"
@@ -83,6 +79,8 @@ cask "visual-studio-code"
 cask "zed"
 
 mas "DaisyDisk", id: 411643860
+mas "DeskRest", id: 6751417411
+mas "Raycast Companion", id: 6738274497
 mas "TestFlight", id: 899247664
-mas "rcmd", id: 1596283165
-mas "uBlock Origin Lite", id: 6745342698
+mas "Windows App", id: 1295203466
+mas "Wipr", id: 1662217862

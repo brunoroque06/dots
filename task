@@ -48,6 +48,48 @@ fn elvish-lint {
 		| each { |f| elvish -compileonly $f }
 }
 
+fn macos-setup {
+	# Dock
+	defaults write com.apple.dock autohide -bool true
+	defaults write com.apple.dock expose-group-apps -bool true
+	defaults write com.apple.dock mru-spaces -bool false
+	defaults write com.apple.dock show-recents -bool false
+	defaults write com.apple.dock tilesize -int 32
+
+	# Finder
+	defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+	defaults write com.apple.Finder AppleShowAllFiles YES
+	defaults write com.apple.finder FXDefaultSearchScope -string SCcf
+	defaults write com.apple.finder FXPreferredViewStyle -string Nlsv
+	defaults write com.apple.finder NSUserKeyEquivalents -dict-add 'Go to Folder...' @g
+	defaults write com.apple.finder ShowPathbar -bool true
+
+	# Keyboard
+	defaults write NSGlobalDomain AppleKeyboardUIMode -int 2
+	defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool true
+	defaults write NSGlobalDomain com.apple.keyboard.fnState -bool false
+
+	# Mail
+	defaults write com.apple.mail NSUserKeyEquivalents -dict-add Send @\U21a9
+
+	# Mouse
+	defaults write NSGlobalDomain com.apple.mouse.scaling -float 1
+
+	# Spaces
+	defaults write com.apple.spaces spans-displays -bool false
+
+	# Keyboard Shortcuts
+	# defaults write -g NSUserKeyEquivalents -dict-add Fill '^@f'
+	# defaults write -g NSUserKeyEquivalents -dict-add Center '^@c'
+	# defaults write -g NSUserKeyEquivalents -dict-add Left '^@h'
+	# defaults write -g NSUserKeyEquivalents -dict-add Right '^@l'
+	# defaults write -g NSUserKeyEquivalents -dict-add Top '^@k'
+	# defaults write -g NSUserKeyEquivalents -dict-add Bottom '^@j'
+	# defaults write -g NSUserKeyEquivalents -dict-add 'Return to Previous Size' '^@r'
+
+	killall Finder SystemUIServer
+}
+
 fn lua-lint {
 	stylua --check --verbose nvim/init.lua
 	lua-language-server --check nvim/init.lua
@@ -61,6 +103,7 @@ var cmds = [
 	&cfg-setup=$cfg-setup~
 	&cfg-unlink=$cfg-unlink~
 	&elvish-lint=$elvish-lint~
+	&macos-setup=$macos-setup~
 	&lua-lint=$lua-lint~
 	&text-lint=$text-lint~
 ]
