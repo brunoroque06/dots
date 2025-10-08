@@ -37,7 +37,6 @@ var _paths = $nil
 set-env BAT_STYLE plain
 set-env BAT_THEME ansi
 set-env D2_LAYOUT elk
-set-env DFT_DISPLAY inline
 # set-env DOCKER_DEFAULT_PLATFORM linux/amd64
 set-env EDITOR /opt/homebrew/bin/nvim
 set-env LESS '-i --incsearch -m'

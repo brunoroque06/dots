@@ -67,6 +67,8 @@ fn macos-setup {
 	# Keyboard
 	defaults write NSGlobalDomain AppleKeyboardUIMode -int 2
 	defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool true
+	defaults write NSGlobalDomain InitialKeyRepeat -int 15
+	defaults write NSGlobalDomain KeyRepeat -int 2
 	defaults write NSGlobalDomain com.apple.keyboard.fnState -bool false
 
 	# Mail
@@ -76,7 +78,7 @@ fn macos-setup {
 	defaults write NSGlobalDomain com.apple.mouse.scaling -float 1
 
 	# Spaces
-	defaults write com.apple.spaces spans-displays -bool false
+	defaults write com.apple.spaces spans-displays -bool true
 
 	# Keyboard Shortcuts
 	# defaults write -g NSUserKeyEquivalents -dict-add Fill '^@f'
