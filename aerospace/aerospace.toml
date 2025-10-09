@@ -1,0 +1,89 @@
+start-at-login = false
+enable-normalization-flatten-containers = true
+enable-normalization-opposite-orientation-for-nested-containers = true
+accordion-padding = 16
+default-root-container-layout = "tiles"
+default-root-container-orientation = "horizontal"
+
+[key-mapping]
+preset = "colemak"
+
+[gaps]
+inner.horizontal = 8
+inner.vertical = 8
+outer.bottom = 8
+outer.left = 8
+outer.right = 8
+outer.top = 0
+
+[mode.main.binding]
+alt-enter = "exec-and-forget open -a ghostty -n"
+alt-a = "layout accordion horizontal vertical"
+alt-t = "layout tiles horizontal vertical"
+alt-h = "focus left"
+alt-j = "focus down"
+alt-k = "focus up"
+alt-l = "focus right"
+alt-shift-h = "move left"
+alt-shift-j = "move down"
+alt-shift-k = "move up"
+alt-shift-l = "move right"
+alt-ctrl-h = "join-with left"
+alt-ctrl-j = "join-with down"
+alt-ctrl-k = "join-with up"
+alt-ctrl-l = "join-with right"
+alt-minus = "resize smart -128"
+alt-equal = "resize smart +128"
+alt-shift-equal = "balance-sizes"
+alt-f = "fullscreen"
+alt-shift-f = "layout floating tiling"
+alt-r = "flatten-workspace-tree"
+alt-shift-r = "reload-config"
+alt-b = "workspace b"
+alt-d = "workspace d"
+alt-w = "workspace w"
+alt-shift-b = "move-node-to-workspace b"
+alt-shift-d = "move-node-to-workspace d"
+alt-shift-w = "move-node-to-workspace w"
+alt-tab = "workspace-back-and-forth"
+cmd-h = []
+
+[[on-window-detected]]
+if.app-id = "com.apple.ActivityMonitor"
+run = "layout floating"
+
+[[on-window-detected]]
+if.app-id = "com.apple.finder"
+run = "layout floating"
+
+[[on-window-detected]]
+if.app-id = "com.apple.Safari"
+run = "move-node-to-workspace b"
+
+[[on-window-detected]]
+if.app-id = "com.apple.mail"
+run = "move-node-to-workspace b"
+
+[[on-window-detected]]
+if.app-id = "com.apple.podcasts"
+run = ["layout floating", "move-node-to-workspace b"]
+
+[[on-window-detected]]
+if.app-id = "com.apple.Music"
+run = ["layout floating", "move-node-to-workspace b"]
+
+[[on-window-detected]]
+if.app-id = "com.apple.Notes"
+run = "move-node-to-workspace b"
+
+[[on-window-detected]]
+if.app-id = "com.mitchellh.ghostty"
+run = "move-node-to-workspace d"
+
+[[on-window-detected]]
+if.app-id = "com.microsoft.VSCode"
+run = "move-node-to-workspace d"
+
+[[on-window-detected]]
+if.app-id = "com.microsoft.rdc.macos"
+run = "move-node-to-workspace d"

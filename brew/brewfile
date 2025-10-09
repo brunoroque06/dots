@@ -1,7 +1,9 @@
 tap "hashicorp/tap"
 tap "homebrew/bundle"
+tap "nikitabobko/tap"
 
 brew "angular-cli"
+brew "aerospace"
 brew "azure-cli"
 brew "bash"
 brew "bat"

@@ -19,6 +19,7 @@ fn cfg-setup {
 }
 
 var paths = [
+	[&s=aerospace &d=$E:HOME/.config/aerospace]
 	[&s=elvish &d=$E:HOME/.config/elvish]
 	[&s=ghostty &d=$E:HOME'/Library/Application Support/com.mitchellh.ghostty']
 	[&s=git &d=$E:HOME/.config/git]
