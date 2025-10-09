@@ -28,19 +28,17 @@ var paths = [
 	[&s=kitty &d=$E:HOME/.config/kitty]
 	[&s=nvim &d=$E:HOME/.config/nvim]
 	[&s=psql &d=$E:HOME]
-	[&s=pwsh &d=$E:HOME/.config/powershell]
 	[&s=ripgrep &d=$E:HOME/.config]
-	[&s=vim &d=$E:HOME]
 	[&s=vscode &d=$E:HOME'/Library/Application Support/Code/User']
 	[&s=zed &d=$E:HOME/.config/zed]
 ]
 
 fn cfg-link {
-	each { |p| mkdir -p $p[t]; stow -S -v 1 -t $p[t] $p[d] } $paths
+	each { |p| mkdir -p $p[d]; stow -S -v 1 -t $p[d] $p[s] } $paths
 }
 
 fn cfg-unlink {
-	each { |p| stow -D -v 1 -t $p[t] $p[d] } $paths
+	each { |p| stow -D -v 1 -t $p[d] $p[s] } $paths
 }
 
 fn elvish-lint {
@@ -66,7 +64,7 @@ fn macos-setup {
 
 	# Keyboard
 	defaults write NSGlobalDomain AppleKeyboardUIMode -int 2
-	defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool true
+	defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
 	defaults write NSGlobalDomain InitialKeyRepeat -int 15
 	defaults write NSGlobalDomain KeyRepeat -int 2
 	defaults write NSGlobalDomain com.apple.keyboard.fnState -bool false
