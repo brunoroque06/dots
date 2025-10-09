@@ -48,6 +48,9 @@ fn elvish-lint {
 }
 
 fn macos-setup {
+	# Accessibility
+	defaults write com.apple.Accessibility ReduceMotionEnabled -bool true
+
 	# Dock
 	defaults write com.apple.dock autohide -bool true
 	defaults write com.apple.dock expose-group-apps -bool true
