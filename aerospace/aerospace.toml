@@ -87,3 +87,7 @@ run = "move-node-to-workspace d"
 [[on-window-detected]]
 if.app-id = "com.microsoft.rdc.macos"
 run = "move-node-to-workspace d"
+
+[[on-window-detected]]
+if.app-id = "com.google.Chrome"
+run = "move-node-to-workspace w"

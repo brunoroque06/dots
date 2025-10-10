@@ -75,6 +75,8 @@
   "javascript.validate.enable": true,
   "markdown.preview.fontFamily": "SF Pro Rounded",
   "mssql.defaultQueryResultsViewMode": "Text",
+  "mssql.format.keywordCasing": "lowercase",
+  "mssql.intelliSense.lowerCaseSuggestions": true,
   "python.analysis.autoFormatStrings": true,
   "python.analysis.inlayHints.callArgumentNames": "partial",
   "python.analysis.inlayHints.functionReturnTypes": true,

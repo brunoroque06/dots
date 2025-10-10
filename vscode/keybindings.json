@@ -182,6 +182,6 @@
   {
     "command": "workbench.action.focusActiveEditorGroup",
     "key": "escape",
-    "when": "!editorFocus"
+    "when": "!editorFocus && !terminalFocus"
   }
 ]
