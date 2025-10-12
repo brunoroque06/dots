@@ -57,6 +57,10 @@ if.app-id = "com.apple.finder"
 run = "layout floating"
 
 [[on-window-detected]]
+if.app-id = "site.kaylees.Wipr2"
+run = "layout floating"
+
+[[on-window-detected]]
 if.app-id = "com.apple.Safari"
 run = "move-node-to-workspace b"
 
