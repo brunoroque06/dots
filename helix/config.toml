@@ -1,9 +1,11 @@
 theme = "github_light_high_contrast"
 
 [editor]
+color-modes = true
 end-of-line-diagnostics = "hint"
 line-number = "relative"
 mouse = false
+trim-trailing-whitespace = true
 
 [editor.cursor-shape]
 insert = "bar"

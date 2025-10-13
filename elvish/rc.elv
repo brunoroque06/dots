@@ -108,8 +108,8 @@ fn l { |@a| ls -Aho --color $@a }
 fn t { |&l=2 @a| tree -L $l $@a }
 
 # Applications
-fn app-id { |a| mdls -name kMDItemCFBundleIdentifier /Applications/$a }
-set edit:completion:arg-completer[app-id] = { |@args| ls /Applications | from-lines }
+fn app-id { |a| mdls -name kMDItemCFBundleIdentifier $a }
+set edit:completion:arg-completer[app-id] = { |@args| put /System/Applications/*.app /Applications/*.app }
 
 # Azure
 fn az-act-set { |n| az account set -n $n }
