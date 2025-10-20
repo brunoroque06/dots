@@ -89,6 +89,7 @@
   "python.analysis.typeEvaluation.strictSetInference": true,
   "python.defaultInterpreterPath": "/opt/homebrew/bin/python3",
   "python.languageServer": "Pylance",
+  "python.terminal.activateEnvironment": false,
   "python.testing.pytestEnabled": true,
   "ruff.organizeImports": true,
   "scm.alwaysShowRepositories": true,

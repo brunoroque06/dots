@@ -57,6 +57,14 @@ if.app-id = "com.apple.Dictionary"
 run = "layout floating"
 
 [[on-window-detected]]
+if.app-id = "com.apple.Notes"
+run = "layout floating"
+
+[[on-window-detected]]
+if.app-id = "com.apple.Passwords"
+run = "layout floating"
+
+[[on-window-detected]]
 if.app-id = "com.apple.finder"
 run = "layout floating"
 
@@ -79,10 +87,6 @@ run = ["layout floating", "move-node-to-workspace b"]
 [[on-window-detected]]
 if.app-id = "com.apple.Music"
 run = ["layout floating", "move-node-to-workspace b"]
-
-[[on-window-detected]]
-if.app-id = "com.apple.Notes"
-run = "move-node-to-workspace b"
 
 [[on-window-detected]]
 if.app-id = "com.mitchellh.ghostty"
