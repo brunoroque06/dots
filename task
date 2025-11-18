@@ -25,7 +25,7 @@ var paths = [
 	[&s=git &d=$E:HOME/.config/git]
 	[&s=helix &d=$E:HOME/.config/helix]
 	[&s=ideavim &d=$E:HOME]
-	[&s=jetbrains &d=$E:HOME'/Library/Application Support/JetBrains/Rider2025.2/keymaps']
+	[&s=jetbrains &d=$E:HOME'/Library/Application Support/JetBrains/Rider2025.3/keymaps']
 	[&s=kitty &d=$E:HOME/.config/kitty]
 	[&s=nvim &d=$E:HOME/.config/nvim]
 	[&s=psql &d=$E:HOME]

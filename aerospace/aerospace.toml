@@ -73,6 +73,10 @@ if.app-id = "com.apple.iBooksX"
 run = "layout floating"
 
 [[on-window-detected]]
+if.app-id = "com.apple.iCal"
+run = "layout floating"
+
+[[on-window-detected]]
 if.app-id = "site.kaylees.Wipr2"
 run = "layout floating"
 

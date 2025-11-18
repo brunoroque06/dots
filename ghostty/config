@@ -9,6 +9,7 @@ font-style = Regular
 font-style-bold = Medium
 
 macos-option-as-alt = false
+macos-titlebar-style = tabs
 
 shell-integration-features = no-cursor
 
