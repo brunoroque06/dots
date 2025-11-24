@@ -349,6 +349,7 @@ fn code-su {
 	from-lines < $E:HOME'/Library/Application Support/Code/User/extensions.txt' ^
 		| each { |e| code --force --install-extension $e } [(all)]
 }
+fn code-key-win { cat $E:HOME/Projects/dots/vscode/keybindings.json | slurp | str:replace 'cmd' 'ctrl' (one) | printf (one) | pbcopy }
 
 # Web Browser
 fn webbrowser { rm -fr $E:TMPDIR/webbrowser; '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --user-data-dir=$E:TMPDIR/webbrowser --disable-web-security --incognito --no-first-run --new-window http://localhost:4200 }
