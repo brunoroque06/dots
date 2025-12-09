@@ -39,12 +39,12 @@ alt-f = "fullscreen"
 alt-shift-f = "layout floating tiling"
 alt-r = "flatten-workspace-tree"
 alt-shift-r = "reload-config"
-alt-b = "workspace b"
-alt-d = "workspace d"
-alt-w = "workspace w"
-alt-shift-b = "move-node-to-workspace b"
-alt-shift-d = "move-node-to-workspace d"
-alt-shift-w = "move-node-to-workspace w"
+alt-b = "workspace B"
+alt-d = "workspace D"
+alt-w = "workspace W"
+alt-shift-b = "move-node-to-workspace B"
+alt-shift-d = "move-node-to-workspace D"
+alt-shift-w = "move-node-to-workspace W"
 alt-tab = "workspace-back-and-forth"
 cmd-h = []
 
@@ -53,7 +53,15 @@ if.app-id = "com.apple.ActivityMonitor"
 run = "layout floating"
 
 [[on-window-detected]]
+if.app-id = "com.apple.AddressBook"
+run = "layout floating"
+
+[[on-window-detected]]
 if.app-id = "com.apple.Dictionary"
+run = "layout floating"
+
+[[on-window-detected]]
+if.app-id = "com.apple.FontBook"
 run = "layout floating"
 
 [[on-window-detected]]
@@ -86,32 +94,32 @@ run = "layout floating"
 
 [[on-window-detected]]
 if.app-id = "com.apple.Safari"
-run = "move-node-to-workspace b"
+run = "move-node-to-workspace B"
 
 [[on-window-detected]]
 if.app-id = "com.apple.mail"
-run = "move-node-to-workspace b"
+run = "move-node-to-workspace B"
 
 [[on-window-detected]]
 if.app-id = "com.apple.podcasts"
-run = ["layout floating", "move-node-to-workspace b"]
+run = ["layout floating", "move-node-to-workspace B"]
 
 [[on-window-detected]]
 if.app-id = "com.apple.Music"
-run = ["layout floating", "move-node-to-workspace b"]
+run = ["layout floating", "move-node-to-workspace B"]
 
 [[on-window-detected]]
 if.app-id = "com.mitchellh.ghostty"
-run = "move-node-to-workspace d"
+run = "move-node-to-workspace D"
 
 [[on-window-detected]]
 if.app-id = "com.microsoft.VSCode"
-run = "move-node-to-workspace d"
+run = "move-node-to-workspace D"
 
 [[on-window-detected]]
 if.app-id = "com.microsoft.rdc.macos"
-run = "move-node-to-workspace d"
+run = "move-node-to-workspace D"
 
 [[on-window-detected]]
 if.app-id = "com.google.Chrome"
-run = "move-node-to-workspace w"
+run = "move-node-to-workspace W"
