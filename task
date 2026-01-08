@@ -27,7 +27,7 @@ var paths = [
 	[&s=ideavim &d=$E:HOME]
 	[&s=jetbrains &d=$E:HOME'/Library/Application Support/JetBrains/Rider2025.3/keymaps']
 	[&s=kitty &d=$E:HOME/.config/kitty]
-	[&s=nvim &d=$E:HOME/.config/nvim]
+	[&s=neovim &d=$E:HOME/.config/nvim]
 	[&s=psql &d=$E:HOME]
 	[&s=ripgrep &d=$E:HOME/.config]
 	[&s=vscode &d=$E:HOME'/Library/Application Support/Code/User']
@@ -95,8 +95,8 @@ fn macos-setup {
 }
 
 fn lua-lint {
-	stylua --check --verbose nvim/init.lua
-	lua-language-server --check nvim/init.lua
+	stylua --check --verbose neovim/init.lua
+	lua-language-server --check neovim/init.lua
 }
 
 fn text-lint { npx prettier -c . }

@@ -80,7 +80,12 @@ setup("mini.deps", { path = { package = plugs } })
 local add = require("mini.deps").add
 
 add({ source = "neovim/nvim-lspconfig" })
+vim.lsp.config["elvish"] = {
+	cmd = { "elvish", "-lsp" },
+	filetypes = { "elvish" },
+}
 vim.lsp.enable("angularls")
+vim.lsp.enable("elvish")
 vim.lsp.enable("gopls")
 vim.lsp.enable("harper_ls")
 vim.lsp.enable("lua_ls")
