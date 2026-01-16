@@ -100,7 +100,6 @@ fn lua-lint {
 fn text-lint { npx prettier -c . }
 
 var cmds = [
-	&ci-lint=$ci-lint~
 	&cfg-link=$cfg-link~
 	&cfg-setup=$cfg-setup~
 	&cfg-unlink=$cfg-unlink~
