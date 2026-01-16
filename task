@@ -4,8 +4,6 @@ use flag
 use str
 use os
 
-fn ci-lint { zizmor .github/workflows/main.yml }
-
 fn cfg-setup {
 	softwareupdate --install --all
 

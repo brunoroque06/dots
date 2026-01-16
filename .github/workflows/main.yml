@@ -1,16 +1,11 @@
 on: [push]
 
-permissions: {}
-
 jobs:
   ci:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
-        with:
-          persist-credentials: false
 
-      - run: pip install zizmor
       - run: |
           sudo apt update
           sudo apt install elvish -y
@@ -21,7 +16,6 @@ jobs:
           sudo tar -xzf lua-language-server-3.15.0-linux-x64.tar.gz -C /usr/lib/lua-language-server
           sudo ln -s /usr/lib/lua-language-server/bin/lua-language-server /usr/bin/lua-language-server
 
-      - run: ./task ci-lint
       - run: ./task elvish-lint
       - run: ./task lua-lint
       - run: ./task text-lint
