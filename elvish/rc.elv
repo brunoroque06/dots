@@ -118,13 +118,6 @@ set edit:completion:arg-completer[az-act-set] = { |@args|
 		| each { |s| edit:complex-candidate $s[name] &display=(if (put $s[isDefault]) { styled $s[name] green } else { put $s[name] }) }
 }
 
-# Citrix
-fn citrix-keyboard {
-	var cfg = $E:HOME'/Library/Application Support/Citrix Receiver/Config'
-	var us = (cat $cfg | slurp | re:replace 'KeyboardLayout=(.*)' KeyboardLayout=US (one))
-	printf $us > $cfg
-}
-
 # Command
 fn cmd-edit {
 	var tmp = (path:temp-file '*.elv')
