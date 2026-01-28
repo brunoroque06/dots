@@ -156,17 +156,17 @@ setup("nvim-treesitter.configs", {
 		},
 	},
 })
-local d2_queries = function(p)
+local d2_install = function(p)
 	local dir = vim.fn.stdpath("config") .. "/queries/d2"
-	vim.fn.system("rm -fr " .. dir)
-	vim.fn.system("mkdir -p " .. dir)
-	vim.fn.system("cp " .. p.path .. "/queries/*.scm " .. dir)
+	vim.fn.system({ "rm", "-rf", dir })
+	vim.fn.system({ "mkdir", "-p", dir })
+	vim.fn.system({ "cp", "-R", p.path .. "/queries/", dir })
 end
 add({
 	source = "ravsii/tree-sitter-d2",
 	hooks = {
-		post_checkout = d2_queries,
-		post_install = d2_queries,
+		post_checkout = d2_install,
+		post_install = d2_install,
 	},
 })
 
