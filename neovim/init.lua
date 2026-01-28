@@ -156,6 +156,19 @@ setup("nvim-treesitter.configs", {
 		},
 	},
 })
+local d2_queries = function(p)
+	local dir = vim.fn.stdpath("config") .. "/queries/d2"
+	vim.fn.system("rm -fr " .. dir)
+	vim.fn.system("mkdir -p " .. dir)
+	vim.fn.system("cp " .. p.path .. "/queries/*.scm " .. dir)
+end
+add({
+	source = "ravsii/tree-sitter-d2",
+	hooks = {
+		post_checkout = d2_queries,
+		post_install = d2_queries,
+	},
+})
 
 add({ source = "nvim-mini/mini.nvim" })
 setup("mini.bracketed")
