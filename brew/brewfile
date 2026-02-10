@@ -65,8 +65,10 @@ brew "wget"
 brew "zig"
 brew "zls"
 
+cask "appcleaner"
 cask "dotnet-sdk"
 cask "font-m-plus-1-code"
+cask "font-noto-sans-math"
 cask "font-sf-pro"
 cask "ghostty"
 cask "gitup-app"
@@ -74,14 +76,12 @@ cask "google-chrome"
 cask "kitty"
 cask "powershell"
 cask "proxyman"
-cask "raycast"
 cask "rider"
 cask "visual-studio-code"
 cask "zed"
 
 mas "DaisyDisk", id: 411643860
 mas "DeskRest", id: 6751417411
-mas "Raycast Companion", id: 6738274497
 mas "TestFlight", id: 899247664
 mas "Windows App", id: 1295203466
 mas "Wipr", id: 1662217862

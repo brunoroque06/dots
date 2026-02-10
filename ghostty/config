@@ -13,6 +13,8 @@ macos-titlebar-style = tabs
 
 shell-integration-features = no-cursor
 
+unfocused-split-opacity = 1
+
 window-padding-x = 10
 window-padding-y = 10
 
