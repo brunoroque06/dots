@@ -59,6 +59,10 @@ if.app-id = "com.apple.AddressBook"
 run = "layout floating"
 
 [[on-window-detected]]
+if.app-id = "com.daisydiskapp.DaisyDisk"
+run = "layout floating"
+
+[[on-window-detected]]
 if.app-id = "com.apple.Dictionary"
 run = "layout floating"
 
