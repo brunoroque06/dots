@@ -12,6 +12,7 @@
     "editor.defaultFormatter": "charliermarsh.ruff"
   },
   "breadcrumbs.symbolPath": "off",
+  "chat.agent.maxRequests": 32,
   "chat.editor.fontSize": 14,
   "chat.mcp.gallery.enabled": true,
   "containers.containerClient": "com.microsoft.visualstudio.containers.podman",
@@ -21,7 +22,7 @@
   "debug.inlineValues": "on",
   "debug.internalConsoleOptions": "neverOpen",
   "debug.toolBarLocation": "docked",
-  "diffEditor.ignoreTrimWhitespace": true,
+  "diffEditor.ignoreTrimWhitespace": false,
   "diffEditor.renderSideBySide": false,
   "dotnet.automaticallyCreateSolutionInWorkspace": false,
   "dotnet.codeLens.enableReferencesCodeLens": false,
@@ -34,7 +35,7 @@
   "editor.codeActionsOnSave": {
     "source.coverImportFormat": "always",
     "source.organizeImports": "always",
-    "source.sort.json": "always"
+    "source.sort.json": "explicit"
   },
   "editor.cursorBlinking": "solid",
   "editor.cursorSurroundingLines": 5,
@@ -62,6 +63,8 @@
   "extensions.ignoreRecommendations": true,
   "files.autoSave": "afterDelay",
   "files.trimTrailingWhitespace": true,
+  "git.blame.editorDecoration.enabled": false,
+  "git.blame.ignoreWhitespace": true,
   "git.openRepositoryInParentFolders": "never",
   "github.copilot.enable": {
     "editor": true,
@@ -70,13 +73,12 @@
   "github.copilot.nextEditSuggestions.enabled": true,
   "github.copilot.nextEditSuggestions.fixes": true,
   "inlineChat.enableV2": true,
-  "inlineChat.hideOnRequest": true,
   "javascript.updateImportsOnFileMove.enabled": "always",
   "javascript.validate.enable": true,
   "markdown.preview.fontFamily": "SF Pro Rounded",
   "mssql.defaultQueryResultsViewMode": "Text",
+  "mssql.format.datatypeCasing": "lowercase",
   "mssql.format.keywordCasing": "lowercase",
-  "mssql.intelliSense.lowerCaseSuggestions": true,
   "python.analysis.autoFormatStrings": true,
   "python.analysis.autoImportCompletions": true,
   "python.analysis.inlayHints.callArgumentNames": "partial",
@@ -103,10 +105,16 @@
     "markdown.preview.fontFamily"
   ],
   "terminal.integrated.defaultProfile.osx": "elvish",
+  "terminal.integrated.defaultProfile.windows": "pwsh",
   "terminal.integrated.fontSize": 14,
   "terminal.integrated.profiles.osx": {
     "elvish": {
       "path": "/opt/homebrew/bin/elvish"
+    }
+  },
+  "terminal.integrated.profiles.windows": {
+    "pwsh": {
+      "path": "C:/Program Files/PowerShell/7/pwsh.exe"
     }
   },
   "terraform.mcp.server.enable": false,
@@ -129,6 +137,5 @@
   "workbench.panel.showLabels": false,
   "workbench.startupEditor": "none",
   "workbench.tree.indent": 15,
-  "workbench.tree.renderIndentGuides": "always",
-  "zig.zls.enabled": "on"
+  "workbench.tree.renderIndentGuides": "always"
 }

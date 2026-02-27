@@ -297,6 +297,7 @@ local binds = {
 	{ "n", "<leader>k", require("mini.extra").pickers.commands },
 
 	{ "n", "-", "workbench.view.explorer", true },
+	{ "n", "_", "workbench.view.scm", true },
 	{ "n", "<tab>", "editor.action.inlineSuggest.commit", true },
 	{ "n", "==", "editor.action.format", true },
 	{ "n", "=i", "editor.action.organizeImports", true },
