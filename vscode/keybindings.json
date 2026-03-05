@@ -182,7 +182,7 @@
   {
     "command": "workbench.action.focusActiveEditorGroup",
     "key": "escape",
-    "when": "!editorFocus && !terminalFocus"
+    "when": "!editorFocus && !listFocus && !terminalFocus"
   },
   {
     "command": "mssql.runQuery",

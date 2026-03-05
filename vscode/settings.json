@@ -134,6 +134,7 @@
   "workbench.editor.revealIfOpen": false,
   "workbench.editor.showTabs": "single",
   "workbench.layoutControl.enabled": false,
+  "workbench.notifications.position": "top-right",
   "workbench.panel.showLabels": false,
   "workbench.startupEditor": "none",
   "workbench.tree.indent": 15,
