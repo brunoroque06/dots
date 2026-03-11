@@ -26,6 +26,8 @@ pager = less -R
 
 [diff]
 algorithm = histogram
+colorMoved = zebra
+renames = copy
 tool = nvim
 
 [difftool "nvim"]

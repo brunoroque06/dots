@@ -28,7 +28,6 @@ set paths = [
 	$E:HOME/.cargo/bin
 	/usr/local/share/dotnet
 	$E:HOME/.dotnet/tools
-	$E:HOME/.dotnet/tools/roslyn
 	$E:HOME/go/bin
 	/Applications/Rider.app/Contents/MacOS
 ]
@@ -105,6 +104,12 @@ set edit:completion:arg-completer[icat-watch] = { |@args| put *.png }
 fn l { |@a| ls -Aho --color $@a }
 fn t { |&l=2 @a| tree -L $l $@a }
 
+# AI
+fn ai-review { |&src=main &tgt=HEAD|
+	git diff --histogram $src...$tgt > diff.txt
+	copilot -p "Review the PR changes on diff.txt. Search for regressions, bugs, inconsistencies"
+}
+
 # Applications
 fn app-id { |a| mdls -name kMDItemCFBundleIdentifier $a }
 set edit:completion:arg-completer[app-id] = { |@args| put /System/Applications/*.app /Applications/*.app }
@@ -147,27 +152,6 @@ set edit:completion:arg-completer[d2-watch] = { |@args| d2-ls }
 # Dotnet
 fn dot-ci { |@a| csharprepl -t themes/VisualStudio_Light.json $@a }
 fn dot-fi { |@a| dotnet fsi $@a }
-fn dot-roslyn {
-	open https://dev.azure.com/azure-public/vside/_artifacts/feed/vs-impl/NuGet/Microsoft.CodeAnalysis.LanguageServer.osx-arm64/versions
-
-	var ver = (read-line)
-	var zip = roslyn.zip
-	var dir = roslyn
-	var dest = $E:HOME/.dotnet/tools/roslyn
-
-	cd $E:HOME/Downloads
-
-	rm -rf $dir $zip
-	curl -L 'https://pkgs.dev.azure.com/azure-public/vside/_packaging/vs-impl/nuget/v3/flat2/microsoft.codeanalysis.languageserver.osx-arm64/'$ver'/microsoft.codeanalysis.languageserver.osx-arm64.'$ver'.nupkg' -o $zip
-	unzip $zip -d $dir
-
-	rm -rf $zip $dest
-	mv $dir/content/LanguageServer/osx-arm64 $dest
-	rm -rf $dir
-
-	chmod +x $dest/Microsoft.CodeAnalysis.LanguageServer
-	codesign --force --sign - $dest/Microsoft.CodeAnalysis.LanguageServer
-}
 fn dot-up {
 	dotnet list package --outdated --format json ^
 		| from-json | put (one)[projects][0][frameworks][0][topLevelPackages] ^
@@ -230,8 +214,8 @@ fn brew-up {
 }
 
 fn pkg-su {
-	put JetBrains.ReSharper.GlobalTools csharpier csharprepl fantomas ^
-		| each { |p| try { dotnet tool install -g $p } catch { } }
+	put csharpier csharprepl fantomas roslyn-language-server ^
+		| each { |p| try { dotnet tool install -g --prerelease $p } catch { } }
 
 	npm install -g @angular/language-server npm
 }
@@ -241,7 +225,7 @@ fn pkg-up {
 	dotnet tool list --format json -g ^
 		| from-json ^
 		| all (one)[data] ^
-		| each { |p| dotnet tool update -g $p[packageId] }
+		| each { |p| dotnet tool update -g --prerelease $p[packageId] }
 
 	npm-check-updates -g
 }
