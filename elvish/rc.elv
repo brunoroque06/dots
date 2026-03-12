@@ -107,7 +107,7 @@ fn t { |&l=2 @a| tree -L $l $@a }
 # AI
 fn ai-review { |&src=main &tgt=HEAD|
 	git diff --histogram $src...$tgt > diff.txt
-	copilot -p "Review the PR changes on diff.txt. Search for regressions, bugs, inconsistencies"
+	copilot -p "Review the PR changes on diff.txt. Search for bugs, regressions, inconsistencies"
 }
 
 # Applications
@@ -140,7 +140,7 @@ fn cmd-edit {
 fn d2-ls { put *.d2 }
 fn d2-fmt-all { d2-ls | each { |f| d2 fmt $f } }
 fn d2-run-all { |&ext=svg| d2-ls | each { |f| d2 --pad 0 $f out/(file-stem $f).$ext } }
-fn d2-icat-watch { |f|
+fn d2-watch { |f|
 	while $true {
 		clear
 		d2 $f --stdout-format png - | icat
