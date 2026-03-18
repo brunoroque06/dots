@@ -16,7 +16,9 @@
   "chat.editor.fontSize": 14,
   "chat.mcp.gallery.enabled": true,
   "chat.plugins.enabled": true,
-  "chat.plugins.marketplaces": ["dotnet/skills"],
+  "chat.plugins.marketplaces": [
+    "dotnet/skills"
+  ],
   "containers.containerClient": "com.microsoft.visualstudio.containers.podman",
   "containers.orchestratorClient": "com.microsoft.visualstudio.orchestrators.podmancompose",
   "D2.execPath": "/opt/homebrew/bin/d2",
@@ -27,6 +29,7 @@
   "diffEditor.experimental.showMoves": true,
   "diffEditor.hideUnchangedRegions.contextLineCount": 8,
   "diffEditor.hideUnchangedRegions.enabled": true,
+  "diffEditor.ignoreTrimWhitespace": true,
   "diffEditor.renderSideBySide": false,
   "dotnet.automaticallyCreateSolutionInWorkspace": false,
   "dotnet.codeLens.enableReferencesCodeLens": false,
