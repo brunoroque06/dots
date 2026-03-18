@@ -3,7 +3,7 @@
 ## Installation
 
 ```shell
-./task
+make config
 ```
 
 Supported: macOS
