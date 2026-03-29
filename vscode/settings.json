@@ -9,6 +9,7 @@
     "editor.stickyScroll.enabled": true
   },
   "[python]": {
+    "diffEditor.ignoreTrimWhitespace": true,
     "editor.defaultFormatter": "charliermarsh.ruff"
   },
   "breadcrumbs.symbolPath": "off",
@@ -38,7 +39,7 @@
   "editor.accessibilitySupport": "off",
   "editor.bracketPairColorization.enabled": true,
   "editor.cursorBlinking": "solid",
-  "editor.cursorSurroundingLines": 5,
+  "editor.cursorSurroundingLines": 4,
   "editor.cursorWidth": 2,
   "editor.fontFamily": "MPLUS1Code-Regular",
   "editor.fontSize": 14,
@@ -124,11 +125,11 @@
   "tinymist.formatterMode": "typstyle",
   "window.commandCenter": false,
   "window.title": "${activeEditorLong}${separator}${rootPath}",
-  "workbench.activityBar.location": "top",
-  "workbench.colorTheme": "Default Light Modern",
+  "workbench.activityBar.location": "bottom",
+  "workbench.colorTheme": "VS Code Light",
   "workbench.editor.enablePreview": false,
   "workbench.editor.limit.enabled": true,
-  "workbench.editor.limit.value": 16,
+  "workbench.editor.limit.value": 8,
   "workbench.editor.revealIfOpen": false,
   "workbench.editor.showTabs": "single",
   "workbench.layoutControl.enabled": false,
