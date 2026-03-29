@@ -1,53 +1,55 @@
 {
-  "buffer_font_family": "JetBrains Mono",
-  "buffer_font_size": 13,
+  "buffer_font_family": "M PLUS 1 Code",
+  "buffer_font_size": 14,
   "buffer_line_height": "standard",
   "cursor_blink": false,
+  "helix_mode": true,
   "languages": {
+    "CSharp": { "language_servers": ["roslyn-language-server"] },
     "Python": {
       "language_servers": ["pyright"],
       "formatter": [
         {
-          "code_actions": {
-            "source.organizeImports.ruff": true,
-            "source.fixAll.ruff": true
-          }
+          "code_action": "source.organizeImports.ruff",
+        },
+        {
+          "code_action": "source.fixAll.ruff",
         },
         {
           "language_server": {
-            "name": "ruff"
-          }
-        }
-      ]
+            "name": "ruff",
+          },
+        },
+      ],
     },
     "Rust": {
       "formatter": {
         "external": {
           "arguments": ["-"],
-          "command": "~/.cargo/bin/rustfmt"
-        }
-      }
-    }
+          "command": "~/.cargo/bin/rustfmt",
+        },
+      },
+    },
   },
-  "relative_line_numbers": true,
+  "relative_line_numbers": "enabled",
   "scrollbar": {
-    "show": "auto"
+    "show": "auto",
   },
   "soft_wrap": "editor_width",
   "tab_bar": {
-    "show": false
+    "show": false,
   },
   "terminal": {
     "shell": {
-      "program": "/opt/homebrew/bin/elvish"
-    }
+      "program": "/opt/homebrew/bin/elvish",
+    },
   },
   "theme": "One Light",
   "toolbar": {
     "breadcrumbs": true,
-    "quick_actions": false
+    "quick_actions": false,
   },
   "ui_font_family": "JetBrains Mono",
   "ui_font_size": 14,
-  "vim_mode": true
+  "vim_mode": false,
 }
