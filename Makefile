@@ -50,7 +50,7 @@ install:
 	brew doctor
 
 lint:
-	lua-language-server --check .
+	lua-language-server --check nvim/init.lua
 
 macos-config:
 	# Accessibility
