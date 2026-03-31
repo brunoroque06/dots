@@ -54,18 +54,15 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 vim.diagnostic.config({ virtual_lines = false, virtual_text = true })
 
 -- Plugins
-local plugs = vim.fn.stdpath("data") .. "/site/"
-local mini = plugs .. "pack/deps/start/mini.nvim"
-if not vim.loop.fs_stat(mini) then
-	local clone = {
-		"git",
-		"clone",
-		"--filter=blob:none",
-		"https://github.com/nvim-mini/mini.nvim",
-		mini,
-	}
-	vim.fn.system(clone)
-end
+vim.pack.add({
+	"https://github.com/ravsii/tree-sitter-d2",
+	"https://github.com/github/copilot.vim",
+	"https://github.com/neovim/nvim-lspconfig",
+	"https://github.com/nvim-mini/mini.nvim",
+	"https://github.com/stevearc/conform.nvim",
+	"https://github.com/nvim-treesitter/nvim-treesitter",
+	"https://github.com/nvim-treesitter/nvim-treesitter-textobjects",
+})
 
 ---@param id string
 ---@param cfg table?
@@ -75,11 +72,6 @@ local function setup(id, cfg)
 	pkg.setup(cfg)
 end
 
-setup("mini.deps", { path = { package = plugs } })
-
-local add = require("mini.deps").add
-
-add({ source = "neovim/nvim-lspconfig" })
 vim.lsp.config["elvish"] = {
 	cmd = { "elvish", "-lsp" },
 	filetypes = { "elvish" },
@@ -96,16 +88,7 @@ vim.lsp.enable("ts_ls")
 vim.lsp.enable("tinymist")
 vim.lsp.enable("tombi")
 
-add({
-	source = "nvim-treesitter/nvim-treesitter-textobjects",
-	hooks = {
-		post_checkout = function()
-			vim.cmd("TSUpdate")
-		end,
-	},
-	depends = { "nvim-treesitter/nvim-treesitter" },
-})
-setup("nvim-treesitter.configs", {
+setup("nvim-treesitter", {
 	auto_install = true,
 	highlight = {
 		enable = true,
@@ -156,21 +139,7 @@ setup("nvim-treesitter.configs", {
 		},
 	},
 })
-local d2_install = function(p)
-	local dir = vim.fn.stdpath("config") .. "/queries/d2"
-	vim.fn.system({ "rm", "-rf", dir })
-	vim.fn.system({ "mkdir", "-p", dir })
-	vim.fn.system({ "cp", "-R", p.path .. "/queries/", dir })
-end
-add({
-	source = "ravsii/tree-sitter-d2",
-	hooks = {
-		post_checkout = d2_install,
-		post_install = d2_install,
-	},
-})
 
-add({ source = "nvim-mini/mini.nvim" })
 setup("mini.bracketed")
 setup("mini.completion")
 setup("mini.diff", { view = { style = "sign" } })
@@ -182,7 +151,6 @@ setup("mini.files")
 setup("mini.pick")
 setup("mini.surround")
 
-add({ source = "stevearc/conform.nvim" })
 setup("conform", {
 	formatters = {
 		elv = {
@@ -213,7 +181,18 @@ setup("conform", {
 	},
 })
 
-add({ source = "github/copilot.vim" })
+local d2_setup = function()
+	local cfg = vim.fn.stdpath("config") .. "/queries/d2"
+	vim.fn.system({ "rm", "-rf", cfg })
+	vim.fn.system({ "mkdir", "-p", cfg })
+	local queries = vim.fn.stdpath("data") .. "/site/pack/core/opt/tree-sitter-d2/queries/"
+	vim.fn.system({ "cp", "-R", queries, cfg })
+end
+
+vim.api.nvim_create_user_command("D2Setup", d2_setup, {})
+vim.api.nvim_create_user_command("PackUpdate", function()
+	vim.pack.update()
+end, {})
 
 ---@param mode string
 ---@param lhs string
