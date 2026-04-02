@@ -21,6 +21,14 @@
   "containers.containerClient": "com.microsoft.visualstudio.containers.podman",
   "containers.orchestratorClient": "com.microsoft.visualstudio.orchestrators.podmancompose",
   "D2.execPath": "/opt/homebrew/bin/d2",
+  "dance.smartCase": true,
+  "dance.modes": {
+    "helix/normal": {
+      "decorations": {
+        "backgroundColor": "none"
+      }
+    }
+  },
   "debug.allowBreakpointsEverywhere": true,
   "debug.inlineValues": "on",
   "debug.internalConsoleOptions": "neverOpen",
@@ -58,9 +66,6 @@
   "explorer.confirmDragAndDrop": false,
   "explorer.openEditors.sortOrder": "alphabetical",
   "explorer.openEditors.visible": 1,
-  "extensions.experimental.affinity": {
-    "asvetliakov.vscode-neovim": 1
-  },
   "extensions.ignoreRecommendations": true,
   "files.autoSave": "afterDelay",
   "files.trimTrailingWhitespace": true,
@@ -126,10 +131,11 @@
   "window.commandCenter": false,
   "window.title": "${activeEditorLong}${separator}${rootPath}",
   "workbench.activityBar.location": "bottom",
-  "workbench.colorTheme": "VS Code Light",
+  "workbench.colorTheme": "Light 2026",
   "workbench.editor.enablePreview": false,
   "workbench.editor.limit.enabled": true,
   "workbench.editor.limit.value": 8,
+  "workbench.editor.useModal": "off",
   "workbench.editor.revealIfOpen": false,
   "workbench.editor.showTabs": "single",
   "workbench.layoutControl.enabled": false,

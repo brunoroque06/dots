@@ -1,18 +1,10 @@
 [[language]]
-name = "bash"
-formatter = { command = "shfmt" }
-
-[[language]]
 name = "css"
 formatter = { command = "prettier", args = ["--parser", "css"] }
 
 [[language]]
 name = "go"
 formatter = { command = "gofmt" }
-
-[[language]]
-name = "hcl"
-formatter = { command = "terraform", args = ["fmt", "-"] }
 
 [[language]]
 name = "html"

@@ -4,7 +4,7 @@ theme = "github_light_high_contrast"
 color-modes = true
 end-of-line-diagnostics = "hint"
 line-number = "relative"
-mouse = false
+mouse = true
 trim-trailing-whitespace = true
 
 [editor.cursor-shape]

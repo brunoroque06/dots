@@ -35,7 +35,7 @@ var _paths = $nil
 
 set-env BAT_STYLE plain
 set-env BAT_THEME ansi
-set-env EDITOR /opt/homebrew/bin/nvim
+set-env EDITOR /opt/homebrew/bin/hx
 set-env LESS '-i --incsearch -m'
 set-env PAGER /opt/homebrew/bin/less
 # set-env REQUESTS_CA_BUNDLE $E:HOME/.proxyman/proxyman-ca.pem # proxyman with python
