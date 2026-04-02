@@ -28,10 +28,10 @@ pager = less -R
 algorithm = histogram
 colorMoved = zebra
 renames = copy
-tool = nvim
+tool = code
 
-[difftool "nvim"]
-cmd = nvim -d $LOCAL $REMOTE
+[difftool "code"]
+cmd = code -d -w $LOCAL $REMOTE
 
 [filter "lfs"]
 required = true
@@ -47,10 +47,10 @@ defaultBranch = main
 
 [merge]
 conflictstyle = zdiff3
-tool = nvim
+tool = code
 
-[mergetool "nvim"]
-cmd = nvim -d $MERGED
+[mergetool "code"]
+cmd = code -m -w $REMOTE $LOCAL $BASE $MERGED
 keepBackup = false
 
 [pull]
