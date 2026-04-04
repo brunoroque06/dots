@@ -18,8 +18,14 @@ vim.opt.swapfile = false
 
 -- Fold
 vim.opt.foldenable = false
-vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
-vim.opt.foldmethod = "expr"
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = { "*.cs", "*.elv", "*.go", "*.lua", "*.py", "*.typ" },
+	callback = function()
+		vim.treesitter.start()
+		vim.wo[0][0].foldexpr = "v:lua.vim.treesitter.foldexpr()"
+		vim.wo[0][0].foldmethod = "expr"
+	end,
+})
 
 -- Indentation
 vim.opt.autoindent = true
@@ -88,63 +94,10 @@ vim.lsp.enable("ts_ls")
 vim.lsp.enable("tinymist")
 vim.lsp.enable("tombi")
 
-setup("nvim-treesitter", {
-	auto_install = true,
-	highlight = {
-		enable = true,
-	},
-	textobjects = {
-		move = {
-			enable = true,
-			set_jumps = true,
-			goto_next_start = {
-				["]a"] = "@parameter.inner",
-				["]c"] = "@conditional.outer",
-				["]f"] = "@function.outer",
-				["]l"] = "@loop.outer",
-				["]r"] = "@return.outer",
-			},
-			goto_previous_start = {
-				["[a"] = "@parameter.inner",
-				["[c"] = "@conditional.outer",
-				["[f"] = "@function.outer",
-				["[l"] = "@loop.outer",
-				["[r"] = "@return.outer",
-			},
-		},
-		select = {
-			enable = true,
-			lookahead = true,
-			keymaps = {
-				["aa"] = "@parameter.outer",
-				["ia"] = "@parameter.inner",
-				["ac"] = "@conditional.outer",
-				["ic"] = "@conditional.inner",
-				["af"] = "@function.outer",
-				["if"] = "@function.inner",
-				["al"] = "@loop.outer",
-				["il"] = "@loop.inner",
-			},
-		},
-		swap = {
-			enable = true,
-			swap_next = {
-				["]sa"] = "@parameter.inner",
-				["]sf"] = "@function.outer",
-			},
-			swap_previous = {
-				["[sa"] = "@parameter.inner",
-				["[sf"] = "@function.outer",
-			},
-		},
-	},
-})
-
 setup("mini.bracketed")
 setup("mini.completion")
 setup("mini.diff", { view = { style = "sign" } })
 setup("mini.extra")
-setup("mini.hues", { background = "#ffffff", foreground = "#000080", accent = "fg", saturation = "high" })
 setup("mini.icons")
 setup("mini.pairs")
 setup("mini.files")
@@ -181,6 +134,10 @@ setup("conform", {
 	},
 })
 
+vim.api.nvim_create_user_command("PackUpdate", function()
+	vim.pack.update()
+end, {})
+
 local d2_setup = function()
 	local cfg = vim.fn.stdpath("config") .. "/queries/d2"
 	vim.fn.system({ "rm", "-rf", cfg })
@@ -190,9 +147,176 @@ local d2_setup = function()
 end
 
 vim.api.nvim_create_user_command("D2Setup", d2_setup, {})
-vim.api.nvim_create_user_command("PackUpdate", function()
-	vim.pack.update()
-end, {})
+
+local select = require("nvim-treesitter-textobjects.select")
+local move = require("nvim-treesitter-textobjects.move")
+local swap = require("nvim-treesitter-textobjects.swap")
+
+require("nvim-treesitter-textobjects").setup({
+	select = { lookahead = true },
+	move = { set_jumps = true },
+})
+
+local ts_maps = {
+	{
+		{ "x", "o" },
+		"aa",
+		function()
+			select.select_textobject("@parameter.outer", "textobjects")
+		end,
+	},
+	{
+		{ "x", "o" },
+		"ia",
+		function()
+			select.select_textobject("@parameter.inner", "textobjects")
+		end,
+	},
+	{
+		{ "x", "o" },
+		"ac",
+		function()
+			select.select_textobject("@conditional.outer", "textobjects")
+		end,
+	},
+	{
+		{ "x", "o" },
+		"ic",
+		function()
+			select.select_textobject("@conditional.inner", "textobjects")
+		end,
+	},
+	{
+		{ "x", "o" },
+		"af",
+		function()
+			select.select_textobject("@function.outer", "textobjects")
+		end,
+	},
+	{
+		{ "x", "o" },
+		"if",
+		function()
+			select.select_textobject("@function.inner", "textobjects")
+		end,
+	},
+	{
+		{ "x", "o" },
+		"al",
+		function()
+			select.select_textobject("@loop.outer", "textobjects")
+		end,
+	},
+	{
+		{ "x", "o" },
+		"il",
+		function()
+			select.select_textobject("@loop.inner", "textobjects")
+		end,
+	},
+	{
+		{ "n", "x", "o" },
+		"]a",
+		function()
+			move.goto_next_start("@parameter.inner", "textobjects")
+		end,
+	},
+	{
+		{ "n", "x", "o" },
+		"]c",
+		function()
+			move.goto_next_start("@conditional.outer", "textobjects")
+		end,
+	},
+	{
+		{ "n", "x", "o" },
+		"]f",
+		function()
+			move.goto_next_start("@function.outer", "textobjects")
+		end,
+	},
+	{
+		{ "n", "x", "o" },
+		"]l",
+		function()
+			move.goto_next_start("@loop.outer", "textobjects")
+		end,
+	},
+	{
+		{ "n", "x", "o" },
+		"]r",
+		function()
+			move.goto_next_start("@return.outer", "textobjects")
+		end,
+	},
+	{
+		{ "n", "x", "o" },
+		"[a",
+		function()
+			move.goto_previous_start("@parameter.inner", "textobjects")
+		end,
+	},
+	{
+		{ "n", "x", "o" },
+		"[c",
+		function()
+			move.goto_previous_start("@conditional.outer", "textobjects")
+		end,
+	},
+	{
+		{ "n", "x", "o" },
+		"[f",
+		function()
+			move.goto_previous_start("@function.outer", "textobjects")
+		end,
+	},
+	{
+		{ "n", "x", "o" },
+		"[l",
+		function()
+			move.goto_previous_start("@loop.outer", "textobjects")
+		end,
+	},
+	{
+		{ "n", "x", "o" },
+		"[r",
+		function()
+			move.goto_previous_start("@return.outer", "textobjects")
+		end,
+	},
+	{
+		"n",
+		"]sa",
+		function()
+			swap.swap_next("@parameter.inner")
+		end,
+	},
+	{
+		"n",
+		"]sf",
+		function()
+			swap.swap_next("@function.outer")
+		end,
+	},
+	{
+		"n",
+		"[sa",
+		function()
+			swap.swap_previous("@parameter.inner")
+		end,
+	},
+	{
+		"n",
+		"[sf",
+		function()
+			swap.swap_previous("@function.outer")
+		end,
+	},
+}
+
+for _, km in ipairs(ts_maps) do
+	vim.keymap.set(km[1], km[2], km[3])
+end
 
 ---@param mode string
 ---@param lhs string
@@ -221,9 +345,9 @@ local function code_map(mode, lhs, cmds)
 end
 
 local binds = {
-	{ "i", "<c-f>", "<right>" },
-	{ "i", "<c-b>", "<left>" },
-	{ "i", "<c-k>", vim.lsp.buf.signature_help },
+	{ "i", "<c-f>",    "<right>" },
+	{ "i", "<c-b>",    "<left>" },
+	{ "i", "<c-k>",    vim.lsp.buf.signature_help },
 	{ "n", "[<space>", "O<esc>j" },
 	{ "n", "]<space>", "o<esc>k" },
 	{
@@ -233,8 +357,7 @@ local binds = {
 			require("conform").format({ async = true, lsp_fallback = true })
 		end,
 	},
-	{ "n", "cd", vim.lsp.buf.rename },
-	{ "n", "K", vim.lsp.buf.hover },
+	{ "n", "K",  vim.lsp.buf.hover },
 	{ "n", "g/", ":grep " },
 	{ "n", "gD", vim.lsp.buf.type_definition },
 	{ "n", "gd", vim.lsp.buf.definition },
@@ -274,33 +397,34 @@ local binds = {
 	{ "n", "<leader>f", require("mini.pick").builtin.files },
 	{ "n", "<leader>g", require("mini.pick").builtin.grep_live },
 	{ "n", "<leader>k", require("mini.extra").pickers.commands },
+	{ "n", "<leader>r", vim.lsp.buf.rename },
 
-	{ "n", "-", "workbench.view.explorer", true },
-	{ "n", "_", "workbench.view.scm", true },
-	{ "n", "<tab>", "editor.action.inlineSuggest.commit", true },
-	{ "n", "==", "editor.action.format", true },
-	{ "n", "=i", "editor.action.organizeImports", true },
-	{ "n", "[d", "editor.action.marker.prev", true },
-	{ "n", "]d", "editor.action.marker.next", true },
-	{ "n", "[q", "search.action.focusPreviousSearchResult", true },
-	{ "n", "]q", "search.action.focusNextSearchResult", true },
-	{ "n", "[h", "editor.action.dirtydiff.previous", true },
-	{ "n", "]h", "editor.action.dirtydiff.next", true },
+	{ "n", "-",         "workbench.view.explorer",                     true },
+	{ "n", "_",         "workbench.view.scm",                          true },
+	{ "n", "<tab>",     "editor.action.inlineSuggest.commit",          true },
+	{ "n", "==",        "editor.action.format",                        true },
+	{ "n", "=i",        "editor.action.organizeImports",               true },
+	{ "n", "[g",        "editor.action.marker.prev",                   true },
+	{ "n", "]g",        "editor.action.marker.next",                   true },
+	{ "n", "[q",        "search.action.focusPreviousSearchResult",     true },
+	{ "n", "]q",        "search.action.focusNextSearchResult",         true },
+	{ "n", "[h",        "editor.action.dirtydiff.previous",            true },
+	{ "n", "]h",        "editor.action.dirtydiff.next",                true },
 	{ "n", "<leader>-", "workbench.files.action.focusOpenEditorsView", true },
-	{ "n", "<leader>b", "editor.debug.action.toggleBreakpoint", true },
-	{ "n", "<leader>d", "git.openChange", true },
-	{ "v", "gh", "git.diff.stageSelection", true },
-	{ "v", "gH", "git.revertSelectedRanges", true },
-	{ "n", "z1", "editor.foldLevel1", true },
-	{ "n", "z2", "editor.foldLevel2", true },
-	{ "n", "z3", "editor.foldLevel3", true },
-	{ "n", "zM", "editor.foldAll", true },
-	{ "n", "zR", "editor.unfoldAll", true },
-	{ "n", "zc", "editor.fold", true },
-	{ "n", "zC", "editor.foldRecursively", true },
-	{ "n", "zo", "editor.unfold", true },
-	{ "n", "zO", "editor.unfoldRecursively", true },
-	{ "n", "za", "editor.toggleFold", true },
+	{ "n", "<leader>b", "editor.debug.action.toggleBreakpoint",        true },
+	{ "n", "<leader>d", "git.openChange",                              true },
+	{ "v", "gh",        "git.diff.stageSelection",                     true },
+	{ "v", "gH",        "git.revertSelectedRanges",                    true },
+	{ "n", "z1",        "editor.foldLevel1",                           true },
+	{ "n", "z2",        "editor.foldLevel2",                           true },
+	{ "n", "z3",        "editor.foldLevel3",                           true },
+	{ "n", "zM",        "editor.foldAll",                              true },
+	{ "n", "zR",        "editor.unfoldAll",                            true },
+	{ "n", "zc",        "editor.fold",                                 true },
+	{ "n", "zC",        "editor.foldRecursively",                      true },
+	{ "n", "zo",        "editor.unfold",                               true },
+	{ "n", "zO",        "editor.unfoldRecursively",                    true },
+	{ "n", "za",        "editor.toggleFold",                           true },
 }
 
 for _, b in ipairs(binds) do
