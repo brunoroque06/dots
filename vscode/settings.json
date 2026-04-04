@@ -142,6 +142,6 @@
   "workbench.notifications.position": "top-right",
   "workbench.panel.showLabels": false,
   "workbench.startupEditor": "none",
-  "workbench.tree.indent": 15,
+  "workbench.tree.indent": 8,
   "workbench.tree.renderIndentGuides": "always"
 }

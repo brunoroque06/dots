@@ -200,13 +200,13 @@
     "when": "editorTextFocus && editorLangId == 'sql'"
   },
   {
-    "command": "editor.action.marker.next",
-    "key": "] d",
+    "command": "editor.action.marker.prev",
+    "key": "[ d",
     "when": "editorTextFocus && dance.mode == 'helix/normal'"
   },
   {
-    "command": "editor.action.marker.prev",
-    "key": "[ d",
+    "command": "editor.action.marker.next",
+    "key": "] d",
     "when": "editorTextFocus && dance.mode == 'helix/normal'"
   },
   {
@@ -230,13 +230,13 @@
     "when": "editorTextFocus && dance.mode == 'helix/normal'"
   },
   {
-    "command": "dance.edit.newLine.below",
-    "key": "] space",
+    "command": "dance.edit.newLine.above",
+    "key": "[ space",
     "when": "editorTextFocus && dance.mode == 'helix/normal'"
   },
   {
-    "command": "dance.edit.newLine.above",
-    "key": "[ space",
+    "command": "dance.edit.newLine.below",
+    "key": "] space",
     "when": "editorTextFocus && dance.mode == 'helix/normal'"
   },
   {
