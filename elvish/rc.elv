@@ -2,6 +2,7 @@ use file
 use math
 use path
 use platform
+use os
 use re
 use readline-binding
 use str
@@ -125,15 +126,15 @@ set edit:completion:arg-completer[az-act-set] = { |@args|
 
 # Command
 fn cmd-edit {
-	var tmp = (path:temp-file '*.elv')
+	var tmp = (os:temp-file elvcmd)
 	print $edit:current-command > $tmp
 	try {
 		$E:EDITOR $tmp[name] <$path:dev-tty >$path:dev-tty 2>&1
 		set edit:current-command = (slurp < $tmp[name] | str:trim-right (one) "\n")
-	} catch {
+	} finally {
 		file:close $tmp
+	 	rm $tmp[name]
 	}
-	rm $tmp[name]
 }
 
 # D2

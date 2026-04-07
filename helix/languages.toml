@@ -3,6 +3,16 @@ name = "css"
 formatter = { command = "prettier", args = ["--parser", "css"] }
 
 [[language]]
+name = "d2"
+scope = "source.d2"
+file-types = ["d2"]
+formatter = { command = "elvish", args = ["-c", "var tmp = (mktemp d2fmt.XXXX); try { cat > $tmp; d2 fmt $tmp; cat $tmp } finally { rm $tmp }"] }
+
+[[grammar]]
+source = { git = "https://github.com/ravsii/tree-sitter-d2", rev = "main" }
+name = "d2"
+
+[[language]]
 name = "go"
 formatter = { command = "gofmt" }
 
@@ -25,7 +35,7 @@ formatter = { command = "prettier", args = ["--parser", "markdown"] }
 [[language]]
 name = "python"
 formatter = { command = "ruff", args = ["format", "-"] }
-language-servers = ["pyrefly", "ruff"]
+language-servers = ["pyright", "ruff"]
 
 [[language]]
 name = "rust"
