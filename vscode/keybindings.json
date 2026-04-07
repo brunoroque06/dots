@@ -170,6 +170,21 @@
     "when": "terminalFocus"
   },
   {
+    "command": "workbench.action.navigateBack",
+    "key": "ctrl+o",
+    "when": "editorTextFocus && dance.mode == 'helix/normal'"
+  },
+  {
+    "command": "workbench.action.navigateForward",
+    "key": "ctrl+i",
+    "when": "editorTextFocus && dance.mode == 'helix/normal'"
+  },
+  {
+    "command": "editor.action.commentLine",
+    "key": "ctrl+c",
+    "when": "editorTextFocus && dance.mode == 'helix/normal'"
+  },
+  {
     "command": "editor.action.triggerSuggest",
     "key": "ctrl+x",
     "when": "editorFocus"
@@ -180,13 +195,63 @@
     "when": "editorFocus"
   },
   {
-    "command": "workbench.action.splitEditorRight",
-    "key": "ctrl+w v",
+    "command": "workbench.action.focusLeftGroup",
+    "key": "ctrl+w h",
+    "when": "editorTextFocus && dance.mode == 'helix/normal'"
+  },
+  {
+    "command": "workbench.action.moveActiveEditorGroupLeft",
+    "key": "ctrl+w shift+h",
+    "when": "editorTextFocus && dance.mode == 'helix/normal'"
+  },
+  {
+    "command": "workbench.action.focusBelowGroup",
+    "key": "ctrl+w j",
+    "when": "editorTextFocus && dance.mode == 'helix/normal'"
+  },
+  {
+    "command": "workbench.action.moveActiveEditorGroupDown",
+    "key": "ctrl+w shift+j",
+    "when": "editorTextFocus && dance.mode == 'helix/normal'"
+  },
+  {
+    "command": "workbench.action.focusAboveGroup",
+    "key": "ctrl+w k",
+    "when": "editorTextFocus && dance.mode == 'helix/normal'"
+  },
+  {
+    "command": "workbench.action.moveActiveEditorGroupUp",
+    "key": "ctrl+w shift+k",
+    "when": "editorTextFocus && dance.mode == 'helix/normal'"
+  },
+  {
+    "command": "workbench.action.focusRightGroup",
+    "key": "ctrl+w l",
+    "when": "editorTextFocus && dance.mode == 'helix/normal'"
+  },
+  {
+    "command": "workbench.action.moveActiveEditorGroupRight",
+    "key": "ctrl+w shift+l",
+    "when": "editorTextFocus && dance.mode == 'helix/normal'"
+  },
+  {
+    "command": "workbench.action.closeEditorsInOtherGroups",
+    "key": "ctrl+w o",
     "when": "editorTextFocus && dance.mode == 'helix/normal'"
   },
   {
     "command": "workbench.action.splitEditorDown",
-    "key": "ctrl+w h",
+    "key": "ctrl+w s",
+    "when": "editorTextFocus && dance.mode == 'helix/normal'"
+  },
+  {
+    "command": "workbench.action.closeEditorsAndGroup",
+    "key": "ctrl+w q",
+    "when": "editorTextFocus && dance.mode == 'helix/normal'"
+  },
+  {
+    "command": "workbench.action.splitEditorRight",
+    "key": "ctrl+w v",
     "when": "editorTextFocus && dance.mode == 'helix/normal'"
   },
   {
@@ -250,11 +315,6 @@
     "when": "editorTextFocus && dance.mode == 'helix/normal'"
   },
   {
-    "command": "editor.action.showHover",
-    "key": "shift+k",
-    "when": "editorTextFocus && dance.mode == 'helix/normal'"
-  },
-  {
     "command": "editor.action.inlineSuggest.commit",
     "key": "tab",
     "when": "editorTextFocus && dance.mode == 'helix/normal'"
@@ -277,6 +337,11 @@
   {
     "command": "git.openChange",
     "key": "space d",
+    "when": "editorTextFocus && dance.mode == 'helix/normal'"
+  },
+  {
+    "command": "editor.action.showHover",
+    "key": "space k",
     "when": "editorTextFocus && dance.mode == 'helix/normal'"
   },
   {
