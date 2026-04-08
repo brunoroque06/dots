@@ -17,11 +17,22 @@
   "chat.editor.fontSize": 14,
   "chat.mcp.gallery.enabled": true,
   "chat.plugins.enabled": true,
-  "chat.plugins.marketplaces": ["dotnet/skills"],
+  "chat.plugins.marketplaces": [
+    "dotnet/skills"
+  ],
   "containers.containerClient": "com.microsoft.visualstudio.containers.podman",
   "containers.orchestratorClient": "com.microsoft.visualstudio.orchestrators.podmancompose",
   "D2.execPath": "/opt/homebrew/bin/d2",
-  "dance.smartCase": true,
+  "dance.menus": {
+    "goto": {
+      "items": {
+        "i": {
+          "command": "editor.action.goToImplementation",
+          "text": "to implementation"
+        }
+      }
+    }
+  },
   "dance.modes": {
     "helix/normal": {
       "decorations": {
@@ -29,6 +40,7 @@
       }
     }
   },
+  "dance.smartCase": true,
   "debug.allowBreakpointsEverywhere": true,
   "debug.inlineValues": "on",
   "debug.internalConsoleOptions": "neverOpen",
@@ -135,9 +147,9 @@
   "workbench.editor.enablePreview": false,
   "workbench.editor.limit.enabled": true,
   "workbench.editor.limit.value": 8,
-  "workbench.editor.useModal": "off",
   "workbench.editor.revealIfOpen": false,
   "workbench.editor.showTabs": "single",
+  "workbench.editor.useModal": "off",
   "workbench.layoutControl.enabled": false,
   "workbench.notifications.position": "top-right",
   "workbench.panel.showLabels": false,

@@ -344,6 +344,11 @@
     "key": "space k",
     "when": "editorTextFocus && dance.mode == 'helix/normal'"
   },
+  // {
+  //   "command": "editor.action.goToImplementation",
+  //   "key": "g i",
+  //   "when": "editorTextFocus && dance.mode == 'helix/normal'"
+  // },
   {
     "command": "editor.foldLevel1",
     "key": "z 1",
