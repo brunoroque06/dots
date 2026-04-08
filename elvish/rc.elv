@@ -267,20 +267,11 @@ fn py-d {
 	set _paths = $nil
 	unset-env PYTHONPATH
 }
-fn py-re-ls {
-	put requirements*.txt
-}
 fn py-su {
 	python3 -m venv .venv
 	py-a
 	pip install --upgrade pip
-	py-re-ls | each { |r| pip install -r $r }
-}
-fn py-up {
-	py-a
-	pip install --upgrade pip pur
-	py-re-ls | each { |r| pur -r $r; pip install -r $r }
-	py-d
+	pip install .
 }
 set edit:completion:arg-completer[pytest] = { |@args|
 	pytest --collect-only -q ^
