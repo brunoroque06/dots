@@ -129,11 +129,11 @@ fn cmd-edit {
 	var tmp = (os:temp-file elvcmd)
 	print $edit:current-command > $tmp
 	try {
-		$E:EDITOR $tmp[name] <$path:dev-tty >$path:dev-tty 2>&1
+		$E:EDITOR $tmp[name] <$os:dev-tty >$os:dev-tty 2>&1
 		set edit:current-command = (slurp < $tmp[name] | str:trim-right (one) "\n")
 	} finally {
 		file:close $tmp
-	 	rm $tmp[name]
+		rm $tmp[name]
 	}
 }
 
