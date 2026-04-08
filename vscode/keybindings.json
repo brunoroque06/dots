@@ -201,8 +201,8 @@
   },
   {
     "command": "editor.action.triggerSuggest",
-    "key": "ctrl+x && dance.mode == 'helix/insert'",
-    "when": "editorFocus"
+    "key": "ctrl+x",
+    "when": "editorFocus && dance.mode == 'helix/insert'"
   },
   {
     "command": "acceptSelectedSuggestion",
