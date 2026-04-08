@@ -45,6 +45,11 @@
     "key": "cmd+g"
   },
   {
+    "command": "workbench.action.focusActiveEditorGroup",
+    "key": "shift+escape",
+    "when": "!editorTextFocus"
+  },
+  {
     "args": {
       "commands": [
         "notifications.clearAll",
@@ -354,11 +359,6 @@
     "key": "space k",
     "when": "editorTextFocus && dance.mode == 'helix/normal'"
   },
-  // {
-  //   "command": "editor.action.goToImplementation",
-  //   "key": "g i",
-  //   "when": "editorTextFocus && dance.mode == 'helix/normal'"
-  // },
   {
     "command": "editor.foldLevel1",
     "key": "z 1",
