@@ -170,6 +170,16 @@
     "when": "terminalFocus"
   },
   {
+    "command": "editor.emmet.action.incrementNumberByOne",
+    "key": "ctrl+a",
+    "when": "editorTextFocus && dance.mode == 'helix/normal'"
+  },
+  {
+    "command": "editor.emmet.action.decrementNumberByOne",
+    "key": "ctrl+x",
+    "when": "editorTextFocus && dance.mode == 'helix/normal'"
+  },
+  {
     "command": "workbench.action.navigateBack",
     "key": "ctrl+o",
     "when": "editorTextFocus && dance.mode == 'helix/normal'"
@@ -186,7 +196,7 @@
   },
   {
     "command": "editor.action.triggerSuggest",
-    "key": "ctrl+x",
+    "key": "ctrl+x && dance.mode == 'helix/insert'",
     "when": "editorFocus"
   },
   {
