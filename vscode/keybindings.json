@@ -1,23 +1,66 @@
 [
   {
-    "command": "workbench.action.openSettingsJson",
-    "key": "cmd+,"
+    "command": "acceptSelectedSuggestion",
+    "key": "ctrl+y",
+    "when": "editorFocus"
   },
   {
-    "command": "workbench.action.openGlobalKeybindingsFile",
-    "key": "cmd+shift+,"
+    "command": "actions.find",
+    "key": "cmd+f"
   },
   {
-    "command": "workbench.action.navigateBack",
-    "key": "cmd+["
+    "command": "breadcrumbs.focusAndSelect",
+    "key": "cmd+l"
   },
   {
-    "command": "workbench.action.navigateForward",
-    "key": "cmd+]"
+    "command": "dance.edit.newLine.above",
+    "key": "[ space",
+    "when": "editorTextFocus && dance.mode == 'helix/normal'"
   },
   {
-    "command": "workbench.action.showAllEditorsByMostRecentlyUsed",
-    "key": "cmd+b"
+    "command": "dance.edit.newLine.below",
+    "key": "] space",
+    "when": "editorTextFocus && dance.mode == 'helix/normal'"
+  },
+  {
+    "command": "editor.action.commentLine",
+    "key": "ctrl+c",
+    "when": "editorTextFocus && dance.mode == 'helix/normal'"
+  },
+  {
+    "command": "editor.action.dirtydiff.next",
+    "key": "] g",
+    "when": "editorTextFocus && dance.mode == 'helix/normal'"
+  },
+  {
+    "command": "editor.action.dirtydiff.previous",
+    "key": "[ g",
+    "when": "editorTextFocus && dance.mode == 'helix/normal'"
+  },
+  {
+    "command": "editor.action.formatDocument",
+    "key": "= =",
+    "when": "editorTextFocus && dance.mode == 'helix/normal'"
+  },
+  {
+    "command": "editor.action.inlineSuggest.commit",
+    "key": "tab",
+    "when": "editorTextFocus && dance.mode == 'helix/normal'"
+  },
+  {
+    "command": "editor.action.marker.next",
+    "key": "] d",
+    "when": "editorTextFocus && dance.mode == 'helix/normal'"
+  },
+  {
+    "command": "editor.action.marker.prev",
+    "key": "[ d",
+    "when": "editorTextFocus && dance.mode == 'helix/normal'"
+  },
+  {
+    "command": "editor.action.organizeImports",
+    "key": "= i",
+    "when": "editorTextFocus && dance.mode == 'helix/normal'"
   },
   {
     "command": "editor.action.quickFix",
@@ -29,25 +72,97 @@
     "when": "editorTextFocus"
   },
   {
-    "command": "actions.find",
-    "key": "cmd+f"
-  },
-  {
-    "command": "workbench.action.findInFiles",
-    "key": "cmd+shift+f"
+    "command": "editor.action.showHover",
+    "key": "space k",
+    "when": "editorTextFocus && dance.mode == 'helix/normal'"
   },
   {
     "command": "editor.action.startFindReplaceAction",
     "key": "alt+cmd+f"
   },
   {
-    "command": "workbench.view.scm",
-    "key": "cmd+g"
+    "command": "editor.action.startFindReplaceAction",
+    "key": "cmd+r"
   },
   {
-    "command": "workbench.action.focusActiveEditorGroup",
-    "key": "shift+escape",
-    "when": "!editorTextFocus"
+    "command": "editor.action.triggerSuggest",
+    "key": "ctrl+x",
+    "when": "editorFocus && dance.mode == 'helix/insert'"
+  },
+  {
+    "command": "editor.debug.action.toggleBreakpoint",
+    "key": "space b",
+    "when": "editorTextFocus && dance.mode == 'helix/normal'"
+  },
+  {
+    "command": "editor.emmet.action.decrementNumberByOne",
+    "key": "ctrl+x",
+    "when": "editorTextFocus && dance.mode == 'helix/normal'"
+  },
+  {
+    "command": "editor.emmet.action.incrementNumberByOne",
+    "key": "ctrl+a",
+    "when": "editorTextFocus && dance.mode == 'helix/normal'"
+  },
+  {
+    "command": "editor.fold",
+    "key": "z c",
+    "when": "editorTextFocus && dance.mode == 'helix/normal'"
+  },
+  {
+    "command": "editor.foldAll",
+    "key": "z shift+m",
+    "when": "editorTextFocus && dance.mode == 'helix/normal'"
+  },
+  {
+    "command": "editor.foldLevel1",
+    "key": "z 1",
+    "when": "editorTextFocus && dance.mode == 'helix/normal'"
+  },
+  {
+    "command": "editor.foldLevel2",
+    "key": "z 2",
+    "when": "editorTextFocus && dance.mode == 'helix/normal'"
+  },
+  {
+    "command": "editor.foldLevel3",
+    "key": "z 3",
+    "when": "editorTextFocus && dance.mode == 'helix/normal'"
+  },
+  {
+    "command": "editor.foldRecursively",
+    "key": "z shift+c",
+    "when": "editorTextFocus && dance.mode == 'helix/normal'"
+  },
+  {
+    "command": "editor.toggleFold",
+    "key": "z a",
+    "when": "editorTextFocus && dance.mode == 'helix/normal'"
+  },
+  {
+    "command": "editor.unfold",
+    "key": "z o",
+    "when": "editorTextFocus && dance.mode == 'helix/normal'"
+  },
+  {
+    "command": "editor.unfoldAll",
+    "key": "z shift+r",
+    "when": "editorTextFocus && dance.mode == 'helix/normal'"
+  },
+  {
+    "command": "editor.unfoldRecursively",
+    "key": "z shift+o",
+    "when": "editorTextFocus && dance.mode == 'helix/normal'"
+  },
+  {
+    "command": "git.openChange",
+    "key": "space d",
+    "when": "editorTextFocus && dance.mode == 'helix/normal'"
+  },
+  {
+    "command": "mssql.runQuery",
+    "key": "shift+enter",
+    "when": "editorTextFocus && editorLangId == 'sql'"
   },
   {
     "args": {
@@ -84,22 +199,6 @@
     "when": "inChat"
   },
   {
-    "command": "breadcrumbs.focusAndSelect",
-    "key": "cmd+l"
-  },
-  {
-    "command": "workbench.action.quickOpen",
-    "key": "cmd+o"
-  },
-  {
-    "command": "editor.action.startFindReplaceAction",
-    "key": "cmd+r"
-  },
-  {
-    "command": "workbench.action.replaceInFiles",
-    "key": "cmd+shift+r"
-  },
-  {
     "args": {
       "commands": [
         "workbench.action.toggleMaximizedPanel",
@@ -123,17 +222,39 @@
     "when": "terminalFocus"
   },
   {
-    "command": "workbench.action.gotoSymbol",
-    "key": "cmd+s"
+    "command": "search.action.focusNextSearchResult",
+    "key": "] q",
+    "when": "editorTextFocus && dance.mode == 'helix/normal'"
   },
   {
-    "command": "workbench.action.showAllSymbols",
-    "key": "cmd+shift+s"
+    "command": "search.action.focusPreviousSearchResult",
+    "key": "[ q",
+    "when": "editorTextFocus && dance.mode == 'helix/normal'"
+  },
+  {
+    "command": "workbench.action.closeEditorsAndGroup",
+    "key": "ctrl+w q",
+    "when": "editorTextFocus && dance.mode == 'helix/normal'"
+  },
+  {
+    "command": "workbench.action.closeEditorsInOtherGroups",
+    "key": "ctrl+w o",
+    "when": "editorTextFocus && dance.mode == 'helix/normal'"
   },
   {
     "command": "workbench.action.debug.continue",
     "key": "cmd+left",
     "when": "inDebugMode"
+  },
+  {
+    "command": "workbench.action.debug.restart",
+    "key": "cmd+r",
+    "when": "inDebugMode"
+  },
+  {
+    "command": "workbench.action.debug.start",
+    "key": "cmd+d",
+    "when": "!inDebugMode"
   },
   {
     "command": "workbench.action.debug.stepInto",
@@ -156,78 +277,8 @@
     "when": "inDebugMode"
   },
   {
-    "command": "workbench.action.debug.start",
-    "key": "cmd+d",
-    "when": "!inDebugMode"
-  },
-  {
-    "command": "workbench.action.debug.restart",
-    "key": "cmd+r",
-    "when": "inDebugMode"
-  },
-  {
-    "command": "workbench.action.showCommands",
-    "key": "cmd+k"
-  },
-  {
-    "command": "workbench.action.terminal.split",
-    "key": "cmd+d",
-    "when": "terminalFocus"
-  },
-  {
-    "command": "editor.emmet.action.incrementNumberByOne",
-    "key": "ctrl+a",
-    "when": "editorTextFocus && dance.mode == 'helix/normal'"
-  },
-  {
-    "command": "editor.emmet.action.decrementNumberByOne",
-    "key": "ctrl+x",
-    "when": "editorTextFocus && dance.mode == 'helix/normal'"
-  },
-  {
-    "command": "workbench.action.navigateBack",
-    "key": "ctrl+o",
-    "when": "editorTextFocus && dance.mode == 'helix/normal'"
-  },
-  {
-    "command": "workbench.action.navigateForward",
-    "key": "ctrl+i",
-    "when": "editorTextFocus && dance.mode == 'helix/normal'"
-  },
-  {
-    "command": "editor.action.commentLine",
-    "key": "ctrl+c",
-    "when": "editorTextFocus && dance.mode == 'helix/normal'"
-  },
-  {
-    "command": "editor.action.triggerSuggest",
-    "key": "ctrl+x",
-    "when": "editorFocus && dance.mode == 'helix/insert'"
-  },
-  {
-    "command": "acceptSelectedSuggestion",
-    "key": "ctrl+y",
-    "when": "editorFocus"
-  },
-  {
-    "command": "workbench.action.focusLeftGroup",
-    "key": "ctrl+w h",
-    "when": "editorTextFocus && dance.mode == 'helix/normal'"
-  },
-  {
-    "command": "workbench.action.moveActiveEditorGroupLeft",
-    "key": "ctrl+w shift+h",
-    "when": "editorTextFocus && dance.mode == 'helix/normal'"
-  },
-  {
-    "command": "workbench.action.focusBelowGroup",
-    "key": "ctrl+w j",
-    "when": "editorTextFocus && dance.mode == 'helix/normal'"
-  },
-  {
-    "command": "workbench.action.moveActiveEditorGroupDown",
-    "key": "ctrl+w shift+j",
-    "when": "editorTextFocus && dance.mode == 'helix/normal'"
+    "command": "workbench.action.findInFiles",
+    "key": "cmd+shift+f"
   },
   {
     "command": "workbench.action.focusAboveGroup",
@@ -235,38 +286,18 @@
     "when": "editorTextFocus && dance.mode == 'helix/normal'"
   },
   {
-    "command": "workbench.action.moveActiveEditorGroupUp",
-    "key": "ctrl+w shift+k",
+    "command": "workbench.action.focusActiveEditorGroup",
+    "key": "shift+escape",
+    "when": "!editorTextFocus"
+  },
+  {
+    "command": "workbench.action.focusBelowGroup",
+    "key": "ctrl+w j",
     "when": "editorTextFocus && dance.mode == 'helix/normal'"
   },
   {
-    "command": "workbench.action.focusRightGroup",
-    "key": "ctrl+w l",
-    "when": "editorTextFocus && dance.mode == 'helix/normal'"
-  },
-  {
-    "command": "workbench.action.moveActiveEditorGroupRight",
-    "key": "ctrl+w shift+l",
-    "when": "editorTextFocus && dance.mode == 'helix/normal'"
-  },
-  {
-    "command": "workbench.action.closeEditorsInOtherGroups",
-    "key": "ctrl+w o",
-    "when": "editorTextFocus && dance.mode == 'helix/normal'"
-  },
-  {
-    "command": "workbench.action.splitEditorDown",
-    "key": "ctrl+w s",
-    "when": "editorTextFocus && dance.mode == 'helix/normal'"
-  },
-  {
-    "command": "workbench.action.closeEditorsAndGroup",
-    "key": "ctrl+w q",
-    "when": "editorTextFocus && dance.mode == 'helix/normal'"
-  },
-  {
-    "command": "workbench.action.splitEditorRight",
-    "key": "ctrl+w v",
+    "command": "workbench.action.focusLeftGroup",
+    "key": "ctrl+w h",
     "when": "editorTextFocus && dance.mode == 'helix/normal'"
   },
   {
@@ -275,64 +306,94 @@
     "when": "editorTextFocus && dance.mode == 'helix/normal'"
   },
   {
-    "command": "mssql.runQuery",
-    "key": "shift+enter",
-    "when": "editorTextFocus && editorLangId == 'sql'"
-  },
-  {
-    "command": "editor.action.marker.prev",
-    "key": "[ d",
+    "command": "workbench.action.focusRightGroup",
+    "key": "ctrl+w l",
     "when": "editorTextFocus && dance.mode == 'helix/normal'"
   },
   {
-    "command": "editor.action.marker.next",
-    "key": "] d",
+    "command": "workbench.action.gotoSymbol",
+    "key": "cmd+s"
+  },
+  {
+    "command": "workbench.action.moveActiveEditorGroupDown",
+    "key": "ctrl+w shift+j",
     "when": "editorTextFocus && dance.mode == 'helix/normal'"
   },
   {
-    "command": "editor.action.dirtydiff.previous",
-    "key": "[ g",
+    "command": "workbench.action.moveActiveEditorGroupLeft",
+    "key": "ctrl+w shift+h",
     "when": "editorTextFocus && dance.mode == 'helix/normal'"
   },
   {
-    "command": "editor.action.dirtydiff.next",
-    "key": "] g",
+    "command": "workbench.action.moveActiveEditorGroupRight",
+    "key": "ctrl+w shift+l",
     "when": "editorTextFocus && dance.mode == 'helix/normal'"
   },
   {
-    "command": "search.action.focusPreviousSearchResult",
-    "key": "[ q",
+    "command": "workbench.action.moveActiveEditorGroupUp",
+    "key": "ctrl+w shift+k",
     "when": "editorTextFocus && dance.mode == 'helix/normal'"
   },
   {
-    "command": "search.action.focusNextSearchResult",
-    "key": "] q",
+    "command": "workbench.action.navigateBack",
+    "key": "cmd+["
+  },
+  {
+    "command": "workbench.action.navigateBack",
+    "key": "ctrl+o",
     "when": "editorTextFocus && dance.mode == 'helix/normal'"
   },
   {
-    "command": "dance.edit.newLine.above",
-    "key": "[ space",
+    "command": "workbench.action.navigateForward",
+    "key": "cmd+]"
+  },
+  {
+    "command": "workbench.action.navigateForward",
+    "key": "ctrl+i",
     "when": "editorTextFocus && dance.mode == 'helix/normal'"
   },
   {
-    "command": "dance.edit.newLine.below",
-    "key": "] space",
+    "command": "workbench.action.openGlobalKeybindingsFile",
+    "key": "cmd+shift+,"
+  },
+  {
+    "command": "workbench.action.openSettingsJson",
+    "key": "cmd+,"
+  },
+  {
+    "command": "workbench.action.quickOpen",
+    "key": "cmd+o"
+  },
+  {
+    "command": "workbench.action.replaceInFiles",
+    "key": "cmd+shift+r"
+  },
+  {
+    "command": "workbench.action.showAllEditorsByMostRecentlyUsed",
+    "key": "cmd+b"
+  },
+  {
+    "command": "workbench.action.showAllSymbols",
+    "key": "cmd+shift+s"
+  },
+  {
+    "command": "workbench.action.showCommands",
+    "key": "cmd+k"
+  },
+  {
+    "command": "workbench.action.splitEditorDown",
+    "key": "ctrl+w s",
     "when": "editorTextFocus && dance.mode == 'helix/normal'"
   },
   {
-    "command": "editor.action.formatDocument",
-    "key": "= =",
+    "command": "workbench.action.splitEditorRight",
+    "key": "ctrl+w v",
     "when": "editorTextFocus && dance.mode == 'helix/normal'"
   },
   {
-    "command": "editor.action.organizeImports",
-    "key": "= i",
-    "when": "editorTextFocus && dance.mode == 'helix/normal'"
-  },
-  {
-    "command": "editor.action.inlineSuggest.commit",
-    "key": "tab",
-    "when": "editorTextFocus && dance.mode == 'helix/normal'"
+    "command": "workbench.action.terminal.split",
+    "key": "cmd+d",
+    "when": "terminalFocus"
   },
   {
     "command": "workbench.view.explorer",
@@ -341,72 +402,11 @@
   },
   {
     "command": "workbench.view.scm",
+    "key": "cmd+g"
+  },
+  {
+    "command": "workbench.view.scm",
     "key": "shift+-",
-    "when": "editorTextFocus && dance.mode == 'helix/normal'"
-  },
-  {
-    "command": "editor.debug.action.toggleBreakpoint",
-    "key": "space b",
-    "when": "editorTextFocus && dance.mode == 'helix/normal'"
-  },
-  {
-    "command": "git.openChange",
-    "key": "space d",
-    "when": "editorTextFocus && dance.mode == 'helix/normal'"
-  },
-  {
-    "command": "editor.action.showHover",
-    "key": "space k",
-    "when": "editorTextFocus && dance.mode == 'helix/normal'"
-  },
-  {
-    "command": "editor.foldLevel1",
-    "key": "z 1",
-    "when": "editorTextFocus && dance.mode == 'helix/normal'"
-  },
-  {
-    "command": "editor.foldLevel2",
-    "key": "z 2",
-    "when": "editorTextFocus && dance.mode == 'helix/normal'"
-  },
-  {
-    "command": "editor.foldLevel3",
-    "key": "z 3",
-    "when": "editorTextFocus && dance.mode == 'helix/normal'"
-  },
-  {
-    "command": "editor.foldAll",
-    "key": "z shift+m",
-    "when": "editorTextFocus && dance.mode == 'helix/normal'"
-  },
-  {
-    "command": "editor.unfoldAll",
-    "key": "z shift+r",
-    "when": "editorTextFocus && dance.mode == 'helix/normal'"
-  },
-  {
-    "command": "editor.fold",
-    "key": "z c",
-    "when": "editorTextFocus && dance.mode == 'helix/normal'"
-  },
-  {
-    "command": "editor.foldRecursively",
-    "key": "z shift+c",
-    "when": "editorTextFocus && dance.mode == 'helix/normal'"
-  },
-  {
-    "command": "editor.unfold",
-    "key": "z o",
-    "when": "editorTextFocus && dance.mode == 'helix/normal'"
-  },
-  {
-    "command": "editor.unfoldRecursively",
-    "key": "z shift+o",
-    "when": "editorTextFocus && dance.mode == 'helix/normal'"
-  },
-  {
-    "command": "editor.toggleFold",
-    "key": "z a",
     "when": "editorTextFocus && dance.mode == 'helix/normal'"
   }
 ]
