@@ -67,6 +67,11 @@
     "key": "cmd+."
   },
   {
+    "command": "editor.action.rename",
+    "key": "space r",
+    "when": "editorTextFocus && dance.mode == 'helix/normal'"
+  },
+  {
     "command": "editor.action.showContextMenu",
     "key": "cmd+enter",
     "when": "editorTextFocus"
@@ -279,6 +284,11 @@
   {
     "command": "workbench.action.findInFiles",
     "key": "cmd+shift+f"
+  },
+  {
+    "command": "workbench.action.findInFiles",
+    "key": "space /",
+    "when": "editorTextFocus && dance.mode == 'helix/normal'"
   },
   {
     "command": "workbench.action.focusAboveGroup",
