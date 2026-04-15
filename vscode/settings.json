@@ -24,6 +24,10 @@
   "dance.menus": {
     "goto": {
       "items": {
+        "f": {
+          "command": "editor.action.openLink",
+          "text": "to url"
+        },
         "i": {
           "command": "editor.action.goToImplementation",
           "text": "to implementation"
