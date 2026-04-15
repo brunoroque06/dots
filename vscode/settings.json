@@ -81,7 +81,9 @@
   "files.trimTrailingWhitespace": true,
   "git.blame.editorDecoration.enabled": false,
   "git.blame.ignoreWhitespace": true,
-  "git.openRepositoryInParentFolders": "never",
+  "git.detectWorktrees": true,
+  "git.detectWorktreesLimit": 8,
+  "git.openRepositoryInParentFolders": "prompt",
   "github.copilot.enable": {
     "editor": true,
     "inlineSuggest": true
