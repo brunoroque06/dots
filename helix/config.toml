@@ -23,6 +23,6 @@ C-f = "move_char_right"
 C-x = "completion"
 
 [keys.normal]
-"=" = { "=" = ":fmt" }
+" " = { "=" = ":format" }
 "]" = { "b" = ":buffer-next" }
 "[" = { "b" = ":buffer-previous" }
