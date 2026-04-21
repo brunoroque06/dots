@@ -39,7 +39,12 @@
   },
   {
     "command": "editor.action.formatDocument",
-    "key": "= =",
+    "key": "space =",
+    "when": "editorTextFocus && dance.mode == 'helix/normal'"
+  },
+  {
+    "command": "editor.action.formatSelection",
+    "key": "=",
     "when": "editorTextFocus && dance.mode == 'helix/normal'"
   },
   {
@@ -59,7 +64,7 @@
   },
   {
     "command": "editor.action.organizeImports",
-    "key": "= i",
+    "key": "space i",
     "when": "editorTextFocus && dance.mode == 'helix/normal'"
   },
   {
