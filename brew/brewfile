@@ -1,6 +1,7 @@
 tap "hashicorp/tap"
 
 brew "angular-cli"
+brew "apfel"
 brew "azure-cli"
 brew "bash"
 brew "bat"
