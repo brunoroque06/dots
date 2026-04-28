@@ -23,6 +23,21 @@
     "when": "editorTextFocus && dance.mode == 'helix/normal'"
   },
   {
+    "command": "dance.history.recording.play",
+    "key": "q",
+    "when": "editorTextFocus && dance.mode == 'helix/normal'"
+  },
+  {
+    "command": "dance.history.recording.start",
+    "key": "shift+q",
+    "when": "editorTextFocus && dance.mode == 'helix/normal' && !dance.isRecording"
+  },
+  {
+    "command": "dance.history.recording.stop",
+    "key": "shift+q",
+    "when": "editorTextFocus && dance.mode == 'helix/normal' && dance.isRecording"
+  },
+  {
     "command": "editor.action.commentLine",
     "key": "ctrl+c",
     "when": "editorTextFocus && dance.mode == 'helix/normal'"
