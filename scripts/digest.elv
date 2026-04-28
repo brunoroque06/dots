@@ -1,8 +1,14 @@
-use re
-
 # set-env COPILOT_GITHUB_TOKEN ...
 
+use re
+
+var last = 5
 var news = []
+
+fn append { |title items|
+  # var fmted = (each { |i| put $i[title]', '$i[url] } $items | put [(all)])
+  set news = [$@news [&title=$title &news=$items]]
+}
 
 fn get { |url|
   curl $url ^
@@ -23,7 +29,7 @@ fn get-comp { |url|
 }
 
 fn reddit { |sub|
-  get 'https://www.reddit.com/r/'$sub'/hot.json?limit=5' ^
+  get 'https://www.reddit.com/r/'$sub'/hot.json?limit='$last ^
     | from-json ^
     | put (one)[data][children] ^
     | all (one) ^
@@ -31,9 +37,21 @@ fn reddit { |sub|
     | put [(all)]
 }
 
-fn append { |title items|
-  # var fmted = (each { |i| put $i[title]', '$i[url] } $items | put [(all)])
-  set news = [$@news [&title=$title &news=$items]]
+fn rss { |url|
+  var html = (get $url | slurp)
+  var titles = (
+    re:find '(?s)<item>(.*?)<title>(.*?)</title>(.*?)</item>' $html ^
+      | each { |i| put $i[groups][2][text] } ^
+      | put [(all)]
+  )
+  var links = (
+    re:find '(?s)<item>(.*?)<link>(.*?)</link>(.*?)</item>' $html ^
+      | each { |i| put $i[groups][2][text] } ^
+      | put [(all)]
+  )
+  each { |i| put [&title=$titles[$i] &url=$links[$i]] } [(range (count $titles))] ^
+    | take $last ^
+    | put [(all)]
 }
 
 fn digest { |url &comp=$false|
@@ -44,10 +62,10 @@ fn digest { |url &comp=$false|
     re:find '(?s)<a(.*?)</a>' (cat index.html | slurp) ^
       | each { |i| put $i[groups][0][text] } ^
       | put [(all)]
-    )
+  )
   each { |i| echo $i } $titles > index.html
   try {
-    /opt/homebrew/bin/copilot -p 'Output json. Read index.html, output title and url for the 5 most important news' -s ^
+    /opt/homebrew/bin/copilot -p 'Output json. Read index.html, output title and url for the '$last' most important news' -s ^
       | slurp ^
       | re:find '(?s)```json(.*)```' (one) ^
       | printf (one)[groups][1][text] ^
