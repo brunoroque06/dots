@@ -87,6 +87,16 @@
     "when": "editorTextFocus && dance.mode == 'helix/normal'"
   },
   {
+    "command": "editor.action.smartSelect.expand",
+    "key": "alt+o",
+    "when": "editorTextFocus && dance.mode == 'helix/normal'"
+  },
+  {
+    "command": "editor.action.smartSelect.shrink",
+    "key": "alt+i", // https://github.com/microsoft/vscode/issues/41024
+    "when": "editorTextFocus && dance.mode == 'helix/normal'"
+  },
+  {
     "command": "editor.action.startFindReplaceAction",
     "key": "alt+cmd+f"
   },

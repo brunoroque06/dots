@@ -63,6 +63,10 @@
   "editor.cursorBlinking": "solid",
   "editor.cursorSurroundingLines": 4,
   "editor.cursorWidth": 2,
+  "editor.experimental.preferTreeSitter.css": true,
+  "editor.experimental.preferTreeSitter.ini": true,
+  "editor.experimental.preferTreeSitter.regex": true,
+  "editor.experimental.preferTreeSitter.typescript": true,
   "editor.fontFamily": "MPLUS1Code-Regular",
   "editor.fontSize": 14,
   "editor.formatOnSave": false,
@@ -132,6 +136,7 @@
   "terminal.integrated.defaultProfile.osx": "elvish",
   "terminal.integrated.defaultProfile.windows": "pwsh",
   "terminal.integrated.fontSize": 14,
+  "terminal.integrated.macOptionIsMeta": true,
   "terminal.integrated.profiles.osx": {
     "elvish": {
       "path": "/opt/homebrew/bin/elvish"

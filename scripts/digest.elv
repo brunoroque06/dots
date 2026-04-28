@@ -59,6 +59,6 @@ fn digest { |url &comp=$false|
 
 each { |n|
   printf $n[title]"\n\n"
-  each { |a| printf $a[title]"\n\t"$a[url]"\n" } $n[news]
+  each { |a| printf $a[title]' '$a[url]"\n" } $n[news]
   printf "\n"
 } $news
