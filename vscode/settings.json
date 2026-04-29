@@ -31,6 +31,10 @@
         "i": {
           "command": "editor.action.goToImplementation",
           "text": "to implementation"
+        },
+        "w": {
+          "command": "dance.seek.wordLabel",
+          "text": "to word"
         }
       }
     }
@@ -152,6 +156,7 @@
   "window.commandCenter": false,
   "window.title": "${activeEditorLong}${separator}${rootPath}",
   "workbench.activityBar.location": "bottom",
+  "workbench.activityBar.compact": true,
   "workbench.browser.showInTitleBar": false,
   "workbench.colorTheme": "Light 2026",
   "workbench.editor.enablePreview": false,

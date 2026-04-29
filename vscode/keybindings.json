@@ -5,12 +5,23 @@
     "when": "editorFocus"
   },
   {
-    "command": "actions.find",
-    "key": "cmd+f"
+    "command": "breadcrumbs.focusAndSelect",
+    "key": "cmd+l"
   },
   {
     "command": "breadcrumbs.focusAndSelect",
-    "key": "cmd+l"
+    "key": "-",
+    "when": "editorTextFocus && dance.mode == 'helix/normal'"
+  },
+  {
+    "key": "l",
+    "command": "breadcrumbs.focusNext",
+    "when": "breadcrumbsActive && breadcrumbsVisible"
+  },
+  {
+    "key": "h",
+    "command": "breadcrumbs.focusPrevious",
+    "when": "breadcrumbsActive && breadcrumbsVisible"
   },
   {
     "command": "dance.edit.newLine.above",
@@ -68,6 +79,11 @@
     "when": "editorTextFocus && dance.mode == 'helix/normal'"
   },
   {
+    "command": "editor.action.inlineSuggest.hide",
+    "key": "escape",
+    "when": "inlineSuggestionVisible && editorTextFocus && dance.mode == 'helix/normal'"
+  },
+  {
     "command": "editor.action.marker.next",
     "key": "] d",
     "when": "editorTextFocus && dance.mode == 'helix/normal'"
@@ -85,6 +101,11 @@
   {
     "command": "editor.action.quickFix",
     "key": "cmd+."
+  },
+  {
+    "command": "editor.action.quickFix",
+    "key": "space a",
+    "when": "editorTextFocus && dance.mode == 'helix/normal'"
   },
   {
     "command": "editor.action.rename",
@@ -108,12 +129,8 @@
   },
   {
     "command": "editor.action.smartSelect.shrink",
-    "key": "alt+i", // https://github.com/microsoft/vscode/issues/41024
+    "key": "alt+i",
     "when": "editorTextFocus && dance.mode == 'helix/normal'"
-  },
-  {
-    "command": "editor.action.startFindReplaceAction",
-    "key": "alt+cmd+f"
   },
   {
     "command": "editor.action.startFindReplaceAction",
@@ -191,8 +208,18 @@
   },
   {
     "command": "git.openChange",
-    "key": "space d",
+    "key": "space g",
     "when": "editorTextFocus && dance.mode == 'helix/normal'"
+  },
+  {
+    "key": "j",
+    "command": "list.focusDown",
+    "when": "breadcrumbsActive && breadcrumbsVisible"
+  },
+  {
+    "key": "k",
+    "command": "list.focusUp",
+    "when": "breadcrumbsActive && breadcrumbsVisible"
   },
   {
     "command": "mssql.runQuery",
@@ -278,16 +305,16 @@
   },
   {
     "command": "workbench.action.debug.continue",
-    "key": "cmd+left",
+    "key": "cmd+shift+right",
     "when": "inDebugMode"
   },
   {
     "command": "workbench.action.debug.restart",
-    "key": "cmd+r",
+    "key": "cmd+left",
     "when": "inDebugMode"
   },
   {
-    "command": "workbench.action.debug.start",
+    "command": "workbench.action.debug.selectandstart",
     "key": "cmd+d",
     "when": "!inDebugMode"
   },
@@ -314,11 +341,6 @@
   {
     "command": "workbench.action.findInFiles",
     "key": "cmd+shift+f"
-  },
-  {
-    "command": "workbench.action.findInFiles",
-    "key": "space /",
-    "when": "editorTextFocus && dance.mode == 'helix/normal'"
   },
   {
     "command": "workbench.action.focusAboveGroup",
@@ -353,6 +375,11 @@
   {
     "command": "workbench.action.gotoSymbol",
     "key": "cmd+s"
+  },
+  {
+    "command": "workbench.action.gotoSymbol",
+    "key": "space s",
+    "when": "editorTextFocus && dance.mode == 'helix/normal'"
   },
   {
     "command": "workbench.action.moveActiveEditorGroupDown",
@@ -401,12 +428,21 @@
     "key": "cmd+,"
   },
   {
+    "command": "workbench.action.openView",
+    "key": "cmd+g"
+  },
+  {
     "command": "workbench.action.quickOpen",
     "key": "cmd+o"
   },
   {
+    "command": "workbench.action.quickTextSearch",
+    "key": "cmd+f",
+    "when": "editorTextFocus && dance.mode == 'helix/normal'"
+  },
+  {
     "command": "workbench.action.replaceInFiles",
-    "key": "cmd+shift+r"
+    "key": "cmd+r"
   },
   {
     "command": "workbench.action.showAllEditorsByMostRecentlyUsed",
@@ -434,19 +470,5 @@
     "command": "workbench.action.terminal.split",
     "key": "cmd+d",
     "when": "terminalFocus"
-  },
-  {
-    "command": "workbench.view.explorer",
-    "key": "-",
-    "when": "editorTextFocus && dance.mode == 'helix/normal'"
-  },
-  {
-    "command": "workbench.view.scm",
-    "key": "cmd+g"
-  },
-  {
-    "command": "workbench.view.scm",
-    "key": "shift+-",
-    "when": "editorTextFocus && dance.mode == 'helix/normal'"
   }
 ]
