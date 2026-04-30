@@ -6,10 +6,9 @@ use re
 
 var last = 5
 var retry = 3
-var news = []
 
-fn append { |title items|
-  set news = [$@news [&title=$title &news=$items]]
+fn temp-file { |n|
+  os:temp-file $n | put (one)[name]
 }
 
 fn get { |url|
@@ -17,10 +16,6 @@ fn get { |url|
     -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.4 Safari/605.1.15' ^
     --retry $retry ^
     -s
-}
-
-fn temp-file { |n|
-  os:temp-file $n | put (one)[name]
 }
 
 fn get-comp { |url|
@@ -76,6 +71,12 @@ fn digest { |url &comp=$false|
     | re:find '(?s)```json(.*)```' (one) ^
     | printf (one)[groups][1][text] ^
     | from-json
+}
+
+var news = []
+
+fn append { |title items|
+  set news = [$@news [&title=$title &news=$items]]
 }
 
 each { |n|
