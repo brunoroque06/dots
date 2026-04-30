@@ -5,6 +5,7 @@ use path
 use re
 
 var last = 5
+var retry = 3
 var news = []
 
 fn append { |title items|
@@ -14,6 +15,7 @@ fn append { |title items|
 fn get { |url|
   curl $url ^
     -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.4 Safari/605.1.15' ^
+    --retry $retry ^
     -s
 }
 
@@ -29,6 +31,7 @@ fn get-comp { |url|
     -H 'Priority: u=0, i' ^
     --compressed ^
     --output $f ^
+    --retry $retry ^
     -s
   defer { rm $f }
   cat $f
@@ -68,15 +71,11 @@ fn digest { |url &comp=$false|
       | each { |i| put $i[groups][0][text] }
   )
   each { |i| echo $i } $titles > $f
-  try {
-    /opt/homebrew/bin/copilot --add-dir (path:dir $f) -p 'Output json. Read '$f', output title and url for the '$last' most important news' -s ^
-      | slurp ^
-      | re:find '(?s)```json(.*)```' (one) ^
-      | printf (one)[groups][1][text] ^
-      | from-json
-  } catch _ {
-    put []
-  }
+  /opt/homebrew/bin/copilot --add-dir (path:dir $f) -p 'Output json. Read '$f', output title and url for the '$last' most important news' -s ^
+    | slurp ^
+    | re:find '(?s)```json(.*)```' (one) ^
+    | printf (one)[groups][1][text] ^
+    | from-json
 }
 
 each { |n|
