@@ -50,6 +50,7 @@ install:
 	brew doctor
 
 lint:
+	elvish -compileonly scripts/digest.elv
 	lua-language-server --check nvim/init.lua
 
 macos-config:
