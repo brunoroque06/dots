@@ -5,7 +5,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
-
+      - run: |
+          sudo apt update
+          sudo apt install elvish -y
       - run: npm install -g prettier
       - run: cargo install stylua
       - run: |
@@ -13,6 +15,5 @@ jobs:
           sudo mkdir /usr/lib/lua-language-server
           sudo tar -xzf lua-language-server-3.17.1-linux-x64.tar.gz -C /usr/lib/lua-language-server
           sudo ln -s /usr/lib/lua-language-server/bin/lua-language-server /usr/bin/lua-language-server
-
       - run: make fmt-check
       - run: make lint
