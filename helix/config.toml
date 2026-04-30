@@ -9,6 +9,9 @@ trim-trailing-whitespace = true
 [editor.cursor-shape]
 insert = "bar"
 
+[editor.file-picker]
+hidden = false
+
 [editor.soft-wrap]
 enable = true
 
