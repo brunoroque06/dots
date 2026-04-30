@@ -15,6 +15,7 @@ fn temp-file { |n|
 fn get { |url|
   curl $url ^
     -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.4 Safari/605.1.15' ^
+    --fail ^
     --retry $retry ^
     -s
 }
@@ -26,6 +27,7 @@ fn get-comp { |url|
     -H 'Accept-Language: en-US,en;q=0.9' ^
     -H 'Priority: u=0, i' ^
     --compressed ^
+    --fail ^
     --output $f ^
     --retry $retry ^
     -s
@@ -45,12 +47,12 @@ fn reddit { |sub|
 fn rss { |url|
   var html = (get $url | slurp)
   var @titles = (
-    re:find '(?s)<item>(.*?)<title>(.*?)</title>(.*?)</item>' $html ^
-      | each { |i| put $i[groups][2][text] }
+    re:find '(?s)<item>.*?<title>(.*?)</title>.*?</item>' $html ^
+      | each { |i| put $i[groups][1][text] }
   )
   var @links = (
-    re:find '(?s)<item>(.*?)<link>(.*?)</link>(.*?)</item>' $html ^
-      | each { |i| put $i[groups][2][text] }
+    re:find '(?s)<item>.*?<link>(.*?)</link>.*?</item>' $html ^
+      | each { |i| put $i[groups][1][text] }
   )
   each { |i| put [&title=$titles[$i] &url=$links[$i]] } [(range (count $titles))] ^
     | take $last ^
@@ -63,15 +65,19 @@ fn digest { |url &comp=$false|
   printf $html > $f
   defer { rm $f }
   var @titles = (
-    re:find '(?s)<a(.*?)</a>' (cat $f | slurp) ^
+    re:find '(?s)<a[^>]*href[^>]*>.*?</a>' (cat $f | slurp) ^
       | each { |i| put $i[groups][0][text] }
   )
   each { |i| echo $i } $titles > $f
-  /opt/homebrew/bin/copilot --add-dir (path:dir $f) -p 'Output json. Read '$f', output title and url for the '$last' most important news' -s ^
-    | slurp ^
-    | re:find '(?s)```json(.*)```' (one) ^
-    | printf (one)[groups][1][text] ^
-    | from-json
+  try {
+    /opt/homebrew/bin/copilot --add-dir (path:dir $f) -p 'Read '$f', output json array with title and url for the '$last' most important news' -s ^
+      | slurp ^
+      | re:find '(?s)```json(.*)```' (one) ^
+      | printf (one)[groups][1][text] ^
+      | from-json
+  } catch _ {
+    put []
+  }
 }
 
 fn report { |title items|
