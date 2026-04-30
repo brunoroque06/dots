@@ -1,5 +1,7 @@
 # set-env COPILOT_GITHUB_TOKEN ...
 
+use os
+use path
 use re
 
 var last = 5
@@ -15,16 +17,21 @@ fn get { |url|
     -s
 }
 
+fn temp-file { |n|
+  os:temp-file $n | put (one)[name]
+}
+
 fn get-comp { |url|
+  var f = (temp-file index.html)
   curl $url ^
     -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.4 Safari/605.1.15' ^
     -H 'Accept-Language: en-US,en;q=0.9' ^
     -H 'Priority: u=0, i' ^
     --compressed ^
-    --output index.html ^
+    --output $f ^
     -s
-  defer { rm index.html }
-  cat index.html
+  defer { rm $f }
+  cat $f
 }
 
 fn reddit { |sub|
@@ -53,15 +60,16 @@ fn rss { |url|
 
 fn digest { |url &comp=$false|
   var html = (if (put $comp) { get-comp $url } else { get $url } | slurp)
-  printf $html > index.html
-  defer { rm index.html }
+  var f = (temp-file index.html)
+  printf $html > $f
+  defer { rm $f }
   var @titles = (
-    re:find '(?s)<a(.*?)</a>' (cat index.html | slurp) ^
+    re:find '(?s)<a(.*?)</a>' (cat $f | slurp) ^
       | each { |i| put $i[groups][0][text] }
   )
-  each { |i| echo $i } $titles > index.html
+  each { |i| echo $i } $titles > $f
   try {
-    /opt/homebrew/bin/copilot -p 'Output json. Read index.html, output title and url for the '$last' most important news' -s ^
+    /opt/homebrew/bin/copilot --add-dir (path:dir $f) -p 'Output json. Read '$f', output title and url for the '$last' most important news' -s ^
       | slurp ^
       | re:find '(?s)```json(.*)```' (one) ^
       | printf (one)[groups][1][text] ^
