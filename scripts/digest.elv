@@ -6,7 +6,6 @@ var last = 5
 var news = []
 
 fn append { |title items|
-  # var fmted = (each { |i| put $i[title]', '$i[url] } $items | put [(all)])
   set news = [$@news [&title=$title &news=$items]]
 }
 
@@ -39,15 +38,13 @@ fn reddit { |sub|
 
 fn rss { |url|
   var html = (get $url | slurp)
-  var titles = (
+  var @titles = (
     re:find '(?s)<item>(.*?)<title>(.*?)</title>(.*?)</item>' $html ^
-      | each { |i| put $i[groups][2][text] } ^
-      | put [(all)]
+      | each { |i| put $i[groups][2][text] }
   )
-  var links = (
+  var @links = (
     re:find '(?s)<item>(.*?)<link>(.*?)</link>(.*?)</item>' $html ^
-      | each { |i| put $i[groups][2][text] } ^
-      | put [(all)]
+      | each { |i| put $i[groups][2][text] }
   )
   each { |i| put [&title=$titles[$i] &url=$links[$i]] } [(range (count $titles))] ^
     | take $last ^
@@ -58,10 +55,9 @@ fn digest { |url &comp=$false|
   var html = (if (put $comp) { get-comp $url } else { get $url } | slurp)
   printf $html > index.html
   defer { rm index.html }
-  var titles = (
+  var @titles = (
     re:find '(?s)<a(.*?)</a>' (cat index.html | slurp) ^
-      | each { |i| put $i[groups][0][text] } ^
-      | put [(all)]
+      | each { |i| put $i[groups][0][text] }
   )
   each { |i| echo $i } $titles > index.html
   try {

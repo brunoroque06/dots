@@ -20,7 +20,6 @@
   "chat.plugins.marketplaces": ["dotnet/skills"],
   "containers.containerClient": "com.microsoft.visualstudio.containers.podman",
   "containers.orchestratorClient": "com.microsoft.visualstudio.orchestrators.podmancompose",
-  "D2.execPath": "/opt/homebrew/bin/d2",
   "dance.menus": {
     "goto": {
       "items": {
@@ -130,7 +129,6 @@
   "ruff.organizeImports": true,
   "scm.alwaysShowRepositories": true,
   "settingsSync.ignoredSettings": [
-    "D2.execPath",
     "chat.editor.fontSize",
     "editor.fontFamily",
     "editor.fontSize",

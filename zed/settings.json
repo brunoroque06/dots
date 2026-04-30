@@ -48,7 +48,5 @@
   "toolbar": {
     "breadcrumbs": true,
     "quick_actions": false
-  },
-  "ui_font_family": "M PLUS 1 Code",
-  "ui_font_size": 14
+  }
 }
