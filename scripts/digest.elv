@@ -3,6 +3,7 @@
 use os
 use path
 use re
+use str
 
 var last = 5
 var retry = 3
@@ -73,14 +74,10 @@ fn digest { |url &comp=$false|
     | from-json
 }
 
-var news = []
-
-fn append { |title items|
-  set news = [$@news [&title=$title &news=$items]]
+fn report { |title items|
+  printf $title"\n\n"
+  fn clean-url { |u| str:split '?' $u | take 1 }
+  each { |a| printf $a[title]' '(clean-url $a[url])"\n" } $items
+  printf "\n"
 }
 
-each { |n|
-  printf $n[title]"\n\n"
-  each { |a| printf $a[title]' '$a[url]"\n" } $n[news]
-  printf "\n"
-} $news
