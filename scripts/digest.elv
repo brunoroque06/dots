@@ -1,7 +1,8 @@
 use re
 use str
 
-var last = 10
+var last = 6
+var cutOffHour = 36
 
 fn get { |url|
   curl $url ^
@@ -20,8 +21,7 @@ fn reddit { |sub|
     | put [(all)]
 }
 
-fn rss { |url &gnews=$false|
-  if (put $gnews) { set url = 'https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US%3Aen&q='$url }
+fn rss { |url|
   var html = (get $url | slurp)
   fn refind { |t|
     re:find '(?s)<item>.*?<'$t'>(.*?)</'$t'>.*?</item>' $html ^
@@ -29,10 +29,25 @@ fn rss { |url &gnews=$false|
   }
   var @titles = (refind title)
   var @links = (refind link)
-  each { |i| put [&title=$titles[$i] &url=$links[$i]] } [(range (count $titles))] ^
+  var @dates = (refind pubDate)
+  var now = (date +%s)
+  fn parse-date {|d|
+    var z = Z
+    if (or (str:contains $d +) (str:contains $d -)) {
+      set z = z
+    }
+    date -j -f '%a, %d %b %Y %H:%M:%S %'$z $d +%s
+  }
+  each { |i|
+    if (< (- $now (parse-date $dates[$i])) (* $cutOffHour 3600)) {
+      put [&title=$titles[$i] &url=$links[$i]]
+    }
+  } [(range (count $titles))] ^
     | take $last ^
     | put [(all)]
 }
+
+fn gnews { |url| put 'https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US%3Aen&q='$url }
 
 fn report { |title items|
   printf $title"\n\n"
@@ -40,3 +55,4 @@ fn report { |title items|
   each { |a| printf $a[title]' '(clean-url $a[url])"\n" } $items
   printf "\n"
 }
+
