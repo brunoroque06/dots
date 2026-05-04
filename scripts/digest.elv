@@ -33,9 +33,7 @@ fn rss { |url|
   var now = (date +%s)
   fn parse-date {|d|
     var z = Z
-    if (or (str:contains $d +) (str:contains $d -)) {
-      set z = z
-    }
+    if (or (str:contains $d +) (str:contains $d -)) { set z = z }
     date -j -f '%a, %d %b %Y %H:%M:%S %'$z $d +%s
   }
   each { |i|
