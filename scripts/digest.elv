@@ -1,7 +1,7 @@
 use re
 use str
 
-var last = 5
+var last = 10
 
 fn get { |url|
   curl $url ^
@@ -23,9 +23,12 @@ fn reddit { |sub|
 fn rss { |url &gnews=$false|
   if (put $gnews) { set url = 'https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US%3Aen&q='$url }
   var html = (get $url | slurp)
-  fn refind { |p s| re:find $p $s | each { |i| put $i[groups][1][text] } }
-  var @titles = (refind '(?s)<item>.*?<title>(.*?)</title>.*?</item>' $html)
-  var @links = (refind '(?s)<item>.*?<link>(.*?)</link>.*?</item>' $html)
+  fn refind { |t|
+    re:find '(?s)<item>.*?<'$t'>(.*?)</'$t'>.*?</item>' $html ^
+      | each { |i| put $i[groups][1][text] }
+  }
+  var @titles = (refind title)
+  var @links = (refind link)
   each { |i| put [&title=$titles[$i] &url=$links[$i]] } [(range (count $titles))] ^
     | take $last ^
     | put [(all)]
