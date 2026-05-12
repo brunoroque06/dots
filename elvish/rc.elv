@@ -20,17 +20,12 @@ if (has-external coreutils) {
 
 set paths = [
 	/opt/homebrew/bin
-	/opt/homebrew/opt/libpq/bin
 	/usr/local/bin
 	/usr/bin
 	/bin
 	/usr/sbin
 	/sbin
-	$E:HOME/.cargo/bin
-	/usr/local/share/dotnet
 	$E:HOME/.dotnet/tools
-	$E:HOME/go/bin
-	/Applications/Rider.app/Contents/MacOS
 ]
 var _paths = $nil
 
@@ -216,7 +211,7 @@ fn brew-up {
 
 fn pkg-su {
 	put csharpier csharprepl fantomas roslyn-language-server ^
-		| each { |p| try { dotnet tool install -g --prerelease $p } catch { } }
+		| each { |p| try { dotnet tool install -g $p } catch { } }
 
 	npm install -g @angular/language-server npm
 }

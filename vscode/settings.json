@@ -31,6 +31,10 @@
           "command": "editor.action.goToImplementation",
           "text": "to implementation"
         },
+        "R": {
+          "command": "editor.showCallHierarchy",
+          "text": "to call hierarchy"
+        },
         "w": {
           "command": "dance.seek.wordLabel",
           "text": "to word"
@@ -101,7 +105,6 @@
   },
   "github.copilot.nextEditSuggestions.enabled": true,
   "github.copilot.nextEditSuggestions.fixes": true,
-  "inlineChat.enableV2": true,
   "js/ts.inlayHints.functionLikeReturnTypes.enabled": true,
   "js/ts.inlayHints.parameterTypes.enabled": true,
   "js/ts.inlayHints.propertyDeclarationTypes.enabled": true,
