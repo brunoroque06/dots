@@ -102,8 +102,10 @@ fn t { |&l=2 @a| tree -L $l $@a }
 
 # AI
 fn ai-review { |&src=main &tgt=HEAD|
-	git diff --histogram $src...$tgt > diff.txt
-	copilot -p "Review the PR changes on diff.txt. Search for bugs, regressions, inconsistencies"
+	var diff = diff.txt
+	git diff --histogram $src...$tgt > $diff
+	defer { rm $diff }
+	copilot -p 'Review the PR changes on '$diff'. Search for bugs, regressions, inconsistencies'
 }
 
 # Applications
