@@ -26,5 +26,6 @@ ms-vscode.remote-explorer
 ms-vscode.remote-server
 myriad-dreamin.tinymist
 redhat.vscode-yaml
+rust-lang.rust-analyzer
 tombi-toml.tombi
 vitest.explorer

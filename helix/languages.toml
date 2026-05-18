@@ -1,3 +1,5 @@
+harper-ls = { command = "harper-ls", args = ["--stdio"] }
+
 [[language]]
 name = "css"
 formatter = { command = "prettier", args = ["--parser", "css"] }
@@ -30,6 +32,7 @@ formatter = { command = "prettier", args = ["--parser", "json"] }
 [[language]]
 name = "markdown"
 formatter = { command = "prettier", args = ["--parser", "markdown"] }
+language-servers = ["harper-ls"]
 
 [[language]]
 name = "python"
