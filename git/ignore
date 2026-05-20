@@ -16,7 +16,6 @@ target
 .git
 
 # Jetbrains
-.fleet
 .idea
 
 # macOS

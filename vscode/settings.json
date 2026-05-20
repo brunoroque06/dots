@@ -75,10 +75,15 @@
   "editor.experimental.preferTreeSitter.css": true,
   "editor.experimental.preferTreeSitter.ini": true,
   "editor.experimental.preferTreeSitter.regex": true,
-  "editor.experimental.preferTreeSitter.typescript": true,
+  "editor.experimental.preferTreeSitter.typescript": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "explicit",
+    "source.organizeImports": "explicit",
+    "source.sort.json": "explicit"
+  },
   "editor.fontFamily": "MPLUS1Code-Regular",
   "editor.fontSize": 14,
-  "editor.formatOnSave": false,
+  "editor.formatOnSave": true,
   "editor.formatOnType": true,
   "editor.guides.bracketPairs": true,
   "editor.inlineSuggest.enabled": true,
@@ -102,8 +107,7 @@
   "git.detectWorktreesLimit": 8,
   "git.openRepositoryInParentFolders": "prompt",
   "github.copilot.enable": {
-    "editor": true,
-    "inlineSuggest": true
+    "*": true
   },
   "github.copilot.nextEditSuggestions.enabled": true,
   "github.copilot.nextEditSuggestions.fixes": true,
