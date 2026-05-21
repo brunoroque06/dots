@@ -12,7 +12,7 @@
     "diffEditor.ignoreTrimWhitespace": true,
     "editor.defaultFormatter": "charliermarsh.ruff"
   },
-  "breadcrumbs.symbolPath": "off",
+  "breadcrumbs.enabled": false,
   "chat.agent.maxRequests": 64,
   "chat.editor.wordWrap": "on",
   "chat.mcp.gallery.enabled": true,
