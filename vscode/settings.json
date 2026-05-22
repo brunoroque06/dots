@@ -85,6 +85,7 @@
   "editor.formatOnType": true,
   "editor.guides.bracketPairs": true,
   "editor.inlineSuggest.enabled": true,
+  "editor.lightbulb.enabled": "off",
   "editor.lineHeight": 1.3,
   "editor.lineNumbers": "relative",
   "editor.minimap.enabled": false,
