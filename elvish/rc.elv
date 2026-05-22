@@ -71,7 +71,7 @@ set edit:rprompt = (constantly (whoami)@(hostname))
 
 eval (carapace _carapace | slurp)
 
-# File System
+# file system
 fn .. { cd .. }
 fn c { |f|
 	if (str:has-suffix $f .md) {
@@ -88,19 +88,10 @@ fn file-yank { |f| pbcopy < $f }
 set edit:completion:arg-completer[file-yank] = { |@args|
 	fd -H -t file | from-lines
 }
-fn icat { |@a| kitten icat $@a }
-fn icat-watch { |i|
-	while $true {
-		clear
-		kitten icat $i
-		fswatch -1 $i
-	}
-}
-set edit:completion:arg-completer[icat-watch] = { |@args| put *.png }
 fn l { |@a| ls -Aho --color $@a }
 fn t { |&l=2 @a| tree -L $l $@a }
 
-# AI
+# ai
 fn ai-review { |&src=main &tgt=HEAD|
 	var diff = diff.txt
 	git diff --histogram $src...$tgt > $diff
@@ -108,11 +99,7 @@ fn ai-review { |&src=main &tgt=HEAD|
 	copilot -p 'Review the PR changes on '$diff'. Search for bugs, regressions, inconsistencies'
 }
 
-# Applications
-fn app-id { |a| mdls -name kMDItemCFBundleIdentifier $a }
-set edit:completion:arg-completer[app-id] = { |@args| put /System/Applications/*.app /Applications/*.app }
-
-# Azure
+# azure
 fn az-act-set { |n| az account set -n $n }
 set edit:completion:arg-completer[az-act-set] = { |@args|
 	az account list ^
@@ -121,7 +108,7 @@ set edit:completion:arg-completer[az-act-set] = { |@args|
 		| each { |s| edit:complex-candidate $s[name] &display=(if (put $s[isDefault]) { styled $s[name] green } else { put $s[name] }) }
 }
 
-# Command
+# command
 fn cmd-edit {
 	var tmp = (os:temp-file elvcmd)
 	print $edit:current-command > $tmp
@@ -134,7 +121,7 @@ fn cmd-edit {
 	}
 }
 
-# D2
+# d2
 fn d2-ls { put *.d2 }
 fn d2-fmt-all { d2-ls | each { |f| d2 fmt $f } }
 fn d2-run-all { |&ext=svg| d2-ls | each { |f| d2 --pad 0 $f out/(file-stem $f).$ext } }
@@ -147,7 +134,7 @@ fn d2-watch { |f|
 }
 set edit:completion:arg-completer[d2-watch] = { |@args| d2-ls }
 
-# Dotnet
+# dotnet
 fn dot-ci { |@a| csharprepl -t themes/VisualStudio_Light.json $@a }
 fn dot-fi { |@a| dotnet fsi $@a }
 fn dot-up {
@@ -159,11 +146,11 @@ set edit:completion:arg-completer[dotnet] = { |@args|
 	dotnet complete (str:join ' ' $args) | from-lines
 }
 
-# Git
+# git
 set edit:command-abbr['g'] = git
 fn gi { gitu }
 
-# Go
+# go
 fn go-up { go get -u; go mod tidy }
 set edit:completion:arg-completer[go] = { |@args|
 	if (and (eq $args[1] test) (eq $args[2] -run)) {
@@ -173,35 +160,35 @@ set edit:completion:arg-completer[go] = { |@args|
 	}
 }
 
-# JetBrains
-fn jetbrains-rm { |a|
-	var dirs = ['Application Support/JetBrains' Caches/JetBrains Logs/JetBrains]
-	for d $dirs {
-		rm -rf $E:HOME/Library/$d/$a
-	}
+# macOS
+fn app-id { |a| mdls -name kMDItemCFBundleIdentifier $a }
+set edit:completion:arg-completer[app-id] = { |@args| put /System/Applications/*.app /Applications/*.app }
+
+var defaults-dir = $E:HOME'/Library/Mobile Documents/com~apple~CloudDocs/defaults'
+var defaults-suffix = .plist
+fn defaults-export {
+	rm -rf $defaults-dir
+	mkdir $defaults-dir
+	fn exp { |d| defaults export $d $defaults-dir/$d$defaults-suffix }
+	exp NSGlobalDomain
+	defaults domains ^
+	  | slurp ^
+		| str:split ', ' (one) ^
+	  | peach { |d| if (str:has-prefix $d com.apple) { exp $d } }
 }
-set edit:completion:arg-completer[jetbrains-rm] = { |@args|
-	put /Users/brunoroque/Library/Caches/JetBrains/* | each { |p| path:base $p }
+fn defaults-import {
+	ls $defaults-dir ^
+	  | from-lines ^
+	  | each { |f| defaults import (str:trim-suffix $f $defaults-suffix) $defaults-dir/$f }
 }
 
-# Json
-fn json-fmt { |f|
-	var cnt = (cat $f | jq -S | prettier --parser json | slurp)
-	printf $cnt > $f
-}
-
-# Network
+# network
 fn ntw-scan { nmap -sP 192.168.1.0/24 }
 
-# Node.js
-fn npm-clean {
-	fd -HI --prune node_modules ^
-		| from-lines ^
-		| peach { |d| rm -rf $d }
-}
+# node.js
 fn npm-up { npm-check-updates --deep -i }
 
-# Packages
+# packages
 fn brew-dump { brew bundle dump --file $E:HOME/Projects/dots/brew/brewfile --force }
 fn brew-up {
 	brew update
@@ -228,7 +215,7 @@ fn pkg-up {
 	npm-check-updates -g
 }
 
-# Podman
+# podman
 fn pod-clean {
 	podman system prune -af
 }
@@ -243,7 +230,7 @@ set edit:completion:arg-completer[pod-exec] = { |@args|
 		| each { |cnt| edit:complex-candidate &display=$cnt[name]' ('$cnt[img]')' $cnt[name] }
 }
 
-# Python
+# python
 fn py-a {
 	if (not-eq $_paths $nil) {
 		fail 'A venv is already active'
@@ -276,7 +263,7 @@ set edit:completion:arg-completer[pytest] = { |@args|
 		| each { |l| if (or (eq $l '') (str:contains $l 'tests collected in')) { continue }; put $l }
 }
 
-# Shell
+# shell
 fn env-ls {
 	env -0 ^
 		| from-terminated "\x00" ^
@@ -286,13 +273,10 @@ fn env-ls {
 fn colortest { curl -s https://raw.githubusercontent.com/pablopunk/colortest/master/colortest | zsh }
 fn re { exec elvish }
 
-# SSH
+# ssh
 fn ssh-trust { |@a| ssh-copy-id -i $E:HOME/.ssh/id_rsa.pub $@a }
 
-# Terraform
-set edit:command-abbr['tf'] = terraform
-
-# Typst
+# typst
 fn typst-to-pptx { |f|
 	var stem = (file-stem $f)
 	var out = out/$stem
@@ -308,7 +292,7 @@ fn typst-to-pptx { |f|
 }
 set edit:completion:arg-completer[typst-to-pptx] = { |@args| put *.typ }
 
-# VSCode
+# vscode
 fn code-dump { code --list-extensions > $E:HOME'/Library/Application Support/Code/User/extensions.txt' }
 fn code-su {
 	from-lines < $E:HOME'/Library/Application Support/Code/User/extensions.txt' ^
@@ -316,7 +300,7 @@ fn code-su {
 }
 fn code-key-win { cat $E:HOME/Projects/dots/vscode/keybindings.json | slurp | str:replace 'cmd' 'ctrl' (one) | printf (one) | pbcopy }
 
-# Web Browser
+# web browser
 fn webbrowser { rm -fr $E:TMPDIR/webbrowser; '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --user-data-dir=$E:TMPDIR/webbrowser --disable-web-security --incognito --no-first-run --new-window http://localhost:4200 }
 
 # Taken: a, b, f, e, i, n, p

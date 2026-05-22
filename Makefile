@@ -52,33 +52,3 @@ install:
 lint:
 	elvish -compileonly scripts/digest.elv
 	lua-language-server --check nvim/init.lua
-
-macos-config:
-	# Accessibility
-	defaults write com.apple.Accessibility ReduceMotionEnabled -bool true
-	# Dock
-	defaults write com.apple.dock autohide -bool true
-	defaults write com.apple.dock expose-group-apps -bool true
-	defaults write com.apple.dock mru-spaces -bool false
-	defaults write com.apple.dock show-recents -bool false
-	defaults write com.apple.dock tilesize -int 32
-	# Finder
-	defaults write NSGlobalDomain AppleShowAllExtensions -bool true
-	defaults write com.apple.Finder AppleShowAllFiles YES
-	defaults write com.apple.finder FXDefaultSearchScope -string SCcf
-	defaults write com.apple.finder FXPreferredViewStyle -string Nlsv
-	defaults write com.apple.finder NSUserKeyEquivalents -dict-add 'Go to Folder...' @g
-	defaults write com.apple.finder ShowPathbar -bool true
-	# Keyboard
-	defaults write NSGlobalDomain AppleKeyboardUIMode -int 2
-	defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
-	defaults write NSGlobalDomain InitialKeyRepeat -int 15
-	defaults write NSGlobalDomain KeyRepeat -int 2
-	defaults write NSGlobalDomain com.apple.keyboard.fnState -bool false
-	# Mail
-	defaults write com.apple.mail NSUserKeyEquivalents -dict-add Send @'\U21a9'
-	# Mouse
-	defaults write NSGlobalDomain com.apple.mouse.scaling -float 1
-	# Spaces
-	defaults write com.apple.spaces spans-displays -bool true
-	killall Finder SystemUIServer
