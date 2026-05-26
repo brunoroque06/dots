@@ -101,11 +101,12 @@
   "files.autoSave": "afterDelay",
   "files.simpleDialog.enable": true,
   "files.trimTrailingWhitespace": true,
+  "go.goroot": "/opt/homebrew/opt/go/libexec",
   "git.blame.editorDecoration.enabled": false,
   "git.blame.ignoreWhitespace": true,
   "git.detectWorktrees": true,
   "git.detectWorktreesLimit": 8,
-  "git.openRepositoryInParentFolders": "prompt",
+  "git.openRepositoryInParentFolders": "never",
   "github.copilot.enable": {
     "*": true
   },
