@@ -6,9 +6,6 @@ end-of-line-diagnostics = "hint"
 line-number = "relative"
 trim-trailing-whitespace = true
 
-[editor.cursor-shape]
-insert = "bar"
-
 [editor.file-picker]
 hidden = false
 
