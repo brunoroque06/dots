@@ -21,7 +21,6 @@ helper = osxkeychain
 
 [core]
 autocrlf = input
-excludesfile = ~/.config/git/ignore
 pager = less -R
 
 [diff]
