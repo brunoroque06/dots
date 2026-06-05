@@ -143,16 +143,10 @@
   ],
   "terminal.integrated.defaultLocation": "editor",
   "terminal.integrated.defaultProfile.osx": "elvish",
-  "terminal.integrated.defaultProfile.windows": "pwsh",
   "terminal.integrated.macOptionIsMeta": true,
   "terminal.integrated.profiles.osx": {
     "elvish": {
       "path": "/opt/homebrew/bin/elvish"
-    }
-  },
-  "terminal.integrated.profiles.windows": {
-    "pwsh": {
-      "path": "C:/Program Files/PowerShell/7/pwsh.exe"
     }
   },
   "terraform.mcp.server.enable": false,
