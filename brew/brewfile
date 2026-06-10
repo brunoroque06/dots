@@ -63,6 +63,7 @@ cask "font-sf-pro"
 cask "ghostty"
 cask "google-chrome"
 cask "proxyman"
+cask "rcmd"
 cask "visual-studio-code"
 cask "zed"
 
@@ -71,4 +72,3 @@ mas "DeskRest", id: 6751417411
 mas "TestFlight", id: 899247664
 mas "Windows App", id: 1295203466
 mas "Wipr", id: 1662217862
-mas "rcmd", id: 1596283165
