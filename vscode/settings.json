@@ -69,7 +69,7 @@
   "editor.accessibilitySupport": "off",
   "editor.bracketPairColorization.enabled": true,
   "editor.codeActionsOnSave": {
-    "source.fixAll": "explicit",
+    "source.fixAll": "never",
     "source.organizeImports": "explicit",
     "source.sort.json": "explicit"
   },
@@ -153,7 +153,6 @@
   "terraform.mcp.server.enable": false,
   "tinymist.formatterMode": "typstyle",
   "window.commandCenter": false,
-  "window.title": "${activeEditorLong}${separator}${rootPath}",
   "window.zoomLevel": 0.8,
   "workbench.activityBar.compact": true,
   "workbench.activityBar.location": "bottom",

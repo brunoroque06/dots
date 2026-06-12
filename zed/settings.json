@@ -7,7 +7,7 @@
   "languages": {
     "CSharp": { "language_servers": ["roslyn-language-server"] },
     "Python": {
-      "language_servers": ["pyright"],
+      "language_servers": ["pyrefly"],
       "formatter": [
         {
           "code_action": "source.organizeImports.ruff"
