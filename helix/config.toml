@@ -2,10 +2,14 @@ theme = "github_light_high_contrast"
 
 [editor]
 color-modes = true
-end-of-line-diagnostics = "hint"
+# end-of-line-diagnostics = "hint"
 line-number = "relative"
 shell = ["/opt/homebrew/bin/elvish", "-c"]
 trim-trailing-whitespace = true
+
+[editor.auto-save]
+after-delay.enable = true
+after-delay.timeout = 1000
 
 [editor.file-picker]
 hidden = false
@@ -23,7 +27,7 @@ C-x = "completion"
 [keys.normal]
 space."=" = ":format"
 
-[keys.normal.G]
+[keys.normal."\\".g]
 b = ":echo %sh{git blame -L %{cursor_line},+1 %{buffer_name}}"
 d = ":! git diff %{buffer_name}"
 r = ":reset-diff-change"
