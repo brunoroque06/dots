@@ -69,7 +69,7 @@
   "editor.accessibilitySupport": "off",
   "editor.bracketPairColorization.enabled": true,
   "editor.codeActionsOnSave": {
-    "source.fixAll": "never",
+    "source.fixAll": "explicit",
     "source.organizeImports": "explicit",
     "source.sort.json": "explicit"
   },

@@ -65,8 +65,18 @@
     "when": "editorTextFocus && dance.mode == 'helix/normal'"
   },
   {
+    "command": "editor.action.marker.nextInFiles",
+    "key": "] shift+d",
+    "when": "editorTextFocus && dance.mode == 'helix/normal'"
+  },
+  {
     "command": "editor.action.marker.prev",
     "key": "[ d",
+    "when": "editorTextFocus && dance.mode == 'helix/normal'"
+  },
+  {
+    "command": "editor.action.marker.prevInFiles",
+    "key": "[ shift+d",
     "when": "editorTextFocus && dance.mode == 'helix/normal'"
   },
   {

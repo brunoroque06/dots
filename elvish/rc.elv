@@ -149,6 +149,7 @@ set edit:completion:arg-completer[dotnet] = { |@args|
 # git
 set edit:command-abbr['g'] = git
 fn gi { gitu }
+fn gi-fp { |b| git fetch origin $b:$b }
 
 # go
 fn go-up { go get -u; go mod tidy }
