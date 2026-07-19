@@ -59,8 +59,8 @@ $env.config = {
 
 # ai
 def ai-review [
-  --src: string = "main"
-  --tgt: string = "HEAD"
+  src: string = "main"
+  tgt: string = "HEAD"
 ] {
   let diff = "diff.txt"
   try {
@@ -83,13 +83,14 @@ def cmd-edit [] {
     rm $tmp
   }
 }
+def input-fuzzy [t: string] { input list --fuzzy --no-separator --no-footer $"(ansi blue)($t)(ansi reset)" }
 def cmd-last-insert [] {
   let el = (
     history
       | last
       | get command
       | split words
-      | input list --fuzzy "Last command"
+      | input-fuzzy "Last Command"
   )
   if $el != null { commandline edit --insert $el }
 }
@@ -148,7 +149,7 @@ def --env cd-history [] {
       | get cwd
       | reverse
       | uniq
-      | input list --fuzzy "Directory"
+      | input-fuzzy "Directory"
   )
   if $dir != null { cd $dir }
 }
