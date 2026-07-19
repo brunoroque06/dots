@@ -6,6 +6,7 @@ config:
 	ln -fs $(PWD)/git/config ~/.config/git/config
 	ln -fs $(PWD)/helix/config.toml ~/.config/helix/config.toml
 	ln -fs $(PWD)/helix/languages.toml ~/.config/helix/languages.toml
+	ln -fs $(PWD)/nushell/config.nu ~/Library/Application\ Support/nushell/config.nu
 	ln -fs $(PWD)/psql/.pg_format ~/.pg_format
 	ln -fs $(PWD)/psql/.psqlrc ~/.psqlrc
 	ln -fs $(PWD)/ripgrep/ripgreprc ~/.config/ripgreprc
@@ -25,6 +26,7 @@ unconfig:
 	rm ~/.config/ripgreprc
 	rm ~/Library/Application\ Support/Code/User/keybindings.json
 	rm ~/Library/Application\ Support/Code/User/settings.json
+	rm ~/Library/Application\ Support/nushell/config.nu
 	rm ~/.config/zed/keymap.json
 	rm ~/.config/zed/settings.json
 
