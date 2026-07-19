@@ -164,6 +164,7 @@
   "workbench.editor.revealIfOpen": false,
   "workbench.editor.showTabs": "single",
   "workbench.editor.useModal": "off",
+  "workbench.experimental.modernUI": true,
   "workbench.layoutControl.enabled": false,
   "workbench.notifications.position": "top-right",
   "workbench.notifications.showInTitleBar": false,

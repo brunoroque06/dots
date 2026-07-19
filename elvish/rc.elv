@@ -25,6 +25,7 @@ set paths = [
 	/bin
 	/usr/sbin
 	/sbin
+	$E:HOME/.cargo/bin
 	$E:HOME/.dotnet/tools
 ]
 var _paths = $nil
