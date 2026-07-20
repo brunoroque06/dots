@@ -20,10 +20,9 @@ $env.VISUAL = $env.EDITOR
 
 $env.PROMPT_COMMAND = {||
     let status_color = if $env.LAST_EXIT_CODE == 0 { 'blue' } else { 'red' }
-    let dir = if $env.PWD == $env.HOME {
-        '~'
-    } else {
-        $env.PWD | path basename
+    let dir = match $env.PWD {
+        $pwd if $pwd == $nu.home-dir => '~'
+        $pwd => ($pwd | path basename)
     }
     $'(ansi { fg: $status_color attr: r }) (ansi reset)(ansi blue) ($dir)(ansi reset) '
 }
@@ -33,7 +32,7 @@ $env.config = {
     history: {file_format: 'sqlite'}
     show_banner: false
     show_hints: false
-    table: {mode: 'none'}
+    table: {index_mode: 'auto', mode: 'none'}
 }
 
 $env.config.abbreviations = {
