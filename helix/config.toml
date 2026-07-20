@@ -4,7 +4,7 @@ theme = "github_light_high_contrast"
 color-modes = true
 # end-of-line-diagnostics = "hint"
 line-number = "relative"
-shell = ["/opt/homebrew/bin/elvish", "-c"]
+shell = ["/opt/homebrew/bin/nu", "-c"]
 trim-trailing-whitespace = true
 
 [editor.auto-save]

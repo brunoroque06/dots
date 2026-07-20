@@ -1,4 +1,4 @@
-command = /opt/homebrew/bin/elvish
+command = /opt/homebrew/bin/nu
 cursor-style = block
 cursor-style-blink = false
 font-family = M Plus 1 Code

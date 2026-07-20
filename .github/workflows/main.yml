@@ -5,8 +5,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
-      - run: |
-          sudo apt update
-          sudo apt install elvish -y
       - run: npm install -g prettier
       - run: make fmt-check

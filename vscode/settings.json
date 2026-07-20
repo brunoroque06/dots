@@ -143,11 +143,11 @@
     "markdown.preview.fontFamily"
   ],
   "terminal.integrated.defaultLocation": "editor",
-  "terminal.integrated.defaultProfile.osx": "elvish",
+  "terminal.integrated.defaultProfile.osx": "nushell",
   "terminal.integrated.macOptionIsMeta": true,
   "terminal.integrated.profiles.osx": {
-    "elvish": {
-      "path": "/opt/homebrew/bin/elvish"
+    "nushell": {
+      "path": "/opt/homebrew/bin/nu"
     }
   },
   "terraform.mcp.server.enable": false,

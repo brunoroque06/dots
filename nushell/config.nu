@@ -23,49 +23,49 @@ $env.PATH = [
   /bin
   /usr/sbin
   /sbin
-  ($env.HOME | path join ".cargo" "bin")
-  ($env.HOME | path join ".dotnet" "tools")
+  ($env.HOME | path join '.cargo' 'bin')
+  ($env.HOME | path join '.dotnet' 'tools')
 ]
 
-$env.BAT_STYLE = "plain"
-$env.BAT_THEME = "ansi"
-$env.EDITOR = "/opt/homebrew/bin/hx"
-$env.LESS = "-i --incsearch -m"
-$env.LS_COLORS = (vivid generate one-light)
-$env.PAGER = "/opt/homebrew/bin/less"
-$env.RIPGREP_CONFIG_PATH = ($env.HOME | path join ".config" "ripgreprc")
+$env.BAT_STYLE = 'plain'
+$env.BAT_THEME = 'ansi'
+$env.EDITOR = '/opt/homebrew/bin/hx'
+$env.LESS = '-i --incsearch -m'
+$env.LS_COLORS = (vivid generate ansi)
+$env.PAGER = '/opt/homebrew/bin/less'
+$env.RIPGREP_CONFIG_PATH = ($env.HOME | path join '.config' 'ripgreprc')
 $env.VISUAL = $env.EDITOR
 
 $env.PROMPT_COMMAND = {||
-  let status_color = if $env.LAST_EXIT_CODE == 0 { "blue" } else { "red" }
-  let directory = if $env.PWD == $env.HOME {
-    "~"
+  let status_color = if $env.LAST_EXIT_CODE == 0 { 'blue' } else { 'red' }
+  let dir = if $env.PWD == $env.HOME {
+    '~'
   } else {
     $env.PWD | path basename
   }
-  $"(ansi { fg: $status_color attr: r }) (ansi reset)(ansi blue) ($directory)(ansi reset) "
+  $'(ansi { fg: $status_color attr: r }) (ansi reset)(ansi blue) ($dir)(ansi reset) '
 }
 
 $env.config = {
   history: {
-    file_format: "sqlite"
+    file_format: 'sqlite'
   }
   show_banner: false
   show_hints: false
   table: {
-    mode: "none"
+    mode: 'none'
   }
 }
 
 # ai
 def ai-review [
-  src: string = "main"
-  tgt: string = "HEAD"
+  src: string = 'main'
+  tgt: string = 'HEAD'
 ] {
-  let diff = "diff.txt"
+  let diff = 'diff.txt'
   try {
-    ^git diff --histogram $"($src)...($tgt)" | save --raw $diff
-    ^copilot -p $"Review the PR changes in ($diff). Search for bugs, regressions, and inconsistencies."
+    ^git diff --histogram $'($src)...($tgt)' | save --raw $diff
+    ^copilot -p $'Review the PR changes in ($diff). Search for bugs, regressions, and inconsistencies.'
   } finally {
     rm $diff
   }
@@ -73,7 +73,7 @@ def ai-review [
 
 # command
 def cmd-edit [] {
-  let tmp = mktemp --suffix ".nu"
+  let tmp = mktemp --suffix '.nu'
   try {
     commandline | save --force --raw $tmp
     ^$env.EDITOR $tmp
@@ -83,40 +83,40 @@ def cmd-edit [] {
     rm $tmp
   }
 }
-def input-fuzzy [t: string] { input list --fuzzy --no-separator --no-footer $"(ansi blue)($t)(ansi reset)" }
+def input-fuzzy [t: string] { input list --fuzzy --no-separator --no-footer $'(ansi blue)($t)(ansi reset)' }
 def cmd-last-insert [] {
   let el = (
     history
       | last
       | get command
       | split words
-      | input-fuzzy "Last Command"
+      | input-fuzzy 'Last Command'
   )
   if $el != null { commandline edit --insert $el }
 }
 
 # docs
 def typst-files [] {
-  glob "*.typ"
+  glob '*.typ'
 }
 def typst-to-pptx [f: path@typst-files] {
   let stem = $f | path parse | get stem
-  let out = $env.PWD | path join "out" $stem
+  let out = $env.PWD | path join 'out' $stem
   let ppi = 512
   mkdir $out
   try {
-    ^typst compile --ppi $ppi $f ($out | path join "page-{0p}.png")
+    ^typst compile --ppi $ppi $f ($out | path join 'page-{0p}.png')
     let md = (
-      glob $"($out)/*.png"
+      glob $'($out)/*.png'
         | sort
         | each { |page|
           let name = $page | path basename
-          $"# {background-image=\"($name)\"}"
+          $'# {background-image="($name)"}'
         }
         | str join "\n\n---\n\n"
     )
-    $md | save ($out | path join "main.md")
-    ^pandoc --dpi $ppi ($out | path join "main.md") -o ($env.PWD | path join $"($stem).pptx")
+    $md | save ($out | path join 'main.md')
+    ^pandoc --dpi $ppi ($out | path join 'main.md') -o ($env.PWD | path join $'($stem).pptx')
   } finally {
     rm --recursive $out
   }
@@ -124,20 +124,27 @@ def typst-to-pptx [f: path@typst-files] {
 
 # diagram
 def d2-files [] {
-  glob "*.d2"
+  glob '*.d2'
+}
+def d2-icat [f: path@d2-files] {
+  ^d2 $f --stdout-format png - | ^viu -
 }
 def d2-watch [f: path@d2-files] {
-  while true {
-    clear
-    ^d2 $f --stdout-format png | ^viu -
-    ^fswatch -1 $f | ignore
+  clear
+  d2-icat $f
+
+  for ev in (watch $f) {
+    if $ev.operation == 'Create' {
+      clear
+      d2-icat $f
+    }
   }
 }
 
 # file system
 alias l = ls
 def c [f: path] {
-  if ($f | str ends-with ".md") {
+  if ($f | str ends-with '.md') {
     ^glow $f
   } else {
     ^bat $f
@@ -149,7 +156,7 @@ def --env cd-history [] {
       | get cwd
       | reverse
       | uniq
-      | input-fuzzy "Directory"
+      | input-fuzzy 'Directory'
   )
   if $dir != null { cd $dir }
 }
@@ -159,7 +166,7 @@ def e [...args] {
 
 # macOS
 def app-files [] {
-  glob "/System/Applications/*.app" | append (glob "/Applications/*.app")
+  glob '/System/Applications/*.app' | append (glob '/Applications/*.app')
 }
 def app-id [app: path@app-files] {
   ^mdls -name kMDItemCFBundleIdentifier $app
@@ -185,26 +192,29 @@ def pkg-up [] {
   ^npm-check-updates --global
 }
 
+# version control
+alias gi = gitu
+
 $env.config.keybindings ++= [
   {
     name: dir_history
     modifier: control
     keycode: char_l
     mode: [emacs vi_insert]
-    event: { send: executehostcommand cmd: "cd-history" }
+    event: { send: executehostcommand cmd: 'cd-history' }
   },
   {
     name: last_cmd_el
     modifier: control
     keycode: char_o
     mode: [emacs vi_insert]
-    event: { send: executehostcommand cmd: "cmd-last-insert" }
+    event: { send: executehostcommand cmd: 'cmd-last-insert' }
   }
   {
     name: cmd_edit
     modifier: control
     keycode: char_t
     mode: [emacs vi_insert]
-    event: { send: executehostcommand cmd: "cmd-edit" }
+    event: { send: executehostcommand cmd: 'cmd-edit' }
   }
 ]

@@ -41,7 +41,7 @@
   },
   "terminal": {
     "shell": {
-      "program": "/opt/homebrew/bin/elvish"
+      "program": "/opt/homebrew/bin/nu"
     }
   },
   "theme": "One Light",

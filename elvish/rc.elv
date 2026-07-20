@@ -8,7 +8,7 @@ use readline-binding
 use str
 
 if (eq $E:TERM xterm-ghostty) {
-	use ghostty-integration
+	try { use ghostty-integration } catch { || }
 }
 
 if (has-external coreutils) {
@@ -129,7 +129,7 @@ fn d2-run-all { |&ext=svg| d2-ls | each { |f| d2 --pad 0 $f out/(file-stem $f).$
 fn d2-watch { |f|
 	while $true {
 		clear
-		d2 $f --stdout-format txt - | cat
+		d2 $f --stdout-format png - | viu -
 		fswatch -1 $f
 	}
 }

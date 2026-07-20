@@ -12,9 +12,9 @@ formatter = { command = "gofmt" }
 name = "d2"
 scope = "source.d2"
 file-types = ["d2"]
-formatter = { command = "elvish", args = [
+formatter = { command = "nu", args = [
   "-c",
-  "var tmp = (mktemp d2fmt.XXXX); try { cat > $tmp; d2 fmt $tmp; cat $tmp } finally { rm $tmp }"
+  '''let tmp = mktemp "d2fmt.XXXX"; try { ^cat | save --force --raw $tmp; ^d2 fmt $tmp; open --raw $tmp } finally { rm $tmp }'''
 ] }
 
 [[language]]
