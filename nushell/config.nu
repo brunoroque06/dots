@@ -28,8 +28,21 @@ $env.PROMPT_COMMAND = {||
     $'(ansi { fg: $status_color attr: r }) (ansi reset)(ansi blue) ($dir)(ansi reset) '
 }
 $env.PROMPT_COMMAND_RIGHT = ''
+$env.PROMPT_INDICATOR = $'(ansi red)>(ansi reset) '
 
 $env.config = {
+    color_config: {
+        search_result: {bg: 'yellow'}
+        shape_custom: 'green'
+        shape_directory: 'default'
+        shape_external: 'green'
+        shape_externalarg: 'default'
+        shape_filepath: 'default'
+        shape_flag: 'default'
+        shape_int: 'default'
+        shape_internalcall: 'green'
+        shape_string: 'default'
+    }
     history: {file_format: 'sqlite'}
     show_banner: false
     show_hints: false
@@ -37,6 +50,7 @@ $env.config = {
 }
 
 $env.config.abbreviations = {
+    e: ($env.EDITOR | path basename)
     gi: 'gitu'
     l: 'ls'
 }
@@ -145,9 +159,6 @@ def --env cd-history [] {
       | input-fuzzy 'Directory'
   )
     if $dir != null { cd $dir }
-}
-def e [...args] {
-    ^$env.EDITOR ...$args
 }
 
 # macOS
