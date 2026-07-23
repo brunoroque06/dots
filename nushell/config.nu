@@ -37,7 +37,7 @@ $env.config = {
         l: 'ls'
     }
     color_config: {
-        search_result: {bg: magenta, fg: light_gray}
+        search_result: {bg: magenta, fg: '#ffffff'}
         shape_custom: green
         shape_directory: default
         shape_external: green
@@ -198,6 +198,34 @@ def pkg-up [] {
     | each {|p| ^dotnet tool update --global --prerelease $p.packageId }
 
     ^npm-check-updates --global
+}
+
+# terminal
+def colors [] {
+    [
+        black
+        red
+        green
+        yellow
+        blue
+        magenta
+        cyan
+        white
+        dark_gray
+        light_red
+        light_green
+        light_yellow
+        light_blue
+        light_magenta
+        light_cyan
+        light_gray
+    ]
+    | each {|c|
+      let label = $c | fill --width 14
+      $'(ansi { fg: $c attr: r })  (ansi reset) (ansi $c)($label)(ansi reset)'
+    }
+    | chunks 8
+    | each {|r| $r | str join '' }
 }
 
 $env.config.keybindings ++= [
