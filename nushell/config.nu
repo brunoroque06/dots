@@ -5,17 +5,18 @@ $env.PATH = [
     /bin
     /usr/sbin
     /sbin
-    ($env.HOME | path join '.cargo' 'bin')
-    ($env.HOME | path join '.dotnet' 'tools')
+    ($env.HOME)/.cargo/bin
+    ($env.HOME)/.dotnet/tools
 ]
 
 $env.BAT_STYLE = 'plain'
 $env.BAT_THEME = 'ansi'
+$env.CARAPACE_COLOR = 0
 $env.EDITOR = '/opt/homebrew/bin/hx'
 $env.LESS = '-i --incsearch -m'
 $env.LS_COLORS = (vivid generate ansi)
 $env.PAGER = '/opt/homebrew/bin/less'
-$env.RIPGREP_CONFIG_PATH = ($env.HOME | path join '.config' 'ripgreprc')
+$env.RIPGREP_CONFIG_PATH = ($env.HOME)/.config/ripgreprc
 $env.VISUAL = $env.EDITOR
 
 $env.PROMPT_COMMAND = {||
@@ -37,7 +38,7 @@ $env.config = {
 
 $env.config.abbreviations = {
     gi: 'gitu'
-    l: "ls"
+    l: 'ls'
 }
 
 # ai
@@ -49,6 +50,12 @@ def ai-review [src: string = 'main', tgt: string = 'HEAD'] {
     } finally {
         rm $diff
     }
+}
+
+# autocomplete
+def carapace-su [] {
+    mkdir $nu.cache-dir
+    carapace _carapace nushell | save --force ($nu.cache-dir)/carapace.nu
 }
 
 # command
@@ -81,11 +88,11 @@ def typst-files [] {
 }
 def typst-to-pptx [f: path@"typst-files"] {
     let stem = $f | path parse | get stem
-    let out = $env.PWD | path join 'out' $stem
+    let out = ($env.PWD)/out/($stem)
     let ppi = 512
     mkdir $out
     try {
-        ^typst compile --ppi $ppi $f ($out | path join 'page-{0p}.png')
+        ^typst compile --ppi $ppi $f ($out)/'page-{0p}.png'
         let md = (
       glob $'($out)/*.png'
         | sort
@@ -95,8 +102,8 @@ def typst-to-pptx [f: path@"typst-files"] {
         }
         | str join "\n\n---\n\n"
     )
-        $md | save ($out | path join 'main.md')
-        ^pandoc --dpi $ppi ($out | path join 'main.md') -o ($env.PWD | path join $'($stem).pptx')
+        $md | save ($out)/main.md
+        ^pandoc --dpi $ppi ($out)/main.md -o ($env.PWD)/($stem).pptx
     } finally {
         rm --recursive $out
     }
@@ -158,39 +165,57 @@ def pkg-su [] {
     ^npm install --global @angular/language-server npm
 }
 def pkg-up [] {
-    brew upgrade
-    brew autoremove
-    brew cleanup
-    brew doctor
+    try {
+        brew upgrade
+        brew autoremove
+        brew cleanup
+        brew doctor
+    }
 
     ^dotnet tool list --format json --global
     | from json
     | get data
-    | each {|t| ^dotnet tool update --global --prerelease $t.packageId }
+    | each {|p| ^dotnet tool update --global --prerelease $p.packageId }
 
     ^npm-check-updates --global
 }
 
 $env.config.keybindings ++= [
     {
+        name: help_menu
+        modifier: control
+        keycode: char_h
+        mode: [emacs]
+        event: {send: menu, name: help_menu}
+    }
+    {
+        name: ide_completion_menu
+        modifier: control
+        keycode: char_j
+        mode: [emacs vi_insert vi_normal]
+        event: {send: menu, name: ide_completion_menu}
+    }
+    {
         name: dir_history
         modifier: control
         keycode: char_l
-        mode: [emacs vi_insert]
+        mode: [emacs]
         event: {send: executehostcommand, cmd: 'cd-history'}
     }
     {
         name: last_cmd_el
         modifier: control
         keycode: char_o
-        mode: [emacs vi_insert]
+        mode: [emacs]
         event: {send: executehostcommand, cmd: 'cmd-last-insert'}
     }
     {
         name: cmd_edit
         modifier: control
         keycode: char_t
-        mode: [emacs vi_insert]
+        mode: [emacs]
         event: {send: executehostcommand, cmd: 'cmd-edit'}
     }
 ]
+
+source ($nu.cache-dir)/carapace.nu
