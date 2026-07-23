@@ -52,7 +52,6 @@ brew "typescript-language-server"
 brew "typst"
 brew "typstyle"
 brew "vim"
-brew "vivid"
 brew "wget"
 
 cask "appcleaner"

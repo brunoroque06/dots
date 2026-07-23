@@ -14,7 +14,7 @@ $env.BAT_THEME = 'ansi'
 $env.CARAPACE_COLOR = 0
 $env.EDITOR = '/opt/homebrew/bin/hx'
 $env.LESS = '-i --incsearch -m'
-$env.LS_COLORS = (vivid generate ansi)
+$env.LS_COLORS = 'di=34:fi=30:ex=31:ln=30'
 $env.PAGER = '/opt/homebrew/bin/less'
 $env.RIPGREP_CONFIG_PATH = ($env.HOME)/.config/ripgreprc
 $env.VISUAL = $env.EDITOR
@@ -28,20 +28,25 @@ $env.PROMPT_COMMAND = {||
     $'(ansi { fg: $status_color attr: r }) (ansi reset)(ansi blue) ($dir)(ansi reset) '
 }
 $env.PROMPT_COMMAND_RIGHT = ''
-$env.PROMPT_INDICATOR = $'(ansi red)>(ansi reset) '
+$env.PROMPT_INDICATOR = $'(ansi magenta)>(ansi reset) '
 
 $env.config = {
+    abbreviations: {
+        e: ($env.EDITOR | path basename)
+        gi: 'gitu'
+        l: 'ls'
+    }
     color_config: {
-        search_result: {bg: 'yellow'}
-        shape_custom: 'green'
-        shape_directory: 'default'
-        shape_external: 'green'
-        shape_externalarg: 'default'
-        shape_filepath: 'default'
-        shape_flag: 'default'
-        shape_int: 'default'
-        shape_internalcall: 'green'
-        shape_string: 'default'
+        search_result: {bg: magenta, fg: light_gray}
+        shape_custom: green
+        shape_directory: default
+        shape_external: green
+        shape_externalarg: default
+        shape_filepath: default
+        shape_flag: default
+        shape_int: default
+        shape_internalcall: green
+        shape_string: default
     }
     history: {file_format: 'sqlite'}
     show_banner: false
@@ -49,11 +54,15 @@ $env.config = {
     table: {index_mode: 'auto', mode: 'none'}
 }
 
-$env.config.abbreviations = {
-    e: ($env.EDITOR | path basename)
-    gi: 'gitu'
-    l: 'ls'
-}
+$env.config.menus ++= [
+    {
+        name: completion_menu
+        marker: '| '
+        only_buffer_difference: false
+        style: {text: default, selected_text: default_reverse, description_text: blue}
+        type: {layout: columnar}
+    }
+]
 
 # ai
 def ai-review [src: string = 'main', tgt: string = 'HEAD'] {
