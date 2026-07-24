@@ -12,7 +12,7 @@ $env.PATH = [
 $env.BAT_STYLE = 'plain'
 $env.BAT_THEME = 'ansi'
 $env.CARAPACE_COLOR = 0
-$env.EDITOR = '/opt/homebrew/bin/hx'
+$env.EDITOR = 'hx'
 $env.LESS = '-i --incsearch -m'
 $env.LS_COLORS = 'di=34:fi=30:ex=31:ln=30'
 $env.PAGER = '/opt/homebrew/bin/less'
@@ -32,7 +32,7 @@ $env.PROMPT_INDICATOR = $'(ansi magenta)>(ansi reset) '
 
 $env.config = {
     abbreviations: {
-        e: ($env.EDITOR | path basename)
+        e: $env.EDITOR
         gi: 'gitu'
         l: 'ls'
     }
@@ -161,12 +161,12 @@ def c [f: path] {
 }
 def --env cd-history [] {
     let dir = (
-    history
-      | get cwd
-      | reverse
-      | uniq
-      | input-fuzzy 'Directory'
-  )
+        history
+        | get cwd
+        | reverse
+        | uniq
+        | input-fuzzy 'Directory'
+    )
     if $dir != null { cd $dir }
 }
 
