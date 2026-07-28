@@ -31,11 +31,7 @@ $env.PROMPT_COMMAND_RIGHT = ''
 $env.PROMPT_INDICATOR = $'(ansi magenta)>(ansi reset) '
 
 $env.config = {
-    abbreviations: {
-        e: $env.EDITOR
-        gi: 'gitu'
-        l: 'ls'
-    }
+    abbreviations: {e: $env.EDITOR, gi: 'gitu', l: 'ls'}
     color_config: {
         search_result: {bg: magenta, fg: '#ffffff'}
         shape_custom: green
@@ -180,8 +176,9 @@ def app-id [app: path@"app-files"] {
 
 # packages
 def pkg-su [] {
-    [csharpier csharprepl fantomas roslyn-language-server]
-    | each {|p| ^dotnet tool install --global $p }
+    for p in [csharpier csharprepl fantomas roslyn-language-server] {
+        ^dotnet tool install --global $p
+    }
     ^npm install --global @angular/language-server npm
 }
 def pkg-up [] {
@@ -192,10 +189,9 @@ def pkg-up [] {
         brew doctor
     }
 
-    ^dotnet tool list --format json --global
-    | from json
-    | get data
-    | each {|p| ^dotnet tool update --global --prerelease $p.packageId }
+    for p in (^dotnet tool list --format json --global | from json | get data) {
+        ^dotnet tool update --global --prerelease $p.packageId
+    }
 
     ^npm-check-updates --global
 }
