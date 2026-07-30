@@ -19,21 +19,26 @@ $env.PAGER = '/opt/homebrew/bin/less'
 $env.RIPGREP_CONFIG_PATH = ($env.HOME)/.config/ripgreprc
 $env.VISUAL = $env.EDITOR
 
+let col_acc = 'magenta'
+let col_err = 'red'
+let col_pri = 'blue'
+let col_sel = 'magenta_reverse'
+
 $env.PROMPT_COMMAND = {||
-    let status_color = if $env.LAST_EXIT_CODE == 0 { 'blue' } else { 'red' }
+    let status = if $env.LAST_EXIT_CODE == 0 { $col_pri } else { $col_err }
     let dir = match $env.PWD {
         $pwd if $pwd == $nu.home-dir => '~'
         $pwd => ($pwd | path basename)
     }
-    $'(ansi { fg: $status_color attr: r }) (ansi reset)(ansi blue) ($dir)(ansi reset) '
+    $'(ansi $'($status)_reverse') (ansi reset)(ansi $col_pri) ($dir)(ansi reset) '
 }
 $env.PROMPT_COMMAND_RIGHT = ''
-$env.PROMPT_INDICATOR = $'(ansi magenta)>(ansi reset) '
+$env.PROMPT_INDICATOR = $'(ansi $col_acc)>(ansi reset) '
 
 $env.config = {
     abbreviations: {e: $env.EDITOR, gi: 'gitu', l: 'ls'}
     color_config: {
-        search_result: {bg: magenta, fg: '#ffffff'}
+        search_result: $col_sel
         shape_custom: green
         shape_directory: default
         shape_external: green
@@ -50,13 +55,42 @@ $env.config = {
     table: {index_mode: 'auto', mode: 'none'}
 }
 
+let style = {
+    description_text: default
+    match_text: {attr: u}
+    selected_match_text: {attr: ur}
+    selected_text: $col_sel
+    text: default
+}
+
 $env.config.menus ++= [
     {
+        marker: $'(ansi $col_acc)| '
         name: completion_menu
-        marker: '| '
         only_buffer_difference: false
-        style: {text: default, selected_text: default_reverse, description_text: blue}
+        style: $style
         type: {layout: columnar}
+    }
+    {
+        marker: $'(ansi $col_acc)| '
+        name: ide_completion_menu
+        only_buffer_difference: false
+        style: $style
+        type: {layout: ide}
+    }
+    {
+        marker: $'(ansi $col_acc)? '
+        name: help_menu
+        only_buffer_difference: true
+        style: $style
+        type: {layout: description}
+    }
+    {
+        marker: $'(ansi $col_acc)? '
+        name: history_menu
+        only_buffer_difference: true
+        style: $style
+        type: {layout: list}
     }
 ]
 
@@ -89,7 +123,7 @@ def cmd-edit [] {
         rm $tmp
     }
 }
-def input-fuzzy [t: string] { input list --fuzzy --no-separator --no-footer $'(ansi blue)($t)(ansi reset)' }
+def input-fuzzy [t: string] { input list --fuzzy --no-separator --no-footer $'(ansi $col_acc)($t)(ansi reset)' }
 def cmd-last-insert [] {
     let el = (
     history
