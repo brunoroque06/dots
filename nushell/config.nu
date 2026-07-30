@@ -270,7 +270,7 @@ $env.config.keybindings ++= [
         name: ide_completion_menu
         modifier: control
         keycode: char_j
-        mode: [emacs vi_insert vi_normal]
+        mode: [emacs]
         event: {send: menu, name: ide_completion_menu}
     }
     {
