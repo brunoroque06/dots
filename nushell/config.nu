@@ -22,15 +22,16 @@ $env.VISUAL = $env.EDITOR
 let col_acc = 'magenta'
 let col_err = 'red'
 let col_pri = 'blue'
-let col_sel = 'magenta_reverse'
+let col_sel = $'($col_acc)_reverse'
 
 $env.PROMPT_COMMAND = {||
     let status = if $env.LAST_EXIT_CODE == 0 { $col_pri } else { $col_err }
+    let venv = if 'PATH_BCK' in $env { ' *' } else { '' }
     let dir = match $env.PWD {
         $pwd if $pwd == $nu.home-dir => '~'
         $pwd => ($pwd | path basename)
     }
-    $'(ansi $'($status)_reverse') (ansi reset)(ansi $col_pri) ($dir)(ansi reset) '
+    $'(ansi $'($status)_reverse') (ansi reset)($venv)(ansi $col_pri) ($dir)(ansi reset) '
 }
 $env.PROMPT_COMMAND_RIGHT = ''
 $env.PROMPT_INDICATOR = $'(ansi $col_acc)>(ansi reset) '
@@ -49,7 +50,8 @@ $env.config = {
         shape_internalcall: green
         shape_string: default
     }
-    history: {file_format: 'sqlite'}
+    completions: {algorithm: fuzzy}
+    history: {file_format: 'sqlite', isolation: true}
     show_banner: false
     show_hints: false
     table: {index_mode: 'auto', mode: 'none'}
@@ -228,6 +230,34 @@ def pkg-up [] {
     }
 
     ^npm-check-updates --global
+}
+
+# python
+def --env py-a [] {
+    if 'PATH_BCK' in $env {
+        error make {msg: 'venv is already active'}
+    }
+    let venv = $env.PWD | path join .venv bin
+    if ($venv | path type) != dir {
+        error make {msg: 'No venv found'}
+    }
+    $env.PATH_BCK = $env.PATH
+    $env.PATH = ($env.PATH | prepend $venv)
+    $env.PYTHONPATH = $env.PWD
+}
+def --env py-d [] {
+    if 'PATH_BCK' not-in $env {
+        error make {msg: 'No venv is active'}
+    }
+    $env.PATH = $env.PATH_BCK
+    hide-env PATH_BCK
+    hide-env PYTHONPATH
+}
+def --env py-su [] {
+    python3 -m venv .venv
+    py-a
+    pip install --upgrade pip
+    pip install .
 }
 
 # terminal
