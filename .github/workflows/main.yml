@@ -5,5 +5,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
-      - run: npm install -g prettier
+      - id: set-up-homebrew
+        uses: Homebrew/actions/setup-homebrew@1f8e202ffddf94def7f42f6fa3a482e821489f9c # 2026.07.10.1
+      - run: brew install nushell prettier
+      - run: cargo install --git https://github.com/nushell/nufmt
       - run: make fmt-check
+      - run: make check

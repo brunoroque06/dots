@@ -35,6 +35,10 @@ fmt:
 
 fmt-check:
 	prettier -c .
+	nufmt --dry-run nushell/config.nu
+
+check:
+	nu -n -c 'nu-check -d nushell/config.nu'
 
 install:
 	softwareupdate --install --all
