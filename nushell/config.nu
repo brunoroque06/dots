@@ -45,6 +45,7 @@ $env.config = {
         shape_external: green
         shape_externalarg: default
         shape_filepath: default
+        shape_globpattern: default
         shape_flag: default
         shape_int: default
         shape_internalcall: green
@@ -201,6 +202,7 @@ def --env cd-history [] {
     )
     if $dir != null { cd $dir }
 }
+def ql [f: glob] { qlmanage -p $f }
 
 # macOS
 def app-files [] {
