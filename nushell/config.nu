@@ -328,4 +328,4 @@ $env.config.keybindings ++= [
     }
 ]
 
-source ($nu.cache-dir)/carapace.nu
+if (($nu.cache-dir)/carapace.nu | path exists) { source ($nu.cache-dir)/carapace.nu }
