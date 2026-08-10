@@ -176,7 +176,7 @@ def d2-watch [f: path@"d2-files"] {
     clear
     d2-icat $f
 
-    for ev in (watch $f) {
+    for ev in (watch -d 1sec -g *.d2 $f) {
         if $ev.operation == 'Create' {
             clear
             d2-icat $f
@@ -260,6 +260,16 @@ def --env py-su [] {
     py-a
     pip install --upgrade pip
     pip install .
+}
+
+# rust
+def cargo-test-watch [f: path] {
+    for ev in (watch -d 1sec -g **/*.rs $f) {
+        try {
+            clear
+            cargo test
+        }
+    }
 }
 
 # terminal
