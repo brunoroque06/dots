@@ -1,3 +1,6 @@
+[language-server.rust-analyzer.config]
+check.command = "clippy"
+
 harper-ls = { command = "harper-ls", args = ["--stdio"] }
 
 [[language]]
@@ -12,10 +15,7 @@ formatter = { command = "gofmt" }
 name = "d2"
 scope = "source.d2"
 file-types = ["d2"]
-formatter = { command = "nu", args = [
-  "-c",
-  '''let tmp = mktemp "d2fmt.XXXX"; try { ^cat | save --force --raw $tmp; ^d2 fmt $tmp; open --raw $tmp } finally { rm $tmp }'''
-] }
+formatter = { command = "nu", args = ["-c", '''let tmp = mktemp "d2fmt.XXXX"; try { ^cat | save --force --raw $tmp; ^d2 fmt $tmp; open --raw $tmp } finally { rm $tmp }'''] }
 
 [[language]]
 name = "html"
@@ -39,10 +39,6 @@ language-servers = ["harper-ls"]
 name = "python"
 formatter = { command = "ruff", args = ["format", "-"] }
 language-servers = ["pyrefly", "ruff"]
-
-[[language]]
-name = "rust"
-formatter = { command = "rustfmt" }
 
 [[language]]
 name = "scss"
