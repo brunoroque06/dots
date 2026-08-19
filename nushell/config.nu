@@ -25,7 +25,7 @@ let col_pri = 'blue'
 let col_sel = $'($col_acc)_reverse'
 
 $env.PROMPT_COMMAND = {||
-    let status = if $env.LAST_EXIT_CODE == 0 { $col_pri } else { $col_err }
+    let status = if $ans == null or $ans.exit_code == 0 { $col_pri } else { $col_err }
     let venv = if 'PATH_BCK' in $env { ' *' } else { '' }
     let dir = match $env.PWD {
         $pwd if $pwd == $nu.home-dir => '~'
