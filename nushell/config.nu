@@ -110,8 +110,8 @@ def ai-review [src: string = 'main', tgt: string = 'HEAD'] {
 
 # autocomplete
 def carapace-su [] {
-    mkdir $nu.cache-dir
-    carapace _carapace nushell | save --force ($nu.cache-dir)/carapace.nu
+    mkdir $nu.user-autoload-dirs.0
+    carapace _carapace nushell | save --force ($nu.user-autoload-dirs.0)/carapace.nu
 }
 
 # command
@@ -346,5 +346,3 @@ $env.config.keybindings ++= [
         event: {send: executehostcommand, cmd: 'cd-history'}
     }
 ]
-
-if (($nu.cache-dir)/carapace.nu | path exists) { source ($nu.cache-dir)/carapace.nu }
