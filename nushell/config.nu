@@ -300,20 +300,36 @@ def colors [] {
     | each {|r| $r | str join '' }
 }
 
+$env.config.keybindings = (
+    $env.config.keybindings
+    | each {|b|
+        match $b.name {
+            help_menu => {
+                name: help_menu
+                modifier: control
+                keycode: char_h
+                mode: [emacs]
+                event: {send: menu, name: help_menu}
+            }
+            ide_completion_menu => {
+                name: ide_completion_menu
+                modifier: control
+                keycode: char_j
+                mode: [emacs]
+                event: {send: menu, name: ide_completion_menu}
+            }
+            _ => $b
+        }
+    }
+)
+
 $env.config.keybindings ++= [
     {
-        name: help_menu
+        name: cmd_edit
         modifier: control
-        keycode: char_h
+        keycode: char_t
         mode: [emacs]
-        event: {send: menu, name: help_menu}
-    }
-    {
-        name: ide_completion_menu
-        modifier: control
-        keycode: char_j
-        mode: [emacs]
-        event: {send: menu, name: ide_completion_menu}
+        event: {send: executehostcommand, cmd: 'cmd-edit'}
     }
     {
         name: dir_history
@@ -328,13 +344,6 @@ $env.config.keybindings ++= [
         keycode: char_o
         mode: [emacs]
         event: {send: executehostcommand, cmd: 'cmd-last-insert'}
-    }
-    {
-        name: cmd_edit
-        modifier: control
-        keycode: char_t
-        mode: [emacs]
-        event: {send: executehostcommand, cmd: 'cmd-edit'}
     }
 ]
 
