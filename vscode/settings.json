@@ -122,6 +122,7 @@
   "mssql.defaultQueryResultsViewMode": "Text",
   "mssql.format.datatypeCasing": "lowercase",
   "mssql.format.keywordCasing": "lowercase",
+  "mssql.format.options.keywordCasing": "lowercase",
   "python.analysis.autoFormatStrings": true,
   "python.analysis.autoImportCompletions": true,
   "python.analysis.inlayHints.callArgumentNames": "partial",

@@ -332,18 +332,18 @@ $env.config.keybindings ++= [
         event: {send: executehostcommand, cmd: 'cmd-edit'}
     }
     {
+        name: cmd_last
+        modifier: control
+        keycode: char_o
+        mode: [emacs]
+        event: {send: executehostcommand, cmd: 'cmd-last-insert'}
+    }
+    {
         name: dir_history
         modifier: control
         keycode: char_l
         mode: [emacs]
         event: {send: executehostcommand, cmd: 'cd-history'}
-    }
-    {
-        name: last_cmd_el
-        modifier: control
-        keycode: char_o
-        mode: [emacs]
-        event: {send: executehostcommand, cmd: 'cmd-last-insert'}
     }
 ]
 
