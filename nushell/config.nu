@@ -301,7 +301,9 @@ def colors [] {
 }
 
 # version control
-def git-ls [] { git ls-files | lines }
+def git-ls [] {
+    git ls-files | lines
+}
 def git-log-p [f: path@"git-ls"] { git log --follow -p -- $f }
 
 $env.config.keybindings = (
