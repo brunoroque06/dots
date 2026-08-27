@@ -139,10 +139,10 @@ def cmd-last-insert [] {
 }
 
 # docs
-def typst-files [] {
+def typst-ls [] {
     glob '*.typ'
 }
-def typst-to-pptx [f: path@"typst-files"] {
+def typst-to-pptx [f: path@"typst-ls"] {
     let stem = $f | path parse | get stem
     let out = ($env.PWD)/out/($stem)
     let ppi = 512
@@ -166,13 +166,13 @@ def typst-to-pptx [f: path@"typst-files"] {
 }
 
 # diagram
-def d2-files [] {
+def d2-ls [] {
     glob '*.d2'
 }
-def d2-icat [f: path@"d2-files"] {
+def d2-icat [f: path@"d2-ls"] {
     ^d2 $f --stdout-format png - | ^viu -
 }
-def d2-watch [f: path@"d2-files"] {
+def d2-watch [f: path@"d2-ls"] {
     clear
     d2-icat $f
 
@@ -205,10 +205,10 @@ def --env cd-history [] {
 def ql [f: glob] { qlmanage -p $f }
 
 # macOS
-def app-files [] {
+def app-ls [] {
     glob '/System/Applications/*.app' | append (glob '/Applications/*.app')
 }
-def app-id [app: path@"app-files"] {
+def app-id [app: path@"app-ls"] {
     ^mdls -name kMDItemCFBundleIdentifier $app
 }
 
@@ -299,6 +299,10 @@ def colors [] {
     | chunks 8
     | each {|r| $r | str join '' }
 }
+
+# version control
+def git-ls [] { git ls-files | lines }
+def git-log-p [f: path@"git-ls"] { git log --follow -p -- $f }
 
 $env.config.keybindings = (
     $env.config.keybindings
