@@ -28,4 +28,5 @@ myriad-dreamin.tinymist
 redhat.vscode-yaml
 rust-lang.rust-analyzer
 tombi-toml.tombi
+vadimcn.vscode-lldb
 vitest.explorer
