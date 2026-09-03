@@ -128,6 +128,16 @@
     "when": "editorFocus && dance.mode == 'helix/insert'"
   },
   {
+    "command": "editor.action.wordHighlight.next",
+    "key": "alt-n",
+    "when": "editorTextFocus && dance.mode == 'helix/normal'"
+  },
+  {
+    "command": "editor.action.wordHighlight.prev",
+    "key": "alt-p",
+    "when": "editorTextFocus && dance.mode == 'helix/normal'"
+  },
+  {
     "command": "editor.debug.action.toggleBreakpoint",
     "key": "space b",
     "when": "editorTextFocus && dance.mode == 'helix/normal'"

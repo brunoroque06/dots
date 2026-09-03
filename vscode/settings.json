@@ -61,7 +61,7 @@
   "diffEditor.hideUnchangedRegions.contextLineCount": 8,
   "diffEditor.hideUnchangedRegions.enabled": true,
   "diffEditor.ignoreTrimWhitespace": true,
-  "diffEditor.renderSideBySide": true,
+  "diffEditor.renderSideBySide": false,
   "dotnet.codeLens.enableReferencesCodeLens": false,
   "dotnet.formatting.organizeImportsOnFormat": true,
   "dotnet.inlayHints.enableInlayHintsForLiteralParameters": true,
@@ -72,7 +72,7 @@
   "editor.codeActionsOnSave": {
     "source.fixAll": "explicit",
     "source.organizeImports": "explicit",
-    "source.sort.json": "explicit"
+    "source.sort.json": "never"
   },
   "editor.cursorBlinking": "solid",
   "editor.cursorSurroundingLines": 4,
@@ -155,6 +155,7 @@
   "terraform.mcp.server.enable": false,
   "tinymist.formatterMode": "typstyle",
   "window.commandCenter": false,
+  "window.density.layout": "compact",
   "window.zoomLevel": 0.6,
   "workbench.activityBar.compact": true,
   "workbench.activityBar.location": "bottom",
