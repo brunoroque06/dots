@@ -32,6 +32,7 @@ unconfig:
 
 fmt:
 	prettier -w .
+	nufmt nushell/config.nu
 
 fmt-check:
 	prettier -c .

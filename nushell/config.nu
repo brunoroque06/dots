@@ -170,9 +170,11 @@ def d2-ls [] {
     glob '*.d2'
 }
 def d2-icat [f: path@"d2-ls"] {
-    ^d2 $f --stdout-format png - | ^viu -
+    ^d2 $f
+    let img = $f | path parse | update extension svg | path join
+    ql $img
 }
-def d2-watch [f: path@"d2-ls"] {
+def d2-icat-watch [f: path@"d2-ls"] {
     clear
     d2-icat $f
 
@@ -203,6 +205,25 @@ def --env cd-history [] {
     if $dir != null { cd $dir }
 }
 def ql [f: glob] { qlmanage -p $f }
+def replace [p: string, r: string] {
+    rg -l --hidden $p
+    | lines
+    | each { |f|
+        let cnt = (open --raw $f)
+        let new = $cnt | str replace -a -m -r $p $r
+
+        print ($new | ^git diff --color=always --no-index $f - | complete).stdout
+        print --no-newline $"Apply to ($f)? [y/N] "
+
+        let key = (input listen --types [key])
+        print $key.code
+
+        match ($key.code) {
+          'y' => { $new | save --force $f; print 'Applied' }
+          _ => { print 'Skipped' }
+        }
+      }
+}
 
 # macOS
 def app-ls [] {
