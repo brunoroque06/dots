@@ -37,7 +37,12 @@ $env.PROMPT_COMMAND_RIGHT = ''
 $env.PROMPT_INDICATOR = $'(ansi $col_acc)>(ansi reset) '
 
 $env.config = {
-    abbreviations: {e: $env.EDITOR, gi: 'gitu', l: 'ls'}
+    abbreviations: {
+        e: $env.EDITOR
+        g: 'git'
+        gi: 'gitu'
+        l: 'ls'
+    }
     color_config: {
         search_result: $col_sel
         shape_custom: green
@@ -213,7 +218,7 @@ def replace [p: string, r: string] {
         let new = $cnt | str replace -a -m -r $p $r
 
         print ($new | ^git diff --color=always --no-index $f - | complete).stdout
-        print --no-newline $"Apply to ($f)? [y/N] "
+        print --no-newline $"Apply to ($f)? [y/n] "
 
         let key = (input listen --types [key])
         print $key.code
@@ -238,7 +243,6 @@ def pkg-su [] {
     for p in [csharpier csharprepl fantomas roslyn-language-server] {
         ^dotnet tool install --global $p
     }
-    ^npm install --global @angular/language-server npm
 }
 def pkg-up [] {
     try {
@@ -251,8 +255,6 @@ def pkg-up [] {
     for p in (^dotnet tool list --format json --global | from json | get data) {
         ^dotnet tool update --global --prerelease $p.packageId
     }
-
-    ^npm-check-updates --global
 }
 
 # python

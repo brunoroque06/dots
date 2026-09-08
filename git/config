@@ -1,20 +1,7 @@
 [alias]
-a = add
-b = branch
-ch = checkout
-co = commit
-con-edit = config --edit --global
-con-list = config --list --show-origin
-d = diff
-f = fetch
-l = log
-ll = log --all --decorate --graph --format=format:'%Cblue%h %Creset- %Cgreen%ar %Creset%s %C(dim)- %an%C(auto)%d' -10
+d = diff --word-diff=color
 lp = log -p
-pul = pull
-pus = push
-sh = show
-st = status -s
-sw = switch
+s = status -s
 
 [credential]
 helper = osxkeychain
@@ -25,6 +12,7 @@ pager = less -R
 [diff]
 algorithm = histogram
 colorMoved = zebra
+mnemonicPrefix = true
 renames = copies
 tool = code
 

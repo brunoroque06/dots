@@ -218,7 +218,8 @@
         "notifications.clearAll",
         "workbench.action.closeAuxiliaryBar",
         "workbench.action.closePanel",
-        "workbench.action.closeSidebar"
+        "workbench.action.closeSidebar",
+        "workbench.action.focusActiveEditorGroup"
       ]
     },
     "command": "runCommands",
@@ -233,6 +234,10 @@
     "command": "search.action.focusPreviousSearchResult",
     "key": "[ q",
     "when": "editorTextFocus && dance.mode == 'helix/normal'"
+  },
+  {
+    "command": "search.action.openNewEditor",
+    "key": "cmd+shift+f"
   },
   {
     "command": "workbench.action.chat.openInEditor",
@@ -295,10 +300,6 @@
     "command": "workbench.action.files.save",
     "key": "space =",
     "when": "editorTextFocus && dance.mode == 'helix/normal'"
-  },
-  {
-    "command": "workbench.action.findInFiles",
-    "key": "cmd+shift+f"
   },
   {
     "command": "workbench.action.focusAboveGroup",
