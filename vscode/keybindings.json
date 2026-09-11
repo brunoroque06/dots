@@ -203,6 +203,16 @@
     "when": "editorTextFocus && dance.mode == 'helix/normal'"
   },
   {
+    "command": "git.clean",
+    "key": "\\ g e",
+    "when": "editorTextFocus && dance.mode == 'helix/normal'"
+  },
+  {
+    "command": "git.delete",
+    "key": "\\ g r",
+    "when": "editorTextFocus && dance.mode == 'helix/normal'"
+  },
+  {
     "command": "git.openChange",
     "key": "space g",
     "when": "editorTextFocus && dance.mode == 'helix/normal'"

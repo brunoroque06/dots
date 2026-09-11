@@ -1,13 +1,28 @@
 [alias]
-d = diff --word-diff=color
+a = add
+ap = add -p
+b = branch
+ch = checkout
+co = commit
+config-edit = config --edit --global
+config-list = config --list --show-origin
+d = diff
+ds = diff --staged
+f = fetch
+l = log
 lp = log -p
-s = status -s
+r = restore
+rp = restore -p
+rps = restore -p --staged
+sh = show
+st = status -s
+sw = switch
 
 [credential]
 helper = osxkeychain
 
 [core]
-pager = less -R
+pager = /opt/homebrew/opt/git/share/git-core/contrib/diff-highlight/diff-highlight | less -R
 
 [diff]
 algorithm = histogram
@@ -24,6 +39,10 @@ autocorrect = prompt
 
 [init]
 defaultBranch = main
+
+[interactive]
+diffFilter = /opt/homebrew/opt/git/share/git-core/contrib/diff-highlight/diff-highlight
+singleKey = true
 
 [merge]
 conflictstyle = zdiff3

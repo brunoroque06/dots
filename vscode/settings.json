@@ -62,6 +62,7 @@
   "diffEditor.hideUnchangedRegions.enabled": true,
   "diffEditor.ignoreTrimWhitespace": true,
   "diffEditor.renderSideBySide": false,
+  "diffEditor.useInlineViewWhenSpaceIsLimited": true,
   "dotnet.codeLens.enableReferencesCodeLens": false,
   "dotnet.formatting.organizeImportsOnFormat": true,
   "dotnet.inlayHints.enableInlayHintsForLiteralParameters": true,
