@@ -14,8 +14,7 @@ lp = log -p
 r = restore
 rp = restore -p
 rps = restore -p --staged
-sh = show
-st = status -s
+s = status -s
 sw = switch
 
 [credential]

@@ -9,8 +9,6 @@ $env.PATH = [
     ($env.HOME)/.dotnet/tools
 ]
 
-$env.BAT_STYLE = 'plain'
-$env.BAT_THEME = 'ansi'
 $env.CARAPACE_COLOR = 0
 $env.EDITOR = 'hx'
 $env.LESS = '-i --incsearch -m'
@@ -192,13 +190,7 @@ def d2-icat-watch [f: path@"d2-ls"] {
 }
 
 # file system
-def c [f: path] {
-    if ($f | str ends-with '.md') {
-        ^glow $f
-    } else {
-        ^bat $f
-    }
-}
+def c [f: path] { ^cat $f }
 def --env cd-history [] {
     let dir = (
         history

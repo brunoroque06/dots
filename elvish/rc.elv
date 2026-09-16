@@ -30,8 +30,6 @@ set paths = [
 ]
 var _paths = $nil
 
-set-env BAT_STYLE plain
-set-env BAT_THEME ansi
 set-env EDITOR /opt/homebrew/bin/hx
 set-env LESS '-i --incsearch -m'
 set-env PAGER /opt/homebrew/bin/less
@@ -74,13 +72,7 @@ eval (carapace _carapace | slurp)
 
 # file system
 fn .. { cd .. }
-fn c { |f|
-	if (str:has-suffix $f .md) {
-		glow $f
-	} else {
-		bat $f
-	}
-}
+fn c { |f| cat $f }
 fn dir-size { dust -d 1 }
 fn e { |@a| $E:EDITOR $@a }
 fn fd { |@a| e:fd -c never $@a }
