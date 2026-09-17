@@ -1,3 +1,6 @@
+[language-server.pyrefly.config.pyrefly]
+diagnosticMode = "workspace"
+
 [language-server.rust-analyzer.config]
 check.command = "clippy"
 

@@ -244,6 +244,8 @@ def pkg-up [] {
         brew doctor
     }
 
+    cargo-su
+
     for p in (^dotnet tool list --format json --global | from json | get data) {
         ^dotnet tool update --global --prerelease $p.packageId
     }
@@ -278,6 +280,11 @@ def --env py-su [] {
 }
 
 # rust
+def cargo-su [] {
+    for p in [brunoroque06/feed brunoroque06/pkg nushell/nufmt] {
+        ^cargo install --git $'https://github.com/($p)'
+    }
+}
 def cargo-test-watch [f: path] {
     for ev in (watch -d 1sec -g **/*.rs $f) {
         try {
