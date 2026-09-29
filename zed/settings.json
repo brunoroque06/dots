@@ -1,17 +1,17 @@
 {
   "cli_default_open_behavior": "existing_window",
   "edit_predictions": {
-    "provider": "copilot",
+    "provider": "copilot"
   },
   "agent": {
     "default_model": {
       "effort": "high",
       "enable_thinking": true,
       "model": "claude-opus-5.5",
-      "provider": "copilot_chat",
+      "provider": "copilot_chat"
     },
     "favorite_models": [],
-    "model_parameters": [],
+    "model_parameters": []
   },
   "buffer_font_family": "M PLUS 1 Code",
   "buffer_font_size": 14,
@@ -23,52 +23,52 @@
       "formatter": {
         "external": {
           "command": "/Users/brunoroque/.dotnet/tools/csharpier",
-          "arguments": ["format", "--write-stdout"],
-        },
+          "arguments": ["format", "--write-stdout"]
+        }
       },
-      "language_servers": ["roslyn"],
+      "language_servers": ["roslyn"]
     },
     "JSON": {
       "formatter": {
         "external": {
           "command": "/opt/homebrew/bin/prettier",
-          "arguments": ["--stdin-filepath", "{buffer_path}"],
-        },
-      },
+          "arguments": ["--stdin-filepath", "{buffer_path}"]
+        }
+      }
     },
     "Python": {
       "formatter": [
         {
-          "code_action": "source.organizeImports.ruff",
+          "code_action": "source.organizeImports.ruff"
         },
         {
-          "code_action": "source.fixAll.ruff",
+          "code_action": "source.fixAll.ruff"
         },
         {
           "language_server": {
-            "name": "ruff",
-          },
-        },
+            "name": "ruff"
+          }
+        }
       ],
-      "language_servers": ["pyrefly"],
-    },
+      "language_servers": ["pyrefly"]
+    }
   },
   "relative_line_numbers": "enabled",
   "scrollbar": {
-    "show": "auto",
+    "show": "auto"
   },
   "soft_wrap": "editor_width",
   "tab_bar": {
-    "show": false,
+    "show": false
   },
   "terminal": {
     "shell": {
-      "program": "/opt/homebrew/bin/nu",
-    },
+      "program": "/opt/homebrew/bin/nu"
+    }
   },
   "theme": "One Light",
   "toolbar": {
     "breadcrumbs": true,
-    "quick_actions": false,
-  },
+    "quick_actions": false
+  }
 }

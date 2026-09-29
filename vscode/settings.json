@@ -121,8 +121,7 @@
   "js/ts.updateImportsOnFileMove.enabled": "always",
   "markdown.preview.fontFamily": "SF Pro Rounded",
   "mssql.defaultQueryResultsViewMode": "Text",
-  "mssql.format.datatypeCasing": "lowercase",
-  "mssql.format.keywordCasing": "lowercase",
+  "mssql.format.options.identifierCasing": "lowercase",
   "mssql.format.options.keywordCasing": "lowercase",
   "python.analysis.autoFormatStrings": true,
   "python.analysis.autoImportCompletions": true,
@@ -141,6 +140,7 @@
   "python.testing.pytestEnabled": true,
   "ruff.organizeImports": true,
   "scm.alwaysShowRepositories": true,
+  "search.smartCase": true,
   "settingsSync.ignoredSettings": [
     "editor.fontFamily",
     "markdown.preview.fontFamily"
