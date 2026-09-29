@@ -17,14 +17,15 @@
   },
   {
     "bindings": {
-      "= =": "editor::Format"
+      "<space> =": "editor::Format",
+      "<space> b": "file_finder::Toggle"
     },
-    "context": "Editor && vim_mode == normal"
+    "context": "Editor && helix_mode == normal"
   },
   {
     "bindings": {
       "ctrl-y": "editor::ConfirmCompletion"
     },
-    "context": "Editor && vim_mode == insert"
+    "context": "Editor && helix_mode == insert"
   }
 ]

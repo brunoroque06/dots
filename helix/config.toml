@@ -34,5 +34,8 @@ e = ":reset-diff-change"
 E = [":echo %sh{git restore %{buffer_name}}", ":reload"]
 r = ":! git rm %{buffer_name}"
 
+[keys.normal."\\".p]
+U = [":echo %sh{pkg %{buffer_name}}", ":reload"]
+
 [keys.normal."\\".s]
 f = "@]f<A-a>:sort<ret>"
