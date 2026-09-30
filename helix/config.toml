@@ -34,7 +34,11 @@ e = ":reset-diff-change"
 E = [":echo %sh{git restore %{buffer_name}}", ":reload"]
 r = ":! git rm %{buffer_name}"
 
+[keys.normal."\\".j]
+s = ["select_all", ":pipe jq -S .", "collapse_selection"]
+
 [keys.normal."\\".p]
+u = [":echo %sh{pkg --position %{cursor_line}:%{cursor_column} %{buffer_name}}", ":reload"]
 U = [":echo %sh{pkg %{buffer_name}}", ":reload"]
 
 [keys.normal."\\".s]

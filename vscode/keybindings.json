@@ -57,7 +57,7 @@
   {
     "command": "editor.action.inlineSuggest.hide",
     "key": "escape",
-    "when": "inlineSuggestionVisible && editorTextFocus && dance.mode == 'helix/normal'"
+    "when": "(inlineEditIsVisible || inlineSuggestionVisible) && editorTextFocus && (dance.mode == 'helix/normal' || dance.mode == 'helix/insert')"
   },
   {
     "command": "editor.action.marker.next",
