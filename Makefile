@@ -1,6 +1,7 @@
 .PHONY: *
 
 config:
+	ln -fs $(PWD)/aerospace/aerospace.toml ~/.config/aerospace/aerospace.toml
 	ln -fs $(PWD)/elvish/rc.elv ~/.config/elvish/rc.elv
 	ln -fs $(PWD)/ghostty/config ~/Library/Application\ Support/com.mitchellh.ghostty/config
 	ln -fs $(PWD)/git/config ~/.config/git/config
@@ -16,6 +17,7 @@ config:
 	ln -fs $(PWD)/zed/settings.json ~/.config/zed/settings.json
 
 unconfig:
+	rm ~/.config/aerospace/aerospace.toml
 	rm ~/.config/elvish/rc.elv
 	rm ~/Library/Application\ Support/com.mitchellh.ghostty/config
 	rm ~/.config/git/config

@@ -146,6 +146,7 @@
   ],
   "terminal.integrated.defaultLocation": "editor",
   "terminal.integrated.defaultProfile.osx": "nushell",
+  "terminal.integrated.fontRendering": "grayscale",
   "terminal.integrated.macOptionIsMeta": true,
   "terminal.integrated.profiles.osx": {
     "nushell": {

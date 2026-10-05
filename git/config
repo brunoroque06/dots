@@ -25,7 +25,8 @@ pager = /opt/homebrew/opt/git/share/git-core/contrib/diff-highlight/diff-highlig
 
 [diff]
 algorithm = histogram
-colorMoved = zebra
+colorMoved = dimmed-zebra
+colorMovedWS = allow-indentation-change
 mnemonicPrefix = true
 renames = copies
 tool = code
