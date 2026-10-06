@@ -20,56 +20,52 @@ outer.right = 8
 outer.top = 0
 
 [mode.main.binding]
-alt-h = "focus left"
-alt-j = "focus down"
-alt-k = "focus up"
-alt-l = "focus right"
-alt-m = "mode move"
-alt-r = "mode resize"
 alt-1 = "workspace 1"
 alt-2 = "workspace 2"
 alt-3 = "workspace 3"
 alt-4 = "workspace 4"
 alt-5 = "workspace 5"
 alt-6 = "workspace 6"
+alt-h = "focus left"
+alt-j = "focus down"
+alt-k = "focus up"
+alt-l = "focus right"
+alt-r = "mode resize"
 alt-tab = "workspace-back-and-forth"
-alt-t = "mode tile"
+alt-w = "mode window"
 
-[mode.move.binding]
+[mode.resize.binding]
+equal = "resize smart +128"
 esc = "mode main"
-h = ["move left", "mode main"]
-j = ["move down", "mode main"]
-k = ["move up", "mode main"]
-l = ["move right", "mode main"]
-shift-h = ["join-with left", "mode main"]
-shift-j = ["join-with down", "mode main"]
-shift-k = ["join-with up", "mode main"]
-shift-l = ["join-with right", "mode main"]
+h = "focus left"
+j = "focus down"
+k = "focus up"
+l = "focus right"
+minus = "resize smart -128"
+shift-equal = "balance-sizes"
+
+[mode.window.binding]
 1 = ["move-node-to-workspace --focus-follows-window 1", "mode main"]
 2 = ["move-node-to-workspace --focus-follows-window 2", "mode main"]
 3 = ["move-node-to-workspace --focus-follows-window 3", "mode main"]
 4 = ["move-node-to-workspace --focus-follows-window 4", "mode main"]
 5 = ["move-node-to-workspace --focus-follows-window 5", "mode main"]
 6 = ["move-node-to-workspace --focus-follows-window 6", "mode main"]
-
-[mode.resize.binding]
-h = "focus left"
-j = "focus down"
-k = "focus up"
-l = "focus right"
-equal = "resize smart +128"
-esc = "mode main"
-minus = "resize smart -128"
-shift-equal = "balance-sizes"
-
-[mode.tile.binding]
-esc = "mode main"
 a = ["layout accordion", "mode main"]
 backspace = ["close-all-windows-but-current", "mode main"]
-t = ["layout tiles horizontal vertical", "mode main"]
+esc = "mode main"
 f = ["fullscreen", "mode main"]
+h = ["move left", "mode main"]
+j = ["move down", "mode main"]
+k = ["move up", "mode main"]
+l = ["move right", "mode main"]
 r = ["flatten-workspace-tree", "mode main"]
 shift-f = ["layout floating tiling", "mode main"]
+shift-h = ["join-with left", "mode main"]
+shift-j = ["join-with down", "mode main"]
+shift-k = ["join-with up", "mode main"]
+shift-l = ["join-with right", "mode main"]
+t = ["layout tiles horizontal vertical", "mode main"]
 
 [[on-window-detected]]
 if = "test %{app-bundle-id} = com.apple.ActivityMonitor"
@@ -77,10 +73,6 @@ run = "layout floating"
 
 [[on-window-detected]]
 if = "test %{app-bundle-id} = com.apple.AddressBook"
-run = "layout floating"
-
-[[on-window-detected]]
-if = "test %{app-bundle-id} = com.daisydiskapp.DaisyDisk"
 run = "layout floating"
 
 [[on-window-detected]]
@@ -92,6 +84,14 @@ if = "test %{app-bundle-id} = com.apple.FontBook"
 run = "layout floating"
 
 [[on-window-detected]]
+if = "test %{app-bundle-id} = com.apple.MobileSMS"
+run = "move-node-to-workspace --focus-follows-window 1"
+
+[[on-window-detected]]
+if = "test %{app-bundle-id} = com.apple.Music"
+run = ["layout floating", "move-node-to-workspace --focus-follows-window 1"]
+
+[[on-window-detected]]
 if = "test %{app-bundle-id} = com.apple.Notes"
 run = "layout floating"
 
@@ -100,8 +100,16 @@ if = "test %{app-bundle-id} = com.apple.Passwords"
 run = "layout floating"
 
 [[on-window-detected]]
+if = "test %{app-bundle-id} = com.apple.Safari"
+run = "move-node-to-workspace --focus-follows-window 1"
+
+[[on-window-detected]]
 if = "test %{app-bundle-id} = com.apple.clock"
 run = "layout floating"
+
+[[on-window-detected]]
+if = "test %{app-bundle-id} = com.apple.podcasts"
+run = ["layout floating", "move-node-to-workspace --focus-follows-window 1"]
 
 [[on-window-detected]]
 if = "test %{app-bundle-id} = com.apple.finder"
@@ -116,28 +124,16 @@ if = "test %{app-bundle-id} = com.apple.iCal"
 run = "layout floating"
 
 [[on-window-detected]]
-if = "test %{app-bundle-id} = site.kaylees.Wipr2"
-run = "layout floating"
-
-[[on-window-detected]]
-if = "test %{app-bundle-id} = com.apple.Safari"
-run = "move-node-to-workspace --focus-follows-window 1"
-
-[[on-window-detected]]
 if = "test %{app-bundle-id} = com.apple.mail"
 run = "move-node-to-workspace --focus-follows-window 1"
 
 [[on-window-detected]]
-if = "test %{app-bundle-id} = com.apple.podcasts"
-run = ["layout floating", "move-node-to-workspace --focus-follows-window 1"]
+if = "test %{app-bundle-id} = com.daisydiskapp.DaisyDisk"
+run = "layout floating"
 
 [[on-window-detected]]
-if = "test %{app-bundle-id} = com.apple.Music"
-run = ["layout floating", "move-node-to-workspace --focus-follows-window 1"]
-
-[[on-window-detected]]
-if = "test %{app-bundle-id} = com.mitchellh.ghostty"
-run = "move-node-to-workspace --focus-follows-window 2"
+if = "test %{app-bundle-id} = com.google.Chrome"
+run = "move-node-to-workspace --focus-follows-window 3"
 
 [[on-window-detected]]
 if = "test %{app-bundle-id} = com.microsoft.VSCode"
@@ -148,5 +144,9 @@ if = "test %{app-bundle-id} = com.microsoft.rdc.macos"
 run = "move-node-to-workspace --focus-follows-window 3"
 
 [[on-window-detected]]
-if = "test %{app-bundle-id} = com.google.Chrome"
-run = "move-node-to-workspace --focus-follows-window 3"
+if = "test %{app-bundle-id} = com.mitchellh.ghostty"
+run = "move-node-to-workspace --focus-follows-window 2"
+
+[[on-window-detected]]
+if = "test %{app-bundle-id} = site.kaylees.Wipr2"
+run = "layout floating"
