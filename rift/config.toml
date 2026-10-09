@@ -4,7 +4,7 @@ animate = true
 animation_duration = 0.2
 animation_fps = 60
 default_disable = false
-focus_follows_mouse = false
+mouse_follows_focus = false
 
 [settings.layout]
 mode = "bsp"
@@ -44,6 +44,7 @@ app_rules = [
   { app_id = "com.apple.Music", focus = true, workspace = 0 },
   { app_id = "com.apple.Notes", focus = true, workspace = 0 },
   { app_id = "com.apple.Passwords", focus = true, workspace = 0 },
+  { app_id = "com.apple.PhotoBooth", floating = true },
   { app_id = "com.apple.Safari", focus = true, workspace = 0 },
   { app_id = "com.apple.clock", floating = true },
   { app_id = "com.apple.finder", floating = true },
@@ -68,21 +69,21 @@ c0 = "Alt"
 c1 = "Alt + Shift"
 
 [keys]
-"Alt + Enter" = { "exec" = ["/bin/bash", "-c", "open -na ghostty.app"] }
 "c0 + 1" = { switch_to_workspace = 0 }
 "c0 + 2" = { switch_to_workspace = 1 }
 "c0 + 3" = { switch_to_workspace = 2 }
 "c0 + 4" = { switch_to_workspace = 3 }
 "c0 + A" = { set_workspace_layout = { mode = "stack" } }
 "c0 + B" = { set_workspace_layout = { mode = "bsp" } }
-"c0 + Equal" = "resize_window_grow"
+"c0 + Enter" = { "exec" = ["/bin/bash", "-c", "open -na ghostty.app"] }
+"c0 + Equal" = { resize_window_by = { amount = 0.16 } }
 "c0 + F" = "toggle_fullscreen_within_gaps"
 "c0 + H" = { move_focus = "left" }
 "c0 + J" = { move_focus = "down" }
 "c0 + K" = { move_focus = "up" }
 "c0 + M" = "toggle_window_floating"
 "c0 + L" = { move_focus = "right" }
-"c0 + Minus" = "resize_window_shrink"
+"c0 + Minus" = { resize_window_by = { amount = -0.16 } }
 "c0 + R" = { binding_mode = "resize" }
 "c0 + Slash" = "toggle_orientation"
 "c0 + Tab" = "switch_to_last_workspace"
