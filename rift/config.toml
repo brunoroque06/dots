@@ -1,0 +1,102 @@
+# https://github.com/acsandmann/rift/blob/main/rift.default.toml
+[settings]
+animate = true
+animation_duration = 0.2
+animation_fps = 60
+default_disable = false
+focus_follows_mouse = false
+
+[settings.layout]
+mode = "bsp"
+window_insertion_point = "end_of_tree"
+
+[settings.layout.gaps.outer]
+bottom = 4
+left = 4
+right = 4
+
+[settings.layout.gaps.inner]
+horizontal = 4
+vertical = 4
+
+[settings.layout.stack]
+default_orientation = "horizontal"
+stack_offset = 16.0
+
+[settings.ui.menu_bar]
+display_style = "label"
+enabled = true
+
+[settings.gestures]
+enabled = true
+
+[settings.drag_drop]
+enabled = false
+modifier = "alt"
+
+[virtual_workspaces]
+app_rules = [
+  { app_id = "com.apple.ActivityMonitor", floating = true },
+  { app_id = "com.apple.AddressBook", floating = true },
+  { app_id = "com.apple.Dictionary", floating = true },
+  { app_id = "com.apple.FontBook", floating = true },
+  { app_id = "com.apple.MobileSMS", focus = true, workspace = 0 },
+  { app_id = "com.apple.Music", focus = true, workspace = 0 },
+  { app_id = "com.apple.Notes", focus = true, workspace = 0 },
+  { app_id = "com.apple.Passwords", focus = true, workspace = 0 },
+  { app_id = "com.apple.Safari", focus = true, workspace = 0 },
+  { app_id = "com.apple.clock", floating = true },
+  { app_id = "com.apple.finder", floating = true },
+  { app_id = "com.apple.iBooksX", floating = true },
+  { app_id = "com.apple.iCal", floating = true },
+  { app_id = "com.apple.mail", focus = true, workspace = 0 },
+  { app_id = "com.apple.podcasts", floating = true },
+  { app_id = "com.apple.shortcuts", focus = true, workspace = 0 },
+  { app_id = "com.apple.systempreferences", floating = true },
+  { app_id = "com.google.Chrome", focus = true, workspace = 2 },
+  { app_id = "com.microsoft.VSCode", focus = true, workspace = 1 },
+  { app_id = "com.microsoft.rdc.macos", focus = true, workspace = 3 },
+  { app_id = "com.mitchellh.ghostty", focus = true, workspace = 1 },
+  { app_id = "site.kaylees.Wipr2", floating = true },
+]
+workspace_rules = [
+  { workspace = 0, layout = "stack" },
+]
+
+[modifier_combinations]
+c0 = "Alt"
+c1 = "Alt + Shift"
+
+[keys]
+"Alt + Enter" = { "exec" = ["/bin/bash", "-c", "open -na ghostty.app"] }
+"c0 + 1" = { switch_to_workspace = 0 }
+"c0 + 2" = { switch_to_workspace = 1 }
+"c0 + 3" = { switch_to_workspace = 2 }
+"c0 + 4" = { switch_to_workspace = 3 }
+"c0 + A" = { set_workspace_layout = { mode = "stack" } }
+"c0 + B" = { set_workspace_layout = { mode = "bsp" } }
+"c0 + Equal" = "resize_window_grow"
+"c0 + F" = "toggle_fullscreen_within_gaps"
+"c0 + H" = { move_focus = "left" }
+"c0 + J" = { move_focus = "down" }
+"c0 + K" = { move_focus = "up" }
+"c0 + M" = "toggle_window_floating"
+"c0 + L" = { move_focus = "right" }
+"c0 + Minus" = "resize_window_shrink"
+"c0 + R" = { binding_mode = "resize" }
+"c0 + Slash" = "toggle_orientation"
+"c0 + Tab" = "switch_to_last_workspace"
+"c1 + 1" = { move_window_to_workspace = 0 }
+"c1 + 2" = { move_window_to_workspace = 1 }
+"c1 + 3" = { move_window_to_workspace = 2 }
+"c1 + 4" = { move_window_to_workspace = 3 }
+"c1 + F" = { toggle_window_floating = { center = true, size = "smart" } }
+"c1 + H" = { move_node = "left" }
+"c1 + J" = { move_node = "down" }
+"c1 + K" = { move_node = "up" }
+"c1 + L" = { move_node = "right" }
+
+[binding_modes.resize]
+"Escape" = { binding_mode = "default" }
+"H" = { resize_window_shrink = "horizontal" }
+"L" = { resize_window_grow = "horizontal" }

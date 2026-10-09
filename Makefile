@@ -10,6 +10,7 @@ config:
 	ln -fs $(PWD)/nushell/config.nu ~/Library/Application\ Support/nushell/config.nu
 	ln -fs $(PWD)/psql/.pg_format ~/.pg_format
 	ln -fs $(PWD)/psql/.psqlrc ~/.psqlrc
+	ln -fs $(PWD)/rift/config.toml ~/.config/rift/config.toml
 	ln -fs $(PWD)/ripgrep/ripgreprc ~/.config/ripgreprc
 	ln -fs $(PWD)/vscode/keybindings.json ~/Library/Application\ Support/Code/User/keybindings.json
 	ln -fs $(PWD)/vscode/settings.json ~/Library/Application\ Support/Code/User/settings.json
@@ -25,6 +26,7 @@ unconfig:
 	rm ~/.config/helix/languages.toml
 	rm ~/.pg_format
 	rm ~/.psqlrc
+	rm ~/.config/rift/config.toml
 	rm ~/.config/ripgreprc
 	rm ~/Library/Application\ Support/Code/User/keybindings.json
 	rm ~/Library/Application\ Support/Code/User/settings.json
