@@ -51,13 +51,14 @@ app_rules = [
   { app_id = "com.apple.iBooksX", floating = true },
   { app_id = "com.apple.iCal", floating = true },
   { app_id = "com.apple.mail", focus = true, workspace = 0 },
-  { app_id = "com.apple.podcasts", floating = true },
-  { app_id = "com.apple.shortcuts", focus = true, workspace = 0 },
+  { app_id = "com.apple.podcasts", focus = true, workspace = 0 },
+  { app_id = "com.apple.shortcuts", floating = true, focus = true, workspace = 0 },
   { app_id = "com.apple.systempreferences", floating = true },
   { app_id = "com.google.Chrome", focus = true, workspace = 2 },
   { app_id = "com.microsoft.VSCode", focus = true, workspace = 1 },
   { app_id = "com.microsoft.rdc.macos", focus = true, workspace = 3 },
   { app_id = "com.mitchellh.ghostty", focus = true, workspace = 1 },
+  { app_id = "net.freemacsoft.AppCleaner", floating = true },
   { app_id = "site.kaylees.Wipr2", floating = true },
 ]
 workspace_rules = [
@@ -81,7 +82,7 @@ c1 = "Alt + Shift"
 "c0 + H" = { move_focus = "left" }
 "c0 + J" = { move_focus = "down" }
 "c0 + K" = { move_focus = "up" }
-"c0 + M" = "toggle_window_floating"
+"c0 + M" = { toggle_window_floating = { center = true, size = "smart" } }
 "c0 + L" = { move_focus = "right" }
 "c0 + Minus" = { resize_window_by = { amount = -0.16 } }
 "c0 + R" = { binding_mode = "resize" }
@@ -91,7 +92,6 @@ c1 = "Alt + Shift"
 "c1 + 2" = { move_window_to_workspace = 1 }
 "c1 + 3" = { move_window_to_workspace = 2 }
 "c1 + 4" = { move_window_to_workspace = 3 }
-"c1 + F" = { toggle_window_floating = { center = true, size = "smart" } }
 "c1 + H" = { move_node = "left" }
 "c1 + J" = { move_node = "down" }
 "c1 + K" = { move_node = "up" }
