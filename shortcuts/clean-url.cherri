@@ -1,4 +1,5 @@
 #define color darkBlue
+#define from search
 #define glyph chainlink
 #define name Clean Url
 

@@ -1,0 +1,35 @@
+#define color darkBlue
+#define from search
+#define glyph noteTextPlus
+#define mac true
+#define name Azure Work Item
+
+#include 'actions/mac'
+
+@title = prompt("Title", nil, nil, "false")
+@types = list("bug", "feature", "user story")
+@type = chooseFromList(@types, "Type")
+
+@script = "/opt/homebrew/bin/nu --stdin -c \"$(cat <<'EOF'
+let title = $in | str trim
+let type = '{type}'
+
+^/opt/homebrew/bin/az login --tenant <ten>
+
+let item = (
+    ^/opt/homebrew/bin/az boards work-item create
+        --org https://dev.azure.com/<org>
+        --project '<proj>'
+        --area '<area>'
+        --title $title
+        --type $type
+        --assigned-to <email>
+        --open
+    | from json
+)
+
+$item.id | into string | pbcopy
+EOF
+)\""
+
+runShellScript(@script, @title)

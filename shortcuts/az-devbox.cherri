@@ -1,0 +1,16 @@
+#define color darkBlue
+#define from search
+#define glyph laptop
+#define mac true
+#define name Azure DevBox
+
+#include 'actions/mac'
+
+@statusScript = "echo 3 | /opt/homebrew/bin/az login --tenant <ten> >/dev/null &&
+/opt/homebrew/bin/az devcenter dev dev-box show --dev-center <dev-center> --name <name> --project <proj> --output json | /opt/homebrew/bin/nu --stdin -c '$in | from json | get actionState'"
+
+@state = runShellScript(@statusScript)
+@actions = list("start", "stop", "restart")
+@choice = chooseFromList(@actions, "{state}")
+
+runShellScript("/opt/homebrew/bin/az devcenter dev dev-box '{choice}' --dev-center <dev-center> --name <name> --project <proj>")

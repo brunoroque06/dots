@@ -1,4 +1,5 @@
 #define color darkBlue
+#define from search
 #define glyph appleNews
 #define mac true
 #define name Feed

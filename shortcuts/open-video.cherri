@@ -1,11 +1,12 @@
 #define color darkBlue
+#define from search
 #define glyph videoIcon
 #define mac true
 #define name Open Video
 
 #include 'actions/mac'
 
-const text = prompt("Video")
+const text = prompt("Video", nil, nil, "false")
 
 runShellScript("
 open -a 'QuickTime Player' $(/opt/homebrew/bin/streamlink --stream-url \"$(cat)\" best)
