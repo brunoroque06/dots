@@ -1,0 +1,31 @@
+#define color darkBlue
+#define glyph magnifyingGlass
+#define name Search
+
+#include 'actions/web'
+
+const engines = {
+    "Dotnet": "https://learn.microsoft.com/en-us/search/?terms=",
+	"Galaxus": "https://www.galaxus.ch/en/search?q=",
+    "GitHub": "https://github.com/search?q=",
+    "Google": "https://www.google.com/search?q=",
+	"HackerNews": "https://hn.algolia.com/?q=",
+	"Hotel": "https://www.travelweekly.com/Hotels/Search?pst=",
+	"Metacritic": "https://www.metacritic.com/search/",
+	"Nintendo": "https://www.nintendo.com/de-ch/Suche-/Suche-299117.html?q=",
+	"Npm": "https://www.npmjs.com/search?q=",
+    "NuGet": "https://www.nuget.org/packages?q=",
+	"Pip": "https://pypi.org/search/?q=",
+	"Priberam": "https://dicionario.priberam.org/",
+	"Wikipedia": "https://en.wikipedia.org/wiki/",
+	"YouTube": "https://www.youtube.com/results?search_query="
+}
+
+const keys = getKeys(engines)
+const choice = chooseFromList(keys, "Search")
+const base = getValue(engines, choice)
+
+const query = prompt("Query")
+const encoded = urlEncode(query)
+
+openURL("{base}{encoded}")

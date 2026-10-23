@@ -1,0 +1,23 @@
+#define color darkBlue
+#define glyph rectangleSplit
+#define mac true
+#define name Tile
+
+#include 'actions/mac'
+
+const windows = getWindows("Window Index", "asc", 16)
+
+menu "Layout" {
+    item "2":
+        const twoLeft = chooseFromList(windows, "Left")
+        const twoRight = chooseFromList(windows, "Right")
+        resizeWindow(twoLeft, "Left Half")
+        resizeWindow(twoRight, "Right Half")
+    item "3":
+        const threeLeft = chooseFromList(windows, "Left")
+        const threeTop = chooseFromList(windows, "Top Right")
+        const threeBottom = chooseFromList(windows, "Bottom Right")
+        resizeWindow(threeLeft, "Left Half")
+        resizeWindow(threeTop, "Top Right Quarter")
+        resizeWindow(threeBottom, "Bottom Right Quarter")
+}

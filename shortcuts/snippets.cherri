@@ -1,0 +1,17 @@
+#define color darkBlue
+#define glyph keyboard
+#define mac true
+#define name Snippets
+
+#include 'actions/mac'
+
+const out = runShellScript('/opt/homebrew/bin/nu -c \'
+defaults read -g NSUserDictionaryReplacementItems
+  | plutil -convert json -o - -
+  | from json
+  | sort-by replace
+  | each { |s| $"> ($s.replace) - ($s.with)" }
+  | str join "\n"
+\'')
+
+show(out)

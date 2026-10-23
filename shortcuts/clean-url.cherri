@@ -1,0 +1,10 @@
+#define color darkBlue
+#define glyph chainlink
+#define name Clean Url
+
+#include 'actions/sharing'
+
+const clipboard = getClipboard()
+const parts = splitText(clipboard, "?")
+const url = getFirstItem(parts)
+setClipboard(url)

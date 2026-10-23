@@ -1,0 +1,15 @@
+#define color darkBlue
+#define glyph appleNews
+#define mac true
+#define name Feed
+
+#include 'actions/mac'
+#include 'actions/sharing'
+
+const out = runShellScript('
+cd /Users/brunoroque/Projects/feed
+./run_sc
+')
+
+const to = emailAddress("brunoroque06@gmail.com")
+sendEmail(to, "brunoroque06@gmail.com", "Feed", out, false)

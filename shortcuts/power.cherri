@@ -1,0 +1,13 @@
+#define color darkBlue
+#define glyph circledPower
+#define mac true
+#define name Power
+
+#include 'actions/device'
+
+menu "Power" {
+    item "Lock":
+        lockScreen()
+    item "Shut Down":
+        shutdown()
+}
