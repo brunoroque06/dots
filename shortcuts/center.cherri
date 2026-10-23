@@ -1,0 +1,12 @@
+#define color darkBlue
+#define glyph Target
+#define mac true
+#define name Center
+
+#include 'actions/mac'
+
+action mac 'resizewindow' resizeWindowTo(variable window: 'WFWindow', text configuration: 'WFConfiguration', number width: 'WFWidth', number height: 'WFHeight')
+
+@win = getWindows("Window Index", "desc", 1)
+resizeWindowTo(@win, "Dimensions", 1400, 850)
+moveWindow(@win, "Center")
