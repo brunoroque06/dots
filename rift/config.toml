@@ -27,6 +27,9 @@ stack_offset = 16.0
 display_style = "label"
 enabled = true
 
+[settings.ui.stack_line]
+enabled = false
+
 [settings.gestures]
 enabled = true
 
@@ -74,7 +77,6 @@ c1 = "Alt + Shift"
 "c0 + 2" = { switch_to_workspace = 1 }
 "c0 + 3" = { switch_to_workspace = 2 }
 "c0 + 4" = { switch_to_workspace = 3 }
-"c0 + A" = { set_workspace_layout = { mode = "stack" } }
 "c0 + B" = { set_workspace_layout = { mode = "bsp" } }
 "c0 + Enter" = { "exec" = ["/bin/bash", "-c", "open -na ghostty.app"] }
 "c0 + Equal" = { resize_window_by = { amount = 0.16 } }
@@ -82,12 +84,13 @@ c1 = "Alt + Shift"
 "c0 + H" = { move_focus = "left" }
 "c0 + J" = { move_focus = "down" }
 "c0 + K" = { move_focus = "up" }
-"c0 + M" = { toggle_window_floating = { center = true, size = "smart" } }
+"c0 + M" = { set_workspace_layout = { mode = "stack" } }
 "c0 + L" = { move_focus = "right" }
 "c0 + Minus" = { resize_window_by = { amount = -0.16 } }
 "c0 + R" = { binding_mode = "resize" }
 "c0 + Slash" = "toggle_orientation"
 "c0 + Tab" = "switch_to_last_workspace"
+"c0 + W" = { toggle_window_floating = { center = true, size = "smart" } }
 "c1 + 1" = { move_window_to_workspace = 0 }
 "c1 + 2" = { move_window_to_workspace = 1 }
 "c1 + 3" = { move_window_to_workspace = 2 }

@@ -12,8 +12,8 @@ quick-terminal-size = 33%,100%
 shell-integration-features = no-cursor
 unfocused-split-opacity = 1
 theme = GitHub Light Default
-window-padding-x = 10
-window-padding-y = 10
+window-padding-x = 8
+window-padding-y = 8
 # window-save-state = never
 
 keybind = page_up=scroll_page_up
@@ -21,4 +21,4 @@ keybind = page_down=scroll_page_down
 keybind = super+k=toggle_command_palette
 keybind = super+shift+.=move_tab:1
 keybind = super+shift+,=move_tab:-1
-keybind = global:super+i=toggle_quick_terminal
+# keybind = global:super+i=toggle_quick_terminal
