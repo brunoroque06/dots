@@ -152,22 +152,19 @@ def typst-to-pptx [f: path@"typst-ls"] {
     let out = ($env.PWD)/out/($stem)
     let ppi = 512
     mkdir $out
-    try {
-        ^typst compile --ppi $ppi $f ($out)/'page-{0p}.png'
-        let md = (
-      glob $'($out)/*.png'
-        | sort
-        | each { |page|
-          let name = $page | path basename
-          $'# {background-image="($name)"}'
-        }
-        | str join "\n\n---\n\n"
-    )
-        $md | save ($out)/main.md
-        ^pandoc --dpi $ppi ($out)/main.md -o ($env.PWD)/($stem).pptx
-    } finally {
-        rm --recursive $out
+    ^typst compile --ppi $ppi $f ($out)/page-{0p}.png
+    let md = (
+  glob $'($out)/*.png'
+    | sort
+    | each { |page|
+      let name = $page | path basename
+      $'# {background-image="($out)/($name)"}'
     }
+    | str join "\n\n---\n\n"
+)
+    $md | save ($out)/main.md
+    ^pandoc --dpi $ppi ($out)/main.md -o ($env.PWD)/($stem).pptx
+    rm --recursive $out
 }
 
 # diagram
