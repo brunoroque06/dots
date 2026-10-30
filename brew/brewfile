@@ -50,6 +50,7 @@ brew "typescript-language-server"
 brew "typst"
 brew "typstyle"
 brew "vim"
+brew "viu"
 brew "wget"
 
 cask "appcleaner"

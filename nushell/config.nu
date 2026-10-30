@@ -172,15 +172,15 @@ def d2-ls [] {
     glob '*.d2'
 }
 def d2-icat [f: path@"d2-ls"] {
-    ^d2 $f
-    let img = $f | path parse | update extension svg | path join
-    ql $img
+    let img = $f | path parse | update extension png | path join
+    ^d2 $f $img
+    viu $img
 }
 def d2-icat-watch [f: path@"d2-ls"] {
     clear
     d2-icat $f
 
-    for ev in (watch -d 1sec -g *.d2 $f) {
+    for ev in (watch -d 1sec $f) {
         if $ev.operation == 'Create' {
             clear
             d2-icat $f
