@@ -2,8 +2,11 @@
 a = add
 ap = add -p
 b = branch
-ch = checkout
-co = commit
+bd = branch -d
+bdd = branch -D
+c = commit
+ca = commit --amend
+co = checkout
 config-edit = config --edit --global
 config-list = config --list --show-origin
 d = diff
@@ -11,10 +14,14 @@ ds = diff --staged
 f = fetch
 l = log
 lp = log -p
+lr = log --raw
+p = push
+pl = pull
 r = restore
 rp = restore -p
 rps = restore -p --staged
 s = status -s
+sh = show
 sw = switch
 
 [credential]

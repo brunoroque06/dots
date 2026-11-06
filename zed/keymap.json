@@ -3,15 +3,15 @@
     "bindings": {
       "cmd-[": "pane::GoBack",
       "cmd-]": "pane::GoForward",
-      "cmd-alt-f": "search::ToggleReplace",
       "cmd-b": "file_finder::Toggle",
       "cmd-enter": "editor::ToggleCodeActions",
-      "cmd-f": "search::FocusSearch",
+      "cmd-f": "search::ToggleReplace",
       "cmd-k": "command_palette::Toggle",
       "cmd-l": "project_panel::ToggleFocus",
       "cmd-o": "file_finder::Toggle",
+      // "cmd-shift-h": "",
       "cmd-shift-y": "project_symbols::Toggle",
-      "cmd-t": "terminal_panel::ToggleFocus",
+      "cmd-t": "terminal_panel::Toggle",
       "cmd-y": "outline::Toggle"
     }
   },
@@ -24,7 +24,8 @@
   },
   {
     "bindings": {
-      "ctrl-y": "editor::ConfirmCompletion"
+      "ctrl-y": "editor::ConfirmCompletion",
+      "ctrl-x": "editor::ShowCompletions"
     },
     "context": "Editor && helix_mode == insert"
   }
