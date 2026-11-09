@@ -2,6 +2,7 @@
 
 $env.PATH = [
     /opt/homebrew/bin
+    /opt/homebrew/opt/curl/bin
     /usr/local/bin
     /usr/bin
     /bin
