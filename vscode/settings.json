@@ -26,6 +26,10 @@
   "dance.menus": {
     "goto": {
       "items": {
+        "R": {
+          "command": "editor.showCallHierarchy",
+          "text": "to call hierarchy"
+        },
         "f": {
           "command": "editor.action.openLink",
           "text": "to url"
@@ -33,10 +37,6 @@
         "i": {
           "command": "editor.action.goToImplementation",
           "text": "to implementation"
-        },
-        "R": {
-          "command": "editor.showCallHierarchy",
-          "text": "to call hierarchy"
         },
         "w": {
           "command": "dance.seek.wordLabel",

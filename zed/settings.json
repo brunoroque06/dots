@@ -1,8 +1,4 @@
 {
-  "cli_default_open_behavior": "existing_window",
-  "edit_predictions": {
-    "provider": "copilot"
-  },
   "agent": {
     "default_model": {
       "effort": "high",
@@ -13,17 +9,29 @@
     "favorite_models": [],
     "model_parameters": []
   },
+  "autosave": {
+    "after_delay": {
+      "milliseconds": 1000
+    }
+  },
   "buffer_font_family": "M PLUS 1 Code",
   "buffer_font_size": 14,
   "buffer_line_height": "standard",
+  "cli_default_open_behavior": "existing_window",
   "cursor_blink": false,
+  "edit_predictions": {
+    "provider": "copilot"
+  },
   "helix_mode": true,
+  "inlay_hints": {
+    "enabled": true
+  },
   "languages": {
     "CSharp": {
       "formatter": {
         "external": {
-          "command": "/Users/brunoroque/.dotnet/tools/csharpier",
-          "arguments": ["format", "--write-stdout"]
+          "arguments": ["format", "--write-stdout"],
+          "command": "/Users/brunoroque/.dotnet/tools/csharpier"
         }
       },
       "language_servers": ["roslyn"]
@@ -31,8 +39,8 @@
     "JSON": {
       "formatter": {
         "external": {
-          "command": "/opt/homebrew/bin/prettier",
-          "arguments": ["--stdin-filepath", "{buffer_path}"]
+          "arguments": ["--stdin-filepath", "{buffer_path}"],
+          "command": "/opt/homebrew/bin/prettier"
         }
       }
     },
@@ -51,6 +59,41 @@
         }
       ],
       "language_servers": ["pyrefly"]
+    }
+  },
+  "lsp": {
+    "roslyn": {
+      "settings": {
+        "csharp|inlay_hints": {
+          "csharp_enable_inlay_hints_for_collection_expressions": true,
+          "csharp_enable_inlay_hints_for_implicit_object_creation": true,
+          "csharp_enable_inlay_hints_for_implicit_variable_types": true,
+          "csharp_enable_inlay_hints_for_lambda_parameter_types": true,
+          "csharp_enable_inlay_hints_for_types": true,
+          "dotnet_enable_inlay_hints_for_indexer_parameters": true,
+          "dotnet_enable_inlay_hints_for_literal_parameters": true,
+          "dotnet_enable_inlay_hints_for_object_creation_parameters": true,
+          "dotnet_enable_inlay_hints_for_other_parameters": true,
+          "dotnet_enable_inlay_hints_for_parameters": true,
+          "dotnet_suppress_inlay_hints_for_parameters_that_differ_only_by_suffix": true,
+          "dotnet_suppress_inlay_hints_for_parameters_that_match_argument_name": true,
+          "dotnet_suppress_inlay_hints_for_parameters_that_match_method_intent": true
+        }
+      }
+    },
+    "rust-analyzer": {
+      "initialization_options": {
+        "inlayHints": {
+          "closureReturnTypeHints": {
+            "enable": "always"
+          },
+          "lifetimeElisionHints": {
+            "enable": "skip_trivial",
+            "useParameterNames": true
+          },
+          "maxLength": null
+        }
+      }
     }
   },
   "relative_line_numbers": "enabled",

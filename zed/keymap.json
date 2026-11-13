@@ -1,6 +1,7 @@
 [
   {
     "bindings": {
+      "cmd-,": "zed::OpenSettingsFile",
       "cmd-[": "pane::GoBack",
       "cmd-]": "pane::GoForward",
       "cmd-b": "file_finder::Toggle",
@@ -9,7 +10,10 @@
       "cmd-k": "command_palette::Toggle",
       "cmd-l": "project_panel::ToggleFocus",
       "cmd-o": "file_finder::Toggle",
-      // "cmd-shift-h": "",
+      "cmd-shift-h": [
+        "action::Sequence",
+        ["workspace::CloseAllDocks", "workspace::ClearAllNotifications"]
+      ],
       "cmd-shift-y": "project_symbols::Toggle",
       "cmd-t": "terminal_panel::Toggle",
       "cmd-y": "outline::Toggle"
@@ -17,16 +21,16 @@
   },
   {
     "bindings": {
-      "<space> =": "editor::Format",
-      "<space> b": "file_finder::Toggle"
+      "space =": "editor::Format",
+      "space b": "file_finder::Toggle"
     },
-    "context": "Editor && helix_mode == normal"
+    "context": "Editor && vim_mode == helix_normal"
   },
   {
     "bindings": {
       "ctrl-y": "editor::ConfirmCompletion",
       "ctrl-x": "editor::ShowCompletions"
     },
-    "context": "Editor && helix_mode == insert"
+    "context": "Editor && vim_mode == insert"
   }
 ]
