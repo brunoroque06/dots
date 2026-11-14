@@ -21,6 +21,10 @@
   },
   {
     "bindings": {
+      "[ d": "editor::GoToPreviousDiagnostic",
+      "] d": "editor::GoToDiagnostic",
+      "[ f": "vim::PreviousMethodStart",
+      "] f": "vim::NextMethodStart",
       "space =": "editor::Format",
       "space b": "file_finder::Toggle"
     },

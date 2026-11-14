@@ -138,6 +138,7 @@
   "python.languageServer": "Pylance",
   "python.terminal.activateEnvironment": false,
   "python.testing.pytestEnabled": true,
+  "redhat.telemetry.enabled": false,
   "ruff.organizeImports": true,
   "scm.alwaysShowRepositories": true,
   "search.smartCase": true,

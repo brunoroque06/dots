@@ -1,4 +1,9 @@
 {
+  "icon_theme": {
+    "mode": "light",
+    "light": "Zed (Default)",
+    "dark": "Zed (Default)"
+  },
   "agent": {
     "default_model": {
       "effort": "high",
@@ -98,6 +103,9 @@
   },
   "relative_line_numbers": "enabled",
   "scrollbar": {
+    "axes": {
+      "horizontal": false
+    },
     "show": "auto"
   },
   "soft_wrap": "editor_width",
@@ -109,7 +117,11 @@
       "program": "/opt/homebrew/bin/nu"
     }
   },
-  "theme": "One Light",
+  "theme": {
+    "mode": "light",
+    "light": "One Light",
+    "dark": "One Dark"
+  },
   "toolbar": {
     "breadcrumbs": true,
     "quick_actions": false

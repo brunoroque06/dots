@@ -1,0 +1,13 @@
+#define color darkBlue
+#define from search
+#define glyph circledPower
+#define mac true
+#define name Quit
+
+#include 'actions/mac'
+
+const running = runShellScript("osascript -e 'tell application \"System Events\" to get name of every process whose background only is false' | tr ',' '\n' | sed 's/^ //'")
+const apps = splitText(running, "\n")
+const selected = chooseFromList(apps, "Force Quit", true)
+
+runShellScript("for a in \"$@\"; do killall -9 \"$a\"; done", selected, "/bin/zsh", "as arguments")
