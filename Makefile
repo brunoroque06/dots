@@ -16,6 +16,7 @@ config:
 	ln -fs $(PWD)/vscode/settings.json ~/Library/Application\ Support/Code/User/settings.json
 	ln -fs $(PWD)/zed/keymap.json ~/.config/zed/keymap.json
 	ln -fs $(PWD)/zed/settings.json ~/.config/zed/settings.json
+	ln -fs $(PWD)/zed/tasks.json ~/.config/zed/tasks.json
 
 unconfig:
 	rm ~/.config/aerospace/aerospace.toml

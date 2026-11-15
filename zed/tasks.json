@@ -1,0 +1,20 @@
+[
+  {
+    "label": "dotnet test: class $ZED_STEM",
+    "command": "dotnet test --solution *.slnf --filter-class '*.$ZED_STEM'",
+    "use_new_terminal": false,
+    "reveal": "always"
+  },
+  {
+    "label": "dotnet test: method $ZED_SYMBOL",
+    "command": "dotnet test --solution *.slnf --filter-method '*.$ZED_SYMBOL'",
+    "use_new_terminal": false,
+    "reveal": "always"
+  },
+  {
+    "label": "dotnet test: unit tests",
+    "command": "dotnet test --solution *.slnf",
+    "use_new_terminal": false,
+    "reveal": "always"
+  }
+]
