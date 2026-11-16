@@ -16,9 +16,11 @@ window-padding-x = 8
 window-padding-y = 8
 # window-save-state = never
 
-keybind = page_up=scroll_page_up
-keybind = page_down=scroll_page_down
-keybind = super+k=toggle_command_palette
-keybind = super+shift+.=move_tab:1
-keybind = super+shift+,=move_tab:-1
 # keybind = global:super+i=toggle_quick_terminal
+keybind = page_down=scroll_page_down
+keybind = page_up=scroll_page_up
+keybind = super+-=decrease_font_size:4
+keybind = super+==increase_font_size:4
+keybind = super+k=toggle_command_palette
+keybind = super+shift+,=move_tab:-1
+keybind = super+shift+.=move_tab:1
