@@ -2,18 +2,11 @@
   {
     "bindings": {
       "cmd-,": "zed::OpenSettingsFile",
-      "cmd-[": "pane::GoBack",
-      "cmd-]": "pane::GoForward",
-      "cmd-b": "file_finder::Toggle",
-      "cmd-f": "search::ToggleReplace",
-      // "cmd-k": "command_palette::Toggle",
-      "cmd-l": "project_panel::ToggleFocus",
-      "cmd-o": "file_finder::Toggle",
-      "cmd-shift-h": [
+      "cmd-k h": [
         "action::Sequence",
-        ["workspace::CloseAllDocks", "workspace::ClearAllNotifications"]
-      ]
-    }
+        ["workspace::CloseAllDocks", "workspace::ClearAllNotifications"],
+      ],
+    },
   },
   {
     "bindings": {
@@ -24,19 +17,15 @@
       "[ g": "editor::GoToPreviousChange",
       "] g": "editor::GoToNextChange",
       "cmd-.": "editor::ToggleCodeActions",
-      "cmd-shift-y": "project_symbols::Toggle",
-      "cmd-y": "outline::Toggle",
       "space =": "editor::Format",
-      "space b": "file_finder::Toggle",
-      "g f": "editor::OpenPermalinkToLine"
+      // "g f": "editor::OpenPermalinkToLine",
     },
-    "context": "Editor && vim_mode == helix_normal"
+    "context": "Editor && vim_mode == helix_normal",
   },
   {
     "bindings": {
-      "ctrl-y": "editor::ConfirmCompletion",
-      "ctrl-x": "editor::ShowCompletions"
+      "ctrl-x": "editor::ShowCompletions",
     },
-    "context": "Editor && vim_mode == insert"
-  }
+    "context": "Editor && vim_mode == insert",
+  },
 ]
