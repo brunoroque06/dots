@@ -25,8 +25,11 @@
       "] d": "editor::GoToDiagnostic",
       "[ f": "vim::PreviousMethodStart",
       "] f": "vim::NextMethodStart",
+      "[ g": "editor::GoToPreviousChange",
+      "] g": "editor::GoToNextChange",
       "space =": "editor::Format",
-      "space b": "file_finder::Toggle"
+      "space b": "file_finder::Toggle",
+      "g f": "editor::OpenPermalinkToLine"
     },
     "context": "Editor && vim_mode == helix_normal"
   },

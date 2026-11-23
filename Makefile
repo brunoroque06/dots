@@ -52,3 +52,36 @@ install:
 	brew update
 	brew bundle install --file brew/brewfile
 	brew doctor
+
+macos:
+	# Dock
+	defaults write com.apple.dock autohide -bool true
+	defaults write com.apple.dock autohide-delay -float 0
+	defaults write com.apple.dock mru-spaces -bool false
+	defaults write com.apple.dock show-recents -bool false
+	defaults write com.apple.dock wvous-br-corner -int 13
+
+	# Finder
+	defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+	defaults write com.apple.finder AppleShowAllFiles -bool true
+	defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
+	defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
+	defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
+	defaults write com.apple.finder ShowPathbar -bool true
+
+	# Keyboard
+	defaults write -g AppleKeyboardUIMode -int 2
+	defaults write -g ApplePressAndHoldEnabled -bool false
+	defaults write -g InitialKeyRepeat -int 10
+	defaults write -g KeyRepeat -int 1
+	defaults write -g NSAutomaticCapitalizationEnabled -bool false
+	defaults write -g NSAutomaticSpellingCorrectionEnabled -bool false
+
+	# Safari
+	defaults write com.apple.Safari IncludeDevelopMenu -bool true
+	defaults write com.apple.Safari ShowStandaloneTabBar -bool false
+
+	# Trackpad
+	defaults write -g com.apple.trackpad.scrolling -float 1
+
+	killall Dock Finder SystemUIServer

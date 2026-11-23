@@ -20,6 +20,7 @@ pu = pull
 r = restore
 rp = restore -p
 rps = restore -p --staged
+rs = restore --staged
 s = status -s
 sh = show
 sw = switch
