@@ -86,7 +86,8 @@
   },
   {
     "command": "editor.action.quickFix",
-    "key": "cmd+."
+    "key": "cmd+.",
+    "when": "editorTextFocus"
   },
   {
     "command": "editor.action.quickFix",
@@ -100,7 +101,7 @@
   },
   {
     "command": "editor.action.showContextMenu",
-    "key": "cmd+enter",
+    "key": "cmd+shift+.",
     "when": "editorTextFocus"
   },
   {
