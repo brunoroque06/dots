@@ -1,6 +1,7 @@
 # https://github.com/nushell/nushell/blob/main/crates/nu-config/default_files/doc_config.nu
 
 $env.PATH = [
+    /usr/local/share/dotnet
     /opt/homebrew/bin
     /opt/homebrew/opt/curl/bin
     /usr/local/bin
