@@ -16,5 +16,12 @@
     "command": "dotnet test --solution *.slnf",
     "use_new_terminal": false,
     "reveal": "always"
+  },
+  {
+    "label": "trash $ZED_FILE",
+    "command": "trash '$ZED_FILE'",
+    "use_new_terminal": false,
+    "reveal": "never",
+    "hide": "on_success"
   }
 ]

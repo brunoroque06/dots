@@ -4,9 +4,9 @@
       "cmd-,": "zed::OpenSettingsFile",
       "cmd-k h": [
         "action::Sequence",
-        ["workspace::CloseAllDocks", "workspace::ClearAllNotifications"],
-      ],
-    },
+        ["workspace::CloseAllDocks", "workspace::ClearAllNotifications"]
+      ]
+    }
   },
   {
     "bindings": {
@@ -17,15 +17,15 @@
       "[ g": "editor::GoToPreviousChange",
       "] g": "editor::GoToNextChange",
       "cmd-.": "editor::ToggleCodeActions",
-      "space =": "editor::Format",
+      "space =": "editor::Format"
       // "g f": "editor::OpenPermalinkToLine",
     },
-    "context": "Editor && vim_mode == helix_normal",
+    "context": "Editor && vim_mode == helix_normal"
   },
   {
     "bindings": {
-      "ctrl-x": "editor::ShowCompletions",
+      "ctrl-x": "editor::ShowCompletions"
     },
-    "context": "Editor && vim_mode == insert",
-  },
+    "context": "Editor && vim_mode == insert"
+  }
 ]
