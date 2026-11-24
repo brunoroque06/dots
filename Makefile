@@ -17,6 +17,8 @@ config:
 	ln -fs $(PWD)/zed/keymap.json ~/.config/zed/keymap.json
 	ln -fs $(PWD)/zed/settings.json ~/.config/zed/settings.json
 	ln -fs $(PWD)/zed/tasks.json ~/.config/zed/tasks.json
+	ln -fs $(PWD)/zed/snippets/csharp.json ~/.config/zed/snippets/csharp.json
+	ln -fs $(PWD)/zed/snippets/sql.json ~/.config/zed/snippets/sql.json
 
 unconfig:
 	rm ~/.config/aerospace/aerospace.toml

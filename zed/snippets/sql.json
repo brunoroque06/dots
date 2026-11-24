@@ -1,0 +1,14 @@
+{
+  "count": {
+    "prefix": "count",
+    "body": [
+      "select count(*)",
+      "from dbo.${1:table}",
+      "where ${2:condition}$0;"
+    ]
+  },
+  "select": {
+    "prefix": "select",
+    "body": ["select top 8 *", "from dbo.${1:table}$0", "order by Id desc;"]
+  }
+}

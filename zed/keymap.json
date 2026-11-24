@@ -10,6 +10,8 @@
   },
   {
     "bindings": {
+      "[ c": "vim::PreviousComment",
+      "] c": "vim::NextComment",
       "[ d": "editor::GoToPreviousDiagnostic",
       "] d": "editor::GoToDiagnostic",
       "[ f": "vim::PreviousMethodStart",

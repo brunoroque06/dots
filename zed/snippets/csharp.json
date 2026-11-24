@@ -1,0 +1,32 @@
+{
+  "function": {
+    "prefix": "fn",
+    "body": ["${1:void} ${2:Name}(${3})", "{", "    $0", "}"]
+  },
+  "guard null": {
+    "prefix": "guard",
+    "body": ["ArgumentNullException.ThrowIfNull(${1:value});$0"]
+  },
+  "interface": {
+    "prefix": "inter",
+    "body": ["public interface I${1:Name}", "{", "    $0", "}"]
+  },
+  "log": {
+    "prefix": "log",
+    "body": ["logger.Info(\"${1:Message} {${2:Arg}}\", ${3:arg});$0"]
+  },
+  "nullable enable": {
+    "prefix": "null",
+    "body": ["#nullable enable$0"]
+  },
+  "switch": {
+    "prefix": "sw",
+    "body": [
+      "${1:value} switch",
+      "{",
+      "    ${2:pattern} => ${3:result},$0",
+      "    _ => ${4:throw new ArgumentOutOfRangeException(nameof($1))}",
+      "};"
+    ]
+  }
+}
