@@ -18,7 +18,7 @@
     "reveal": "always"
   },
   {
-    "label": "trash $ZED_FILE",
+    "label": "trash $ZED_FILENAME",
     "command": "trash '$ZED_FILE'",
     "use_new_terminal": false,
     "reveal": "never",
