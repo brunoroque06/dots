@@ -18,8 +18,11 @@ config:
 	mkdir -p ~/.config/rift
 	ln -fs $(CURDIR)/rift/config.toml ~/.config/rift/config.toml
 	ln -fs $(CURDIR)/ripgrep/ripgreprc ~/.config/ripgreprc
+	mkdir -p ~/Library/Application\ Support/Code/User/snippets
 	ln -fs $(CURDIR)/vscode/keybindings.json ~/Library/Application\ Support/Code/User/keybindings.json
 	ln -fs $(CURDIR)/vscode/settings.json ~/Library/Application\ Support/Code/User/settings.json
+	ln -fs $(CURDIR)/zed/snippets/csharp.json ~/Library/Application\ Support/Code/User/snippets/csharp.json
+	ln -fs $(CURDIR)/zed/snippets/sql.json ~/Library/Application\ Support/Code/User/snippets/sql.json
 	mkdir -p ~/.config/zed/snippets
 	ln -fs $(CURDIR)/zed/keymap.json ~/.config/zed/keymap.json
 	ln -fs $(CURDIR)/zed/settings.json ~/.config/zed/settings.json
@@ -40,6 +43,8 @@ unconfig:
 	rm ~/.config/ripgreprc
 	rm ~/Library/Application\ Support/Code/User/keybindings.json
 	rm ~/Library/Application\ Support/Code/User/settings.json
+	rm ~/Library/Application\ Support/Code/User/snippets/csharp.json
+	rm ~/Library/Application\ Support/Code/User/snippets/sql.json
 	rm ~/Library/Application\ Support/nushell/config.nu
 	rm ~/.config/zed/keymap.json
 	rm ~/.config/zed/settings.json
