@@ -1,24 +1,31 @@
-.PHONY: *
+.PHONY: check config fmt fmt-check install macos unconfig
 
 config:
-	ln -fs $(PWD)/aerospace/aerospace.toml ~/.config/aerospace/aerospace.toml
-	ln -fs $(PWD)/elvish/rc.elv ~/.config/elvish/rc.elv
-	ln -fs $(PWD)/ghostty/config ~/Library/Application\ Support/com.mitchellh.ghostty/config
-	ln -fs $(PWD)/git/config ~/.config/git/config
-	ln -fs $(PWD)/helix/config.toml ~/.config/helix/config.toml
-	ln -fs $(PWD)/helix/languages.toml ~/.config/helix/languages.toml
-	ln -fs $(PWD)/nushell/config.nu ~/Library/Application\ Support/nushell/config.nu
-	ln -fs $(PWD)/psql/.pg_format ~/.pg_format
-	ln -fs $(PWD)/psql/.psqlrc ~/.psqlrc
-	ln -fs $(PWD)/rift/config.toml ~/.config/rift/config.toml
-	ln -fs $(PWD)/ripgrep/ripgreprc ~/.config/ripgreprc
-	ln -fs $(PWD)/vscode/keybindings.json ~/Library/Application\ Support/Code/User/keybindings.json
-	ln -fs $(PWD)/vscode/settings.json ~/Library/Application\ Support/Code/User/settings.json
-	ln -fs $(PWD)/zed/keymap.json ~/.config/zed/keymap.json
-	ln -fs $(PWD)/zed/settings.json ~/.config/zed/settings.json
-	ln -fs $(PWD)/zed/tasks.json ~/.config/zed/tasks.json
-	ln -fs $(PWD)/zed/snippets/csharp.json ~/.config/zed/snippets/csharp.json
-	ln -fs $(PWD)/zed/snippets/sql.json ~/.config/zed/snippets/sql.json
+	mkdir -p ~/.config/aerospace
+	ln -fs $(CURDIR)/aerospace/aerospace.toml ~/.config/aerospace/aerospace.toml
+	mkdir -p ~/.config/elvish
+	ln -fs $(CURDIR)/elvish/rc.elv ~/.config/elvish/rc.elv
+	ln -fs $(CURDIR)/ghostty/config ~/Library/Application\ Support/com.mitchellh.ghostty/config
+	mkdir -p ~/.config/git
+	ln -fs $(CURDIR)/git/config ~/.config/git/config
+	mkdir -p ~/.config/helix
+	ln -fs $(CURDIR)/helix/config.toml ~/.config/helix/config.toml
+	ln -fs $(CURDIR)/helix/languages.toml ~/.config/helix/languages.toml
+	mkdir -p ~/.config/nushell
+	ln -fs $(CURDIR)/nushell/config.nu ~/Library/Application\ Support/nushell/config.nu
+	ln -fs $(CURDIR)/psql/.pg_format ~/.pg_format
+	ln -fs $(CURDIR)/psql/.psqlrc ~/.psqlrc
+	mkdir -p ~/.config/rift
+	ln -fs $(CURDIR)/rift/config.toml ~/.config/rift/config.toml
+	ln -fs $(CURDIR)/ripgrep/ripgreprc ~/.config/ripgreprc
+	ln -fs $(CURDIR)/vscode/keybindings.json ~/Library/Application\ Support/Code/User/keybindings.json
+	ln -fs $(CURDIR)/vscode/settings.json ~/Library/Application\ Support/Code/User/settings.json
+	mkdir -p ~/.config/zed/snippets
+	ln -fs $(CURDIR)/zed/keymap.json ~/.config/zed/keymap.json
+	ln -fs $(CURDIR)/zed/settings.json ~/.config/zed/settings.json
+	ln -fs $(CURDIR)/zed/tasks.json ~/.config/zed/tasks.json
+	ln -fs $(CURDIR)/zed/snippets/csharp.json ~/.config/zed/snippets/csharp.json
+	ln -fs $(CURDIR)/zed/snippets/sql.json ~/.config/zed/snippets/sql.json
 
 unconfig:
 	rm ~/.config/aerospace/aerospace.toml
@@ -36,6 +43,8 @@ unconfig:
 	rm ~/Library/Application\ Support/nushell/config.nu
 	rm ~/.config/zed/keymap.json
 	rm ~/.config/zed/settings.json
+	rm ~/.config/zed/snippets/csharp.json
+	rm ~/.config/zed/snippets/sql.json
 
 fmt:
 	prettier -w .

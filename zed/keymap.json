@@ -19,8 +19,8 @@
       "[ g": "editor::GoToPreviousChange",
       "] g": "editor::GoToNextChange",
       "cmd-.": "editor::ToggleCodeActions",
-      "space =": "editor::Format"
-      // "g f": "editor::OpenPermalinkToLine",
+      "space =": "editor::Format",
+      "g f": "editor::OpenUrl"
     },
     "context": "Editor && vim_mode == helix_normal"
   },
