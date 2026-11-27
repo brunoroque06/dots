@@ -57,6 +57,7 @@
   "debug.inlineValues": "on",
   "debug.internalConsoleOptions": "neverOpen",
   "debug.toolBarLocation": "docked",
+  "diffEditor.diffAlgorithm": "advanced-wasm",
   "diffEditor.experimental.showMoves": true,
   "diffEditor.hideUnchangedRegions.contextLineCount": 8,
   "diffEditor.hideUnchangedRegions.enabled": true,

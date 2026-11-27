@@ -14,6 +14,7 @@ ds = diff --staged
 f = fetch
 l = log
 lp = log -p
+lo = log --oneline
 lr = log --raw
 p = push
 pu = pull
