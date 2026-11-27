@@ -190,7 +190,7 @@ def d2-icat-watch [f: path@"d2-ls"] {
     }
 }
 def d2-su [] {
-    let queries = ($env.HOME | path join .config helix runtime queries d2)
+    let queries = $env.HOME | path join .config helix runtime queries d2
     mkdir $queries
     for f in [highlights.scm injections.scm locals.scm folds.scm] {
         http get --raw $"https://raw.githubusercontent.com/ravsii/tree-sitter-d2/main/queries/($f)"
